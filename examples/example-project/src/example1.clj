@@ -1,18 +1,22 @@
 (ns example1
   (:require [scicloj.clay.v1.api :as clay]
+            [scicloj.clay.v1.tools :as tools]
             [scicloj.kindly.v2.api :as kindly]
             [scicloj.kindly.v2.kind :as kind]
             [scicloj.kindly.v2.kindness :as kindness]
             [scicloj.noj.v1.view.dataset]
+            [scicloj.noj.v1.view.clojisr]
             [scicloj.noj.v1.viz :as viz]
             [tablecloth.api :as tc]
             [aerial.hanami.templates :as ht]
-            [tablecloth.api :as tc])
+            [tablecloth.api :as tc]
+            [clojure.string :as string])
   (:import javax.imageio.ImageIO
            java.net.URL))
 
-(clay/start)
-(clay/setup-clerk)
+
+(clay/start! {:tools [tools/clerk
+                      #_tools/portal]})
 
 (+ 1 2)
 
@@ -67,5 +71,14 @@ clay-image
     (kindly/consider kind/hiccup))
 
 
-(tc/dataset {:x (range 99)
-             :y (repeatedly 99 rand)})
+(-> {:x (range 99)
+     :y (repeatedly 99 rand)}
+    (tc/dataset))
+
+
+
+(-> {:x (range 99)
+     :y (repeatedly 99 rand)}
+    tc/dataset
+    viz/hanami-data
+    (viz/hanami-plot {:viz/type ht/point-chart}))
