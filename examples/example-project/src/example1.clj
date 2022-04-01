@@ -5,8 +5,7 @@
             [scicloj.kindly.v2.kind :as kind]
             [scicloj.kindly.v2.kindness :as kindness]
             [scicloj.noj.v1.view.dataset]
-            [scicloj.noj.v1.view.clojisr]
-            [scicloj.noj.v1.viz :as viz]
+            [scicloj.viz.api :as viz]
             [tablecloth.api :as tc]
             [aerial.hanami.templates :as ht]
             [tablecloth.api :as tc]
@@ -59,7 +58,7 @@ clay-image
            :x {:field "x", :type "quantitative"},
            :y {:field "y", :type "quantitative"},
            :fill {:field "z", :type "nominal"}}}
-         (kindly/consider kind/vega-lite)))))
+         (kindly/consider kind/vega)))))
 
 
 (-> (->> [10 100 1000]
@@ -80,5 +79,6 @@ clay-image
 (-> {:x (range 99)
      :y (repeatedly 99 rand)}
     tc/dataset
-    viz/hanami-data
-    (viz/hanami-plot {:viz/type ht/point-chart}))
+    viz/data
+    (viz/viz {:viz/type ht/point-chart}
+             {:MSIZE 200}))

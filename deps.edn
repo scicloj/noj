@@ -4,7 +4,7 @@
         techascent/tech.ml.dataset {:mvn/version "6.072"}
         scicloj/tablecloth {:mvn/version "6.051"}
         aerial.hanami/aerial.hanami {:mvn/version "0.17.0"}
-        org.scicloj/viz.clj {:mvn/version "0.1.2"}
+        org.scicloj/viz.clj {:mvn/version "0.1.3-SNAPSHOT"}
         cljplot/cljplot {:mvn/version "0.0.2a-SNAPSHOT"}
         scicloj/clojisr {:mvn/version "1.0.0-BETA19"}
         org.scicloj/kindly {:mvn/version "2-alpha1"}
