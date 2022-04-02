@@ -13,9 +13,3 @@
 ;; (defn hanami-plot [& args]
 ;;   (-> (apply scicloj.viz.api/viz args)
 ;;       (kindly/consider kind/vega-lite)))
-
-(defn in-iframe [hiccup]
-  [:iframe {:width       "100%"
-            :height      "500px"
-            :frameBorder "0"
-            :srcdoc      hiccup}])
