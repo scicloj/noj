@@ -6,27 +6,6 @@ A Clojure framework for data science (WIP)
 
 Coming soon
 
-## Development
-
-Run the project's tests (they'll fail until you edit them):
-
-    $ clojure -T:build test
-
-Run the project's CI pipeline and build a JAR (this will fail until you edit the tests to pass):
-
-    $ clojure -T:build ci
-
-Install it locally (requires the `ci` task be run first):
-
-    $ clojure -T:build install
-
-Deploy it to Clojars -- needs `CLOJARS_USERNAME` and `CLOJARS_PASSWORD` environment
-variables (requires the `ci` task be run first):
-
-    $ clojure -T:build deploy
-
-Your library will be deployed to org.scicloj/noj on clojars.org by default.
-
 ## License
 
 Copyright © 2022 Scicloj
