@@ -1,6 +1,6 @@
 # scinojure (noj)
 
-A Clojure framework for data science (WIP)
+An opinionated way to use the emerging Clojure data stack (WIP)
 
 ## Usage
 
