@@ -1,3 +1,5 @@
 ((nil
   .
-  ((cider-clojure-cli-global-options . "-M:clay"))))
+  ((cider-clojure-cli-aliases
+    .
+    "dev"))))
