@@ -2,7 +2,6 @@
   (:require [scicloj.kind-clerk.api :as kind-clerk]
             [tablecloth.api :as tc]
             [aerial.hanami.templates :as ht]
-            [aerial.hanami.common :as hc]
             [scicloj.noj.v1.vis :as vis]))
 
 ;; Adapt Clerk to Kindly
