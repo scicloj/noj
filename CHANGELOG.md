@@ -1,5 +1,6 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## [Unreleased]
-### Changed
+## [1-alpha1] - 2023-02-16
+- initial version (with a simple tech.ml.dataset-Hanami adapter)
+
