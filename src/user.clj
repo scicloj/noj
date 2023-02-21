@@ -10,7 +10,7 @@
 
 (comment
   ;; Start Clerk.
-  (clerk/serve! {}))
+  (clerk/serve! {:browse? true}))
 
 (comment
   ;; Start Clay.
