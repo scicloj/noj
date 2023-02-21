@@ -1,11 +1,10 @@
 
 
 
-
 {:paths ["src" "resources"]
  :deps {org.clojure/core.async {:mvn/version "1.1.587"}
         scicloj/tablecloth {:mvn/version "6.103"}
-        org.scicloj/kindly-default {:mvn/version "1-alpha4"}
+        org.scicloj/kindly-default {:mvn/version "1-alpha6"}
         generateme/fastmath {:mvn/version "2.1.8"}
         aerial.hanami/aerial.hanami {:mvn/version "0.17.0"}
         cljplot/cljplot {:mvn/version "0.0.2a-SNAPSHOT"}
@@ -20,9 +19,9 @@
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
                       io.github.cognitect-labs/test-runner
                       {:git/tag "v0.5.0" :git/sha "48c3c67"}
-                      org.scicloj/clay {:mvn/version "2-alpha12"}
-                      org.scicloj/kind-clerk {:mvn/version "1-alpha1"}
+                      org.scicloj/clay {:mvn/version "2-alpha14"}
+                      org.scicloj/kind-clerk {:mvn/version "1-alpha2"}
                       io.github.nextjournal/clerk {:mvn/version "0.12.707"}}}
-  :dev {:extra-deps {org.scicloj/clay {:mvn/version "2-alpha12"}
-                     org.scicloj/kind-clerk {:mvn/version "1-alpha1"}
+  :dev {:extra-deps {org.scicloj/clay {:mvn/version "2-alpha14"}
+                     org.scicloj/kind-clerk {:mvn/version "1-alpha2"}
                      io.github.nextjournal/clerk {:mvn/version "0.12.707"}}}}}
