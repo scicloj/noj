@@ -31,3 +31,16 @@
       (->> (apply concat args)
            (apply hc/xform template))
       (kindly/consider :kind/vega-lite)))
+
+(defn raw-html [html]
+  (-> [:div
+       {:dangerouslySetInnerHTML
+        {:__html html}}]
+      (kindly/consider :kind/hiccup)))
+
+(defn iframe [html]
+  (-> [:div
+       [:h1 ".."]
+       [:iframe
+        {:srcimg html}]]
+      (kindly/consider :kind/hiccup)))
