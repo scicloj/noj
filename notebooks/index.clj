@@ -48,9 +48,6 @@
                 '[numpy.random :as np.random]
                 'matplotlib.pyplot
                 '[seaborn :as sns]
-                'bokeh.plotting
-                'bokeh.resources
-                'bokeh.embed
                 'json
                 '[arviz :as az])
 
@@ -90,7 +87,6 @@
             :exponential (np.random/exponential :size size)}]
   (vis.python/pyplot
    #(az/plot_forest data)))
-
 
 
 :bye

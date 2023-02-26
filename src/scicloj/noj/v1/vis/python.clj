@@ -9,18 +9,11 @@
             [tech.v3.datatype :as dtype]
             [scicloj.noj.v1.vis :as vis]))
 
-;; http://gigasquidsoftware.com/blog/2020/01/18/parens-for-pyplot/
+;; inspiration: http://gigasquidsoftware.com/blog/2020/01/18/parens-for-pyplot/
 
-;;; This uses the headless version of matplotlib to generate a graph then copy it to the JVM
-;; where we can then print it
-
-;;;; have to set the headless mode before requiring pyplot
-(def mplt (py/import-module "matplotlib"))
-(py. mplt "use" "Agg")
-
-(require-python 'matplotlib.pyplot)
-(require-python 'matplotlib.backends.backend_agg)
-(require-python 'numpy)
+(require-python 'matplotlib.pyplot
+                'matplotlib.backends.backend_agg
+                'numpy)
 
 (defmacro with-pyplot
   "Takes forms with mathplotlib.pyplot and returns a showable (SVG) plot."
