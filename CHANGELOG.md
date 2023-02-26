@@ -1,6 +1,8 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [1-alpha4] - 2023-02-26
+- updated deps
 
 ## [1-alpha3] - 2023-02-21
 - removed kind-clerk references from library code
