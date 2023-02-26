@@ -18,11 +18,11 @@
 
 (comment
   ;; Show the whole document:
-  (clay/show-doc! "notebooks/scratch.clj"))
+  (clay/show-doc! "notebooks/index.clj"))
 
 (comment
   ;; Show the document with table-of-contents, and write it as html:
-  (clay/show-doc-and-write-html! "notebooks/scratch.clj"
+  (clay/show-doc-and-write-html! "notebooks/index.clj"
                                  {:toc? true}))
 
 (comment
