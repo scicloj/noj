@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [1-alpha5] - 2023-02-26
+- user.clj cleanup (avoiding missing deps)
+
 ## [1-alpha4] - 2023-02-26
 - updated deps
 - cleanup

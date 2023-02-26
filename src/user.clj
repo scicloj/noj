@@ -1,7 +1,5 @@
 (ns user
-  (:require [scicloj.clay.v2.api :as clay]
-            [scicloj.kindly-default.v1.api :as kindly-default]
-            [nextjournal.clerk :as clerk]))
+  (:require [scicloj.kindly-default.v1.api :as kindly-default]))
 
 ;; Initialize Kindly's [default](https://github.com/scicloj/kindly-default).
 (kindly-default/setup!)
@@ -9,10 +7,12 @@
 ;; ## Useful commands
 
 (comment
+  (require '[nextjournal.clerk :as clerk])
   ;; Start Clerk.
   (clerk/serve! {:browse? true}))
 
 (comment
+  (require '[scicloj.clay.v2.api :as clay])
   ;; Start Clay.
   (clay/start!))
 
