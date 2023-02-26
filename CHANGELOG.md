@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. This change
 ## [1-alpha4] - 2023-02-26
 - updated deps
 - cleanup
+- some stats functions (WIP)
 
 ## [1-alpha3] - 2023-02-21
 - removed kind-clerk references from library code
