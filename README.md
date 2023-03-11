@@ -2,6 +2,8 @@
 
 An opinionated way to use the emerging Clojure data stack (WIP)
 
+[![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/noj.svg)](https://clojars.org/org.scicloj/noj)
+
 ## Usage
 
 Coming soon
