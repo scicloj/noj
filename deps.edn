@@ -3,6 +3,8 @@
 
 {:paths ["src" "resources"]
  :deps {org.clojure/core.async {:mvn/version "1.1.587"}
+        cnuernber/dtype-next {:mvn/version "10.000-beta-46"}
+        techascent/tech.ml.dataset {:mvn/version "7.000-beta-34"}
         scicloj/tablecloth {:mvn/version "7.000-beta-27"}
         ;; scicloj/tablecloth {:mvn/version "6.103"}
         org.scicloj/kindly-default {:mvn/version "1-alpha6"}
