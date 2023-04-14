@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [1-alpha7] - 2023-04-14
+- another deps update
+
 ## [1-alpha6] - 2023-04-14
 - updated some deps
 
