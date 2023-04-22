@@ -1,9 +1,14 @@
 (ns scicloj.noj.v1.stats
   (:require [fastmath.stats :as stats]
-            [scicloj.ml.core :as ml]
+            ;; [scicloj.ml.core :as ml]
+            ;; [scicloj.metamorph.ml :as mmml]
+            ;; [scicloj.ml.metamorph :as mlmm]
+            ;; [scicloj.ml.dataset :as ds]
+            [tech.v3.dataset :as tmd]
+            [scicloj.ml.smile.regression :as regression]
             [scicloj.metamorph.ml :as mmml]
-            [scicloj.ml.metamorph :as mlmm]
-            [scicloj.ml.dataset :as ds]
+            [tech.v3.dataset.column-filters :as cf]
+            [tech.v3.dataset.modelling :as ds-mod]
             [tech.v3.datatype.functional :as fun]
             [tablecloth.api :as tc]))
 
@@ -38,7 +43,7 @@
 (defn linear-model [dataset target covariates]
   (let [model (-> dataset
                   (tc/select-columns (cons target covariates))
-                  (ds/set-inference-target target)
+                  (ds-mod/set-inference-target target)
                   (mmml/train {:model-type
                                :smile.regression/ordinary-least-square}))
         predictions (-> dataset
