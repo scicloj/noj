@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## [1-alpha8-SNAPSHOT]
+## [1-alpha8]
 - updated deps
 - avoiding the scicloj.ml dependency due to conflicts
 
