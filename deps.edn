@@ -1,13 +1,13 @@
 {:paths ["src" "resources"]
  :deps {org.clojure/core.async {:mvn/version "1.1.587"}
-        cnuernber/dtype-next {:mvn/version "10.000-beta-48"}
-        techascent/tech.ml.dataset {:mvn/version "7.000-beta-35"}
+        cnuernber/dtype-next {:mvn/version "10.000-beta-49"}
+        techascent/tech.ml.dataset {:mvn/version "7.000-beta-38"}
         scicloj/tablecloth {:mvn/version "7.000-beta-27"}
         ;; scicloj/tablecloth {:mvn/version "6.103"}
         org.scicloj/kindly-default {:mvn/version "1-alpha6"}
-        generateme/fastmath {:mvn/version "2.1.8"}
+        generateme/fastmath {:mvn/version "2.2.1"}
         aerial.hanami/aerial.hanami {:mvn/version "0.18.0"}
-        cljplot/cljplot {:mvn/version "0.0.2a-SNAPSHOT"}
+        cljplot/cljplot {:mvn/version "0.0.3"}
         scicloj/scicloj.ml.smile {:mvn/version "7.0.650"}
         ;; scicloj/scicloj.ml {:mvn/version "0.2.2"} ; TODO: Figure out the dependency conflict here.
         clj-python/libpython-clj {:mvn/version "2.024"}
@@ -20,9 +20,9 @@
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
                       io.github.cognitect-labs/test-runner
                       {:git/tag "v0.5.0" :git/sha "48c3c67"}
-                      org.scicloj/clay {:mvn/version "2-alpha19"}
-                      org.scicloj/kind-clerk {:mvn/version "1-alpha2"}
+                      org.scicloj/clay {:mvn/version "2-alpha22"}
+                      org.scicloj/kind-clerk {:mvn/version "1-alpha3"}
                       io.github.nextjournal/clerk {:mvn/version "0.13.842"}}}
-  :dev {:extra-deps {org.scicloj/clay {:mvn/version "2-alpha19"}
+  :dev {:extra-deps {org.scicloj/clay {:mvn/version "2-alpha22"}
                      org.scicloj/kind-clerk {:mvn/version "1-alpha3"}
                      io.github.nextjournal/clerk {:mvn/version "0.13.842"}}}}}
