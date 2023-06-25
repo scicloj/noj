@@ -90,6 +90,7 @@
 ;; ### Combining a few things together
 ;;
 ;; The following is inspired by the example at Plotnine's [main page](https://plotnine.readthedocs.io/en/stable/).
+;; Note how we add regression lines.
 
 (def mtcars
   (-> "/tmp/mtcars.csv"
