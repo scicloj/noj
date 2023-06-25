@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [1-alpha10]
+- progress with statistical functions
+- progress with Hanami conveience functions (breaking changes to the `hanami-plot` API)
+- note: breaking changes to these APIs
+
 ## [1-alpha9]
 - basic tensor->image support
 

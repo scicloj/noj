@@ -10,7 +10,8 @@
             [tech.v3.dataset.column-filters :as cf]
             [tech.v3.dataset.modelling :as ds-mod]
             [tech.v3.datatype.functional :as fun]
-            [tablecloth.api :as tc]))
+            [tablecloth.api :as tc]
+            [scicloj.noj.v1.util :as util]))
 
 (defn round
   [n scale rm]
