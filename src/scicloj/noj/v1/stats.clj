@@ -41,22 +41,29 @@
 
 ;; Multivariate linear regression
 
-(defn linear-model [dataset target covariates]
+(defn regression-model [dataset target covariates options]
   (let [model (-> dataset
                   (tc/select-columns (cons target covariates))
                   (ds-mod/set-inference-target target)
-                  (mmml/train {:model-type
-                               :smile.regression/ordinary-least-square}))
+                  (mmml/train options))
+        predict (fn [ds]
+                  (-> ds
+                      (tc/drop-columns [target])
+                      (mmml/predict model)
+                      target))
         predictions (-> dataset
-                        (tc/drop-columns [target])
-                        (mmml/predict model)
-                        target)
+                        predict)
         r (-> dataset
               target
               (stats/correlation predictions))]
     (-> model
         mmml/explain
-        (assoc :R2 (* r r)))))
+        (assoc :R2 (* r r)
+               :predict predict))))
+
+(defn linear-regression-model [dataset target covariates]
+  (regression-model dataset target covariates
+                    {:model-type :smile.regression/ordinary-least-square}))
 
 (comment
   (let [n 1000
@@ -72,4 +79,38 @@
          :x xs
          :y ys}
         tc/dataset
-        (linear-model :y [:w :x]))))
+        (linear-regression-model :y [:w :x]))))
+
+
+(defn add-predictions [dataset target covariates options]
+  (let [model (-> dataset
+                  (tc/select-columns (cons target covariates))
+                  (ds-mod/set-inference-target target)
+                  (mmml/train options))
+        predict (fn [ds]
+                  (-> ds
+                      (tc/drop-columns [target])
+                      (mmml/predict model)
+                      target))
+        predictions (-> dataset
+                        predict)]
+    (-> dataset
+        (tc/add-column (util/concat-keywords target :prediction)
+                       predictions))))
+
+(comment
+  (let [n 1000
+        ws (repeatedly n rand)
+        xs (range n)
+        ys (map (fn [w x]
+                  (+ (* 3 w)
+                     (* -2 x)
+                     9
+                     (* 1000 (rand))))
+                ws xs)]
+    (-> {:w ws
+         :x xs
+         :y ys}
+        tc/dataset
+        (add-predictions :y [:w :x]
+                         {:model-type :smile.regression/ordinary-least-square}))))
