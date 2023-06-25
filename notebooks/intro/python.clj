@@ -12,11 +12,6 @@
             hiccup.util))
 
 
-;; ## Setup
-
-;; Adapt Clerk to Kindly
-(kind-clerk/setup!)
-
 ;; ## Using Python visualizations
 
 (require-python '[numpy :as np]
