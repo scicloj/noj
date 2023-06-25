@@ -27,6 +27,9 @@
     vis/raw-html)
 
 ;; ## Visualizing datases with Hanami
+
+;; Noj offers a few convenience functions to make [Hanami](https://github.com/jsa-aerial/hanami) plotting work smoothly with [Tablecloth](https://scicloj.github.io/tablecloth/) and [Kindly](https://scicloj.github.io/kindly/).
+
 (def dataset1
   (-> {:x (range 9)
        :y (map +
@@ -36,11 +39,18 @@
 
 ;; ### A simple plot
 
-;; plotting a Tablecloth datasete based on a Hanami template
+;; We can plot a Tablecloth datasete using a Hanami template:
 
 (-> dataset1
     (vis/hanami-plot ht/point-chart
                      {:MSIZE 200}))
+
+;; Let us look inside the resulting vega-lite space. We can see the dataset is included as CSV:
+
+(-> dataset1
+    (vis/hanami-plot ht/point-chart
+                     {:MSIZE 200})
+    kind/pprint)
 
 ;; ### Layers
 
@@ -90,7 +100,7 @@
 ;; ### Combining a few things together
 ;;
 ;; The following is inspired by the example at Plotnine's [main page](https://plotnine.readthedocs.io/en/stable/).
-;; Note how we add regression lines.
+;; Note how we add regression lines here.
 
 (def mtcars
   (-> "/tmp/mtcars.csv"
