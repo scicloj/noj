@@ -103,7 +103,7 @@
 ;; Note how we add regression lines here.
 
 (def mtcars
-  (-> "/tmp/mtcars.csv"
+  (-> "data/mtcars.csv"
       (tc/dataset {:key-fn keyword})))
 
 (let [pallete (->> :accent
