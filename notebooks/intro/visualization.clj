@@ -1,7 +1,9 @@
 (ns intro.visualization
   (:require [scicloj.kind-clerk.api :as kind-clerk]
             [tablecloth.api :as tc]
+            [aerial.hanami.common :as hc]
             [aerial.hanami.templates :as ht]
+            [scicloj.noj.v1.vis.hanami.templates :as vht]
             [scicloj.noj.v1.vis :as vis]
             [scicloj.noj.v1.stats :as stats]
             [tech.v3.datatype :as dtype]
@@ -30,31 +32,49 @@
 
 ;; Noj offers a few convenience functions to make [Hanami](https://github.com/jsa-aerial/hanami) plotting work smoothly with [Tablecloth](https://scicloj.github.io/tablecloth/) and [Kindly](https://scicloj.github.io/kindly/).
 
-(def dataset1
-  (-> {:x (range 9)
-       :y (map +
-               (range 9)
-               (repeatedly 9 rand))}
-      tc/dataset))
+(def mtcars
+  (-> "data/mtcars.csv"
+      (tc/dataset {:key-fn keyword})))
+
+(def iris
+  (-> "data/iris.csv"
+      (tc/dataset {:key-fn keyword})))
+
+(def random-walk
+  (let [n 20]
+    (-> {:x (range n)
+         :y (->> (repeatedly n #(- (rand) 0.5))
+                 (reductions +))}
+        tc/dataset)))
 
 ;; ### A simple plot
 
 ;; We can plot a Tablecloth datasete using a Hanami template:
 
-(-> dataset1
+(-> random-walk
     (vis/hanami-plot ht/point-chart
                      {:MSIZE 200}))
 
 ;; Let us look inside the resulting vega-lite space. We can see the dataset is included as CSV:
 
-(-> dataset1
+(-> random-walk
     (vis/hanami-plot ht/point-chart
                      {:MSIZE 200})
     kind/pprint)
 
+;; ### Additional Hanami templates
+
+;; The `scicloj.noj.v1.vis.hanami.templates` namespace add Hanami templates to Hanami's own collection.
+
+(-> mtcars
+    (vis/hanami-plot vht/boxplot-chart
+                     {:X :gear
+                      :XTYPE :nominal
+                      :Y :mpg}))
+
 ;; ### Layers
 
-(-> dataset1
+(-> random-walk
     (vis/hanami-layers
      {:TITLE "points and a line"}
      [(vis/hanami-plot nil
@@ -67,7 +87,7 @@
 
 ;; ### Concatenation
 
-(-> dataset1
+(-> random-walk
     (vis/hanami-vconcat
      {}
      [(vis/hanami-plot nil
@@ -82,7 +102,7 @@
                         :HEIGHT 100
                         :WIDTH 100})]))
 
-(-> dataset1
+(-> random-walk
     (vis/hanami-hconcat
      {}
      [(vis/hanami-plot nil
@@ -97,14 +117,38 @@
                         :HEIGHT 100
                         :WIDTH 100})]))
 
+;; ### Linear regression
+
+(-> mtcars
+    (stats/add-predictions :mpg [:wt]
+                           {:model-type :smile.regression/ordinary-least-square})
+    (vis/hanami-layers {}
+                       [(vis/hanami-plot nil
+                                         ht/point-chart
+                                         {:X :wt
+                                          :Y :mpg
+                                          :MSIZE 200
+                                          :HEIGHT 200
+                                          :WIDTH 200})
+                        (vis/hanami-plot nil
+                                         ht/line-chart
+                                         {:X :wt
+                                          :Y :mpg-prediction
+                                          :MSIZE 5
+                                          :MCOLOR "purple"
+                                          :YTITLE :mpg})]))
+
+;; ### Histogram
+
+(-> iris
+    (vis/hanami-histogram :sepal-width
+                          {:nbins 10}))
+
 ;; ### Combining a few things together
 ;;
 ;; The following is inspired by the example at Plotnine's [main page](https://plotnine.readthedocs.io/en/stable/).
 ;; Note how we add regression lines here.
 
-(def mtcars
-  (-> "data/mtcars.csv"
-      (tc/dataset {:key-fn keyword})))
 
 (let [pallete (->> :accent
                    color/palette
@@ -135,5 +179,25 @@
                                                         :YTITLE :mpg})]
                                      ))))
            (vis/hanami-hconcat nil {}))))
+
+
+
+(let [pallete (->> :accent
+                   color/palette
+                   (mapv color/format-hex))]
+  (-> iris
+      (tc/group-by :species {:result-type :as-map})
+      (->> (sort-by key)
+           (map-indexed
+            (fn [i [group-name ds]]
+              (-> ds
+                  (vis/hanami-histogram :sepal-width
+                                        {:nbins 10}))))
+           (vis/hanami-vconcat nil {}))))
+
+
+
+
+
 
 :bye
