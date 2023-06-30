@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [1-alpha11]
+- added extensions to Hanami templates and defaults
+
 ## [1-alpha10]
 - progress with statistical functions
 - progress with Hanami conveience functions (breaking changes to the `hanami-plot` API)
