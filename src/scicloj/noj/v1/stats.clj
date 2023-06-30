@@ -7,6 +7,7 @@
             [tech.v3.dataset :as tmd]
             [scicloj.ml.smile.regression :as regression]
             [scicloj.metamorph.ml :as mmml]
+            [tech.v3.datatype :as dtype]
             [tech.v3.dataset.column-filters :as cf]
             [tech.v3.dataset.modelling :as ds-mod]
             [tech.v3.datatype.functional :as fun]
@@ -114,3 +115,36 @@
         tc/dataset
         (add-predictions :y [:w :x]
                          {:model-type :smile.regression/ordinary-least-square}))))
+
+
+;; based on the histogram of https://github.com/techascent/tech.viz
+(defn histogram
+  ([values]
+   (histogram values {}))
+  ([values {:keys [nbins] :as options}]
+   (let [n-values       (count values)
+         minimum        (fun/reduce-min values)
+         maximum        (fun/reduce-max values)
+         nbins      (int (or nbins
+                             (Math/ceil (Math/log n-values))))
+         bin-width      (double (/ (- maximum minimum) nbins))
+         counts (dtype/make-container :int32 nbins)]
+     (doseq [v values]
+       (let [bin-index (min (int (quot (- v minimum)
+                                       bin-width))
+                            (dec nbins))]
+         (->> bin-index
+              counts
+              inc
+              (dtype/set-value! counts bin-index))))
+     (-> {:count counts
+          :left  (dtype/make-reader :float32 nbins
+                                    (+ minimum (* idx bin-width)))
+          :right (dtype/make-reader :float32 nbins
+                                    (+ minimum (* (inc idx) bin-width)))}
+         tmd/->dataset))))
+
+
+(comment
+  (-> (repeatedly 99 rand)
+      (histogram {:bin-count 5})))

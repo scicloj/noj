@@ -2,9 +2,11 @@
   (:require [tech.v3.dataset :as tmd]
             [aerial.hanami.templates :as ht]
             [aerial.hanami.common :as hc]
+            [scicloj.noj.v1.vis.hanami.templates :as vht]
             [scicloj.kindly.v3.api :as kindly]
             [scicloj.noj.v1.paths :as paths]
-            [scicloj.tempfiles.api :as tempfiles]))
+            [scicloj.tempfiles.api :as tempfiles]
+            [scicloj.noj.v1.stats :as stats]))
 
 (defn hanami-data [data]
   (when data
@@ -56,6 +58,17 @@
 (def hanami-hconcat
   (hanami-collector ht/hconcat-chart
                     :HCONCAT))
+
+(defn hanami-histogram [dataset column-name options]
+  (-> column-name
+      dataset
+      (stats/histogram options)
+      (hanami-plot vht/rect-chart
+                   {:X :left
+                    :X2 :right
+                    :Y :count
+                    :Y2 0
+                    :XSCALE {:zero false}})))
 
 
 (defn raw-html [html]
