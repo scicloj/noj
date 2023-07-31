@@ -1,9 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## [1-alpha11]
+## [1-alpha11-SNAPSHOT]
 - extensions to Hanami templates and defaults
 - histogram-support
+- stats: making some functionality respect tablecloth groups 
 
 ## [1-alpha10]
 - progress with statistical functions

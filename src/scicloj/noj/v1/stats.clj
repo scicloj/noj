@@ -83,21 +83,28 @@
         (linear-regression-model :y [:w :x]))))
 
 
+
+
 (defn add-predictions [dataset target covariates options]
-  (let [model (-> dataset
-                  (tc/select-columns (cons target covariates))
-                  (ds-mod/set-inference-target target)
-                  (mmml/train options))
-        predict (fn [ds]
-                  (-> ds
-                      (tc/drop-columns [target])
-                      (mmml/predict model)
-                      target))
-        predictions (-> dataset
-                        predict)]
-    (-> dataset
-        (tc/add-column (util/concat-keywords target :prediction)
-                       predictions))))
+  (let [process-fn (fn [ds]
+                     (let [model (-> ds
+                                     (tc/select-columns (cons target covariates))
+                                     (ds-mod/set-inference-target target)
+                                     (mmml/train options))
+                           predict (fn [ds1]
+                                     (-> ds1
+                                         (tc/drop-columns [target])
+                                         (mmml/predict model)
+                                         target))
+                           predictions (-> ds
+                                           predict)]
+                       (-> ds
+                           (tc/add-column (util/concat-keywords target :prediction)
+                                          predictions))))]
+    (if (tc/grouped? dataset)
+      (tc/process-group-data dataset process-fn)
+      (process-fn dataset))))
+
 
 (comment
   (let [n 1000
