@@ -147,7 +147,7 @@
 ;; ### Combining a few things together
 ;;
 ;; The following is inspired by the example at Plotnine's [main page](https://plotnine.readthedocs.io/en/stable/).
-;; Note how we add regression lines here.
+;; Note how we add regression lines here. We take care of layout and colouring on our side, not using Vega-Lite for that.
 
 
 (let [pallete (->> :accent
@@ -161,6 +161,7 @@
               (-> ds
                   (stats/add-predictions :mpg [:wt]
                                          {:model-type :smile.regression/ordinary-least-square})
+                  (tc/select-columns [:gear :wt :mpg :mpg-prediction])
                   (vis/hanami-layers {:TITLE (str "grear=" group-name)}
                                      [(vis/hanami-plot nil
                                                        ht/point-chart
@@ -178,9 +179,9 @@
                                                         :MCOLOR (pallete i)
                                                         :YTITLE :mpg})]
                                      ))))
-           (vis/hanami-hconcat nil {}))))
+           (vis/hanami-vconcat nil {}))))
 
-
+;; A similar example with histograms:
 
 (let [pallete (->> :accent
                    color/palette
@@ -195,8 +196,35 @@
                                         {:nbins 10}))))
            (vis/hanami-vconcat nil {}))))
 
+;; Scatterplots and regression lines again, this time using Vega-Lite for layout and coloring (using its "facet" option).
 
-
+(-> mtcars
+    (tc/group-by [:gear])
+    (stats/add-predictions :mpg [:wt]
+                           {:model-type :smile.regression/ordinary-least-square})
+    (tc/ungroup)
+    (tc/select-columns [:gear :wt :mpg :mpg-prediction])
+    (vis/hanami-layers {}
+                       [(vis/hanami-plot nil
+                                         ht/point-chart
+                                         {:X :wt
+                                          :Y :mpg
+                                          :MSIZE 200
+                                          :COLOR "gear"
+                                          :HEIGHT 100
+                                          :WIDTH 200})
+                        (vis/hanami-plot nil
+                                         ht/line-chart
+                                         {:X :wt
+                                          :Y :mpg-prediction
+                                          :MSIZE 5
+                                          :COLOR "gear"
+                                          :YTITLE :mpg})])
+    ((fn [spec]
+       {:facet {:row {:field "gear"}}
+        :spec (dissoc spec :data)
+        :data (:data spec)}))
+    kind/vega-lite)
 
 
 
