@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file. This change
 - histogram-support
 - stats: making some functionality respect tablecloth groups 
 - updated deps
+- added datasets namespace
 
 ## [1-alpha10]
 - progress with statistical functions
