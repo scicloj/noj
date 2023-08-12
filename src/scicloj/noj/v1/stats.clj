@@ -14,6 +14,13 @@
             [tablecloth.api :as tc]
             [scicloj.noj.v1.util :as util]))
 
+
+
+;; Computing correlation matrices
+
+;; Related Zulip discussion:
+;; https://clojurians.zulipchat.com/#narrow/stream/151924-data-science/topic/correlation.20matrix.20plot.20.3F
+
 (defn round
   [n scale rm]
   (.setScale ^java.math.BigDecimal (bigdec n)
@@ -22,11 +29,6 @@
                              rm
                              (java.math.RoundingMode/valueOf
                               (str (if (ident? rm) (symbol rm) rm))))))
-
-;; Computing correlation matrices
-
-;; Related Zulip discussion:
-;; https://clojurians.zulipchat.com/#narrow/stream/151924-data-science/topic/correlation.20matrix.20plot.20.3F
 
 (defn calc-correlations-matrix [data cols-to-use]
   (doall
