@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file. This change
 - extensions to Hanami templates and defaults
 - histogram-support
 - stats: making some functionality respect tablecloth groups 
+- updated deps
 
 ## [1-alpha10]
 - progress with statistical functions
