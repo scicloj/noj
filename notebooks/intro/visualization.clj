@@ -6,6 +6,7 @@
             [scicloj.noj.v1.vis.hanami.templates :as vht]
             [scicloj.noj.v1.vis :as vis]
             [scicloj.noj.v1.stats :as stats]
+            [scicloj.noj.v1.datasets :as datasets]
             [tech.v3.datatype :as dtype]
             [tech.v3.datatype.functional :as fun]
             [scicloj.kindly.v3.api :as kindly]
@@ -32,13 +33,7 @@
 
 ;; Noj offers a few convenience functions to make [Hanami](https://github.com/jsa-aerial/hanami) plotting work smoothly with [Tablecloth](https://scicloj.github.io/tablecloth/) and [Kindly](https://scicloj.github.io/kindly/).
 
-(def mtcars
-  (-> "data/mtcars.csv"
-      (tc/dataset {:key-fn keyword})))
 
-(def iris
-  (-> "data/iris.csv"
-      (tc/dataset {:key-fn keyword})))
 
 (def random-walk
   (let [n 20]
@@ -66,7 +61,7 @@
 
 ;; The `scicloj.noj.v1.vis.hanami.templates` namespace add Hanami templates to Hanami's own collection.
 
-(-> mtcars
+(-> datasets/mtcars
     (vis/hanami-plot vht/boxplot-chart
                      {:X :gear
                       :XTYPE :nominal
@@ -119,7 +114,7 @@
 
 ;; ### Linear regression
 
-(-> mtcars
+(-> datasets/mtcars
     (stats/add-predictions :mpg [:wt]
                            {:model-type :smile.regression/ordinary-least-square})
     (vis/hanami-layers {}
@@ -140,7 +135,7 @@
 
 ;; ### Histogram
 
-(-> iris
+(-> datasets/iris
     (vis/hanami-histogram :sepal-width
                           {:nbins 10}))
 
@@ -153,7 +148,7 @@
 (let [pallete (->> :accent
                    color/palette
                    (mapv color/format-hex))]
-  (-> mtcars
+  (-> datasets/mtcars
       (tc/group-by :gear {:result-type :as-map})
       (->> (sort-by key)
            (map-indexed
@@ -186,7 +181,7 @@
 (let [pallete (->> :accent
                    color/palette
                    (mapv color/format-hex))]
-  (-> iris
+  (-> datasets/iris
       (tc/group-by :species {:result-type :as-map})
       (->> (sort-by key)
            (map-indexed
@@ -198,7 +193,7 @@
 
 ;; Scatterplots and regression lines again, this time using Vega-Lite for layout and coloring (using its "facet" option).
 
-(-> mtcars
+(-> datasets/mtcars
     (tc/group-by [:gear])
     (stats/add-predictions :mpg [:wt]
                            {:model-type :smile.regression/ordinary-least-square})
