@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [1-alpha12] - 2023-08-21
+- bugfix: datasets should be under resources
+
 ## [1-alpha11]
 - extensions to Hanami templates and defaults
 - histogram-support
