@@ -4,22 +4,22 @@ All notable changes to this project will be documented in this file. This change
 ## [1-alpha12] - 2023-08-21
 - bugfix: datasets should be under resources
 
-## [1-alpha11]
+## [1-alpha11] - 2023-08-12
 - extensions to Hanami templates and defaults
 - histogram-support
 - stats: making some functionality respect tablecloth groups 
 - updated deps
 - added datasets namespace
 
-## [1-alpha10]
+## [1-alpha10] - 2023-06-23
 - progress with statistical functions
 - progress with Hanami conveience functions (breaking changes to the `hanami-plot` API)
 - note: breaking changes to these APIs
 
-## [1-alpha9]
+## [1-alpha9] - 2023-05-27
 - basic tensor->image support
 
-## [1-alpha8]
+## [1-alpha8] - 2023-04-26
 - updated deps
 - avoiding the scicloj.ml dependency due to conflicts
 
