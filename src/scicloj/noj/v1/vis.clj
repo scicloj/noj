@@ -3,7 +3,7 @@
             [aerial.hanami.templates :as ht]
             [aerial.hanami.common :as hc]
             [scicloj.noj.v1.vis.hanami.templates :as vht]
-            [scicloj.kindly.v3.api :as kindly]
+            [scicloj.kindly.v4.kind :as kind]
             [scicloj.noj.v1.paths :as paths]
             [scicloj.tempfiles.api :as tempfiles]
             [scicloj.noj.v1.stats :as stats]))
@@ -35,7 +35,7 @@
       (merge options)
       (->> (apply concat)
            (apply hc/xform template))
-      (kindly/consider :kind/vega-lite)))
+      kind/vega-lite))
 
 (defn hanami-collector [template template-key]
   (fn [common-data
@@ -45,7 +45,7 @@
         (hanami-plot template
                      (merge {template-key plots}
                             options))
-        (kindly/consider :kind/vega-lite))))
+        kind/vega-lite)))
 
 (def hanami-layers
   (hanami-collector ht/layer-chart
@@ -75,11 +75,11 @@
   (-> [:div
        {:dangerouslySetInnerHTML
         {:__html html}}]
-      (kindly/consider :kind/hiccup)))
+      kind/hiccup))
 
 (defn iframe [html]
   (-> [:div
        [:h1 ".."]
        [:iframe
         {:srcimg html}]]
-      (kindly/consider :kind/hiccup)))
+      kind/hiccup))

@@ -1,7 +1,6 @@
 (ns scicloj.noj.v1.vis.python
   (:require [tech.v3.dataset :as tmd]
             [aerial.hanami.common :as hc]
-            [scicloj.kindly.v3.api :as kindly]
             [scicloj.noj.v1.paths :as paths]
             [scicloj.tempfiles.api :as tempfiles]
             [libpython-clj2.require :refer [require-python]]

@@ -1,8 +1,4 @@
-(ns user
-  (:require [scicloj.kindly-default.v1.api :as kindly-default]))
-
-;; Initialize Kindly's [default](https://github.com/scicloj/kindly-default).
-(kindly-default/setup!)
+(ns user)
 
 ;; ## Useful commands
 

@@ -4,7 +4,7 @@
         cnuernber/dtype-next {:mvn/version "10.000"}
         techascent/tech.ml.dataset {:mvn/version "7.000-beta-53"}
         scicloj/tablecloth {:mvn/version "7.000-beta-51"}
-        org.scicloj/kindly-default {:mvn/version "1-alpha10"}
+        org.scicloj/kindly {:mvn/version "4-alpha2"}
         generateme/fastmath {:mvn/version "2.2.1"}
         aerial.hanami/aerial.hanami {:mvn/version "0.18.0"}
         cljplot/cljplot {:mvn/version "0.0.3"}
@@ -20,9 +20,9 @@
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
                       io.github.cognitect-labs/test-runner
                       {:git/tag "v0.5.1" :git/sha "dfb30dd"}
-                      org.scicloj/clay {:mvn/version "2-alpha31"}
+                      org.scicloj/clay {:mvn/version "2-alpha32"}
                       org.scicloj/kind-clerk {:mvn/version "1-alpha3"}
                       io.github.nextjournal/clerk {:mvn/version "0.14.919"}}}
-  :dev {:extra-deps {org.scicloj/clay {:mvn/version "2-alpha31"}
+  :dev {:extra-deps {org.scicloj/clay {:mvn/version "2-alpha32"}
                      org.scicloj/kind-clerk {:mvn/version "1-alpha3"}
                      io.github.nextjournal/clerk {:mvn/version "0.14.919"}}}}}
