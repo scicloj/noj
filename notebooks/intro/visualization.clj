@@ -1,6 +1,5 @@
 (ns intro.visualization
-  (:require [scicloj.kind-clerk.api :as kind-clerk]
-            [tablecloth.api :as tc]
+  (:require [tablecloth.api :as tc]
             [aerial.hanami.common :as hc]
             [aerial.hanami.templates :as ht]
             [scicloj.noj.v1.vis.hanami.templates :as vht]
@@ -9,8 +8,8 @@
             [scicloj.noj.v1.datasets :as datasets]
             [tech.v3.datatype :as dtype]
             [tech.v3.datatype.functional :as fun]
-            [scicloj.kindly.v3.api :as kindly]
-            [scicloj.kindly.v3.kind :as kind]
+            [scicloj.kindly.v4.api :as kindly]
+            [scicloj.kindly.v4.kind :as kind]
             [hiccup.core :as hiccup]
             [clojure2d.color :as color]))
 

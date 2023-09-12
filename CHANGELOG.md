@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [1-alpha14] - 2023-09-12
+- updating some deps
+
 ## [1-alpha13] - 2023-09-01
 - adapting to kindly v4
 

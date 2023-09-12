@@ -1,13 +1,12 @@
 (ns intro.python
-  (:require [scicloj.kind-clerk.api :as kind-clerk]
-            [tablecloth.api :as tc]
+  (:require [tablecloth.api :as tc]
             [scicloj.noj.v1.vis.python :as vis.python]
             [libpython-clj2.require :refer [require-python]]
             [libpython-clj2.python :refer [py. py.. py.-] :as py]
             [tech.v3.datatype :as dtype]
             [tech.v3.datatype.functional :as fun]
-            [scicloj.kindly.v3.api :as kindly]
-            [scicloj.kindly.v3.kind :as kind]
+            [scicloj.kindly.v4.api :as kindly]
+            [scicloj.kindly.v4.kind :as kind]
             [hiccup.core :as hiccup]
             hiccup.util))
 
