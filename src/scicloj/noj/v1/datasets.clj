@@ -3,26 +3,27 @@
             [clojure.java.io :as io]
             [scicloj.tempfiles.api :as tempfiles]))
 
-(defonce mtcars-csv
-  (let [{:keys [path]} (tempfiles/tempfile! ".csv")]
-    (->> "data/mtcars.csv"
-         io/resource
-         slurp
-         (spit path))
-    path))
 
-(defonce iris-csv
-  (let [{:keys [path]} (tempfiles/tempfile! ".csv")]
-    (->> "data/iris.csv"
-         io/resource
-         slurp
-         (spit path))
-    path))
+(defn resource-dataset [resource-path options]
+  (tech.v3.dataset/->dataset
+   (.getResourceAsStream (.getContextClassLoader (Thread/currentThread))
+                         resource-path)
+   options))
 
 (def mtcars
-  (-> mtcars-csv
-      (tc/dataset {:key-fn keyword})))
+  (resource-dataset "data/mtcars.csv"
+                    {:file-type :csv
+                     :gzipped? false
+                     :key-fn keyword}))
 
 (def iris
-  (-> iris-csv
-      (tc/dataset {:key-fn keyword})))
+  (resource-dataset "data/iris.csv"
+                    {:file-type :csv
+                     :gzipped? false
+                     :key-fn keyword}))
+
+(def diamonds
+  (resource-dataset "data/diamonds.csv.gz"
+                    {:file-type :csv
+                     :gzipped? true
+                     :key-fn keyword}))

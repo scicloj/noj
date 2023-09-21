@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file. This change
 
 ## [1-alpha15-SNAPSHOT]
 - updated deps
+- dataset layer: using resources directory, refactoring, column renaming
 
 ## [1-alpha14] - 2023-09-12
 - updating some deps
