@@ -1,3 +1,5 @@
+;; # Visualization
+
 (ns intro.visualization
   (:require [tablecloth.api :as tc]
             [aerial.hanami.common :as hc]

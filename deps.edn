@@ -20,7 +20,7 @@
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
                       io.github.cognitect-labs/test-runner
                       {:git/tag "v0.5.1" :git/sha "dfb30dd"}
-                      org.scicloj/clay {:mvn/version "2-alpha37"}
+                      org.scicloj/clay {:mvn/version "2-alpha38-SNAPSHOT"}
                       io.github.nextjournal/clerk {:mvn/version "0.14.919"}}}
-  :dev {:extra-deps {org.scicloj/clay {:mvn/version "2-alpha37"}
+  :dev {:extra-deps {org.scicloj/clay {:mvn/version "2-alpha38-SNAPSHOT"}
                      io.github.nextjournal/clerk {:mvn/version "0.14.919"}}}}}

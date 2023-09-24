@@ -1,0 +1,15 @@
+
+project:
+  type: book
+
+format:
+  html:
+    theme: cosmo
+
+book:
+  title: "Noj"
+  chapters:
+    - index.qmd
+
+    - intro/visualization/index.qmd
+    - intro/datasets/index.qmd

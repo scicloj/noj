@@ -1,0 +1,8 @@
+
+---
+format:
+  html: {toc: true}
+embed-resources: true
+---
+# book index
+  
