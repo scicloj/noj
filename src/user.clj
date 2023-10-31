@@ -3,11 +3,6 @@
 ;; ## Useful commands
 
 (comment
-  (require '[nextjournal.clerk :as clerk])
-  ;; Start Clerk.
-  (clerk/serve! {:browse? true}))
-
-(comment
   (require '[scicloj.clay.v2.api :as clay])
   ;; Start Clay.
   (clay/start!))

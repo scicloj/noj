@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [1-alpha17-SNAPSHOT]
+- updated deps, removed clerk dev dep
+
 ## [1-alpha16]
 - bringing the `scicloj.ml` dependency back, with the new `0.3` version which is compatible with TMD 7.x (#2)
 
