@@ -34,6 +34,7 @@
     :chapter-source-paths ["index.clj"
                            "intro/visualization.clj"
                            "intro/image.clj"
+                           "intro/python.clj"
                            "intro/datasets.clj"]
     :page-config {:quarto {:format {:html {:theme :spacelab
                                            :monofont "Fira Code Medium"}}
