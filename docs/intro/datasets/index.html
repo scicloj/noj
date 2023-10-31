@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Noj - 3&nbsp; Datasets</title>
+<title>Noj Documentation - 4&nbsp; Datasets</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,7 +93,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../intro/visualization/index.html" rel="prev">
+<link href="../../intro/image/index.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -132,7 +132,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Datasets</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Datasets</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -145,7 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../../">Noj</a> 
+      <a href="../../">Noj Documentation</a> 
     </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -157,7 +157,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">book index</span></a>
+  <a href="../../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">index.html</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -167,7 +167,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../intro/datasets/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Datasets</span></a>
+  <a href="../../intro/image/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Turning tensors into images</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../intro/datasets/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Datasets</span></a>
   </div>
 </li>
     </ul>
@@ -182,7 +187,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Datasets</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Datasets</span></h1>
 </div>
 
 
@@ -198,8 +203,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 
-<style>
-table {
+<style>table {
   border-style: thin;
 }
 th, td {
@@ -216,2088 +220,844 @@ tr:nth-child(even) {
   background-color: #f6f6f6;
 }
 </style>
-<style>
-.printedClojure .sourceCode {
+<style>.printedClojure .sourceCode {
   background-color: transparent;
   border-style: none;
 }
 </style>
-<div class="originalCode">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" type="text/javascript"></script>
+<div class="sourceClojure">
 <div class="sourceCode" id="cb1"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">ns</span> intro.datasets</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  (<span class="at">:require</span> [scicloj.noj.v1.datasets <span class="at">:as</span> datasets]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="originalCode">
+<div class="sourceClojure">
 <div class="sourceCode" id="cb2"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>datasets/iris</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div>
-<div>
-<div>
-<div>
-<p>
-_unnamed [150 5]:
-</p>
-
-<table>
+<p>_unnamed [150 5]:</p>
+<table class="table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 20%">
+<col style="width: 21%">
+<col style="width: 20%">
+<col style="width: 15%">
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:right;">
-:sepal-length
-</th>
-<th style="text-align:right;">
-:sepal-width
-</th>
-<th style="text-align:right;">
-:petal-length
-</th>
-<th style="text-align:right;">
-:petal-width
-</th>
-<th>
-:species
-</th>
+<tr class="header">
+<th style="text-align: right;">:sepal-length</th>
+<th style="text-align: right;">:sepal-width</th>
+<th style="text-align: right;">:petal-length</th>
+<th style="text-align: right;">:petal-width</th>
+<th>:species</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:right;">
-5.1
-</td>
-<td style="text-align:right;">
-3.5
-</td>
-<td style="text-align:right;">
-1.4
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td>
-setosa
-</td>
+<tr class="odd">
+<td style="text-align: right;">5.1</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td>setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4.9
-</td>
-<td style="text-align:right;">
-3.0
-</td>
-<td style="text-align:right;">
-1.4
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td>
-setosa
-</td>
+<tr class="even">
+<td style="text-align: right;">4.9</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td>setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4.7
-</td>
-<td style="text-align:right;">
-3.2
-</td>
-<td style="text-align:right;">
-1.3
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td>
-setosa
-</td>
+<tr class="odd">
+<td style="text-align: right;">4.7</td>
+<td style="text-align: right;">3.2</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">0.2</td>
+<td>setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4.6
-</td>
-<td style="text-align:right;">
-3.1
-</td>
-<td style="text-align:right;">
-1.5
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td>
-setosa
-</td>
+<tr class="even">
+<td style="text-align: right;">4.6</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.2</td>
+<td>setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5.0
-</td>
-<td style="text-align:right;">
-3.6
-</td>
-<td style="text-align:right;">
-1.4
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td>
-setosa
-</td>
+<tr class="odd">
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">3.6</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td>setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5.4
-</td>
-<td style="text-align:right;">
-3.9
-</td>
-<td style="text-align:right;">
-1.7
-</td>
-<td style="text-align:right;">
-0.4
-</td>
-<td>
-setosa
-</td>
+<tr class="even">
+<td style="text-align: right;">5.4</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">1.7</td>
+<td style="text-align: right;">0.4</td>
+<td>setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4.6
-</td>
-<td style="text-align:right;">
-3.4
-</td>
-<td style="text-align:right;">
-1.4
-</td>
-<td style="text-align:right;">
-0.3
-</td>
-<td>
-setosa
-</td>
+<tr class="odd">
+<td style="text-align: right;">4.6</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.3</td>
+<td>setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5.0
-</td>
-<td style="text-align:right;">
-3.4
-</td>
-<td style="text-align:right;">
-1.5
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td>
-setosa
-</td>
+<tr class="even">
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.2</td>
+<td>setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4.4
-</td>
-<td style="text-align:right;">
-2.9
-</td>
-<td style="text-align:right;">
-1.4
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td>
-setosa
-</td>
+<tr class="odd">
+<td style="text-align: right;">4.4</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td>setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4.9
-</td>
-<td style="text-align:right;">
-3.1
-</td>
-<td style="text-align:right;">
-1.5
-</td>
-<td style="text-align:right;">
-0.1
-</td>
-<td>
-setosa
-</td>
+<tr class="even">
+<td style="text-align: right;">4.9</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.1</td>
+<td>setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-…
-</td>
-<td style="text-align:right;">
-…
-</td>
-<td style="text-align:right;">
-…
-</td>
-<td style="text-align:right;">
-…
-</td>
-<td>
-…
-</td>
+<tr class="odd">
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td>…</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-6.9
-</td>
-<td style="text-align:right;">
-3.1
-</td>
-<td style="text-align:right;">
-5.4
-</td>
-<td style="text-align:right;">
-2.1
-</td>
-<td>
-virginica
-</td>
+<tr class="even">
+<td style="text-align: right;">6.9</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">5.4</td>
+<td style="text-align: right;">2.1</td>
+<td>virginica</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-6.7
-</td>
-<td style="text-align:right;">
-3.1
-</td>
-<td style="text-align:right;">
-5.6
-</td>
-<td style="text-align:right;">
-2.4
-</td>
-<td>
-virginica
-</td>
+<tr class="odd">
+<td style="text-align: right;">6.7</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">5.6</td>
+<td style="text-align: right;">2.4</td>
+<td>virginica</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-6.9
-</td>
-<td style="text-align:right;">
-3.1
-</td>
-<td style="text-align:right;">
-5.1
-</td>
-<td style="text-align:right;">
-2.3
-</td>
-<td>
-virginica
-</td>
+<tr class="even">
+<td style="text-align: right;">6.9</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">5.1</td>
+<td style="text-align: right;">2.3</td>
+<td>virginica</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5.8
-</td>
-<td style="text-align:right;">
-2.7
-</td>
-<td style="text-align:right;">
-5.1
-</td>
-<td style="text-align:right;">
-1.9
-</td>
-<td>
-virginica
-</td>
+<tr class="odd">
+<td style="text-align: right;">5.8</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">5.1</td>
+<td style="text-align: right;">1.9</td>
+<td>virginica</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-6.8
-</td>
-<td style="text-align:right;">
-3.2
-</td>
-<td style="text-align:right;">
-5.9
-</td>
-<td style="text-align:right;">
-2.3
-</td>
-<td>
-virginica
-</td>
+<tr class="even">
+<td style="text-align: right;">6.8</td>
+<td style="text-align: right;">3.2</td>
+<td style="text-align: right;">5.9</td>
+<td style="text-align: right;">2.3</td>
+<td>virginica</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-6.7
-</td>
-<td style="text-align:right;">
-3.3
-</td>
-<td style="text-align:right;">
-5.7
-</td>
-<td style="text-align:right;">
-2.5
-</td>
-<td>
-virginica
-</td>
+<tr class="odd">
+<td style="text-align: right;">6.7</td>
+<td style="text-align: right;">3.3</td>
+<td style="text-align: right;">5.7</td>
+<td style="text-align: right;">2.5</td>
+<td>virginica</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-6.7
-</td>
-<td style="text-align:right;">
-3.0
-</td>
-<td style="text-align:right;">
-5.2
-</td>
-<td style="text-align:right;">
-2.3
-</td>
-<td>
-virginica
-</td>
+<tr class="even">
+<td style="text-align: right;">6.7</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">5.2</td>
+<td style="text-align: right;">2.3</td>
+<td>virginica</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-6.3
-</td>
-<td style="text-align:right;">
-2.5
-</td>
-<td style="text-align:right;">
-5.0
-</td>
-<td style="text-align:right;">
-1.9
-</td>
-<td>
-virginica
-</td>
+<tr class="odd">
+<td style="text-align: right;">6.3</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">1.9</td>
+<td>virginica</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-6.5
-</td>
-<td style="text-align:right;">
-3.0
-</td>
-<td style="text-align:right;">
-5.2
-</td>
-<td style="text-align:right;">
-2.0
-</td>
-<td>
-virginica
-</td>
+<tr class="even">
+<td style="text-align: right;">6.5</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">5.2</td>
+<td style="text-align: right;">2.0</td>
+<td>virginica</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-6.2
-</td>
-<td style="text-align:right;">
-3.4
-</td>
-<td style="text-align:right;">
-5.4
-</td>
-<td style="text-align:right;">
-2.3
-</td>
-<td>
-virginica
-</td>
+<tr class="odd">
+<td style="text-align: right;">6.2</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">5.4</td>
+<td style="text-align: right;">2.3</td>
+<td>virginica</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5.9
-</td>
-<td style="text-align:right;">
-3.0
-</td>
-<td style="text-align:right;">
-5.1
-</td>
-<td style="text-align:right;">
-1.8
-</td>
-<td>
-virginica
-</td>
+<tr class="even">
+<td style="text-align: right;">5.9</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">5.1</td>
+<td style="text-align: right;">1.8</td>
+<td>virginica</td>
 </tr>
 </tbody>
-
 </table>
-</div>
-</div>
-</div>
-</div>
-<div class="originalCode">
+<div class="sourceClojure">
 <div class="sourceCode" id="cb3"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>datasets/mtcars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div>
-<div>
-<div>
-<div>
-<p>
-_unnamed [32 12]:
-</p>
-
-<table>
+<p>_unnamed [32 12]:</p>
+<table class="table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 5%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
 <thead>
-<tr>
-<th>
-:name
-</th>
-<th style="text-align:right;">
-:mpg
-</th>
-<th style="text-align:right;">
-:cyl
-</th>
-<th style="text-align:right;">
-:disp
-</th>
-<th style="text-align:right;">
-:hp
-</th>
-<th style="text-align:right;">
-:drat
-</th>
-<th style="text-align:right;">
-:wt
-</th>
-<th style="text-align:right;">
-:qsec
-</th>
-<th style="text-align:right;">
-:vs
-</th>
-<th style="text-align:right;">
-:am
-</th>
-<th style="text-align:right;">
-:gear
-</th>
-<th style="text-align:right;">
-:carb
-</th>
+<tr class="header">
+<th>:name</th>
+<th style="text-align: right;">:mpg</th>
+<th style="text-align: right;">:cyl</th>
+<th style="text-align: right;">:disp</th>
+<th style="text-align: right;">:hp</th>
+<th style="text-align: right;">:drat</th>
+<th style="text-align: right;">:wt</th>
+<th style="text-align: right;">:qsec</th>
+<th style="text-align: right;">:vs</th>
+<th style="text-align: right;">:am</th>
+<th style="text-align: right;">:gear</th>
+<th style="text-align: right;">:carb</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>
-Mazda RX4
-</td>
-<td style="text-align:right;">
-21.0
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-160.0
-</td>
-<td style="text-align:right;">
-110
-</td>
-<td style="text-align:right;">
-3.90
-</td>
-<td style="text-align:right;">
-2.620
-</td>
-<td style="text-align:right;">
-16.46
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-4
-</td>
+<tr class="odd">
+<td>Mazda RX4</td>
+<td style="text-align: right;">21.0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">160.0</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">3.90</td>
+<td style="text-align: right;">2.620</td>
+<td style="text-align: right;">16.46</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
 </tr>
-<tr>
-<td>
-Mazda RX4 Wag
-</td>
-<td style="text-align:right;">
-21.0
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-160.0
-</td>
-<td style="text-align:right;">
-110
-</td>
-<td style="text-align:right;">
-3.90
-</td>
-<td style="text-align:right;">
-2.875
-</td>
-<td style="text-align:right;">
-17.02
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-4
-</td>
+<tr class="even">
+<td>Mazda RX4 Wag</td>
+<td style="text-align: right;">21.0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">160.0</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">3.90</td>
+<td style="text-align: right;">2.875</td>
+<td style="text-align: right;">17.02</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
 </tr>
-<tr>
-<td>
-Datsun 710
-</td>
-<td style="text-align:right;">
-22.8
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-108.0
-</td>
-<td style="text-align:right;">
-93
-</td>
-<td style="text-align:right;">
-3.85
-</td>
-<td style="text-align:right;">
-2.320
-</td>
-<td style="text-align:right;">
-18.61
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="odd">
+<td>Datsun 710</td>
+<td style="text-align: right;">22.8</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">108.0</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">3.85</td>
+<td style="text-align: right;">2.320</td>
+<td style="text-align: right;">18.61</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
 </tr>
-<tr>
-<td>
-Hornet 4 Drive
-</td>
-<td style="text-align:right;">
-21.4
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-258.0
-</td>
-<td style="text-align:right;">
-110
-</td>
-<td style="text-align:right;">
-3.08
-</td>
-<td style="text-align:right;">
-3.215
-</td>
-<td style="text-align:right;">
-19.44
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="even">
+<td>Hornet 4 Drive</td>
+<td style="text-align: right;">21.4</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">258.0</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">3.08</td>
+<td style="text-align: right;">3.215</td>
+<td style="text-align: right;">19.44</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
 </tr>
-<tr>
-<td>
-Hornet Sportabout
-</td>
-<td style="text-align:right;">
-18.7
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-360.0
-</td>
-<td style="text-align:right;">
-175
-</td>
-<td style="text-align:right;">
-3.15
-</td>
-<td style="text-align:right;">
-3.440
-</td>
-<td style="text-align:right;">
-17.02
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="odd">
+<td>Hornet Sportabout</td>
+<td style="text-align: right;">18.7</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">360.0</td>
+<td style="text-align: right;">175</td>
+<td style="text-align: right;">3.15</td>
+<td style="text-align: right;">3.440</td>
+<td style="text-align: right;">17.02</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
 </tr>
-<tr>
-<td>
-Valiant
-</td>
-<td style="text-align:right;">
-18.1
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-225.0
-</td>
-<td style="text-align:right;">
-105
-</td>
-<td style="text-align:right;">
-2.76
-</td>
-<td style="text-align:right;">
-3.460
-</td>
-<td style="text-align:right;">
-20.22
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="even">
+<td>Valiant</td>
+<td style="text-align: right;">18.1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">225.0</td>
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">2.76</td>
+<td style="text-align: right;">3.460</td>
+<td style="text-align: right;">20.22</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
 </tr>
-<tr>
-<td>
-Duster 360
-</td>
-<td style="text-align:right;">
-14.3
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-360.0
-</td>
-<td style="text-align:right;">
-245
-</td>
-<td style="text-align:right;">
-3.21
-</td>
-<td style="text-align:right;">
-3.570
-</td>
-<td style="text-align:right;">
-15.84
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-4
-</td>
+<tr class="odd">
+<td>Duster 360</td>
+<td style="text-align: right;">14.3</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">360.0</td>
+<td style="text-align: right;">245</td>
+<td style="text-align: right;">3.21</td>
+<td style="text-align: right;">3.570</td>
+<td style="text-align: right;">15.84</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
 </tr>
-<tr>
-<td>
-Merc 240D
-</td>
-<td style="text-align:right;">
-24.4
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-146.7
-</td>
-<td style="text-align:right;">
-62
-</td>
-<td style="text-align:right;">
-3.69
-</td>
-<td style="text-align:right;">
-3.190
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="even">
+<td>Merc 240D</td>
+<td style="text-align: right;">24.4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">146.7</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">3.69</td>
+<td style="text-align: right;">3.190</td>
+<td style="text-align: right;">20.00</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
 </tr>
-<tr>
-<td>
-Merc 230
-</td>
-<td style="text-align:right;">
-22.8
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-140.8
-</td>
-<td style="text-align:right;">
-95
-</td>
-<td style="text-align:right;">
-3.92
-</td>
-<td style="text-align:right;">
-3.150
-</td>
-<td style="text-align:right;">
-22.90
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="odd">
+<td>Merc 230</td>
+<td style="text-align: right;">22.8</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">140.8</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">3.92</td>
+<td style="text-align: right;">3.150</td>
+<td style="text-align: right;">22.90</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
 </tr>
-<tr>
-<td>
-Merc 280
-</td>
-<td style="text-align:right;">
-19.2
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-167.6
-</td>
-<td style="text-align:right;">
-123
-</td>
-<td style="text-align:right;">
-3.92
-</td>
-<td style="text-align:right;">
-3.440
-</td>
-<td style="text-align:right;">
-18.30
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-4
-</td>
+<tr class="even">
+<td>Merc 280</td>
+<td style="text-align: right;">19.2</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">167.6</td>
+<td style="text-align: right;">123</td>
+<td style="text-align: right;">3.92</td>
+<td style="text-align: right;">3.440</td>
+<td style="text-align: right;">18.30</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
 </tr>
-<tr>
-<td>
-…
-</td>
-<td style="text-align:right;">
-…
-</td>
-<td style="text-align:right;">
-…
-</td>
-<td style="text-align:right;">
-…
-</td>
-<td style="text-align:right;">
-…
-</td>
-<td style="text-align:right;">
-…
-</td>
-<td style="text-align:right;">
-…
-</td>
-<td style="text-align:right;">
-…
-</td>
-<td style="text-align:right;">
-…
-</td>
-<td style="text-align:right;">
-…
-</td>
-<td style="text-align:right;">
-…
-</td>
-<td style="text-align:right;">
-…
-</td>
+<tr class="odd">
+<td>…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
 </tr>
-<tr>
-<td>
-Dodge Challenger
-</td>
-<td style="text-align:right;">
-15.5
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-318.0
-</td>
-<td style="text-align:right;">
-150
-</td>
-<td style="text-align:right;">
-2.76
-</td>
-<td style="text-align:right;">
-3.520
-</td>
-<td style="text-align:right;">
-16.87
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="even">
+<td>Dodge Challenger</td>
+<td style="text-align: right;">15.5</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">318.0</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">2.76</td>
+<td style="text-align: right;">3.520</td>
+<td style="text-align: right;">16.87</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
 </tr>
-<tr>
-<td>
-AMC Javelin
-</td>
-<td style="text-align:right;">
-15.2
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-304.0
-</td>
-<td style="text-align:right;">
-150
-</td>
-<td style="text-align:right;">
-3.15
-</td>
-<td style="text-align:right;">
-3.435
-</td>
-<td style="text-align:right;">
-17.30
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="odd">
+<td>AMC Javelin</td>
+<td style="text-align: right;">15.2</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">304.0</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">3.15</td>
+<td style="text-align: right;">3.435</td>
+<td style="text-align: right;">17.30</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
 </tr>
-<tr>
-<td>
-Camaro Z28
-</td>
-<td style="text-align:right;">
-13.3
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-350.0
-</td>
-<td style="text-align:right;">
-245
-</td>
-<td style="text-align:right;">
-3.73
-</td>
-<td style="text-align:right;">
-3.840
-</td>
-<td style="text-align:right;">
-15.41
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-4
-</td>
+<tr class="even">
+<td>Camaro Z28</td>
+<td style="text-align: right;">13.3</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">350.0</td>
+<td style="text-align: right;">245</td>
+<td style="text-align: right;">3.73</td>
+<td style="text-align: right;">3.840</td>
+<td style="text-align: right;">15.41</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
 </tr>
-<tr>
-<td>
-Pontiac Firebird
-</td>
-<td style="text-align:right;">
-19.2
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-400.0
-</td>
-<td style="text-align:right;">
-175
-</td>
-<td style="text-align:right;">
-3.08
-</td>
-<td style="text-align:right;">
-3.845
-</td>
-<td style="text-align:right;">
-17.05
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="odd">
+<td>Pontiac Firebird</td>
+<td style="text-align: right;">19.2</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">400.0</td>
+<td style="text-align: right;">175</td>
+<td style="text-align: right;">3.08</td>
+<td style="text-align: right;">3.845</td>
+<td style="text-align: right;">17.05</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
 </tr>
-<tr>
-<td>
-Fiat X1-9
-</td>
-<td style="text-align:right;">
-27.3
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-79.0
-</td>
-<td style="text-align:right;">
-66
-</td>
-<td style="text-align:right;">
-4.08
-</td>
-<td style="text-align:right;">
-1.935
-</td>
-<td style="text-align:right;">
-18.90
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="even">
+<td>Fiat X1-9</td>
+<td style="text-align: right;">27.3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">79.0</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">4.08</td>
+<td style="text-align: right;">1.935</td>
+<td style="text-align: right;">18.90</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
 </tr>
-<tr>
-<td>
-Porsche 914-2
-</td>
-<td style="text-align:right;">
-26.0
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-120.3
-</td>
-<td style="text-align:right;">
-91
-</td>
-<td style="text-align:right;">
-4.43
-</td>
-<td style="text-align:right;">
-2.140
-</td>
-<td style="text-align:right;">
-16.70
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="odd">
+<td>Porsche 914-2</td>
+<td style="text-align: right;">26.0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">120.3</td>
+<td style="text-align: right;">91</td>
+<td style="text-align: right;">4.43</td>
+<td style="text-align: right;">2.140</td>
+<td style="text-align: right;">16.70</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2</td>
 </tr>
-<tr>
-<td>
-Lotus Europa
-</td>
-<td style="text-align:right;">
-30.4
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-95.1
-</td>
-<td style="text-align:right;">
-113
-</td>
-<td style="text-align:right;">
-3.77
-</td>
-<td style="text-align:right;">
-1.513
-</td>
-<td style="text-align:right;">
-16.90
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="even">
+<td>Lotus Europa</td>
+<td style="text-align: right;">30.4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">95.1</td>
+<td style="text-align: right;">113</td>
+<td style="text-align: right;">3.77</td>
+<td style="text-align: right;">1.513</td>
+<td style="text-align: right;">16.90</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2</td>
 </tr>
-<tr>
-<td>
-Ford Pantera L
-</td>
-<td style="text-align:right;">
-15.8
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-351.0
-</td>
-<td style="text-align:right;">
-264
-</td>
-<td style="text-align:right;">
-4.22
-</td>
-<td style="text-align:right;">
-3.170
-</td>
-<td style="text-align:right;">
-14.50
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-4
-</td>
+<tr class="odd">
+<td>Ford Pantera L</td>
+<td style="text-align: right;">15.8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">351.0</td>
+<td style="text-align: right;">264</td>
+<td style="text-align: right;">4.22</td>
+<td style="text-align: right;">3.170</td>
+<td style="text-align: right;">14.50</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
 </tr>
-<tr>
-<td>
-Ferrari Dino
-</td>
-<td style="text-align:right;">
-19.7
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-145.0
-</td>
-<td style="text-align:right;">
-175
-</td>
-<td style="text-align:right;">
-3.62
-</td>
-<td style="text-align:right;">
-2.770
-</td>
-<td style="text-align:right;">
-15.50
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-6
-</td>
+<tr class="even">
+<td>Ferrari Dino</td>
+<td style="text-align: right;">19.7</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">145.0</td>
+<td style="text-align: right;">175</td>
+<td style="text-align: right;">3.62</td>
+<td style="text-align: right;">2.770</td>
+<td style="text-align: right;">15.50</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
 </tr>
-<tr>
-<td>
-Maserati Bora
-</td>
-<td style="text-align:right;">
-15.0
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-301.0
-</td>
-<td style="text-align:right;">
-335
-</td>
-<td style="text-align:right;">
-3.54
-</td>
-<td style="text-align:right;">
-3.570
-</td>
-<td style="text-align:right;">
-14.60
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-8
-</td>
+<tr class="odd">
+<td>Maserati Bora</td>
+<td style="text-align: right;">15.0</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">301.0</td>
+<td style="text-align: right;">335</td>
+<td style="text-align: right;">3.54</td>
+<td style="text-align: right;">3.570</td>
+<td style="text-align: right;">14.60</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">8</td>
 </tr>
-<tr>
-<td>
-Volvo 142E
-</td>
-<td style="text-align:right;">
-21.4
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-121.0
-</td>
-<td style="text-align:right;">
-109
-</td>
-<td style="text-align:right;">
-4.11
-</td>
-<td style="text-align:right;">
-2.780
-</td>
-<td style="text-align:right;">
-18.60
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="even">
+<td>Volvo 142E</td>
+<td style="text-align: right;">21.4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">121.0</td>
+<td style="text-align: right;">109</td>
+<td style="text-align: right;">4.11</td>
+<td style="text-align: right;">2.780</td>
+<td style="text-align: right;">18.60</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
 </tr>
 </tbody>
-
 </table>
-</div>
-</div>
-</div>
-</div>
-<div class="originalCode">
+<div class="sourceClojure">
 <div class="sourceCode" id="cb4"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>datasets/diamonds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div>
-<div>
-<div>
-<div>
-<p>
-_unnamed [53940 10]:
-</p>
-
-<table>
+<p>_unnamed [53940 10]:</p>
+<table class="table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 13%">
+<col style="width: 10%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:right;">
-:carat
-</th>
-<th>
-:cut
-</th>
-<th>
-:color
-</th>
-<th>
-:clarity
-</th>
-<th style="text-align:right;">
-:depth
-</th>
-<th style="text-align:right;">
-:table
-</th>
-<th style="text-align:right;">
-:price
-</th>
-<th style="text-align:right;">
-:x
-</th>
-<th style="text-align:right;">
-:y
-</th>
-<th style="text-align:right;">
-:z
-</th>
+<tr class="header">
+<th style="text-align: right;">:carat</th>
+<th>:cut</th>
+<th>:color</th>
+<th>:clarity</th>
+<th style="text-align: right;">:depth</th>
+<th style="text-align: right;">:table</th>
+<th style="text-align: right;">:price</th>
+<th style="text-align: right;">:x</th>
+<th style="text-align: right;">:y</th>
+<th style="text-align: right;">:z</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:right;">
-0.23
-</td>
-<td>
-Ideal
-</td>
-<td>
-E
-</td>
-<td>
-SI2
-</td>
-<td style="text-align:right;">
-61.5
-</td>
-<td style="text-align:right;">
-55.0
-</td>
-<td style="text-align:right;">
-326
-</td>
-<td style="text-align:right;">
-3.95
-</td>
-<td style="text-align:right;">
-3.98
-</td>
-<td style="text-align:right;">
-2.43
-</td>
+<tr class="odd">
+<td style="text-align: right;">0.23</td>
+<td>Ideal</td>
+<td>E</td>
+<td>SI2</td>
+<td style="text-align: right;">61.5</td>
+<td style="text-align: right;">55.0</td>
+<td style="text-align: right;">326</td>
+<td style="text-align: right;">3.95</td>
+<td style="text-align: right;">3.98</td>
+<td style="text-align: right;">2.43</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-0.21
-</td>
-<td>
-Premium
-</td>
-<td>
-E
-</td>
-<td>
-SI1
-</td>
-<td style="text-align:right;">
-59.8
-</td>
-<td style="text-align:right;">
-61.0
-</td>
-<td style="text-align:right;">
-326
-</td>
-<td style="text-align:right;">
-3.89
-</td>
-<td style="text-align:right;">
-3.84
-</td>
-<td style="text-align:right;">
-2.31
-</td>
+<tr class="even">
+<td style="text-align: right;">0.21</td>
+<td>Premium</td>
+<td>E</td>
+<td>SI1</td>
+<td style="text-align: right;">59.8</td>
+<td style="text-align: right;">61.0</td>
+<td style="text-align: right;">326</td>
+<td style="text-align: right;">3.89</td>
+<td style="text-align: right;">3.84</td>
+<td style="text-align: right;">2.31</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-0.23
-</td>
-<td>
-Good
-</td>
-<td>
-E
-</td>
-<td>
-VS1
-</td>
-<td style="text-align:right;">
-56.9
-</td>
-<td style="text-align:right;">
-65.0
-</td>
-<td style="text-align:right;">
-327
-</td>
-<td style="text-align:right;">
-4.05
-</td>
-<td style="text-align:right;">
-4.07
-</td>
-<td style="text-align:right;">
-2.31
-</td>
+<tr class="odd">
+<td style="text-align: right;">0.23</td>
+<td>Good</td>
+<td>E</td>
+<td>VS1</td>
+<td style="text-align: right;">56.9</td>
+<td style="text-align: right;">65.0</td>
+<td style="text-align: right;">327</td>
+<td style="text-align: right;">4.05</td>
+<td style="text-align: right;">4.07</td>
+<td style="text-align: right;">2.31</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-0.29
-</td>
-<td>
-Premium
-</td>
-<td>
-I
-</td>
-<td>
-VS2
-</td>
-<td style="text-align:right;">
-62.4
-</td>
-<td style="text-align:right;">
-58.0
-</td>
-<td style="text-align:right;">
-334
-</td>
-<td style="text-align:right;">
-4.20
-</td>
-<td style="text-align:right;">
-4.23
-</td>
-<td style="text-align:right;">
-2.63
-</td>
+<tr class="even">
+<td style="text-align: right;">0.29</td>
+<td>Premium</td>
+<td>I</td>
+<td>VS2</td>
+<td style="text-align: right;">62.4</td>
+<td style="text-align: right;">58.0</td>
+<td style="text-align: right;">334</td>
+<td style="text-align: right;">4.20</td>
+<td style="text-align: right;">4.23</td>
+<td style="text-align: right;">2.63</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-0.31
-</td>
-<td>
-Good
-</td>
-<td>
-J
-</td>
-<td>
-SI2
-</td>
-<td style="text-align:right;">
-63.3
-</td>
-<td style="text-align:right;">
-58.0
-</td>
-<td style="text-align:right;">
-335
-</td>
-<td style="text-align:right;">
-4.34
-</td>
-<td style="text-align:right;">
-4.35
-</td>
-<td style="text-align:right;">
-2.75
-</td>
+<tr class="odd">
+<td style="text-align: right;">0.31</td>
+<td>Good</td>
+<td>J</td>
+<td>SI2</td>
+<td style="text-align: right;">63.3</td>
+<td style="text-align: right;">58.0</td>
+<td style="text-align: right;">335</td>
+<td style="text-align: right;">4.34</td>
+<td style="text-align: right;">4.35</td>
+<td style="text-align: right;">2.75</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-0.24
-</td>
-<td>
-Very Good
-</td>
-<td>
-J
-</td>
-<td>
-VVS2
-</td>
-<td style="text-align:right;">
-62.8
-</td>
-<td style="text-align:right;">
-57.0
-</td>
-<td style="text-align:right;">
-336
-</td>
-<td style="text-align:right;">
-3.94
-</td>
-<td style="text-align:right;">
-3.96
-</td>
-<td style="text-align:right;">
-2.48
-</td>
+<tr class="even">
+<td style="text-align: right;">0.24</td>
+<td>Very Good</td>
+<td>J</td>
+<td>VVS2</td>
+<td style="text-align: right;">62.8</td>
+<td style="text-align: right;">57.0</td>
+<td style="text-align: right;">336</td>
+<td style="text-align: right;">3.94</td>
+<td style="text-align: right;">3.96</td>
+<td style="text-align: right;">2.48</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-0.24
-</td>
-<td>
-Very Good
-</td>
-<td>
-I
-</td>
-<td>
-VVS1
-</td>
-<td style="text-align:right;">
-62.3
-</td>
-<td style="text-align:right;">
-57.0
-</td>
-<td style="text-align:right;">
-336
-</td>
-<td style="text-align:right;">
-3.95
-</td>
-<td style="text-align:right;">
-3.98
-</td>
-<td style="text-align:right;">
-2.47
-</td>
+<tr class="odd">
+<td style="text-align: right;">0.24</td>
+<td>Very Good</td>
+<td>I</td>
+<td>VVS1</td>
+<td style="text-align: right;">62.3</td>
+<td style="text-align: right;">57.0</td>
+<td style="text-align: right;">336</td>
+<td style="text-align: right;">3.95</td>
+<td style="text-align: right;">3.98</td>
+<td style="text-align: right;">2.47</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-0.26
-</td>
-<td>
-Very Good
-</td>
-<td>
-H
-</td>
-<td>
-SI1
-</td>
-<td style="text-align:right;">
-61.9
-</td>
-<td style="text-align:right;">
-55.0
-</td>
-<td style="text-align:right;">
-337
-</td>
-<td style="text-align:right;">
-4.07
-</td>
-<td style="text-align:right;">
-4.11
-</td>
-<td style="text-align:right;">
-2.53
-</td>
+<tr class="even">
+<td style="text-align: right;">0.26</td>
+<td>Very Good</td>
+<td>H</td>
+<td>SI1</td>
+<td style="text-align: right;">61.9</td>
+<td style="text-align: right;">55.0</td>
+<td style="text-align: right;">337</td>
+<td style="text-align: right;">4.07</td>
+<td style="text-align: right;">4.11</td>
+<td style="text-align: right;">2.53</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-0.22
-</td>
-<td>
-Fair
-</td>
-<td>
-E
-</td>
-<td>
-VS2
-</td>
-<td style="text-align:right;">
-65.1
-</td>
-<td style="text-align:right;">
-61.0
-</td>
-<td style="text-align:right;">
-337
-</td>
-<td style="text-align:right;">
-3.87
-</td>
-<td style="text-align:right;">
-3.78
-</td>
-<td style="text-align:right;">
-2.49
-</td>
+<tr class="odd">
+<td style="text-align: right;">0.22</td>
+<td>Fair</td>
+<td>E</td>
+<td>VS2</td>
+<td style="text-align: right;">65.1</td>
+<td style="text-align: right;">61.0</td>
+<td style="text-align: right;">337</td>
+<td style="text-align: right;">3.87</td>
+<td style="text-align: right;">3.78</td>
+<td style="text-align: right;">2.49</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-0.23
-</td>
-<td>
-Very Good
-</td>
-<td>
-H
-</td>
-<td>
-VS1
-</td>
-<td style="text-align:right;">
-59.4
-</td>
-<td style="text-align:right;">
-61.0
-</td>
-<td style="text-align:right;">
-338
-</td>
-<td style="text-align:right;">
-4.00
-</td>
-<td style="text-align:right;">
-4.05
-</td>
-<td style="text-align:right;">
-2.39
-</td>
+<tr class="even">
+<td style="text-align: right;">0.23</td>
+<td>Very Good</td>
+<td>H</td>
+<td>VS1</td>
+<td style="text-align: right;">59.4</td>
+<td style="text-align: right;">61.0</td>
+<td style="text-align: right;">338</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.05</td>
+<td style="text-align: right;">2.39</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-…
-</td>
-<td>
-…
-</td>
-<td>
-…
-</td>
-<td>
-…
-</td>
-<td style="text-align:right;">
-…
-</td>
-<td style="text-align:right;">
-…
-</td>
-<td style="text-align:right;">
-…
-</td>
-<td style="text-align:right;">
-…
-</td>
-<td style="text-align:right;">
-…
-</td>
-<td style="text-align:right;">
-…
-</td>
+<tr class="odd">
+<td style="text-align: right;">…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-0.71
-</td>
-<td>
-Ideal
-</td>
-<td>
-G
-</td>
-<td>
-VS1
-</td>
-<td style="text-align:right;">
-61.4
-</td>
-<td style="text-align:right;">
-56.0
-</td>
-<td style="text-align:right;">
-2756
-</td>
-<td style="text-align:right;">
-5.76
-</td>
-<td style="text-align:right;">
-5.73
-</td>
-<td style="text-align:right;">
-3.53
-</td>
+<tr class="even">
+<td style="text-align: right;">0.71</td>
+<td>Ideal</td>
+<td>G</td>
+<td>VS1</td>
+<td style="text-align: right;">61.4</td>
+<td style="text-align: right;">56.0</td>
+<td style="text-align: right;">2756</td>
+<td style="text-align: right;">5.76</td>
+<td style="text-align: right;">5.73</td>
+<td style="text-align: right;">3.53</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-0.71
-</td>
-<td>
-Premium
-</td>
-<td>
-E
-</td>
-<td>
-SI1
-</td>
-<td style="text-align:right;">
-60.5
-</td>
-<td style="text-align:right;">
-55.0
-</td>
-<td style="text-align:right;">
-2756
-</td>
-<td style="text-align:right;">
-5.79
-</td>
-<td style="text-align:right;">
-5.74
-</td>
-<td style="text-align:right;">
-3.49
-</td>
+<tr class="odd">
+<td style="text-align: right;">0.71</td>
+<td>Premium</td>
+<td>E</td>
+<td>SI1</td>
+<td style="text-align: right;">60.5</td>
+<td style="text-align: right;">55.0</td>
+<td style="text-align: right;">2756</td>
+<td style="text-align: right;">5.79</td>
+<td style="text-align: right;">5.74</td>
+<td style="text-align: right;">3.49</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-0.71
-</td>
-<td>
-Premium
-</td>
-<td>
-F
-</td>
-<td>
-SI1
-</td>
-<td style="text-align:right;">
-59.8
-</td>
-<td style="text-align:right;">
-62.0
-</td>
-<td style="text-align:right;">
-2756
-</td>
-<td style="text-align:right;">
-5.74
-</td>
-<td style="text-align:right;">
-5.73
-</td>
-<td style="text-align:right;">
-3.43
-</td>
+<tr class="even">
+<td style="text-align: right;">0.71</td>
+<td>Premium</td>
+<td>F</td>
+<td>SI1</td>
+<td style="text-align: right;">59.8</td>
+<td style="text-align: right;">62.0</td>
+<td style="text-align: right;">2756</td>
+<td style="text-align: right;">5.74</td>
+<td style="text-align: right;">5.73</td>
+<td style="text-align: right;">3.43</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-0.70
-</td>
-<td>
-Very Good
-</td>
-<td>
-E
-</td>
-<td>
-VS2
-</td>
-<td style="text-align:right;">
-60.5
-</td>
-<td style="text-align:right;">
-59.0
-</td>
-<td style="text-align:right;">
-2757
-</td>
-<td style="text-align:right;">
-5.71
-</td>
-<td style="text-align:right;">
-5.76
-</td>
-<td style="text-align:right;">
-3.47
-</td>
+<tr class="odd">
+<td style="text-align: right;">0.70</td>
+<td>Very Good</td>
+<td>E</td>
+<td>VS2</td>
+<td style="text-align: right;">60.5</td>
+<td style="text-align: right;">59.0</td>
+<td style="text-align: right;">2757</td>
+<td style="text-align: right;">5.71</td>
+<td style="text-align: right;">5.76</td>
+<td style="text-align: right;">3.47</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-0.70
-</td>
-<td>
-Very Good
-</td>
-<td>
-E
-</td>
-<td>
-VS2
-</td>
-<td style="text-align:right;">
-61.2
-</td>
-<td style="text-align:right;">
-59.0
-</td>
-<td style="text-align:right;">
-2757
-</td>
-<td style="text-align:right;">
-5.69
-</td>
-<td style="text-align:right;">
-5.72
-</td>
-<td style="text-align:right;">
-3.49
-</td>
+<tr class="even">
+<td style="text-align: right;">0.70</td>
+<td>Very Good</td>
+<td>E</td>
+<td>VS2</td>
+<td style="text-align: right;">61.2</td>
+<td style="text-align: right;">59.0</td>
+<td style="text-align: right;">2757</td>
+<td style="text-align: right;">5.69</td>
+<td style="text-align: right;">5.72</td>
+<td style="text-align: right;">3.49</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-0.72
-</td>
-<td>
-Premium
-</td>
-<td>
-D
-</td>
-<td>
-SI1
-</td>
-<td style="text-align:right;">
-62.7
-</td>
-<td style="text-align:right;">
-59.0
-</td>
-<td style="text-align:right;">
-2757
-</td>
-<td style="text-align:right;">
-5.69
-</td>
-<td style="text-align:right;">
-5.73
-</td>
-<td style="text-align:right;">
-3.58
-</td>
+<tr class="odd">
+<td style="text-align: right;">0.72</td>
+<td>Premium</td>
+<td>D</td>
+<td>SI1</td>
+<td style="text-align: right;">62.7</td>
+<td style="text-align: right;">59.0</td>
+<td style="text-align: right;">2757</td>
+<td style="text-align: right;">5.69</td>
+<td style="text-align: right;">5.73</td>
+<td style="text-align: right;">3.58</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-0.72
-</td>
-<td>
-Ideal
-</td>
-<td>
-D
-</td>
-<td>
-SI1
-</td>
-<td style="text-align:right;">
-60.8
-</td>
-<td style="text-align:right;">
-57.0
-</td>
-<td style="text-align:right;">
-2757
-</td>
-<td style="text-align:right;">
-5.75
-</td>
-<td style="text-align:right;">
-5.76
-</td>
-<td style="text-align:right;">
-3.50
-</td>
+<tr class="even">
+<td style="text-align: right;">0.72</td>
+<td>Ideal</td>
+<td>D</td>
+<td>SI1</td>
+<td style="text-align: right;">60.8</td>
+<td style="text-align: right;">57.0</td>
+<td style="text-align: right;">2757</td>
+<td style="text-align: right;">5.75</td>
+<td style="text-align: right;">5.76</td>
+<td style="text-align: right;">3.50</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-0.72
-</td>
-<td>
-Good
-</td>
-<td>
-D
-</td>
-<td>
-SI1
-</td>
-<td style="text-align:right;">
-63.1
-</td>
-<td style="text-align:right;">
-55.0
-</td>
-<td style="text-align:right;">
-2757
-</td>
-<td style="text-align:right;">
-5.69
-</td>
-<td style="text-align:right;">
-5.75
-</td>
-<td style="text-align:right;">
-3.61
-</td>
+<tr class="odd">
+<td style="text-align: right;">0.72</td>
+<td>Good</td>
+<td>D</td>
+<td>SI1</td>
+<td style="text-align: right;">63.1</td>
+<td style="text-align: right;">55.0</td>
+<td style="text-align: right;">2757</td>
+<td style="text-align: right;">5.69</td>
+<td style="text-align: right;">5.75</td>
+<td style="text-align: right;">3.61</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-0.70
-</td>
-<td>
-Very Good
-</td>
-<td>
-D
-</td>
-<td>
-SI1
-</td>
-<td style="text-align:right;">
-62.8
-</td>
-<td style="text-align:right;">
-60.0
-</td>
-<td style="text-align:right;">
-2757
-</td>
-<td style="text-align:right;">
-5.66
-</td>
-<td style="text-align:right;">
-5.68
-</td>
-<td style="text-align:right;">
-3.56
-</td>
+<tr class="even">
+<td style="text-align: right;">0.70</td>
+<td>Very Good</td>
+<td>D</td>
+<td>SI1</td>
+<td style="text-align: right;">62.8</td>
+<td style="text-align: right;">60.0</td>
+<td style="text-align: right;">2757</td>
+<td style="text-align: right;">5.66</td>
+<td style="text-align: right;">5.68</td>
+<td style="text-align: right;">3.56</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-0.86
-</td>
-<td>
-Premium
-</td>
-<td>
-H
-</td>
-<td>
-SI2
-</td>
-<td style="text-align:right;">
-61.0
-</td>
-<td style="text-align:right;">
-58.0
-</td>
-<td style="text-align:right;">
-2757
-</td>
-<td style="text-align:right;">
-6.15
-</td>
-<td style="text-align:right;">
-6.12
-</td>
-<td style="text-align:right;">
-3.74
-</td>
+<tr class="odd">
+<td style="text-align: right;">0.86</td>
+<td>Premium</td>
+<td>H</td>
+<td>SI2</td>
+<td style="text-align: right;">61.0</td>
+<td style="text-align: right;">58.0</td>
+<td style="text-align: right;">2757</td>
+<td style="text-align: right;">6.15</td>
+<td style="text-align: right;">6.12</td>
+<td style="text-align: right;">3.74</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-0.75
-</td>
-<td>
-Ideal
-</td>
-<td>
-D
-</td>
-<td>
-SI2
-</td>
-<td style="text-align:right;">
-62.2
-</td>
-<td style="text-align:right;">
-55.0
-</td>
-<td style="text-align:right;">
-2757
-</td>
-<td style="text-align:right;">
-5.83
-</td>
-<td style="text-align:right;">
-5.87
-</td>
-<td style="text-align:right;">
-3.64
-</td>
+<tr class="even">
+<td style="text-align: right;">0.75</td>
+<td>Ideal</td>
+<td>D</td>
+<td>SI2</td>
+<td style="text-align: right;">62.2</td>
+<td style="text-align: right;">55.0</td>
+<td style="text-align: right;">2757</td>
+<td style="text-align: right;">5.83</td>
+<td style="text-align: right;">5.87</td>
+<td style="text-align: right;">3.64</td>
 </tr>
 </tbody>
-
 </table>
-</div>
-</div>
-</div>
-</div>
 <div style="background-color:grey;height:2px;width:100%;">
 
 </div>
 <div>
-<code><small><small>source: /home/daslu/projects/scicloj/noj/notebooks/intro/datasets.clj</small></small></code>
+<pre><small><small>source: <a href="https://github.com/scicloj/clay/blob/main/notebooks/intro/datasets.clj">notebooks/intro/datasets.clj</a></small></small></pre>
 </div>
 
 
@@ -2438,8 +1198,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../intro/visualization/index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Visualization</span></span>
+      <a href="../../intro/image/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Turning tensors into images</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

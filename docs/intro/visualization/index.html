@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>book - 2&nbsp; Visualization</title>
+<title>Noj Documentation - 2&nbsp; Visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,7 +93,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../intro/datasets/index.html" rel="next">
+<link href="../../intro/image/index.html" rel="next">
 <link href="../../index.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -146,7 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../../">book</a> 
+      <a href="../../">Noj Documentation</a> 
     </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -158,7 +158,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">book index</span></a>
+  <a href="../../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">index.html</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -168,7 +168,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../intro/datasets/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Datasets</span></a>
+  <a href="../../intro/image/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Turning tensors into images</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../intro/datasets/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Datasets</span></a>
   </div>
 </li>
     </ul>
@@ -180,16 +185,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#raw-html" id="toc-raw-html" class="nav-link active" data-scroll-target="#raw-html"><span class="toc-section-number">2.1</span>  Raw html</a></li>
-  <li><a href="#visualizing-datases-with-hanami" id="toc-visualizing-datases-with-hanami" class="nav-link" data-scroll-target="#visualizing-datases-with-hanami"><span class="toc-section-number">2.2</span>  Visualizing datases with Hanami</a>
+  <li><a href="#visualizing-datases-with-hanami" id="toc-visualizing-datases-with-hanami" class="nav-link active" data-scroll-target="#visualizing-datases-with-hanami"><span class="toc-section-number">2.1</span>  Visualizing datases with Hanami</a>
   <ul class="collapse">
-  <li><a href="#a-simple-plot" id="toc-a-simple-plot" class="nav-link" data-scroll-target="#a-simple-plot"><span class="toc-section-number">2.2.1</span>  A simple plot</a></li>
-  <li><a href="#additional-hanami-templates" id="toc-additional-hanami-templates" class="nav-link" data-scroll-target="#additional-hanami-templates"><span class="toc-section-number">2.2.2</span>  Additional Hanami templates</a></li>
-  <li><a href="#layers" id="toc-layers" class="nav-link" data-scroll-target="#layers"><span class="toc-section-number">2.2.3</span>  Layers</a></li>
-  <li><a href="#concatenation" id="toc-concatenation" class="nav-link" data-scroll-target="#concatenation"><span class="toc-section-number">2.2.4</span>  Concatenation</a></li>
-  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression"><span class="toc-section-number">2.2.5</span>  Linear regression</a></li>
-  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram"><span class="toc-section-number">2.2.6</span>  Histogram</a></li>
-  <li><a href="#combining-a-few-things-together" id="toc-combining-a-few-things-together" class="nav-link" data-scroll-target="#combining-a-few-things-together"><span class="toc-section-number">2.2.7</span>  Combining a few things together</a></li>
+  <li><a href="#a-simple-plot" id="toc-a-simple-plot" class="nav-link" data-scroll-target="#a-simple-plot"><span class="toc-section-number">2.1.1</span>  A simple plot</a></li>
+  <li><a href="#additional-hanami-templates" id="toc-additional-hanami-templates" class="nav-link" data-scroll-target="#additional-hanami-templates"><span class="toc-section-number">2.1.2</span>  Additional Hanami templates</a></li>
+  <li><a href="#layers" id="toc-layers" class="nav-link" data-scroll-target="#layers"><span class="toc-section-number">2.1.3</span>  Layers</a></li>
+  <li><a href="#concatenation" id="toc-concatenation" class="nav-link" data-scroll-target="#concatenation"><span class="toc-section-number">2.1.4</span>  Concatenation</a></li>
+  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression"><span class="toc-section-number">2.1.5</span>  Linear regression</a></li>
+  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram"><span class="toc-section-number">2.1.6</span>  Histogram</a></li>
+  <li><a href="#combining-a-few-things-together" id="toc-combining-a-few-things-together" class="nav-link" data-scroll-target="#combining-a-few-things-together"><span class="toc-section-number">2.1.7</span>  Combining a few things together</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -215,8 +219,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 
-<style>
-table {
+<style>table {
   border-style: thin;
 }
 th, td {
@@ -233,16 +236,17 @@ tr:nth-child(even) {
   background-color: #f6f6f6;
 }
 </style>
-<style>
-.printedClojure .sourceCode {
+<style>.printedClojure .sourceCode {
   background-color: transparent;
   border-style: none;
 }
 </style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.6.0" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0" type="text/javascript"></script>
-<div class="originalCode">
+<div class="sourceClojure">
 <div class="sourceCode" id="cb1"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">ns</span> intro.visualization</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  (<span class="at">:require</span> [tablecloth.api <span class="at">:as</span> tc]</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            [aerial.hanami.common <span class="at">:as</span> hc]</span>
@@ -258,317 +262,259 @@ tr:nth-child(even) {
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            [hiccup.core <span class="at">:as</span> hiccup]</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            [clojure2d.color <span class="at">:as</span> color]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="raw-html" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="raw-html"><span class="header-section-number">2.1</span> Raw html</h2>
-<div class="originalCode">
-<div class="sourceCode" id="cb2"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> <span class="st">"&lt;p&gt;Hello, &lt;i&gt;Noj&lt;/i&gt;.&lt;/p&gt;"</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    vis/raw-html)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div>
-<div data-dangerouslysetinnerhtml="__html:<p>Hello, <i>Noj</i>.</p>;">
-
-</div>
-</div>
-<div class="originalCode">
-<div class="sourceCode" id="cb3"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> [<span class="at">:svg</span> {<span class="at">:height</span> <span class="dv">210</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">:width</span> <span class="dv">500</span>}</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>     [<span class="at">:line</span> {<span class="at">:x1</span> <span class="dv">0</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">:y1</span> <span class="dv">0</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">:x2</span> <span class="dv">200</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">:y2</span> <span class="dv">200</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">:style</span> <span class="st">"stroke:rgb(255,0,0);stroke-width:2"</span>}]]</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    hiccup/html</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    vis/raw-html)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div>
-<div data-dangerouslysetinnerhtml="__html:<svg height=&quot;210&quot; width=&quot;500&quot;><line style=&quot;stroke:rgb(255,0,0);stroke-width:2&quot; x1=&quot;0&quot; x2=&quot;200&quot; y1=&quot;0&quot; y2=&quot;200&quot;></line></svg>;">
-
-</div>
-</div>
-</section>
-<section id="visualizing-datases-with-hanami" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="visualizing-datases-with-hanami"><span class="header-section-number">2.2</span> Visualizing datases with Hanami</h2>
+<section id="visualizing-datases-with-hanami" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="visualizing-datases-with-hanami"><span class="header-section-number">2.1</span> Visualizing datases with Hanami</h2>
 <p>Noj offers a few convenience functions to make <a href="https://github.com/jsa-aerial/hanami">Hanami</a> plotting work smoothly with <a href="https://scicloj.github.io/tablecloth/">Tablecloth</a> and <a href="https://scicloj.github.io/kindly/">Kindly</a>.</p>
-<div class="originalCode">
-<div class="sourceCode" id="cb4"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> random-walk</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [n <span class="dv">20</span>]</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">-&gt;</span> {<span class="at">:x</span> (<span class="kw">range</span> n)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">:y</span> (<span class="kw">-&gt;&gt;</span> (<span class="kw">repeatedly</span> n #(<span class="kw">-</span> (<span class="kw">rand</span>) <span class="fl">0.5</span>))</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                 (reductions <span class="kw">+</span>))}</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        tc/dataset)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb2"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> random-walk</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [n <span class="dv">20</span>]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">-&gt;</span> {<span class="at">:x</span> (<span class="kw">range</span> n)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">:y</span> (<span class="kw">-&gt;&gt;</span> (<span class="kw">repeatedly</span> n #(<span class="kw">-</span> (<span class="kw">rand</span>) <span class="fl">0.5</span>))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                 (reductions <span class="kw">+</span>))}</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        tc/dataset)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="a-simple-plot" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="a-simple-plot"><span class="header-section-number">2.2.1</span> A simple plot</h3>
+<section id="a-simple-plot" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="a-simple-plot"><span class="header-section-number">2.1.1</span> A simple plot</h3>
 <p>We can plot a Tablecloth datasete using a Hanami template:</p>
-<div class="originalCode">
-<div class="sourceCode" id="cb5"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> random-walk</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    (vis/hanami-plot ht/point-chart</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                     {<span class="at">:MSIZE</span> <span class="dv">200</span>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb3"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> random-walk</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    (vis/hanami-plot ht/point-chart</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                     {<span class="at">:MSIZE</span> <span class="dv">200</span>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div>
-<div>
-vega
-<script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":400,"background":"floralwhite","height":300,"data":{"values":"x,y\n0,-0.48725452619284104\n1,-0.9357756242704616\n2,-0.5162157965228245\n3,-0.5033668121885043\n4,-0.7282399189059219\n5,-0.29348226638446606\n6,-0.32485876501743083\n7,-0.586144618442187\n8,-1.044364842252518\n9,-1.5204054650466081\n10,-1.7345414885980897\n11,-2.205030747033704\n12,-1.8189485337328128\n13,-1.8921343733162326\n14,-2.0394013610712345\n15,-1.7576615024870215\n16,-1.285046660281881\n17,-0.8247912561508186\n18,-0.4460232250092744\n19,-0.5827194166079672\n","format":{"type":"csv"}}});</script>
-</div>
+<script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":400,"background":"floralwhite","height":300,"data":{"values":"x,y\n0,-0.39615391984318404\n1,-0.5446812271166611\n2,-0.9832657108893103\n3,-0.5671649841192353\n4,-0.09009523598518931\n5,0.07415912187784146\n6,-0.10170081461740843\n7,0.10020830258460467\n8,0.1640025237962498\n9,-0.28933053134006614\n10,-0.32120294054073717\n11,-0.7589079499865103\n12,-0.461950404436437\n13,-0.6060248939186419\n14,-0.545977980694729\n15,-0.8584547085001384\n16,-0.792211350491126\n17,-0.9381995494131425\n18,-0.906282018393721\n19,-0.4575963334804557\n","format":{"type":"csv"}}});</script>
 </div>
 <p>Let us look inside the resulting vega-lite space. We can see the dataset is included as CSV:</p>
-<div class="originalCode">
-<div class="sourceCode" id="cb6"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> random-walk</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    (vis/hanami-plot ht/point-chart</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                     {<span class="at">:MSIZE</span> <span class="dv">200</span>})</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    kind/pprint)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb4"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> random-walk</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    (vis/hanami-plot ht/point-chart</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                     {<span class="at">:MSIZE</span> <span class="dv">200</span>})</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    kind/pprint)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb7"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>{<span class="at">:encoding</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a> {<span class="at">:y</span> {<span class="at">:field</span> <span class="st">"y"</span>, <span class="at">:type</span> <span class="st">"quantitative"</span>},</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">:x</span> {<span class="at">:field</span> <span class="st">"x"</span>, <span class="at">:type</span> <span class="st">"quantitative"</span>}},</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a> <span class="at">:mark</span> {<span class="at">:type</span> <span class="st">"circle"</span>, <span class="at">:size</span> <span class="dv">200</span>, <span class="at">:tooltip</span> <span class="va">true</span>},</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a> <span class="at">:width</span> <span class="dv">400</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a> <span class="at">:background</span> <span class="st">"floralwhite"</span>,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a> <span class="at">:height</span> <span class="dv">300</span>,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a> <span class="at">:data</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a> {<span class="at">:values</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"x,y</span><span class="sc">\n</span><span class="st">0,-0.48725452619284104</span><span class="sc">\n</span><span class="st">1,-0.9357756242704616</span><span class="sc">\n</span><span class="st">2,-0.5162157965228245</span><span class="sc">\n</span><span class="st">3,-0.5033668121885043</span><span class="sc">\n</span><span class="st">4,-0.7282399189059219</span><span class="sc">\n</span><span class="st">5,-0.29348226638446606</span><span class="sc">\n</span><span class="st">6,-0.32485876501743083</span><span class="sc">\n</span><span class="st">7,-0.586144618442187</span><span class="sc">\n</span><span class="st">8,-1.044364842252518</span><span class="sc">\n</span><span class="st">9,-1.5204054650466081</span><span class="sc">\n</span><span class="st">10,-1.7345414885980897</span><span class="sc">\n</span><span class="st">11,-2.205030747033704</span><span class="sc">\n</span><span class="st">12,-1.8189485337328128</span><span class="sc">\n</span><span class="st">13,-1.8921343733162326</span><span class="sc">\n</span><span class="st">14,-2.0394013610712345</span><span class="sc">\n</span><span class="st">15,-1.7576615024870215</span><span class="sc">\n</span><span class="st">16,-1.285046660281881</span><span class="sc">\n</span><span class="st">17,-0.8247912561508186</span><span class="sc">\n</span><span class="st">18,-0.4460232250092744</span><span class="sc">\n</span><span class="st">19,-0.5827194166079672</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">:format</span> {<span class="at">:type</span> <span class="st">"csv"</span>}}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>{<span class="at">:encoding</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> {<span class="at">:y</span> {<span class="at">:field</span> <span class="st">"y"</span>, <span class="at">:type</span> <span class="st">"quantitative"</span>},</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">:x</span> {<span class="at">:field</span> <span class="st">"x"</span>, <span class="at">:type</span> <span class="st">"quantitative"</span>}},</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> <span class="at">:mark</span> {<span class="at">:type</span> <span class="st">"circle"</span>, <span class="at">:size</span> <span class="dv">200</span>, <span class="at">:tooltip</span> <span class="va">true</span>},</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a> <span class="at">:width</span> <span class="dv">400</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a> <span class="at">:background</span> <span class="st">"floralwhite"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a> <span class="at">:height</span> <span class="dv">300</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a> <span class="at">:data</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a> {<span class="at">:values</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"x,y</span><span class="sc">\n</span><span class="st">0,-0.39615391984318404</span><span class="sc">\n</span><span class="st">1,-0.5446812271166611</span><span class="sc">\n</span><span class="st">2,-0.9832657108893103</span><span class="sc">\n</span><span class="st">3,-0.5671649841192353</span><span class="sc">\n</span><span class="st">4,-0.09009523598518931</span><span class="sc">\n</span><span class="st">5,0.07415912187784146</span><span class="sc">\n</span><span class="st">6,-0.10170081461740843</span><span class="sc">\n</span><span class="st">7,0.10020830258460467</span><span class="sc">\n</span><span class="st">8,0.1640025237962498</span><span class="sc">\n</span><span class="st">9,-0.28933053134006614</span><span class="sc">\n</span><span class="st">10,-0.32120294054073717</span><span class="sc">\n</span><span class="st">11,-0.7589079499865103</span><span class="sc">\n</span><span class="st">12,-0.461950404436437</span><span class="sc">\n</span><span class="st">13,-0.6060248939186419</span><span class="sc">\n</span><span class="st">14,-0.545977980694729</span><span class="sc">\n</span><span class="st">15,-0.8584547085001384</span><span class="sc">\n</span><span class="st">16,-0.792211350491126</span><span class="sc">\n</span><span class="st">17,-0.9381995494131425</span><span class="sc">\n</span><span class="st">18,-0.906282018393721</span><span class="sc">\n</span><span class="st">19,-0.4575963334804557</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">:format</span> {<span class="at">:type</span> <span class="st">"csv"</span>}}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="additional-hanami-templates" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="additional-hanami-templates"><span class="header-section-number">2.2.2</span> Additional Hanami templates</h3>
+<section id="additional-hanami-templates" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="additional-hanami-templates"><span class="header-section-number">2.1.2</span> Additional Hanami templates</h3>
 <p>The <code>scicloj.noj.v1.vis.hanami.templates</code> namespace add Hanami templates to Hanami’s own collection.</p>
-<div class="originalCode">
-<div class="sourceCode" id="cb8"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/mtcars</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    (vis/hanami-plot vht/boxplot-chart</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                     {<span class="at">:X</span> <span class="at">:gear</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">:XTYPE</span> <span class="at">:nominal</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">:Y</span> <span class="at">:mpg</span>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb6"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/mtcars</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    (vis/hanami-plot vht/boxplot-chart</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                     {<span class="at">:X</span> <span class="at">:gear</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">:XTYPE</span> <span class="at">:nominal</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">:Y</span> <span class="at">:mpg</span>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div>
-<div>
-vega
 <script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"gear","type":"nominal"}},"mark":{"type":"boxplot","tooltip":true},"width":400,"background":"floralwhite","height":300,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb\nMazda RX4,21.0,6,160.0,110,3.9,2.62,16.46,0,1,4,4\nMazda RX4 Wag,21.0,6,160.0,110,3.9,2.875,17.02,0,1,4,4\nDatsun 710,22.8,4,108.0,93,3.85,2.32,18.61,1,1,4,1\nHornet 4 Drive,21.4,6,258.0,110,3.08,3.215,19.44,1,0,3,1\nHornet Sportabout,18.7,8,360.0,175,3.15,3.44,17.02,0,0,3,2\nValiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1\nDuster 360,14.3,8,360.0,245,3.21,3.57,15.84,0,0,3,4\nMerc 240D,24.4,4,146.7,62,3.69,3.19,20.0,1,0,4,2\nMerc 230,22.8,4,140.8,95,3.92,3.15,22.9,1,0,4,2\nMerc 280,19.2,6,167.6,123,3.92,3.44,18.3,1,0,4,4\nMerc 280C,17.8,6,167.6,123,3.92,3.44,18.9,1,0,4,4\nMerc 450SE,16.4,8,275.8,180,3.07,4.07,17.4,0,0,3,3\nMerc 450SL,17.3,8,275.8,180,3.07,3.73,17.6,0,0,3,3\nMerc 450SLC,15.2,8,275.8,180,3.07,3.78,18.0,0,0,3,3\nCadillac Fleetwood,10.4,8,472.0,205,2.93,5.25,17.98,0,0,3,4\nLincoln Continental,10.4,8,460.0,215,3.0,5.424,17.82,0,0,3,4\nChrysler Imperial,14.7,8,440.0,230,3.23,5.345,17.42,0,0,3,4\nFiat 128,32.4,4,78.7,66,4.08,2.2,19.47,1,1,4,1\nHonda Civic,30.4,4,75.7,52,4.93,1.615,18.52,1,1,4,2\nToyota Corolla,33.9,4,71.1,65,4.22,1.835,19.9,1,1,4,1\nToyota Corona,21.5,4,120.1,97,3.7,2.465,20.01,1,0,3,1\nDodge Challenger,15.5,8,318.0,150,2.76,3.52,16.87,0,0,3,2\nAMC Javelin,15.2,8,304.0,150,3.15,3.435,17.3,0,0,3,2\nCamaro Z28,13.3,8,350.0,245,3.73,3.84,15.41,0,0,3,4\nPontiac Firebird,19.2,8,400.0,175,3.08,3.845,17.05,0,0,3,2\nFiat X1-9,27.3,4,79.0,66,4.08,1.935,18.9,1,1,4,1\nPorsche 914-2,26.0,4,120.3,91,4.43,2.14,16.7,0,1,5,2\nLotus Europa,30.4,4,95.1,113,3.77,1.513,16.9,1,1,5,2\nFord Pantera L,15.8,8,351.0,264,4.22,3.17,14.5,0,1,5,4\nFerrari Dino,19.7,6,145.0,175,3.62,2.77,15.5,0,1,5,6\nMaserati Bora,15.0,8,301.0,335,3.54,3.57,14.6,0,1,5,8\nVolvo 142E,21.4,4,121.0,109,4.11,2.78,18.6,1,1,4,2\n","format":{"type":"csv"}}});</script>
 </div>
+</section>
+<section id="layers" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="layers"><span class="header-section-number">2.1.3</span> Layers</h3>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb7"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> random-walk</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    (vis/hanami-layers</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>     {<span class="at">:TITLE</span> <span class="st">"points and a line"</span>}</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>     [(vis/hanami-plot <span class="va">nil</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                       ht/point-chart</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                       {<span class="at">:MSIZE</span> <span class="dv">400</span>})</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>      (vis/hanami-plot <span class="va">nil</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                       ht/line-chart</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                       {<span class="at">:MSIZE</span> <span class="dv">4</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:MCOLOR</span> <span class="st">"brown"</span>})]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div>
+<script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","title":{"text":"points and a line"},"layer":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":400,"background":"floralwhite","height":300},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300,"data":{"values":"x,y\n0,-0.39615391984318404\n1,-0.5446812271166611\n2,-0.9832657108893103\n3,-0.5671649841192353\n4,-0.09009523598518931\n5,0.07415912187784146\n6,-0.10170081461740843\n7,0.10020830258460467\n8,0.1640025237962498\n9,-0.28933053134006614\n10,-0.32120294054073717\n11,-0.7589079499865103\n12,-0.461950404436437\n13,-0.6060248939186419\n14,-0.545977980694729\n15,-0.8584547085001384\n16,-0.792211350491126\n17,-0.9381995494131425\n18,-0.906282018393721\n19,-0.4575963334804557\n","format":{"type":"csv"}}});</script>
 </div>
 </section>
-<section id="layers" class="level3" data-number="2.2.3">
-<h3 data-number="2.2.3" class="anchored" data-anchor-id="layers"><span class="header-section-number">2.2.3</span> Layers</h3>
-<div class="originalCode">
+<section id="concatenation" class="level3" data-number="2.1.4">
+<h3 data-number="2.1.4" class="anchored" data-anchor-id="concatenation"><span class="header-section-number">2.1.4</span> Concatenation</h3>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb8"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> random-walk</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    (vis/hanami-vconcat</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>     {}</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>     [(vis/hanami-plot <span class="va">nil</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                       ht/point-chart</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                       {<span class="at">:MSIZE</span> <span class="dv">400</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:HEIGHT</span> <span class="dv">100</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:WIDTH</span> <span class="dv">100</span>})</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>      (vis/hanami-plot <span class="va">nil</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>                       ht/line-chart</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>                       {<span class="at">:MSIZE</span> <span class="dv">4</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:MCOLOR</span> <span class="st">"brown"</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:HEIGHT</span> <span class="dv">100</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:WIDTH</span> <span class="dv">100</span>})]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div>
+<script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","vconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"height":300,"data":{"values":"x,y\n0,-0.39615391984318404\n1,-0.5446812271166611\n2,-0.9832657108893103\n3,-0.5671649841192353\n4,-0.09009523598518931\n5,0.07415912187784146\n6,-0.10170081461740843\n7,0.10020830258460467\n8,0.1640025237962498\n9,-0.28933053134006614\n10,-0.32120294054073717\n11,-0.7589079499865103\n12,-0.461950404436437\n13,-0.6060248939186419\n14,-0.545977980694729\n15,-0.8584547085001384\n16,-0.792211350491126\n17,-0.9381995494131425\n18,-0.906282018393721\n19,-0.4575963334804557\n","format":{"type":"csv"}}});</script>
+</div>
+<div class="sourceClojure">
 <div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> random-walk</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    (vis/hanami-layers</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>     {<span class="at">:TITLE</span> <span class="st">"points and a line"</span>}</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    (vis/hanami-hconcat</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>     {}</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>     [(vis/hanami-plot <span class="va">nil</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                       ht/point-chart</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                       {<span class="at">:MSIZE</span> <span class="dv">400</span>})</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>      (vis/hanami-plot <span class="va">nil</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                       ht/line-chart</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                       {<span class="at">:MSIZE</span> <span class="dv">4</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:MCOLOR</span> <span class="st">"brown"</span>})]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                       {<span class="at">:MSIZE</span> <span class="dv">400</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:HEIGHT</span> <span class="dv">100</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:WIDTH</span> <span class="dv">100</span>})</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>      (vis/hanami-plot <span class="va">nil</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                       ht/line-chart</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                       {<span class="at">:MSIZE</span> <span class="dv">4</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:MCOLOR</span> <span class="st">"brown"</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:HEIGHT</span> <span class="dv">100</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:WIDTH</span> <span class="dv">100</span>})]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div>
-<div>
-vega
-<script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","title":{"text":"points and a line"},"layer":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":400,"background":"floralwhite","height":300},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300,"data":{"values":"x,y\n0,-0.48725452619284104\n1,-0.9357756242704616\n2,-0.5162157965228245\n3,-0.5033668121885043\n4,-0.7282399189059219\n5,-0.29348226638446606\n6,-0.32485876501743083\n7,-0.586144618442187\n8,-1.044364842252518\n9,-1.5204054650466081\n10,-1.7345414885980897\n11,-2.205030747033704\n12,-1.8189485337328128\n13,-1.8921343733162326\n14,-2.0394013610712345\n15,-1.7576615024870215\n16,-1.285046660281881\n17,-0.8247912561508186\n18,-0.4460232250092744\n19,-0.5827194166079672\n","format":{"type":"csv"}}});</script>
-</div>
+<script>vegaEmbed(document.currentScript.parentElement, {"hconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"width":400,"background":"floralwhite","height":300,"data":{"values":"x,y\n0,-0.39615391984318404\n1,-0.5446812271166611\n2,-0.9832657108893103\n3,-0.5671649841192353\n4,-0.09009523598518931\n5,0.07415912187784146\n6,-0.10170081461740843\n7,0.10020830258460467\n8,0.1640025237962498\n9,-0.28933053134006614\n10,-0.32120294054073717\n11,-0.7589079499865103\n12,-0.461950404436437\n13,-0.6060248939186419\n14,-0.545977980694729\n15,-0.8584547085001384\n16,-0.792211350491126\n17,-0.9381995494131425\n18,-0.906282018393721\n19,-0.4575963334804557\n","format":{"type":"csv"}}});</script>
 </div>
 </section>
-<section id="concatenation" class="level3" data-number="2.2.4">
-<h3 data-number="2.2.4" class="anchored" data-anchor-id="concatenation"><span class="header-section-number">2.2.4</span> Concatenation</h3>
-<div class="originalCode">
-<div class="sourceCode" id="cb10"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> random-walk</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    (vis/hanami-vconcat</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>     {}</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>     [(vis/hanami-plot <span class="va">nil</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                       ht/point-chart</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                       {<span class="at">:MSIZE</span> <span class="dv">400</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:HEIGHT</span> <span class="dv">100</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:WIDTH</span> <span class="dv">100</span>})</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>      (vis/hanami-plot <span class="va">nil</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                       ht/line-chart</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>                       {<span class="at">:MSIZE</span> <span class="dv">4</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:MCOLOR</span> <span class="st">"brown"</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:HEIGHT</span> <span class="dv">100</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:WIDTH</span> <span class="dv">100</span>})]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="linear-regression" class="level3" data-number="2.1.5">
+<h3 data-number="2.1.5" class="anchored" data-anchor-id="linear-regression"><span class="header-section-number">2.1.5</span> Linear regression</h3>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb10"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/mtcars</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    (stats/add-predictions <span class="at">:mpg</span> [<span class="at">:wt</span>]</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                           {<span class="at">:model-type</span> <span class="at">:smile.regression/ordinary-least-square</span>})</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    (vis/hanami-layers {}</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                       [(vis/hanami-plot <span class="va">nil</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                                         ht/point-chart</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>                                         {<span class="at">:X</span> <span class="at">:wt</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:Y</span> <span class="at">:mpg</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:MSIZE</span> <span class="dv">200</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:HEIGHT</span> <span class="dv">200</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:WIDTH</span> <span class="dv">200</span>})</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>                        (vis/hanami-plot <span class="va">nil</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>                                         ht/line-chart</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>                                         {<span class="at">:X</span> <span class="at">:wt</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:Y</span> <span class="at">:mpg-prediction</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:MSIZE</span> <span class="dv">5</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:MCOLOR</span> <span class="st">"purple"</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:YTITLE</span> <span class="at">:mpg</span>})]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div>
-<div>
-vega
-<script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","vconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"height":300,"data":{"values":"x,y\n0,-0.48725452619284104\n1,-0.9357756242704616\n2,-0.5162157965228245\n3,-0.5033668121885043\n4,-0.7282399189059219\n5,-0.29348226638446606\n6,-0.32485876501743083\n7,-0.586144618442187\n8,-1.044364842252518\n9,-1.5204054650466081\n10,-1.7345414885980897\n11,-2.205030747033704\n12,-1.8189485337328128\n13,-1.8921343733162326\n14,-2.0394013610712345\n15,-1.7576615024870215\n16,-1.285046660281881\n17,-0.8247912561508186\n18,-0.4460232250092744\n19,-0.5827194166079672\n","format":{"type":"csv"}}});</script>
-</div>
-</div>
-<div class="originalCode">
-<div class="sourceCode" id="cb11"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> random-walk</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    (vis/hanami-hconcat</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>     {}</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>     [(vis/hanami-plot <span class="va">nil</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                       ht/point-chart</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                       {<span class="at">:MSIZE</span> <span class="dv">400</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:HEIGHT</span> <span class="dv">100</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:WIDTH</span> <span class="dv">100</span>})</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>      (vis/hanami-plot <span class="va">nil</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>                       ht/line-chart</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>                       {<span class="at">:MSIZE</span> <span class="dv">4</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:MCOLOR</span> <span class="st">"brown"</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:HEIGHT</span> <span class="dv">100</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:WIDTH</span> <span class="dv">100</span>})]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div>
-<div>
-vega
-<script>vegaEmbed(document.currentScript.parentElement, {"hconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"width":400,"background":"floralwhite","height":300,"data":{"values":"x,y\n0,-0.48725452619284104\n1,-0.9357756242704616\n2,-0.5162157965228245\n3,-0.5033668121885043\n4,-0.7282399189059219\n5,-0.29348226638446606\n6,-0.32485876501743083\n7,-0.586144618442187\n8,-1.044364842252518\n9,-1.5204054650466081\n10,-1.7345414885980897\n11,-2.205030747033704\n12,-1.8189485337328128\n13,-1.8921343733162326\n14,-2.0394013610712345\n15,-1.7576615024870215\n16,-1.285046660281881\n17,-0.8247912561508186\n18,-0.4460232250092744\n19,-0.5827194166079672\n","format":{"type":"csv"}}});</script>
-</div>
-</div>
-</section>
-<section id="linear-regression" class="level3" data-number="2.2.5">
-<h3 data-number="2.2.5" class="anchored" data-anchor-id="linear-regression"><span class="header-section-number">2.2.5</span> Linear regression</h3>
-<div class="originalCode">
-<div class="sourceCode" id="cb12"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/mtcars</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    (stats/add-predictions <span class="at">:mpg</span> [<span class="at">:wt</span>]</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                           {<span class="at">:model-type</span> <span class="at">:smile.regression/ordinary-least-square</span>})</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    (vis/hanami-layers {}</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                       [(vis/hanami-plot <span class="va">nil</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                                         ht/point-chart</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                                         {<span class="at">:X</span> <span class="at">:wt</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:Y</span> <span class="at">:mpg</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:MSIZE</span> <span class="dv">200</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:HEIGHT</span> <span class="dv">200</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:WIDTH</span> <span class="dv">200</span>})</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>                        (vis/hanami-plot <span class="va">nil</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>                                         ht/line-chart</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>                                         {<span class="at">:X</span> <span class="at">:wt</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:Y</span> <span class="at">:mpg-prediction</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:MSIZE</span> <span class="dv">5</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:MCOLOR</span> <span class="st">"purple"</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:YTITLE</span> <span class="at">:mpg</span>})]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div>
-<div>
-vega
 <script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nMazda RX4,21.0,6,160.0,110,3.9,2.62,16.46,0,1,4,4,23.28261064680863\nMazda RX4 Wag,21.0,6,160.0,110,3.9,2.875,17.02,0,1,4,4,21.91977039576435\nDatsun 710,22.8,4,108.0,93,3.85,2.32,18.61,1,1,4,1,24.885952118625436\nHornet 4 Drive,21.4,6,258.0,110,3.08,3.215,19.44,1,0,3,1,20.102650061038638\nHornet Sportabout,18.7,8,360.0,175,3.15,3.44,17.02,0,0,3,2,18.900143957176034\nValiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1,18.793254525721583\nDuster 360,14.3,8,360.0,245,3.21,3.57,15.84,0,0,3,4,18.205362652722087\nMerc 240D,24.4,4,146.7,62,3.69,3.19,20.0,1,0,4,2,20.236261850356705\nMerc 230,22.8,4,140.8,95,3.92,3.15,22.9,1,0,4,2,20.45004071326561\nMerc 280,19.2,6,167.6,123,3.92,3.44,18.3,1,0,4,4,18.900143957176034\nMerc 280C,17.8,6,167.6,123,3.92,3.44,18.9,1,0,4,4,18.900143957176034\nMerc 450SE,16.4,8,275.8,180,3.07,4.07,17.4,0,0,3,3,15.533126866360746\nMerc 450SL,17.3,8,275.8,180,3.07,3.73,17.6,0,0,3,3,17.350247201086457\nMerc 450SLC,15.2,8,275.8,180,3.07,3.78,18.0,0,0,3,3,17.083023622450327\nCadillac Fleetwood,10.4,8,472.0,205,2.93,5.25,17.98,0,0,3,4,9.226650410547986\nLincoln Continental,10.4,8,460.0,215,3.0,5.424,17.82,0,0,3,4,8.29671235689424\nChrysler Imperial,14.7,8,440.0,230,3.23,5.345,17.42,0,0,3,4,8.718925611139333\nFiat 128,32.4,4,78.7,66,4.08,2.2,19.47,1,1,4,1,25.527288707352156\nHonda Civic,30.4,4,75.7,52,4.93,1.615,18.52,1,1,4,2,28.653804577394922\nToyota Corolla,33.9,4,71.1,65,4.22,1.835,19.9,1,1,4,1,27.478020831395934\nToyota Corona,21.5,4,120.1,97,3.7,2.465,20.01,1,0,3,1,24.11100374058065\nDodge Challenger,15.5,8,318.0,150,2.76,3.52,16.87,0,0,3,2,18.47258623135822\nAMC Javelin,15.2,8,304.0,150,3.15,3.435,17.3,0,0,3,2,18.92686631503965\nCamaro Z28,13.3,8,350.0,245,3.73,3.84,15.41,0,0,3,4,16.762355328086965\nPontiac Firebird,19.2,8,400.0,175,3.08,3.845,17.05,0,0,3,2,16.73563297022335\nFiat X1-9,27.3,4,79.0,66,4.08,1.935,18.9,1,1,4,1,26.943573674123666\nPorsche 914-2,26.0,4,120.3,91,4.43,2.14,16.7,0,1,5,2,25.847957001715518\nLotus Europa,30.4,4,95.1,113,3.77,1.513,16.9,1,1,5,2,29.198940677812637\nFord Pantera L,15.8,8,351.0,264,4.22,3.17,14.5,0,1,5,4,20.34315128181116\nFerrari Dino,19.7,6,145.0,175,3.62,2.77,15.5,0,1,5,6,22.48093991090023\nMaserati Bora,15.0,8,301.0,335,3.54,3.57,14.6,0,1,5,8,18.205362652722087\nVolvo 142E,21.4,4,121.0,109,4.11,2.78,18.6,1,1,4,2,22.427495195173\n","format":{"type":"csv"}}});</script>
 </div>
-</div>
 </section>
-<section id="histogram" class="level3" data-number="2.2.6">
-<h3 data-number="2.2.6" class="anchored" data-anchor-id="histogram"><span class="header-section-number">2.2.6</span> Histogram</h3>
-<div class="originalCode">
-<div class="sourceCode" id="cb13"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/iris</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    (vis/hanami-histogram <span class="at">:sepal-width</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                          {<span class="at">:nbins</span> <span class="dv">10</span>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="histogram" class="level3" data-number="2.1.6">
+<h3 data-number="2.1.6" class="anchored" data-anchor-id="histogram"><span class="header-section-number">2.1.6</span> Histogram</h3>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb11"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/iris</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    (vis/hanami-histogram <span class="at">:sepal-width</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                          {<span class="at">:nbins</span> <span class="dv">10</span>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div>
-<div>
-vega
 <script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"values":"count,left,right\n4,2.0,2.24\n7,2.24,2.48\n22,2.48,2.72\n24,2.72,2.96\n37,2.96,3.2\n31,3.2,3.4400000000000004\n10,3.4400000000000004,3.6800000000000006\n11,3.6800000000000006,3.9200000000000004\n2,3.9200000000000004,4.16\n2,4.16,4.4\n","format":{"type":"csv"}}});</script>
 </div>
-</div>
 </section>
-<section id="combining-a-few-things-together" class="level3" data-number="2.2.7">
-<h3 data-number="2.2.7" class="anchored" data-anchor-id="combining-a-few-things-together"><span class="header-section-number">2.2.7</span> Combining a few things together</h3>
+<section id="combining-a-few-things-together" class="level3" data-number="2.1.7">
+<h3 data-number="2.1.7" class="anchored" data-anchor-id="combining-a-few-things-together"><span class="header-section-number">2.1.7</span> Combining a few things together</h3>
 <p>The following is inspired by the example at Plotnine’s <a href="https://plotnine.readthedocs.io/en/stable/">main page</a>. Note how we add regression lines here. We take care of layout and colouring on our side, not using Vega-Lite for that.</p>
-<div class="originalCode">
-<div class="sourceCode" id="cb14"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">let</span> [pallete (<span class="kw">-&gt;&gt;</span> <span class="at">:accent</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                   color/palette</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                   (<span class="kw">mapv</span> color/format-hex))]</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> datasets/mtcars</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>      (tc/group-by <span class="at">:gear</span> {<span class="at">:result-type</span> <span class="at">:as-map</span>})</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>      (<span class="kw">-&gt;&gt;</span> (<span class="kw">sort-by</span> <span class="kw">key</span>)</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>           (map-indexed</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>            (<span class="kw">fn</span> [i [group-name ds]]</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>              (<span class="kw">-&gt;</span> ds</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>                  (stats/add-predictions <span class="at">:mpg</span> [<span class="at">:wt</span>]</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>                                         {<span class="at">:model-type</span> <span class="at">:smile.regression/ordinary-least-square</span>})</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>                  (tc/select-columns [<span class="at">:gear</span> <span class="at">:wt</span> <span class="at">:mpg</span> <span class="at">:mpg-prediction</span>])</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>                  (vis/hanami-layers {<span class="at">:TITLE</span> (<span class="kw">str</span> <span class="st">"grear="</span> group-name)}</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>                                     [(vis/hanami-plot <span class="va">nil</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>                                                       ht/point-chart</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>                                                       {<span class="at">:X</span> <span class="at">:wt</span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>                                                        <span class="at">:Y</span> <span class="at">:mpg</span></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>                                                        <span class="at">:MSIZE</span> <span class="dv">200</span></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>                                                        <span class="at">:MCOLOR</span> (pallete i)</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>                                                        <span class="at">:HEIGHT</span> <span class="dv">200</span></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>                                                        <span class="at">:WIDTH</span> <span class="dv">200</span>})</span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>                                      (vis/hanami-plot <span class="va">nil</span></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>                                                       ht/line-chart</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>                                                       {<span class="at">:X</span> <span class="at">:wt</span></span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>                                                        <span class="at">:Y</span> <span class="at">:mpg-prediction</span></span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>                                                        <span class="at">:MSIZE</span> <span class="dv">5</span></span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>                                                        <span class="at">:MCOLOR</span> (pallete i)</span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>                                                        <span class="at">:YTITLE</span> <span class="at">:mpg</span>})]</span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>                                     ))))</span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>           (vis/hanami-vconcat <span class="va">nil</span> {}))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb12"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">let</span> [pallete (<span class="kw">-&gt;&gt;</span> <span class="at">:accent</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                   color/palette</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                   (<span class="kw">mapv</span> color/format-hex))]</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> datasets/mtcars</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>      (tc/group-by <span class="at">:gear</span> {<span class="at">:result-type</span> <span class="at">:as-map</span>})</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>      (<span class="kw">-&gt;&gt;</span> (<span class="kw">sort-by</span> <span class="kw">key</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>           (map-indexed</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>            (<span class="kw">fn</span> [i [group-name ds]]</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>              (<span class="kw">-&gt;</span> ds</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>                  (stats/add-predictions <span class="at">:mpg</span> [<span class="at">:wt</span>]</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>                                         {<span class="at">:model-type</span> <span class="at">:smile.regression/ordinary-least-square</span>})</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>                  (tc/select-columns [<span class="at">:gear</span> <span class="at">:wt</span> <span class="at">:mpg</span> <span class="at">:mpg-prediction</span>])</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>                  (vis/hanami-layers {<span class="at">:TITLE</span> (<span class="kw">str</span> <span class="st">"grear="</span> group-name)}</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>                                     [(vis/hanami-plot <span class="va">nil</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>                                                       ht/point-chart</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>                                                       {<span class="at">:X</span> <span class="at">:wt</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>                                                        <span class="at">:Y</span> <span class="at">:mpg</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>                                                        <span class="at">:MSIZE</span> <span class="dv">200</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>                                                        <span class="at">:MCOLOR</span> (pallete i)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>                                                        <span class="at">:HEIGHT</span> <span class="dv">200</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>                                                        <span class="at">:WIDTH</span> <span class="dv">200</span>})</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>                                      (vis/hanami-plot <span class="va">nil</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>                                                       ht/line-chart</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>                                                       {<span class="at">:X</span> <span class="at">:wt</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>                                                        <span class="at">:Y</span> <span class="at">:mpg-prediction</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>                                                        <span class="at">:MSIZE</span> <span class="dv">5</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>                                                        <span class="at">:MCOLOR</span> (pallete i)</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>                                                        <span class="at">:YTITLE</span> <span class="at">:mpg</span>})]</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>                                     ))))</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>           (vis/hanami-vconcat <span class="va">nil</span> {}))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div>
-<div>
-vega
 <script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","vconcat":[{"width":400,"background":"floralwhite","title":{"text":"grear=3"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#7fc97f","tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#7fc97f","tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300,"data":{"values":"gear,wt,mpg,mpg-prediction\n3,3.215,21.4,18.24575076879608\n3,3.44,18.7,17.535458674671055\n3,3.46,18.1,17.472321599637716\n3,3.57,14.3,17.125067686954374\n3,4.07,16.4,15.546640811120986\n3,3.73,17.3,16.61997108668769\n3,3.78,15.2,16.46212839910435\n3,5.25,10.4,11.821553384154196\n3,5.424,10.4,11.272260831364175\n3,5.345,14.7,11.521652277745854\n3,2.465,21.5,20.613391082546155\n3,3.52,15.5,17.282910374537714\n3,3.435,15.2,17.551242943429386\n3,3.84,13.3,16.272717174004345\n3,3.845,19.2,16.25693290524601\n","format":{"type":"csv"}}},{"width":400,"background":"floralwhite","title":{"text":"grear=4"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#beaed4","tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#beaed4","tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300,"data":{"values":"gear,wt,mpg,mpg-prediction\n4,2.62,21.0,24.510455071959058\n4,2.875,21.0,22.76026807682699\n4,2.32,22.8,26.569498595643847\n4,3.19,24.4,20.59827237695796\n4,3.15,22.8,20.872811513449268\n4,3.44,19.2,18.882402773887303\n4,3.44,17.8,18.882402773887303\n4,2.2,32.4,27.39311600511776\n4,1.615,30.4,31.4082508763031\n4,1.835,33.9,29.89828562560092\n4,1.935,27.3,29.211937784372658\n4,2.78,21.4,23.41229852599384\n","format":{"type":"csv"}}},{"width":400,"background":"floralwhite","title":{"text":"grear=5"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#fdc086","tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#fdc086","tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300,"data":{"values":"gear,wt,mpg,mpg-prediction\n5,2.14,26.0,25.34362502587085\n5,1.513,30.4,30.38867758620586\n5,3.17,15.8,17.055899129307758\n5,2.77,19.7,20.274433458070124\n5,3.57,15.0,13.83736480054539\n","format":{"type":"csv"}}}],"height":300});</script>
 </div>
-</div>
 <p>A similar example with histograms:</p>
-<div class="originalCode">
-<div class="sourceCode" id="cb15"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">let</span> [pallete (<span class="kw">-&gt;&gt;</span> <span class="at">:accent</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                   color/palette</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                   (<span class="kw">mapv</span> color/format-hex))]</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> datasets/iris</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>      (tc/group-by <span class="at">:species</span> {<span class="at">:result-type</span> <span class="at">:as-map</span>})</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>      (<span class="kw">-&gt;&gt;</span> (<span class="kw">sort-by</span> <span class="kw">key</span>)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>           (map-indexed</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>            (<span class="kw">fn</span> [i [group-name ds]]</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>              (<span class="kw">-&gt;</span> ds</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                  (vis/hanami-histogram <span class="at">:sepal-width</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>                                        {<span class="at">:nbins</span> <span class="dv">10</span>}))))</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>           (vis/hanami-vconcat <span class="va">nil</span> {}))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb13"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">let</span> [pallete (<span class="kw">-&gt;&gt;</span> <span class="at">:accent</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                   color/palette</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                   (<span class="kw">mapv</span> color/format-hex))]</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> datasets/iris</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>      (tc/group-by <span class="at">:species</span> {<span class="at">:result-type</span> <span class="at">:as-map</span>})</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>      (<span class="kw">-&gt;&gt;</span> (<span class="kw">sort-by</span> <span class="kw">key</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>           (map-indexed</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>            (<span class="kw">fn</span> [i [group-name ds]]</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>              (<span class="kw">-&gt;</span> ds</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>                  (vis/hanami-histogram <span class="at">:sepal-width</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>                                        {<span class="at">:nbins</span> <span class="dv">10</span>}))))</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>           (vis/hanami-vconcat <span class="va">nil</span> {}))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div>
-<div>
-vega
 <script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","vconcat":[{"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"values":"count,left,right\n1,2.3,2.51\n0,2.51,2.7199999999999998\n1,2.7199999999999998,2.9299999999999997\n10,2.9299999999999997,3.14\n7,3.14,3.35\n15,3.35,3.56\n6,3.56,3.7700000000000005\n6,3.7700000000000005,3.9800000000000004\n2,3.9800000000000004,4.19\n2,4.19,4.4\n","format":{"type":"csv"}}},{"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"values":"count,left,right\n1,2.0,2.14\n2,2.14,2.28\n6,2.28,2.42\n4,2.42,2.56\n3,2.56,2.7\n11,2.7,2.84\n7,2.84,2.98\n11,2.98,3.12\n3,3.12,3.26\n2,3.26,3.4\n","format":{"type":"csv"}}},{"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"values":"count,left,right\n1,2.2,2.3600000000000003\n4,2.3600000000000003,2.52\n2,2.52,2.68\n12,2.68,2.84\n2,2.84,3.0\n16,3.0,3.16\n8,3.16,3.3200000000000003\n2,3.3200000000000003,3.48\n1,3.48,3.6399999999999997\n2,3.6399999999999997,3.8\n","format":{"type":"csv"}}}],"height":300});</script>
 </div>
-</div>
 <p>Scatterplots and regression lines again, this time using Vega-Lite for layout and coloring (using its “facet” option).</p>
-<div class="originalCode">
-<div class="sourceCode" id="cb16"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/mtcars</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    (tc/group-by [<span class="at">:gear</span>])</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    (stats/add-predictions <span class="at">:mpg</span> [<span class="at">:wt</span>]</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                           {<span class="at">:model-type</span> <span class="at">:smile.regression/ordinary-least-square</span>})</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    (tc/ungroup)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    (tc/select-columns [<span class="at">:gear</span> <span class="at">:wt</span> <span class="at">:mpg</span> <span class="at">:mpg-prediction</span>])</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    (vis/hanami-layers {}</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                       [(vis/hanami-plot <span class="va">nil</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>                                         ht/point-chart</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>                                         {<span class="at">:X</span> <span class="at">:wt</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:Y</span> <span class="at">:mpg</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:MSIZE</span> <span class="dv">200</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:COLOR</span> <span class="st">"gear"</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:HEIGHT</span> <span class="dv">100</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:WIDTH</span> <span class="dv">200</span>})</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>                        (vis/hanami-plot <span class="va">nil</span></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>                                         ht/line-chart</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>                                         {<span class="at">:X</span> <span class="at">:wt</span></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:Y</span> <span class="at">:mpg-prediction</span></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:MSIZE</span> <span class="dv">5</span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:COLOR</span> <span class="st">"gear"</span></span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:YTITLE</span> <span class="at">:mpg</span>})])</span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    ((<span class="kw">fn</span> [spec]</span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>       {<span class="at">:facet</span> {<span class="at">:row</span> {<span class="at">:field</span> <span class="st">"gear"</span>}}</span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">:spec</span> (<span class="kw">dissoc</span> spec <span class="at">:data</span>)</span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">:data</span> (<span class="at">:data</span> spec)}))</span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    kind/vega-lite)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb14"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/mtcars</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    (tc/group-by [<span class="at">:gear</span>])</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    (stats/add-predictions <span class="at">:mpg</span> [<span class="at">:wt</span>]</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                           {<span class="at">:model-type</span> <span class="at">:smile.regression/ordinary-least-square</span>})</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    (tc/ungroup)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    (tc/select-columns [<span class="at">:gear</span> <span class="at">:wt</span> <span class="at">:mpg</span> <span class="at">:mpg-prediction</span>])</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    (vis/hanami-layers {}</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>                       [(vis/hanami-plot <span class="va">nil</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>                                         ht/point-chart</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>                                         {<span class="at">:X</span> <span class="at">:wt</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:Y</span> <span class="at">:mpg</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:MSIZE</span> <span class="dv">200</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:COLOR</span> <span class="st">"gear"</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:HEIGHT</span> <span class="dv">100</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:WIDTH</span> <span class="dv">200</span>})</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>                        (vis/hanami-plot <span class="va">nil</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>                                         ht/line-chart</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>                                         {<span class="at">:X</span> <span class="at">:wt</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:Y</span> <span class="at">:mpg-prediction</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:MSIZE</span> <span class="dv">5</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:COLOR</span> <span class="st">"gear"</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">:YTITLE</span> <span class="at">:mpg</span>})])</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    ((<span class="kw">fn</span> [spec]</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>       {<span class="at">:facet</span> {<span class="at">:row</span> {<span class="at">:field</span> <span class="st">"gear"</span>}}</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">:spec</span> (<span class="kw">dissoc</span> spec <span class="at">:data</span>)</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">:data</span> (<span class="at">:data</span> spec)}))</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    kind/vega-lite)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div>
-<div>
-vega
 <script>vegaEmbed(document.currentScript.parentElement, {"facet":{"row":{"field":"gear"}},"spec":{"width":400,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"color":{"field":"gear","type":"nominal"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"color":{"field":"gear","type":"nominal"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300},"data":{"values":"gear,wt,mpg,mpg-prediction\n4,2.62,21.0,24.510455071959058\n4,2.875,21.0,22.76026807682699\n4,2.32,22.8,26.569498595643847\n4,3.19,24.4,20.59827237695796\n4,3.15,22.8,20.872811513449268\n4,3.44,19.2,18.882402773887303\n4,3.44,17.8,18.882402773887303\n4,2.2,32.4,27.39311600511776\n4,1.615,30.4,31.4082508763031\n4,1.835,33.9,29.89828562560092\n4,1.935,27.3,29.211937784372658\n4,2.78,21.4,23.41229852599384\n3,3.215,21.4,18.24575076879608\n3,3.44,18.7,17.535458674671055\n3,3.46,18.1,17.472321599637716\n3,3.57,14.3,17.125067686954374\n3,4.07,16.4,15.546640811120986\n3,3.73,17.3,16.61997108668769\n3,3.78,15.2,16.46212839910435\n3,5.25,10.4,11.821553384154196\n3,5.424,10.4,11.272260831364175\n3,5.345,14.7,11.521652277745854\n3,2.465,21.5,20.613391082546155\n3,3.52,15.5,17.282910374537714\n3,3.435,15.2,17.551242943429386\n3,3.84,13.3,16.272717174004345\n3,3.845,19.2,16.25693290524601\n5,2.14,26.0,25.34362502587085\n5,1.513,30.4,30.38867758620586\n5,3.17,15.8,17.055899129307758\n5,2.77,19.7,20.274433458070124\n5,3.57,15.0,13.83736480054539\n","format":{"type":"csv"}}});</script>
 </div>
-</div>
-<div class="originalCode">
-<div class="sourceCode" id="cb17"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="at">:bye</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb15"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="at">:bye</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb18"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="at">:bye</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="at">:bye</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div style="background-color:grey;height:2px;width:100%;">
 
 </div>
 <div>
-<code><small><small>source: /home/daslu/projects/scicloj/noj/notebooks/intro/visualization.clj</small></small></code>
+<pre><small><small>source: <a href="https://github.com/scicloj/clay/blob/main/notebooks/intro/visualization.clj">notebooks/intro/visualization.clj</a></small></small></pre>
 </div>
 
 
@@ -712,12 +658,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../../index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">book index</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">index.html</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../intro/datasets/index.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Datasets</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../intro/image/index.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Turning tensors into images</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
