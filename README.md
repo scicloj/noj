@@ -8,6 +8,8 @@ An opinionated way to use the emerging Clojure data stack (WIP)
 
 Coming soon
 
+[Tutorials draft](https://scicloj.github.io/noj/)
+
 ## License
 
 Copyright © 2022 Scicloj
