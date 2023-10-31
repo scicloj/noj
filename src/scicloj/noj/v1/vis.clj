@@ -69,17 +69,3 @@
                     :Y :count
                     :Y2 0
                     :XSCALE {:zero false}})))
-
-
-(defn raw-html [html]
-  (-> [:div
-       {:dangerouslySetInnerHTML
-        {:__html html}}]
-      kind/hiccup))
-
-(defn iframe [html]
-  (-> [:div
-       [:h1 ".."]
-       [:iframe
-        {:srcimg html}]]
-      kind/hiccup))

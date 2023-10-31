@@ -6,7 +6,7 @@
             [libpython-clj2.require :refer [require-python]]
             [libpython-clj2.python :refer [py. py.. py.-] :as py]
             [tech.v3.datatype :as dtype]
-            [scicloj.noj.v1.vis :as vis]))
+            [scicloj.kindly.v4.kind :as kind]))
 
 ;; inspiration: http://gigasquidsoftware.com/blog/2020/01/18/parens-for-pyplot/
 
@@ -26,7 +26,7 @@
      (matplotlib.pyplot/savefig path#)
      (-> path#
          slurp
-         vis/raw-html)))
+         kind/html)))
 
 
 (defn pyplot
@@ -41,4 +41,4 @@
     (matplotlib.pyplot/savefig path)
     (-> path
         slurp
-        vis/raw-html)))
+        kind/html)))

@@ -16,20 +16,6 @@
             [clojure2d.color :as color]))
 
 
-;; ## Raw html
-(-> "<p>Hello, <i>Noj</i>.</p>"
-    vis/raw-html)
-
-(-> [:svg {:height 210
-           :width 500}
-     [:line {:x1 0
-             :y1 0
-             :x2 200
-             :y2 200
-             :style "stroke:rgb(255,0,0);stroke-width:2"}]]
-    hiccup/html
-    vis/raw-html)
-
 ;; ## Visualizing datases with Hanami
 
 ;; Noj offers a few convenience functions to make [Hanami](https://github.com/jsa-aerial/hanami) plotting work smoothly with [Tablecloth](https://scicloj.github.io/tablecloth/) and [Kindly](https://scicloj.github.io/kindly/).

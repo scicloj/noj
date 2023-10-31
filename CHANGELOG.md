@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file. This change
 
 ## [1-alpha17-SNAPSHOT]
 - updated deps, removed clerk dev dep
+- adapted to kindly updates, cleaned up obsolete functions
+
 
 ## [1-alpha16]
 - bringing the `scicloj.ml` dependency back, with the new `0.3` version which is compatible with TMD 7.x (#2)
