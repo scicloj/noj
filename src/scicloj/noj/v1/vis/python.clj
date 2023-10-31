@@ -14,6 +14,12 @@
                 'matplotlib.backends.backend_agg
                 'numpy)
 
+(defn html-in-reagent [html]
+  (-> [:div
+       {:dangerouslySetInnerHTML
+        {:__html html}}]
+      kind/reagent))
+
 (defmacro with-pyplot
   "Takes forms with mathplotlib.pyplot and returns a showable (SVG) plot."
   [& body]
@@ -26,7 +32,7 @@
      (matplotlib.pyplot/savefig path#)
      (-> path#
          slurp
-         kind/html)))
+         html-in-reagent)))
 
 
 (defn pyplot
@@ -41,4 +47,4 @@
     (matplotlib.pyplot/savefig path)
     (-> path
         slurp
-        kind/html)))
+        html-in-reagent)))
