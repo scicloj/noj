@@ -19,3 +19,22 @@
 (comment
   ;; Browse the Clay view (in case you closed the browser tab opened by `clay/start!`)
   (clay/browse!))
+
+
+
+(comment
+  ;; Update book
+  (require '[scicloj.clay.v2.api :as clay])
+
+
+  (clay/update-book!
+   {:title "Noj Documentation"
+    :base-source-path "notebooks"
+    :base-target-path "clean-book"
+    :chapter-source-paths ["index.clj"
+                           "intro/visualization.clj"
+                           "intro/image.clj"
+                           "intro/datasets.clj"]
+    :page-config {:quarto {:format {:html {:theme :spacelab
+                                           :monofont "Fira Code Medium"}}
+                           :highlight-style :solarized}}}))
