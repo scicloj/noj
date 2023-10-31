@@ -29,9 +29,10 @@
 
   (clay/update-book!
    {:title "Noj Documentation"
+    :toc true
     :base-source-path "notebooks"
     :base-target-path "clean-book"
-    :chapter-source-paths ["index.clj"
+    :chapter-source-paths ["index.md"
                            "intro/visualization.clj"
                            "intro/image.clj"
                            "intro/python.clj"
