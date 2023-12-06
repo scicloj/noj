@@ -1,0 +1,160 @@
+
+---
+format:
+  html: {toc: true, toc-depth: 4, theme: spacelab, output-file: intro.datasets.html}
+monofont: Fira Code Medium
+highlight-style: solarized
+title: Clay tutorial
+code-block-background: true
+include-in-header: {text: '<link rel = "icon" href = "data:," />'}
+embed-resources: true
+
+---
+<style>table {
+  border-style: thin;
+}
+th, td {
+  padding: 6px;
+}
+td {
+  text-align: left;
+}
+th {
+  text-align: center;
+  background-color: #ddd;
+}
+tr:nth-child(even) {
+  background-color: #f6f6f6;
+}
+</style><style>.printedClojure .sourceCode {
+  background-color: transparent;
+  border-style: none;
+}
+</style>
+<script src="intro.datasets_files/md-default0.js" type="text/javascript"></script><script src="intro.datasets_files/md-default1.js" type="text/javascript"></script>
+
+# Datasets
+
+
+<div class="sourceClojure">
+```clojure
+(ns intro.datasets
+  (:require [scicloj.noj.v1.datasets :as datasets]))
+```
+</div>
+
+
+
+<div class="sourceClojure">
+```clojure
+datasets/iris
+```
+</div>
+
+
+_unnamed [150 5]:
+
+| :sepal-length | :sepal-width | :petal-length | :petal-width |  :species |
+|--------------:|-------------:|--------------:|-------------:|-----------|
+|           5.1 |          3.5 |           1.4 |          0.2 |    setosa |
+|           4.9 |          3.0 |           1.4 |          0.2 |    setosa |
+|           4.7 |          3.2 |           1.3 |          0.2 |    setosa |
+|           4.6 |          3.1 |           1.5 |          0.2 |    setosa |
+|           5.0 |          3.6 |           1.4 |          0.2 |    setosa |
+|           5.4 |          3.9 |           1.7 |          0.4 |    setosa |
+|           4.6 |          3.4 |           1.4 |          0.3 |    setosa |
+|           5.0 |          3.4 |           1.5 |          0.2 |    setosa |
+|           4.4 |          2.9 |           1.4 |          0.2 |    setosa |
+|           4.9 |          3.1 |           1.5 |          0.1 |    setosa |
+|           ... |          ... |           ... |          ... |       ... |
+|           6.9 |          3.1 |           5.4 |          2.1 | virginica |
+|           6.7 |          3.1 |           5.6 |          2.4 | virginica |
+|           6.9 |          3.1 |           5.1 |          2.3 | virginica |
+|           5.8 |          2.7 |           5.1 |          1.9 | virginica |
+|           6.8 |          3.2 |           5.9 |          2.3 | virginica |
+|           6.7 |          3.3 |           5.7 |          2.5 | virginica |
+|           6.7 |          3.0 |           5.2 |          2.3 | virginica |
+|           6.3 |          2.5 |           5.0 |          1.9 | virginica |
+|           6.5 |          3.0 |           5.2 |          2.0 | virginica |
+|           6.2 |          3.4 |           5.4 |          2.3 | virginica |
+|           5.9 |          3.0 |           5.1 |          1.8 | virginica |
+
+
+
+
+<div class="sourceClojure">
+```clojure
+datasets/mtcars
+```
+</div>
+
+
+_unnamed [32 12]:
+
+|             :name | :mpg | :cyl | :disp | :hp | :drat |   :wt | :qsec | :vs | :am | :gear | :carb |
+|-------------------|-----:|-----:|------:|----:|------:|------:|------:|----:|----:|------:|------:|
+|         Mazda RX4 | 21.0 |    6 | 160.0 | 110 |  3.90 | 2.620 | 16.46 |   0 |   1 |     4 |     4 |
+|     Mazda RX4 Wag | 21.0 |    6 | 160.0 | 110 |  3.90 | 2.875 | 17.02 |   0 |   1 |     4 |     4 |
+|        Datsun 710 | 22.8 |    4 | 108.0 |  93 |  3.85 | 2.320 | 18.61 |   1 |   1 |     4 |     1 |
+|    Hornet 4 Drive | 21.4 |    6 | 258.0 | 110 |  3.08 | 3.215 | 19.44 |   1 |   0 |     3 |     1 |
+| Hornet Sportabout | 18.7 |    8 | 360.0 | 175 |  3.15 | 3.440 | 17.02 |   0 |   0 |     3 |     2 |
+|           Valiant | 18.1 |    6 | 225.0 | 105 |  2.76 | 3.460 | 20.22 |   1 |   0 |     3 |     1 |
+|        Duster 360 | 14.3 |    8 | 360.0 | 245 |  3.21 | 3.570 | 15.84 |   0 |   0 |     3 |     4 |
+|         Merc 240D | 24.4 |    4 | 146.7 |  62 |  3.69 | 3.190 | 20.00 |   1 |   0 |     4 |     2 |
+|          Merc 230 | 22.8 |    4 | 140.8 |  95 |  3.92 | 3.150 | 22.90 |   1 |   0 |     4 |     2 |
+|          Merc 280 | 19.2 |    6 | 167.6 | 123 |  3.92 | 3.440 | 18.30 |   1 |   0 |     4 |     4 |
+|               ... |  ... |  ... |   ... | ... |   ... |   ... |   ... | ... | ... |   ... |   ... |
+|  Dodge Challenger | 15.5 |    8 | 318.0 | 150 |  2.76 | 3.520 | 16.87 |   0 |   0 |     3 |     2 |
+|       AMC Javelin | 15.2 |    8 | 304.0 | 150 |  3.15 | 3.435 | 17.30 |   0 |   0 |     3 |     2 |
+|        Camaro Z28 | 13.3 |    8 | 350.0 | 245 |  3.73 | 3.840 | 15.41 |   0 |   0 |     3 |     4 |
+|  Pontiac Firebird | 19.2 |    8 | 400.0 | 175 |  3.08 | 3.845 | 17.05 |   0 |   0 |     3 |     2 |
+|         Fiat X1-9 | 27.3 |    4 |  79.0 |  66 |  4.08 | 1.935 | 18.90 |   1 |   1 |     4 |     1 |
+|     Porsche 914-2 | 26.0 |    4 | 120.3 |  91 |  4.43 | 2.140 | 16.70 |   0 |   1 |     5 |     2 |
+|      Lotus Europa | 30.4 |    4 |  95.1 | 113 |  3.77 | 1.513 | 16.90 |   1 |   1 |     5 |     2 |
+|    Ford Pantera L | 15.8 |    8 | 351.0 | 264 |  4.22 | 3.170 | 14.50 |   0 |   1 |     5 |     4 |
+|      Ferrari Dino | 19.7 |    6 | 145.0 | 175 |  3.62 | 2.770 | 15.50 |   0 |   1 |     5 |     6 |
+|     Maserati Bora | 15.0 |    8 | 301.0 | 335 |  3.54 | 3.570 | 14.60 |   0 |   1 |     5 |     8 |
+|        Volvo 142E | 21.4 |    4 | 121.0 | 109 |  4.11 | 2.780 | 18.60 |   1 |   1 |     4 |     2 |
+
+
+
+
+<div class="sourceClojure">
+```clojure
+datasets/diamonds
+```
+</div>
+
+
+_unnamed [53940 10]:
+
+| :carat |      :cut | :color | :clarity | :depth | :table | :price |   :x |   :y |   :z |
+|-------:|-----------|--------|----------|-------:|-------:|-------:|-----:|-----:|-----:|
+|   0.23 |     Ideal |      E |      SI2 |   61.5 |   55.0 |    326 | 3.95 | 3.98 | 2.43 |
+|   0.21 |   Premium |      E |      SI1 |   59.8 |   61.0 |    326 | 3.89 | 3.84 | 2.31 |
+|   0.23 |      Good |      E |      VS1 |   56.9 |   65.0 |    327 | 4.05 | 4.07 | 2.31 |
+|   0.29 |   Premium |      I |      VS2 |   62.4 |   58.0 |    334 | 4.20 | 4.23 | 2.63 |
+|   0.31 |      Good |      J |      SI2 |   63.3 |   58.0 |    335 | 4.34 | 4.35 | 2.75 |
+|   0.24 | Very Good |      J |     VVS2 |   62.8 |   57.0 |    336 | 3.94 | 3.96 | 2.48 |
+|   0.24 | Very Good |      I |     VVS1 |   62.3 |   57.0 |    336 | 3.95 | 3.98 | 2.47 |
+|   0.26 | Very Good |      H |      SI1 |   61.9 |   55.0 |    337 | 4.07 | 4.11 | 2.53 |
+|   0.22 |      Fair |      E |      VS2 |   65.1 |   61.0 |    337 | 3.87 | 3.78 | 2.49 |
+|   0.23 | Very Good |      H |      VS1 |   59.4 |   61.0 |    338 | 4.00 | 4.05 | 2.39 |
+|    ... |       ... |    ... |      ... |    ... |    ... |    ... |  ... |  ... |  ... |
+|   0.71 |     Ideal |      G |      VS1 |   61.4 |   56.0 |   2756 | 5.76 | 5.73 | 3.53 |
+|   0.71 |   Premium |      E |      SI1 |   60.5 |   55.0 |   2756 | 5.79 | 5.74 | 3.49 |
+|   0.71 |   Premium |      F |      SI1 |   59.8 |   62.0 |   2756 | 5.74 | 5.73 | 3.43 |
+|   0.70 | Very Good |      E |      VS2 |   60.5 |   59.0 |   2757 | 5.71 | 5.76 | 3.47 |
+|   0.70 | Very Good |      E |      VS2 |   61.2 |   59.0 |   2757 | 5.69 | 5.72 | 3.49 |
+|   0.72 |   Premium |      D |      SI1 |   62.7 |   59.0 |   2757 | 5.69 | 5.73 | 3.58 |
+|   0.72 |     Ideal |      D |      SI1 |   60.8 |   57.0 |   2757 | 5.75 | 5.76 | 3.50 |
+|   0.72 |      Good |      D |      SI1 |   63.1 |   55.0 |   2757 | 5.69 | 5.75 | 3.61 |
+|   0.70 | Very Good |      D |      SI1 |   62.8 |   60.0 |   2757 | 5.66 | 5.68 | 3.56 |
+|   0.86 |   Premium |      H |      SI2 |   61.0 |   58.0 |   2757 | 6.15 | 6.12 | 3.74 |
+|   0.75 |     Ideal |      D |      SI2 |   62.2 |   55.0 |   2757 | 5.83 | 5.87 | 3.64 |
+
+
+
+<div style="background-color:grey;height:2px;width:100%;"></div>
+
+<div><pre><small><small>source: <a href="https://github.com/scicloj/clay/blob/main/notebooks/intro/datasets.clj">notebooks/intro/datasets.clj</a></small></small></pre></div>
