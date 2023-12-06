@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [1-alpha18]
+- removing the obsolete user namespace
+
 ## [1-alpha17]
 - updated deps, removed clerk dev dep
 - adapted to kindly updates, cleaned up obsolete functions
