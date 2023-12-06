@@ -6,7 +6,8 @@
             [scicloj.kindly.v4.kind :as kind]
             [scicloj.noj.v1.paths :as paths]
             [scicloj.tempfiles.api :as tempfiles]
-            [scicloj.noj.v1.stats :as stats]))
+            [scicloj.noj.v1.stats :as stats]
+            [tablecloth.api :as tc]))
 
 (defn hanami-data [data]
   (when data
@@ -30,12 +31,19 @@
           :else                   {:DATA data})))
 
 (defn hanami-plot [data template options]
-  (-> data
-      hanami-data
-      (merge options)
-      (->> (apply concat)
-           (apply hc/xform template))
-      kind/vega-lite))
+  (if (tc/grouped? data)
+    (-> data
+        (tc/aggregate {:plot (fn [group-data]
+                               [(-> group-data
+                                    (hanami-plot template
+                                                 options))])})
+        kind/table)
+    (-> data
+        hanami-data
+        (merge options)
+        (->> (apply concat)
+             (apply hc/xform template))
+        kind/vega-lite)))
 
 (defn hanami-collector [template template-key]
   (fn [common-data

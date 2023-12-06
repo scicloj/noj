@@ -44,6 +44,33 @@
                      {:MSIZE 200})
     kind/pprint)
 
+;; We can used Hanami temples from the namespace `[aerial.hanami.templates :as ht]'
+;; as well as the additional templates at Noj's `[scicloj.noj.v1.vis.hanami.templates :as vht]`.
+
+(-> datasets/iris
+    (vis/hanami-plot vht/rule-chart
+                     {:X :sepal-width
+                      :Y :sepal-length
+                      :X2 :petal-width
+                      :Y2 :petal-length
+                      :OPACITY 0.2
+                      :SIZE 3
+                      :COLOR "species"}))
+
+;; ### Grouped datasets
+
+;; Grouped datasets are handled automatically with a table view.
+
+(-> datasets/iris
+    (tc/group-by [:species])
+    (vis/hanami-plot vht/rule-chart
+                     {:X :sepal-width
+                      :Y :sepal-length
+                      :X2 :petal-width
+                      :Y2 :petal-length
+                      :OPACITY 0.2
+                      :SIZE 3}))
+
 ;; ### Additional Hanami templates
 
 ;; The `scicloj.noj.v1.vis.hanami.templates` namespace add Hanami templates to Hanami's own collection.
