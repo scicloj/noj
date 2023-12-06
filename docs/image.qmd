@@ -1,0 +1,64 @@
+
+---
+format:
+  html: {toc: true, toc-depth: 4, theme: spacelab, output-file: image.html}
+monofont: Fira Code Medium
+highlight-style: solarized
+code-block-background: true
+include-in-header: {text: '<link rel = "icon" href = "data:," />'}
+embed-resources: true
+
+---
+<style>table {
+  border-style: thin;
+}
+th, td {
+  padding: 6px;
+}
+td {
+  text-align: left;
+}
+th {
+  text-align: center;
+  background-color: #ddd;
+}
+tr:nth-child(even) {
+  background-color: #f6f6f6;
+}
+</style><style>.printedClojure .sourceCode {
+  background-color: transparent;
+  border-style: none;
+}
+</style>
+<script src="image_files/md-default1.js" type="text/javascript"></script><script src="image_files/md-default2.js" type="text/javascript"></script>
+
+<div class="sourceClojure">
+```clojure
+(ns image
+  (:require [tech.v3.tensor :as tensor]
+            [tech.v3.datatype.functional :as fun]
+            [scicloj.noj.v1.vis.image :as vis.image]))
+```
+</div>
+
+
+
+## Turning tensors into images
+
+
+<div class="sourceClojure">
+```clojure
+(-> (for [i (range 100)]
+      (range 100))
+    tensor/ensure-tensor
+    (fun/* 400)
+    (vis.image/tensor->image :ushort-gray))
+```
+</div>
+
+
+<img src="image_files/0.png" style="width:100%;" />
+
+<div style="background-color:grey;height:2px;width:100%;"></div>
+
+<div><pre><small><small>source: <a href="https://github.com/scicloj/noj/blob/main/notebooks/image.clj">notebooks/image.clj</a></small></small></pre></div>

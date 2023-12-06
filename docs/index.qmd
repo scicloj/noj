@@ -1,0 +1,47 @@
+
+---
+format:
+  html: {toc: true, toc-depth: 4, theme: spacelab, output-file: index.html}
+monofont: Fira Code Medium
+highlight-style: solarized
+code-block-background: true
+include-in-header: {text: '<link rel = "icon" href = "data:," />'}
+embed-resources: true
+
+---
+<style>table {
+  border-style: thin;
+}
+th, td {
+  padding: 6px;
+}
+td {
+  text-align: left;
+}
+th {
+  text-align: center;
+  background-color: #ddd;
+}
+tr:nth-child(even) {
+  background-color: #f6f6f6;
+}
+</style><style>.printedClojure .sourceCode {
+  background-color: transparent;
+  border-style: none;
+}
+</style>
+<script src="index_files/md-default0.js" type="text/javascript"></script><script src="index_files/md-default1.js" type="text/javascript"></script>
+
+<div class="sourceClojure">
+```clojure
+(ns index)
+```
+</div>
+
+
+
+# Preface
+
+<div style="background-color:grey;height:2px;width:100%;"></div>
+
+<div><pre><small><small>source: <a href="https://github.com/scicloj/noj/blob/main/notebooks/index.clj">notebooks/index.clj</a></small></small></pre></div>

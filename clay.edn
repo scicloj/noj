@@ -1,0 +1,15 @@
+{:remote-repo {:git-url "https://github.com/scicloj/noj"
+               :branch "main"}
+ :quarto {:format {:html {:toc true
+                          :toc-depth 4
+                          :theme :spacelab}
+                   :revealjs {:theme :solarized
+                              :navigation-mode :vertical
+                              :transition :slide
+                              :background-transition :fade
+                              :incremental true}}
+          :monofont "Fira Code Medium"
+          :highlight-style :solarized
+          :code-block-background true
+          :include-in-header {:text "<link rel = \"icon\" href = \"data:,\" />"}
+          :embed-resources true}}
