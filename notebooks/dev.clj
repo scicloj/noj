@@ -11,4 +11,4 @@
              :base-target-path "book"
              :show false
              :run-quarto false
-             :book {:title "Book Example"}})
+             :book {:title "Noj Documentation"}})
