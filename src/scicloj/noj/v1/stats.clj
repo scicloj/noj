@@ -111,8 +111,3 @@
           :right (dtype/make-reader :float32 nbins
                                     (+ minimum (* (inc idx) bin-width)))}
          tmd/->dataset))))
-
-
-(comment
-  (-> (repeatedly 99 rand)
-      (histogram {:bin-count 5})))
