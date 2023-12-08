@@ -7,6 +7,7 @@
                            "datasets.clj"
                            "image.clj"
                            "python.clj"
+                           "stats.clj"
                            "visualization.clj"]
              :base-target-path "book"
              :show false
