@@ -66,6 +66,32 @@
   (hanami-collector ht/hconcat-chart
                     :HCONCAT))
 
+(defn hanami-combined-plot [dataset
+                            combining-template
+                            options
+                            template-key
+                            plot-specs]
+  (-> dataset
+      (hanami-plot
+       combining-template
+       (assoc options
+              template-key
+              (->> plot-specs
+                   (map (partial
+                         apply
+                         (fn inner-plot
+                           ([inner-template
+                             inner-options]
+                            (inner-plot nil
+                                        inner-template
+                                        inner-options))
+                           ([inner-dataset
+                             inner-template
+                             inner-options]
+                            (hanami-plot inner-dataset
+                                         inner-template
+                                         (merge options inner-options)))))))))))
+
 (defn hanami-histogram [dataset column-name options]
   (-> column-name
       dataset

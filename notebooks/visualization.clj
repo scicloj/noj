@@ -94,7 +94,23 @@
                        {:MSIZE 4
                         :MCOLOR "brown"})]))
 
+;; Alternatively:
+
+(-> random-walk
+    (vis/hanami-combined-plot
+     ht/layer-chart
+     {:TITLE "points and a line"}
+     :LAYER [[nil
+              ht/point-chart
+              {:MSIZE 400}]
+             [nil
+              ht/line-chart
+              {:MSIZE 4
+               :MCOLOR "brown"}]]))
+
 ;; ### Concatenation
+
+;; Vertical
 
 (-> random-walk
     (vis/hanami-vconcat
@@ -111,6 +127,21 @@
                         :HEIGHT 100
                         :WIDTH 100})]))
 
+;; Alternatively:
+
+(-> random-walk
+    (vis/hanami-combined-plot
+     ht/vconcat-chart
+     {:HEIGHT 100
+      :WIDTH 100}
+     :VCONCAT [[ht/point-chart
+                {:MSIZE 400}]
+               [ht/line-chart
+                {:MSIZE 4
+                 :MCOLOR "brown"}]]))
+
+;; Horizontal
+
 (-> random-walk
     (vis/hanami-hconcat
      {}
@@ -126,26 +157,36 @@
                         :HEIGHT 100
                         :WIDTH 100})]))
 
+;; Alternatively:
+(-> random-walk
+    (vis/hanami-combined-plot
+     ht/hconcat-chart
+     {:HEIGHT 100
+      :WIDTH 100}
+     :HCONCAT [[ht/point-chart
+                {:MSIZE 400}]
+               [ht/line-chart
+                {:MSIZE 4
+                 :MCOLOR "brown"}]]))
+
 ;; ### Linear regression
 
 (-> datasets/mtcars
     (stats/add-predictions :mpg [:wt]
                            {:model-type :smile.regression/ordinary-least-square})
-    (vis/hanami-layers {}
-                       [(vis/hanami-plot nil
-                                         ht/point-chart
-                                         {:X :wt
-                                          :Y :mpg
-                                          :MSIZE 200
-                                          :HEIGHT 200
-                                          :WIDTH 200})
-                        (vis/hanami-plot nil
-                                         ht/line-chart
-                                         {:X :wt
-                                          :Y :mpg-prediction
-                                          :MSIZE 5
-                                          :MCOLOR "purple"
-                                          :YTITLE :mpg})]))
+    (vis/hanami-combined-plot
+     ht/layer-chart
+     {:X :wt
+      :MSIZE 200
+      :HEIGHT 200}
+     :LAYER [[ht/point-chart
+              {:Y :mpg
+               :WIDTH 200}]
+             [ht/line-chart
+              {:Y :mpg-prediction
+               :MSIZE 5
+               :MCOLOR "purple"
+               :YTITLE :mpg}]]))
 
 ;; ### Histogram
 
@@ -171,23 +212,20 @@
                   (stats/add-predictions :mpg [:wt]
                                          {:model-type :smile.regression/ordinary-least-square})
                   (tc/select-columns [:gear :wt :mpg :mpg-prediction])
-                  (vis/hanami-layers {:TITLE (str "grear=" group-name)}
-                                     [(vis/hanami-plot nil
-                                                       ht/point-chart
-                                                       {:X :wt
-                                                        :Y :mpg
-                                                        :MSIZE 200
-                                                        :MCOLOR (pallete i)
-                                                        :HEIGHT 200
-                                                        :WIDTH 200})
-                                      (vis/hanami-plot nil
-                                                       ht/line-chart
-                                                       {:X :wt
-                                                        :Y :mpg-prediction
-                                                        :MSIZE 5
-                                                        :MCOLOR (pallete i)
-                                                        :YTITLE :mpg})]
-                                     ))))
+                  (vis/hanami-combined-plot
+                   ht/layer-chart
+                   {:TITLE (str "grear=" group-name)
+                    :X :wt
+                    :MCOLOR (pallete i)
+                    :HEIGHT 200
+                    :WIDTH 200}
+                   :LAYER [[ht/point-chart
+                            {:Y :mpg
+                             :MSIZE 200}]
+                           [ht/line-chart
+                            {:Y :mpg-prediction
+                             :MSIZE 5
+                             :YTITLE :mpg}]]))))
            (vis/hanami-vconcat nil {}))))
 
 ;; A similar example with histograms:
@@ -213,28 +251,27 @@
                            {:model-type :smile.regression/ordinary-least-square})
     (tc/ungroup)
     (tc/select-columns [:gear :wt :mpg :mpg-prediction])
-    (vis/hanami-layers {}
-                       [(vis/hanami-plot nil
-                                         ht/point-chart
-                                         {:X :wt
-                                          :Y :mpg
-                                          :MSIZE 200
-                                          :COLOR "gear"
-                                          :HEIGHT 100
-                                          :WIDTH 200})
-                        (vis/hanami-plot nil
-                                         ht/line-chart
-                                         {:X :wt
-                                          :Y :mpg-prediction
-                                          :MSIZE 5
-                                          :COLOR "gear"
-                                          :YTITLE :mpg})])
+    (vis/hanami-combined-plot
+     ht/layer-chart
+     {}
+     :LAYER [[ht/point-chart
+              {:X :wt
+               :Y :mpg
+               :MSIZE 200
+               :COLOR "gear"
+               :HEIGHT 100
+               :WIDTH 200}]
+             [ht/line-chart
+              {:X :wt
+               :Y :mpg-prediction
+               :MSIZE 5
+               :COLOR "gear"
+               :YTITLE :mpg}]])
     ((fn [spec]
        {:facet {:row {:field "gear"}}
         :spec (dissoc spec :data)
         :data (:data spec)}))
     kind/vega-lite)
-
 
 
 :bye
