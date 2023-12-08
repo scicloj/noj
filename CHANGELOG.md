@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. This change
 ## [1-alpha19-SNAPSHOT]
 - avoiding unnecessary `kind/vega-lite` annotation on compound plots (to support tables)
 - added `hanami-combined-plot` API
+- refactored and added information to regression models
+- added model information in prediction columnw metadata
 
 ## [1-alpha18] - 2023-12-06
 - removed the obsolete user namespace

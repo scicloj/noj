@@ -1,9 +1,5 @@
 (ns scicloj.noj.v1.stats
   (:require [fastmath.stats :as stats]
-            ;; [scicloj.ml.core :as ml]
-            ;; [scicloj.metamorph.ml :as mmml]
-            ;; [scicloj.ml.metamorph :as mlmm]
-            ;; [scicloj.ml.dataset :as ds]
             [tech.v3.dataset :as tmd]
             [scicloj.ml.smile.regression :as regression]
             [scicloj.metamorph.ml :as mmml]
@@ -13,8 +9,6 @@
             [tech.v3.datatype.functional :as fun]
             [tablecloth.api :as tc]
             [scicloj.noj.v1.util :as util]))
-
-
 
 ;; Computing correlation matrices
 
@@ -45,24 +39,25 @@
 ;; Multivariate linear regression
 
 (defn regression-model [dataset target covariates options]
-  (let [model (-> dataset
-                  (tc/select-columns (cons target covariates))
-                  (ds-mod/set-inference-target target)
-                  (mmml/train options))
+  (let [mmml-model (-> dataset
+                       (tc/select-columns (cons target covariates))
+                       (ds-mod/set-inference-target target)
+                       (mmml/train options))
         predict (fn [ds]
                   (-> ds
                       (tc/drop-columns [target])
-                      (mmml/predict model)
+                      (mmml/predict mmml-model)
                       target))
         predictions (-> dataset
                         predict)
         r (-> dataset
               target
               (stats/correlation predictions))]
-    (-> model
-        mmml/explain
-        (assoc :R2 (* r r)
-               :predict predict))))
+    (-> mmml-model
+        (assoc :explained mmml/explain
+               :R2 (* r r)
+               :predict predict
+               :predictions predictions))))
 
 (defn linear-regression-model [dataset target covariates]
   (regression-model dataset target covariates
@@ -82,27 +77,22 @@
          :x xs
          :y ys}
         tc/dataset
-        (linear-regression-model :y [:w :x]))))
-
-
-
+        (linear-regression-model :y [:w :x])
+        (dissoc :model-data))))
 
 (defn add-predictions [dataset target covariates options]
   (let [process-fn (fn [ds]
-                     (let [model (-> ds
-                                     (tc/select-columns (cons target covariates))
-                                     (ds-mod/set-inference-target target)
-                                     (mmml/train options))
-                           predict (fn [ds1]
-                                     (-> ds1
-                                         (tc/drop-columns [target])
-                                         (mmml/predict model)
-                                         target))
-                           predictions (-> ds
-                                           predict)]
+                     (let [{:as model
+                            :keys [predictions]} (-> ds
+                                                     (regression-model target covariates options))]
                        (-> ds
                            (tc/add-column (util/concat-keywords target :prediction)
-                                          predictions))))]
+                                          (-> predictions
+                                              (vary-meta
+                                               assoc :model (-> model
+                                                                (dissoc [:model-data
+                                                                         :predict
+                                                                         :predictions]))))))))]
     (if (tc/grouped? dataset)
       (tc/process-group-data dataset process-fn)
       (process-fn dataset))))
@@ -117,13 +107,20 @@
                      (* -2 x)
                      9
                      (* 1000 (rand))))
-                ws xs)]
-    (-> {:w ws
-         :x xs
-         :y ys}
-        tc/dataset
-        (add-predictions :y [:w :x]
-                         {:model-type :smile.regression/ordinary-least-square}))))
+                ws xs)
+        data-with-predictions (-> {:w ws
+                                   :x xs
+                                   :y ys}
+                                  tc/dataset
+                                  (add-predictions :y [:w :x]
+                                                   {:model-type :smile.regression/ordinary-least-square}))]
+    {:info (-> data-with-predictions
+               :y-prediction
+               meta
+               :model
+               (select-keys [:options :feature-columns :target-columns
+                             :explained :R2]))
+     :data-with-predictions data-with-predictions}))
 
 
 ;; based on the histogram of https://github.com/techascent/tech.viz
