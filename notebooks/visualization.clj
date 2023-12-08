@@ -188,6 +188,8 @@
                :MCOLOR "purple"
                :YTITLE :mpg}]]))
 
+;; Alternatively:
+
 (-> datasets/mtcars
     (hanami/linear-regression-plot
      :mpg :wt
@@ -209,7 +211,6 @@
 ;; The following is inspired by the example at Plotnine's [main page](https://plotnine.readthedocs.io/en/stable/).
 ;; Note how we add regression lines here. We take care of layout and colouring on our side, not using Vega-Lite for that.
 
-
 (let [pallete (->> :accent
                    color/palette
                    (mapv color/format-hex))]
@@ -230,6 +231,24 @@
                     :line-options {:MSIZE 5}}))))
            (hanami/vconcat nil {}))))
 
+;; Alternatively, using a grouped dataset:
+
+(let [pallete (->> :accent
+                   color/palette
+                   (mapv color/format-hex))]
+  (-> datasets/mtcars
+      (tc/map-columns :color [:gear] #(-> % (- 3) pallete))
+      (tc/group-by [:gear])
+      (hanami/linear-regression-plot
+       :mpg :wt
+       {:X :wt
+        :MCOLOR {:expr "datum.color"}
+        :HEIGHT 200
+        :WIDTH 200
+        :point-options {:MSIZE 200}
+        :line-options {:MSIZE 5}})
+      (tc/order-by [:gear])))
+
 ;; A similar example with histograms:
 
 (let [pallete (->> :accent
@@ -242,10 +261,12 @@
             (fn [i [group-name ds]]
               (-> ds
                   (hanami/histogram :sepal-width
-                                        {:nbins 10}))))
+                                    {:nbins 10}))))
            (hanami/vconcat nil {}))))
 
-;; Scatterplots and regression lines again, this time using Vega-Lite for layout and coloring (using its "facet" option).
+;; Scatterplots and regression lines again,
+;; this time using Vega-Lite for layout and coloring
+;; (using its "facet" option).
 
 (-> datasets/mtcars
     (tc/group-by [:gear])
