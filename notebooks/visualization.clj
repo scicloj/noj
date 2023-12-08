@@ -100,11 +100,9 @@
     (hanami/combined-plot
      ht/layer-chart
      {:TITLE "points and a line"}
-     :LAYER [[nil
-              ht/point-chart
+     :LAYER [[ht/point-chart
               {:MSIZE 400}]
-             [nil
-              ht/line-chart
+             [ht/line-chart
               {:MSIZE 4
                :MCOLOR "brown"}]]))
 
