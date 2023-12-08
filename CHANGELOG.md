@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## [1-alpha19-SNAPSHOT]
+## [1-alpha19] - 2023-12-08
 - avoiding unnecessary `kind/vega-lite` annotation on compound plots (to support tables)
 - added `hanami-combined-plot` API
 - refactored and added information to regression models
