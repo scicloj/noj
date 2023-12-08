@@ -86,7 +86,7 @@ We can plot a Tablecloth datasete using a Hanami template:
 </div>
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":400,"background":"floralwhite","height":300,"data":{"values":"x,y\n0,0.16597987750077758\n1,0.41196480559927706\n2,0.847447299364155\n3,0.5795886912196944\n4,0.624609280128083\n5,0.6136477281969442\n6,0.7326792120687574\n7,0.6962948355236439\n8,0.8947332386710685\n9,0.8216391622633435\n10,1.1413306702108856\n11,0.8904250708519393\n12,1.1765321315986919\n13,1.4195319800569797\n14,1.050228275951158\n15,1.4716156991096159\n16,1.2536851188008438\n17,0.7970856240196954\n18,0.373681714730443\n19,0.40138634264995765\n","format":{"type":"csv"}}});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":400,"background":"floralwhite","height":300,"data":{"values":"x,y\n0,-0.007289485619059732\n1,0.2521181517858183\n2,0.12988058103444666\n3,-0.2510472714125299\n4,-0.13771950024977475\n5,0.31380333171993635\n6,0.39381838689783\n7,0.8324953223736354\n8,0.8297430604646384\n9,1.1504800197695795\n10,0.7432121897442924\n11,0.79321039114537\n12,1.0486524264990105\n13,1.4081325527206148\n14,1.695873449742702\n15,1.5743656806224267\n16,1.4063815299093179\n17,1.0703862772435335\n18,0.5808115260925738\n19,0.10580994767954632\n","format":{"type":"csv"}}});</script></div>
 
 Let us look inside the resulting vega-lite space. We can see the dataset is included as CSV:
 
@@ -113,7 +113,7 @@ Let us look inside the resulting vega-lite space. We can see the dataset is incl
  :height 300,
  :data
  {:values
-  "x,y\n0,0.16597987750077758\n1,0.41196480559927706\n2,0.847447299364155\n3,0.5795886912196944\n4,0.624609280128083\n5,0.6136477281969442\n6,0.7326792120687574\n7,0.6962948355236439\n8,0.8947332386710685\n9,0.8216391622633435\n10,1.1413306702108856\n11,0.8904250708519393\n12,1.1765321315986919\n13,1.4195319800569797\n14,1.050228275951158\n15,1.4716156991096159\n16,1.2536851188008438\n17,0.7970856240196954\n18,0.373681714730443\n19,0.40138634264995765\n",
+  "x,y\n0,-0.007289485619059732\n1,0.2521181517858183\n2,0.12988058103444666\n3,-0.2510472714125299\n4,-0.13771950024977475\n5,0.31380333171993635\n6,0.39381838689783\n7,0.8324953223736354\n8,0.8297430604646384\n9,1.1504800197695795\n10,0.7432121897442924\n11,0.79321039114537\n12,1.0486524264990105\n13,1.4081325527206148\n14,1.695873449742702\n15,1.5743656806224267\n16,1.4063815299093179\n17,1.0703862772435335\n18,0.5808115260925738\n19,0.10580994767954632\n",
   :format {:type "csv"}}}
 
 ```
@@ -201,7 +201,7 @@ The `scicloj.noj.v1.vis.hanami.templates` namespace add Hanami templates to Hana
 </div>
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","title":{"text":"points and a line"},"layer":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":400,"background":"floralwhite","height":300},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300,"data":{"values":"x,y\n0,0.16597987750077758\n1,0.41196480559927706\n2,0.847447299364155\n3,0.5795886912196944\n4,0.624609280128083\n5,0.6136477281969442\n6,0.7326792120687574\n7,0.6962948355236439\n8,0.8947332386710685\n9,0.8216391622633435\n10,1.1413306702108856\n11,0.8904250708519393\n12,1.1765321315986919\n13,1.4195319800569797\n14,1.050228275951158\n15,1.4716156991096159\n16,1.2536851188008438\n17,0.7970856240196954\n18,0.373681714730443\n19,0.40138634264995765\n","format":{"type":"csv"}}});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","title":{"text":"points and a line"},"layer":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":400,"background":"floralwhite","height":300},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300,"data":{"values":"x,y\n0,-0.007289485619059732\n1,0.2521181517858183\n2,0.12988058103444666\n3,-0.2510472714125299\n4,-0.13771950024977475\n5,0.31380333171993635\n6,0.39381838689783\n7,0.8324953223736354\n8,0.8297430604646384\n9,1.1504800197695795\n10,0.7432121897442924\n11,0.79321039114537\n12,1.0486524264990105\n13,1.4081325527206148\n14,1.695873449742702\n15,1.5743656806224267\n16,1.4063815299093179\n17,1.0703862772435335\n18,0.5808115260925738\n19,0.10580994767954632\n","format":{"type":"csv"}}});</script></div>
 
 Alternatively:
 
@@ -212,18 +212,16 @@ Alternatively:
     (hanami/combined-plot
      ht/layer-chart
      {:TITLE "points and a line"}
-     :LAYER [[nil
-              ht/point-chart
+     :LAYER [[ht/point-chart
               {:MSIZE 400}]
-             [nil
-              ht/line-chart
+             [ht/line-chart
               {:MSIZE 4
                :MCOLOR "brown"}]]))
 ```
 </div>
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","title":{"text":"points and a line"},"layer":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":400,"background":"floralwhite","title":{"text":"points and a line"},"height":300},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":400,"background":"floralwhite","title":{"text":"points and a line"},"height":300}],"height":300,"data":{"values":"x,y\n0,0.16597987750077758\n1,0.41196480559927706\n2,0.847447299364155\n3,0.5795886912196944\n4,0.624609280128083\n5,0.6136477281969442\n6,0.7326792120687574\n7,0.6962948355236439\n8,0.8947332386710685\n9,0.8216391622633435\n10,1.1413306702108856\n11,0.8904250708519393\n12,1.1765321315986919\n13,1.4195319800569797\n14,1.050228275951158\n15,1.4716156991096159\n16,1.2536851188008438\n17,0.7970856240196954\n18,0.373681714730443\n19,0.40138634264995765\n","format":{"type":"csv"}}});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","title":{"text":"points and a line"},"layer":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":400,"background":"floralwhite","title":{"text":"points and a line"},"height":300},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":400,"background":"floralwhite","title":{"text":"points and a line"},"height":300}],"height":300,"data":{"values":"x,y\n0,-0.007289485619059732\n1,0.2521181517858183\n2,0.12988058103444666\n3,-0.2510472714125299\n4,-0.13771950024977475\n5,0.31380333171993635\n6,0.39381838689783\n7,0.8324953223736354\n8,0.8297430604646384\n9,1.1504800197695795\n10,0.7432121897442924\n11,0.79321039114537\n12,1.0486524264990105\n13,1.4081325527206148\n14,1.695873449742702\n15,1.5743656806224267\n16,1.4063815299093179\n17,1.0703862772435335\n18,0.5808115260925738\n19,0.10580994767954632\n","format":{"type":"csv"}}});</script></div>
 
 
 ### Concatenation
@@ -250,7 +248,7 @@ Vertical
 </div>
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","vconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"height":300,"data":{"values":"x,y\n0,0.16597987750077758\n1,0.41196480559927706\n2,0.847447299364155\n3,0.5795886912196944\n4,0.624609280128083\n5,0.6136477281969442\n6,0.7326792120687574\n7,0.6962948355236439\n8,0.8947332386710685\n9,0.8216391622633435\n10,1.1413306702108856\n11,0.8904250708519393\n12,1.1765321315986919\n13,1.4195319800569797\n14,1.050228275951158\n15,1.4716156991096159\n16,1.2536851188008438\n17,0.7970856240196954\n18,0.373681714730443\n19,0.40138634264995765\n","format":{"type":"csv"}}});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","vconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"height":300,"data":{"values":"x,y\n0,-0.007289485619059732\n1,0.2521181517858183\n2,0.12988058103444666\n3,-0.2510472714125299\n4,-0.13771950024977475\n5,0.31380333171993635\n6,0.39381838689783\n7,0.8324953223736354\n8,0.8297430604646384\n9,1.1504800197695795\n10,0.7432121897442924\n11,0.79321039114537\n12,1.0486524264990105\n13,1.4081325527206148\n14,1.695873449742702\n15,1.5743656806224267\n16,1.4063815299093179\n17,1.0703862772435335\n18,0.5808115260925738\n19,0.10580994767954632\n","format":{"type":"csv"}}});</script></div>
 
 Alternatively:
 
@@ -271,7 +269,7 @@ Alternatively:
 </div>
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"width":100,"background":"floralwhite","vconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"height":100,"data":{"values":"x,y\n0,0.16597987750077758\n1,0.41196480559927706\n2,0.847447299364155\n3,0.5795886912196944\n4,0.624609280128083\n5,0.6136477281969442\n6,0.7326792120687574\n7,0.6962948355236439\n8,0.8947332386710685\n9,0.8216391622633435\n10,1.1413306702108856\n11,0.8904250708519393\n12,1.1765321315986919\n13,1.4195319800569797\n14,1.050228275951158\n15,1.4716156991096159\n16,1.2536851188008438\n17,0.7970856240196954\n18,0.373681714730443\n19,0.40138634264995765\n","format":{"type":"csv"}}});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"width":100,"background":"floralwhite","vconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"height":100,"data":{"values":"x,y\n0,-0.007289485619059732\n1,0.2521181517858183\n2,0.12988058103444666\n3,-0.2510472714125299\n4,-0.13771950024977475\n5,0.31380333171993635\n6,0.39381838689783\n7,0.8324953223736354\n8,0.8297430604646384\n9,1.1504800197695795\n10,0.7432121897442924\n11,0.79321039114537\n12,1.0486524264990105\n13,1.4081325527206148\n14,1.695873449742702\n15,1.5743656806224267\n16,1.4063815299093179\n17,1.0703862772435335\n18,0.5808115260925738\n19,0.10580994767954632\n","format":{"type":"csv"}}});</script></div>
 
 Horizontal
 
@@ -296,7 +294,7 @@ Horizontal
 </div>
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"hconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"width":400,"background":"floralwhite","height":300,"data":{"values":"x,y\n0,0.16597987750077758\n1,0.41196480559927706\n2,0.847447299364155\n3,0.5795886912196944\n4,0.624609280128083\n5,0.6136477281969442\n6,0.7326792120687574\n7,0.6962948355236439\n8,0.8947332386710685\n9,0.8216391622633435\n10,1.1413306702108856\n11,0.8904250708519393\n12,1.1765321315986919\n13,1.4195319800569797\n14,1.050228275951158\n15,1.4716156991096159\n16,1.2536851188008438\n17,0.7970856240196954\n18,0.373681714730443\n19,0.40138634264995765\n","format":{"type":"csv"}}});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"hconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"width":400,"background":"floralwhite","height":300,"data":{"values":"x,y\n0,-0.007289485619059732\n1,0.2521181517858183\n2,0.12988058103444666\n3,-0.2510472714125299\n4,-0.13771950024977475\n5,0.31380333171993635\n6,0.39381838689783\n7,0.8324953223736354\n8,0.8297430604646384\n9,1.1504800197695795\n10,0.7432121897442924\n11,0.79321039114537\n12,1.0486524264990105\n13,1.4081325527206148\n14,1.695873449742702\n15,1.5743656806224267\n16,1.4063815299093179\n17,1.0703862772435335\n18,0.5808115260925738\n19,0.10580994767954632\n","format":{"type":"csv"}}});</script></div>
 
 Alternatively:
 
@@ -317,7 +315,7 @@ Alternatively:
 </div>
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"hconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"width":100,"background":"floralwhite","height":100,"data":{"values":"x,y\n0,0.16597987750077758\n1,0.41196480559927706\n2,0.847447299364155\n3,0.5795886912196944\n4,0.624609280128083\n5,0.6136477281969442\n6,0.7326792120687574\n7,0.6962948355236439\n8,0.8947332386710685\n9,0.8216391622633435\n10,1.1413306702108856\n11,0.8904250708519393\n12,1.1765321315986919\n13,1.4195319800569797\n14,1.050228275951158\n15,1.4716156991096159\n16,1.2536851188008438\n17,0.7970856240196954\n18,0.373681714730443\n19,0.40138634264995765\n","format":{"type":"csv"}}});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"hconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"width":100,"background":"floralwhite","height":100,"data":{"values":"x,y\n0,-0.007289485619059732\n1,0.2521181517858183\n2,0.12988058103444666\n3,-0.2510472714125299\n4,-0.13771950024977475\n5,0.31380333171993635\n6,0.39381838689783\n7,0.8324953223736354\n8,0.8297430604646384\n9,1.1504800197695795\n10,0.7432121897442924\n11,0.79321039114537\n12,1.0486524264990105\n13,1.4081325527206148\n14,1.695873449742702\n15,1.5743656806224267\n16,1.4063815299093179\n17,1.0703862772435335\n18,0.5808115260925738\n19,0.10580994767954632\n","format":{"type":"csv"}}});</script></div>
 
 
 ### Linear regression
