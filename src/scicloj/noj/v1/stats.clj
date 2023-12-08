@@ -39,9 +39,9 @@
 
 ;; Multivariate linear regression
 
-(defn regression-model [dataset target covariates options]
+(defn regression-model [dataset target features options]
   (let [mmml-model (-> dataset
-                       (tc/select-columns (cons target covariates))
+                       (tc/select-columns (cons target features))
                        (ds-mod/set-inference-target target)
                        (mmml/train options))
         predict (fn [ds]
@@ -60,32 +60,15 @@
                :predict predict
                :predictions predictions))))
 
-(defn linear-regression-model [dataset target covariates]
-  (regression-model dataset target covariates
+(defn linear-regression-model [dataset target features]
+  (regression-model dataset target features
                     {:model-type :smile.regression/ordinary-least-square}))
 
-(comment
-  (let [n 1000
-        ws (repeatedly n rand)
-        xs (range n)
-        ys (map (fn [w x]
-                  (+ (* 3 w)
-                     (* -2 x)
-                     9
-                     (* 1000 (rand))))
-                ws xs)]
-    (-> {:w ws
-         :x xs
-         :y ys}
-        tc/dataset
-        (linear-regression-model :y [:w :x])
-        (dissoc :model-data))))
-
-(defn add-predictions [dataset target covariates options]
+(defn add-predictions [dataset target features options]
   (let [process-fn (fn [ds]
                      (let [{:as model
                             :keys [predictions]} (-> ds
-                                                     (regression-model target covariates options))]
+                                                     (regression-model target features options))]
                        (-> ds
                            (tc/add-column (util/concat-keywords target :prediction)
                                           (-> predictions
@@ -99,29 +82,7 @@
       (process-fn dataset))))
 
 
-(comment
-  (let [n 1000
-        ws (repeatedly n rand)
-        xs (range n)
-        ys (map (fn [w x]
-                  (+ (* 3 w)
-                     (* -2 x)
-                     9
-                     (* 1000 (rand))))
-                ws xs)
-        data-with-predictions (-> {:w ws
-                                   :x xs
-                                   :y ys}
-                                  tc/dataset
-                                  (add-predictions :y [:w :x]
-                                                   {:model-type :smile.regression/ordinary-least-square}))]
-    {:info (-> data-with-predictions
-               :y-prediction
-               meta
-               :model
-               (select-keys [:options :feature-columns :target-columns
-                             :explained :R2]))
-     :data-with-predictions data-with-predictions}))
+
 
 
 ;; based on the histogram of https://github.com/techascent/tech.viz
