@@ -42,7 +42,7 @@ tr:nth-child(even) {
             [aerial.hanami.common :as hc]
             [aerial.hanami.templates :as ht]
             [scicloj.noj.v1.vis.hanami.templates :as vht]
-            [scicloj.noj.v1.vis :as vis]
+            [scicloj.noj.v1.vis.hanami :as hanami]
             [scicloj.noj.v1.stats :as stats]
             [scicloj.noj.v1.datasets :as datasets]
             [tech.v3.datatype :as dtype]
@@ -80,13 +80,13 @@ We can plot a Tablecloth datasete using a Hanami template:
 <div class="sourceClojure">
 ```clojure
 (-> random-walk
-    (vis/hanami-plot ht/point-chart
-                     {:MSIZE 200}))
+    (hanami/plot ht/point-chart
+                 {:MSIZE 200}))
 ```
 </div>
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":400,"background":"floralwhite","height":300,"data":{"values":"x,y\n0,-0.1108290762587244\n1,-0.09806025874393365\n2,0.14321301527728802\n3,0.5220254498157079\n4,0.19277850530241103\n5,0.559940686652048\n6,0.7343552022289602\n7,0.40998660053994873\n8,0.15314215758183058\n9,0.5261991775514143\n10,0.33736886091736706\n11,0.553680932662185\n12,0.9505870610127862\n13,1.0465447704277704\n14,1.4588419972179811\n15,1.466748369933816\n16,1.102130129756103\n17,0.6716648328900973\n18,0.6567989589179951\n19,0.6642094366674477\n","format":{"type":"csv"}}});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":400,"background":"floralwhite","height":300,"data":{"values":"x,y\n0,0.16597987750077758\n1,0.41196480559927706\n2,0.847447299364155\n3,0.5795886912196944\n4,0.624609280128083\n5,0.6136477281969442\n6,0.7326792120687574\n7,0.6962948355236439\n8,0.8947332386710685\n9,0.8216391622633435\n10,1.1413306702108856\n11,0.8904250708519393\n12,1.1765321315986919\n13,1.4195319800569797\n14,1.050228275951158\n15,1.4716156991096159\n16,1.2536851188008438\n17,0.7970856240196954\n18,0.373681714730443\n19,0.40138634264995765\n","format":{"type":"csv"}}});</script></div>
 
 Let us look inside the resulting vega-lite space. We can see the dataset is included as CSV:
 
@@ -94,7 +94,7 @@ Let us look inside the resulting vega-lite space. We can see the dataset is incl
 <div class="sourceClojure">
 ```clojure
 (-> random-walk
-    (vis/hanami-plot ht/point-chart
+    (hanami/plot ht/point-chart
                      {:MSIZE 200})
     kind/pprint)
 ```
@@ -113,7 +113,7 @@ Let us look inside the resulting vega-lite space. We can see the dataset is incl
  :height 300,
  :data
  {:values
-  "x,y\n0,-0.1108290762587244\n1,-0.09806025874393365\n2,0.14321301527728802\n3,0.5220254498157079\n4,0.19277850530241103\n5,0.559940686652048\n6,0.7343552022289602\n7,0.40998660053994873\n8,0.15314215758183058\n9,0.5261991775514143\n10,0.33736886091736706\n11,0.553680932662185\n12,0.9505870610127862\n13,1.0465447704277704\n14,1.4588419972179811\n15,1.466748369933816\n16,1.102130129756103\n17,0.6716648328900973\n18,0.6567989589179951\n19,0.6642094366674477\n",
+  "x,y\n0,0.16597987750077758\n1,0.41196480559927706\n2,0.847447299364155\n3,0.5795886912196944\n4,0.624609280128083\n5,0.6136477281969442\n6,0.7326792120687574\n7,0.6962948355236439\n8,0.8947332386710685\n9,0.8216391622633435\n10,1.1413306702108856\n11,0.8904250708519393\n12,1.1765321315986919\n13,1.4195319800569797\n14,1.050228275951158\n15,1.4716156991096159\n16,1.2536851188008438\n17,0.7970856240196954\n18,0.373681714730443\n19,0.40138634264995765\n",
   :format {:type "csv"}}}
 
 ```
@@ -127,14 +127,14 @@ as well as the additional templates at Noj's `[scicloj.noj.v1.vis.hanami.templat
 <div class="sourceClojure">
 ```clojure
 (-> datasets/iris
-    (vis/hanami-plot vht/rule-chart
-                     {:X :sepal-width
-                      :Y :sepal-length
-                      :X2 :petal-width
-                      :Y2 :petal-length
-                      :OPACITY 0.2
-                      :SIZE 3
-                      :COLOR "species"}))
+    (hanami/plot vht/rule-chart
+                 {:X :sepal-width
+                  :Y :sepal-length
+                  :X2 :petal-width
+                  :Y2 :petal-length
+                  :OPACITY 0.2
+                  :SIZE 3
+                  :COLOR "species"}))
 ```
 </div>
 
@@ -150,13 +150,13 @@ Grouped datasets are handled automatically with a table view.
 ```clojure
 (-> datasets/iris
     (tc/group-by [:species])
-    (vis/hanami-plot vht/rule-chart
-                     {:X :sepal-width
-                      :Y :sepal-length
-                      :X2 :petal-width
-                      :Y2 :petal-length
-                      :OPACITY 0.2
-                      :SIZE 3}))
+    (hanami/plot vht/rule-chart
+                 {:X :sepal-width
+                  :Y :sepal-length
+                  :X2 :petal-width
+                  :Y2 :petal-length
+                  :OPACITY 0.2
+                  :SIZE 3}))
 ```
 </div>
 
@@ -171,10 +171,10 @@ The `scicloj.noj.v1.vis.hanami.templates` namespace add Hanami templates to Hana
 <div class="sourceClojure">
 ```clojure
 (-> datasets/mtcars
-    (vis/hanami-plot vht/boxplot-chart
-                     {:X :gear
-                      :XTYPE :nominal
-                      :Y :mpg}))
+    (hanami/plot vht/boxplot-chart
+                 {:X :gear
+                  :XTYPE :nominal
+                  :Y :mpg}))
 ```
 </div>
 
@@ -188,36 +188,105 @@ The `scicloj.noj.v1.vis.hanami.templates` namespace add Hanami templates to Hana
 <div class="sourceClojure">
 ```clojure
 (-> random-walk
-    (vis/hanami-layers
+    (hanami/layers
      {:TITLE "points and a line"}
-     [(vis/hanami-plot nil
-                       ht/point-chart
-                       {:MSIZE 400})
-      (vis/hanami-plot nil
-                       ht/line-chart
-                       {:MSIZE 4
-                        :MCOLOR "brown"})]))
+     [(hanami/plot nil
+                   ht/point-chart
+                   {:MSIZE 400})
+      (hanami/plot nil
+                   ht/line-chart
+                   {:MSIZE 4
+                    :MCOLOR "brown"})]))
 ```
 </div>
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","title":{"text":"points and a line"},"layer":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":400,"background":"floralwhite","height":300},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300,"data":{"values":"x,y\n0,-0.1108290762587244\n1,-0.09806025874393365\n2,0.14321301527728802\n3,0.5220254498157079\n4,0.19277850530241103\n5,0.559940686652048\n6,0.7343552022289602\n7,0.40998660053994873\n8,0.15314215758183058\n9,0.5261991775514143\n10,0.33736886091736706\n11,0.553680932662185\n12,0.9505870610127862\n13,1.0465447704277704\n14,1.4588419972179811\n15,1.466748369933816\n16,1.102130129756103\n17,0.6716648328900973\n18,0.6567989589179951\n19,0.6642094366674477\n","format":{"type":"csv"}}});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","title":{"text":"points and a line"},"layer":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":400,"background":"floralwhite","height":300},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300,"data":{"values":"x,y\n0,0.16597987750077758\n1,0.41196480559927706\n2,0.847447299364155\n3,0.5795886912196944\n4,0.624609280128083\n5,0.6136477281969442\n6,0.7326792120687574\n7,0.6962948355236439\n8,0.8947332386710685\n9,0.8216391622633435\n10,1.1413306702108856\n11,0.8904250708519393\n12,1.1765321315986919\n13,1.4195319800569797\n14,1.050228275951158\n15,1.4716156991096159\n16,1.2536851188008438\n17,0.7970856240196954\n18,0.373681714730443\n19,0.40138634264995765\n","format":{"type":"csv"}}});</script></div>
+
+Alternatively:
+
+
+<div class="sourceClojure">
+```clojure
+(-> random-walk
+    (hanami/combined-plot
+     ht/layer-chart
+     {:TITLE "points and a line"}
+     :LAYER [[nil
+              ht/point-chart
+              {:MSIZE 400}]
+             [nil
+              ht/line-chart
+              {:MSIZE 4
+               :MCOLOR "brown"}]]))
+```
+</div>
+
+
+<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","title":{"text":"points and a line"},"layer":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":400,"background":"floralwhite","title":{"text":"points and a line"},"height":300},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":400,"background":"floralwhite","title":{"text":"points and a line"},"height":300}],"height":300,"data":{"values":"x,y\n0,0.16597987750077758\n1,0.41196480559927706\n2,0.847447299364155\n3,0.5795886912196944\n4,0.624609280128083\n5,0.6136477281969442\n6,0.7326792120687574\n7,0.6962948355236439\n8,0.8947332386710685\n9,0.8216391622633435\n10,1.1413306702108856\n11,0.8904250708519393\n12,1.1765321315986919\n13,1.4195319800569797\n14,1.050228275951158\n15,1.4716156991096159\n16,1.2536851188008438\n17,0.7970856240196954\n18,0.373681714730443\n19,0.40138634264995765\n","format":{"type":"csv"}}});</script></div>
 
 
 ### Concatenation
+Vertical
 
 
 <div class="sourceClojure">
 ```clojure
 (-> random-walk
-    (vis/hanami-vconcat
+    (hanami/vconcat
      {}
-     [(vis/hanami-plot nil
+     [(hanami/plot nil
+                   ht/point-chart
+                   {:MSIZE 400
+                    :HEIGHT 100
+                    :WIDTH 100})
+      (hanami/plot nil
+                   ht/line-chart
+                   {:MSIZE 4
+                    :MCOLOR "brown"
+                    :HEIGHT 100
+                    :WIDTH 100})]))
+```
+</div>
+
+
+<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","vconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"height":300,"data":{"values":"x,y\n0,0.16597987750077758\n1,0.41196480559927706\n2,0.847447299364155\n3,0.5795886912196944\n4,0.624609280128083\n5,0.6136477281969442\n6,0.7326792120687574\n7,0.6962948355236439\n8,0.8947332386710685\n9,0.8216391622633435\n10,1.1413306702108856\n11,0.8904250708519393\n12,1.1765321315986919\n13,1.4195319800569797\n14,1.050228275951158\n15,1.4716156991096159\n16,1.2536851188008438\n17,0.7970856240196954\n18,0.373681714730443\n19,0.40138634264995765\n","format":{"type":"csv"}}});</script></div>
+
+Alternatively:
+
+
+<div class="sourceClojure">
+```clojure
+(-> random-walk
+    (hanami/combined-plot
+     ht/vconcat-chart
+     {:HEIGHT 100
+      :WIDTH 100}
+     :VCONCAT [[ht/point-chart
+                {:MSIZE 400}]
+               [ht/line-chart
+                {:MSIZE 4
+                 :MCOLOR "brown"}]]))
+```
+</div>
+
+
+<div><script>vegaEmbed(document.currentScript.parentElement, {"width":100,"background":"floralwhite","vconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"height":100,"data":{"values":"x,y\n0,0.16597987750077758\n1,0.41196480559927706\n2,0.847447299364155\n3,0.5795886912196944\n4,0.624609280128083\n5,0.6136477281969442\n6,0.7326792120687574\n7,0.6962948355236439\n8,0.8947332386710685\n9,0.8216391622633435\n10,1.1413306702108856\n11,0.8904250708519393\n12,1.1765321315986919\n13,1.4195319800569797\n14,1.050228275951158\n15,1.4716156991096159\n16,1.2536851188008438\n17,0.7970856240196954\n18,0.373681714730443\n19,0.40138634264995765\n","format":{"type":"csv"}}});</script></div>
+
+Horizontal
+
+
+<div class="sourceClojure">
+```clojure
+(-> random-walk
+    (hanami/hconcat
+     {}
+     [(hanami/plot nil
                        ht/point-chart
                        {:MSIZE 400
                         :HEIGHT 100
                         :WIDTH 100})
-      (vis/hanami-plot nil
+      (hanami/plot nil
                        ht/line-chart
                        {:MSIZE 4
                         :MCOLOR "brown"
@@ -227,30 +296,28 @@ The `scicloj.noj.v1.vis.hanami.templates` namespace add Hanami templates to Hana
 </div>
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","vconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"height":300,"data":{"values":"x,y\n0,-0.1108290762587244\n1,-0.09806025874393365\n2,0.14321301527728802\n3,0.5220254498157079\n4,0.19277850530241103\n5,0.559940686652048\n6,0.7343552022289602\n7,0.40998660053994873\n8,0.15314215758183058\n9,0.5261991775514143\n10,0.33736886091736706\n11,0.553680932662185\n12,0.9505870610127862\n13,1.0465447704277704\n14,1.4588419972179811\n15,1.466748369933816\n16,1.102130129756103\n17,0.6716648328900973\n18,0.6567989589179951\n19,0.6642094366674477\n","format":{"type":"csv"}}});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"hconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"width":400,"background":"floralwhite","height":300,"data":{"values":"x,y\n0,0.16597987750077758\n1,0.41196480559927706\n2,0.847447299364155\n3,0.5795886912196944\n4,0.624609280128083\n5,0.6136477281969442\n6,0.7326792120687574\n7,0.6962948355236439\n8,0.8947332386710685\n9,0.8216391622633435\n10,1.1413306702108856\n11,0.8904250708519393\n12,1.1765321315986919\n13,1.4195319800569797\n14,1.050228275951158\n15,1.4716156991096159\n16,1.2536851188008438\n17,0.7970856240196954\n18,0.373681714730443\n19,0.40138634264995765\n","format":{"type":"csv"}}});</script></div>
+
+Alternatively:
 
 
 <div class="sourceClojure">
 ```clojure
 (-> random-walk
-    (vis/hanami-hconcat
-     {}
-     [(vis/hanami-plot nil
-                       ht/point-chart
-                       {:MSIZE 400
-                        :HEIGHT 100
-                        :WIDTH 100})
-      (vis/hanami-plot nil
-                       ht/line-chart
-                       {:MSIZE 4
-                        :MCOLOR "brown"
-                        :HEIGHT 100
-                        :WIDTH 100})]))
+    (hanami/combined-plot
+     ht/hconcat-chart
+     {:HEIGHT 100
+      :WIDTH 100}
+     :HCONCAT [[ht/point-chart
+                {:MSIZE 400}]
+               [ht/line-chart
+                {:MSIZE 4
+                 :MCOLOR "brown"}]]))
 ```
 </div>
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"hconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"width":400,"background":"floralwhite","height":300,"data":{"values":"x,y\n0,-0.1108290762587244\n1,-0.09806025874393365\n2,0.14321301527728802\n3,0.5220254498157079\n4,0.19277850530241103\n5,0.559940686652048\n6,0.7343552022289602\n7,0.40998660053994873\n8,0.15314215758183058\n9,0.5261991775514143\n10,0.33736886091736706\n11,0.553680932662185\n12,0.9505870610127862\n13,1.0465447704277704\n14,1.4588419972179811\n15,1.466748369933816\n16,1.102130129756103\n17,0.6716648328900973\n18,0.6567989589179951\n19,0.6642094366674477\n","format":{"type":"csv"}}});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"hconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"width":100,"background":"floralwhite","height":100,"data":{"values":"x,y\n0,0.16597987750077758\n1,0.41196480559927706\n2,0.847447299364155\n3,0.5795886912196944\n4,0.624609280128083\n5,0.6136477281969442\n6,0.7326792120687574\n7,0.6962948355236439\n8,0.8947332386710685\n9,0.8216391622633435\n10,1.1413306702108856\n11,0.8904250708519393\n12,1.1765321315986919\n13,1.4195319800569797\n14,1.050228275951158\n15,1.4716156991096159\n16,1.2536851188008438\n17,0.7970856240196954\n18,0.373681714730443\n19,0.40138634264995765\n","format":{"type":"csv"}}});</script></div>
 
 
 ### Linear regression
@@ -261,26 +328,43 @@ The `scicloj.noj.v1.vis.hanami.templates` namespace add Hanami templates to Hana
 (-> datasets/mtcars
     (stats/add-predictions :mpg [:wt]
                            {:model-type :smile.regression/ordinary-least-square})
-    (vis/hanami-layers {}
-                       [(vis/hanami-plot nil
-                                         ht/point-chart
-                                         {:X :wt
-                                          :Y :mpg
-                                          :MSIZE 200
-                                          :HEIGHT 200
-                                          :WIDTH 200})
-                        (vis/hanami-plot nil
-                                         ht/line-chart
-                                         {:X :wt
-                                          :Y :mpg-prediction
-                                          :MSIZE 5
-                                          :MCOLOR "purple"
-                                          :YTITLE :mpg})]))
+    (hanami/combined-plot
+     ht/layer-chart
+     {:X :wt
+      :MSIZE 200
+      :HEIGHT 200}
+     :LAYER [[ht/point-chart
+              {:Y :mpg
+               :WIDTH 200}]
+             [ht/line-chart
+              {:Y :mpg-prediction
+               :MSIZE 5
+               :MCOLOR "purple"
+               :YTITLE :mpg}]]))
 ```
 </div>
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nMazda RX4,21.0,6,160.0,110,3.9,2.62,16.46,0,1,4,4,23.28261064680863\nMazda RX4 Wag,21.0,6,160.0,110,3.9,2.875,17.02,0,1,4,4,21.91977039576435\nDatsun 710,22.8,4,108.0,93,3.85,2.32,18.61,1,1,4,1,24.885952118625436\nHornet 4 Drive,21.4,6,258.0,110,3.08,3.215,19.44,1,0,3,1,20.102650061038638\nHornet Sportabout,18.7,8,360.0,175,3.15,3.44,17.02,0,0,3,2,18.900143957176034\nValiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1,18.793254525721583\nDuster 360,14.3,8,360.0,245,3.21,3.57,15.84,0,0,3,4,18.205362652722087\nMerc 240D,24.4,4,146.7,62,3.69,3.19,20.0,1,0,4,2,20.236261850356705\nMerc 230,22.8,4,140.8,95,3.92,3.15,22.9,1,0,4,2,20.45004071326561\nMerc 280,19.2,6,167.6,123,3.92,3.44,18.3,1,0,4,4,18.900143957176034\nMerc 280C,17.8,6,167.6,123,3.92,3.44,18.9,1,0,4,4,18.900143957176034\nMerc 450SE,16.4,8,275.8,180,3.07,4.07,17.4,0,0,3,3,15.533126866360746\nMerc 450SL,17.3,8,275.8,180,3.07,3.73,17.6,0,0,3,3,17.350247201086457\nMerc 450SLC,15.2,8,275.8,180,3.07,3.78,18.0,0,0,3,3,17.083023622450327\nCadillac Fleetwood,10.4,8,472.0,205,2.93,5.25,17.98,0,0,3,4,9.226650410547986\nLincoln Continental,10.4,8,460.0,215,3.0,5.424,17.82,0,0,3,4,8.29671235689424\nChrysler Imperial,14.7,8,440.0,230,3.23,5.345,17.42,0,0,3,4,8.718925611139333\nFiat 128,32.4,4,78.7,66,4.08,2.2,19.47,1,1,4,1,25.527288707352156\nHonda Civic,30.4,4,75.7,52,4.93,1.615,18.52,1,1,4,2,28.653804577394922\nToyota Corolla,33.9,4,71.1,65,4.22,1.835,19.9,1,1,4,1,27.478020831395934\nToyota Corona,21.5,4,120.1,97,3.7,2.465,20.01,1,0,3,1,24.11100374058065\nDodge Challenger,15.5,8,318.0,150,2.76,3.52,16.87,0,0,3,2,18.47258623135822\nAMC Javelin,15.2,8,304.0,150,3.15,3.435,17.3,0,0,3,2,18.92686631503965\nCamaro Z28,13.3,8,350.0,245,3.73,3.84,15.41,0,0,3,4,16.762355328086965\nPontiac Firebird,19.2,8,400.0,175,3.08,3.845,17.05,0,0,3,2,16.73563297022335\nFiat X1-9,27.3,4,79.0,66,4.08,1.935,18.9,1,1,4,1,26.943573674123666\nPorsche 914-2,26.0,4,120.3,91,4.43,2.14,16.7,0,1,5,2,25.847957001715518\nLotus Europa,30.4,4,95.1,113,3.77,1.513,16.9,1,1,5,2,29.198940677812637\nFord Pantera L,15.8,8,351.0,264,4.22,3.17,14.5,0,1,5,4,20.34315128181116\nFerrari Dino,19.7,6,145.0,175,3.62,2.77,15.5,0,1,5,6,22.48093991090023\nMaserati Bora,15.0,8,301.0,335,3.54,3.57,14.6,0,1,5,8,18.205362652722087\nVolvo 142E,21.4,4,121.0,109,4.11,2.78,18.6,1,1,4,2,22.427495195173\n","format":{"type":"csv"}}});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":400,"background":"floralwhite","height":200}],"height":200,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nMazda RX4,21.0,6,160.0,110,3.9,2.62,16.46,0,1,4,4,23.28261064680863\nMazda RX4 Wag,21.0,6,160.0,110,3.9,2.875,17.02,0,1,4,4,21.91977039576435\nDatsun 710,22.8,4,108.0,93,3.85,2.32,18.61,1,1,4,1,24.885952118625436\nHornet 4 Drive,21.4,6,258.0,110,3.08,3.215,19.44,1,0,3,1,20.102650061038638\nHornet Sportabout,18.7,8,360.0,175,3.15,3.44,17.02,0,0,3,2,18.900143957176034\nValiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1,18.793254525721583\nDuster 360,14.3,8,360.0,245,3.21,3.57,15.84,0,0,3,4,18.205362652722087\nMerc 240D,24.4,4,146.7,62,3.69,3.19,20.0,1,0,4,2,20.236261850356705\nMerc 230,22.8,4,140.8,95,3.92,3.15,22.9,1,0,4,2,20.45004071326561\nMerc 280,19.2,6,167.6,123,3.92,3.44,18.3,1,0,4,4,18.900143957176034\nMerc 280C,17.8,6,167.6,123,3.92,3.44,18.9,1,0,4,4,18.900143957176034\nMerc 450SE,16.4,8,275.8,180,3.07,4.07,17.4,0,0,3,3,15.533126866360746\nMerc 450SL,17.3,8,275.8,180,3.07,3.73,17.6,0,0,3,3,17.350247201086457\nMerc 450SLC,15.2,8,275.8,180,3.07,3.78,18.0,0,0,3,3,17.083023622450327\nCadillac Fleetwood,10.4,8,472.0,205,2.93,5.25,17.98,0,0,3,4,9.226650410547986\nLincoln Continental,10.4,8,460.0,215,3.0,5.424,17.82,0,0,3,4,8.29671235689424\nChrysler Imperial,14.7,8,440.0,230,3.23,5.345,17.42,0,0,3,4,8.718925611139333\nFiat 128,32.4,4,78.7,66,4.08,2.2,19.47,1,1,4,1,25.527288707352156\nHonda Civic,30.4,4,75.7,52,4.93,1.615,18.52,1,1,4,2,28.653804577394922\nToyota Corolla,33.9,4,71.1,65,4.22,1.835,19.9,1,1,4,1,27.478020831395934\nToyota Corona,21.5,4,120.1,97,3.7,2.465,20.01,1,0,3,1,24.11100374058065\nDodge Challenger,15.5,8,318.0,150,2.76,3.52,16.87,0,0,3,2,18.47258623135822\nAMC Javelin,15.2,8,304.0,150,3.15,3.435,17.3,0,0,3,2,18.92686631503965\nCamaro Z28,13.3,8,350.0,245,3.73,3.84,15.41,0,0,3,4,16.762355328086965\nPontiac Firebird,19.2,8,400.0,175,3.08,3.845,17.05,0,0,3,2,16.73563297022335\nFiat X1-9,27.3,4,79.0,66,4.08,1.935,18.9,1,1,4,1,26.943573674123666\nPorsche 914-2,26.0,4,120.3,91,4.43,2.14,16.7,0,1,5,2,25.847957001715518\nLotus Europa,30.4,4,95.1,113,3.77,1.513,16.9,1,1,5,2,29.198940677812637\nFord Pantera L,15.8,8,351.0,264,4.22,3.17,14.5,0,1,5,4,20.34315128181116\nFerrari Dino,19.7,6,145.0,175,3.62,2.77,15.5,0,1,5,6,22.48093991090023\nMaserati Bora,15.0,8,301.0,335,3.54,3.57,14.6,0,1,5,8,18.205362652722087\nVolvo 142E,21.4,4,121.0,109,4.11,2.78,18.6,1,1,4,2,22.427495195173\n","format":{"type":"csv"}}});</script></div>
+
+Alternatively:
+
+
+<div class="sourceClojure">
+```clojure
+(-> datasets/mtcars
+    (hanami/linear-regression-plot
+     :mpg :wt
+     {:HEIGHT 200
+      :WIDTH 200
+      :point-options {:MSIZE 200}
+      :line-options {:MSIZE 5
+                     :MCOLOR "purple"}}))
+```
+</div>
+
+
+<div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","height":200}],"height":200,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nMazda RX4,21.0,6,160.0,110,3.9,2.62,16.46,0,1,4,4,23.28261064680863\nMazda RX4 Wag,21.0,6,160.0,110,3.9,2.875,17.02,0,1,4,4,21.91977039576435\nDatsun 710,22.8,4,108.0,93,3.85,2.32,18.61,1,1,4,1,24.885952118625436\nHornet 4 Drive,21.4,6,258.0,110,3.08,3.215,19.44,1,0,3,1,20.102650061038638\nHornet Sportabout,18.7,8,360.0,175,3.15,3.44,17.02,0,0,3,2,18.900143957176034\nValiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1,18.793254525721583\nDuster 360,14.3,8,360.0,245,3.21,3.57,15.84,0,0,3,4,18.205362652722087\nMerc 240D,24.4,4,146.7,62,3.69,3.19,20.0,1,0,4,2,20.236261850356705\nMerc 230,22.8,4,140.8,95,3.92,3.15,22.9,1,0,4,2,20.45004071326561\nMerc 280,19.2,6,167.6,123,3.92,3.44,18.3,1,0,4,4,18.900143957176034\nMerc 280C,17.8,6,167.6,123,3.92,3.44,18.9,1,0,4,4,18.900143957176034\nMerc 450SE,16.4,8,275.8,180,3.07,4.07,17.4,0,0,3,3,15.533126866360746\nMerc 450SL,17.3,8,275.8,180,3.07,3.73,17.6,0,0,3,3,17.350247201086457\nMerc 450SLC,15.2,8,275.8,180,3.07,3.78,18.0,0,0,3,3,17.083023622450327\nCadillac Fleetwood,10.4,8,472.0,205,2.93,5.25,17.98,0,0,3,4,9.226650410547986\nLincoln Continental,10.4,8,460.0,215,3.0,5.424,17.82,0,0,3,4,8.29671235689424\nChrysler Imperial,14.7,8,440.0,230,3.23,5.345,17.42,0,0,3,4,8.718925611139333\nFiat 128,32.4,4,78.7,66,4.08,2.2,19.47,1,1,4,1,25.527288707352156\nHonda Civic,30.4,4,75.7,52,4.93,1.615,18.52,1,1,4,2,28.653804577394922\nToyota Corolla,33.9,4,71.1,65,4.22,1.835,19.9,1,1,4,1,27.478020831395934\nToyota Corona,21.5,4,120.1,97,3.7,2.465,20.01,1,0,3,1,24.11100374058065\nDodge Challenger,15.5,8,318.0,150,2.76,3.52,16.87,0,0,3,2,18.47258623135822\nAMC Javelin,15.2,8,304.0,150,3.15,3.435,17.3,0,0,3,2,18.92686631503965\nCamaro Z28,13.3,8,350.0,245,3.73,3.84,15.41,0,0,3,4,16.762355328086965\nPontiac Firebird,19.2,8,400.0,175,3.08,3.845,17.05,0,0,3,2,16.73563297022335\nFiat X1-9,27.3,4,79.0,66,4.08,1.935,18.9,1,1,4,1,26.943573674123666\nPorsche 914-2,26.0,4,120.3,91,4.43,2.14,16.7,0,1,5,2,25.847957001715518\nLotus Europa,30.4,4,95.1,113,3.77,1.513,16.9,1,1,5,2,29.198940677812637\nFord Pantera L,15.8,8,351.0,264,4.22,3.17,14.5,0,1,5,4,20.34315128181116\nFerrari Dino,19.7,6,145.0,175,3.62,2.77,15.5,0,1,5,6,22.48093991090023\nMaserati Bora,15.0,8,301.0,335,3.54,3.57,14.6,0,1,5,8,18.205362652722087\nVolvo 142E,21.4,4,121.0,109,4.11,2.78,18.6,1,1,4,2,22.427495195173\n","format":{"type":"csv"}}});</script></div>
 
 
 ### Histogram
@@ -289,8 +373,8 @@ The `scicloj.noj.v1.vis.hanami.templates` namespace add Hanami templates to Hana
 <div class="sourceClojure">
 ```clojure
 (-> datasets/iris
-    (vis/hanami-histogram :sepal-width
-                          {:nbins 10}))
+    (hanami/histogram :sepal-width
+                      {:nbins 10}))
 ```
 </div>
 
@@ -315,32 +399,47 @@ Note how we add regression lines here. We take care of layout and colouring on o
            (map-indexed
             (fn [i [group-name ds]]
               (-> ds
-                  (stats/add-predictions :mpg [:wt]
-                                         {:model-type :smile.regression/ordinary-least-square})
-                  (tc/select-columns [:gear :wt :mpg :mpg-prediction])
-                  (vis/hanami-layers {:TITLE (str "grear=" group-name)}
-                                     [(vis/hanami-plot nil
-                                                       ht/point-chart
-                                                       {:X :wt
-                                                        :Y :mpg
-                                                        :MSIZE 200
-                                                        :MCOLOR (pallete i)
-                                                        :HEIGHT 200
-                                                        :WIDTH 200})
-                                      (vis/hanami-plot nil
-                                                       ht/line-chart
-                                                       {:X :wt
-                                                        :Y :mpg-prediction
-                                                        :MSIZE 5
-                                                        :MCOLOR (pallete i)
-                                                        :YTITLE :mpg})]
-                                     ))))
-           (vis/hanami-vconcat nil {}))))
+                  (hanami/linear-regression-plot
+                   :mpg :wt
+                   {:TITLE (str "grear=" group-name)
+                    :X :wt
+                    :MCOLOR (pallete i)
+                    :HEIGHT 200
+                    :WIDTH 200
+                    :point-options {:MSIZE 200}
+                    :line-options {:MSIZE 5}}))))
+           (hanami/vconcat nil {}))))
 ```
 </div>
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","vconcat":[{"width":400,"background":"floralwhite","title":{"text":"grear=3"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#7fc97f","tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#7fc97f","tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300,"data":{"values":"gear,wt,mpg,mpg-prediction\n3,3.215,21.4,18.24575076879608\n3,3.44,18.7,17.535458674671055\n3,3.46,18.1,17.472321599637716\n3,3.57,14.3,17.125067686954374\n3,4.07,16.4,15.546640811120986\n3,3.73,17.3,16.61997108668769\n3,3.78,15.2,16.46212839910435\n3,5.25,10.4,11.821553384154196\n3,5.424,10.4,11.272260831364175\n3,5.345,14.7,11.521652277745854\n3,2.465,21.5,20.613391082546155\n3,3.52,15.5,17.282910374537714\n3,3.435,15.2,17.551242943429386\n3,3.84,13.3,16.272717174004345\n3,3.845,19.2,16.25693290524601\n","format":{"type":"csv"}}},{"width":400,"background":"floralwhite","title":{"text":"grear=4"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#beaed4","tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#beaed4","tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300,"data":{"values":"gear,wt,mpg,mpg-prediction\n4,2.62,21.0,24.510455071959058\n4,2.875,21.0,22.76026807682699\n4,2.32,22.8,26.569498595643847\n4,3.19,24.4,20.59827237695796\n4,3.15,22.8,20.872811513449268\n4,3.44,19.2,18.882402773887303\n4,3.44,17.8,18.882402773887303\n4,2.2,32.4,27.39311600511776\n4,1.615,30.4,31.4082508763031\n4,1.835,33.9,29.89828562560092\n4,1.935,27.3,29.211937784372658\n4,2.78,21.4,23.41229852599384\n","format":{"type":"csv"}}},{"width":400,"background":"floralwhite","title":{"text":"grear=5"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#fdc086","tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#fdc086","tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300,"data":{"values":"gear,wt,mpg,mpg-prediction\n5,2.14,26.0,25.34362502587085\n5,1.513,30.4,30.38867758620586\n5,3.17,15.8,17.055899129307758\n5,2.77,19.7,20.274433458070124\n5,3.57,15.0,13.83736480054539\n","format":{"type":"csv"}}}],"height":300});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","vconcat":[{"width":200,"background":"floralwhite","title":{"text":"grear=3"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#7fc97f","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=3"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#7fc97f","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=3"},"height":200}],"height":200,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nHornet 4 Drive,21.4,6,258.0,110,3.08,3.215,19.44,1,0,3,1,18.24575076879608\nHornet Sportabout,18.7,8,360.0,175,3.15,3.44,17.02,0,0,3,2,17.535458674671055\nValiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1,17.472321599637716\nDuster 360,14.3,8,360.0,245,3.21,3.57,15.84,0,0,3,4,17.125067686954374\nMerc 450SE,16.4,8,275.8,180,3.07,4.07,17.4,0,0,3,3,15.546640811120986\nMerc 450SL,17.3,8,275.8,180,3.07,3.73,17.6,0,0,3,3,16.61997108668769\nMerc 450SLC,15.2,8,275.8,180,3.07,3.78,18.0,0,0,3,3,16.46212839910435\nCadillac Fleetwood,10.4,8,472.0,205,2.93,5.25,17.98,0,0,3,4,11.821553384154196\nLincoln Continental,10.4,8,460.0,215,3.0,5.424,17.82,0,0,3,4,11.272260831364175\nChrysler Imperial,14.7,8,440.0,230,3.23,5.345,17.42,0,0,3,4,11.521652277745854\nToyota Corona,21.5,4,120.1,97,3.7,2.465,20.01,1,0,3,1,20.613391082546155\nDodge Challenger,15.5,8,318.0,150,2.76,3.52,16.87,0,0,3,2,17.282910374537714\nAMC Javelin,15.2,8,304.0,150,3.15,3.435,17.3,0,0,3,2,17.551242943429386\nCamaro Z28,13.3,8,350.0,245,3.73,3.84,15.41,0,0,3,4,16.272717174004345\nPontiac Firebird,19.2,8,400.0,175,3.08,3.845,17.05,0,0,3,2,16.25693290524601\n","format":{"type":"csv"}}},{"width":200,"background":"floralwhite","title":{"text":"grear=4"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#beaed4","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=4"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#beaed4","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=4"},"height":200}],"height":200,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nMazda RX4,21.0,6,160.0,110,3.9,2.62,16.46,0,1,4,4,24.510455071959058\nMazda RX4 Wag,21.0,6,160.0,110,3.9,2.875,17.02,0,1,4,4,22.76026807682699\nDatsun 710,22.8,4,108.0,93,3.85,2.32,18.61,1,1,4,1,26.569498595643847\nMerc 240D,24.4,4,146.7,62,3.69,3.19,20.0,1,0,4,2,20.59827237695796\nMerc 230,22.8,4,140.8,95,3.92,3.15,22.9,1,0,4,2,20.872811513449268\nMerc 280,19.2,6,167.6,123,3.92,3.44,18.3,1,0,4,4,18.882402773887303\nMerc 280C,17.8,6,167.6,123,3.92,3.44,18.9,1,0,4,4,18.882402773887303\nFiat 128,32.4,4,78.7,66,4.08,2.2,19.47,1,1,4,1,27.39311600511776\nHonda Civic,30.4,4,75.7,52,4.93,1.615,18.52,1,1,4,2,31.4082508763031\nToyota Corolla,33.9,4,71.1,65,4.22,1.835,19.9,1,1,4,1,29.89828562560092\nFiat X1-9,27.3,4,79.0,66,4.08,1.935,18.9,1,1,4,1,29.211937784372658\nVolvo 142E,21.4,4,121.0,109,4.11,2.78,18.6,1,1,4,2,23.41229852599384\n","format":{"type":"csv"}}},{"width":200,"background":"floralwhite","title":{"text":"grear=5"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#fdc086","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=5"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#fdc086","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=5"},"height":200}],"height":200,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nPorsche 914-2,26.0,4,120.3,91,4.43,2.14,16.7,0,1,5,2,25.34362502587085\nLotus Europa,30.4,4,95.1,113,3.77,1.513,16.9,1,1,5,2,30.38867758620586\nFord Pantera L,15.8,8,351.0,264,4.22,3.17,14.5,0,1,5,4,17.055899129307758\nFerrari Dino,19.7,6,145.0,175,3.62,2.77,15.5,0,1,5,6,20.274433458070124\nMaserati Bora,15.0,8,301.0,335,3.54,3.57,14.6,0,1,5,8,13.83736480054539\n","format":{"type":"csv"}}}],"height":300});</script></div>
+
+Alternatively, using a grouped dataset:
+
+
+<div class="sourceClojure">
+```clojure
+(let [pallete (->> :accent
+                   color/palette
+                   (mapv color/format-hex))]
+  (-> datasets/mtcars
+      (tc/map-columns :color [:gear] #(-> % (- 3) pallete))
+      (tc/group-by [:gear])
+      (hanami/linear-regression-plot
+       :mpg :wt
+       {:X :wt
+        :MCOLOR {:expr "datum.color"}
+        :HEIGHT 200
+        :WIDTH 200
+        :point-options {:MSIZE 200}
+        :line-options {:MSIZE 5}})
+      (tc/order-by [:gear])))
+```
+</div>
+
+
+<table class="table"><thead><tr><th>gear</th><th>plot-0</th></tr></thead><tbody><tr><td><div><p>3</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","height":200}],"height":200,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,color,mpg-prediction\nHornet 4 Drive,21.4,6,258.0,110,3.08,3.215,19.44,1,0,3,1,#7fc97f,18.24575076879608\nHornet Sportabout,18.7,8,360.0,175,3.15,3.44,17.02,0,0,3,2,#7fc97f,17.535458674671055\nValiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1,#7fc97f,17.472321599637716\nDuster 360,14.3,8,360.0,245,3.21,3.57,15.84,0,0,3,4,#7fc97f,17.125067686954374\nMerc 450SE,16.4,8,275.8,180,3.07,4.07,17.4,0,0,3,3,#7fc97f,15.546640811120986\nMerc 450SL,17.3,8,275.8,180,3.07,3.73,17.6,0,0,3,3,#7fc97f,16.61997108668769\nMerc 450SLC,15.2,8,275.8,180,3.07,3.78,18.0,0,0,3,3,#7fc97f,16.46212839910435\nCadillac Fleetwood,10.4,8,472.0,205,2.93,5.25,17.98,0,0,3,4,#7fc97f,11.821553384154196\nLincoln Continental,10.4,8,460.0,215,3.0,5.424,17.82,0,0,3,4,#7fc97f,11.272260831364175\nChrysler Imperial,14.7,8,440.0,230,3.23,5.345,17.42,0,0,3,4,#7fc97f,11.521652277745854\nToyota Corona,21.5,4,120.1,97,3.7,2.465,20.01,1,0,3,1,#7fc97f,20.613391082546155\nDodge Challenger,15.5,8,318.0,150,2.76,3.52,16.87,0,0,3,2,#7fc97f,17.282910374537714\nAMC Javelin,15.2,8,304.0,150,3.15,3.435,17.3,0,0,3,2,#7fc97f,17.551242943429386\nCamaro Z28,13.3,8,350.0,245,3.73,3.84,15.41,0,0,3,4,#7fc97f,16.272717174004345\nPontiac Firebird,19.2,8,400.0,175,3.08,3.845,17.05,0,0,3,2,#7fc97f,16.25693290524601\n","format":{"type":"csv"}}});</script></div></td></tr><tr><td><div><p>4</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","height":200}],"height":200,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,color,mpg-prediction\nMazda RX4,21.0,6,160.0,110,3.9,2.62,16.46,0,1,4,4,#beaed4,24.510455071959058\nMazda RX4 Wag,21.0,6,160.0,110,3.9,2.875,17.02,0,1,4,4,#beaed4,22.76026807682699\nDatsun 710,22.8,4,108.0,93,3.85,2.32,18.61,1,1,4,1,#beaed4,26.569498595643847\nMerc 240D,24.4,4,146.7,62,3.69,3.19,20.0,1,0,4,2,#beaed4,20.59827237695796\nMerc 230,22.8,4,140.8,95,3.92,3.15,22.9,1,0,4,2,#beaed4,20.872811513449268\nMerc 280,19.2,6,167.6,123,3.92,3.44,18.3,1,0,4,4,#beaed4,18.882402773887303\nMerc 280C,17.8,6,167.6,123,3.92,3.44,18.9,1,0,4,4,#beaed4,18.882402773887303\nFiat 128,32.4,4,78.7,66,4.08,2.2,19.47,1,1,4,1,#beaed4,27.39311600511776\nHonda Civic,30.4,4,75.7,52,4.93,1.615,18.52,1,1,4,2,#beaed4,31.4082508763031\nToyota Corolla,33.9,4,71.1,65,4.22,1.835,19.9,1,1,4,1,#beaed4,29.89828562560092\nFiat X1-9,27.3,4,79.0,66,4.08,1.935,18.9,1,1,4,1,#beaed4,29.211937784372658\nVolvo 142E,21.4,4,121.0,109,4.11,2.78,18.6,1,1,4,2,#beaed4,23.41229852599384\n","format":{"type":"csv"}}});</script></div></td></tr><tr><td><div><p>5</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","height":200}],"height":200,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,color,mpg-prediction\nPorsche 914-2,26.0,4,120.3,91,4.43,2.14,16.7,0,1,5,2,#fdc086,25.34362502587085\nLotus Europa,30.4,4,95.1,113,3.77,1.513,16.9,1,1,5,2,#fdc086,30.38867758620586\nFord Pantera L,15.8,8,351.0,264,4.22,3.17,14.5,0,1,5,4,#fdc086,17.055899129307758\nFerrari Dino,19.7,6,145.0,175,3.62,2.77,15.5,0,1,5,6,#fdc086,20.274433458070124\nMaserati Bora,15.0,8,301.0,335,3.54,3.57,14.6,0,1,5,8,#fdc086,13.83736480054539\n","format":{"type":"csv"}}});</script></div></td></tr></tbody></table>
 
 A similar example with histograms:
 
@@ -356,16 +455,18 @@ A similar example with histograms:
            (map-indexed
             (fn [i [group-name ds]]
               (-> ds
-                  (vis/hanami-histogram :sepal-width
-                                        {:nbins 10}))))
-           (vis/hanami-vconcat nil {}))))
+                  (hanami/histogram :sepal-width
+                                    {:nbins 10}))))
+           (hanami/vconcat nil {}))))
 ```
 </div>
 
 
 <div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","vconcat":[{"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"values":"count,left,right\n1,2.3,2.51\n0,2.51,2.7199999999999998\n1,2.7199999999999998,2.9299999999999997\n10,2.9299999999999997,3.14\n7,3.14,3.35\n15,3.35,3.56\n6,3.56,3.7700000000000005\n6,3.7700000000000005,3.9800000000000004\n2,3.9800000000000004,4.19\n2,4.19,4.4\n","format":{"type":"csv"}}},{"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"values":"count,left,right\n1,2.0,2.14\n2,2.14,2.28\n6,2.28,2.42\n4,2.42,2.56\n3,2.56,2.7\n11,2.7,2.84\n7,2.84,2.98\n11,2.98,3.12\n3,3.12,3.26\n2,3.26,3.4\n","format":{"type":"csv"}}},{"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"values":"count,left,right\n1,2.2,2.3600000000000003\n4,2.3600000000000003,2.52\n2,2.52,2.68\n12,2.68,2.84\n2,2.84,3.0\n16,3.0,3.16\n8,3.16,3.3200000000000003\n2,3.3200000000000003,3.48\n1,3.48,3.6399999999999997\n2,3.6399999999999997,3.8\n","format":{"type":"csv"}}}],"height":300});</script></div>
 
-Scatterplots and regression lines again, this time using Vega-Lite for layout and coloring (using its "facet" option).
+Scatterplots and regression lines again,
+this time using Vega-Lite for layout and coloring
+(using its "facet" option).
 
 
 <div class="sourceClojure">
@@ -376,22 +477,22 @@ Scatterplots and regression lines again, this time using Vega-Lite for layout an
                            {:model-type :smile.regression/ordinary-least-square})
     (tc/ungroup)
     (tc/select-columns [:gear :wt :mpg :mpg-prediction])
-    (vis/hanami-layers {}
-                       [(vis/hanami-plot nil
-                                         ht/point-chart
-                                         {:X :wt
-                                          :Y :mpg
-                                          :MSIZE 200
-                                          :COLOR "gear"
-                                          :HEIGHT 100
-                                          :WIDTH 200})
-                        (vis/hanami-plot nil
-                                         ht/line-chart
-                                         {:X :wt
-                                          :Y :mpg-prediction
-                                          :MSIZE 5
-                                          :COLOR "gear"
-                                          :YTITLE :mpg})])
+    (hanami/combined-plot
+     ht/layer-chart
+     {}
+     :LAYER [[ht/point-chart
+              {:X :wt
+               :Y :mpg
+               :MSIZE 200
+               :COLOR "gear"
+               :HEIGHT 100
+               :WIDTH 200}]
+             [ht/line-chart
+              {:X :wt
+               :Y :mpg-prediction
+               :MSIZE 5
+               :COLOR "gear"
+               :YTITLE :mpg}]])
     ((fn [spec]
        {:facet {:row {:field "gear"}}
         :spec (dissoc spec :data)
