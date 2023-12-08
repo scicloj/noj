@@ -25,8 +25,9 @@
                               (str (if (ident? rm) (symbol rm) rm))))))
 
 (defn calc-correlations-matrix [data cols-to-use]
-  (doall
-   (for [col-1 cols-to-use col-2 cols-to-use]
+  (tc/dataset
+   (for [col-1 cols-to-use
+         col-2 cols-to-use]
      {:col-1 col-1
       :col-2 col-2
       :corr
