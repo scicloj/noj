@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [1-alpha19-SNAPSHOT]
+- avoiding unnecessary `kind/vega-lite` annotation on compound plots (to support tables)
+
+
 ## [1-alpha18] - 2023-12-06
 - removed the obsolete user namespace
 - updated deps

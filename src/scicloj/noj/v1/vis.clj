@@ -52,8 +52,7 @@
     (-> common-data
         (hanami-plot template
                      (merge {template-key plots}
-                            options))
-        kind/vega-lite)))
+                            options)))))
 
 (def hanami-layers
   (hanami-collector ht/layer-chart
