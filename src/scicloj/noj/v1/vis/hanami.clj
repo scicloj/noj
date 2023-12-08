@@ -103,3 +103,23 @@
              :Y :count
              :Y2 0
              :XSCALE {:zero false}})))
+
+
+(defn linear-regression-plot [dataset target-column feature-column
+                              {:as options
+                               :keys [point-options
+                                      line-options]}]
+  (-> dataset
+      (stats/add-predictions target-column [feature-column]
+                             {:model-type :smile.regression/ordinary-least-square})
+      (combined-plot
+       ht/layer-chart
+       (merge {:X feature-column}
+              options)
+       :LAYER [[ht/point-chart
+                (merge {:Y target-column}
+                       point-options)]
+               [ht/line-chart
+                (merge {:Y (keyword (str (name target-column) "-prediction"))
+                        :YTITLE target-column}
+                       line-options)]])))

@@ -188,11 +188,21 @@
                :MCOLOR "purple"
                :YTITLE :mpg}]]))
 
+(-> datasets/mtcars
+    (hanami/linear-regression-plot
+     :mpg :wt
+     {:HEIGHT 200
+      :WIDTH 200
+      :point-options {:MSIZE 200}
+      :line-options {:MSIZE 5
+                     :MCOLOR "purple"}}))
+
+
 ;; ### Histogram
 
 (-> datasets/iris
     (hanami/histogram :sepal-width
-                          {:nbins 10}))
+                      {:nbins 10}))
 
 ;; ### Combining a few things together
 ;;
@@ -209,23 +219,15 @@
            (map-indexed
             (fn [i [group-name ds]]
               (-> ds
-                  (stats/add-predictions :mpg [:wt]
-                                         {:model-type :smile.regression/ordinary-least-square})
-                  (tc/select-columns [:gear :wt :mpg :mpg-prediction])
-                  (hanami/combined-plot
-                   ht/layer-chart
+                  (hanami/linear-regression-plot
+                   :mpg :wt
                    {:TITLE (str "grear=" group-name)
                     :X :wt
                     :MCOLOR (pallete i)
                     :HEIGHT 200
-                    :WIDTH 200}
-                   :LAYER [[ht/point-chart
-                            {:Y :mpg
-                             :MSIZE 200}]
-                           [ht/line-chart
-                            {:Y :mpg-prediction
-                             :MSIZE 5
-                             :YTITLE :mpg}]]))))
+                    :WIDTH 200
+                    :point-options {:MSIZE 200}
+                    :line-options {:MSIZE 5}}))))
            (hanami/vconcat nil {}))))
 
 ;; A similar example with histograms:
