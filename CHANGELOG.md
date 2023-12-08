@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file. This change
 - added `hanami-combined-plot` API
 - refactored and added information to regression models
 - added model information in prediction columnw metadata
+- moved hanami-related functions to a dedicated namespace
 
 ## [1-alpha18] - 2023-12-06
 - removed the obsolete user namespace

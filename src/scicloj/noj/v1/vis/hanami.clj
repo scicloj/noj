@@ -1,4 +1,4 @@
-(ns scicloj.noj.v1.vis
+(ns scicloj.noj.v1.vis.hanami
   (:require [tech.v3.dataset :as tmd]
             [aerial.hanami.templates :as ht]
             [aerial.hanami.common :as hc]
@@ -9,7 +9,8 @@
             [scicloj.noj.v1.stats :as stats]
             [tablecloth.api :as tc]))
 
-(defn hanami-data [data]
+
+(defn prepare-data [data]
   (when data
     (cond (string? data)          (if (paths/url? data) {:UDATA data}
                                       ;; not a url -- assuming a local path
@@ -30,49 +31,49 @@
                                            slurp))}
           :else                   {:DATA data})))
 
-(defn hanami-plot [data template options]
+(defn plot [data template options]
   (if (tc/grouped? data)
     (-> data
         (tc/aggregate {:plot (fn [group-data]
                                [(-> group-data
-                                    (hanami-plot template
-                                                 options))])})
+                                    (plot template
+                                          options))])})
         kind/table)
     (-> data
-        hanami-data
+        prepare-data
         (merge options)
         (->> (apply concat)
              (apply hc/xform template))
         kind/vega-lite)))
 
-(defn hanami-collector [template template-key]
+(defn collector [template template-key]
   (fn [common-data
        options
        plots]
     (-> common-data
-        (hanami-plot template
-                     (merge {template-key plots}
-                            options)))))
+        (plot template
+              (merge {template-key plots}
+                     options)))))
 
-(def hanami-layers
-  (hanami-collector ht/layer-chart
-                    :LAYER))
+(def layers
+  (collector ht/layer-chart
+             :LAYER))
 
-(def hanami-vconcat
-  (hanami-collector ht/vconcat-chart
-                    :VCONCAT))
+(def vconcat
+  (collector ht/vconcat-chart
+             :VCONCAT))
 
-(def hanami-hconcat
-  (hanami-collector ht/hconcat-chart
-                    :HCONCAT))
+(def hconcat
+  (collector ht/hconcat-chart
+             :HCONCAT))
 
-(defn hanami-combined-plot [dataset
+(defn combined-plot [dataset
                             combining-template
                             options
                             template-key
                             plot-specs]
   (-> dataset
-      (hanami-plot
+      (plot
        combining-template
        (assoc options
               template-key
@@ -88,17 +89,17 @@
                            ([inner-dataset
                              inner-template
                              inner-options]
-                            (hanami-plot inner-dataset
+                            (plot inner-dataset
                                          inner-template
                                          (merge options inner-options)))))))))))
 
-(defn hanami-histogram [dataset column-name options]
+(defn histogram [dataset column-name options]
   (-> column-name
       dataset
       (stats/histogram options)
-      (hanami-plot vht/rect-chart
-                   {:X :left
-                    :X2 :right
-                    :Y :count
-                    :Y2 0
-                    :XSCALE {:zero false}})))
+      (plot vht/rect-chart
+            {:X :left
+             :X2 :right
+             :Y :count
+             :Y2 0
+             :XSCALE {:zero false}})))
