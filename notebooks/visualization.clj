@@ -41,10 +41,10 @@
 
 (-> random-walk
     (hanami/plot ht/point-chart
-                     {:MSIZE 200})
+                 {:MSIZE 200})
     kind/pprint)
 
-;; We can used Hanami temples from the namespace `[aerial.hanami.templates :as ht]'
+;; We can use Hanami templates from the namespace `[aerial.hanami.templates :as ht]`
 ;; as well as the additional templates at Noj's `[scicloj.noj.v1.vis.hanami.templates :as vht]`.
 
 (-> datasets/iris
