@@ -44,8 +44,15 @@
                  {:MSIZE 200})
     kind/pprint)
 
-;; We can use Hanami templates from the namespace `[aerial.hanami.templates :as ht]`
-;; as well as the additional templates at Noj's `[scicloj.noj.v1.vis.hanami.templates :as vht]`.
+;; ### Additional Hanami templates
+
+;; The `scicloj.noj.v1.vis.hanami.templates` namespace add Hanami templates to Hanami's own collection.
+
+(-> datasets/mtcars
+    (hanami/plot vht/boxplot-chart
+                 {:X :gear
+                  :XTYPE :nominal
+                  :Y :mpg}))
 
 (-> datasets/iris
     (hanami/plot vht/rule-chart
@@ -70,16 +77,6 @@
                   :Y2 :petal-length
                   :OPACITY 0.2
                   :SIZE 3}))
-
-;; ### Additional Hanami templates
-
-;; The `scicloj.noj.v1.vis.hanami.templates` namespace add Hanami templates to Hanami's own collection.
-
-(-> datasets/mtcars
-    (hanami/plot vht/boxplot-chart
-                 {:X :gear
-                  :XTYPE :nominal
-                  :Y :mpg}))
 
 ;; ### Layers
 
