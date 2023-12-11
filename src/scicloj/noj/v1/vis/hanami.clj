@@ -38,6 +38,7 @@
                                [(-> group-data
                                     (plot template
                                           options))])})
+        (tc/rename-columns {:plot-0 :plot})
         kind/table)
     (-> data
         prepare-data
