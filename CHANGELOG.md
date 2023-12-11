@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## [1-alpha53-SNAPSHOT]
+## [1-alpha20] - 2023-12-11
 - a slight renaming of columns on the table resulting from a grouped-dataset
 
 ## [1-alpha19] - 2023-12-08
