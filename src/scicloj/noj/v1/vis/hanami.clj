@@ -110,17 +110,28 @@
                               {:as options
                                :keys [point-options
                                       line-options]}]
-  (-> dataset
-      (stats/add-predictions target-column [feature-column]
-                             {:model-type :smile.regression/ordinary-least-square})
-      (combined-plot
-       ht/layer-chart
-       (merge {:X feature-column}
-              options)
-       :LAYER [[ht/point-chart
-                (merge {:Y target-column}
-                       point-options)]
-               [ht/line-chart
-                (merge {:Y (keyword (str (name target-column) "-prediction"))
-                        :YTITLE target-column}
-                       line-options)]])))
+  (let [ds-with-predictions
+        (-> dataset
+            (stats/add-predictions target-column [feature-column]
+                                   {:model-type :smile.regression/ordinary-least-square}))
+        prediction-column-name (keyword
+                                (str (name target-column)
+                                     "-prediction"))]
+    (-> ds-with-predictions
+        (combined-plot
+         ht/layer-chart
+         (merge {:X feature-column
+                 :TITLE (format "R^2 = %.3f"
+                                (-> ds-with-predictions
+                                    prediction-column-name
+                                    meta
+                                    :model
+                                    :R2))}
+                options)
+         :LAYER [[ht/point-chart
+                  (merge {:Y target-column}
+                         point-options)]
+                 [ht/line-chart
+                  (merge {:Y prediction-column-name
+                          :YTITLE target-column}
+                         line-options)]]))))
