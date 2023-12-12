@@ -116,22 +116,30 @@
                                    {:model-type :smile.regression/ordinary-least-square}))
         prediction-column-name (keyword
                                 (str (name target-column)
-                                     "-prediction"))]
-    (-> ds-with-predictions
-        (combined-plot
-         ht/layer-chart
-         (merge {:X feature-column
-                 :TITLE (format "R^2 = %.3f"
-                                (-> ds-with-predictions
-                                    prediction-column-name
-                                    meta
-                                    :model
-                                    :R2))}
-                options)
-         :LAYER [[ht/point-chart
-                  (merge {:Y target-column}
-                         point-options)]
-                 [ht/line-chart
-                  (merge {:Y prediction-column-name
-                          :YTITLE target-column}
-                         line-options)]]))))
+                                     "-prediction"))
+        process-fn (fn [ds]
+                     (-> ds
+                         (combined-plot
+                          ht/layer-chart
+                          (merge {:X feature-column
+                                  :TITLE (format "R^2 = %.3f"
+                                                 (-> ds
+                                                     prediction-column-name
+                                                     meta
+                                                     :model
+                                                     :R2))}
+                                 options)
+                          :LAYER [[ht/point-chart
+                                   (merge {:Y target-column}
+                                          point-options)]
+                                  [ht/line-chart
+                                   (merge {:Y prediction-column-name
+                                           :YTITLE target-column}
+                                          line-options)]])))]
+    (if (tc/grouped? ds-with-predictions)
+      (-> ds-with-predictions
+          (tc/aggregate {:plot (fn [group-data]
+                                 [(process-fn group-data)])})
+          (tc/rename-columns {:plot-0 :plot})
+          kind/table)
+      (process-fn ds-with-predictions))))
