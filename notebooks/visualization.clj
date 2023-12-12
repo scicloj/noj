@@ -194,6 +194,19 @@
       :line-options {:MSIZE 5
                      :MCOLOR "purple"}}))
 
+;; And in a grouped dataset case:
+
+(-> datasets/mtcars
+    (tc/group-by [:gear])
+    (hanami/linear-regression-plot
+     :mpg :wt
+     {:HEIGHT 200
+      :WIDTH 200
+      :point-options {:MSIZE 200}
+      :line-options {:MSIZE 5
+                     :MCOLOR "purple"}}))
+
+
 
 ;; ### Histogram
 
