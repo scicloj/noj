@@ -1,8 +1,7 @@
 {:paths ["src" "resources"]
  :deps {org.clojure/clojure {:mvn/version "1.11.1"}
-        org.clojure/core.async {:mvn/version "1.1.587"}
         scicloj/tablecloth {:mvn/version "7.021"}
-        org.scicloj/kindly {:mvn/version "4-alpha7"}
+        org.scicloj/kindly {:mvn/version "4-alpha9"}
         generateme/fastmath {:mvn/version "2.2.1"}
         aerial.hanami/aerial.hanami {:mvn/version "0.18.0"}
         cljplot/cljplot {:mvn/version "0.0.3"}
@@ -17,5 +16,5 @@
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
                       io.github.cognitect-labs/test-runner
                       {:git/tag "v0.5.1" :git/sha "dfb30dd"}
-                      org.scicloj/clay {:mvn/version "2-alpha51"}}}
-  :dev {:extra-deps {org.scicloj/clay {:mvn/version "2-alpha51"}}}}}
+                      org.scicloj/clay {:mvn/version "2-alpha54"}}}
+  :dev {:extra-deps {org.scicloj/clay {:mvn/version "2-alpha54"}}}}}
