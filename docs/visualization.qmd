@@ -2,35 +2,18 @@
 ---
 format:
   html: {toc: true, toc-depth: 4, theme: spacelab, output-file: visualization.html}
-monofont: Fira Code Medium
 highlight-style: solarized
 code-block-background: true
 include-in-header: {text: '<link rel = "icon" href = "data:," />'}
 embed-resources: true
 
 ---
-<style>table {
-  border-style: thin;
-}
-th, td {
-  padding: 6px;
-}
-td {
-  text-align: left;
-}
-th {
-  text-align: center;
-  background-color: #ddd;
-}
-tr:nth-child(even) {
-  background-color: #f6f6f6;
-}
-</style><style>.printedClojure .sourceCode {
+<style>.printedClojure .sourceCode {
   background-color: transparent;
   border-style: none;
 }
 </style>
-<script src="visualization_files/md-default12.js" type="text/javascript"></script><script src="visualization_files/md-default13.js" type="text/javascript"></script><script src="visualization_files/vega14.js" type="text/javascript"></script><script src="visualization_files/vega15.js" type="text/javascript"></script><script src="visualization_files/vega16.js" type="text/javascript"></script>
+<script src="visualization_files/md-default15.js" type="text/javascript"></script><script src="visualization_files/md-default16.js" type="text/javascript"></script><script src="visualization_files/vega17.js" type="text/javascript"></script><script src="visualization_files/vega18.js" type="text/javascript"></script><script src="visualization_files/vega19.js" type="text/javascript"></script>
 
 # Visualization
 
@@ -113,7 +96,7 @@ Let us look inside the resulting vega-lite space. We can see the dataset is incl
  :height 300,
  :data
  {:values
-  "x,y\n0,-0.033425778711069776\n1,-0.5246374456093023\n2,-0.533136912652798\n3,-0.667270374143656\n4,-1.00670277279597\n5,-1.294802512402372\n6,-1.264167881000317\n7,-1.6342985245645008\n8,-1.398583419788339\n9,-1.5096966199164275\n10,-1.4976141744093798\n11,-1.492137995691143\n12,-1.788182363748857\n13,-1.76971163424891\n14,-1.9802885583257446\n15,-2.312092881564636\n16,-2.772140415370157\n17,-3.221673609935345\n18,-2.937643345904074\n19,-3.192212047941995\n",
+  "x,y\n0,0.17981882170141528\n1,0.3945137818942357\n2,0.8758430425569554\n3,1.3127132388632177\n4,1.3241209844985031\n5,1.4001923186624157\n6,0.9999376579363601\n7,1.4394098408311036\n8,1.2653579980559355\n9,1.622055026735763\n10,1.2943971463574044\n11,1.4626924606768679\n12,1.9570933326402127\n13,1.8556043262368842\n14,1.4611037523872965\n15,1.2859417369863693\n16,1.5511800997696006\n17,1.8331742474373867\n18,1.694905992562806\n19,1.292868574848867\n",
   :format {:type "csv"}}}
 
 ```
@@ -176,7 +159,7 @@ Grouped datasets are handled automatically with a table view.
 </div>
 
 
-<table class="table"><thead><tr><th>species</th><th>plot-0</th></tr></thead><tbody><tr><td><div><p>setosa</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"sepal-length","type":"quantitative"},"size":{"value":3},"opacity":{"value":0.2},"x":{"field":"sepal-width","type":"quantitative"},"y2":{"field":"petal-length","type":"quantitative"},"x2":{"field":"petal-width","type":"quantitative"}},"mark":"rule","width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/3.csv","format":{"type":"csv"}}});</script></div></td></tr><tr><td><div><p>versicolor</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"sepal-length","type":"quantitative"},"size":{"value":3},"opacity":{"value":0.2},"x":{"field":"sepal-width","type":"quantitative"},"y2":{"field":"petal-length","type":"quantitative"},"x2":{"field":"petal-width","type":"quantitative"}},"mark":"rule","width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/4.csv","format":{"type":"csv"}}});</script></div></td></tr><tr><td><div><p>virginica</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"sepal-length","type":"quantitative"},"size":{"value":3},"opacity":{"value":0.2},"x":{"field":"sepal-width","type":"quantitative"},"y2":{"field":"petal-length","type":"quantitative"},"x2":{"field":"petal-width","type":"quantitative"}},"mark":"rule","width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/5.csv","format":{"type":"csv"}}});</script></div></td></tr></tbody></table>
+<table class="table"><thead><tr><th>species</th><th>plot</th></tr></thead><tbody><tr><td><div><p>setosa</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"sepal-length","type":"quantitative"},"size":{"value":3},"opacity":{"value":0.2},"x":{"field":"sepal-width","type":"quantitative"},"y2":{"field":"petal-length","type":"quantitative"},"x2":{"field":"petal-width","type":"quantitative"}},"mark":"rule","width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/3.csv","format":{"type":"csv"}}});</script></div></td></tr><tr><td><div><p>versicolor</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"sepal-length","type":"quantitative"},"size":{"value":3},"opacity":{"value":0.2},"x":{"field":"sepal-width","type":"quantitative"},"y2":{"field":"petal-length","type":"quantitative"},"x2":{"field":"petal-width","type":"quantitative"}},"mark":"rule","width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/4.csv","format":{"type":"csv"}}});</script></div></td></tr><tr><td><div><p>virginica</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"sepal-length","type":"quantitative"},"size":{"value":3},"opacity":{"value":0.2},"x":{"field":"sepal-width","type":"quantitative"},"y2":{"field":"petal-length","type":"quantitative"},"x2":{"field":"petal-width","type":"quantitative"}},"mark":"rule","width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/5.csv","format":{"type":"csv"}}});</script></div></td></tr></tbody></table>
 
 
 ### Layers
@@ -359,7 +342,27 @@ Alternatively:
 </div>
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","height":200}],"height":200,"data":{"url":"visualization_files\/6.csv","format":{"type":"csv"}}});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.753"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.753"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.753"},"height":200}],"height":200,"data":{"url":"visualization_files\/6.csv","format":{"type":"csv"}}});</script></div>
+
+And in a grouped dataset case:
+
+
+<div class="sourceClojure">
+```clojure
+(-> datasets/mtcars
+    (tc/group-by [:gear])
+    (hanami/linear-regression-plot
+     :mpg :wt
+     {:HEIGHT 200
+      :WIDTH 200
+      :point-options {:MSIZE 200}
+      :line-options {:MSIZE 5
+                     :MCOLOR "purple"}}))
+```
+</div>
+
+
+<table class="table"><thead><tr><th>gear</th><th>plot</th></tr></thead><tbody><tr><td><div><p>4</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"height":200}],"height":200,"data":{"url":"visualization_files\/7.csv","format":{"type":"csv"}}});</script></div></td></tr><tr><td><div><p>3</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"height":200}],"height":200,"data":{"url":"visualization_files\/8.csv","format":{"type":"csv"}}});</script></div></td></tr><tr><td><div><p>5</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"height":200}],"height":200,"data":{"url":"visualization_files\/9.csv","format":{"type":"csv"}}});</script></div></td></tr></tbody></table>
 
 
 ### Histogram
@@ -374,7 +377,7 @@ Alternatively:
 </div>
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/7.csv","format":{"type":"csv"}}});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/10.csv","format":{"type":"csv"}}});</script></div>
 
 
 ### Combining a few things together
@@ -434,7 +437,7 @@ Alternatively, using a grouped dataset:
 </div>
 
 
-<table class="table"><thead><tr><th>gear</th><th>plot-0</th></tr></thead><tbody><tr><td><div><p>3</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","height":200}],"height":200,"data":{"url":"visualization_files\/8.csv","format":{"type":"csv"}}});</script></div></td></tr><tr><td><div><p>4</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","height":200}],"height":200,"data":{"url":"visualization_files\/9.csv","format":{"type":"csv"}}});</script></div></td></tr><tr><td><div><p>5</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","height":200}],"height":200,"data":{"url":"visualization_files\/10.csv","format":{"type":"csv"}}});</script></div></td></tr></tbody></table>
+<table class="table"><thead><tr><th>gear</th><th>plot</th></tr></thead><tbody><tr><td><div><p>3</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"height":200}],"height":200,"data":{"url":"visualization_files\/11.csv","format":{"type":"csv"}}});</script></div></td></tr><tr><td><div><p>4</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"height":200}],"height":200,"data":{"url":"visualization_files\/12.csv","format":{"type":"csv"}}});</script></div></td></tr><tr><td><div><p>5</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"height":200}],"height":200,"data":{"url":"visualization_files\/13.csv","format":{"type":"csv"}}});</script></div></td></tr></tbody></table>
 
 A similar example with histograms:
 
@@ -497,7 +500,7 @@ this time using Vega-Lite for layout and coloring
 </div>
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"facet":{"row":{"field":"gear"}},"spec":{"width":400,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"color":{"field":"gear","type":"nominal"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"color":{"field":"gear","type":"nominal"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300},"data":{"url":"visualization_files\/11.csv","format":{"type":"csv"}}});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"facet":{"row":{"field":"gear"}},"spec":{"width":400,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"color":{"field":"gear","type":"nominal"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"color":{"field":"gear","type":"nominal"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300},"data":{"url":"visualization_files\/14.csv","format":{"type":"csv"}}});</script></div>
 
 
 <div class="sourceClojure">

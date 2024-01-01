@@ -2,30 +2,13 @@
 ---
 format:
   html: {toc: true, toc-depth: 4, theme: spacelab, output-file: stats.html}
-monofont: Fira Code Medium
 highlight-style: solarized
 code-block-background: true
 include-in-header: {text: '<link rel = "icon" href = "data:," />'}
 embed-resources: true
 
 ---
-<style>table {
-  border-style: thin;
-}
-th, td {
-  padding: 6px;
-}
-td {
-  text-align: left;
-}
-th {
-  text-align: center;
-  background-color: #ddd;
-}
-tr:nth-child(even) {
-  background-color: #f6f6f6;
-}
-</style><style>.printedClojure .sourceCode {
+<style>.printedClojure .sourceCode {
   background-color: transparent;
   border-style: none;
 }
@@ -106,14 +89,14 @@ and adds some relevant information such as the `R^2` measure.
 ```clojure
 {:feature-columns [:sepal-width :petal-length :petal-width],
  :target-columns [:sepal-length],
- :explained #function[malli.core/-instrument/fn--38328],
+ :explained #function[malli.core/-instrument/fn--54851],
  :R2 0.8582120394597336,
- :id #uuid "eac1ff31-bb6f-4970-86a4-ec7f8df8be67",
+ :id #uuid "e65ec836-f621-43e1-a260-878b7eacb12b",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.022, 4.724, 4.775, 4.851, 5.081, 5.360, 4.911, 5.030, 4.664, 4.903, 5.209, 5.098, 4.775, 4.572, 5.184, 5.522, 5.089, 4.970, 5.352, 5.217...],
  :predict
- #function[scicloj.noj.v1.stats/regression-model/predict--44543],
+ #function[scicloj.noj.v1.stats/regression-model/predict--59067],
  :options {:model-type :smile.regression/elastic-net}}
 
 ```
@@ -138,14 +121,14 @@ and adds some relevant information such as the `R^2` measure.
 ```clojure
 {:feature-columns [:sepal-width :petal-length :petal-width],
  :target-columns [:sepal-length],
- :explained #function[malli.core/-instrument/fn--38328],
+ :explained #function[malli.core/-instrument/fn--54851],
  :R2 0.8586117200664085,
- :id #uuid "9c0c6b79-ecd5-4d84-b3e4-e4d9586c540d",
+ :id #uuid "e46cf4b5-921d-476a-ade8-f02ea7a87631",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.015, 4.690, 4.749, 4.826, 5.080, 5.377, 4.895, 5.021, 4.625, 4.882, 5.216, 5.092, 4.746, 4.533, 5.199, 5.561, 5.094, 4.960, 5.368, 5.226...],
  :predict
- #function[scicloj.noj.v1.stats/regression-model/predict--44543],
+ #function[scicloj.noj.v1.stats/regression-model/predict--59067],
  :options {:model-type :smile.regression/ordinary-least-square}}
 
 ```
@@ -172,14 +155,14 @@ uses specifically the `:smile.regression/ordinary-least-square` model type.
 ```clojure
 {:feature-columns [:sepal-width :petal-length :petal-width],
  :target-columns [:sepal-length],
- :explained #function[malli.core/-instrument/fn--38328],
+ :explained #function[malli.core/-instrument/fn--54851],
  :R2 0.8586117200664085,
- :id #uuid "ed2fe62e-945f-43fd-b849-8cb6e6bf030d",
+ :id #uuid "8d14048d-a1f7-4bd3-a13d-c6fa978938ab",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.015, 4.690, 4.749, 4.826, 5.080, 5.377, 4.895, 5.021, 4.625, 4.882, 5.216, 5.092, 4.746, 4.533, 5.199, 5.561, 5.094, 4.960, 5.368, 5.226...],
  :predict
- #function[scicloj.noj.v1.stats/regression-model/predict--44543],
+ #function[scicloj.noj.v1.stats/regression-model/predict--59067],
  :options {:model-type :smile.regression/ordinary-least-square}}
 
 ```
@@ -262,9 +245,9 @@ to the metadata of that new column.
  :model
  {:feature-columns [:sepal-width :petal-length :petal-width],
   :target-columns [:sepal-length],
-  :explained #function[malli.core/-instrument/fn--38328],
+  :explained #function[malli.core/-instrument/fn--54851],
   :R2 0.8586117200664085,
-  :id #uuid "4e30bd5d-4abb-4858-a69c-e3a307209958",
+  :id #uuid "c6b4160b-2132-4da0-a0b3-b31ae7a90864",
   :options {:model-type :smile.regression/ordinary-least-square}}}
 
 ```
@@ -289,11 +272,11 @@ _unnamed [5 3]:
 
 | :count |      :left |     :right |
 |-------:|-----------:|-----------:|
-|     15 | 0.00460189 | 0.20230362 |
-|     20 | 0.20230362 | 0.40000535 |
-|     31 | 0.40000535 | 0.59770709 |
-|     20 | 0.59770709 | 0.79540882 |
-|     13 | 0.79540882 | 0.99311055 |
+|     22 | 0.00281095 | 0.20218822 |
+|     19 | 0.20218822 | 0.40156549 |
+|     18 | 0.40156549 | 0.60094276 |
+|     17 | 0.60094276 | 0.80032003 |
+|     23 | 0.80032003 | 0.99969730 |
 
 
 
