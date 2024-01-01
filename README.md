@@ -4,11 +4,15 @@ An opinionated way to use the emerging Clojure data stack (WIP)
 
 [![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/noj.svg)](https://clojars.org/org.scicloj/noj)
 
+## Status
+Alpha-stage.
+
+Some parts are stabilizing and will be documented better soon.
+
+
 ## Usage
 
-Coming soon
-
-[Tutorials draft](https://scicloj.github.io/noj/)
+[Docs](https://scicloj.github.io/noj/)
 
 ## License
 
