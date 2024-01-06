@@ -9,8 +9,8 @@
         clj-python/libpython-clj {:mvn/version "2.025"}
         org.scicloj/tempfiles {:mvn/version "1-alpha2"}}
  :aliases
- {:build {:deps {io.github.seancorfield/build-clj
-                 {:git/tag "v0.9.2" :git/sha "9c9f078"}}
+ {:build {:deps {io.github.clojure/tools.build {:mvn/version "0.9.6"}
+                 slipset/deps-deploy {:mvn/version "0.2.1"}}
           :ns-default build}
   :test {:extra-paths ["test"]
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
