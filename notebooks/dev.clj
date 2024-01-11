@@ -9,5 +9,5 @@
                            "python.clj"
                            "stats.clj"
                            "visualization.clj"]
-             :base-target-path "book"
+             :base-target-path "docs"
              :book {:title "Noj Documentation"}})
