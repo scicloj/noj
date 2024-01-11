@@ -5,10 +5,12 @@ format:
 highlight-style: solarized
 code-block-background: true
 include-in-header: {text: '<link rel = "icon" href = "data:," />'}
-embed-resources: true
 
 ---
-<style>.printedClojure .sourceCode {
+<style>.table {
+    overflow-y: scroll;
+}
+</style><style>.printedClojure .sourceCode {
   background-color: transparent;
   border-style: none;
 }
