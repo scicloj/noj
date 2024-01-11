@@ -10,6 +10,4 @@
                            "stats.clj"
                            "visualization.clj"]
              :base-target-path "book"
-             :show false
-             :run-quarto false
              :book {:title "Noj Documentation"}})
