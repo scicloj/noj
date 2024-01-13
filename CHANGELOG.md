@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## [1-alpha23-SNAPSHOT]
+## [1-alpha23] - 2024-01-14
 - deps: removed core.async, updated Kindly; updated dev deps
 - histogram - correct x lables
 
