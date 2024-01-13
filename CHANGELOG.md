@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file. This change
 
 ## [1-alpha23-SNAPSHOT]
 - deps: removed core.async, updated Kindly; updated dev deps
+- histogram - correct x lables
 
 ## [1-alpha22] - 2023-12-12
 - handling grouped datasets correctly in linear regressions

@@ -103,7 +103,8 @@
              :X2 :right
              :Y :count
              :Y2 0
-             :XSCALE {:zero false}})))
+             :XSCALE {:zero false}})
+      (assoc-in [:encoding :x :title] column-name)))
 
 
 (defn linear-regression-plot [dataset target-column feature-column
