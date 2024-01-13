@@ -1,10 +1,15 @@
 
 ---
 format:
-  html: {toc: true, toc-depth: 4, theme: spacelab, output-file: stats.html}
+  html:
+    toc: true
+    toc-depth: 4
+    theme: [spacelab, notebooks/custom.scss]
+    output-file: stats.html
 highlight-style: solarized
 code-block-background: true
 include-in-header: {text: '<link rel = "icon" href = "data:," />'}
+base-target-path: temp
 
 ---
 <style>.table {
@@ -91,14 +96,14 @@ and adds some relevant information such as the `R^2` measure.
 ```clojure
 {:feature-columns [:sepal-width :petal-length :petal-width],
  :target-columns [:sepal-length],
- :explained #function[malli.core/-instrument/fn--54939],
+ :explained #function[malli.core/-instrument/fn--43620],
  :R2 0.8582120394597336,
- :id #uuid "71cce120-aee8-4712-a92c-652bf4b9d72f",
+ :id #uuid "1d54b185-9cc9-4634-9a98-ca580c5ab037",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.022, 4.724, 4.775, 4.851, 5.081, 5.360, 4.911, 5.030, 4.664, 4.903, 5.209, 5.098, 4.775, 4.572, 5.184, 5.522, 5.089, 4.970, 5.352, 5.217...],
  :predict
- #function[scicloj.noj.v1.stats/regression-model/predict--59155],
+ #function[scicloj.noj.v1.stats/regression-model/predict--47836],
  :options {:model-type :smile.regression/elastic-net}}
 
 ```
@@ -123,14 +128,14 @@ and adds some relevant information such as the `R^2` measure.
 ```clojure
 {:feature-columns [:sepal-width :petal-length :petal-width],
  :target-columns [:sepal-length],
- :explained #function[malli.core/-instrument/fn--54939],
+ :explained #function[malli.core/-instrument/fn--43620],
  :R2 0.8586117200664085,
- :id #uuid "6d962f89-5ef4-4919-aa33-4f7c16dfdab0",
+ :id #uuid "12b85556-e8e4-4cee-bba7-f8cff599b1f9",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.015, 4.690, 4.749, 4.826, 5.080, 5.377, 4.895, 5.021, 4.625, 4.882, 5.216, 5.092, 4.746, 4.533, 5.199, 5.561, 5.094, 4.960, 5.368, 5.226...],
  :predict
- #function[scicloj.noj.v1.stats/regression-model/predict--59155],
+ #function[scicloj.noj.v1.stats/regression-model/predict--47836],
  :options {:model-type :smile.regression/ordinary-least-square}}
 
 ```
@@ -157,14 +162,14 @@ uses specifically the `:smile.regression/ordinary-least-square` model type.
 ```clojure
 {:feature-columns [:sepal-width :petal-length :petal-width],
  :target-columns [:sepal-length],
- :explained #function[malli.core/-instrument/fn--54939],
+ :explained #function[malli.core/-instrument/fn--43620],
  :R2 0.8586117200664085,
- :id #uuid "ff37b78c-ff37-4254-9bc5-8ee66f64cb35",
+ :id #uuid "713f55ec-9cfd-486c-a63a-b913e745b03c",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.015, 4.690, 4.749, 4.826, 5.080, 5.377, 4.895, 5.021, 4.625, 4.882, 5.216, 5.092, 4.746, 4.533, 5.199, 5.561, 5.094, 4.960, 5.368, 5.226...],
  :predict
- #function[scicloj.noj.v1.stats/regression-model/predict--59155],
+ #function[scicloj.noj.v1.stats/regression-model/predict--47836],
  :options {:model-type :smile.regression/ordinary-least-square}}
 
 ```
@@ -247,9 +252,9 @@ to the metadata of that new column.
  :model
  {:feature-columns [:sepal-width :petal-length :petal-width],
   :target-columns [:sepal-length],
-  :explained #function[malli.core/-instrument/fn--54939],
+  :explained #function[malli.core/-instrument/fn--43620],
   :R2 0.8586117200664085,
-  :id #uuid "56356c2c-042e-452c-8baf-73a53e0dc9fa",
+  :id #uuid "b2447f44-e493-4fb6-a328-0ce2bf93f2be",
   :options {:model-type :smile.regression/ordinary-least-square}}}
 
 ```
@@ -274,11 +279,11 @@ _unnamed [5 3]:
 
 | :count |      :left |     :right |
 |-------:|-----------:|-----------:|
-|     29 | 0.00837342 | 0.20638079 |
-|     20 | 0.20638079 | 0.40438816 |
-|     23 | 0.40438816 | 0.60239554 |
-|     20 | 0.60239554 | 0.80040291 |
-|      7 | 0.80040291 | 0.99841028 |
+|     23 | 0.01036734 | 0.20609373 |
+|     23 | 0.20609373 | 0.40182013 |
+|     18 | 0.40182013 | 0.59754652 |
+|     14 | 0.59754652 | 0.79327291 |
+|     21 | 0.79327291 | 0.98899930 |
 
 
 

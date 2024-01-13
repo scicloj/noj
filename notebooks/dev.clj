@@ -10,4 +10,5 @@
                            "stats.clj"
                            "visualization.clj"]
              :base-target-path "docs"
-             :book {:title "Noj Documentation"}})
+             :book {:title "Noj Documentation"}
+             :clean-up-target-dir true})
