@@ -6,5 +6,5 @@
           ;; :monofont "Fira Code Medium"
           :highlight-style :solarized
           :code-block-background true
-          :include-in-header {:text "<link rel = \"icon\" href = \"data:,\" />"}
-          :base-target-path "temp"}}
+          :include-in-header {:text "<link rel = \"icon\" href = \"data:,\" />"}}
+ :base-target-path "temp"}
