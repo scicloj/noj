@@ -9,7 +9,6 @@ format:
 highlight-style: solarized
 code-block-background: true
 include-in-header: {text: '<link rel = "icon" href = "data:," />'}
-base-target-path: temp
 
 ---
 <style>.table {

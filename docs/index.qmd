@@ -9,7 +9,6 @@ format:
 highlight-style: solarized
 code-block-background: true
 include-in-header: {text: '<link rel = "icon" href = "data:," />'}
-base-target-path: temp
 
 ---
 <style>.table {
@@ -22,15 +21,31 @@ base-target-path: temp
 </style>
 <script src="index_files/md-default0.js" type="text/javascript"></script><script src="index_files/md-default1.js" type="text/javascript"></script>
 
-<div class="sourceClojure">
-```clojure
-(ns index)
-```
-</div>
-
-
-
 # Preface
+
+Noj (scinojure) is an opinionated way to use the emerging Clojure data stack.
+
+This book is its WIP documentation.
+
+
+
+
+
+
+- [datasets](datasets.html)
+
+
+- [image](image.html)
+
+
+- [python](python.html)
+
+
+- [stats](stats.html)
+
+
+- [visualization](visualization.html)
+
 
 <div style="background-color:grey;height:2px;width:100%;"></div>
 
