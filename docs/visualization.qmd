@@ -102,7 +102,7 @@ Let us look inside the resulting vega-lite space. We can see the dataset is incl
  :height 300,
  :data
  {:values
-  "x,y\n0,-0.08559629650549738\n1,0.22913805988964953\n2,-0.12293496238216661\n3,-0.15589809772380492\n4,-0.1257877985524538\n5,0.28867458832991344\n6,0.3589017522311949\n7,0.5349820274990195\n8,0.9896629728335519\n9,1.1701706226255673\n10,1.0924160237825422\n11,0.7713727967027941\n12,0.43794646812379545\n13,0.10937770372837763\n14,-0.017250023465224085\n15,-0.45732731731480025\n16,-0.1490610441606115\n17,-0.4127610776509181\n18,0.04025752822266082\n19,-0.08099515247088218\n",
+  "x,y\n0,-0.06461919014389106\n1,-0.49556705176638005\n2,-0.8748531560236191\n3,-0.6605161932352847\n4,-0.9096310229747948\n5,-0.8276654122940954\n6,-0.780337471826129\n7,-0.5585664412872818\n8,-0.08970619327575258\n9,-0.4317156385939064\n10,-0.5997421779065193\n11,-0.7291776318411406\n12,-0.9865180106397156\n13,-1.3656680248615434\n14,-1.1268461828872594\n15,-1.0521028152345622\n16,-0.6808077432767236\n17,-0.2640891397597801\n18,-0.3458442233533018\n19,-0.8363775062274473\n",
   :format {:type "csv"}}}
 
 ```
@@ -372,6 +372,12 @@ And in a grouped dataset case:
 
 
 ### Histogram
+A [histogram](https://en.wikipedia.org/wiki/Histogram) groups values in bins,
+counts them,
+and creates a corresponding bar-chart.
+
+The `hanami/histogram` functions does that behind the scenes,
+and generates a Vega-Lite spec using Hanami.
 
 
 <div class="sourceClojure">
@@ -384,6 +390,59 @@ And in a grouped dataset case:
 
 
 <div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/10.csv","format":{"type":"csv"}}});</script></div>
+
+
+<div class="sourceClojure">
+```clojure
+(-> datasets/iris
+    (hanami/histogram :sepal-width
+                      {:nbins 10})
+    kind/pprint)
+```
+</div>
+
+
+
+<div class="printedClojure">
+```clojure
+{:encoding
+ {:y {:field :count, :type "quantitative"},
+  :x
+  {:scale {:zero false},
+   :field :left,
+   :type "quantitative",
+   :title :sepal-width},
+  :y2 {:field 0, :type "quantitative"},
+  :x2 {:scale {:zero false}, :field :right, :type "quantitative"}},
+ :mark "rect",
+ :width 400,
+ :background "floralwhite",
+ :height 300,
+ :data
+ {:values
+  "count,left,right\n4,2.0,2.24\n7,2.24,2.48\n22,2.48,2.72\n24,2.72,2.96\n37,2.96,3.2\n31,3.2,3.4400000000000004\n10,3.4400000000000004,3.6800000000000006\n11,3.6800000000000006,3.9200000000000004\n2,3.9200000000000004,4.16\n2,4.16,4.4\n",
+  :format {:type "csv"}}}
+
+```
+</div>
+
+
+The resulting spec can be customized further:
+
+
+<div class="sourceClojure">
+```clojure
+(-> datasets/iris
+    (hanami/histogram :sepal-width
+                      {:nbins 10})
+    ;; varying the resulting vega-lite spec:
+    (assoc :height 125
+           :width 175))
+```
+</div>
+
+
+<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":175,"background":"floralwhite","height":125,"data":{"url":"visualization_files\/10.csv","format":{"type":"csv"}}});</script></div>
 
 
 ### Combining a few things together

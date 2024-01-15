@@ -97,7 +97,7 @@ and adds some relevant information such as the `R^2` measure.
  :target-columns [:sepal-length],
  :explained #function[malli.core/-instrument/fn--57180],
  :R2 0.8582120394597336,
- :id #uuid "df7337d6-8fb3-4b65-985f-9248a5a78fc5",
+ :id #uuid "c40b7f88-ac0d-4cb1-aa90-c2312a19d09e",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.022, 4.724, 4.775, 4.851, 5.081, 5.360, 4.911, 5.030, 4.664, 4.903, 5.209, 5.098, 4.775, 4.572, 5.184, 5.522, 5.089, 4.970, 5.352, 5.217...],
@@ -129,7 +129,7 @@ and adds some relevant information such as the `R^2` measure.
  :target-columns [:sepal-length],
  :explained #function[malli.core/-instrument/fn--57180],
  :R2 0.8586117200664085,
- :id #uuid "bdac38d9-f810-4652-a892-3047904a6932",
+ :id #uuid "ad586561-f28f-42d7-81de-6e4b38b9cdbe",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.015, 4.690, 4.749, 4.826, 5.080, 5.377, 4.895, 5.021, 4.625, 4.882, 5.216, 5.092, 4.746, 4.533, 5.199, 5.561, 5.094, 4.960, 5.368, 5.226...],
@@ -163,7 +163,7 @@ uses specifically the `:smile.regression/ordinary-least-square` model type.
  :target-columns [:sepal-length],
  :explained #function[malli.core/-instrument/fn--57180],
  :R2 0.8586117200664085,
- :id #uuid "42ecc5a3-c445-4bc6-92ec-fe77b4ef5b27",
+ :id #uuid "128702cb-d2b2-488f-b6a8-6c2df38a0816",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.015, 4.690, 4.749, 4.826, 5.080, 5.377, 4.895, 5.021, 4.625, 4.882, 5.216, 5.092, 4.746, 4.533, 5.199, 5.561, 5.094, 4.960, 5.368, 5.226...],
@@ -253,7 +253,7 @@ to the metadata of that new column.
   :target-columns [:sepal-length],
   :explained #function[malli.core/-instrument/fn--57180],
   :R2 0.8586117200664085,
-  :id #uuid "35431978-8316-4de5-98d2-e0b7b39533c9",
+  :id #uuid "17430f49-d648-4ed5-80e3-bd546213ca47",
   :options {:model-type :smile.regression/ordinary-least-square}}}
 
 ```
@@ -278,11 +278,11 @@ _unnamed [5 3]:
 
 | :count |      :left |     :right |
 |-------:|-----------:|-----------:|
-|     28 | 0.00201917 | 0.19951095 |
-|     16 | 0.19951095 | 0.39700272 |
-|     16 | 0.39700272 | 0.59449450 |
-|     17 | 0.59449450 | 0.79198628 |
-|     22 | 0.79198628 | 0.98947805 |
+|     19 | 0.00006641 | 0.19824317 |
+|     24 | 0.19824317 | 0.39641994 |
+|     23 | 0.39641994 | 0.59459671 |
+|     16 | 0.59459671 | 0.79277348 |
+|     17 | 0.79277348 | 0.99095024 |
 
 
 

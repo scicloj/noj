@@ -299,7 +299,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a> <span class="at">:height</span> <span class="dv">300</span>,</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a> <span class="at">:data</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a> {<span class="at">:values</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"x,y</span><span class="sc">\n</span><span class="st">0,-0.08559629650549738</span><span class="sc">\n</span><span class="st">1,0.22913805988964953</span><span class="sc">\n</span><span class="st">2,-0.12293496238216661</span><span class="sc">\n</span><span class="st">3,-0.15589809772380492</span><span class="sc">\n</span><span class="st">4,-0.1257877985524538</span><span class="sc">\n</span><span class="st">5,0.28867458832991344</span><span class="sc">\n</span><span class="st">6,0.3589017522311949</span><span class="sc">\n</span><span class="st">7,0.5349820274990195</span><span class="sc">\n</span><span class="st">8,0.9896629728335519</span><span class="sc">\n</span><span class="st">9,1.1701706226255673</span><span class="sc">\n</span><span class="st">10,1.0924160237825422</span><span class="sc">\n</span><span class="st">11,0.7713727967027941</span><span class="sc">\n</span><span class="st">12,0.43794646812379545</span><span class="sc">\n</span><span class="st">13,0.10937770372837763</span><span class="sc">\n</span><span class="st">14,-0.017250023465224085</span><span class="sc">\n</span><span class="st">15,-0.45732731731480025</span><span class="sc">\n</span><span class="st">16,-0.1490610441606115</span><span class="sc">\n</span><span class="st">17,-0.4127610776509181</span><span class="sc">\n</span><span class="st">18,0.04025752822266082</span><span class="sc">\n</span><span class="st">19,-0.08099515247088218</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"x,y</span><span class="sc">\n</span><span class="st">0,-0.06461919014389106</span><span class="sc">\n</span><span class="st">1,-0.49556705176638005</span><span class="sc">\n</span><span class="st">2,-0.8748531560236191</span><span class="sc">\n</span><span class="st">3,-0.6605161932352847</span><span class="sc">\n</span><span class="st">4,-0.9096310229747948</span><span class="sc">\n</span><span class="st">5,-0.8276654122940954</span><span class="sc">\n</span><span class="st">6,-0.780337471826129</span><span class="sc">\n</span><span class="st">7,-0.5585664412872818</span><span class="sc">\n</span><span class="st">8,-0.08970619327575258</span><span class="sc">\n</span><span class="st">9,-0.4317156385939064</span><span class="sc">\n</span><span class="st">10,-0.5997421779065193</span><span class="sc">\n</span><span class="st">11,-0.7291776318411406</span><span class="sc">\n</span><span class="st">12,-0.9865180106397156</span><span class="sc">\n</span><span class="st">13,-1.3656680248615434</span><span class="sc">\n</span><span class="st">14,-1.1268461828872594</span><span class="sc">\n</span><span class="st">15,-1.0521028152345622</span><span class="sc">\n</span><span class="st">16,-0.6808077432767236</span><span class="sc">\n</span><span class="st">17,-0.2640891397597801</span><span class="sc">\n</span><span class="st">18,-0.3458442233533018</span><span class="sc">\n</span><span class="st">19,-0.8363775062274473</span><span class="sc">\n</span><span class="st">"</span>,</span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">:format</span> {<span class="at">:type</span> <span class="st">"csv"</span>}}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -622,6 +622,8 @@ plot
 </section>
 <section id="histogram" class="level3" data-number="6.1.7">
 <h3 data-number="6.1.7" class="anchored" data-anchor-id="histogram"><span class="header-section-number">6.1.7</span> Histogram</h3>
+<p>A <a href="https://en.wikipedia.org/wiki/Histogram">histogram</a> groups values in bins, counts them, and creates a corresponding bar-chart.</p>
+<p>The <code>hanami/histogram</code> functions does that behind the scenes, and generates a Vega-Lite spec using Hanami.</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb18"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/iris</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    (hanami/histogram <span class="at">:sepal-width</span></span>
@@ -630,51 +632,88 @@ plot
 <div>
 <script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/10.csv","format":{"type":"csv"}}});</script>
 </div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb19"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/iris</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    (hanami/histogram <span class="at">:sepal-width</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                      {<span class="at">:nbins</span> <span class="dv">10</span>})</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    kind/pprint)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="printedClojure">
+<div class="sourceCode" id="cb20"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>{<span class="at">:encoding</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a> {<span class="at">:y</span> {<span class="at">:field</span> <span class="at">:count</span>, <span class="at">:type</span> <span class="st">"quantitative"</span>},</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">:x</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  {<span class="at">:scale</span> {<span class="at">:zero</span> <span class="va">false</span>},</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>   <span class="at">:field</span> <span class="at">:left</span>,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">:type</span> <span class="st">"quantitative"</span>,</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>   <span class="at">:title</span> <span class="at">:sepal-width</span>},</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">:y2</span> {<span class="at">:field</span> <span class="dv">0</span>, <span class="at">:type</span> <span class="st">"quantitative"</span>},</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">:x2</span> {<span class="at">:scale</span> {<span class="at">:zero</span> <span class="va">false</span>}, <span class="at">:field</span> <span class="at">:right</span>, <span class="at">:type</span> <span class="st">"quantitative"</span>}},</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a> <span class="at">:mark</span> <span class="st">"rect"</span>,</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a> <span class="at">:width</span> <span class="dv">400</span>,</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a> <span class="at">:background</span> <span class="st">"floralwhite"</span>,</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a> <span class="at">:height</span> <span class="dv">300</span>,</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a> <span class="at">:data</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a> {<span class="at">:values</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"count,left,right</span><span class="sc">\n</span><span class="st">4,2.0,2.24</span><span class="sc">\n</span><span class="st">7,2.24,2.48</span><span class="sc">\n</span><span class="st">22,2.48,2.72</span><span class="sc">\n</span><span class="st">24,2.72,2.96</span><span class="sc">\n</span><span class="st">37,2.96,3.2</span><span class="sc">\n</span><span class="st">31,3.2,3.4400000000000004</span><span class="sc">\n</span><span class="st">10,3.4400000000000004,3.6800000000000006</span><span class="sc">\n</span><span class="st">11,3.6800000000000006,3.9200000000000004</span><span class="sc">\n</span><span class="st">2,3.9200000000000004,4.16</span><span class="sc">\n</span><span class="st">2,4.16,4.4</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">:format</span> {<span class="at">:type</span> <span class="st">"csv"</span>}}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The resulting spec can be customized further:</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb21"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/iris</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    (hanami/histogram <span class="at">:sepal-width</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                      {<span class="at">:nbins</span> <span class="dv">10</span>})</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">;; varying the resulting vega-lite spec:</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">assoc</span> <span class="at">:height</span> <span class="dv">125</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">:width</span> <span class="dv">175</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div>
+<script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":175,"background":"floralwhite","height":125,"data":{"url":"visualization_files\/10.csv","format":{"type":"csv"}}});</script>
+</div>
 </section>
 <section id="combining-a-few-things-together" class="level3" data-number="6.1.8">
 <h3 data-number="6.1.8" class="anchored" data-anchor-id="combining-a-few-things-together"><span class="header-section-number">6.1.8</span> Combining a few things together</h3>
 <p>The following is inspired by the example at Plotnine’s <a href="https://plotnine.readthedocs.io/en/stable/">main page</a>. Note how we add regression lines here. We take care of layout and colouring on our side, not using Vega-Lite for that.</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb19"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">let</span> [pallete (<span class="kw">-&gt;&gt;</span> <span class="at">:accent</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                   color/palette</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                   (<span class="kw">mapv</span> color/format-hex))]</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> datasets/mtcars</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>      (tc/group-by <span class="at">:gear</span> {<span class="at">:result-type</span> <span class="at">:as-map</span>})</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>      (<span class="kw">-&gt;&gt;</span> (<span class="kw">sort-by</span> <span class="kw">key</span>)</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>           (map-indexed</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>            (<span class="kw">fn</span> [i [group-name ds]]</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>              (<span class="kw">-&gt;</span> ds</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>                  (hanami/linear-regression-plot</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">:mpg</span> <span class="at">:wt</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>                   {<span class="at">:TITLE</span> (<span class="kw">str</span> <span class="st">"grear="</span> group-name)</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">:X</span> <span class="at">:wt</span></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">:MCOLOR</span> (pallete i)</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">:HEIGHT</span> <span class="dv">200</span></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>                    <span class="at">:WIDTH</span> <span class="dv">200</span></span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>                    <span class="at">:point-options</span> {<span class="at">:MSIZE</span> <span class="dv">200</span>}</span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>                    <span class="at">:line-options</span> {<span class="at">:MSIZE</span> <span class="dv">5</span>}}))))</span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>           (hanami/vconcat <span class="va">nil</span> {}))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">let</span> [pallete (<span class="kw">-&gt;&gt;</span> <span class="at">:accent</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                   color/palette</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                   (<span class="kw">mapv</span> color/format-hex))]</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> datasets/mtcars</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>      (tc/group-by <span class="at">:gear</span> {<span class="at">:result-type</span> <span class="at">:as-map</span>})</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>      (<span class="kw">-&gt;&gt;</span> (<span class="kw">sort-by</span> <span class="kw">key</span>)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>           (map-indexed</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>            (<span class="kw">fn</span> [i [group-name ds]]</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>              (<span class="kw">-&gt;</span> ds</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>                  (hanami/linear-regression-plot</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">:mpg</span> <span class="at">:wt</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>                   {<span class="at">:TITLE</span> (<span class="kw">str</span> <span class="st">"grear="</span> group-name)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">:X</span> <span class="at">:wt</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">:MCOLOR</span> (pallete i)</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">:HEIGHT</span> <span class="dv">200</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>                    <span class="at">:WIDTH</span> <span class="dv">200</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>                    <span class="at">:point-options</span> {<span class="at">:MSIZE</span> <span class="dv">200</span>}</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>                    <span class="at">:line-options</span> {<span class="at">:MSIZE</span> <span class="dv">5</span>}}))))</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>           (hanami/vconcat <span class="va">nil</span> {}))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div>
 <script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","vconcat":[{"width":200,"background":"floralwhite","title":{"text":"grear=3"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#7fc97f","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=3"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#7fc97f","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=3"},"height":200}],"height":200,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nHornet 4 Drive,21.4,6,258.0,110,3.08,3.215,19.44,1,0,3,1,18.24575076879608\nHornet Sportabout,18.7,8,360.0,175,3.15,3.44,17.02,0,0,3,2,17.535458674671055\nValiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1,17.472321599637716\nDuster 360,14.3,8,360.0,245,3.21,3.57,15.84,0,0,3,4,17.125067686954374\nMerc 450SE,16.4,8,275.8,180,3.07,4.07,17.4,0,0,3,3,15.546640811120986\nMerc 450SL,17.3,8,275.8,180,3.07,3.73,17.6,0,0,3,3,16.61997108668769\nMerc 450SLC,15.2,8,275.8,180,3.07,3.78,18.0,0,0,3,3,16.46212839910435\nCadillac Fleetwood,10.4,8,472.0,205,2.93,5.25,17.98,0,0,3,4,11.821553384154196\nLincoln Continental,10.4,8,460.0,215,3.0,5.424,17.82,0,0,3,4,11.272260831364175\nChrysler Imperial,14.7,8,440.0,230,3.23,5.345,17.42,0,0,3,4,11.521652277745854\nToyota Corona,21.5,4,120.1,97,3.7,2.465,20.01,1,0,3,1,20.613391082546155\nDodge Challenger,15.5,8,318.0,150,2.76,3.52,16.87,0,0,3,2,17.282910374537714\nAMC Javelin,15.2,8,304.0,150,3.15,3.435,17.3,0,0,3,2,17.551242943429386\nCamaro Z28,13.3,8,350.0,245,3.73,3.84,15.41,0,0,3,4,16.272717174004345\nPontiac Firebird,19.2,8,400.0,175,3.08,3.845,17.05,0,0,3,2,16.25693290524601\n","format":{"type":"csv"}}},{"width":200,"background":"floralwhite","title":{"text":"grear=4"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#beaed4","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=4"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#beaed4","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=4"},"height":200}],"height":200,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nMazda RX4,21.0,6,160.0,110,3.9,2.62,16.46,0,1,4,4,24.510455071959058\nMazda RX4 Wag,21.0,6,160.0,110,3.9,2.875,17.02,0,1,4,4,22.76026807682699\nDatsun 710,22.8,4,108.0,93,3.85,2.32,18.61,1,1,4,1,26.569498595643847\nMerc 240D,24.4,4,146.7,62,3.69,3.19,20.0,1,0,4,2,20.59827237695796\nMerc 230,22.8,4,140.8,95,3.92,3.15,22.9,1,0,4,2,20.872811513449268\nMerc 280,19.2,6,167.6,123,3.92,3.44,18.3,1,0,4,4,18.882402773887303\nMerc 280C,17.8,6,167.6,123,3.92,3.44,18.9,1,0,4,4,18.882402773887303\nFiat 128,32.4,4,78.7,66,4.08,2.2,19.47,1,1,4,1,27.39311600511776\nHonda Civic,30.4,4,75.7,52,4.93,1.615,18.52,1,1,4,2,31.4082508763031\nToyota Corolla,33.9,4,71.1,65,4.22,1.835,19.9,1,1,4,1,29.89828562560092\nFiat X1-9,27.3,4,79.0,66,4.08,1.935,18.9,1,1,4,1,29.211937784372658\nVolvo 142E,21.4,4,121.0,109,4.11,2.78,18.6,1,1,4,2,23.41229852599384\n","format":{"type":"csv"}}},{"width":200,"background":"floralwhite","title":{"text":"grear=5"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#fdc086","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=5"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#fdc086","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=5"},"height":200}],"height":200,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nPorsche 914-2,26.0,4,120.3,91,4.43,2.14,16.7,0,1,5,2,25.34362502587085\nLotus Europa,30.4,4,95.1,113,3.77,1.513,16.9,1,1,5,2,30.38867758620586\nFord Pantera L,15.8,8,351.0,264,4.22,3.17,14.5,0,1,5,4,17.055899129307758\nFerrari Dino,19.7,6,145.0,175,3.62,2.77,15.5,0,1,5,6,20.274433458070124\nMaserati Bora,15.0,8,301.0,335,3.54,3.57,14.6,0,1,5,8,13.83736480054539\n","format":{"type":"csv"}}}],"height":300,"data":null});</script>
 </div>
 <p>Alternatively, using a grouped dataset:</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb20"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">let</span> [pallete (<span class="kw">-&gt;&gt;</span> <span class="at">:accent</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>                   color/palette</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                   (<span class="kw">mapv</span> color/format-hex))]</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> datasets/mtcars</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>      (tc/map-columns <span class="at">:color</span> [<span class="at">:gear</span>] #(<span class="kw">-&gt;</span> <span class="va">%</span> (<span class="kw">-</span> <span class="dv">3</span>) pallete))</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>      (tc/group-by [<span class="at">:gear</span>])</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>      (hanami/linear-regression-plot</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">:mpg</span> <span class="at">:wt</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>       {<span class="at">:X</span> <span class="at">:wt</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">:MCOLOR</span> {<span class="at">:expr</span> <span class="st">"datum.color"</span>}</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">:HEIGHT</span> <span class="dv">200</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">:WIDTH</span> <span class="dv">200</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">:point-options</span> {<span class="at">:MSIZE</span> <span class="dv">200</span>}</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">:line-options</span> {<span class="at">:MSIZE</span> <span class="dv">5</span>}})</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>      (tc/order-by [<span class="at">:gear</span>])))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">let</span> [pallete (<span class="kw">-&gt;&gt;</span> <span class="at">:accent</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                   color/palette</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                   (<span class="kw">mapv</span> color/format-hex))]</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> datasets/mtcars</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>      (tc/map-columns <span class="at">:color</span> [<span class="at">:gear</span>] #(<span class="kw">-&gt;</span> <span class="va">%</span> (<span class="kw">-</span> <span class="dv">3</span>) pallete))</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>      (tc/group-by [<span class="at">:gear</span>])</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>      (hanami/linear-regression-plot</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">:mpg</span> <span class="at">:wt</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>       {<span class="at">:X</span> <span class="at">:wt</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">:MCOLOR</span> {<span class="at">:expr</span> <span class="st">"datum.color"</span>}</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">:HEIGHT</span> <span class="dv">200</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">:WIDTH</span> <span class="dv">200</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">:point-options</span> {<span class="at">:MSIZE</span> <span class="dv">200</span>}</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">:line-options</span> {<span class="at">:MSIZE</span> <span class="dv">5</span>}})</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>      (tc/order-by [<span class="at">:gear</span>])))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <table class="table">
@@ -736,60 +775,60 @@ plot
 </table>
 <p>A similar example with histograms:</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb21"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">let</span> [pallete (<span class="kw">-&gt;&gt;</span> <span class="at">:accent</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                   color/palette</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                   (<span class="kw">mapv</span> color/format-hex))]</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> datasets/iris</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>      (tc/group-by <span class="at">:species</span> {<span class="at">:result-type</span> <span class="at">:as-map</span>})</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>      (<span class="kw">-&gt;&gt;</span> (<span class="kw">sort-by</span> <span class="kw">key</span>)</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>           (map-indexed</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>            (<span class="kw">fn</span> [i [group-name ds]]</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>              (<span class="kw">-&gt;</span> ds</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>                  (hanami/histogram <span class="at">:sepal-width</span></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>                                    {<span class="at">:nbins</span> <span class="dv">10</span>}))))</span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>           (hanami/vconcat <span class="va">nil</span> {}))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">let</span> [pallete (<span class="kw">-&gt;&gt;</span> <span class="at">:accent</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>                   color/palette</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>                   (<span class="kw">mapv</span> color/format-hex))]</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> datasets/iris</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>      (tc/group-by <span class="at">:species</span> {<span class="at">:result-type</span> <span class="at">:as-map</span>})</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>      (<span class="kw">-&gt;&gt;</span> (<span class="kw">sort-by</span> <span class="kw">key</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>           (map-indexed</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>            (<span class="kw">fn</span> [i [group-name ds]]</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>              (<span class="kw">-&gt;</span> ds</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>                  (hanami/histogram <span class="at">:sepal-width</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>                                    {<span class="at">:nbins</span> <span class="dv">10</span>}))))</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>           (hanami/vconcat <span class="va">nil</span> {}))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div>
 <script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","vconcat":[{"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"values":"count,left,right\n1,2.3,2.51\n0,2.51,2.7199999999999998\n1,2.7199999999999998,2.9299999999999997\n10,2.9299999999999997,3.14\n7,3.14,3.35\n15,3.35,3.56\n6,3.56,3.7700000000000005\n6,3.7700000000000005,3.9800000000000004\n2,3.9800000000000004,4.19\n2,4.19,4.4\n","format":{"type":"csv"}}},{"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"values":"count,left,right\n1,2.0,2.14\n2,2.14,2.28\n6,2.28,2.42\n4,2.42,2.56\n3,2.56,2.7\n11,2.7,2.84\n7,2.84,2.98\n11,2.98,3.12\n3,3.12,3.26\n2,3.26,3.4\n","format":{"type":"csv"}}},{"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"values":"count,left,right\n1,2.2,2.3600000000000003\n4,2.3600000000000003,2.52\n2,2.52,2.68\n12,2.68,2.84\n2,2.84,3.0\n16,3.0,3.16\n8,3.16,3.3200000000000003\n2,3.3200000000000003,3.48\n1,3.48,3.6399999999999997\n2,3.6399999999999997,3.8\n","format":{"type":"csv"}}}],"height":300,"data":null});</script>
 </div>
 <p>Scatterplots and regression lines again, this time using Vega-Lite for layout and coloring (using its “facet” option).</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb22"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/mtcars</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    (tc/group-by [<span class="at">:gear</span>])</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    (stats/add-predictions <span class="at">:mpg</span> [<span class="at">:wt</span>]</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                           {<span class="at">:model-type</span> <span class="at">:smile.regression/ordinary-least-square</span>})</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    (tc/ungroup)</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    (tc/select-columns [<span class="at">:gear</span> <span class="at">:wt</span> <span class="at">:mpg</span> <span class="at">:mpg-prediction</span>])</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    (hanami/combined-plot</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>     ht/layer-chart</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>     {}</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">:LAYER</span> [[ht/point-chart</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>              {<span class="at">:X</span> <span class="at">:wt</span></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">:Y</span> <span class="at">:mpg</span></span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">:MSIZE</span> <span class="dv">200</span></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>               <span class="at">:COLOR</span> <span class="st">"gear"</span></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>               <span class="at">:HEIGHT</span> <span class="dv">100</span></span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>               <span class="at">:WIDTH</span> <span class="dv">200</span>}]</span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>             [ht/line-chart</span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>              {<span class="at">:X</span> <span class="at">:wt</span></span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>               <span class="at">:Y</span> <span class="at">:mpg-prediction</span></span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>               <span class="at">:MSIZE</span> <span class="dv">5</span></span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>               <span class="at">:COLOR</span> <span class="st">"gear"</span></span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>               <span class="at">:YTITLE</span> <span class="at">:mpg</span>}]])</span>
-<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>    ((<span class="kw">fn</span> [spec]</span>
-<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>       {<span class="at">:facet</span> {<span class="at">:row</span> {<span class="at">:field</span> <span class="st">"gear"</span>}}</span>
-<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">:spec</span> (<span class="kw">dissoc</span> spec <span class="at">:data</span>)</span>
-<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">:data</span> (<span class="at">:data</span> spec)}))</span>
-<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>    kind/vega-lite)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/mtcars</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    (tc/group-by [<span class="at">:gear</span>])</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    (stats/add-predictions <span class="at">:mpg</span> [<span class="at">:wt</span>]</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                           {<span class="at">:model-type</span> <span class="at">:smile.regression/ordinary-least-square</span>})</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    (tc/ungroup)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    (tc/select-columns [<span class="at">:gear</span> <span class="at">:wt</span> <span class="at">:mpg</span> <span class="at">:mpg-prediction</span>])</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    (hanami/combined-plot</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>     ht/layer-chart</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>     {}</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">:LAYER</span> [[ht/point-chart</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>              {<span class="at">:X</span> <span class="at">:wt</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">:Y</span> <span class="at">:mpg</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">:MSIZE</span> <span class="dv">200</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>               <span class="at">:COLOR</span> <span class="st">"gear"</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>               <span class="at">:HEIGHT</span> <span class="dv">100</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>               <span class="at">:WIDTH</span> <span class="dv">200</span>}]</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>             [ht/line-chart</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>              {<span class="at">:X</span> <span class="at">:wt</span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>               <span class="at">:Y</span> <span class="at">:mpg-prediction</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>               <span class="at">:MSIZE</span> <span class="dv">5</span></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>               <span class="at">:COLOR</span> <span class="st">"gear"</span></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>               <span class="at">:YTITLE</span> <span class="at">:mpg</span>}]])</span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>    ((<span class="kw">fn</span> [spec]</span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>       {<span class="at">:facet</span> {<span class="at">:row</span> {<span class="at">:field</span> <span class="st">"gear"</span>}}</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">:spec</span> (<span class="kw">dissoc</span> spec <span class="at">:data</span>)</span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">:data</span> (<span class="at">:data</span> spec)}))</span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>    kind/vega-lite)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div>
 <script>vegaEmbed(document.currentScript.parentElement, {"facet":{"row":{"field":"gear"}},"spec":{"width":400,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"color":{"field":"gear","type":"nominal"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"color":{"field":"gear","type":"nominal"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300},"data":{"url":"visualization_files\/14.csv","format":{"type":"csv"}}});</script>
 </div>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb23"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="at">:bye</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="at">:bye</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb24"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="at">:bye</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="at">:bye</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div style="background-color:grey;height:2px;width:100%;">
 
