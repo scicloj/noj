@@ -210,9 +210,30 @@
 
 ;; ### Histogram
 
+;; A [histogram](https://en.wikipedia.org/wiki/Histogram) groups values in bins,
+;; counts them,
+;; and creates a corresponding bar-chart.
+;;
+;; The `hanami/histogram` functions does that behind the scenes,
+;; and generates a Vega-Lite spec using Hanami.
+
 (-> datasets/iris
     (hanami/histogram :sepal-width
                       {:nbins 10}))
+
+(-> datasets/iris
+    (hanami/histogram :sepal-width
+                      {:nbins 10})
+    kind/pprint)
+
+;; The resulting spec can be customized further:
+
+(-> datasets/iris
+    (hanami/histogram :sepal-width
+                      {:nbins 10})
+    ;; varying the resulting vega-lite spec:
+    (assoc :height 125
+           :width 175))
 
 ;; ### Combining a few things together
 ;;
