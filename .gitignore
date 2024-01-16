@@ -29,4 +29,7 @@
 /target
 .clerk
 .python-config.edn
+.clay.html
+_quarto.yml
+temp
 
