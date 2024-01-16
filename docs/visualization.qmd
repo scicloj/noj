@@ -11,10 +11,7 @@ code-block-background: true
 include-in-header: {text: '<link rel = "icon" href = "data:," />'}
 
 ---
-<style>.table {
-    overflow-y: scroll;
-}
-</style><style>.printedClojure .sourceCode {
+<style></style><style>.printedClojure .sourceCode {
   background-color: transparent;
   border-style: none;
 }
@@ -24,7 +21,7 @@ include-in-header: {text: '<link rel = "icon" href = "data:," />'}
 # Visualization
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (ns visualization
   (:require [tablecloth.api :as tc]
@@ -41,7 +38,7 @@ include-in-header: {text: '<link rel = "icon" href = "data:," />'}
             [hiccup.core :as hiccup]
             [clojure2d.color :as color]))
 ```
-</div>
+:::
 
 
 
@@ -49,7 +46,7 @@ include-in-header: {text: '<link rel = "icon" href = "data:," />'}
 Noj offers a few convenience functions to make [Hanami](https://github.com/jsa-aerial/hanami) plotting work smoothly with [Tablecloth](https://scicloj.github.io/tablecloth/) and [Kindly](https://scicloj.github.io/kindly/).
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (def random-walk
   (let [n 20]
@@ -58,7 +55,7 @@ Noj offers a few convenience functions to make [Hanami](https://github.com/jsa-a
                  (reductions +))}
         tc/dataset)))
 ```
-</div>
+:::
 
 
 
@@ -66,32 +63,32 @@ Noj offers a few convenience functions to make [Hanami](https://github.com/jsa-a
 We can plot a Tablecloth datasete using a Hanami template:
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> random-walk
     (hanami/plot ht/point-chart
                  {:MSIZE 200}))
 ```
-</div>
+:::
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/0.csv","format":{"type":"csv"}}});</script></div>
+<div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/0.csv","format":{"type":"csv"}}});</script></div></div>
 
 Let us look inside the resulting vega-lite space. We can see the dataset is included as CSV:
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> random-walk
     (hanami/plot ht/point-chart
                  {:MSIZE 200})
     kind/pprint)
 ```
-</div>
+:::
 
 
 
-<div class="printedClojure">
+::: {.printedClojure}
 ```clojure
 {:encoding
  {:y {:field "y", :type "quantitative"},
@@ -102,11 +99,11 @@ Let us look inside the resulting vega-lite space. We can see the dataset is incl
  :height 300,
  :data
  {:values
-  "x,y\n0,-0.06461919014389106\n1,-0.49556705176638005\n2,-0.8748531560236191\n3,-0.6605161932352847\n4,-0.9096310229747948\n5,-0.8276654122940954\n6,-0.780337471826129\n7,-0.5585664412872818\n8,-0.08970619327575258\n9,-0.4317156385939064\n10,-0.5997421779065193\n11,-0.7291776318411406\n12,-0.9865180106397156\n13,-1.3656680248615434\n14,-1.1268461828872594\n15,-1.0521028152345622\n16,-0.6808077432767236\n17,-0.2640891397597801\n18,-0.3458442233533018\n19,-0.8363775062274473\n",
+  "x,y\n0,0.08038189053485056\n1,0.3319935495121882\n2,0.31720469846458377\n3,0.5441580111424557\n4,0.18689361074395416\n5,0.6623561613228147\n6,0.3597158888231454\n7,-0.018814811999360304\n8,0.06238979528312538\n9,0.4574566346617973\n10,0.305418722158153\n11,0.27454391859132765\n12,0.6874668329222621\n13,0.7801698812665983\n14,1.069338809946045\n15,1.4158237096372897\n16,1.0306739561123774\n17,1.0132667458206162\n18,1.1453687659998226\n19,1.3735472905750425\n",
   :format {:type "csv"}}}
 
 ```
-</div>
+:::
 
 
 
@@ -114,7 +111,7 @@ Let us look inside the resulting vega-lite space. We can see the dataset is incl
 The `scicloj.noj.v1.vis.hanami.templates` namespace add Hanami templates to Hanami's own collection.
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> datasets/mtcars
     (hanami/plot vht/boxplot-chart
@@ -122,13 +119,13 @@ The `scicloj.noj.v1.vis.hanami.templates` namespace add Hanami templates to Hana
                   :XTYPE :nominal
                   :Y :mpg}))
 ```
-</div>
+:::
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"gear","type":"nominal"}},"mark":{"type":"boxplot","tooltip":true},"width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/1.csv","format":{"type":"csv"}}});</script></div>
+<div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"gear","type":"nominal"}},"mark":{"type":"boxplot","tooltip":true},"width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/1.csv","format":{"type":"csv"}}});</script></div></div>
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> datasets/iris
     (hanami/plot vht/rule-chart
@@ -140,17 +137,17 @@ The `scicloj.noj.v1.vis.hanami.templates` namespace add Hanami templates to Hana
                   :SIZE 3
                   :COLOR "species"}))
 ```
-</div>
+:::
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"sepal-length","type":"quantitative"},"color":{"field":"species","type":"nominal"},"size":{"value":3},"opacity":{"value":0.2},"x":{"field":"sepal-width","type":"quantitative"},"y2":{"field":"petal-length","type":"quantitative"},"x2":{"field":"petal-width","type":"quantitative"}},"mark":"rule","width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/2.csv","format":{"type":"csv"}}});</script></div>
+<div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"sepal-length","type":"quantitative"},"color":{"field":"species","type":"nominal"},"size":{"value":3},"opacity":{"value":0.2},"x":{"field":"sepal-width","type":"quantitative"},"y2":{"field":"petal-length","type":"quantitative"},"x2":{"field":"petal-width","type":"quantitative"}},"mark":"rule","width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/2.csv","format":{"type":"csv"}}});</script></div></div>
 
 
 ### Grouped datasets
 Grouped datasets are handled automatically with a table view.
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> datasets/iris
     (tc/group-by [:species])
@@ -162,16 +159,16 @@ Grouped datasets are handled automatically with a table view.
                   :OPACITY 0.2
                   :SIZE 3}))
 ```
-</div>
+:::
 
 
-<table class="table"><thead><tr><th>species</th><th>plot</th></tr></thead><tbody><tr><td><div><p>setosa</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"sepal-length","type":"quantitative"},"size":{"value":3},"opacity":{"value":0.2},"x":{"field":"sepal-width","type":"quantitative"},"y2":{"field":"petal-length","type":"quantitative"},"x2":{"field":"petal-width","type":"quantitative"}},"mark":"rule","width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/3.csv","format":{"type":"csv"}}});</script></div></td></tr><tr><td><div><p>versicolor</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"sepal-length","type":"quantitative"},"size":{"value":3},"opacity":{"value":0.2},"x":{"field":"sepal-width","type":"quantitative"},"y2":{"field":"petal-length","type":"quantitative"},"x2":{"field":"petal-width","type":"quantitative"}},"mark":"rule","width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/4.csv","format":{"type":"csv"}}});</script></div></td></tr><tr><td><div><p>virginica</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"sepal-length","type":"quantitative"},"size":{"value":3},"opacity":{"value":0.2},"x":{"field":"sepal-width","type":"quantitative"},"y2":{"field":"petal-length","type":"quantitative"},"x2":{"field":"petal-width","type":"quantitative"}},"mark":"rule","width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/5.csv","format":{"type":"csv"}}});</script></div></td></tr></tbody></table>
+<div style="max-height:600px;overflow-y:auto;"><table class="table"><thead><tr><th>species</th><th>plot</th></tr></thead><tbody><tr><td><div><p>setosa</p></div></td><td><div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"sepal-length","type":"quantitative"},"size":{"value":3},"opacity":{"value":0.2},"x":{"field":"sepal-width","type":"quantitative"},"y2":{"field":"petal-length","type":"quantitative"},"x2":{"field":"petal-width","type":"quantitative"}},"mark":"rule","width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/3.csv","format":{"type":"csv"}}});</script></div></div></td></tr><tr><td><div><p>versicolor</p></div></td><td><div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"sepal-length","type":"quantitative"},"size":{"value":3},"opacity":{"value":0.2},"x":{"field":"sepal-width","type":"quantitative"},"y2":{"field":"petal-length","type":"quantitative"},"x2":{"field":"petal-width","type":"quantitative"}},"mark":"rule","width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/4.csv","format":{"type":"csv"}}});</script></div></div></td></tr><tr><td><div><p>virginica</p></div></td><td><div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"sepal-length","type":"quantitative"},"size":{"value":3},"opacity":{"value":0.2},"x":{"field":"sepal-width","type":"quantitative"},"y2":{"field":"petal-length","type":"quantitative"},"x2":{"field":"petal-width","type":"quantitative"}},"mark":"rule","width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/5.csv","format":{"type":"csv"}}});</script></div></div></td></tr></tbody></table></div>
 
 
 ### Layers
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> random-walk
     (hanami/layers
@@ -184,15 +181,15 @@ Grouped datasets are handled automatically with a table view.
                    {:MSIZE 4
                     :MCOLOR "brown"})]))
 ```
-</div>
+:::
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","title":{"text":"points and a line"},"layer":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":400,"background":"floralwhite","height":300},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300,"data":{"url":"visualization_files\/0.csv","format":{"type":"csv"}}});</script></div>
+<div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","title":{"text":"points and a line"},"layer":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":400,"background":"floralwhite","height":300},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300,"data":{"url":"visualization_files\/0.csv","format":{"type":"csv"}}});</script></div></div>
 
 Alternatively:
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> random-walk
     (hanami/combined-plot
@@ -204,17 +201,17 @@ Alternatively:
               {:MSIZE 4
                :MCOLOR "brown"}]]))
 ```
-</div>
+:::
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","title":{"text":"points and a line"},"layer":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":400,"background":"floralwhite","title":{"text":"points and a line"},"height":300},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":400,"background":"floralwhite","title":{"text":"points and a line"},"height":300}],"height":300,"data":{"url":"visualization_files\/0.csv","format":{"type":"csv"}}});</script></div>
+<div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","title":{"text":"points and a line"},"layer":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":400,"background":"floralwhite","title":{"text":"points and a line"},"height":300},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":400,"background":"floralwhite","title":{"text":"points and a line"},"height":300}],"height":300,"data":{"url":"visualization_files\/0.csv","format":{"type":"csv"}}});</script></div></div>
 
 
 ### Concatenation
 Vertical
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> random-walk
     (hanami/vconcat
@@ -231,15 +228,15 @@ Vertical
                     :HEIGHT 100
                     :WIDTH 100})]))
 ```
-</div>
+:::
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","vconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"height":300,"data":{"url":"visualization_files\/0.csv","format":{"type":"csv"}}});</script></div>
+<div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","vconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"height":300,"data":{"url":"visualization_files\/0.csv","format":{"type":"csv"}}});</script></div></div>
 
 Alternatively:
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> random-walk
     (hanami/combined-plot
@@ -252,15 +249,15 @@ Alternatively:
                 {:MSIZE 4
                  :MCOLOR "brown"}]]))
 ```
-</div>
+:::
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"width":100,"background":"floralwhite","vconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"height":100,"data":{"url":"visualization_files\/0.csv","format":{"type":"csv"}}});</script></div>
+<div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"width":100,"background":"floralwhite","vconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"height":100,"data":{"url":"visualization_files\/0.csv","format":{"type":"csv"}}});</script></div></div>
 
 Horizontal
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> random-walk
     (hanami/hconcat
@@ -277,15 +274,15 @@ Horizontal
                         :HEIGHT 100
                         :WIDTH 100})]))
 ```
-</div>
+:::
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"hconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/0.csv","format":{"type":"csv"}}});</script></div>
+<div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"hconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/0.csv","format":{"type":"csv"}}});</script></div></div>
 
 Alternatively:
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> random-walk
     (hanami/combined-plot
@@ -298,16 +295,16 @@ Alternatively:
                 {:MSIZE 4
                  :MCOLOR "brown"}]]))
 ```
-</div>
+:::
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"hconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"width":100,"background":"floralwhite","height":100,"data":{"url":"visualization_files\/0.csv","format":{"type":"csv"}}});</script></div>
+<div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"hconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"width":100,"background":"floralwhite","height":100,"data":{"url":"visualization_files\/0.csv","format":{"type":"csv"}}});</script></div></div>
 
 
 ### Linear regression
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> datasets/mtcars
     (stats/add-predictions :mpg [:wt]
@@ -326,15 +323,15 @@ Alternatively:
                :MCOLOR "purple"
                :YTITLE :mpg}]]))
 ```
-</div>
+:::
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":400,"background":"floralwhite","height":200}],"height":200,"data":{"url":"visualization_files\/6.csv","format":{"type":"csv"}}});</script></div>
+<div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":400,"background":"floralwhite","height":200}],"height":200,"data":{"url":"visualization_files\/6.csv","format":{"type":"csv"}}});</script></div></div>
 
 Alternatively:
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> datasets/mtcars
     (hanami/linear-regression-plot
@@ -345,15 +342,15 @@ Alternatively:
       :line-options {:MSIZE 5
                      :MCOLOR "purple"}}))
 ```
-</div>
+:::
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.753"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.753"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.753"},"height":200}],"height":200,"data":{"url":"visualization_files\/6.csv","format":{"type":"csv"}}});</script></div>
+<div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.753"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.753"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.753"},"height":200}],"height":200,"data":{"url":"visualization_files\/6.csv","format":{"type":"csv"}}});</script></div></div>
 
 And in a grouped dataset case:
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> datasets/mtcars
     (tc/group-by [:gear])
@@ -365,10 +362,10 @@ And in a grouped dataset case:
       :line-options {:MSIZE 5
                      :MCOLOR "purple"}}))
 ```
-</div>
+:::
 
 
-<table class="table"><thead><tr><th>gear</th><th>plot</th></tr></thead><tbody><tr><td><div><p>4</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"height":200}],"height":200,"data":{"url":"visualization_files\/7.csv","format":{"type":"csv"}}});</script></div></td></tr><tr><td><div><p>3</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"height":200}],"height":200,"data":{"url":"visualization_files\/8.csv","format":{"type":"csv"}}});</script></div></td></tr><tr><td><div><p>5</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"height":200}],"height":200,"data":{"url":"visualization_files\/9.csv","format":{"type":"csv"}}});</script></div></td></tr></tbody></table>
+<div style="max-height:600px;overflow-y:auto;"><table class="table"><thead><tr><th>gear</th><th>plot</th></tr></thead><tbody><tr><td><div><p>4</p></div></td><td><div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"height":200}],"height":200,"data":{"url":"visualization_files\/7.csv","format":{"type":"csv"}}});</script></div></div></td></tr><tr><td><div><p>3</p></div></td><td><div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"height":200}],"height":200,"data":{"url":"visualization_files\/8.csv","format":{"type":"csv"}}});</script></div></div></td></tr><tr><td><div><p>5</p></div></td><td><div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"height":200}],"height":200,"data":{"url":"visualization_files\/9.csv","format":{"type":"csv"}}});</script></div></div></td></tr></tbody></table></div>
 
 
 ### Histogram
@@ -380,30 +377,30 @@ The `hanami/histogram` functions does that behind the scenes,
 and generates a Vega-Lite spec using Hanami.
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> datasets/iris
     (hanami/histogram :sepal-width
                       {:nbins 10}))
 ```
-</div>
+:::
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/10.csv","format":{"type":"csv"}}});</script></div>
+<div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/10.csv","format":{"type":"csv"}}});</script></div></div>
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> datasets/iris
     (hanami/histogram :sepal-width
                       {:nbins 10})
     kind/pprint)
 ```
-</div>
+:::
 
 
 
-<div class="printedClojure">
+::: {.printedClojure}
 ```clojure
 {:encoding
  {:y {:field :count, :type "quantitative"},
@@ -424,13 +421,13 @@ and generates a Vega-Lite spec using Hanami.
   :format {:type "csv"}}}
 
 ```
-</div>
+:::
 
 
 The resulting spec can be customized further:
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> datasets/iris
     (hanami/histogram :sepal-width
@@ -439,10 +436,10 @@ The resulting spec can be customized further:
     (assoc :height 125
            :width 175))
 ```
-</div>
+:::
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":175,"background":"floralwhite","height":125,"data":{"url":"visualization_files\/10.csv","format":{"type":"csv"}}});</script></div>
+<div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":175,"background":"floralwhite","height":125,"data":{"url":"visualization_files\/10.csv","format":{"type":"csv"}}});</script></div></div>
 
 
 ### Combining a few things together
@@ -451,7 +448,7 @@ The following is inspired by the example at Plotnine's [main page](https://plotn
 Note how we add regression lines here. We take care of layout and colouring on our side, not using Vega-Lite for that.
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (let [pallete (->> :accent
                    color/palette
@@ -473,15 +470,15 @@ Note how we add regression lines here. We take care of layout and colouring on o
                     :line-options {:MSIZE 5}}))))
            (hanami/vconcat nil {}))))
 ```
-</div>
+:::
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","vconcat":[{"width":200,"background":"floralwhite","title":{"text":"grear=3"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#7fc97f","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=3"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#7fc97f","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=3"},"height":200}],"height":200,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nHornet 4 Drive,21.4,6,258.0,110,3.08,3.215,19.44,1,0,3,1,18.24575076879608\nHornet Sportabout,18.7,8,360.0,175,3.15,3.44,17.02,0,0,3,2,17.535458674671055\nValiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1,17.472321599637716\nDuster 360,14.3,8,360.0,245,3.21,3.57,15.84,0,0,3,4,17.125067686954374\nMerc 450SE,16.4,8,275.8,180,3.07,4.07,17.4,0,0,3,3,15.546640811120986\nMerc 450SL,17.3,8,275.8,180,3.07,3.73,17.6,0,0,3,3,16.61997108668769\nMerc 450SLC,15.2,8,275.8,180,3.07,3.78,18.0,0,0,3,3,16.46212839910435\nCadillac Fleetwood,10.4,8,472.0,205,2.93,5.25,17.98,0,0,3,4,11.821553384154196\nLincoln Continental,10.4,8,460.0,215,3.0,5.424,17.82,0,0,3,4,11.272260831364175\nChrysler Imperial,14.7,8,440.0,230,3.23,5.345,17.42,0,0,3,4,11.521652277745854\nToyota Corona,21.5,4,120.1,97,3.7,2.465,20.01,1,0,3,1,20.613391082546155\nDodge Challenger,15.5,8,318.0,150,2.76,3.52,16.87,0,0,3,2,17.282910374537714\nAMC Javelin,15.2,8,304.0,150,3.15,3.435,17.3,0,0,3,2,17.551242943429386\nCamaro Z28,13.3,8,350.0,245,3.73,3.84,15.41,0,0,3,4,16.272717174004345\nPontiac Firebird,19.2,8,400.0,175,3.08,3.845,17.05,0,0,3,2,16.25693290524601\n","format":{"type":"csv"}}},{"width":200,"background":"floralwhite","title":{"text":"grear=4"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#beaed4","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=4"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#beaed4","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=4"},"height":200}],"height":200,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nMazda RX4,21.0,6,160.0,110,3.9,2.62,16.46,0,1,4,4,24.510455071959058\nMazda RX4 Wag,21.0,6,160.0,110,3.9,2.875,17.02,0,1,4,4,22.76026807682699\nDatsun 710,22.8,4,108.0,93,3.85,2.32,18.61,1,1,4,1,26.569498595643847\nMerc 240D,24.4,4,146.7,62,3.69,3.19,20.0,1,0,4,2,20.59827237695796\nMerc 230,22.8,4,140.8,95,3.92,3.15,22.9,1,0,4,2,20.872811513449268\nMerc 280,19.2,6,167.6,123,3.92,3.44,18.3,1,0,4,4,18.882402773887303\nMerc 280C,17.8,6,167.6,123,3.92,3.44,18.9,1,0,4,4,18.882402773887303\nFiat 128,32.4,4,78.7,66,4.08,2.2,19.47,1,1,4,1,27.39311600511776\nHonda Civic,30.4,4,75.7,52,4.93,1.615,18.52,1,1,4,2,31.4082508763031\nToyota Corolla,33.9,4,71.1,65,4.22,1.835,19.9,1,1,4,1,29.89828562560092\nFiat X1-9,27.3,4,79.0,66,4.08,1.935,18.9,1,1,4,1,29.211937784372658\nVolvo 142E,21.4,4,121.0,109,4.11,2.78,18.6,1,1,4,2,23.41229852599384\n","format":{"type":"csv"}}},{"width":200,"background":"floralwhite","title":{"text":"grear=5"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#fdc086","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=5"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#fdc086","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=5"},"height":200}],"height":200,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nPorsche 914-2,26.0,4,120.3,91,4.43,2.14,16.7,0,1,5,2,25.34362502587085\nLotus Europa,30.4,4,95.1,113,3.77,1.513,16.9,1,1,5,2,30.38867758620586\nFord Pantera L,15.8,8,351.0,264,4.22,3.17,14.5,0,1,5,4,17.055899129307758\nFerrari Dino,19.7,6,145.0,175,3.62,2.77,15.5,0,1,5,6,20.274433458070124\nMaserati Bora,15.0,8,301.0,335,3.54,3.57,14.6,0,1,5,8,13.83736480054539\n","format":{"type":"csv"}}}],"height":300,"data":null});</script></div>
+<div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","vconcat":[{"width":200,"background":"floralwhite","title":{"text":"grear=3"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#7fc97f","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=3"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#7fc97f","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=3"},"height":200}],"height":200,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nHornet 4 Drive,21.4,6,258.0,110,3.08,3.215,19.44,1,0,3,1,18.24575076879608\nHornet Sportabout,18.7,8,360.0,175,3.15,3.44,17.02,0,0,3,2,17.535458674671055\nValiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1,17.472321599637716\nDuster 360,14.3,8,360.0,245,3.21,3.57,15.84,0,0,3,4,17.125067686954374\nMerc 450SE,16.4,8,275.8,180,3.07,4.07,17.4,0,0,3,3,15.546640811120986\nMerc 450SL,17.3,8,275.8,180,3.07,3.73,17.6,0,0,3,3,16.61997108668769\nMerc 450SLC,15.2,8,275.8,180,3.07,3.78,18.0,0,0,3,3,16.46212839910435\nCadillac Fleetwood,10.4,8,472.0,205,2.93,5.25,17.98,0,0,3,4,11.821553384154196\nLincoln Continental,10.4,8,460.0,215,3.0,5.424,17.82,0,0,3,4,11.272260831364175\nChrysler Imperial,14.7,8,440.0,230,3.23,5.345,17.42,0,0,3,4,11.521652277745854\nToyota Corona,21.5,4,120.1,97,3.7,2.465,20.01,1,0,3,1,20.613391082546155\nDodge Challenger,15.5,8,318.0,150,2.76,3.52,16.87,0,0,3,2,17.282910374537714\nAMC Javelin,15.2,8,304.0,150,3.15,3.435,17.3,0,0,3,2,17.551242943429386\nCamaro Z28,13.3,8,350.0,245,3.73,3.84,15.41,0,0,3,4,16.272717174004345\nPontiac Firebird,19.2,8,400.0,175,3.08,3.845,17.05,0,0,3,2,16.25693290524601\n","format":{"type":"csv"}}},{"width":200,"background":"floralwhite","title":{"text":"grear=4"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#beaed4","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=4"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#beaed4","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=4"},"height":200}],"height":200,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nMazda RX4,21.0,6,160.0,110,3.9,2.62,16.46,0,1,4,4,24.510455071959058\nMazda RX4 Wag,21.0,6,160.0,110,3.9,2.875,17.02,0,1,4,4,22.76026807682699\nDatsun 710,22.8,4,108.0,93,3.85,2.32,18.61,1,1,4,1,26.569498595643847\nMerc 240D,24.4,4,146.7,62,3.69,3.19,20.0,1,0,4,2,20.59827237695796\nMerc 230,22.8,4,140.8,95,3.92,3.15,22.9,1,0,4,2,20.872811513449268\nMerc 280,19.2,6,167.6,123,3.92,3.44,18.3,1,0,4,4,18.882402773887303\nMerc 280C,17.8,6,167.6,123,3.92,3.44,18.9,1,0,4,4,18.882402773887303\nFiat 128,32.4,4,78.7,66,4.08,2.2,19.47,1,1,4,1,27.39311600511776\nHonda Civic,30.4,4,75.7,52,4.93,1.615,18.52,1,1,4,2,31.4082508763031\nToyota Corolla,33.9,4,71.1,65,4.22,1.835,19.9,1,1,4,1,29.89828562560092\nFiat X1-9,27.3,4,79.0,66,4.08,1.935,18.9,1,1,4,1,29.211937784372658\nVolvo 142E,21.4,4,121.0,109,4.11,2.78,18.6,1,1,4,2,23.41229852599384\n","format":{"type":"csv"}}},{"width":200,"background":"floralwhite","title":{"text":"grear=5"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#fdc086","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=5"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#fdc086","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=5"},"height":200}],"height":200,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nPorsche 914-2,26.0,4,120.3,91,4.43,2.14,16.7,0,1,5,2,25.34362502587085\nLotus Europa,30.4,4,95.1,113,3.77,1.513,16.9,1,1,5,2,30.38867758620586\nFord Pantera L,15.8,8,351.0,264,4.22,3.17,14.5,0,1,5,4,17.055899129307758\nFerrari Dino,19.7,6,145.0,175,3.62,2.77,15.5,0,1,5,6,20.274433458070124\nMaserati Bora,15.0,8,301.0,335,3.54,3.57,14.6,0,1,5,8,13.83736480054539\n","format":{"type":"csv"}}}],"height":300,"data":null});</script></div></div>
 
 Alternatively, using a grouped dataset:
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (let [pallete (->> :accent
                    color/palette
@@ -499,15 +496,15 @@ Alternatively, using a grouped dataset:
         :line-options {:MSIZE 5}})
       (tc/order-by [:gear])))
 ```
-</div>
+:::
 
 
-<table class="table"><thead><tr><th>gear</th><th>plot</th></tr></thead><tbody><tr><td><div><p>3</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"height":200}],"height":200,"data":{"url":"visualization_files\/11.csv","format":{"type":"csv"}}});</script></div></td></tr><tr><td><div><p>4</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"height":200}],"height":200,"data":{"url":"visualization_files\/12.csv","format":{"type":"csv"}}});</script></div></td></tr><tr><td><div><p>5</p></div></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"height":200}],"height":200,"data":{"url":"visualization_files\/13.csv","format":{"type":"csv"}}});</script></div></td></tr></tbody></table>
+<div style="max-height:600px;overflow-y:auto;"><table class="table"><thead><tr><th>gear</th><th>plot</th></tr></thead><tbody><tr><td><div><p>3</p></div></td><td><div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"height":200}],"height":200,"data":{"url":"visualization_files\/11.csv","format":{"type":"csv"}}});</script></div></div></td></tr><tr><td><div><p>4</p></div></td><td><div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"height":200}],"height":200,"data":{"url":"visualization_files\/12.csv","format":{"type":"csv"}}});</script></div></div></td></tr><tr><td><div><p>5</p></div></td><td><div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":{"expr":"datum.color"},"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"height":200}],"height":200,"data":{"url":"visualization_files\/13.csv","format":{"type":"csv"}}});</script></div></div></td></tr></tbody></table></div>
 
 A similar example with histograms:
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (let [pallete (->> :accent
                    color/palette
@@ -522,17 +519,17 @@ A similar example with histograms:
                                     {:nbins 10}))))
            (hanami/vconcat nil {}))))
 ```
-</div>
+:::
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","vconcat":[{"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"values":"count,left,right\n1,2.3,2.51\n0,2.51,2.7199999999999998\n1,2.7199999999999998,2.9299999999999997\n10,2.9299999999999997,3.14\n7,3.14,3.35\n15,3.35,3.56\n6,3.56,3.7700000000000005\n6,3.7700000000000005,3.9800000000000004\n2,3.9800000000000004,4.19\n2,4.19,4.4\n","format":{"type":"csv"}}},{"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"values":"count,left,right\n1,2.0,2.14\n2,2.14,2.28\n6,2.28,2.42\n4,2.42,2.56\n3,2.56,2.7\n11,2.7,2.84\n7,2.84,2.98\n11,2.98,3.12\n3,3.12,3.26\n2,3.26,3.4\n","format":{"type":"csv"}}},{"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"values":"count,left,right\n1,2.2,2.3600000000000003\n4,2.3600000000000003,2.52\n2,2.52,2.68\n12,2.68,2.84\n2,2.84,3.0\n16,3.0,3.16\n8,3.16,3.3200000000000003\n2,3.3200000000000003,3.48\n1,3.48,3.6399999999999997\n2,3.6399999999999997,3.8\n","format":{"type":"csv"}}}],"height":300,"data":null});</script></div>
+<div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","vconcat":[{"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"values":"count,left,right\n1,2.3,2.51\n0,2.51,2.7199999999999998\n1,2.7199999999999998,2.9299999999999997\n10,2.9299999999999997,3.14\n7,3.14,3.35\n15,3.35,3.56\n6,3.56,3.7700000000000005\n6,3.7700000000000005,3.9800000000000004\n2,3.9800000000000004,4.19\n2,4.19,4.4\n","format":{"type":"csv"}}},{"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"values":"count,left,right\n1,2.0,2.14\n2,2.14,2.28\n6,2.28,2.42\n4,2.42,2.56\n3,2.56,2.7\n11,2.7,2.84\n7,2.84,2.98\n11,2.98,3.12\n3,3.12,3.26\n2,3.26,3.4\n","format":{"type":"csv"}}},{"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"values":"count,left,right\n1,2.2,2.3600000000000003\n4,2.3600000000000003,2.52\n2,2.52,2.68\n12,2.68,2.84\n2,2.84,3.0\n16,3.0,3.16\n8,3.16,3.3200000000000003\n2,3.3200000000000003,3.48\n1,3.48,3.6399999999999997\n2,3.6399999999999997,3.8\n","format":{"type":"csv"}}}],"height":300,"data":null});</script></div></div>
 
 Scatterplots and regression lines again,
 this time using Vega-Lite for layout and coloring
 (using its "facet" option).
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> datasets/mtcars
     (tc/group-by [:gear])
@@ -562,26 +559,26 @@ this time using Vega-Lite for layout and coloring
         :data (:data spec)}))
     kind/vega-lite)
 ```
-</div>
+:::
 
 
-<div><script>vegaEmbed(document.currentScript.parentElement, {"facet":{"row":{"field":"gear"}},"spec":{"width":400,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"color":{"field":"gear","type":"nominal"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"color":{"field":"gear","type":"nominal"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300},"data":{"url":"visualization_files\/14.csv","format":{"type":"csv"}}});</script></div>
+<div style="max-height:600px;overflow-y:auto;"><div><script>vegaEmbed(document.currentScript.parentElement, {"facet":{"row":{"field":"gear"}},"spec":{"width":400,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"color":{"field":"gear","type":"nominal"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"color":{"field":"gear","type":"nominal"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"tooltip":true},"width":400,"background":"floralwhite","height":300}],"height":300},"data":{"url":"visualization_files\/14.csv","format":{"type":"csv"}}});</script></div></div>
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 :bye
 ```
-</div>
+:::
 
 
 
-<div class="printedClojure">
+::: {.printedClojure}
 ```clojure
 :bye
 
 ```
-</div>
+:::
 
 
 <div style="background-color:grey;height:2px;width:100%;"></div>

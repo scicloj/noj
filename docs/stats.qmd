@@ -11,10 +11,7 @@ code-block-background: true
 include-in-header: {text: '<link rel = "icon" href = "data:," />'}
 
 ---
-<style>.table {
-    overflow-y: scroll;
-}
-</style><style>.printedClojure .sourceCode {
+<style></style><style>.printedClojure .sourceCode {
   background-color: transparent;
   border-style: none;
 }
@@ -24,13 +21,13 @@ include-in-header: {text: '<link rel = "icon" href = "data:," />'}
 # Statistics
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (ns stats
   (:require [scicloj.noj.v1.datasets :as datasets]
             [scicloj.noj.v1.stats :as stats]))
 ```
-</div>
+:::
 
 
 
@@ -40,13 +37,13 @@ matrix of selected columns of a given dataset,
 organizing the resulting data as a dataset.
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> datasets/iris
     (stats/calc-correlations-matrix
      [:sepal-length :sepal-width :petal-length :petal-width]))
 ```
-</div>
+:::
 
 
 _unnamed [16 3]:
@@ -78,7 +75,7 @@ The `stats/regression-model` function computes a regressiom model (using `sciclo
 and adds some relevant information such as the `R^2` measure.
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> datasets/iris
     (stats/regression-model
@@ -87,30 +84,30 @@ and adds some relevant information such as the `R^2` measure.
      {:model-type :smile.regression/elastic-net})
     (dissoc :model-data))
 ```
-</div>
+:::
 
 
 
-<div class="printedClojure">
+::: {.printedClojure}
 ```clojure
 {:feature-columns [:sepal-width :petal-length :petal-width],
  :target-columns [:sepal-length],
- :explained #function[malli.core/-instrument/fn--57180],
+ :explained #function[malli.core/-instrument/fn--54964],
  :R2 0.8582120394597336,
- :id #uuid "c40b7f88-ac0d-4cb1-aa90-c2312a19d09e",
+ :id #uuid "e305701e-c773-4cd1-845c-2d58c9185bba",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.022, 4.724, 4.775, 4.851, 5.081, 5.360, 4.911, 5.030, 4.664, 4.903, 5.209, 5.098, 4.775, 4.572, 5.184, 5.522, 5.089, 4.970, 5.352, 5.217...],
  :predict
- #function[scicloj.noj.v1.stats/regression-model/predict--61396],
+ #function[scicloj.noj.v1.stats/regression-model/predict--59180],
  :options {:model-type :smile.regression/elastic-net}}
 
 ```
-</div>
+:::
 
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> datasets/iris
     (stats/regression-model
@@ -119,33 +116,33 @@ and adds some relevant information such as the `R^2` measure.
      {:model-type :smile.regression/ordinary-least-square})
     (dissoc :model-data))
 ```
-</div>
+:::
 
 
 
-<div class="printedClojure">
+::: {.printedClojure}
 ```clojure
 {:feature-columns [:sepal-width :petal-length :petal-width],
  :target-columns [:sepal-length],
- :explained #function[malli.core/-instrument/fn--57180],
+ :explained #function[malli.core/-instrument/fn--54964],
  :R2 0.8586117200664085,
- :id #uuid "ad586561-f28f-42d7-81de-6e4b38b9cdbe",
+ :id #uuid "6f35bd7d-b92c-4e1d-bc89-25a1d178dbfd",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.015, 4.690, 4.749, 4.826, 5.080, 5.377, 4.895, 5.021, 4.625, 4.882, 5.216, 5.092, 4.746, 4.533, 5.199, 5.561, 5.094, 4.960, 5.368, 5.226...],
  :predict
- #function[scicloj.noj.v1.stats/regression-model/predict--61396],
+ #function[scicloj.noj.v1.stats/regression-model/predict--59180],
  :options {:model-type :smile.regression/ordinary-least-square}}
 
 ```
-</div>
+:::
 
 
 The `stats/linear-regression-model` convenience function
 uses specifically the `:smile.regression/ordinary-least-square` model type.
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> datasets/iris
     (stats/linear-regression-model
@@ -153,26 +150,26 @@ uses specifically the `:smile.regression/ordinary-least-square` model type.
      [:sepal-width :petal-length :petal-width])
     (dissoc :model-data))
 ```
-</div>
+:::
 
 
 
-<div class="printedClojure">
+::: {.printedClojure}
 ```clojure
 {:feature-columns [:sepal-width :petal-length :petal-width],
  :target-columns [:sepal-length],
- :explained #function[malli.core/-instrument/fn--57180],
+ :explained #function[malli.core/-instrument/fn--54964],
  :R2 0.8586117200664085,
- :id #uuid "128702cb-d2b2-488f-b6a8-6c2df38a0816",
+ :id #uuid "f80860e1-fb45-4924-a6d9-7edab7760f89",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.015, 4.690, 4.749, 4.826, 5.080, 5.377, 4.895, 5.021, 4.625, 4.882, 5.216, 5.092, 4.746, 4.533, 5.199, 5.561, 5.094, 4.960, 5.368, 5.226...],
  :predict
- #function[scicloj.noj.v1.stats/regression-model/predict--61396],
+ #function[scicloj.noj.v1.stats/regression-model/predict--59180],
  :options {:model-type :smile.regression/ordinary-least-square}}
 
 ```
-</div>
+:::
 
 
 
@@ -182,7 +179,7 @@ models a target column using feature columns,
 adds a new prediction column with the model predictions.
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> datasets/iris
     (stats/add-predictions
@@ -190,7 +187,7 @@ adds a new prediction column with the model predictions.
      [:sepal-width :petal-length :petal-width]
      {:model-type :smile.regression/ordinary-least-square}))
 ```
-</div>
+:::
 
 
 _unnamed [150 6]:
@@ -226,7 +223,7 @@ It attaches the model's information
 to the metadata of that new column.
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> datasets/iris
     (stats/add-predictions
@@ -238,11 +235,11 @@ to the metadata of that new column.
     (update :model
             dissoc :model-data :predict :predictions))
 ```
-</div>
+:::
 
 
 
-<div class="printedClojure">
+::: {.printedClojure}
 ```clojure
 {:name :sepal-length-prediction,
  :datatype :float64,
@@ -251,13 +248,13 @@ to the metadata of that new column.
  :model
  {:feature-columns [:sepal-width :petal-length :petal-width],
   :target-columns [:sepal-length],
-  :explained #function[malli.core/-instrument/fn--57180],
+  :explained #function[malli.core/-instrument/fn--54964],
   :R2 0.8586117200664085,
-  :id #uuid "17430f49-d648-4ed5-80e3-bd546213ca47",
+  :id #uuid "0d40f5c1-678d-4bac-9c44-aa51701d0cc7",
   :options {:model-type :smile.regression/ordinary-least-square}}}
 
 ```
-</div>
+:::
 
 
 
@@ -266,23 +263,23 @@ The `stats/histogram` function computes the necessary data
 to plot a histogram.
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> (repeatedly 99 rand)
     (stats/histogram {:bin-count 5}))
 ```
-</div>
+:::
 
 
 _unnamed [5 3]:
 
 | :count |      :left |     :right |
 |-------:|-----------:|-----------:|
-|     19 | 0.00006641 | 0.19824317 |
-|     24 | 0.19824317 | 0.39641994 |
-|     23 | 0.39641994 | 0.59459671 |
-|     16 | 0.59459671 | 0.79277348 |
-|     17 | 0.79277348 | 0.99095024 |
+|     15 | 0.00153768 | 0.19512094 |
+|     20 | 0.19512094 | 0.38870420 |
+|     27 | 0.38870420 | 0.58228746 |
+|     17 | 0.58228746 | 0.77587072 |
+|     20 | 0.77587072 | 0.96945399 |
 
 
 

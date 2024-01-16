@@ -11,31 +11,28 @@ code-block-background: true
 include-in-header: {text: '<link rel = "icon" href = "data:," />'}
 
 ---
-<style>.table {
-    overflow-y: scroll;
-}
-</style><style>.printedClojure .sourceCode {
+<style></style><style>.printedClojure .sourceCode {
   background-color: transparent;
   border-style: none;
 }
 </style>
 <script src="image_files/md-default1.js" type="text/javascript"></script><script src="image_files/md-default2.js" type="text/javascript"></script>
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (ns image
   (:require [tech.v3.tensor :as tensor]
             [tech.v3.datatype.functional :as fun]
             [scicloj.noj.v1.vis.image :as vis.image]))
 ```
-</div>
+:::
 
 
 
 ## Turning tensors into images
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (-> (for [i (range 100)]
       (range 100))
@@ -43,10 +40,10 @@ include-in-header: {text: '<link rel = "icon" href = "data:," />'}
     (fun/* 400)
     (vis.image/tensor->image :ushort-gray))
 ```
-</div>
+:::
 
 
-<img src="image_files/0.png" style="width:100%;" />
+<div style="max-height:600px;overflow-y:auto;"><img src="image_files/0.png" style="width:100%;" /></div>
 
 <div style="background-color:grey;height:2px;width:100%;"></div>
 

@@ -11,10 +11,7 @@ code-block-background: true
 include-in-header: {text: '<link rel = "icon" href = "data:," />'}
 
 ---
-<style>.table {
-    overflow-y: scroll;
-}
-</style><style>.printedClojure .sourceCode {
+<style></style><style>.printedClojure .sourceCode {
   background-color: transparent;
   border-style: none;
 }

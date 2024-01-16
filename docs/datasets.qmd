@@ -11,10 +11,7 @@ code-block-background: true
 include-in-header: {text: '<link rel = "icon" href = "data:," />'}
 
 ---
-<style>.table {
-    overflow-y: scroll;
-}
-</style><style>.printedClojure .sourceCode {
+<style></style><style>.printedClojure .sourceCode {
   background-color: transparent;
   border-style: none;
 }
@@ -24,20 +21,20 @@ include-in-header: {text: '<link rel = "icon" href = "data:," />'}
 # Datasets
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 (ns datasets
   (:require [scicloj.noj.v1.datasets :as datasets]))
 ```
-</div>
+:::
 
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 datasets/iris
 ```
-</div>
+:::
 
 
 _unnamed [150 5]:
@@ -70,11 +67,11 @@ _unnamed [150 5]:
 
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 datasets/mtcars
 ```
-</div>
+:::
 
 
 _unnamed [32 12]:
@@ -107,11 +104,11 @@ _unnamed [32 12]:
 
 
 
-<div class="sourceClojure">
+::: {.sourceClojure}
 ```clojure
 datasets/diamonds
 ```
-</div>
+:::
 
 
 _unnamed [53940 10]:
