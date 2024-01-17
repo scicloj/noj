@@ -14,10 +14,9 @@
 
 Noj (scinojure) is an opinionated way to use the emerging Clojure data stack.
 
-This book is its WIP documentation.
+It collects a few of the main dependencies together with functions allowing to conveniently use them together.
 
-
-
+## Existing chapters
 ")
 
 (->> ["datasets"
@@ -30,3 +29,9 @@ This book is its WIP documentation.
                     k k)))
      (string/join "\n")
      md)
+
+(md "
+## Wishlist
+
+- a subset of [ggplot2](https://ggplot2.tidyverse.org/) ported to Clojure
+")
