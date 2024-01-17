@@ -22,10 +22,9 @@ include-in-header: {text: '<link rel = "icon" href = "data:," />'}
 
 Noj (scinojure) is an opinionated way to use the emerging Clojure data stack.
 
-This book is its WIP documentation.
+It collects a few of the main dependencies together with functions allowing to conveniently use them together.
 
-
-
+## Existing chapters
 
 
 
@@ -42,6 +41,12 @@ This book is its WIP documentation.
 
 
 - [visualization](visualization.html)
+
+
+
+## Wishlist
+
+- a subset of [ggplot2](https://ggplot2.tidyverse.org/) ported to Clojure
 
 
 <div style="background-color:grey;height:2px;width:100%;"></div>

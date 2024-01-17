@@ -132,7 +132,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface"><span class="toc-section-number">1</span>  Preface</a></li>
+  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface"><span class="toc-section-number">1</span>  Preface</a>
+  <ul>
+  <li><a href="#existing-chapters" id="toc-existing-chapters" class="nav-link" data-scroll-target="#existing-chapters"><span class="toc-section-number">1.1</span>  Existing chapters</a></li>
+  <li><a href="#wishlist" id="toc-wishlist" class="nav-link" data-scroll-target="#wishlist"><span class="toc-section-number">1.2</span>  Wishlist</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -167,13 +171,21 @@ ul.task-list li input[type="checkbox"] {
 <section id="preface" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Preface</h1>
 <p>Noj (scinojure) is an opinionated way to use the emerging Clojure data stack.</p>
-<p>This book is its WIP documentation.</p>
+<p>It collects a few of the main dependencies together with functions allowing to conveniently use them together.</p>
+<section id="existing-chapters" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="existing-chapters"><span class="header-section-number">1.1</span> Existing chapters</h2>
 <ul>
 <li><p><a href="datasets.html">datasets</a></p></li>
 <li><p><a href="image.html">image</a></p></li>
 <li><p><a href="python.html">python</a></p></li>
 <li><p><a href="stats.html">stats</a></p></li>
 <li><p><a href="visualization.html">visualization</a></p></li>
+</ul>
+</section>
+<section id="wishlist" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="wishlist"><span class="header-section-number">1.2</span> Wishlist</h2>
+<ul>
+<li>a subset of <a href="https://ggplot2.tidyverse.org/">ggplot2</a> ported to Clojure</li>
 </ul>
 <div style="background-color:grey;height:2px;width:100%;">
 
@@ -183,6 +195,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
