@@ -15,6 +15,10 @@
 
 ;; ## Using Python visualizations
 
+;; Noj offers methods to include Python plots in [Kindly](https://scicloj.github.io/kindly-noted/kindly) visualizations: the `vis.python/with-pyplot` macro and the `vis.python/pyplot` function.
+
+;; They are based on the [Parens for Pyplot](http://gigasquidsoftware.com/blog/2020/01/18/parens-for-pyplot/) blog post at Squid's blog.
+
 (require-python '[numpy :as np]
                 '[numpy.random :as np.random]
                 'matplotlib.pyplot
@@ -28,7 +32,6 @@
       (tc/add-column :y #(fun/sin (:x %)))))
 
 (vis.python/with-pyplot
-  ;; http://gigasquidsoftware.com/blog/2020/01/18/parens-for-pyplot/
   (matplotlib.pyplot/plot
    (:x sine-data)
    (:y sine-data)))
@@ -50,6 +53,7 @@
                  :style "smoker"
                  :size "size")))
 
+;; [ArviZ](https://python.arviz.org/en/stable/)
 (let [size [10 50]
       data {:normal (apply np.random/randn size)
             :gumbel (np.random/gumbel :size size)
