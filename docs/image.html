@@ -228,6 +228,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            [tech.v3.datatype.functional <span class="at">:as</span> fun]</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            [scicloj.noj.v1.vis.image <span class="at">:as</span> vis.image]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>The <code>vis.image/tensor-&gt;image</code> function can help turning <a href="https://github.com/cnuernber/dtype-next/issues/92">dtype-next</a>’s <a href="https://cnuernber.github.io/dtype-next/dimensions-bytecode-gen.html">tensors</a> into Java <a href="https://docs.oracle.com/javase/8/docs/api/java/awt/image/BufferedImage.html">BufferedImage</a> objects.</p>
+<p>Eventually, this function may find itself in dtype-next itself, see <a href="https://github.com/cnuernber/dtype-next/issues/92">Issue #92</a> there.</p>
+<p>You may see this function in action in the <a href="https://scicloj.github.io/clojure-data-scrapbook/projects/visual-tools/clay-cider-demo-20231217/index.html">Clay &amp; Noj demo: image processing</a> at the <a href="https://scicloj.github.io/clojure-data-scrapbook/">Clojure Data Scrapbook</a> and in <a href="https://www.youtube.com/watch?v=fd4kjlws6Ts">the related video</a>.</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb2"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> (<span class="kw">for</span> [i (<span class="kw">range</span> <span class="dv">100</span>)]</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>      (<span class="kw">range</span> <span class="dv">100</span>))</span>
