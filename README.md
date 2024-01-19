@@ -9,10 +9,17 @@ Alpha-stage.
 
 Some parts are stabilizing and will be documented better soon.
 
-
 ## Usage
-
 [Docs](https://scicloj.github.io/noj/)
+
+## Where to discuss
+- library development:
+  - the [#noj-dev](https://clojurians.zulipchat.com/#narrow/stream/321125-noj-dev) stream at the [Clojurians Zulip chat](https://scicloj.github.io/docs/community/chat/)
+  - [Issues](https://github.com/scicloj/noj) at this repo
+- user questions:
+  - the [#data-science stream](https://clojurians.zulipchat.com/#narrow/stream/151924-data-science) at the [Clojurians Zulip chat](https://scicloj.github.io/docs/community/chat/)
+
+
 
 ## License
 
