@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## unreleased
+- added Clojisr dependency
+
 ## [1-alpha24] - 2024-01-15
 - added missing diamonds dataset (forgot to commit in the past)
 
