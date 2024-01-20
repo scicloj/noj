@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## unreleased
+## [1-alpha25] - 2024-01-20
 - added Clojisr dependency
 
 ## [1-alpha24] - 2024-01-15
