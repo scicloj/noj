@@ -6,7 +6,6 @@ format:
     toc-depth: 4
     theme: [spacelab, notebooks/custom.scss]
     output-file: image.html
-highlight-style: solarized
 code-block-background: true
 include-in-header: {text: '<link rel = "icon" href = "data:," />'}
 fontsize: 0.9em
