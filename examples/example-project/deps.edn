@@ -1,8 +1,0 @@
-{:deps {org.scicloj/noj {:local/root "../.."}}
- :paths ["src"]
- :aliases {:clay
-           {:extra-deps {cider/cider-nrepl {:mvn/version "0.28.3"}}
-            :main-opts
-            ["-m" "nrepl.cmdline"
-             "--middleware" "[scicloj.clay.v1.nrepl/middleware,cider.nrepl/cider-middleware]"
-             "-i"]}}}
