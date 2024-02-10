@@ -1,4 +1,4 @@
-(ns machine-learning
+(ns prepare-for-ml
   (:require [scicloj.ml.metamorph :as ml]
 
             [tech.v3.dataset :as ds]
@@ -34,7 +34,7 @@
 ;; categorical data
 
 ;; Creating a column out of categorical data looks like this:
-
+(require '[tech.v3.dataset.column :as col])
 (def column-x (col/new-column  :x  [:a :b]))
 
 ;; This creates a "categorical" column, which is marked as such in

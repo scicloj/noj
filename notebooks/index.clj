@@ -23,7 +23,8 @@ It collects a few of the main dependencies together with functions allowing to c
       "image"
       "python"
       "stats"
-      "visualization"]
+      "visualization"
+      "prepare_for_ml"]
      (map (fn [k]
             (format "\n- [%s](%s.html)\n"
                     k k)))
