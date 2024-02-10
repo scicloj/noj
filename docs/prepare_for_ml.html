@@ -194,14 +194,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#categorical-variables" id="toc-categorical-variables" class="nav-link active" data-scroll-target="#categorical-variables"><span class="header-section-number">7.1</span> Categorical variables</a>
   <ul>
-  <li><a href="#express-categorical-variables-in-numeric-space" id="toc-express-categorical-variables-in-numeric-space" class="nav-link" data-scroll-target="#express-categorical-variables-in-numeric-space"><span class="header-section-number">7.1.1</span> Express categorical variables in numeric space</a></li>
+  <li><a href="#transform-categorical-variables-to-numerical-space" id="toc-transform-categorical-variables-to-numerical-space" class="nav-link" data-scroll-target="#transform-categorical-variables-to-numerical-space"><span class="header-section-number">7.1.1</span> Transform categorical variables to numerical space</a></li>
   <li><a href="#transform-categorical-column-into-a-numerical-column" id="toc-transform-categorical-column-into-a-numerical-column" class="nav-link" data-scroll-target="#transform-categorical-column-into-a-numerical-column"><span class="header-section-number">7.1.2</span> Transform categorical column into a numerical column</a></li>
   </ul></li>
   <li><a href="#warning-categorical-maps-attached-to-a-column-change-semantic-value-of-the-column" id="toc-warning-categorical-maps-attached-to-a-column-change-semantic-value-of-the-column" class="nav-link" data-scroll-target="#warning-categorical-maps-attached-to-a-column-change-semantic-value-of-the-column"><span class="header-section-number">7.2</span> <strong>Warning:</strong> Categorical maps attached to a column <strong>change semantic value</strong> of the Column</a>
   <ul>
   <li><a href="#incorrect-comparisons" id="toc-incorrect-comparisons" class="nav-link" data-scroll-target="#incorrect-comparisons"><span class="header-section-number">7.2.1</span> Incorrect comparisons</a></li>
   <li><a href="#correct-comparison" id="toc-correct-comparison" class="nav-link" data-scroll-target="#correct-comparison"><span class="header-section-number">7.2.2</span> Correct comparison</a></li>
-  <li><a href="#better-use-same-and-fixed-mapping" id="toc-better-use-same-and-fixed-mapping" class="nav-link" data-scroll-target="#better-use-same-and-fixed-mapping"><span class="header-section-number">7.2.3</span> Better use same and fixed mapping</a></li>
+  <li><a href="#use-the-same-and-fixed-mapping" id="toc-use-the-same-and-fixed-mapping" class="nav-link" data-scroll-target="#use-the-same-and-fixed-mapping"><span class="header-section-number">7.2.3</span> Use the same and fixed mapping</a></li>
   </ul></li>
   <li><a href="#convert-several-columns-in-one-go" id="toc-convert-several-columns-in-one-go" class="nav-link" data-scroll-target="#convert-several-columns-in-one-go"><span class="header-section-number">7.3</span> Convert several columns in one go</a>
   <ul>
@@ -248,8 +248,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The library <code>tech.ml.dataset</code> contains several functions operating on a dataset, which are mainly used in the context of machine learining. In the following we will introduce those.</p>
 <section id="categorical-variables" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="categorical-variables"><span class="header-section-number">7.1</span> Categorical variables</h2>
-<p>One typical problem in machine learning is <code>classification</code>, so learning how to categorize data in different categories. Sometimes data in this format is as well called “qualitative data” or data having <code>discrete</code> values These categories are often expressed in Clojure as of being of type <code>String</code> or <code>keyword</code></p>
-<p>In <code>dataset</code> it is the <code>Column</code> which has specific support for categorical data Creating a column out of categorical data looks like this:</p>
+<p>One typical problem in machine learning is <code>classification</code>, so learning how to categorize data in different categories. Sometimes data in this format is as well called “qualitative data” or data having <code>discrete</code> values.</p>
+<p>These categories are often expressed in Clojure as of being of type <code>String</code> or <code>keyword</code></p>
+<p>In <code>dataset</code> it is the <code>Column</code> which has specific support for categorical data.</p>
+<p>Creating a column out of categorical data looks like this:</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb2"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">require</span> '[tech.v3.dataset.column <span class="at">:as</span> col]</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>         '[tech.v3.dataset <span class="at">:as</span> ds])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -266,14 +268,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">:x</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>[<span class="at">:a</span>, <span class="at">:b</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>and printing its metadata show that it got marked as <code>categorical</code></p>
+<p>and printing its metadata shows that it got marked as <code>categorical</code></p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb6"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">meta</span> column-x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
 <div class="sourceCode" id="cb7"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>{<span class="at">:categorical</span>? <span class="va">true</span>, <span class="at">:name</span> <span class="at">:x</span>, <span class="at">:datatype</span> <span class="at">:keyword</span>, <span class="at">:n-elems</span> <span class="dv">2</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The column is therefore using its metadata to store important information, and it is important to get used to look at it for the case of debugging issues. The same happens, when creating a <code>dataset</code> which is a seq of columns</p>
+<p>The column is therefore using its metadata to store important information, and it is important to get used to look at it for the case of debugging issues.</p>
+<p>The same happens, when creating a <code>dataset</code> which is a seq of columns</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb8"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> categorical-ds</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  (ds/-&gt;dataset</span>
@@ -310,9 +313,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb11"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>({<span class="at">:categorical</span>? <span class="va">true</span>, <span class="at">:name</span> <span class="at">:x</span>, <span class="at">:datatype</span> <span class="at">:keyword</span>, <span class="at">:n-elems</span> <span class="dv">2</span>}</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a> {<span class="at">:categorical</span>? <span class="va">true</span>, <span class="at">:name</span> <span class="at">:y</span>, <span class="at">:datatype</span> <span class="at">:string</span>, <span class="at">:n-elems</span> <span class="dv">2</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="express-categorical-variables-in-numeric-space" class="level3" data-number="7.1.1">
-<h3 data-number="7.1.1" class="anchored" data-anchor-id="express-categorical-variables-in-numeric-space"><span class="header-section-number">7.1.1</span> Express categorical variables in numeric space</h3>
-<p>Most machine learining models can only work on numerical values, both for features and the target variable. So usually we need to transform categorical data into a numeric representation, so each category need to be converted to a number. These numbers have no meaning for the users, so often we need to convert back into String / keyword space later on.</p>
+<section id="transform-categorical-variables-to-numerical-space" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="transform-categorical-variables-to-numerical-space"><span class="header-section-number">7.1.1</span> Transform categorical variables to numerical space</h3>
+<p>Most machine learning models can only work on numerical values, both for features and the target variable. So usually we need to transform categorical data into a numeric representation, so each category need to be converted to a number.</p>
+<p>These numbers have often no meaning for the users, so often we need to convert back into String / keyword space later on.</p>
 <p>Namespace <code>tech.v3.dataste.categorical</code> has several functions to do so.</p>
 </section>
 <section id="transform-categorical-column-into-a-numerical-column" class="level3" data-number="7.1.2">
@@ -320,15 +324,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceClojure">
 <div class="sourceCode" id="cb12"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">require</span>  '[tech.v3.dataset.categorical <span class="at">:as</span> ds-cat])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>These function operate on a single column, but expect a dataset and a column name as input.</p>
-<p>We use them to find a mapping from string/keyword to a numerical space (0 … x) like this</p>
+<p>These functions operate on a single column, but expect a dataset and a column name as input.</p>
+<p>We use them to calculate a mapping from string/keyword to a numerical space (0 … x) like this</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb13"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(ds-cat/fit-categorical-map categorical-ds <span class="at">:x</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
 <div class="sourceCode" id="cb14"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>{<span class="at">:lookup-table</span> {<span class="at">:a</span> <span class="dv">0</span>, <span class="at">:b</span> <span class="dv">1</span>}, <span class="at">:src-column</span> <span class="at">:x</span>, <span class="at">:result-datatype</span> <span class="at">:float64</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This maps value in the order of occurrence in the column to 0 .. 1 This is a bit dangerous, as the mapping is decided by “row order”, which could change or be different on other subset of the data So it is preferred to be specified explicitly.</p>
+<p>This maps the values in their order of occurrence in the column to 0 .. 1 This is a bit dangerous, as the mapping is decided by “row order”, which could change or be different on other subset of the data, like test/train splits</p>
+<p>So it is preferred to be specified explicitly.</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb15"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> x-mapping </span>(ds-cat/fit-categorical-map categorical-ds <span class="at">:x</span> [<span class="at">:a</span> <span class="at">:b</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -421,10 +426,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="warning-categorical-maps-attached-to-a-column-change-semantic-value-of-the-column" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="warning-categorical-maps-attached-to-a-column-change-semantic-value-of-the-column"><span class="header-section-number">7.2</span> <strong>Warning:</strong> Categorical maps attached to a column <strong>change semantic value</strong> of the Column</h2>
-<p>The existence of categorical maps on a column, change the semantic value of the data. When categorical maps are different for two columns (for whatever reasons), it is not given that the column cell value like <code>0</code> means the same in both columns. Columns which have categorical maps should never be compared via ‘clojure.core/=’ as this will ignore the categorical maps. (unless we are sure that the categorical maps in both are <strong>the same</strong>) They should be converted back to their original space and then compared. This is specially important for comparing <code>prediction</code> and <code>true value</code> in machine learning for metric calculations.</p>
+<p>The existence of categorical maps on a column, change the semantic value of the data. When categorical maps are different for two columns (for whatever reasons), it is not given that the column cell value like <code>0</code> means the same in both columns. Columns which have categorical maps should never be compared via <code>clojure.core/=</code> as this will ignore the categorical maps. (unless we are sure that the categorical maps in both are <strong>the same</strong>) They should be converted back to their original space and then compared. This is specially important for comparing <code>prediction</code> and <code>true value</code> in machine learning for metric calculations. See the following example to illustrate this.</p>
 <section id="incorrect-comparisons" class="level3" data-number="7.2.1">
 <h3 data-number="7.2.1" class="anchored" data-anchor-id="incorrect-comparisons"><span class="header-section-number">7.2.1</span> Incorrect comparisons</h3>
-<p>In this ds the two columns are clearly different (the opposite even)</p>
+<p>In the following the two columns are clearly different (the opposite even)</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb23"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> ds-with-different-cat-maps</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span></span>
@@ -448,7 +453,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="at">:x-2</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>By using default <code>/categorical-&gt;number</code> we get different categorical maps, having different :lookup-tables</p>
+<p>By using default <code>categorical-&gt;number</code> we get different categorical maps, having different :lookup-tables</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb28"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">meta</span> (<span class="at">:x-1</span> ds-with-different-cat-maps))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -508,7 +513,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="at">:x-2</span></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>[<span class="at">:b</span>, <span class="at">:a</span>, <span class="at">:b</span>, <span class="at">:a</span>, <span class="at">:a</span>, <span class="at">:a</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>and can know compare them correctly as :false</p>
+<p>and now they compare correctly as :false</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb39"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">=</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a> (<span class="at">:x-1</span> reverted-ds-with-different-cat-maps)</span>
@@ -517,11 +522,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="printedClojure">
 <div class="sourceCode" id="cb40"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="va">false</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>So it should be as well avoid to transform mapped columns to other representations, which loose the mappings, like tensor or primitive arrays, or even sequences</p>
+<p>So it should be as well avoided to transform mapped columns to other representations, which loose the mappings, like tensor or primitive arrays, or even sequences</p>
 </section>
-<section id="better-use-same-and-fixed-mapping" class="level3" data-number="7.2.3">
-<h3 data-number="7.2.3" class="anchored" data-anchor-id="better-use-same-and-fixed-mapping"><span class="header-section-number">7.2.3</span> Better use same and fixed mapping</h3>
-<p>This issue can be avoided by specifying the mapping to use, as being {:a 0 :b 1}</p>
+<section id="use-the-same-and-fixed-mapping" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="use-the-same-and-fixed-mapping"><span class="header-section-number">7.2.3</span> Use the same and fixed mapping</h3>
+<p>This issue can be avoided by specifying concretely the mapping to be useds, as being for exmaple {:a 0 :b 1}</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb41"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> ds-with-same-cat-maps</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span></span>
@@ -638,7 +643,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <section id="one-hot-encoding" class="level3" data-number="7.3.1">
 <h3 data-number="7.3.1" class="anchored" data-anchor-id="one-hot-encoding"><span class="header-section-number">7.3.1</span> one-hot-encoding</h3>
-<p>For some models / use cases the categorical data need to be converted in the so called <code>one-hot</code> format. In this every column get multiplied by the number of categories , and the each one-hot column can only have 0 and 1 values.</p>
+<p>For some models / use cases the categorical data need to be converted in the so called <code>one-hot</code> format. In this every column get multiplied by the number of categories , and then each one-hot column can only have 0 and 1 values.</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb55"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> one-hot-map-x </span>(ds-cat/fit-one-hot categorical-ds <span class="at">:x</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -719,20 +724,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p>There are similar functions to convert this format back</p>
+<p>There are similar functions to convert this format back.</p>
 </section>
 </section>
 <section id="features-and-inference-target-in-a-dataset" class="level2" data-number="7.4">
 <h2 data-number="7.4" class="anchored" data-anchor-id="features-and-inference-target-in-a-dataset"><span class="header-section-number">7.4</span> Features and inference target in a dataset</h2>
-<p>A dataset for machine learning has always two groups of columns. They can either be the <code>features</code> or the <code>inference targets</code>. The goal of learining is to find the relation ship between the two groups and therefore be able to <code>predict</code> inference targets from features. Sometimes the features are called <code>X</code> and the targets <code>y</code>. When constructing a dataset</p>
+<p>A dataset for supervised machine learning has always two groups of columns. They can either be the <code>features</code> or the <code>inference targets</code>. The goal of the learning is to find the relationship between the two groups and therefore be able to <code>predict</code> inference targets from features. Sometimes the features are called <code>X</code> and the targets <code>y</code>. When constructing a dataset</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb64"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> ds</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  (ds/-&gt;dataset {<span class="at">:x-1</span> [<span class="dv">0</span> <span class="dv">1</span> <span class="dv">0</span>]</span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">:x-2</span> [<span class="dv">1</span> <span class="dv">0</span> <span class="dv">1</span>]</span>
 <span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">:y</span> [<span class="at">:a</span> <span class="at">:a</span> <span class="at">:b</span>]}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>we need to mark explicitely which columns are <code>features</code> and which are <code>target</code> in order to be able to use it later for machine learning in <code>metamorph.ml</code></p>
-<p>As normally only one or a few columns are inference targets, we can simply mark those and the rest is regarded as features.</p>
+<p>we need to mark explicitly which columns are <code>features</code> and which are <code>targets</code> in order to be able to use the dataset later for machine learning in <code>metamorph.ml</code></p>
+<p>As normally only one or a few columns are inference targets, we can simply mark those and the oder columns are regarded as features.</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb65"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">require</span>  '[tech.v3.dataset.modelling <span class="at">:as</span> ds-mod])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -741,7 +746,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> ds</span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>      (ds-mod/set-inference-target <span class="at">:y</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>works as well with seq This is marked as well in the column metadata.</p>
+<p>(works as well with a seq) This is marked as well in the column metadata.</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb67"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> modelled-ds <span class="at">:y</span> <span class="kw">meta</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -810,7 +815,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="combining-categorical-transformation-and-modelling" class="level2" data-number="7.5">
 <h2 data-number="7.5" class="anchored" data-anchor-id="combining-categorical-transformation-and-modelling"><span class="header-section-number">7.5</span> Combining categorical transformation and modelling</h2>
-<p>Very often we need to do transform and model for doing classification and combine the -&gt;numeric transformation of categorical vars and the marking of inference target</p>
+<p>Very often we need to do transform and model for doing classification and combine the -&gt;numeric transformation of categorical vars and the marking of inference targets.</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb73"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> ds-ready-for-train</span></span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span></span>
@@ -866,7 +871,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p>Such a dataset is ready for training as it only contains numerical variables (having the categorical map in place for easy converting back, if needed) and the inference target is marked, as we can see in the meta data:</p>
+<p>Such a dataset is ready for training as it only contains numerical variables which have the categorical maps in place for easy converting back, if needed. The inference target is marked as well, as we can see in the meta data:</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb75"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">map</span> <span class="kw">meta</span> (<span class="kw">vals</span> ds-ready-for-train))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
