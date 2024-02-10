@@ -15,7 +15,7 @@
 
   (clay/start!))
 
-;; # machine learning specific functionality in `tech.ml.dataset`
+;; # Machine learning specific functionality in `tech.ml.dataset`
 ;; The library `tech.ml.dataset` contains several functions
 ;; operating on a daaset, which are mainly used in teh context of machine learining
 ;; In the following we will introduce those.
@@ -134,7 +134,7 @@ numerical-categorical-data
 ;; ### one-hot-encoding
 ;;
 ;;For some models / use cases the categorical data need to be converted
-;;in the so called `one-hot` format
+;;in the so called `one-hot` format.
 ;;In this every column get multiplied by the number of categories , and
 ;;the each one hot column can only have 0 and 1 values.
 ;;
@@ -149,3 +149,76 @@ one-hot-map-y
 
 ;;  There are similar functions to convert this format back
 ;;
+
+;;  ## Features and inference target in a dataset
+
+
+
+;; A dataset for machine learning has always two groups of columns.
+;; They can eithe be the `features` or the `inference targets`.
+;; The goal of learining is to find teh relation ship between te tow groups
+;; and therefore be able to `predict` inference targets form features.
+;; Sometimes the features are called `X` and the targets `y`.
+
+;;  When constructing a dataset
+(def ds
+  (ds/->dataset {:x-1 [0 1 0]
+                   :x-2 [1 0 1]
+                   :y [:a :a :b]}))
+
+;; we need to mark explicitely which columns are `features` and which are `target`
+;; in order to be able to use it later for machine learnining in `metamorph.ml`
+;;
+;; As normlay only 1 or a few columns are inference targets, we can simply mark those
+;; and the rest is regarded as features.
+(require  '[tech.v3.dataset.modelling :as ds-mod])
+(def modelled-ds
+  (-> ds
+      (ds-mod/set-inference-target :y)))     ; works as well with seq
+
+;; this is marked as well in the column metadata
+(-> modelled-ds :y meta)
+
+
+;;  there are several functins to get information on faetures and inference targets:
+
+(ds-mod/feature-ecount modelled-ds)
+
+(ds-cf/feature modelled-ds)
+
+(ds-cf/target modelled-ds)
+
+;; ## combining categorical transformation and modelling
+;;
+;;
+;;  Very often we need to do both for doing classification and
+;;  combine the ->numeric transformation of categorical vars
+;;  and the marking of inference target
+(def ds-ready-for-train
+  (->
+   {:x-1 [0 1 0]
+    :x-2 [1 0 1]
+    :cat  [:a :b :c]
+    :y [:a :a :b]}
+
+   (ds/->dataset)
+   (ds/categorical->number [:y])
+   (ds/categorical->one-hot [:cat])
+   (ds-mod/set-inference-target [:y])))
+
+ds-ready-for-train
+
+;;  Such a dataset is reday for training as it
+;;  only contains numerical variables
+;;
+;; Most models in the `metamorph.ml` ecosystem can work with
+;; data in this format.
+;; If needed, data could as well be easely transfomred into a tensor.
+;; Most models do this internaly anyway (often to primitive arrays)
+(def ds-tensor
+  (tech.v3.dataset.tensor/dataset->tensor ds-ready-for-train))
+ds-tensor
+
+;;  or we can do so, if needed, but this looses the notition of features /
+;;  inferene target
+(tech.v3.tensor/->jvm ds-tensor)
