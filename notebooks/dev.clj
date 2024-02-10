@@ -8,7 +8,9 @@
                            "image.clj"
                            "python.clj"
                            "stats.clj"
-                           "visualization.clj"]
+                           "visualization.clj"
+                           "prepare_for_ml.clj"]
              :base-target-path "docs"
              :book {:title "Noj Documentation"}
              :clean-up-target-dir true})
+
