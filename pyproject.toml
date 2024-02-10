@@ -1,0 +1,11 @@
+[tool.poetry]
+name = "poetry"
+authors = ["Carsten Behring"]
+description = ""
+version = "0.0.0"
+
+[tool.poetry.dependencies]
+python = ">=3.9"
+matplotlib = "3.8.2"
+seaborn = "0.13.2"
+arviz = "0.17.0"
