@@ -1,19 +1,5 @@
-(ns prepare-for-ml
-  (:require [scicloj.ml.metamorph :as ml]
-
-            [tech.v3.dataset :as ds]
-            [scicloj.kindly.v4.kind :as kind]))
-
-
-
-(comment
-  (require '[scicloj.clay.v2.api :as clay]
-           '[tech.v3.dataset.column :as col])
-
-
-
-
-  (clay/start!))
+(ns prepare-for-ml)
+  
 
 ;; # Machine learning specific functionality in `tech.ml.dataset`
 ;; The library `tech.ml.dataset` contains several functions
@@ -34,7 +20,8 @@
 ;; categorical data
 
 ;; Creating a column out of categorical data looks like this:
-(require '[tech.v3.dataset.column :as col])
+(require '[tech.v3.dataset.column :as col]
+         '[tech.v3.dataset :as ds])
 (def column-x (col/new-column  :x  [:a :b]))
 
 ;; This creates a "categorical" column, which is marked as such in
@@ -70,7 +57,7 @@ categorical-ds
 ;;  convert back into
 ;;  String / keyword space later on.
 ;;
-;; Namespace `tech.ml.dataset.classification`
+;; Namespace `tech.v3.dataste.categorical`
 ;; has several functions to do so.
 ;;
 ;; ### Transform categorical column into a numerical column
