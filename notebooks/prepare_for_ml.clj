@@ -143,7 +143,7 @@ numerical-categorical-data
    (ds/categorical->number [:x-float] [] :float64)
    (ds/categorical->number [:x-int]   [] :int)))
 
-;; Comparing such columns might not bring the expected result, even though the
+;; Comparing such columns might not bring the expected result, eventhough the
 ;; categorical maps and values look very similar
 ds-with-float-and-int-mappings
 (map meta
