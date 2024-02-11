@@ -4,7 +4,7 @@
 ;; # Machine learning specific functionality in `tech.ml.dataset`
 ;; The library `tech.ml.dataset` contains several functions
 ;; operating on a dataset, which are mainly used in the context of
-;; machine learining. In the following we will introduce those.
+;; machine learning. In the following we will introduce those.
 ;;
 
 ;;## Categorical variables
@@ -59,7 +59,7 @@ categorical-ds
 ;;  so often we need to convert back into
 ;;  String / keyword space later on.
 ;;
-;; Namespace `tech.v3.dataste.categorical`
+;; Namespace `tech.v3.dataset.categorical`
 ;; has several functions to do so.
 ;;
 ;; ### Transform categorical column into a numerical column
@@ -125,7 +125,7 @@ numerical-categorical-data
 ;; ## **Warning:** Pitfalls of Categorical maps
 ;;
 ;; ### Automatic mapping might result in surprising results
-;; Be carefull when visualy inspecting columns without reverting
+;; We need to be careful when visually inspecting columns without reverting
 ;; the categorical maps.
 ;;
 ;; Applying the following map to a dataset
@@ -143,7 +143,7 @@ numerical-categorical-data
    (ds/categorical->number [:x-float] [] :float64)
    (ds/categorical->number [:x-int]   [] :int)))
 
-;; Comparing such columns might not bring the expected result, eventhough the
+;; Comparing such columns might not bring the expected result, even though the
 ;; categorical maps and values look very similar
 ds-with-float-and-int-mappings
 (map meta
@@ -231,7 +231,7 @@ ds-with-float-and-int-mappings
  (:x-2 ds-with-same-cat-maps))
 
 
-;; These 3 pitfalss can be avoided by expliclitlye specifyin the mappings,
+;; These 3 pitfalls can be avoided by explicitly specifying the mappings,
 ;; so using the 4-arity of conversion functions.
 
 (def ds-with-explicit-mapping
@@ -297,7 +297,7 @@ one-hot-ds
 ;; machine learning in `metamorph.ml`
 ;;
 ;; As normally only one or a few columns are inference targets,
-;; we can simply mark those and the oder columns are regarded as features.
+;; we can simply mark those and the other columns are regarded as features.
 
 (require  '[tech.v3.dataset.modelling :as ds-mod])
 (def modelled-ds
