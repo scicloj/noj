@@ -4,7 +4,7 @@
 ;; # Machine learning specific functionality in `tech.ml.dataset`
 ;; The library `tech.ml.dataset` contains several functions
 ;; operating on a dataset, which are mainly used in the context of
-;; machine learining. In the following we will introduce those.
+;; machine learning. In the following we will introduce those.
 ;;
 
 ;;## Categorical variables
@@ -59,7 +59,7 @@ categorical-ds
 ;;  so often we need to convert back into
 ;;  String / keyword space later on.
 ;;
-;; Namespace `tech.v3.dataste.categorical`
+;; Namespace `tech.v3.dataset.categorical`
 ;; has several functions to do so.
 ;;
 ;; ### Transform categorical column into a numerical column
@@ -100,7 +100,56 @@ numerical-categorical-data
 (ds-cat/dataset->categorical-maps numerical-categorical-data)
 
 
-;; ## **Warning:** Categorical maps attached to a column **change semantic value** of the Column
+;; ## Convert several columns in one go
+
+;; The `dataset` namespace has a convenience function
+;; in which several columns can be selected for conversion.
+(ds/categorical->number categorical-ds [:x :y])
+
+;; This works as well with filter function from namespace `column-filters`
+(require '[tech.v3.dataset.column-filters :as ds-cf])
+;; to convert all categorical columns, for example:
+(ds/categorical->number categorical-ds ds-cf/categorical)
+
+
+(->
+ (ds/->dataset {:x [:a :b]
+                :y [:c :d]})
+ (ds/categorical->number [:x :y] [:a :b :c :d]))
+
+(->
+ (ds/->dataset {:x [:a :b]
+                :y [:c :d]})
+ (ds/categorical->number [:x :y] [:a 0 :b 1 :c 2 :d 3]))
+
+;; ## **Warning:** Pitfalls of Categorical maps
+;;
+;; ### Automatic mapping might result in surprising results
+;; We need to be careful when visually inspecting columns without reverting
+;; the categorical maps.
+;;
+;; Applying the following map to a dataset
+(ds-cat/fit-categorical-map (ds/->dataset {:x ["true" "false" ]}) :x)
+;; would result in columns in which '0' would mean 'true', and
+;; '1' would mean 'false'
+;;
+;; ### float vs int
+;;
+;; The categories can get mapped to int or float
+(def ds-with-float-and-int-mappings
+  (->
+   (ds/->dataset {:x-float [:a :b]
+                  :x-int [:a :b]})
+   (ds/categorical->number [:x-float] [] :float64)
+   (ds/categorical->number [:x-int]   [] :int)))
+
+;; Comparing such columns might not bring the expected result, even though the
+;; categorical maps and values look very similar
+ds-with-float-and-int-mappings
+(map meta
+     (vals ds-with-float-and-int-mappings))
+
+;; ### Categorical maps attached to a column **change semantic value** of the Column
 ;;
 ;;The existence of categorical maps on a column,
 ;;change the semantic value of the data. When categorical maps
@@ -115,7 +164,7 @@ numerical-categorical-data
 
 ;; See the following example to illustrate this.
 
-;; ### Incorrect comparisons
+;; #### Incorrect comparisons
 ;; In the following the two columns are clearly different
 ;; (the opposite even)
 (def ds-with-different-cat-maps
@@ -124,7 +173,7 @@ numerical-categorical-data
                   :x-2 [:b :a :b :a :a :a]})
    (ds/categorical->number [:x-1 :x-2])))
 
-
+;; The resulting columns look the same, but are not
 (:x-1 ds-with-different-cat-maps)
 (:x-2 ds-with-different-cat-maps)
 
@@ -138,7 +187,7 @@ numerical-categorical-data
  (:x-1 ds-with-different-cat-maps)
  (:x-2 ds-with-different-cat-maps))
 
-;; ### Correct comparison
+;; #### Correct comparison
 ;; In order to compare them correctly,
 ;; we need to first revert the categorical mappings
 
@@ -158,9 +207,9 @@ numerical-categorical-data
 ;; to other representations, which loose the mappings, like tensor
 ;; or primitive arrays, or even sequences
 
-;; ### Use the same and fixed mapping
+;; #### Use the same and fixed mapping
 ;; This issue can be avoided by specifying concretely the mapping
-;; to be useds, as being for exmaple {:a 0  :b 1}
+;; to be used, as being for example {:a 0  :b 1}
 (def ds-with-same-cat-maps
   (->
    (ds/->dataset {:x-1 [:a :b :a :b :b :b]
@@ -182,16 +231,20 @@ numerical-categorical-data
  (:x-2 ds-with-same-cat-maps))
 
 
-;; ## Convert several columns in one go
+;; These 3 pitfalls can be avoided by explicitly specifying the mappings,
+;; so using the 4-arity of conversion functions.
 
-;;  The `dataset` namespace has as well a convenience function
-;;  in which several columns can be choose for conversion.
-(ds/categorical->number categorical-ds [:x :y])
+(def ds-with-explicit-mapping
+  (->
+   (ds/->dataset {:x-1 [:a :b :a :b :b :b]
+                  :x-2 [:b :a :b :a :a :a]})
+   (ds/categorical->number [:x-1 :x-2] [:a :b] :int)))
 
-;; This works as well with filter function from namespace `column-filters`
-(require '[tech.v3.dataset.column-filters :as ds-cf])
-;; to convert all categorical columns, for example:
-(ds/categorical->number categorical-ds ds-cf/categorical)
+ds-with-explicit-mapping
+
+(map meta (vals ds-with-explicit-mapping))
+
+
 
 ;; ### one-hot-encoding
 ;;
@@ -244,7 +297,7 @@ one-hot-ds
 ;; machine learning in `metamorph.ml`
 ;;
 ;; As normally only one or a few columns are inference targets,
-;; we can simply mark those and the oder columns are regarded as features.
+;; we can simply mark those and the other columns are regarded as features.
 
 (require  '[tech.v3.dataset.modelling :as ds-mod])
 (def modelled-ds
