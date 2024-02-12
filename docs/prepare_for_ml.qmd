@@ -29,7 +29,7 @@ fontsize: 0.9em
 # Machine learning specific functionality in `tech.ml.dataset`
 The library `tech.ml.dataset` contains several functions
 operating on a dataset, which are mainly used in the context of
-machine learining. In the following we will introduce those.
+machine learning. In the following we will introduce those.
 
 
 ## Categorical variables
@@ -171,7 +171,7 @@ These numbers have often no meaning for the users,
 so often we need to convert back into
 String / keyword space later on.
 
-Namespace `tech.v3.dataste.categorical`
+Namespace `tech.v3.dataset.categorical`
 has several functions to do so.
 
 
@@ -323,7 +323,201 @@ We can as well ask about all mapping of a dataset:
 
 
 
-## **Warning:** Categorical maps attached to a column **change semantic value** of the Column
+## Convert several columns in one go
+The `dataset` namespace has a convenience function
+in which several columns can be selected for conversion.
+
+
+::: {.sourceClojure}
+```clojure
+(ds/categorical->number categorical-ds [:x :y])
+```
+:::
+
+
+_unnamed [2 2]:
+
+|  :x |  :y |
+|----:|----:|
+| 0.0 | 1.0 |
+| 1.0 | 0.0 |
+
+
+
+This works as well with filter function from namespace `column-filters`
+
+
+::: {.sourceClojure}
+```clojure
+(require '[tech.v3.dataset.column-filters :as ds-cf])
+```
+:::
+
+
+to convert all categorical columns, for example:
+
+
+::: {.sourceClojure}
+```clojure
+(ds/categorical->number categorical-ds ds-cf/categorical)
+```
+:::
+
+
+_unnamed [2 2]:
+
+|  :x |  :y |
+|----:|----:|
+| 0.0 | 1.0 |
+| 1.0 | 0.0 |
+
+
+
+
+::: {.sourceClojure}
+```clojure
+(->
+ (ds/->dataset {:x [:a :b]
+                :y [:c :d]})
+ (ds/categorical->number [:x :y] [:a :b :c :d]))
+```
+:::
+
+
+_unnamed [2 2]:
+
+|  :x |  :y |
+|----:|----:|
+| 0.0 | 2.0 |
+| 1.0 | 3.0 |
+
+
+
+
+::: {.sourceClojure}
+```clojure
+(->
+ (ds/->dataset {:x [:a :b]
+                :y [:c :d]})
+ (ds/categorical->number [:x :y] [:a 0 :b 1 :c 2 :d 3]))
+```
+:::
+
+
+_unnamed [2 2]:
+
+|  :x |  :y |
+|----:|----:|
+| 0.0 | 4.0 |
+| 2.0 | 6.0 |
+
+
+
+
+## **Warning:** Pitfalls of Categorical maps
+
+
+### Automatic mapping might result in surprising results
+We need to be careful when visually inspecting columns without reverting
+the categorical maps.
+
+Applying the following map to a dataset
+
+
+::: {.sourceClojure}
+```clojure
+(ds-cat/fit-categorical-map (ds/->dataset {:x ["true" "false" ]}) :x)
+```
+:::
+
+
+
+::: {.printedClojure}
+```clojure
+{:lookup-table {"true" 0, "false" 1},
+ :src-column :x,
+ :result-datatype :float64}
+
+```
+:::
+
+
+would result in columns in which '0' would mean 'true', and
+'1' would mean 'false'
+
+
+### float vs int
+
+The categories can get mapped to int or float
+
+
+::: {.sourceClojure}
+```clojure
+(def ds-with-float-and-int-mappings
+  (->
+   (ds/->dataset {:x-float [:a :b]
+                  :x-int [:a :b]})
+   (ds/categorical->number [:x-float] [] :float64)
+   (ds/categorical->number [:x-int]   [] :int)))
+```
+:::
+
+
+Comparing such columns might not bring the expected result, even though the
+categorical maps and values look very similar
+
+
+::: {.sourceClojure}
+```clojure
+ds-with-float-and-int-mappings
+```
+:::
+
+
+_unnamed [2 2]:
+
+| :x-float | :x-int |
+|---------:|-------:|
+|      0.0 |      0 |
+|      1.0 |      1 |
+
+
+
+
+::: {.sourceClojure}
+```clojure
+(map meta
+     (vals ds-with-float-and-int-mappings))
+```
+:::
+
+
+
+::: {.printedClojure}
+```clojure
+({:categorical? true,
+  :name :x-float,
+  :datatype :float64,
+  :n-elems 2,
+  :categorical-map
+  {:lookup-table {:a 0, :b 1},
+   :src-column :x-float,
+   :result-datatype :float64}}
+ {:categorical? true,
+  :name :x-int,
+  :datatype :int,
+  :n-elems 2,
+  :categorical-map
+  {:lookup-table {:a 0, :b 1},
+   :src-column :x-int,
+   :result-datatype :int}})
+
+```
+:::
+
+
+
+### Categorical maps attached to a column **change semantic value** of the Column
 
 The existence of categorical maps on a column,
 change the semantic value of the data. When categorical maps
@@ -337,7 +531,7 @@ This is specially important for comparing `prediction` and `true value`
 in machine learning for metric calculations.
 See the following example to illustrate this.
 
-### Incorrect comparisons
+#### Incorrect comparisons
 In the following the two columns are clearly different
 (the opposite even)
 
@@ -352,6 +546,8 @@ In the following the two columns are clearly different
 ```
 :::
 
+
+The resulting columns look the same, but are not
 
 
 ::: {.sourceClojure}
@@ -464,7 +660,7 @@ true
 
 
 
-### Correct comparison
+#### Correct comparison
 In order to compare them correctly,
 we need to first revert the categorical mappings
 
@@ -540,9 +736,9 @@ So it should be as well avoided to transform mapped columns
 to other representations, which loose the mappings, like tensor
 or primitive arrays, or even sequences
 
-### Use the same and fixed mapping
+#### Use the same and fixed mapping
 This issue can be avoided by specifying concretely the mapping
-to be useds, as being for exmaple {:a 0  :b 1}
+to be used, as being for example {:a 0  :b 1}
 
 
 ::: {.sourceClojure}
@@ -667,55 +863,72 @@ false
 :::
 
 
-
-## Convert several columns in one go
-The `dataset` namespace has as well a convenience function
-in which several columns can be choose for conversion.
+These 3 pitfalls can be avoided by explicitly specifying the mappings,
+so using the 4-arity of conversion functions.
 
 
 ::: {.sourceClojure}
 ```clojure
-(ds/categorical->number categorical-ds [:x :y])
+(def ds-with-explicit-mapping
+  (->
+   (ds/->dataset {:x-1 [:a :b :a :b :b :b]
+                  :x-2 [:b :a :b :a :a :a]})
+   (ds/categorical->number [:x-1 :x-2] [:a :b] :int)))
 ```
 :::
 
-
-_unnamed [2 2]:
-
-|  :x |  :y |
-|----:|----:|
-| 0.0 | 1.0 |
-| 1.0 | 0.0 |
-
-
-
-This works as well with filter function from namespace `column-filters`
 
 
 ::: {.sourceClojure}
 ```clojure
-(require '[tech.v3.dataset.column-filters :as ds-cf])
+ds-with-explicit-mapping
 ```
 :::
 
 
-to convert all categorical columns, for example:
+_unnamed [6 2]:
+
+| :x-1 | :x-2 |
+|-----:|-----:|
+|    0 |    1 |
+|    1 |    0 |
+|    0 |    1 |
+|    1 |    0 |
+|    1 |    0 |
+|    1 |    0 |
+
+
 
 
 ::: {.sourceClojure}
 ```clojure
-(ds/categorical->number categorical-ds ds-cf/categorical)
+(map meta (vals ds-with-explicit-mapping))
 ```
 :::
 
 
-_unnamed [2 2]:
 
-|  :x |  :y |
-|----:|----:|
-| 0.0 | 1.0 |
-| 1.0 | 0.0 |
+::: {.printedClojure}
+```clojure
+({:categorical? true,
+  :name :x-1,
+  :datatype :int,
+  :n-elems 6,
+  :categorical-map
+  {:lookup-table {:a 0, :b 1},
+   :src-column :x-1,
+   :result-datatype :int}}
+ {:categorical? true,
+  :name :x-2,
+  :datatype :int,
+  :n-elems 6,
+  :categorical-map
+  {:lookup-table {:a 0, :b 1},
+   :src-column :x-2,
+   :result-datatype :int}})
 
+```
+:::
 
 
 
@@ -859,7 +1072,7 @@ we need to mark explicitly which columns are `features` and which are
 machine learning in `metamorph.ml`
 
 As normally only one or a few columns are inference targets,
-we can simply mark those and the oder columns are regarded as features.
+we can simply mark those and the other columns are regarded as features.
 
 
 ::: {.sourceClojure}
