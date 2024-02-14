@@ -69,6 +69,7 @@
 (def relevant-titanic-data
   (-> titanic
       (tc/select-columns (conj categorical-feature-columns target-column))
+      (ds/drop-missing)
       (ds/categorical->number [:survived] [0 1] :float64)
       (ds-mod/set-inference-target target-column)))
 
@@ -76,7 +77,7 @@
 (def cat-maps
   [(ds-cat/fit-categorical-map relevant-titanic-data :sex ["male" "female"] :float64)
    (ds-cat/fit-categorical-map relevant-titanic-data :pclass [0 1 2] :float64)
-   (ds-cat/fit-categorical-map relevant-titanic-data :embarked ["S" "Q" "C" nil] :float64)])
+   (ds-cat/fit-categorical-map relevant-titanic-data :embarked ["S" "Q" "C"] :float64)])
   
 cat-maps
 
