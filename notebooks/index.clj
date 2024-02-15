@@ -24,7 +24,9 @@ It collects a few of the main dependencies together with functions allowing to c
       "python"
       "stats"
       "visualization"
-      "prepare_for_ml"]
+      "prepare_for_ml"
+      "ml_basic"
+      "automl"]
      (map (fn [k]
             (format "\n- [%s](%s.html)\n"
                     k k)))

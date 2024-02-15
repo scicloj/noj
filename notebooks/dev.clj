@@ -8,7 +8,9 @@
                            "python.clj"
                            "stats.clj"
                            "visualization.clj"
-                           "prepare_for_ml.clj"]
+                           "prepare_for_ml.clj"
+                           "ml_basic.clj"
+                           "automl.clj"]
              :base-target-path "docs"
              :book {:title "Noj Documentation"}
              :clean-up-target-dir true})
