@@ -46,6 +46,12 @@ It collects a few of the main dependencies together with functions allowing to c
 - [prepare_for_ml](prepare_for_ml.html)
 
 
+- [ml_basic](ml_basic.html)
+
+
+- [automl](automl.html)
+
+
 
 ## Wishlist
 
