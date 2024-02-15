@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Noj Documentation - 6&nbsp; Visualization</title>
+<title>Noj Documentation - 7&nbsp; Visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualization.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualization</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualization.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visualization</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -149,38 +149,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datasets</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Datasets</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./image.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Turning tensors into images</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Turning tensors into images</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Python</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./stats.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualization.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepare_for_ml.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Machine learning specific functionality in <code>tech.ml.dataset</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Machine learning specific functionality in <code>tech.ml.dataset</code></span></span></a>
   </div>
 </li>
     </ul>
@@ -193,16 +199,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#visualizing-datases-with-hanami" id="toc-visualizing-datases-with-hanami" class="nav-link active" data-scroll-target="#visualizing-datases-with-hanami"><span class="header-section-number">6.1</span> Visualizing datases with Hanami</a>
+  <li><a href="#visualizing-datases-with-hanami" id="toc-visualizing-datases-with-hanami" class="nav-link active" data-scroll-target="#visualizing-datases-with-hanami"><span class="header-section-number">7.1</span> Visualizing datases with Hanami</a>
   <ul>
-  <li><a href="#a-simple-plot" id="toc-a-simple-plot" class="nav-link" data-scroll-target="#a-simple-plot"><span class="header-section-number">6.1.1</span> A simple plot</a></li>
-  <li><a href="#additional-hanami-templates" id="toc-additional-hanami-templates" class="nav-link" data-scroll-target="#additional-hanami-templates"><span class="header-section-number">6.1.2</span> Additional Hanami templates</a></li>
-  <li><a href="#grouped-datasets" id="toc-grouped-datasets" class="nav-link" data-scroll-target="#grouped-datasets"><span class="header-section-number">6.1.3</span> Grouped datasets</a></li>
-  <li><a href="#layers" id="toc-layers" class="nav-link" data-scroll-target="#layers"><span class="header-section-number">6.1.4</span> Layers</a></li>
-  <li><a href="#concatenation" id="toc-concatenation" class="nav-link" data-scroll-target="#concatenation"><span class="header-section-number">6.1.5</span> Concatenation</a></li>
-  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression"><span class="header-section-number">6.1.6</span> Linear regression</a></li>
-  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram"><span class="header-section-number">6.1.7</span> Histogram</a></li>
-  <li><a href="#combining-a-few-things-together" id="toc-combining-a-few-things-together" class="nav-link" data-scroll-target="#combining-a-few-things-together"><span class="header-section-number">6.1.8</span> Combining a few things together</a></li>
+  <li><a href="#a-simple-plot" id="toc-a-simple-plot" class="nav-link" data-scroll-target="#a-simple-plot"><span class="header-section-number">7.1.1</span> A simple plot</a></li>
+  <li><a href="#additional-hanami-templates" id="toc-additional-hanami-templates" class="nav-link" data-scroll-target="#additional-hanami-templates"><span class="header-section-number">7.1.2</span> Additional Hanami templates</a></li>
+  <li><a href="#grouped-datasets" id="toc-grouped-datasets" class="nav-link" data-scroll-target="#grouped-datasets"><span class="header-section-number">7.1.3</span> Grouped datasets</a></li>
+  <li><a href="#layers" id="toc-layers" class="nav-link" data-scroll-target="#layers"><span class="header-section-number">7.1.4</span> Layers</a></li>
+  <li><a href="#concatenation" id="toc-concatenation" class="nav-link" data-scroll-target="#concatenation"><span class="header-section-number">7.1.5</span> Concatenation</a></li>
+  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression"><span class="header-section-number">7.1.6</span> Linear regression</a></li>
+  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram"><span class="header-section-number">7.1.7</span> Histogram</a></li>
+  <li><a href="#combining-a-few-things-together" id="toc-combining-a-few-things-together" class="nav-link" data-scroll-target="#combining-a-few-things-together"><span class="header-section-number">7.1.8</span> Combining a few things together</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -212,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualization</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visualization</span></h1>
 </div>
 
 
@@ -256,8 +262,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            [hiccup.core <span class="at">:as</span> hiccup]</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            [clojure2d.color <span class="at">:as</span> color]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="visualizing-datases-with-hanami" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="visualizing-datases-with-hanami"><span class="header-section-number">6.1</span> Visualizing datases with Hanami</h2>
+<section id="visualizing-datases-with-hanami" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="visualizing-datases-with-hanami"><span class="header-section-number">7.1</span> Visualizing datases with Hanami</h2>
 <p>Noj offers a few convenience functions to make <a href="https://github.com/jsa-aerial/hanami">Hanami</a> plotting work smoothly with <a href="https://scicloj.github.io/tablecloth/">Tablecloth</a> and <a href="https://scicloj.github.io/kindly/">Kindly</a>.</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb2"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> random-walk</span></span>
@@ -267,8 +273,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                 (reductions <span class="kw">+</span>))}</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        tc/dataset)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="a-simple-plot" class="level3" data-number="6.1.1">
-<h3 data-number="6.1.1" class="anchored" data-anchor-id="a-simple-plot"><span class="header-section-number">6.1.1</span> A simple plot</h3>
+<section id="a-simple-plot" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="a-simple-plot"><span class="header-section-number">7.1.1</span> A simple plot</h3>
 <p>We can plot a Tablecloth datasete using a Hanami template:</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb3"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> random-walk</span>
@@ -293,12 +299,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a> <span class="at">:height</span> <span class="dv">300</span>,</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a> <span class="at">:data</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a> {<span class="at">:values</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"x,y</span><span class="sc">\n</span><span class="st">0,0.28361719268310215</span><span class="sc">\n</span><span class="st">1,0.26695996003941125</span><span class="sc">\n</span><span class="st">2,-0.19488850004269853</span><span class="sc">\n</span><span class="st">3,-0.0017837188288403194</span><span class="sc">\n</span><span class="st">4,-0.264718900748682</span><span class="sc">\n</span><span class="st">5,-0.016565610043951184</span><span class="sc">\n</span><span class="st">6,-0.4386943475898917</span><span class="sc">\n</span><span class="st">7,-0.7424173881509769</span><span class="sc">\n</span><span class="st">8,-0.8345734902847061</span><span class="sc">\n</span><span class="st">9,-0.7094810051477572</span><span class="sc">\n</span><span class="st">10,-0.8940708612289566</span><span class="sc">\n</span><span class="st">11,-0.9619012266361283</span><span class="sc">\n</span><span class="st">12,-0.8253622244449548</span><span class="sc">\n</span><span class="st">13,-1.0582797152310284</span><span class="sc">\n</span><span class="st">14,-0.9453552512660589</span><span class="sc">\n</span><span class="st">15,-1.2166505833730226</span><span class="sc">\n</span><span class="st">16,-1.4722288787245867</span><span class="sc">\n</span><span class="st">17,-1.0069341965675487</span><span class="sc">\n</span><span class="st">18,-1.4609667267980462</span><span class="sc">\n</span><span class="st">19,-1.0178048539258187</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"x,y</span><span class="sc">\n</span><span class="st">0,-0.33730511743902614</span><span class="sc">\n</span><span class="st">1,-0.8304736753822762</span><span class="sc">\n</span><span class="st">2,-0.3719459387956082</span><span class="sc">\n</span><span class="st">3,-0.6777929157131315</span><span class="sc">\n</span><span class="st">4,-0.4878027705558168</span><span class="sc">\n</span><span class="st">5,-0.30551546055378687</span><span class="sc">\n</span><span class="st">6,-0.6481140469850216</span><span class="sc">\n</span><span class="st">7,-0.90236469626542</span><span class="sc">\n</span><span class="st">8,-0.790718361483121</span><span class="sc">\n</span><span class="st">9,-1.2059993851646618</span><span class="sc">\n</span><span class="st">10,-1.591656721668276</span><span class="sc">\n</span><span class="st">11,-1.937407798804228</span><span class="sc">\n</span><span class="st">12,-1.9059729311437956</span><span class="sc">\n</span><span class="st">13,-1.6137099599695282</span><span class="sc">\n</span><span class="st">14,-1.3420470119458785</span><span class="sc">\n</span><span class="st">15,-1.1828380302139032</span><span class="sc">\n</span><span class="st">16,-1.6294350923127963</span><span class="sc">\n</span><span class="st">17,-1.6228517707114405</span><span class="sc">\n</span><span class="st">18,-2.0398787824969613</span><span class="sc">\n</span><span class="st">19,-1.819849062073839</span><span class="sc">\n</span><span class="st">"</span>,</span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">:format</span> {<span class="at">:type</span> <span class="st">"csv"</span>}}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="additional-hanami-templates" class="level3" data-number="6.1.2">
-<h3 data-number="6.1.2" class="anchored" data-anchor-id="additional-hanami-templates"><span class="header-section-number">6.1.2</span> Additional Hanami templates</h3>
+<section id="additional-hanami-templates" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="additional-hanami-templates"><span class="header-section-number">7.1.2</span> Additional Hanami templates</h3>
 <p>The <code>scicloj.noj.v1.vis.hanami.templates</code> namespace add Hanami templates to Hanami’s own collection.</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb6"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/mtcars</span>
@@ -321,8 +327,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"sepal-length","type":"quantitative"},"color":{"field":"species","type":"nominal"},"size":{"value":3},"opacity":{"value":0.2},"x":{"field":"sepal-width","type":"quantitative"},"y2":{"field":"petal-length","type":"quantitative"},"x2":{"field":"petal-width","type":"quantitative"}},"mark":"rule","width":400,"background":"floralwhite","height":300,"data":{"url":"visualization_files\/2.csv","format":{"type":"csv"}}});</script></div>
 </section>
-<section id="grouped-datasets" class="level3" data-number="6.1.3">
-<h3 data-number="6.1.3" class="anchored" data-anchor-id="grouped-datasets"><span class="header-section-number">6.1.3</span> Grouped datasets</h3>
+<section id="grouped-datasets" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="grouped-datasets"><span class="header-section-number">7.1.3</span> Grouped datasets</h3>
 <p>Grouped datasets are handled automatically with a table view.</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb8"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/iris</span>
@@ -335,7 +341,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">:OPACITY</span> <span class="fl">0.2</span></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">:SIZE</span> <span class="dv">3</span>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<table class="table" data-quarto-postprocess="true">
+<div class="table-responsive">
+<table class="table table-hover" data-quarto-postprocess="true">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -367,9 +374,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+</div>
 </section>
-<section id="layers" class="level3" data-number="6.1.4">
-<h3 data-number="6.1.4" class="anchored" data-anchor-id="layers"><span class="header-section-number">6.1.4</span> Layers</h3>
+<section id="layers" class="level3" data-number="7.1.4">
+<h3 data-number="7.1.4" class="anchored" data-anchor-id="layers"><span class="header-section-number">7.1.4</span> Layers</h3>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> random-walk</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    (hanami/layers</span>
@@ -397,8 +405,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","title":{"text":"points and a line"},"layer":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":400,"background":"floralwhite","title":{"text":"points and a line"},"height":300},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":400,"background":"floralwhite","title":{"text":"points and a line"},"height":300}],"height":300,"data":{"url":"visualization_files\/0.csv","format":{"type":"csv"}}});</script></div>
 </section>
-<section id="concatenation" class="level3" data-number="6.1.5">
-<h3 data-number="6.1.5" class="anchored" data-anchor-id="concatenation"><span class="header-section-number">6.1.5</span> Concatenation</h3>
+<section id="concatenation" class="level3" data-number="7.1.5">
+<h3 data-number="7.1.5" class="anchored" data-anchor-id="concatenation"><span class="header-section-number">7.1.5</span> Concatenation</h3>
 <p>Vertical</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb11"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> random-walk</span>
@@ -464,8 +472,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div><script>vegaEmbed(document.currentScript.parentElement, {"hconcat":[{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"circle","size":400,"tooltip":true},"width":100,"background":"floralwhite","height":100},{"encoding":{"y":{"field":"y","type":"quantitative"},"x":{"field":"x","type":"quantitative"}},"mark":{"type":"line","size":4,"color":"brown","tooltip":true},"width":100,"background":"floralwhite","height":100}],"width":100,"background":"floralwhite","height":100,"data":{"url":"visualization_files\/0.csv","format":{"type":"csv"}}});</script></div>
 </section>
-<section id="linear-regression" class="level3" data-number="6.1.6">
-<h3 data-number="6.1.6" class="anchored" data-anchor-id="linear-regression"><span class="header-section-number">6.1.6</span> Linear regression</h3>
+<section id="linear-regression" class="level3" data-number="7.1.6">
+<h3 data-number="7.1.6" class="anchored" data-anchor-id="linear-regression"><span class="header-section-number">7.1.6</span> Linear regression</h3>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb15"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/mtcars</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    (stats/add-predictions <span class="at">:mpg</span> [<span class="at">:wt</span>]</span>
@@ -509,7 +517,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">:line-options</span> {<span class="at">:MSIZE</span> <span class="dv">5</span></span>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">:MCOLOR</span> <span class="st">"purple"</span>}}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<table class="table" data-quarto-postprocess="true">
+<div class="table-responsive">
+<table class="table table-hover" data-quarto-postprocess="true">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -541,9 +550,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+</div>
 </section>
-<section id="histogram" class="level3" data-number="6.1.7">
-<h3 data-number="6.1.7" class="anchored" data-anchor-id="histogram"><span class="header-section-number">6.1.7</span> Histogram</h3>
+<section id="histogram" class="level3" data-number="7.1.7">
+<h3 data-number="7.1.7" class="anchored" data-anchor-id="histogram"><span class="header-section-number">7.1.7</span> Histogram</h3>
 <p>A <a href="https://en.wikipedia.org/wiki/Histogram">histogram</a> groups values in bins, counts them, and creates a corresponding bar-chart.</p>
 <p>The <code>hanami/histogram</code> functions does that behind the scenes, and generates a Vega-Lite spec using Hanami.</p>
 <div class="sourceClojure">
@@ -588,8 +598,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"mark":"rect","width":175,"background":"floralwhite","height":125,"data":{"url":"visualization_files\/10.csv","format":{"type":"csv"}}});</script></div>
 </section>
-<section id="combining-a-few-things-together" class="level3" data-number="6.1.8">
-<h3 data-number="6.1.8" class="anchored" data-anchor-id="combining-a-few-things-together"><span class="header-section-number">6.1.8</span> Combining a few things together</h3>
+<section id="combining-a-few-things-together" class="level3" data-number="7.1.8">
+<h3 data-number="7.1.8" class="anchored" data-anchor-id="combining-a-few-things-together"><span class="header-section-number">7.1.8</span> Combining a few things together</h3>
 <p>The following is inspired by the example at Plotnine’s <a href="https://plotnine.readthedocs.io/en/stable/">main page</a>. Note how we add regression lines here. We take care of layout and colouring on our side, not using Vega-Lite for that.</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb22"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">let</span> [pallete (<span class="kw">-&gt;&gt;</span> <span class="at">:accent</span></span>
@@ -631,7 +641,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">:line-options</span> {<span class="at">:MSIZE</span> <span class="dv">5</span>}})</span>
 <span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>      (tc/order-by [<span class="at">:gear</span>])))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<table class="table" data-quarto-postprocess="true">
+<div class="table-responsive">
+<table class="table table-hover" data-quarto-postprocess="true">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -663,6 +674,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+</div>
 <p>A similar example with histograms:</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb24"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">let</span> [pallete (<span class="kw">-&gt;&gt;</span> <span class="at">:accent</span></span>
@@ -1114,12 +1126,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./stats.html" class="pagination-link  aria-label=" &lt;span="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistics</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistics</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./prepare_for_ml.html" class="pagination-link" aria-label="<span class='chapter-number'>7</span>&nbsp; <span class='chapter-title'>Machine learning specific functionality in `tech.ml.dataset`</span>">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Machine learning specific functionality in <code>tech.ml.dataset</code></span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./prepare_for_ml.html" class="pagination-link" aria-label="<span class='chapter-number'>8</span>&nbsp; <span class='chapter-title'>Machine learning specific functionality in `tech.ml.dataset`</span>">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Machine learning specific functionality in <code>tech.ml.dataset</code></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
