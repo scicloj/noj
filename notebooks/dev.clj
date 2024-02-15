@@ -4,7 +4,6 @@
 (clay/make! {:format [:quarto :html]
              :base-source-path "notebooks"
              :source-path ["index.clj"
-                           "datasets.clj"
                            "image.clj"
                            "python.clj"
                            "stats.clj"
@@ -14,3 +13,4 @@
              :book {:title "Noj Documentation"}
              :clean-up-target-dir true})
 
+6
