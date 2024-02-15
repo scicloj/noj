@@ -191,6 +191,7 @@ train-ctx
 (def ops (mm/lift tc/drop-columns [:embarked]))
 
 ;;  3. using a name-space containing lifted functions
+(require '[tablecloth.pipeline])
 (def ops (tablecloth.pipeline/drop-columns [:embarked]))
 
 ;;  All three create the same pipeline op
