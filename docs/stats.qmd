@@ -92,15 +92,14 @@ and adds some relevant information such as the `R^2` measure.
 ```clojure
 {:feature-columns [:sepal-width :petal-length :petal-width],
  :target-columns [:sepal-length],
- :explained
- #object[malli.core$_instrument$fn__47898 0x24795d42 "malli.core$_instrument$fn__47898@24795d42"],
+ :explained #function[malli.core/-instrument/fn--54896],
  :R2 0.8582120394597336,
- :id #uuid "f7c9d0e4-94b3-4812-81a3-0886f339fc03",
+ :id #uuid "b8484ca6-1097-4687-a9f3-5cf37c2a91d9",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.022, 4.724, 4.775, 4.851, 5.081, 5.360, 4.911, 5.030, 4.664, 4.903, 5.209, 5.098, 4.775, 4.572, 5.184, 5.522, 5.089, 4.970, 5.352, 5.217...],
  :predict
- #object[scicloj.noj.v1.stats$regression_model$predict__52114 0x50bdd334 "scicloj.noj.v1.stats$regression_model$predict__52114@50bdd334"],
+ #function[scicloj.noj.v1.stats/regression-model/predict--59112],
  :options {:model-type :smile.regression/elastic-net}}
 
 ```
@@ -125,15 +124,14 @@ and adds some relevant information such as the `R^2` measure.
 ```clojure
 {:feature-columns [:sepal-width :petal-length :petal-width],
  :target-columns [:sepal-length],
- :explained
- #object[malli.core$_instrument$fn__47898 0x24795d42 "malli.core$_instrument$fn__47898@24795d42"],
+ :explained #function[malli.core/-instrument/fn--54896],
  :R2 0.8586117200664085,
- :id #uuid "142769e5-0e5e-4f98-b36d-1cc41d48f0a9",
+ :id #uuid "bca98070-5908-439d-9e89-384d0c449434",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.015, 4.690, 4.749, 4.826, 5.080, 5.377, 4.895, 5.021, 4.625, 4.882, 5.216, 5.092, 4.746, 4.533, 5.199, 5.561, 5.094, 4.960, 5.368, 5.226...],
  :predict
- #object[scicloj.noj.v1.stats$regression_model$predict__52114 0x2dd3ed60 "scicloj.noj.v1.stats$regression_model$predict__52114@2dd3ed60"],
+ #function[scicloj.noj.v1.stats/regression-model/predict--59112],
  :options {:model-type :smile.regression/ordinary-least-square}}
 
 ```
@@ -160,15 +158,14 @@ uses specifically the `:smile.regression/ordinary-least-square` model type.
 ```clojure
 {:feature-columns [:sepal-width :petal-length :petal-width],
  :target-columns [:sepal-length],
- :explained
- #object[malli.core$_instrument$fn__47898 0x24795d42 "malli.core$_instrument$fn__47898@24795d42"],
+ :explained #function[malli.core/-instrument/fn--54896],
  :R2 0.8586117200664085,
- :id #uuid "622359c0-60c5-40bd-b1f8-1fc207b4d257",
+ :id #uuid "56cf9792-8f71-4042-bc7b-aafccb635cdb",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.015, 4.690, 4.749, 4.826, 5.080, 5.377, 4.895, 5.021, 4.625, 4.882, 5.216, 5.092, 4.746, 4.533, 5.199, 5.561, 5.094, 4.960, 5.368, 5.226...],
  :predict
- #object[scicloj.noj.v1.stats$regression_model$predict__52114 0x418910f "scicloj.noj.v1.stats$regression_model$predict__52114@418910f"],
+ #function[scicloj.noj.v1.stats/regression-model/predict--59112],
  :options {:model-type :smile.regression/ordinary-least-square}}
 
 ```
@@ -251,10 +248,9 @@ to the metadata of that new column.
  :model
  {:feature-columns [:sepal-width :petal-length :petal-width],
   :target-columns [:sepal-length],
-  :explained
-  #object[malli.core$_instrument$fn__47898 0x24795d42 "malli.core$_instrument$fn__47898@24795d42"],
+  :explained #function[malli.core/-instrument/fn--54896],
   :R2 0.8586117200664085,
-  :id #uuid "59ac8611-2196-493b-be25-3310ec4401fa",
+  :id #uuid "3f465c93-754b-44d7-abb2-cad9e6a45b00",
   :options {:model-type :smile.regression/ordinary-least-square}}}
 
 ```
@@ -279,14 +275,21 @@ _unnamed [5 3]:
 
 | :count |      :left |     :right |
 |-------:|-----------:|-----------:|
-|     13 | 0.00656185 | 0.20426274 |
-|     30 | 0.20426274 | 0.40196363 |
-|     20 | 0.40196363 | 0.59966452 |
-|     18 | 0.59966452 | 0.79736541 |
-|     18 | 0.79736541 | 0.99506630 |
+|     15 | 0.00495163 | 0.19744360 |
+|     25 | 0.19744360 | 0.38993556 |
+|     16 | 0.38993556 | 0.58242753 |
+|     15 | 0.58242753 | 0.77491949 |
+|     28 | 0.77491949 | 0.96741145 |
 
 
 
+
+```{=html}
 <div style="background-color:grey;height:2px;width:100%;"></div>
+```
 
+
+
+```{=html}
 <div><pre><small><small>source: <a href="https://github.com/scicloj/noj/blob/main/notebooks/stats.clj">notebooks/stats.clj</a></small></small></pre></div>
+```

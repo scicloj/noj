@@ -48,8 +48,19 @@ You may see this function in action in the [Clay & Noj demo: image processing](h
 :::
 
 
-<div style="max-height:600px;overflow-y:auto;"><img src="image_files/0.png" style="width:100%;" /></div>
 
+```{=html}
+<img src="image_files/0.png" style="width:100%;" />
+```
+
+
+
+```{=html}
 <div style="background-color:grey;height:2px;width:100%;"></div>
+```
 
+
+
+```{=html}
 <div><pre><small><small>source: <a href="https://github.com/scicloj/noj/blob/main/notebooks/image.clj">notebooks/image.clj</a></small></small></pre></div>
+```

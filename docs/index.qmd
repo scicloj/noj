@@ -52,6 +52,13 @@ It collects a few of the main dependencies together with functions allowing to c
 - a subset of [ggplot2](https://ggplot2.tidyverse.org/) ported to Clojure
 
 
-<div style="background-color:grey;height:2px;width:100%;"></div>
 
+```{=html}
+<div style="background-color:grey;height:2px;width:100%;"></div>
+```
+
+
+
+```{=html}
 <div><pre><small><small>source: <a href="https://github.com/scicloj/noj/blob/main/notebooks/index.clj">notebooks/index.clj</a></small></small></pre></div>
+```
