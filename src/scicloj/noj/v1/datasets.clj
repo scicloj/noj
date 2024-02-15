@@ -3,6 +3,7 @@
             [clojure.java.io :as io]
             [scicloj.tempfiles.api :as tempfiles]))
 
+;; This namespace will soon be depracated.
 
 (defn resource-dataset [resource-path options]
   (tech.v3.dataset/->dataset
