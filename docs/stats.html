@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Noj Documentation - 6&nbsp; Statistics</title>
+<title>Noj Documentation - 5&nbsp; Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./stats.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistics</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./stats.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistics</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -155,38 +155,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Datasets</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./image.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Turning tensors into images</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Turning tensors into images</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Python</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./stats.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepare_for_ml.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Machine learning specific functionality in <code>tech.ml.dataset</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Machine learning specific functionality in <code>tech.ml.dataset</code></span></span></a>
   </div>
 </li>
     </ul>
@@ -199,10 +193,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#correlation-matrices" id="toc-correlation-matrices" class="nav-link active" data-scroll-target="#correlation-matrices"><span class="header-section-number">6.1</span> Correlation matrices</a></li>
-  <li><a href="#multivariate-regression" id="toc-multivariate-regression" class="nav-link" data-scroll-target="#multivariate-regression"><span class="header-section-number">6.2</span> Multivariate regression</a></li>
-  <li><a href="#adding-regression-predictions-to-a-dataset" id="toc-adding-regression-predictions-to-a-dataset" class="nav-link" data-scroll-target="#adding-regression-predictions-to-a-dataset"><span class="header-section-number">6.3</span> Adding regression predictions to a dataset</a></li>
-  <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms"><span class="header-section-number">6.4</span> Histograms</a></li>
+  <li><a href="#correlation-matrices" id="toc-correlation-matrices" class="nav-link active" data-scroll-target="#correlation-matrices"><span class="header-section-number">5.1</span> Correlation matrices</a></li>
+  <li><a href="#multivariate-regression" id="toc-multivariate-regression" class="nav-link" data-scroll-target="#multivariate-regression"><span class="header-section-number">5.2</span> Multivariate regression</a></li>
+  <li><a href="#adding-regression-predictions-to-a-dataset" id="toc-adding-regression-predictions-to-a-dataset" class="nav-link" data-scroll-target="#adding-regression-predictions-to-a-dataset"><span class="header-section-number">5.3</span> Adding regression predictions to a dataset</a></li>
+  <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms"><span class="header-section-number">5.4</span> Histograms</a></li>
   </ul>
 </nav>
     </div>
@@ -211,7 +205,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistics</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistics</span></h1>
 </div>
 
 
@@ -241,8 +235,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  (<span class="at">:require</span> [scicloj.noj.v1.datasets <span class="at">:as</span> datasets]</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            [scicloj.noj.v1.stats <span class="at">:as</span> stats]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="correlation-matrices" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="correlation-matrices"><span class="header-section-number">6.1</span> Correlation matrices</h2>
+<section id="correlation-matrices" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="correlation-matrices"><span class="header-section-number">5.1</span> Correlation matrices</h2>
 <p>The <code>stats/calc-correlations-matrix</code> function commputes the correlation matrix of selected columns of a given dataset, organizing the resulting data as a dataset.</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb2"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/iris</span>
@@ -342,8 +336,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
-<section id="multivariate-regression" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="multivariate-regression"><span class="header-section-number">6.2</span> Multivariate regression</h2>
+<section id="multivariate-regression" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="multivariate-regression"><span class="header-section-number">5.2</span> Multivariate regression</h2>
 <p>The <code>stats/regression-model</code> function computes a regressiom model (using <code>scicloj.ml</code>) and adds some relevant information such as the <code>R^2</code> measure.</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb3"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/iris</span>
@@ -358,7 +352,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a> <span class="at">:target-columns</span> [<span class="at">:sepal-length</span>],</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a> <span class="at">:explained</span> #function[malli.core/-instrument/fn--<span class="dv">54912</span>],</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a> <span class="at">:R2</span> <span class="fl">0.8582120394597336</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a> <span class="at">:id</span> #uuid <span class="st">"0978d34a-f5af-4155-8fc3-8de93ce8ee52"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a> <span class="at">:id</span> #uuid <span class="st">"de501b9c-a6a6-490c-a006-8b735a6bb29e"</span>,</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a> <span class="at">:predictions</span> #tech.v3.dataset.column&amp;lt<span class="co">;float64&amp;gt;[150]</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="at">:sepal-length</span></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>[<span class="fl">5.022</span>, <span class="fl">4.724</span>, <span class="fl">4.775</span>, <span class="fl">4.851</span>, <span class="fl">5.081</span>, <span class="fl">5.360</span>, <span class="fl">4.911</span>, <span class="fl">5.030</span>, <span class="fl">4.664</span>, <span class="fl">4.903</span>, <span class="fl">5.209</span>, <span class="fl">5.098</span>, <span class="fl">4.775</span>, <span class="fl">4.572</span>, <span class="fl">5.184</span>, <span class="fl">5.522</span>, <span class="fl">5.089</span>, <span class="fl">4.970</span>, <span class="fl">5.352</span>, <span class="dv">5</span>.<span class="dv">217</span>...],</span>
@@ -379,7 +373,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a> <span class="at">:target-columns</span> [<span class="at">:sepal-length</span>],</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a> <span class="at">:explained</span> #function[malli.core/-instrument/fn--<span class="dv">54912</span>],</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a> <span class="at">:R2</span> <span class="fl">0.8586117200664085</span>,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a> <span class="at">:id</span> #uuid <span class="st">"3130bd5c-877d-4da8-927d-ed1b8e0c5687"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a> <span class="at">:id</span> #uuid <span class="st">"ca0d6cdb-fccd-49b5-911b-7de5fc1b9f22"</span>,</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a> <span class="at">:predictions</span> #tech.v3.dataset.column&amp;lt<span class="co">;float64&amp;gt;[150]</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="at">:sepal-length</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>[<span class="fl">5.015</span>, <span class="fl">4.690</span>, <span class="fl">4.749</span>, <span class="fl">4.826</span>, <span class="fl">5.080</span>, <span class="fl">5.377</span>, <span class="fl">4.895</span>, <span class="fl">5.021</span>, <span class="fl">4.625</span>, <span class="fl">4.882</span>, <span class="fl">5.216</span>, <span class="fl">5.092</span>, <span class="fl">4.746</span>, <span class="fl">4.533</span>, <span class="fl">5.199</span>, <span class="fl">5.561</span>, <span class="fl">5.094</span>, <span class="fl">4.960</span>, <span class="fl">5.368</span>, <span class="dv">5</span>.<span class="dv">226</span>...],</span>
@@ -400,7 +394,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a> <span class="at">:target-columns</span> [<span class="at">:sepal-length</span>],</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a> <span class="at">:explained</span> #function[malli.core/-instrument/fn--<span class="dv">54912</span>],</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a> <span class="at">:R2</span> <span class="fl">0.8586117200664085</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a> <span class="at">:id</span> #uuid <span class="st">"07bcfc49-1aa3-4c6b-84f8-0506de96d86c"</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a> <span class="at">:id</span> #uuid <span class="st">"8ca473c6-9aa6-412f-8868-e75954c84ef5"</span>,</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a> <span class="at">:predictions</span> #tech.v3.dataset.column&amp;lt<span class="co">;float64&amp;gt;[150]</span></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="at">:sepal-length</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>[<span class="fl">5.015</span>, <span class="fl">4.690</span>, <span class="fl">4.749</span>, <span class="fl">4.826</span>, <span class="fl">5.080</span>, <span class="fl">5.377</span>, <span class="fl">4.895</span>, <span class="fl">5.021</span>, <span class="fl">4.625</span>, <span class="fl">4.882</span>, <span class="fl">5.216</span>, <span class="fl">5.092</span>, <span class="fl">4.746</span>, <span class="fl">4.533</span>, <span class="fl">5.199</span>, <span class="fl">5.561</span>, <span class="fl">5.094</span>, <span class="fl">4.960</span>, <span class="fl">5.368</span>, <span class="dv">5</span>.<span class="dv">226</span>...],</span>
@@ -409,8 +403,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a> <span class="at">:options</span> {<span class="at">:model-type</span> <span class="at">:smile.regression/ordinary-least-square</span>}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="adding-regression-predictions-to-a-dataset" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="adding-regression-predictions-to-a-dataset"><span class="header-section-number">6.3</span> Adding regression predictions to a dataset</h2>
+<section id="adding-regression-predictions-to-a-dataset" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="adding-regression-predictions-to-a-dataset"><span class="header-section-number">5.3</span> Adding regression predictions to a dataset</h2>
 <p>The <code>stats/add-predictions</code> function models a target column using feature columns, adds a new prediction column with the model predictions.</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/iris</span>
@@ -640,12 +634,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">:target-columns</span> [<span class="at">:sepal-length</span>],</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">:explained</span> #function[malli.core/-instrument/fn--<span class="dv">54912</span>],</span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">:R2</span> <span class="fl">0.8586117200664085</span>,</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">:id</span> #uuid <span class="st">"3de36312-9ef0-4b1d-b7b0-04b174a293fb"</span>,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">:id</span> #uuid <span class="st">"3467b354-b3ee-49e4-9d5f-6adccdf7e880"</span>,</span>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">:options</span> {<span class="at">:model-type</span> <span class="at">:smile.regression/ordinary-least-square</span>}}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="histograms" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="histograms"><span class="header-section-number">6.4</span> Histograms</h2>
+<section id="histograms" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="histograms"><span class="header-section-number">5.4</span> Histograms</h2>
 <p>The <code>stats/histogram</code> function computes the necessary data to plot a histogram.</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb12"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> (<span class="kw">repeatedly</span> <span class="dv">99</span> <span class="kw">rand</span>)</span>
@@ -663,28 +657,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">22</td>
-<td style="text-align: right;">0.02540569</td>
-<td style="text-align: right;">0.21833619</td>
+<td style="text-align: right;">0.00475971</td>
+<td style="text-align: right;">0.20338248</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">0.21833619</td>
-<td style="text-align: right;">0.41126669</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">0.20338248</td>
+<td style="text-align: right;">0.40200525</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">0.41126669</td>
-<td style="text-align: right;">0.60419719</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">0.40200525</td>
+<td style="text-align: right;">0.60062802</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">0.60419719</td>
-<td style="text-align: right;">0.79712770</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">0.60062802</td>
+<td style="text-align: right;">0.79925079</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">0.79712770</td>
-<td style="text-align: right;">0.99005820</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">0.79925079</td>
+<td style="text-align: right;">0.99787356</td>
 </tr>
 </tbody>
 </table>
@@ -1085,12 +1079,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./python.html" class="pagination-link  aria-label=" &lt;span="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Python</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./visualization.html" class="pagination-link" aria-label="<span class='chapter-number'>7</span>&nbsp; <span class='chapter-title'>Visualization</span>">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visualization</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./visualization.html" class="pagination-link" aria-label="<span class='chapter-number'>6</span>&nbsp; <span class='chapter-title'>Visualization</span>">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualization</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

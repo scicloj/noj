@@ -12,5 +12,3 @@
              :base-target-path "docs"
              :book {:title "Noj Documentation"}
              :clean-up-target-dir true})
-
-6
