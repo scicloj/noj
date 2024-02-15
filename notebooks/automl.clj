@@ -29,17 +29,17 @@
 ;;  sequence of specific functions,
 ;;  and each function can behaves differently, depending on the "mode"
 ;;  in which the pipelines get run.
-;;  It can run either in mode :fit or in mode :transform, and the
+;;  It can run either in mode `:fit` or in mode `:transform`, and the
 ;;  functions of the pipeline can (but don't need to) do
 ;;  different things depend on the `mode`
 ;;
 ;; Specifically we have a function called `metamorph.ml/model` which
 ;; will do `train` in mode
-;; :fit and `predict` in mode :transform
+;; `:fit` and `predict` in mode `:transform`
 ;;
-;; The names :fit and :transform come from the fact that functions
+;; The names `:fit` and `:transform` come from the fact that functions
 ;; could do other things then
-;; `train` and `predict`, so :fit and :transform represent a
+;; `train` and `predict`, so `:fit` and `:transform` represent a
 ;; more general concept then train/predict
 
 (require '[scicloj.metamorph.ml :as ml]
@@ -97,8 +97,8 @@ ctx-after-train
 (vals ctx-after-train)
 
 ;; The `model` function has closed over the id, so is knows "his id", so in the `transform`
-;; mode it can get the data created at :fit.  So the `model` function can "send" data to itself
-;; from :fit to :transform, the `trained model`.
+;; mode it can get the data created at `:fit`.  So the `model` function can "send" data to itself
+;; from `:fit` to `:transform`, the `trained model`.
 ;;
 ;; So this will do the `predict` on new data
 
@@ -138,9 +138,9 @@ ctx-after-predict
 ;; It uses a convenience function `mm/fit` which generates compliant
 ;; context maps internally and executes the pipeline as well.
 ;;
-;; The ctx acts a collector of everything "learned" during :fit,
+;; The ctx acts a collector of everything "learned" during `:fit`,
 ;; mainly the trained model, but it could be as well other information
-;; learned from the data during :fit and to be applied at :transform .
+;; learned from the data during `:fit` and to be applied at `:transform` .
 
 (def train-ctx
   (mm/fit titanic
@@ -219,8 +219,8 @@ train-ctx
 ;; So a metamorph pipeline can encapsulate arbitray transformation
 ;; of a dataset in the 2 modes. They can be "stateless"
 ;; (only chaining the dataset, such as `drop-columns`) or
-;; "state-full", so they store data in the ctx during :fit and can use
-;; it in :transform. In the pipeline above, the trained model is
+;; "state-full", so they store data in the ctx during `:fit` and can use
+;; it in `:transform`. In the pipeline above, the trained model is
 ;; stored in this way.
 ;;
 ;;This state is not stored globaly, but inside the pipeline
