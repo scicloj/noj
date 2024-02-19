@@ -1,11 +1,8 @@
 (ns interactions-ols
   (:require [tablecloth.api :as tc]
             [tablecloth.pipeline :as tcpipe]
-            [clojure.string :as str]
-            [clojure.java.io :as io]
             [fastmath.stats :as fmstats]
-            [tech.v3.dataset.math :as std-math]
-            [tech.v3.datatype.functional :as dtf]
+            [tech.v3.datatype.functional :as fun]
             [scicloj.metamorph.core :as mm]
             [scicloj.metamorph.ml :as mm.ml]
             [scicloj.metamorph.ml.loss :as loss]
@@ -14,6 +11,7 @@
             [scicloj.kindly.v4.api :as kindly]
             [scicloj.kindly.v4.kind :as kind]))
 
+^:kindly/hide-code
 (def md
   (comp kindly/hide-code kind/md))
 
@@ -22,9 +20,6 @@
 (md "Taking ideas from:
 
 [Interaction Effect in Multiple Regression: Essentials](http://www.sthda.com/english/articles/40-regression-analysis/164-interaction-effect-in-multiple-regression-essentials/#comments-list) by Alboukadel Kassambara")
-
-(defn pp-str [x]
-  (with-out-str (clojure.pprint/pprint x)))
 
 (md "First we load the data:")
 (def marketing (tc/dataset "https://github.com/scicloj/datarium-CSV/raw/main/data/marketing.csv.gz" {:key-fn keyword}))
@@ -67,7 +62,7 @@
 (def pipe-interaction
   (mm/pipeline
    (tcpipe/drop-columns [:newspaper])
-   (tcpipe/add-column :youtube*facebook (fn [ds] (dtf/* (ds :youtube) (ds :facebook))))
+   (tcpipe/add-column :youtube*facebook (fn [ds] (fun/* (ds :youtube) (ds :facebook))))
    (tmd.mm/set-inference-target :sales)
    {:metamorph/id :model}(mm.ml/model {:model-type :smile.regression/ordinary-least-square})))
 
