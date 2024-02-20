@@ -4,7 +4,7 @@
             [fastmath.stats :as fmstats]
             [tech.v3.datatype.functional :as fun]
             [scicloj.metamorph.core :as mm]
-            [scicloj.metamorph.ml :as mm.ml]
+            [scicloj.metamorph.ml :as ml]
             [scicloj.metamorph.ml.loss :as loss]
             [scicloj.ml.smile.regression :as regression]
             [tech.v3.dataset.metamorph :as tmd.mm]
@@ -34,12 +34,12 @@ $$sales = b0 + b1 * youtube + b2 * facebook$$")
    (tmd.mm/set-inference-target :sales)
    (tcpipe/drop-columns [:newspaper])
    {:metamorph/id :model}
-   (mm.ml/model {:model-type :smile.regression/ordinary-least-square})))
+   (ml/model {:model-type :smile.regression/ordinary-least-square})))
 
 
 (md "We evaluate it, ")
 (def evaluations
-  (mm.ml/evaluate-pipelines
+  (ml/evaluate-pipelines
    [additive-pipeline]
    (tc/split->seq marketing :holdout)
    loss/rmse
@@ -49,7 +49,7 @@ $$sales = b0 + b1 * youtube + b2 * facebook$$")
 
 
 (md "and print the result:")
-(-> evaluations flatten first :fit-ctx :model mm.ml/thaw-model)
+(-> evaluations flatten first :fit-ctx :model ml/thaw-model)
 
 (md "We have the following metrics:")
 (md "$RMSE$")
@@ -66,11 +66,11 @@ $$sales = b0 + b1 * youtube + b2 * facebook + b3 * (youtube * facebook)$$")
    (tcpipe/drop-columns [:newspaper])
    (tcpipe/add-column :youtube*facebook (fn [ds] (fun/* (ds :youtube) (ds :facebook))))
    (tmd.mm/set-inference-target :sales)
-   {:metamorph/id :model}(mm.ml/model {:model-type :smile.regression/ordinary-least-square})))
+   {:metamorph/id :model}(ml/model {:model-type :smile.regression/ordinary-least-square})))
 
 (md "Again we evaluate the model,")
 (def evaluations
-  (mm.ml/evaluate-pipelines
+  (ml/evaluate-pipelines
    [pipe-interaction]
    (tc/split->seq marketing :holdout)
    loss/rmse
@@ -80,7 +80,7 @@ $$sales = b0 + b1 * youtube + b2 * facebook + b3 * (youtube * facebook)$$")
 
 
 (md "and print it and the performance metrices:")
-(-> evaluations flatten first :fit-ctx :model mm.ml/thaw-model)
+(-> evaluations flatten first :fit-ctx :model ml/thaw-model)
 
 (md "As the multiplcation of $youtube * facebook$ is as well statistically relevant, it
 suggests that there is indeed an interaction between these 2 predictor variables youtube and facebook.")
