@@ -7,6 +7,7 @@
             [scicloj.metamorph.ml :as ml]
             [scicloj.metamorph.ml.loss :as loss]
             [scicloj.ml.smile.regression]
+            [tech.v3.dataset.modelling :as modelling]
             [tech.v3.dataset.metamorph :as tmd.mm]
             [scicloj.kindly.v4.api :as kindly]
             [scicloj.kindly.v4.kind :as kind]))
@@ -24,29 +25,30 @@
   (tc/dataset "https://github.com/scicloj/datarium-CSV/raw/main/data/marketing.csv.gz"
               {:key-fn keyword}))
 
-(md "## Additive model")
+(md "and do some preprocessing to set up the regression:")
+(def preprocessed-data
+  (-> marketing
+      (tc/drop-columns [:newspaper])
+      (modelling/set-inference-target :sales)))
 
+(md "## Additive model")
 (md "First we build an additive model, which model equation is
 $$sales = b0 + b1 * youtube + b2 * facebook$$")
 
 (def additive-pipeline
   (mm/pipeline
-   (tmd.mm/set-inference-target :sales)
-   (tcpipe/drop-columns [:newspaper])
    {:metamorph/id :model}
    (ml/model {:model-type :smile.regression/ordinary-least-square})))
-
 
 (md "We evaluate it, ")
 (def evaluations
   (ml/evaluate-pipelines
    [additive-pipeline]
-   (tc/split->seq marketing :holdout)
+   (tc/split->seq preprocessed-data :holdout)
    loss/rmse
    :loss
    {:other-metrices [{:name :r2
                       :metric-fn fmstats/r2-determination}]}))
-
 
 (md "and print the result:")
 (-> evaluations flatten first :fit-ctx :model ml/thaw-model)
@@ -63,16 +65,14 @@ $$sales = b0 + b1 * youtube + b2 * facebook$$")
 $$sales = b0 + b1 * youtube + b2 * facebook + b3 * (youtube * facebook)$$")
 (def pipe-interaction
   (mm/pipeline
-   (tcpipe/drop-columns [:newspaper])
    (tcpipe/add-column :youtube*facebook (fn [ds] (fun/* (ds :youtube) (ds :facebook))))
-   (tmd.mm/set-inference-target :sales)
    {:metamorph/id :model}(ml/model {:model-type :smile.regression/ordinary-least-square})))
 
 (md "Again we evaluate the model,")
 (def evaluations
   (ml/evaluate-pipelines
    [pipe-interaction]
-   (tc/split->seq marketing :holdout)
+   (tc/split->seq preprocessed-data :holdout)
    loss/rmse
    :loss
    {:other-metrices [{:name :r2
@@ -82,7 +82,7 @@ $$sales = b0 + b1 * youtube + b2 * facebook + b3 * (youtube * facebook)$$")
 (md "and print it and the performance metrices:")
 (-> evaluations flatten first :fit-ctx :model ml/thaw-model)
 
-(md "As the multiplcation of $youtube * facebook$ is as well statistically relevant, it
+(md "As the multiplcation of `youtube*facebook` is as well statistically relevant, it
 suggests that there is indeed an interaction between these 2 predictor variables youtube and facebook.")
 
 (md "$RMSE$")
