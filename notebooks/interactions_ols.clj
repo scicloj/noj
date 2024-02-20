@@ -6,7 +6,7 @@
             [scicloj.metamorph.core :as mm]
             [scicloj.metamorph.ml :as ml]
             [scicloj.metamorph.ml.loss :as loss]
-            [scicloj.ml.smile.regression :as regression]
+            [scicloj.ml.smile.regression]
             [tech.v3.dataset.metamorph :as tmd.mm]
             [scicloj.kindly.v4.api :as kindly]
             [scicloj.kindly.v4.kind :as kind]))
