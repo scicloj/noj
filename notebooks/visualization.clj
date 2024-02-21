@@ -7,7 +7,6 @@
             [scicloj.noj.v1.vis.hanami.templates :as vht]
             [scicloj.noj.v1.vis.hanami :as hanami]
             [scicloj.noj.v1.stats :as stats]
-            [scicloj.noj.v1.datasets :as datasets]
             [tech.v3.datatype :as dtype]
             [tech.v3.datatype.functional :as fun]
             [scicloj.kindly.v4.api :as kindly]
@@ -15,12 +14,24 @@
             [hiccup.core :as hiccup]
             [clojure2d.color :as color]))
 
+;; ## Some datasets
+
+(def iris
+  (-> "https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv"
+      (tc/dataset {:key-fn keyword})
+      (tc/rename-columns {:Sepal.Length :sepal-length
+                          :Sepal.Width :sepal-width
+                          :Petal.Length :petal-length
+                          :Petal.Width :petal-width
+                          :Species :species})))
+
+(def mtcars
+  (-> "https://vincentarelbundock.github.io/Rdatasets/csv/datasets/mtcars.csv"
+      (tc/dataset {:key-fn keyword})))
 
 ;; ## Visualizing datases with Hanami
 
 ;; Noj offers a few convenience functions to make [Hanami](https://github.com/jsa-aerial/hanami) plotting work smoothly with [Tablecloth](https://scicloj.github.io/tablecloth/) and [Kindly](https://scicloj.github.io/kindly/).
-
-
 
 (def random-walk
   (let [n 20]
@@ -48,13 +59,13 @@
 
 ;; The `scicloj.noj.v1.vis.hanami.templates` namespace add Hanami templates to Hanami's own collection.
 
-(-> datasets/mtcars
+(-> mtcars
     (hanami/plot vht/boxplot-chart
                  {:X :gear
                   :XTYPE :nominal
                   :Y :mpg}))
 
-(-> datasets/iris
+(-> iris
     (hanami/plot vht/rule-chart
                  {:X :sepal-width
                   :Y :sepal-length
@@ -68,7 +79,7 @@
 
 ;; Grouped datasets are handled automatically with a table view.
 
-(-> datasets/iris
+(-> iris
     (tc/group-by [:species])
     (hanami/plot vht/rule-chart
                  {:X :sepal-width
@@ -166,7 +177,7 @@
 
 ;; ### Linear regression
 
-(-> datasets/mtcars
+(-> mtcars
     (stats/add-predictions :mpg [:wt]
                            {:model-type :smile.regression/ordinary-least-square})
     (hanami/combined-plot
@@ -185,7 +196,7 @@
 
 ;; Alternatively:
 
-(-> datasets/mtcars
+(-> mtcars
     (hanami/linear-regression-plot
      :mpg :wt
      {:HEIGHT 200
@@ -196,7 +207,7 @@
 
 ;; And in a grouped dataset case:
 
-(-> datasets/mtcars
+(-> mtcars
     (tc/group-by [:gear])
     (hanami/linear-regression-plot
      :mpg :wt
@@ -217,18 +228,18 @@
 ;; The `hanami/histogram` functions does that behind the scenes,
 ;; and generates a Vega-Lite spec using Hanami.
 
-(-> datasets/iris
+(-> iris
     (hanami/histogram :sepal-width
                       {:nbins 10}))
 
-(-> datasets/iris
+(-> iris
     (hanami/histogram :sepal-width
                       {:nbins 10})
     kind/pprint)
 
 ;; The resulting spec can be customized further:
 
-(-> datasets/iris
+(-> iris
     (hanami/histogram :sepal-width
                       {:nbins 10})
     ;; varying the resulting vega-lite spec:
@@ -243,7 +254,7 @@
 (let [pallete (->> :accent
                    color/palette
                    (mapv color/format-hex))]
-  (-> datasets/mtcars
+  (-> mtcars
       (tc/group-by :gear {:result-type :as-map})
       (->> (sort-by key)
            (map-indexed
@@ -265,7 +276,7 @@
 (let [pallete (->> :accent
                    color/palette
                    (mapv color/format-hex))]
-  (-> datasets/mtcars
+  (-> mtcars
       (tc/map-columns :color [:gear] #(-> % (- 3) pallete))
       (tc/group-by [:gear])
       (hanami/linear-regression-plot
@@ -283,7 +294,7 @@
 (let [pallete (->> :accent
                    color/palette
                    (mapv color/format-hex))]
-  (-> datasets/iris
+  (-> iris
       (tc/group-by :species {:result-type :as-map})
       (->> (sort-by key)
            (map-indexed
@@ -297,7 +308,7 @@
 ;; this time using Vega-Lite for layout and coloring
 ;; (using its "facet" option).
 
-(-> datasets/mtcars
+(-> mtcars
     (tc/group-by [:gear])
     (stats/add-predictions :mpg [:wt]
                            {:model-type :smile.regression/ordinary-least-square})
