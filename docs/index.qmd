@@ -52,6 +52,9 @@ It collects a few of the main dependencies together with functions allowing to c
 - [automl](automl.html)
 
 
+- [interactions_ols](interactions_ols.html)
+
+
 
 ## Wishlist
 
