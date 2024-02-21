@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [1-alpha26] - 2024-02-21
+- removing the datasets namespace to avoid duplication with metamporh.ml (#4)
+
 ## [1-alpha25] - 2024-01-20
 - added Clojisr dependency
 
