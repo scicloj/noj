@@ -16,7 +16,8 @@
 (def md
   (comp kindly/hide-code kind/md))
 
-(md "This examples shows how to do interactions in linear regression with `metamorph.ml`.")
+(md "# Interactions in Ordinary Least Squares
+This examples shows how to do interactions in linear regression with `metamorph.ml`.")
 
 (md "Taking ideas from: [Interaction Effect in Multiple Regression: Essentials](http://www.sthda.com/english/articles/40-regression-analysis/164-interaction-effect-in-multiple-regression-essentials/) by Alboukadel Kassambara")
 
