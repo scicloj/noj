@@ -1,4 +1,4 @@
-name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,color,mpg-prediction
+rownames,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,color,mpg-prediction
 Mazda RX4,21.0,6,160.0,110,3.9,2.62,16.46,0,1,4,4,#beaed4,24.510455071959058
 Mazda RX4 Wag,21.0,6,160.0,110,3.9,2.875,17.02,0,1,4,4,#beaed4,22.76026807682699
 Datsun 710,22.8,4,108.0,93,3.85,2.32,18.61,1,1,4,1,#beaed4,26.569498595643847

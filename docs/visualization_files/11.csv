@@ -1,4 +1,4 @@
-name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,color,mpg-prediction
+rownames,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,color,mpg-prediction
 Hornet 4 Drive,21.4,6,258.0,110,3.08,3.215,19.44,1,0,3,1,#7fc97f,18.24575076879608
 Hornet Sportabout,18.7,8,360.0,175,3.15,3.44,17.02,0,0,3,2,#7fc97f,17.535458674671055
 Valiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1,#7fc97f,17.472321599637716

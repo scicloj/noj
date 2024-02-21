@@ -24,8 +24,26 @@ fontsize: 0.9em
 ::: {.sourceClojure}
 ```clojure
 (ns stats
-  (:require [scicloj.noj.v1.datasets :as datasets]
-            [scicloj.noj.v1.stats :as stats]))
+  (:require [scicloj.noj.v1.stats :as stats]
+            [tablecloth.api :as tc]))
+```
+:::
+
+
+
+## Example data
+
+
+::: {.sourceClojure}
+```clojure
+(def iris
+  (-> "https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv"
+      (tc/dataset {:key-fn keyword})
+      (tc/rename-columns {:Sepal.Length :sepal-length
+                          :Sepal.Width :sepal-width
+                          :Petal.Length :petal-length
+                          :Petal.Width :petal-width
+                          :Species :species})))
 ```
 :::
 
@@ -39,7 +57,7 @@ organizing the resulting data as a dataset.
 
 ::: {.sourceClojure}
 ```clojure
-(-> datasets/iris
+(-> iris
     (stats/calc-correlations-matrix
      [:sepal-length :sepal-width :petal-length :petal-width]))
 ```
@@ -77,7 +95,7 @@ and adds some relevant information such as the `R^2` measure.
 
 ::: {.sourceClojure}
 ```clojure
-(-> datasets/iris
+(-> iris
     (stats/regression-model
      :sepal-length
      [:sepal-width :petal-length :petal-width]
@@ -92,15 +110,14 @@ and adds some relevant information such as the `R^2` measure.
 ```clojure
 {:feature-columns [:sepal-width :petal-length :petal-width],
  :target-columns [:sepal-length],
- :explained
- #object[malli.core$_instrument$fn__47821 0x1a920716 "malli.core$_instrument$fn__47821@1a920716"],
+ :explained #function[malli.core/-instrument/fn--54989],
  :R2 0.8582120394597336,
- :id #uuid "2d5d82e5-d05a-4b48-a3cb-9c031afbc0d5",
+ :id #uuid "b611e1c9-0c16-401a-86c5-d94f38426c46",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.022, 4.724, 4.775, 4.851, 5.081, 5.360, 4.911, 5.030, 4.664, 4.903, 5.209, 5.098, 4.775, 4.572, 5.184, 5.522, 5.089, 4.970, 5.352, 5.217...],
  :predict
- #object[scicloj.noj.v1.stats$regression_model$predict__52049 0x5260c89c "scicloj.noj.v1.stats$regression_model$predict__52049@5260c89c"],
+ #function[scicloj.noj.v1.stats/regression-model/predict--59217],
  :options {:model-type :smile.regression/elastic-net}}
 
 ```
@@ -110,7 +127,7 @@ and adds some relevant information such as the `R^2` measure.
 
 ::: {.sourceClojure}
 ```clojure
-(-> datasets/iris
+(-> iris
     (stats/regression-model
      :sepal-length
      [:sepal-width :petal-length :petal-width]
@@ -125,15 +142,14 @@ and adds some relevant information such as the `R^2` measure.
 ```clojure
 {:feature-columns [:sepal-width :petal-length :petal-width],
  :target-columns [:sepal-length],
- :explained
- #object[malli.core$_instrument$fn__47821 0x1a920716 "malli.core$_instrument$fn__47821@1a920716"],
+ :explained #function[malli.core/-instrument/fn--54989],
  :R2 0.8586117200664085,
- :id #uuid "80b5287b-9c14-4c7a-970a-03a25a7ddf02",
+ :id #uuid "4cd27d22-7754-4170-9180-8a18cd93d440",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.015, 4.690, 4.749, 4.826, 5.080, 5.377, 4.895, 5.021, 4.625, 4.882, 5.216, 5.092, 4.746, 4.533, 5.199, 5.561, 5.094, 4.960, 5.368, 5.226...],
  :predict
- #object[scicloj.noj.v1.stats$regression_model$predict__52049 0x215e5ac0 "scicloj.noj.v1.stats$regression_model$predict__52049@215e5ac0"],
+ #function[scicloj.noj.v1.stats/regression-model/predict--59217],
  :options {:model-type :smile.regression/ordinary-least-square}}
 
 ```
@@ -146,7 +162,7 @@ uses specifically the `:smile.regression/ordinary-least-square` model type.
 
 ::: {.sourceClojure}
 ```clojure
-(-> datasets/iris
+(-> iris
     (stats/linear-regression-model
      :sepal-length
      [:sepal-width :petal-length :petal-width])
@@ -160,15 +176,14 @@ uses specifically the `:smile.regression/ordinary-least-square` model type.
 ```clojure
 {:feature-columns [:sepal-width :petal-length :petal-width],
  :target-columns [:sepal-length],
- :explained
- #object[malli.core$_instrument$fn__47821 0x1a920716 "malli.core$_instrument$fn__47821@1a920716"],
+ :explained #function[malli.core/-instrument/fn--54989],
  :R2 0.8586117200664085,
- :id #uuid "9bb1be41-5776-4217-b144-e66d20901f01",
+ :id #uuid "31e60d27-587f-4246-8cff-feec4b51f2e0",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.015, 4.690, 4.749, 4.826, 5.080, 5.377, 4.895, 5.021, 4.625, 4.882, 5.216, 5.092, 4.746, 4.533, 5.199, 5.561, 5.094, 4.960, 5.368, 5.226...],
  :predict
- #object[scicloj.noj.v1.stats$regression_model$predict__52049 0x6f102ec6 "scicloj.noj.v1.stats$regression_model$predict__52049@6f102ec6"],
+ #function[scicloj.noj.v1.stats/regression-model/predict--59217],
  :options {:model-type :smile.regression/ordinary-least-square}}
 
 ```
@@ -184,7 +199,7 @@ adds a new prediction column with the model predictions.
 
 ::: {.sourceClojure}
 ```clojure
-(-> datasets/iris
+(-> iris
     (stats/add-predictions
      :sepal-length
      [:sepal-width :petal-length :petal-width]
@@ -193,32 +208,32 @@ adds a new prediction column with the model predictions.
 :::
 
 
-_unnamed [150 6]:
+https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv [150 7]:
 
-| :sepal-length | :sepal-width | :petal-length | :petal-width |  :species | :sepal-length-prediction |
-|--------------:|-------------:|--------------:|-------------:|-----------|-------------------------:|
-|           5.1 |          3.5 |           1.4 |          0.2 |    setosa |               5.01541576 |
-|           4.9 |          3.0 |           1.4 |          0.2 |    setosa |               4.68999718 |
-|           4.7 |          3.2 |           1.3 |          0.2 |    setosa |               4.74925142 |
-|           4.6 |          3.1 |           1.5 |          0.2 |    setosa |               4.82599409 |
-|           5.0 |          3.6 |           1.4 |          0.2 |    setosa |               5.08049948 |
-|           5.4 |          3.9 |           1.7 |          0.4 |    setosa |               5.37719368 |
-|           4.6 |          3.4 |           1.4 |          0.3 |    setosa |               4.89468378 |
-|           5.0 |          3.4 |           1.5 |          0.2 |    setosa |               5.02124524 |
-|           4.4 |          2.9 |           1.4 |          0.2 |    setosa |               4.62491347 |
-|           4.9 |          3.1 |           1.5 |          0.1 |    setosa |               4.88164236 |
-|           ... |          ... |           ... |          ... |       ... |                      ... |
-|           6.9 |          3.1 |           5.4 |          2.1 | virginica |               6.53429168 |
-|           6.7 |          3.1 |           5.6 |          2.4 | virginica |               6.50917327 |
-|           6.9 |          3.1 |           5.1 |          2.3 | virginica |               6.21025556 |
-|           5.8 |          2.7 |           5.1 |          1.9 | virginica |               6.17251376 |
-|           6.8 |          3.2 |           5.9 |          2.3 | virginica |               6.84264484 |
-|           6.7 |          3.3 |           5.7 |          2.5 | virginica |               6.65460564 |
-|           6.7 |          3.0 |           5.2 |          2.3 | virginica |               6.21608504 |
-|           6.3 |          2.5 |           5.0 |          1.9 | virginica |               5.97143313 |
-|           6.5 |          3.0 |           5.2 |          2.0 | virginica |               6.38302984 |
-|           6.2 |          3.4 |           5.4 |          2.3 | virginica |               6.61824630 |
-|           5.9 |          3.0 |           5.1 |          1.8 | virginica |               6.42341317 |
+| :rownames | :sepal-length | :sepal-width | :petal-length | :petal-width |  :species | :sepal-length-prediction |
+|----------:|--------------:|-------------:|--------------:|-------------:|-----------|-------------------------:|
+|         1 |           5.1 |          3.5 |           1.4 |          0.2 |    setosa |               5.01541576 |
+|         2 |           4.9 |          3.0 |           1.4 |          0.2 |    setosa |               4.68999718 |
+|         3 |           4.7 |          3.2 |           1.3 |          0.2 |    setosa |               4.74925142 |
+|         4 |           4.6 |          3.1 |           1.5 |          0.2 |    setosa |               4.82599409 |
+|         5 |           5.0 |          3.6 |           1.4 |          0.2 |    setosa |               5.08049948 |
+|         6 |           5.4 |          3.9 |           1.7 |          0.4 |    setosa |               5.37719368 |
+|         7 |           4.6 |          3.4 |           1.4 |          0.3 |    setosa |               4.89468378 |
+|         8 |           5.0 |          3.4 |           1.5 |          0.2 |    setosa |               5.02124524 |
+|         9 |           4.4 |          2.9 |           1.4 |          0.2 |    setosa |               4.62491347 |
+|        10 |           4.9 |          3.1 |           1.5 |          0.1 |    setosa |               4.88164236 |
+|       ... |           ... |          ... |           ... |          ... |       ... |                      ... |
+|       140 |           6.9 |          3.1 |           5.4 |          2.1 | virginica |               6.53429168 |
+|       141 |           6.7 |          3.1 |           5.6 |          2.4 | virginica |               6.50917327 |
+|       142 |           6.9 |          3.1 |           5.1 |          2.3 | virginica |               6.21025556 |
+|       143 |           5.8 |          2.7 |           5.1 |          1.9 | virginica |               6.17251376 |
+|       144 |           6.8 |          3.2 |           5.9 |          2.3 | virginica |               6.84264484 |
+|       145 |           6.7 |          3.3 |           5.7 |          2.5 | virginica |               6.65460564 |
+|       146 |           6.7 |          3.0 |           5.2 |          2.3 | virginica |               6.21608504 |
+|       147 |           6.3 |          2.5 |           5.0 |          1.9 | virginica |               5.97143313 |
+|       148 |           6.5 |          3.0 |           5.2 |          2.0 | virginica |               6.38302984 |
+|       149 |           6.2 |          3.4 |           5.4 |          2.3 | virginica |               6.61824630 |
+|       150 |           5.9 |          3.0 |           5.1 |          1.8 | virginica |               6.42341317 |
 
 
 
@@ -228,7 +243,7 @@ to the metadata of that new column.
 
 ::: {.sourceClojure}
 ```clojure
-(-> datasets/iris
+(-> iris
     (stats/add-predictions
      :sepal-length
      [:sepal-width :petal-length :petal-width]
@@ -251,10 +266,9 @@ to the metadata of that new column.
  :model
  {:feature-columns [:sepal-width :petal-length :petal-width],
   :target-columns [:sepal-length],
-  :explained
-  #object[malli.core$_instrument$fn__47821 0x1a920716 "malli.core$_instrument$fn__47821@1a920716"],
+  :explained #function[malli.core/-instrument/fn--54989],
   :R2 0.8586117200664085,
-  :id #uuid "0a886192-add2-4da5-b32d-b0ecf4ff6821",
+  :id #uuid "4bf9c429-9a75-48ad-800c-23074d7cfb8a",
   :options {:model-type :smile.regression/ordinary-least-square}}}
 
 ```
@@ -279,11 +293,11 @@ _unnamed [5 3]:
 
 | :count |      :left |     :right |
 |-------:|-----------:|-----------:|
-|     21 | 0.00036206 | 0.19908818 |
-|     18 | 0.19908818 | 0.39781430 |
-|     21 | 0.39781430 | 0.59654041 |
-|     17 | 0.59654041 | 0.79526653 |
-|     22 | 0.79526653 | 0.99399265 |
+|     16 | 0.01060049 | 0.20721863 |
+|     29 | 0.20721863 | 0.40383677 |
+|     18 | 0.40383677 | 0.60045491 |
+|     14 | 0.60045491 | 0.79707305 |
+|     22 | 0.79707305 | 0.99369119 |
 
 
 

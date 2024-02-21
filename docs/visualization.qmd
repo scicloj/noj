@@ -30,13 +30,40 @@ fontsize: 0.9em
             [scicloj.noj.v1.vis.hanami.templates :as vht]
             [scicloj.noj.v1.vis.hanami :as hanami]
             [scicloj.noj.v1.stats :as stats]
-            [scicloj.noj.v1.datasets :as datasets]
             [tech.v3.datatype :as dtype]
             [tech.v3.datatype.functional :as fun]
             [scicloj.kindly.v4.api :as kindly]
             [scicloj.kindly.v4.kind :as kind]
             [hiccup.core :as hiccup]
             [clojure2d.color :as color]))
+```
+:::
+
+
+
+## Some datasets
+
+
+::: {.sourceClojure}
+```clojure
+(def iris
+  (-> "https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv"
+      (tc/dataset {:key-fn keyword})
+      (tc/rename-columns {:Sepal.Length :sepal-length
+                          :Sepal.Width :sepal-width
+                          :Petal.Length :petal-length
+                          :Petal.Width :petal-width
+                          :Species :species})))
+```
+:::
+
+
+
+::: {.sourceClojure}
+```clojure
+(def mtcars
+  (-> "https://vincentarelbundock.github.io/Rdatasets/csv/datasets/mtcars.csv"
+      (tc/dataset {:key-fn keyword})))
 ```
 :::
 
@@ -103,7 +130,7 @@ Let us look inside the resulting vega-lite space. We can see the dataset is incl
  :height 300,
  :data
  {:values
-  "x,y\n0,0.24479553771776186\n1,0.38502082851204167\n2,0.15342085060081956\n3,0.20342442973895092\n4,-0.23631123569472745\n5,-0.6098059734602602\n6,-0.29993149070756264\n7,0.18438085863797493\n8,0.29816192077927095\n9,0.6645198867633348\n10,0.3466358757961189\n11,0.5822536055219282\n12,0.36256525136330764\n13,0.6373189323693274\n14,0.8451487750005557\n15,0.4562253360507468\n16,0.5502089911998563\n17,0.7380731586080208\n18,0.8149621125975273\n19,0.5841716142434793\n",
+  "x,y\n0,-0.3892142210284898\n1,-0.856874590242988\n2,-0.487665101009941\n3,-0.8465609135448469\n4,-1.2589323075865062\n5,-0.9442863733874446\n6,-0.828538284718058\n7,-0.9575195551493446\n8,-1.3518449175342742\n9,-1.0718761200626283\n10,-1.0747766582513605\n11,-1.1051839495866933\n12,-1.3779041854269303\n13,-0.9371622766087955\n14,-1.382374547669317\n15,-1.0915987169136492\n16,-1.3256702581105124\n17,-1.057549245683644\n18,-0.6099162778304048\n19,-0.4075373123078828\n",
   :format {:type "csv"}}}
 
 ```
@@ -117,7 +144,7 @@ The `scicloj.noj.v1.vis.hanami.templates` namespace add Hanami templates to Hana
 
 ::: {.sourceClojure}
 ```clojure
-(-> datasets/mtcars
+(-> mtcars
     (hanami/plot vht/boxplot-chart
                  {:X :gear
                   :XTYPE :nominal
@@ -135,7 +162,7 @@ The `scicloj.noj.v1.vis.hanami.templates` namespace add Hanami templates to Hana
 
 ::: {.sourceClojure}
 ```clojure
-(-> datasets/iris
+(-> iris
     (hanami/plot vht/rule-chart
                  {:X :sepal-width
                   :Y :sepal-length
@@ -161,7 +188,7 @@ Grouped datasets are handled automatically with a table view.
 
 ::: {.sourceClojure}
 ```clojure
-(-> datasets/iris
+(-> iris
     (tc/group-by [:species])
     (hanami/plot vht/rule-chart
                  {:X :sepal-width
@@ -346,7 +373,7 @@ Alternatively:
 
 ::: {.sourceClojure}
 ```clojure
-(-> datasets/mtcars
+(-> mtcars
     (stats/add-predictions :mpg [:wt]
                            {:model-type :smile.regression/ordinary-least-square})
     (hanami/combined-plot
@@ -377,7 +404,7 @@ Alternatively:
 
 ::: {.sourceClojure}
 ```clojure
-(-> datasets/mtcars
+(-> mtcars
     (hanami/linear-regression-plot
      :mpg :wt
      {:HEIGHT 200
@@ -400,7 +427,7 @@ And in a grouped dataset case:
 
 ::: {.sourceClojure}
 ```clojure
-(-> datasets/mtcars
+(-> mtcars
     (tc/group-by [:gear])
     (hanami/linear-regression-plot
      :mpg :wt
@@ -431,7 +458,7 @@ and generates a Vega-Lite spec using Hanami.
 
 ::: {.sourceClojure}
 ```clojure
-(-> datasets/iris
+(-> iris
     (hanami/histogram :sepal-width
                       {:nbins 10}))
 ```
@@ -447,7 +474,7 @@ and generates a Vega-Lite spec using Hanami.
 
 ::: {.sourceClojure}
 ```clojure
-(-> datasets/iris
+(-> iris
     (hanami/histogram :sepal-width
                       {:nbins 10})
     kind/pprint)
@@ -485,7 +512,7 @@ The resulting spec can be customized further:
 
 ::: {.sourceClojure}
 ```clojure
-(-> datasets/iris
+(-> iris
     (hanami/histogram :sepal-width
                       {:nbins 10})
     ;; varying the resulting vega-lite spec:
@@ -513,7 +540,7 @@ Note how we add regression lines here. We take care of layout and colouring on o
 (let [pallete (->> :accent
                    color/palette
                    (mapv color/format-hex))]
-  (-> datasets/mtcars
+  (-> mtcars
       (tc/group-by :gear {:result-type :as-map})
       (->> (sort-by key)
            (map-indexed
@@ -535,7 +562,7 @@ Note how we add regression lines here. We take care of layout and colouring on o
 
 
 ```{=html}
-<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","vconcat":[{"width":200,"background":"floralwhite","title":{"text":"grear=3"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#7fc97f","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=3"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#7fc97f","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=3"},"height":200}],"height":200,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nHornet 4 Drive,21.4,6,258.0,110,3.08,3.215,19.44,1,0,3,1,18.24575076879608\nHornet Sportabout,18.7,8,360.0,175,3.15,3.44,17.02,0,0,3,2,17.535458674671055\nValiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1,17.472321599637716\nDuster 360,14.3,8,360.0,245,3.21,3.57,15.84,0,0,3,4,17.125067686954374\nMerc 450SE,16.4,8,275.8,180,3.07,4.07,17.4,0,0,3,3,15.546640811120986\nMerc 450SL,17.3,8,275.8,180,3.07,3.73,17.6,0,0,3,3,16.61997108668769\nMerc 450SLC,15.2,8,275.8,180,3.07,3.78,18.0,0,0,3,3,16.46212839910435\nCadillac Fleetwood,10.4,8,472.0,205,2.93,5.25,17.98,0,0,3,4,11.821553384154196\nLincoln Continental,10.4,8,460.0,215,3.0,5.424,17.82,0,0,3,4,11.272260831364175\nChrysler Imperial,14.7,8,440.0,230,3.23,5.345,17.42,0,0,3,4,11.521652277745854\nToyota Corona,21.5,4,120.1,97,3.7,2.465,20.01,1,0,3,1,20.613391082546155\nDodge Challenger,15.5,8,318.0,150,2.76,3.52,16.87,0,0,3,2,17.282910374537714\nAMC Javelin,15.2,8,304.0,150,3.15,3.435,17.3,0,0,3,2,17.551242943429386\nCamaro Z28,13.3,8,350.0,245,3.73,3.84,15.41,0,0,3,4,16.272717174004345\nPontiac Firebird,19.2,8,400.0,175,3.08,3.845,17.05,0,0,3,2,16.25693290524601\n","format":{"type":"csv"}}},{"width":200,"background":"floralwhite","title":{"text":"grear=4"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#beaed4","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=4"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#beaed4","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=4"},"height":200}],"height":200,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nMazda RX4,21.0,6,160.0,110,3.9,2.62,16.46,0,1,4,4,24.510455071959058\nMazda RX4 Wag,21.0,6,160.0,110,3.9,2.875,17.02,0,1,4,4,22.76026807682699\nDatsun 710,22.8,4,108.0,93,3.85,2.32,18.61,1,1,4,1,26.569498595643847\nMerc 240D,24.4,4,146.7,62,3.69,3.19,20.0,1,0,4,2,20.59827237695796\nMerc 230,22.8,4,140.8,95,3.92,3.15,22.9,1,0,4,2,20.872811513449268\nMerc 280,19.2,6,167.6,123,3.92,3.44,18.3,1,0,4,4,18.882402773887303\nMerc 280C,17.8,6,167.6,123,3.92,3.44,18.9,1,0,4,4,18.882402773887303\nFiat 128,32.4,4,78.7,66,4.08,2.2,19.47,1,1,4,1,27.39311600511776\nHonda Civic,30.4,4,75.7,52,4.93,1.615,18.52,1,1,4,2,31.4082508763031\nToyota Corolla,33.9,4,71.1,65,4.22,1.835,19.9,1,1,4,1,29.89828562560092\nFiat X1-9,27.3,4,79.0,66,4.08,1.935,18.9,1,1,4,1,29.211937784372658\nVolvo 142E,21.4,4,121.0,109,4.11,2.78,18.6,1,1,4,2,23.41229852599384\n","format":{"type":"csv"}}},{"width":200,"background":"floralwhite","title":{"text":"grear=5"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#fdc086","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=5"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#fdc086","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=5"},"height":200}],"height":200,"data":{"values":"name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nPorsche 914-2,26.0,4,120.3,91,4.43,2.14,16.7,0,1,5,2,25.34362502587085\nLotus Europa,30.4,4,95.1,113,3.77,1.513,16.9,1,1,5,2,30.38867758620586\nFord Pantera L,15.8,8,351.0,264,4.22,3.17,14.5,0,1,5,4,17.055899129307758\nFerrari Dino,19.7,6,145.0,175,3.62,2.77,15.5,0,1,5,6,20.274433458070124\nMaserati Bora,15.0,8,301.0,335,3.54,3.57,14.6,0,1,5,8,13.83736480054539\n","format":{"type":"csv"}}}],"height":300,"data":null});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"width":400,"background":"floralwhite","vconcat":[{"width":200,"background":"floralwhite","title":{"text":"grear=3"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#7fc97f","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=3"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#7fc97f","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=3"},"height":200}],"height":200,"data":{"values":"rownames,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nHornet 4 Drive,21.4,6,258.0,110,3.08,3.215,19.44,1,0,3,1,18.24575076879608\nHornet Sportabout,18.7,8,360.0,175,3.15,3.44,17.02,0,0,3,2,17.535458674671055\nValiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1,17.472321599637716\nDuster 360,14.3,8,360.0,245,3.21,3.57,15.84,0,0,3,4,17.125067686954374\nMerc 450SE,16.4,8,275.8,180,3.07,4.07,17.4,0,0,3,3,15.546640811120986\nMerc 450SL,17.3,8,275.8,180,3.07,3.73,17.6,0,0,3,3,16.61997108668769\nMerc 450SLC,15.2,8,275.8,180,3.07,3.78,18.0,0,0,3,3,16.46212839910435\nCadillac Fleetwood,10.4,8,472.0,205,2.93,5.25,17.98,0,0,3,4,11.821553384154196\nLincoln Continental,10.4,8,460.0,215,3.0,5.424,17.82,0,0,3,4,11.272260831364175\nChrysler Imperial,14.7,8,440.0,230,3.23,5.345,17.42,0,0,3,4,11.521652277745854\nToyota Corona,21.5,4,120.1,97,3.7,2.465,20.01,1,0,3,1,20.613391082546155\nDodge Challenger,15.5,8,318.0,150,2.76,3.52,16.87,0,0,3,2,17.282910374537714\nAMC Javelin,15.2,8,304.0,150,3.15,3.435,17.3,0,0,3,2,17.551242943429386\nCamaro Z28,13.3,8,350.0,245,3.73,3.84,15.41,0,0,3,4,16.272717174004345\nPontiac Firebird,19.2,8,400.0,175,3.08,3.845,17.05,0,0,3,2,16.25693290524601\n","format":{"type":"csv"}}},{"width":200,"background":"floralwhite","title":{"text":"grear=4"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#beaed4","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=4"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#beaed4","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=4"},"height":200}],"height":200,"data":{"values":"rownames,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nMazda RX4,21.0,6,160.0,110,3.9,2.62,16.46,0,1,4,4,24.510455071959058\nMazda RX4 Wag,21.0,6,160.0,110,3.9,2.875,17.02,0,1,4,4,22.76026807682699\nDatsun 710,22.8,4,108.0,93,3.85,2.32,18.61,1,1,4,1,26.569498595643847\nMerc 240D,24.4,4,146.7,62,3.69,3.19,20.0,1,0,4,2,20.59827237695796\nMerc 230,22.8,4,140.8,95,3.92,3.15,22.9,1,0,4,2,20.872811513449268\nMerc 280,19.2,6,167.6,123,3.92,3.44,18.3,1,0,4,4,18.882402773887303\nMerc 280C,17.8,6,167.6,123,3.92,3.44,18.9,1,0,4,4,18.882402773887303\nFiat 128,32.4,4,78.7,66,4.08,2.2,19.47,1,1,4,1,27.39311600511776\nHonda Civic,30.4,4,75.7,52,4.93,1.615,18.52,1,1,4,2,31.4082508763031\nToyota Corolla,33.9,4,71.1,65,4.22,1.835,19.9,1,1,4,1,29.89828562560092\nFiat X1-9,27.3,4,79.0,66,4.08,1.935,18.9,1,1,4,1,29.211937784372658\nVolvo 142E,21.4,4,121.0,109,4.11,2.78,18.6,1,1,4,2,23.41229852599384\n","format":{"type":"csv"}}},{"width":200,"background":"floralwhite","title":{"text":"grear=5"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"circle","size":200,"color":"#fdc086","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=5"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"mark":{"type":"line","size":5,"color":"#fdc086","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"grear=5"},"height":200}],"height":200,"data":{"values":"rownames,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb,mpg-prediction\nPorsche 914-2,26.0,4,120.3,91,4.43,2.14,16.7,0,1,5,2,25.34362502587085\nLotus Europa,30.4,4,95.1,113,3.77,1.513,16.9,1,1,5,2,30.38867758620586\nFord Pantera L,15.8,8,351.0,264,4.22,3.17,14.5,0,1,5,4,17.055899129307758\nFerrari Dino,19.7,6,145.0,175,3.62,2.77,15.5,0,1,5,6,20.274433458070124\nMaserati Bora,15.0,8,301.0,335,3.54,3.57,14.6,0,1,5,8,13.83736480054539\n","format":{"type":"csv"}}}],"height":300,"data":null});</script></div>
 ```
 
 
@@ -547,7 +574,7 @@ Alternatively, using a grouped dataset:
 (let [pallete (->> :accent
                    color/palette
                    (mapv color/format-hex))]
-  (-> datasets/mtcars
+  (-> mtcars
       (tc/map-columns :color [:gear] #(-> % (- 3) pallete))
       (tc/group-by [:gear])
       (hanami/linear-regression-plot
@@ -577,7 +604,7 @@ A similar example with histograms:
 (let [pallete (->> :accent
                    color/palette
                    (mapv color/format-hex))]
-  (-> datasets/iris
+  (-> iris
       (tc/group-by :species {:result-type :as-map})
       (->> (sort-by key)
            (map-indexed
@@ -603,7 +630,7 @@ this time using Vega-Lite for layout and coloring
 
 ::: {.sourceClojure}
 ```clojure
-(-> datasets/mtcars
+(-> mtcars
     (tc/group-by [:gear])
     (stats/add-predictions :mpg [:wt]
                            {:model-type :smile.regression/ordinary-least-square})
