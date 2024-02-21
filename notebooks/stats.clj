@@ -1,9 +1,19 @@
 ;; # Statistics
 
 (ns stats
-  (:require [scicloj.noj.v1.datasets :as datasets]
-            [scicloj.noj.v1.stats :as stats]
+  (:require [scicloj.noj.v1.stats :as stats]
             [tablecloth.api :as tc]))
+
+;; ## Example data
+
+(def iris
+  (-> "https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv"
+      (tc/dataset {:key-fn keyword})
+      (tc/rename-columns {:Sepal.Length :sepal-length
+                          :Sepal.Width :sepal-width
+                          :Petal.Length :petal-length
+                          :Petal.Width :petal-width
+                          :Species :species})))
 
 ;; ## Correlation matrices
 
@@ -11,7 +21,7 @@
 ;; matrix of selected columns of a given dataset,
 ;; organizing the resulting data as a dataset.
 
-(-> datasets/iris
+(-> iris
     (stats/calc-correlations-matrix
      [:sepal-length :sepal-width :petal-length :petal-width]))
 
@@ -20,14 +30,14 @@
 ;; The `stats/regression-model` function computes a regressiom model (using `scicloj.ml`)
 ;; and adds some relevant information such as the `R^2` measure.
 
-(-> datasets/iris
+(-> iris
     (stats/regression-model
      :sepal-length
      [:sepal-width :petal-length :petal-width]
      {:model-type :smile.regression/elastic-net})
     (dissoc :model-data))
 
-(-> datasets/iris
+(-> iris
     (stats/regression-model
      :sepal-length
      [:sepal-width :petal-length :petal-width]
@@ -37,7 +47,7 @@
 ;; The `stats/linear-regression-model` convenience function
 ;; uses specifically the `:smile.regression/ordinary-least-square` model type.
 
-(-> datasets/iris
+(-> iris
     (stats/linear-regression-model
      :sepal-length
      [:sepal-width :petal-length :petal-width])
@@ -49,7 +59,7 @@
 ;; models a target column using feature columns,
 ;; adds a new prediction column with the model predictions.
 
-(-> datasets/iris
+(-> iris
     (stats/add-predictions
      :sepal-length
      [:sepal-width :petal-length :petal-width]
@@ -58,7 +68,7 @@
 ;; It attaches the model's information
 ;; to the metadata of that new column.
 
-(-> datasets/iris
+(-> iris
     (stats/add-predictions
      :sepal-length
      [:sepal-width :petal-length :petal-width]
