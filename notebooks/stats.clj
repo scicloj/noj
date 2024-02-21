@@ -2,7 +2,8 @@
 
 (ns stats
   (:require [scicloj.noj.v1.datasets :as datasets]
-            [scicloj.noj.v1.stats :as stats]))
+            [scicloj.noj.v1.stats :as stats]
+            [tablecloth.api :as tc]))
 
 ;; ## Correlation matrices
 
