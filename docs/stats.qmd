@@ -50,6 +50,7 @@ fontsize: 0.9em
 
 
 ## Correlation matrices
+
 The `stats/calc-correlations-matrix` function commputes the correlation
 matrix of selected columns of a given dataset,
 organizing the resulting data as a dataset.
@@ -89,6 +90,7 @@ _unnamed [16 3]:
 
 
 ## Multivariate regression
+
 The `stats/regression-model` function computes a regressiom model (using `scicloj.ml`)
 and adds some relevant information such as the `R^2` measure.
 
@@ -110,14 +112,14 @@ and adds some relevant information such as the `R^2` measure.
 ```clojure
 {:feature-columns [:sepal-width :petal-length :petal-width],
  :target-columns [:sepal-length],
- :explained #function[malli.core/-instrument/fn--54989],
+ :explained #function[malli.core/-instrument/fn--54275],
  :R2 0.8582120394597336,
- :id #uuid "b611e1c9-0c16-401a-86c5-d94f38426c46",
+ :id #uuid "df381ce0-ad03-4249-9362-7f1d88741d2a",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.022, 4.724, 4.775, 4.851, 5.081, 5.360, 4.911, 5.030, 4.664, 4.903, 5.209, 5.098, 4.775, 4.572, 5.184, 5.522, 5.089, 4.970, 5.352, 5.217...],
  :predict
- #function[scicloj.noj.v1.stats/regression-model/predict--59217],
+ #function[scicloj.noj.v1.stats/regression-model/predict--58503],
  :options {:model-type :smile.regression/elastic-net}}
 
 ```
@@ -142,14 +144,14 @@ and adds some relevant information such as the `R^2` measure.
 ```clojure
 {:feature-columns [:sepal-width :petal-length :petal-width],
  :target-columns [:sepal-length],
- :explained #function[malli.core/-instrument/fn--54989],
+ :explained #function[malli.core/-instrument/fn--54275],
  :R2 0.8586117200664085,
- :id #uuid "4cd27d22-7754-4170-9180-8a18cd93d440",
+ :id #uuid "26644555-e1c4-414d-a6a0-3cb54a239798",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.015, 4.690, 4.749, 4.826, 5.080, 5.377, 4.895, 5.021, 4.625, 4.882, 5.216, 5.092, 4.746, 4.533, 5.199, 5.561, 5.094, 4.960, 5.368, 5.226...],
  :predict
- #function[scicloj.noj.v1.stats/regression-model/predict--59217],
+ #function[scicloj.noj.v1.stats/regression-model/predict--58503],
  :options {:model-type :smile.regression/ordinary-least-square}}
 
 ```
@@ -176,14 +178,14 @@ uses specifically the `:smile.regression/ordinary-least-square` model type.
 ```clojure
 {:feature-columns [:sepal-width :petal-length :petal-width],
  :target-columns [:sepal-length],
- :explained #function[malli.core/-instrument/fn--54989],
+ :explained #function[malli.core/-instrument/fn--54275],
  :R2 0.8586117200664085,
- :id #uuid "31e60d27-587f-4246-8cff-feec4b51f2e0",
+ :id #uuid "887a0301-e38e-4cad-ab8b-025cc58e1c2f",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.015, 4.690, 4.749, 4.826, 5.080, 5.377, 4.895, 5.021, 4.625, 4.882, 5.216, 5.092, 4.746, 4.533, 5.199, 5.561, 5.094, 4.960, 5.368, 5.226...],
  :predict
- #function[scicloj.noj.v1.stats/regression-model/predict--59217],
+ #function[scicloj.noj.v1.stats/regression-model/predict--58503],
  :options {:model-type :smile.regression/ordinary-least-square}}
 
 ```
@@ -192,6 +194,7 @@ uses specifically the `:smile.regression/ordinary-least-square` model type.
 
 
 ## Adding regression predictions to a dataset
+
 The `stats/add-predictions` function
 models a target column using feature columns,
 adds a new prediction column with the model predictions.
@@ -266,9 +269,9 @@ to the metadata of that new column.
  :model
  {:feature-columns [:sepal-width :petal-length :petal-width],
   :target-columns [:sepal-length],
-  :explained #function[malli.core/-instrument/fn--54989],
+  :explained #function[malli.core/-instrument/fn--54275],
   :R2 0.8586117200664085,
-  :id #uuid "4bf9c429-9a75-48ad-800c-23074d7cfb8a",
+  :id #uuid "5264d260-9019-4710-8546-2bd3c3722cfb",
   :options {:model-type :smile.regression/ordinary-least-square}}}
 
 ```
@@ -277,6 +280,7 @@ to the metadata of that new column.
 
 
 ## Histograms
+
 The `stats/histogram` function computes the necessary data
 to plot a histogram.
 
@@ -293,11 +297,11 @@ _unnamed [5 3]:
 
 | :count |      :left |     :right |
 |-------:|-----------:|-----------:|
-|     16 | 0.01060049 | 0.20721863 |
-|     29 | 0.20721863 | 0.40383677 |
-|     18 | 0.40383677 | 0.60045491 |
-|     14 | 0.60045491 | 0.79707305 |
-|     22 | 0.79707305 | 0.99369119 |
+|     20 | 0.00237076 | 0.19731628 |
+|     20 | 0.19731628 | 0.39226181 |
+|     22 | 0.39226181 | 0.58720733 |
+|     19 | 0.58720733 | 0.78215285 |
+|     18 | 0.78215285 | 0.97709838 |
 
 
 

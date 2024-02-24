@@ -1,0 +1,302 @@
+
+---
+format:
+  html:
+    toc: true
+    toc-depth: 4
+    theme: [spacelab, notebooks/custom.scss]
+    output-file: interactions_ols.html
+code-block-background: true
+include-in-header: {text: '<link rel = "icon" href = "data:," />'}
+fontsize: 0.9em
+
+---
+<style></style><style>.printedClojure .sourceCode {
+  background-color: transparent;
+  border-style: none;
+}
+</style>
+<script src="interactions_ols_files/md-default0.js" type="text/javascript"></script><script src="interactions_ols_files/md-default1.js" type="text/javascript"></script>
+
+::: {.sourceClojure}
+```clojure
+(ns interactions-ols
+  (:require [tablecloth.api :as tc]
+            [tablecloth.pipeline :as tcpipe]
+            [fastmath.stats :as fmstats]
+            [tech.v3.datatype.functional :as fun]
+            [scicloj.metamorph.core :as mm]
+            [scicloj.metamorph.ml :as ml]
+            [scicloj.metamorph.ml.loss :as loss]
+            [scicloj.ml.smile.regression]
+            [tech.v3.dataset.modelling :as modelling]
+            [tech.v3.dataset.metamorph :as tmd.mm]
+            [scicloj.kindly.v4.api :as kindly]
+            [scicloj.kindly.v4.kind :as kind]))
+```
+:::
+
+
+This examples shows how to do interactions in linear regression with `metamorph.ml`.
+
+Taking ideas from: [Interaction Effect in Multiple Regression: Essentials](http://www.sthda.com/english/articles/40-regression-analysis/164-interaction-effect-in-multiple-regression-essentials/) by Alboukadel Kassambara
+
+First we load the data:
+
+
+::: {.sourceClojure}
+```clojure
+(def marketing
+  (tc/dataset "https://github.com/scicloj/datarium-CSV/raw/main/data/marketing.csv.gz"
+              {:key-fn keyword}))
+```
+:::
+
+
+and do some preprocessing to set up the regression:
+
+
+::: {.sourceClojure}
+```clojure
+(def preprocessed-data
+  (-> marketing
+      (tc/drop-columns [:newspaper])
+      (modelling/set-inference-target :sales)))
+```
+:::
+
+
+## Additive model
+
+First we build an additive model, which model equation is
+$$sales = b0 + b1 * youtube + b2 * facebook$$
+
+
+::: {.sourceClojure}
+```clojure
+(def additive-pipeline
+  (mm/pipeline
+   {:metamorph/id :model}
+   (ml/model {:model-type :smile.regression/ordinary-least-square})))
+```
+:::
+
+
+We evaluate it, 
+
+
+::: {.sourceClojure}
+```clojure
+(def evaluations
+  (ml/evaluate-pipelines
+   [additive-pipeline]
+   (tc/split->seq preprocessed-data :holdout)
+   loss/rmse
+   :loss
+   {:other-metrices [{:name :r2
+                      :metric-fn fmstats/r2-determination}]}))
+```
+:::
+
+
+and print the result:
+
+
+::: {.sourceClojure}
+```clojure
+(-> evaluations flatten first :fit-ctx :model ml/thaw-model)
+```
+:::
+
+
+
+::: {.printedClojure}
+```clojure
+Linear Model:
+
+Residuals:
+       Min          1Q      Median          3Q         Max
+  -10.1548     -0.5672      0.2711      1.3700      3.4155
+
+Coefficients:
+                  Estimate Std. Error    t value   Pr(>|t|)
+Intercept           3.3229     0.4571     7.2700     0.0000 ***
+youtube             0.0476     0.0018    26.4901     0.0000 ***
+facebook            0.1833     0.0099    18.5439     0.0000 ***
+---------------------------------------------------------------------
+Significance codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.0223 on 130 degrees of freedom
+Multiple R-squared: 0.8899,    Adjusted R-squared: 0.8882
+F-statistic: 525.5745 on 3 and 130 DF,  p-value: 5.088e-63
+
+```
+:::
+
+
+We have the following metrics:
+
+$RMSE$
+
+
+::: {.sourceClojure}
+```clojure
+(-> evaluations flatten first :test-transform :metric)
+```
+:::
+
+
+
+::: {.printedClojure}
+```clojure
+2.039444425113851
+
+```
+:::
+
+
+$R^2$
+
+
+::: {.sourceClojure}
+```clojure
+(-> evaluations flatten first :test-transform :other-metrices first :metric)
+```
+:::
+
+
+
+::: {.printedClojure}
+```clojure
+0.9083081747249487
+
+```
+:::
+
+
+## Interaction effects
+
+Now we add interaction effects to it, resulting in this model equation:
+$$sales = b0 + b1 * youtube + b2 * facebook + b3 * (youtube * facebook)$$
+
+
+::: {.sourceClojure}
+```clojure
+(def pipe-interaction
+  (mm/pipeline
+   (tcpipe/add-column :youtube*facebook (fn [ds] (fun/* (ds :youtube) (ds :facebook))))
+   {:metamorph/id :model}(ml/model {:model-type :smile.regression/ordinary-least-square})))
+```
+:::
+
+
+Again we evaluate the model,
+
+
+::: {.sourceClojure}
+```clojure
+(def evaluations
+  (ml/evaluate-pipelines
+   [pipe-interaction]
+   (tc/split->seq preprocessed-data :holdout)
+   loss/rmse
+   :loss
+   {:other-metrices [{:name :r2
+                      :metric-fn fmstats/r2-determination}]}))
+```
+:::
+
+
+and print it and the performance metrices:
+
+
+::: {.sourceClojure}
+```clojure
+(-> evaluations flatten first :fit-ctx :model ml/thaw-model)
+```
+:::
+
+
+
+::: {.printedClojure}
+```clojure
+Linear Model:
+
+Residuals:
+       Min          1Q      Median          3Q         Max
+   -4.5431     -0.4753      0.1279      0.7271      1.8071
+
+Coefficients:
+                  Estimate Std. Error    t value   Pr(>|t|)
+Intercept           7.5612     0.3310    22.8466     0.0000 ***
+youtube             0.0215     0.0017    12.7657     0.0000 ***
+facebook            0.0474     0.0100     4.7214     0.0000 ***
+youtube*facebook     0.0008     0.0000    16.9099     0.0000 ***
+---------------------------------------------------------------------
+Significance codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.0489 on 129 degrees of freedom
+Multiple R-squared: 0.9740,    Adjusted R-squared: 0.9734
+F-statistic: 1611.0908 on 4 and 129 DF,  p-value: 5.197e-102
+
+```
+:::
+
+
+As the multiplcation of `youtube*facebook` is as well statistically relevant, it
+suggests that there is indeed an interaction between these 2 predictor variables youtube and facebook.
+
+$RMSE$
+
+
+::: {.sourceClojure}
+```clojure
+(-> evaluations flatten first :test-transform :metric)
+```
+:::
+
+
+
+::: {.printedClojure}
+```clojure
+1.3095788056261946
+
+```
+:::
+
+
+$R^2$
+
+
+::: {.sourceClojure}
+```clojure
+(-> evaluations flatten first :test-transform :other-metrices first :metric)
+```
+:::
+
+
+
+::: {.printedClojure}
+```clojure
+0.9507794148365122
+
+```
+:::
+
+
+$RMSE$ and $R^2$ of the intercation model are sligtly better.
+
+These results suggest that the model with the interaction term is better than the model that contains only main effects.
+So, for this specific data, we should go for the model with the interaction model.
+
+
+
+```{=html}
+<div style="background-color:grey;height:2px;width:100%;"></div>
+```
+
+
+
+```{=html}
+<div><pre><small><small>source: <a href="https://github.com/scicloj/noj/blob/main/notebooks/interactions_ols.clj">notebooks/interactions_ols.clj</a></small></small></pre></div>
+```

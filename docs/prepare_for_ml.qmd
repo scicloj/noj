@@ -32,6 +32,7 @@ operating on a dataset, which are mainly used in the context of
 machine learning. In the following we will introduce those.
 
 
+
 ## Categorical variables
 One typical problem in machine learning is `classification`,
 so learning how to categorize data in different categories.
@@ -65,6 +66,7 @@ Creating a column out of categorical data looks like this:
 
 This creates a "categorical" column, which is marked as such in
 the column metadata.
+
 Printing the var shows its "type" as being `keyword`
 
 
@@ -324,6 +326,7 @@ We can as well ask about all mapping of a dataset:
 
 
 ## Convert several columns in one go
+
 The `dataset` namespace has a convenience function
 in which several columns can be selected for conversion.
 
@@ -529,7 +532,9 @@ Columns which have categorical maps should never be compared via
 They should be converted back to their original space and then compared.
 This is specially important for comparing `prediction` and `true value`
 in machine learning for metric calculations.
+
 See the following example to illustrate this.
+
 
 #### Incorrect comparisons
 In the following the two columns are clearly different
@@ -735,6 +740,7 @@ false
 So it should be as well avoided to transform mapped columns
 to other representations, which loose the mappings, like tensor
 or primitive arrays, or even sequences
+
 
 #### Use the same and fixed mapping
 This issue can be avoided by specifying concretely the mapping
@@ -1046,7 +1052,11 @@ _unnamed [2 4]:
 There are similar functions to convert this format back.
 
 
+
 ## Features and inference target in a dataset
+
+
+
 A dataset for supervised machine learning has always two groups of
 columns.
 They can either be the `features` or the `inference targets`.
@@ -1054,6 +1064,7 @@ The goal of the learning is to find the relationship between
 the two groups
 and therefore be able to `predict` inference targets from features.
 Sometimes the features are called `X` and the targets `y`.
+
 When constructing a dataset
 
 
@@ -1093,6 +1104,8 @@ we can simply mark those and the other columns are regarded as features.
 
 
 (works as well with a seq)
+
+
 This is marked as well in the column metadata.
 
 

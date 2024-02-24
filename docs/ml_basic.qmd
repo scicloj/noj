@@ -489,6 +489,8 @@ We should never compare mapped columns directly.
 
 It's performance is poor, even worse the coin flip.
 
+
+
 ## Logistic regression
 Next model to use is Logistic Regression
 
@@ -538,6 +540,7 @@ Next model to use is Logistic Regression
 
 Its performance is  better, 60 %
 
+
 ## Random forrest
 Next is random forrest
 
@@ -579,6 +582,7 @@ Next is random forrest
 
 best so far, 71 %
 
+
 From the logistic regression model we can get via java Interop
 some model explanations, for example the variable importance.
 
@@ -602,9 +606,9 @@ some model explanations, for example the variable importance.
 
 ::: {.printedClojure}
 ```clojure
-({:predictor :sex, :importance 38.045463979158406}
- {:predictor :pclass, :importance 8.420393869577344}
- {:predictor :embarked, :importance 2.1616831291862963})
+({:predictor :sex, :importance 43.31203907721387}
+ {:predictor :pclass, :importance 9.697528631870028}
+ {:predictor :embarked, :importance 1.7671217105487245})
 
 ```
 :::
@@ -612,6 +616,7 @@ some model explanations, for example the variable importance.
 
 we can see that :sex is more important to predict :survived then
 :pclass and :embark
+
 
 # Next steps
 We could now go further and trying to improve the features / the model type
