@@ -19,8 +19,7 @@ It collects a few of the main dependencies together with functions allowing to c
 ## Existing chapters
 ")
 
-(->> ["image"
-      "python"
+(->> ["python"
       "stats"
       "visualization"
       "prepare_for_ml"
