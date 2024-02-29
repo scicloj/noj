@@ -15,7 +15,7 @@
             [deps-deploy.deps-deploy :as dd]))
 
 (def lib 'org.scicloj/noj)
-(def version "1-alpha27")
+(def version "1-alpha28")
 (def snapshot (str version "-SNAPSHOT"))
 (def class-dir "target/classes")
 

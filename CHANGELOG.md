@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## [1-alpha28] - unreleased
+## [1-alpha28] - 2024-02-29
 - removed the tensor->image function, as it exists in dtype-next now (#14)
 
 ## [1-alpha27] - 2024-02-24
