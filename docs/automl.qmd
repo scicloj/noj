@@ -159,7 +159,7 @@ my-pipeline
 
 ::: {.printedClojure}
 ```clojure
-#function[scicloj.metamorph.core/pipeline/local-pipeline--50053]
+#function[scicloj.metamorph.core/pipeline/local-pipeline--49758]
 
 ```
 :::
@@ -200,30 +200,30 @@ ctx-after-train
 
 | :sex | :pclass | :embarked | :survived |
 |-----:|--------:|----------:|----------:|
-|  0.0 |     3.0 |       0.0 |       0.0 |
-|  1.0 |     2.0 |       0.0 |       1.0 |
-|  0.0 |     3.0 |       1.0 |       0.0 |
-|  0.0 |     3.0 |       0.0 |       0.0 |
-|  1.0 |     2.0 |       0.0 |       1.0 |
-|  0.0 |     3.0 |       1.0 |       0.0 |
-|  0.0 |     3.0 |       0.0 |       0.0 |
-|  1.0 |     3.0 |       0.0 |       1.0 |
+|  0.0 |     1.0 |       0.0 |       0.0 |
+|  0.0 |     2.0 |       0.0 |       1.0 |
+|  0.0 |     3.0 |       1.0 |       1.0 |
 |  0.0 |     2.0 |       0.0 |       0.0 |
-|  1.0 |     1.0 |       0.0 |       1.0 |
-|  ... |     ... |       ... |       ... |
-|  0.0 |     3.0 |       0.0 |       0.0 |
-|  1.0 |     1.0 |       0.0 |       1.0 |
-|  1.0 |     1.0 |       2.0 |       1.0 |
-|  0.0 |     3.0 |       0.0 |       1.0 |
+|  1.0 |     3.0 |       0.0 |       1.0 |
+|  0.0 |     1.0 |       0.0 |       1.0 |
+|  1.0 |     2.0 |       0.0 |       1.0 |
 |  0.0 |     2.0 |       0.0 |       0.0 |
 |  1.0 |     3.0 |       1.0 |       1.0 |
-|  0.0 |     3.0 |       1.0 |       0.0 |
-|  1.0 |     3.0 |       0.0 |       0.0 |
-|  1.0 |     1.0 |       2.0 |       1.0 |
-|  0.0 |     1.0 |       0.0 |       1.0 |
+|  0.0 |     1.0 |       2.0 |       1.0 |
+|  ... |     ... |       ... |       ... |
+|  0.0 |     1.0 |       0.0 |       0.0 |
+|  0.0 |     1.0 |       0.0 |       0.0 |
+|  0.0 |     1.0 |       2.0 |       1.0 |
 |  0.0 |     3.0 |       0.0 |       0.0 |
+|  1.0 |     3.0 |       0.0 |       1.0 |
+|  1.0 |     3.0 |       0.0 |       0.0 |
+|  0.0 |     3.0 |       0.0 |       0.0 |
+|  0.0 |     3.0 |       0.0 |       0.0 |
+|  0.0 |     1.0 |       0.0 |       0.0 |
+|  0.0 |     2.0 |       0.0 |       0.0 |
+|  0.0 |     1.0 |       0.0 |       0.0 |
 
-"></span></div></td></tr></table><div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :fit</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "8451a31a-22ca-4698-a0a2-645fdc3507aa" {:model-data {:majority-class 1.0, :distinct-labels (0.0 1.0)}, :options {:model-type :metamorph.ml/dummy-classifier}, :id #uuid "8fcc293a-32f7-459b-83cf-c3ad58fbbf33", :feature-columns [:sex :pclass :embarked], :target-columns [:survived], :target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {0 0, 1 1}, :src-column :survived, :result-datatype :float64}}, :scicloj.metamorph.ml/unsupervised? nil}</code></pre></div></div><p>}</p></div>
+"></span></div></td></tr></table><div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :fit</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "f6caccc9-434e-47cb-9ba7-0ad79ea78448" {:model-data {:majority-class 1.0, :distinct-labels (0.0 1.0)}, :options {:model-type :metamorph.ml/dummy-classifier}, :id #uuid "a403c330-cda6-4c79-ba4c-63397dca9ad9", :feature-columns [:sex :pclass :embarked], :target-columns [:survived], :target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {0 0, 1 1}, :src-column :survived, :result-datatype :float64}}, :scicloj.metamorph.ml/unsupervised? nil}</code></pre></div></div><p>}</p></div>
 ```
 
 
@@ -240,7 +240,7 @@ ctx-after-train
 ```clojure
 (:metamorph/data
  :metamorph/mode
- #uuid "8451a31a-22ca-4698-a0a2-645fdc3507aa")
+ #uuid "f6caccc9-434e-47cb-9ba7-0ad79ea78448")
 
 ```
 :::
@@ -263,33 +263,33 @@ This context map has the "data", the "mode" and an UUID for each operation (we h
 
 | :sex | :pclass | :embarked | :survived |
 |-----:|--------:|----------:|----------:|
-|  0.0 |     3.0 |       0.0 |       0.0 |
-|  1.0 |     2.0 |       0.0 |       1.0 |
-|  0.0 |     3.0 |       1.0 |       0.0 |
-|  0.0 |     3.0 |       0.0 |       0.0 |
-|  1.0 |     2.0 |       0.0 |       1.0 |
-|  0.0 |     3.0 |       1.0 |       0.0 |
-|  0.0 |     3.0 |       0.0 |       0.0 |
-|  1.0 |     3.0 |       0.0 |       1.0 |
+|  0.0 |     1.0 |       0.0 |       0.0 |
+|  0.0 |     2.0 |       0.0 |       1.0 |
+|  0.0 |     3.0 |       1.0 |       1.0 |
 |  0.0 |     2.0 |       0.0 |       0.0 |
-|  1.0 |     1.0 |       0.0 |       1.0 |
-|  ... |     ... |       ... |       ... |
-|  0.0 |     3.0 |       0.0 |       0.0 |
-|  1.0 |     1.0 |       0.0 |       1.0 |
-|  1.0 |     1.0 |       2.0 |       1.0 |
-|  0.0 |     3.0 |       0.0 |       1.0 |
+|  1.0 |     3.0 |       0.0 |       1.0 |
+|  0.0 |     1.0 |       0.0 |       1.0 |
+|  1.0 |     2.0 |       0.0 |       1.0 |
 |  0.0 |     2.0 |       0.0 |       0.0 |
 |  1.0 |     3.0 |       1.0 |       1.0 |
-|  0.0 |     3.0 |       1.0 |       0.0 |
-|  1.0 |     3.0 |       0.0 |       0.0 |
-|  1.0 |     1.0 |       2.0 |       1.0 |
-|  0.0 |     1.0 |       0.0 |       1.0 |
+|  0.0 |     1.0 |       2.0 |       1.0 |
+|  ... |     ... |       ... |       ... |
+|  0.0 |     1.0 |       0.0 |       0.0 |
+|  0.0 |     1.0 |       0.0 |       0.0 |
+|  0.0 |     1.0 |       2.0 |       1.0 |
 |  0.0 |     3.0 |       0.0 |       0.0 |
+|  1.0 |     3.0 |       0.0 |       1.0 |
+|  1.0 |     3.0 |       0.0 |       0.0 |
+|  0.0 |     3.0 |       0.0 |       0.0 |
+|  0.0 |     3.0 |       0.0 |       0.0 |
+|  0.0 |     1.0 |       0.0 |       0.0 |
+|  0.0 |     2.0 |       0.0 |       0.0 |
+|  0.0 |     1.0 |       0.0 |       0.0 |
 
 "></span><div><pre><code class="sourceCode language-clojure printed-clojure">:fit
 </code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">{:model-data {:majority-class 1.0, :distinct-labels (0.0 1.0)},
  :options {:model-type :metamorph.ml/dummy-classifier},
- :id #uuid "8fcc293a-32f7-459b-83cf-c3ad58fbbf33",
+ :id #uuid "a403c330-cda6-4c79-ba4c-63397dca9ad9",
  :feature-columns [:sex :pclass :embarked],
  :target-columns [:survived],
  :target-categorical-maps
@@ -357,61 +357,61 @@ ctx-after-predict
 |       1.0 |
 |       1.0 |
 
-"></span></div></td></tr></table><div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :transform</code></pre></div><table><tr><td valign="top"><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "8451a31a-22ca-4698-a0a2-645fdc3507aa"
+"></span></div></td></tr></table><div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :transform</code></pre></div><table><tr><td valign="top"><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "f6caccc9-434e-47cb-9ba7-0ad79ea78448"
 </code></pre></div></td><td><div style="margin-left:10px;"><div><p>{</p><div style="margin-left:10%;width:110%;"><div><pre><code class="sourceCode language-clojure printed-clojure">:feature-columns [:sex :pclass :embarked]</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">:target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {0 0, 1 1}, :src-column :survived, :result-datatype :float64}}</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">:target-columns [:survived]</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">:scicloj.metamorph.ml/unsupervised? nil</code></pre></div><table><tr><td valign="top"><div><pre><code class="sourceCode language-clojure printed-clojure">:scicloj.metamorph.ml/feature-ds
 </code></pre></div></td><td><div style="margin-left:10px;"><span data-qmd="Group: 0 [178 3]:
 
 | :sex | :pclass | :embarked |
 |-----:|--------:|----------:|
-|  1.0 |     1.0 |       2.0 |
-|  0.0 |     3.0 |       0.0 |
+|  1.0 |     2.0 |       0.0 |
+|  1.0 |     1.0 |       0.0 |
+|  1.0 |     3.0 |       1.0 |
+|  0.0 |     1.0 |       2.0 |
 |  0.0 |     2.0 |       0.0 |
+|  0.0 |     3.0 |       2.0 |
 |  0.0 |     3.0 |       0.0 |
-|  0.0 |     1.0 |       0.0 |
-|  0.0 |     1.0 |       0.0 |
+|  0.0 |     3.0 |       0.0 |
 |  0.0 |     3.0 |       0.0 |
 |  1.0 |     3.0 |       0.0 |
-|  0.0 |     3.0 |       0.0 |
-|  0.0 |     2.0 |       0.0 |
 |  ... |     ... |       ... |
-|  1.0 |     3.0 |       0.0 |
-|  0.0 |     2.0 |       0.0 |
+|  1.0 |     2.0 |       0.0 |
+|  0.0 |     3.0 |       0.0 |
 |  0.0 |     3.0 |       0.0 |
 |  0.0 |     3.0 |       2.0 |
 |  0.0 |     3.0 |       0.0 |
-|  0.0 |     2.0 |       2.0 |
 |  0.0 |     3.0 |       0.0 |
-|  0.0 |     2.0 |       0.0 |
-|  0.0 |     2.0 |       0.0 |
-|  1.0 |     1.0 |       2.0 |
+|  0.0 |     3.0 |       0.0 |
+|  1.0 |     2.0 |       0.0 |
+|  1.0 |     3.0 |       2.0 |
+|  0.0 |     3.0 |       2.0 |
 |  0.0 |     3.0 |       0.0 |
 
-"></span></div></td></tr></table><div><pre><code class="sourceCode language-clojure printed-clojure">:model-data {:majority-class 1.0, :distinct-labels (0.0 1.0)}</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">:id #uuid "8fcc293a-32f7-459b-83cf-c3ad58fbbf33"</code></pre></div><table><tr><td valign="top"><div><pre><code class="sourceCode language-clojure printed-clojure">:scicloj.metamorph.ml/target-ds
+"></span></div></td></tr></table><div><pre><code class="sourceCode language-clojure printed-clojure">:model-data {:majority-class 1.0, :distinct-labels (0.0 1.0)}</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">:id #uuid "a403c330-cda6-4c79-ba4c-63397dca9ad9"</code></pre></div><table><tr><td valign="top"><div><pre><code class="sourceCode language-clojure printed-clojure">:scicloj.metamorph.ml/target-ds
 </code></pre></div></td><td><div style="margin-left:10px;"><span data-qmd="Group: 0 [178 1]:
 
 | :survived |
 |----------:|
 |       1.0 |
-|       0.0 |
-|       0.0 |
+|       1.0 |
+|       1.0 |
 |       0.0 |
 |       0.0 |
 |       1.0 |
 |       0.0 |
+|       0.0 |
+|       0.0 |
 |       1.0 |
-|       0.0 |
-|       0.0 |
 |       ... |
 |       1.0 |
-|       1.0 |
 |       0.0 |
 |       0.0 |
 |       0.0 |
 |       1.0 |
+|       0.0 |
+|       0.0 |
 |       1.0 |
 |       1.0 |
-|       1.0 |
-|       1.0 |
+|       0.0 |
 |       0.0 |
 
 "></span></div></td></tr></table><div><pre><code class="sourceCode language-clojure printed-clojure">:options {:model-type :metamorph.ml/dummy-classifier}</code></pre></div></div><p>}</p></div></div></td></tr></table></div><p>}</p></div>
@@ -521,7 +521,7 @@ train-ctx
 |  0.0 |     1.0 |       2.0 |       1.0 |
 |  0.0 |     3.0 |       1.0 |       0.0 |
 
-"></span></div></td></tr></table><div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :fit</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "c9a44bb9-af6d-4c18-b516-634557ffbe40" {:model-data {:majority-class 1, :distinct-labels (0.0 1.0)}, :options {:model-type :metamorph.ml/dummy-classifier}, :id #uuid "e79fca90-0013-490d-b58d-88143e62a2d9", :feature-columns [:sex :pclass :embarked], :target-columns [:survived], :target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {0 0, 1 1}, :src-column :survived, :result-datatype :float64}}, :scicloj.metamorph.ml/unsupervised? nil}</code></pre></div></div><p>}</p></div>
+"></span></div></td></tr></table><div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :fit</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "656a3360-2170-41d6-af3d-3c607bc2de08" {:model-data {:majority-class 1, :distinct-labels (0.0 1.0)}, :options {:model-type :metamorph.ml/dummy-classifier}, :id #uuid "9b564f87-a7b7-46d3-a767-f6d3a836a929", :feature-columns [:sex :pclass :embarked], :target-columns [:survived], :target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {0 0, 1 1}, :src-column :survived, :result-datatype :float64}}, :scicloj.metamorph.ml/unsupervised? nil}</code></pre></div></div><p>}</p></div>
 ```
 
 
@@ -650,7 +650,7 @@ and can be used to make a pipeline
 
 ::: {.printedClojure}
 ```clojure
-#function[scicloj.metamorph.core/pipeline/local-pipeline--50053]
+#function[scicloj.metamorph.core/pipeline/local-pipeline--49758]
 
 ```
 :::
@@ -679,7 +679,7 @@ Pipeline as data is as well supported
 
 ::: {.printedClojure}
 ```clojure
-#function[scicloj.metamorph.core/pipeline/local-pipeline--50053]
+#function[scicloj.metamorph.core/pipeline/local-pipeline--49758]
 
 ```
 :::
@@ -928,27 +928,27 @@ _unnamed [30 3]:
 |           :used-features | :mean-accuracy |                                                :options |
 |--------------------------|---------------:|---------------------------------------------------------|
 | [:sex :pclass :embarked] |     0.81107726 |           {:model-type :smile.classification/ada-boost} |
-|           [:sex :pclass] |     0.78633911 |       {:model-type :smile.classification/random-forest} |
 |         [:sex :embarked] |     0.78633276 |           {:model-type :smile.classification/ada-boost} |
-|                   [:sex] |     0.78633276 |           {:model-type :smile.classification/ada-boost} |
 |           [:sex :pclass] |     0.78633276 | {:model-type :smile.classification/logistic-regression} |
 |         [:sex :embarked] |     0.78633276 | {:model-type :smile.classification/logistic-regression} |
 |                   [:sex] |     0.78633276 | {:model-type :smile.classification/logistic-regression} |
-| [:sex :pclass :embarked] |     0.77849299 |       {:model-type :smile.classification/random-forest} |
+|           [:sex :pclass] |     0.78521551 |       {:model-type :smile.classification/random-forest} |
 | [:sex :pclass :embarked] |     0.77507776 | {:model-type :smile.classification/logistic-regression} |
 |           [:sex :pclass] |     0.77397321 |           {:model-type :smile.classification/ada-boost} |
+| [:sex :pclass :embarked] |     0.76500984 |       {:model-type :smile.classification/random-forest} |
+|           [:sex :pclass] |     0.74138894 |       {:model-type :smile.classification/decision-tree} |
 |                      ... |            ... |                                                     ... |
 |      [:pclass :embarked] |     0.63783406 |       {:model-type :smile.classification/random-forest} |
 |              [:embarked] |     0.63780232 | {:model-type :smile.classification/logistic-regression} |
-|              [:embarked] |     0.63328255 |           {:model-type :smile.classification/ada-boost} |
-|              [:embarked] |     0.61756491 |       {:model-type :smile.classification/random-forest} |
+|              [:embarked] |     0.63218435 |           {:model-type :smile.classification/ada-boost} |
+|              [:embarked] |     0.61419412 |       {:model-type :smile.classification/random-forest} |
 |              [:embarked] |     0.61305783 |       {:model-type :smile.classification/decision-tree} |
 |           [:sex :pclass] |     0.38243509 |            {:model-type :metamorph.ml/dummy-classifier} |
 |         [:sex :embarked] |     0.38243509 |            {:model-type :metamorph.ml/dummy-classifier} |
 |              [:embarked] |     0.38243509 |            {:model-type :metamorph.ml/dummy-classifier} |
 |      [:pclass :embarked] |     0.38243509 |            {:model-type :metamorph.ml/dummy-classifier} |
-|                   [:sex] |     0.38243509 |            {:model-type :metamorph.ml/dummy-classifier} |
 | [:sex :pclass :embarked] |     0.38243509 |            {:model-type :metamorph.ml/dummy-classifier} |
+|                   [:sex] |     0.38243509 |            {:model-type :metamorph.ml/dummy-classifier} |
 
 
 

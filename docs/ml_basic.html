@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Noj Documentation - 7&nbsp; Machine learning</title>
+<title>Noj Documentation - 6&nbsp; Machine learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ml_basic.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Machine learning</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ml_basic.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Machine learning</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -149,50 +149,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./image.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Turning tensors into images</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Python</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Python</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./stats.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepare_for_ml.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Machine learning specific functionality in <code>tech.ml.dataset</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Machine learning specific functionality in <code>tech.ml.dataset</code></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ml_basic.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Machine learning</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Machine learning</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./automl.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">AutoML using metamorph pipelines</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">AutoML using metamorph pipelines</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./interactions_ols.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Additive model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Additive model</span></span></a>
   </div>
 </li>
     </ul>
@@ -205,15 +199,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#inspect-data" id="toc-inspect-data" class="nav-link active" data-scroll-target="#inspect-data"><span class="header-section-number">7.1</span> Inspect data</a></li>
-  <li><a href="#convert-categorical-features-to-numeric" id="toc-convert-categorical-features-to-numeric" class="nav-link" data-scroll-target="#convert-categorical-features-to-numeric"><span class="header-section-number">7.2</span> Convert categorical features to numeric</a></li>
-  <li><a href="#train-a-model" id="toc-train-a-model" class="nav-link" data-scroll-target="#train-a-model"><span class="header-section-number">7.3</span> Train a model</a>
+  <li><a href="#inspect-data" id="toc-inspect-data" class="nav-link active" data-scroll-target="#inspect-data"><span class="header-section-number">6.1</span> Inspect data</a></li>
+  <li><a href="#convert-categorical-features-to-numeric" id="toc-convert-categorical-features-to-numeric" class="nav-link" data-scroll-target="#convert-categorical-features-to-numeric"><span class="header-section-number">6.2</span> Convert categorical features to numeric</a></li>
+  <li><a href="#train-a-model" id="toc-train-a-model" class="nav-link" data-scroll-target="#train-a-model"><span class="header-section-number">6.3</span> Train a model</a>
   <ul>
-  <li><a href="#dummy-model" id="toc-dummy-model" class="nav-link" data-scroll-target="#dummy-model"><span class="header-section-number">7.3.1</span> Dummy model</a></li>
+  <li><a href="#dummy-model" id="toc-dummy-model" class="nav-link" data-scroll-target="#dummy-model"><span class="header-section-number">6.3.1</span> Dummy model</a></li>
   </ul></li>
-  <li><a href="#logistic-regression" id="toc-logistic-regression" class="nav-link" data-scroll-target="#logistic-regression"><span class="header-section-number">7.4</span> Logistic regression</a></li>
-  <li><a href="#random-forrest" id="toc-random-forrest" class="nav-link" data-scroll-target="#random-forrest"><span class="header-section-number">7.5</span> Random forrest</a></li>
-  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps"><span class="header-section-number">8</span> Next steps</a></li>
+  <li><a href="#logistic-regression" id="toc-logistic-regression" class="nav-link" data-scroll-target="#logistic-regression"><span class="header-section-number">6.4</span> Logistic regression</a></li>
+  <li><a href="#random-forrest" id="toc-random-forrest" class="nav-link" data-scroll-target="#random-forrest"><span class="header-section-number">6.5</span> Random forrest</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps"><span class="header-section-number">7</span> Next steps</a></li>
   </ul>
 </nav>
     </div>
@@ -222,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Machine learning</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Machine learning</span></h1>
 </div>
 
 
@@ -257,8 +251,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>         '[tech.v3.dataset <span class="at">:as</span> ds]</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>         '[camel-snake-kebab.core <span class="at">:as</span> csk])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="inspect-data" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="inspect-data"><span class="header-section-number">7.1</span> Inspect data</h2>
+<section id="inspect-data" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="inspect-data"><span class="header-section-number">6.1</span> Inspect data</h2>
 <p>The titanic data is part of <code>metamorph.ml</code> and in the form of a train, test split</p>
 <p>We use the :train part only for this tutorial.</p>
 <div class="sourceClojure">
@@ -619,8 +613,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb12"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> target-column </span><span class="at">:survived</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="convert-categorical-features-to-numeric" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="convert-categorical-features-to-numeric"><span class="header-section-number">7.2</span> Convert categorical features to numeric</h2>
+<section id="convert-categorical-features-to-numeric" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="convert-categorical-features-to-numeric"><span class="header-section-number">6.2</span> Convert categorical features to numeric</h2>
 <p>As we need to convert the non numerical feature columns to categorical, we will first look at their unique values:</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb13"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">map</span></span>
@@ -735,6 +729,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceClojure">
 <div class="sourceCode" id="cb23"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>split</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div>
 <div><p>{</p><div style="margin-left:10%;width:110%;">
 <table data-quarto-postprocess="true" class="table">
 <colgroup>
@@ -815,17 +810,18 @@ Group: 0 [297 4]:<br>
 </tbody>
 </table>
 </div><p>}</p></div>
+</div>
 </section>
-<section id="train-a-model" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="train-a-model"><span class="header-section-number">7.3</span> Train a model</h2>
+<section id="train-a-model" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="train-a-model"><span class="header-section-number">6.3</span> Train a model</h2>
 <p>Now its time to train a model.</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb26"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">require</span> '[scicloj.metamorph.ml <span class="at">:as</span> ml]</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>         '[scicloj.metamorph.ml.classification]</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>         '[scicloj.metamorph.ml.loss <span class="at">:as</span> loss])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="dummy-model" class="level3" data-number="7.3.1">
-<h3 data-number="7.3.1" class="anchored" data-anchor-id="dummy-model"><span class="header-section-number">7.3.1</span> Dummy model</h3>
+<section id="dummy-model" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="dummy-model"><span class="header-section-number">6.3.1</span> Dummy model</h3>
 <p>We start with a dummy model, which simply predicts the majority class</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb27"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> dummy-model </span>(ml/train (<span class="at">:train</span> split) {<span class="at">:model-type</span> <span class="at">:metamorph.ml/dummy-classifier</span>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -853,8 +849,8 @@ Group: 0 [297 4]:<br>
 <p>It’s performance is poor, even worse the coin flip.</p>
 </section>
 </section>
-<section id="logistic-regression" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="logistic-regression"><span class="header-section-number">7.4</span> Logistic regression</h2>
+<section id="logistic-regression" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="logistic-regression"><span class="header-section-number">6.4</span> Logistic regression</h2>
 <p>Next model to use is Logistic Regression</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb33"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">require</span> '[scicloj.ml.smile.classification])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -876,8 +872,8 @@ Group: 0 [297 4]:<br>
 </div>
 <p>Its performance is better, 60 %</p>
 </section>
-<section id="random-forrest" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="random-forrest"><span class="header-section-number">7.5</span> Random forrest</h2>
+<section id="random-forrest" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="random-forrest"><span class="header-section-number">6.5</span> Random forrest</h2>
 <p>Next is random forrest</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb38"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> rf-model </span>(ml/train (<span class="at">:train</span> split) {<span class="at">:model-type</span> <span class="at">:smile.classification/random-forest</span>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -909,14 +905,14 @@ Group: 0 [297 4]:<br>
 <span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a> <span class="kw">reverse</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb43"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>({<span class="at">:predictor</span> <span class="at">:sex</span>, <span class="at">:importance</span> <span class="fl">43.31203907721387</span>}</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a> {<span class="at">:predictor</span> <span class="at">:pclass</span>, <span class="at">:importance</span> <span class="fl">9.697528631870028</span>}</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a> {<span class="at">:predictor</span> <span class="at">:embarked</span>, <span class="at">:importance</span> <span class="fl">1.7671217105487245</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>({<span class="at">:predictor</span> <span class="at">:sex</span>, <span class="at">:importance</span> <span class="fl">42.79948440156001</span>}</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a> {<span class="at">:predictor</span> <span class="at">:pclass</span>, <span class="at">:importance</span> <span class="fl">10.142682543666885</span>}</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a> {<span class="at">:predictor</span> <span class="at">:embarked</span>, <span class="at">:importance</span> <span class="fl">1.8604267220311594</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>we can see that :sex is more important to predict :survived then :pclass and :embark</p>
 </section>
-<section id="next-steps" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Next steps</h1>
+<section id="next-steps" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Next steps</h1>
 <p>We could now go further and trying to improve the features / the model type in order to find the best performing model for the data we have. All models types have a range of configurations, so called hyper-parameters. They can have as well influence on the model accuracy.</p>
 <p>So far we used a single split into ‘train’ and ‘test’ data, so we only get a point estimate of the accuracy. This should be made more robust via cross-validations and using different splits of the data.</p>
 <div style="background-color:grey;height:2px;width:100%;"></div>
@@ -1315,13 +1311,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./prepare_for_ml.html" class="pagination-link  aria-label=" &lt;span="" learning="" specific="" functionality="" in="" `tech.ml.dataset`&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Machine learning specific functionality in <code>tech.ml.dataset</code></span></span>
+      <a href="./prepare_for_ml.html" class="pagination-link" aria-label="Machine learning specific functionality in `tech.ml.dataset`">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Machine learning specific functionality in <code>tech.ml.dataset</code></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./automl.html" class="pagination-link" aria-label="<span class='chapter-number'>8</span>&nbsp; <span class='chapter-title'>AutoML using metamorph pipelines</span>">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">AutoML using metamorph pipelines</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./automl.html" class="pagination-link" aria-label="AutoML using metamorph pipelines">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">AutoML using metamorph pipelines</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -606,9 +606,9 @@ some model explanations, for example the variable importance.
 
 ::: {.printedClojure}
 ```clojure
-({:predictor :sex, :importance 43.31203907721387}
- {:predictor :pclass, :importance 9.697528631870028}
- {:predictor :embarked, :importance 1.7671217105487245})
+({:predictor :sex, :importance 42.79948440156001}
+ {:predictor :pclass, :importance 10.142682543666885}
+ {:predictor :embarked, :importance 1.8604267220311594})
 
 ```
 :::

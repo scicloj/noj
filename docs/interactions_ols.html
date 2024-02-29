@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Noj Documentation - 9&nbsp; Additive model</title>
+<title>Noj Documentation - 8&nbsp; Additive model</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -144,7 +144,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./interactions_ols.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Additive model</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./interactions_ols.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Additive model</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -177,50 +177,44 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./image.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Turning tensors into images</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Python</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Python</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./stats.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepare_for_ml.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Machine learning specific functionality in <code>tech.ml.dataset</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Machine learning specific functionality in <code>tech.ml.dataset</code></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ml_basic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Machine learning</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Machine learning</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./automl.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">AutoML using metamorph pipelines</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">AutoML using metamorph pipelines</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./interactions_ols.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Additive model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Additive model</span></span></a>
   </div>
 </li>
     </ul>
@@ -233,7 +227,7 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#interaction-effects" id="toc-interaction-effects" class="nav-link active" data-scroll-target="#interaction-effects"><span class="header-section-number">9.1</span> Interaction effects</a></li>
+  <li><a href="#interaction-effects" id="toc-interaction-effects" class="nav-link active" data-scroll-target="#interaction-effects"><span class="header-section-number">8.1</span> Interaction effects</a></li>
   </ul>
 </nav>
     </div>
@@ -242,7 +236,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Additive model</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Additive model</span></h1>
 </div>
 
 
@@ -324,19 +318,19 @@ window.Quarto = {
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Residuals:</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>       Min          <span class="dv">1</span>Q      Median          <span class="dv">3</span>Q         Max</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  -<span class="fl">10.1548</span>     -<span class="fl">0.5672</span>      <span class="fl">0.2711</span>      <span class="fl">1.3700</span>      <span class="fl">3.4155</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>   -<span class="fl">6.6542</span>     -<span class="fl">1.1492</span>      <span class="fl">0.2771</span>      <span class="fl">1.4711</span>      <span class="fl">3.1437</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>Coefficients:</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                  Estimate Std. Error    t value   Pr(<span class="kw">&gt;</span>|t|)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>Intercept           <span class="fl">3.3229</span>     <span class="fl">0.4571</span>     <span class="fl">7.2700</span>     <span class="fl">0.0000</span> ***</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>youtube             <span class="fl">0.0476</span>     <span class="fl">0.0018</span>    <span class="fl">26.4901</span>     <span class="fl">0.0000</span> ***</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>facebook            <span class="fl">0.1833</span>     <span class="fl">0.0099</span>    <span class="fl">18.5439</span>     <span class="fl">0.0000</span> ***</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>Intercept           <span class="fl">3.9172</span>     <span class="fl">0.4164</span>     <span class="fl">9.4083</span>     <span class="fl">0.0000</span> ***</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>youtube             <span class="fl">0.0441</span>     <span class="fl">0.0017</span>    <span class="fl">26.4596</span>     <span class="fl">0.0000</span> ***</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>facebook            <span class="fl">0.1860</span>     <span class="fl">0.0093</span>    <span class="fl">19.9132</span>     <span class="fl">0.0000</span> ***</span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>---------------------------------------------------------------------</span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>Significance codes:  <span class="dv">0</span> <span class="at">'***'</span> <span class="fl">0.001</span> <span class="at">'**'</span> <span class="fl">0.01</span> <span class="at">'*'</span> <span class="fl">0.05</span> <span class="at">'.'</span> <span class="fl">0.1</span> ' ' <span class="dv">1</span></span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>Residual standard error: <span class="fl">2.0223</span> on <span class="dv">130</span> degrees of freedom</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>Multiple R-squared: <span class="fl">0.8899</span>,    Adjusted R-squared: <span class="fl">0.8882</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>F-statistic: <span class="fl">525.5745</span> on <span class="dv">3</span> <span class="kw">and</span> <span class="dv">130</span> DF,  p-value: <span class="fl">5.088e-63</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>Residual standard error: <span class="fl">1.9513</span> on <span class="dv">130</span> degrees of freedom</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>Multiple R-squared: <span class="fl">0.9000</span>,    Adjusted R-squared: <span class="fl">0.8985</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>F-statistic: <span class="fl">585.1313</span> on <span class="dv">3</span> <span class="kw">and</span> <span class="dv">130</span> DF,  p-value: <span class="fl">9.870e-66</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We have the following metrics:</p>
 <p><span class="math inline">\(RMSE\)</span></p>
@@ -344,17 +338,17 @@ window.Quarto = {
 <div class="sourceCode" id="cb8"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:test-transform</span> <span class="at">:metric</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fl">2.039444425113851</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fl">2.165085930226261</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><span class="math inline">\(R^2\)</span></p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb10"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:test-transform</span> <span class="at">:other-metrices</span> <span class="kw">first</span> <span class="at">:metric</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb11"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.9083081747249487</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.8961621633708953</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="interaction-effects" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="interaction-effects"><span class="header-section-number">9.1</span> Interaction effects</h2>
+<section id="interaction-effects" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="interaction-effects"><span class="header-section-number">8.1</span> Interaction effects</h2>
 <p>Now we add interaction effects to it, resulting in this model equation: <span class="math display">\[sales = b0 + b1 * youtube + b2 * facebook + b3 * (youtube * facebook)\]</span></p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb12"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> pipe-interaction</span></span>
@@ -382,20 +376,20 @@ window.Quarto = {
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>Residuals:</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>       Min          <span class="dv">1</span>Q      Median          <span class="dv">3</span>Q         Max</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>   -<span class="fl">4.5431</span>     -<span class="fl">0.4753</span>      <span class="fl">0.1279</span>      <span class="fl">0.7271</span>      <span class="fl">1.8071</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>   -<span class="fl">7.7157</span>     -<span class="fl">0.5148</span>      <span class="fl">0.1749</span>      <span class="fl">0.7825</span>      <span class="fl">1.8404</span></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>Coefficients:</span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                  Estimate Std. Error    t value   Pr(<span class="kw">&gt;</span>|t|)</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>Intercept           <span class="fl">7.5612</span>     <span class="fl">0.3310</span>    <span class="fl">22.8466</span>     <span class="fl">0.0000</span> ***</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>youtube             <span class="fl">0.0215</span>     <span class="fl">0.0017</span>    <span class="fl">12.7657</span>     <span class="fl">0.0000</span> ***</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>facebook            <span class="fl">0.0474</span>     <span class="fl">0.0100</span>     <span class="fl">4.7214</span>     <span class="fl">0.0000</span> ***</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>youtube*facebook     <span class="fl">0.0008</span>     <span class="fl">0.0000</span>    <span class="fl">16.9099</span>     <span class="fl">0.0000</span> ***</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>Intercept           <span class="fl">7.6873</span>     <span class="fl">0.3802</span>    <span class="fl">20.2165</span>     <span class="fl">0.0000</span> ***</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>youtube             <span class="fl">0.0204</span>     <span class="fl">0.0019</span>    <span class="fl">10.7880</span>     <span class="fl">0.0000</span> ***</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>facebook            <span class="fl">0.0399</span>     <span class="fl">0.0118</span>     <span class="fl">3.3807</span>     <span class="fl">0.0010</span> ***</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>youtube*facebook     <span class="fl">0.0009</span>     <span class="fl">0.0001</span>    <span class="fl">15.2627</span>     <span class="fl">0.0000</span> ***</span>
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>---------------------------------------------------------------------</span>
 <span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>Significance codes:  <span class="dv">0</span> <span class="at">'***'</span> <span class="fl">0.001</span> <span class="at">'**'</span> <span class="fl">0.01</span> <span class="at">'*'</span> <span class="fl">0.05</span> <span class="at">'.'</span> <span class="fl">0.1</span> ' ' <span class="dv">1</span></span>
 <span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>Residual standard error: <span class="fl">1.0489</span> on <span class="dv">129</span> degrees of freedom</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>Multiple R-squared: <span class="fl">0.9740</span>,    Adjusted R-squared: <span class="fl">0.9734</span></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>F-statistic: <span class="fl">1611.0908</span> on <span class="dv">4</span> <span class="kw">and</span> <span class="dv">129</span> DF,  p-value: <span class="fl">5.197e-102</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>Residual standard error: <span class="fl">1.2314</span> on <span class="dv">129</span> degrees of freedom</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>Multiple R-squared: <span class="fl">0.9628</span>,    Adjusted R-squared: <span class="fl">0.9619</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>F-statistic: <span class="fl">1112.0992</span> on <span class="dv">4</span> <span class="kw">and</span> <span class="dv">129</span> DF,  p-value: <span class="fl">5.908e-92</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>As the multiplcation of <code>youtube*facebook</code> is as well statistically relevant, it suggests that there is indeed an interaction between these 2 predictor variables youtube and facebook.</p>
 <p><span class="math inline">\(RMSE\)</span></p>
@@ -403,14 +397,14 @@ window.Quarto = {
 <div class="sourceCode" id="cb16"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:test-transform</span> <span class="at">:metric</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb17"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1.3095788056261946</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.9388250220500347</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><span class="math inline">\(R^2\)</span></p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb18"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:test-transform</span> <span class="at">:other-metrices</span> <span class="kw">first</span> <span class="at">:metric</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb19"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.9507794148365122</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.9784340716799933</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><span class="math inline">\(RMSE\)</span> and <span class="math inline">\(R^2\)</span> of the intercation model are sligtly better.</p>
 <p>These results suggest that the model with the interaction term is better than the model that contains only main effects. So, for this specific data, we should go for the model with the interaction model.</p>
@@ -810,8 +804,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./automl.html" class="pagination-link  aria-label=" &lt;span="" using="" metamorph="" pipelines&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">AutoML using metamorph pipelines</span></span>
+      <a href="./automl.html" class="pagination-link" aria-label="AutoML using metamorph pipelines">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">AutoML using metamorph pipelines</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

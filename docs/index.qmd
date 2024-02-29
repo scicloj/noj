@@ -28,9 +28,6 @@ It collects a few of the main dependencies together with functions allowing to c
 
 
 
-- [image](image.html)
-
-
 - [python](python.html)
 
 

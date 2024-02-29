@@ -112,14 +112,14 @@ and adds some relevant information such as the `R^2` measure.
 ```clojure
 {:feature-columns [:sepal-width :petal-length :petal-width],
  :target-columns [:sepal-length],
- :explained #function[malli.core/-instrument/fn--54275],
+ :explained #function[malli.core/-instrument/fn--53980],
  :R2 0.8582120394597336,
- :id #uuid "df381ce0-ad03-4249-9362-7f1d88741d2a",
+ :id #uuid "4d79799e-51bf-4327-b9e9-35b5468402a9",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.022, 4.724, 4.775, 4.851, 5.081, 5.360, 4.911, 5.030, 4.664, 4.903, 5.209, 5.098, 4.775, 4.572, 5.184, 5.522, 5.089, 4.970, 5.352, 5.217...],
  :predict
- #function[scicloj.noj.v1.stats/regression-model/predict--58503],
+ #function[scicloj.noj.v1.stats/regression-model/predict--58208],
  :options {:model-type :smile.regression/elastic-net}}
 
 ```
@@ -144,14 +144,14 @@ and adds some relevant information such as the `R^2` measure.
 ```clojure
 {:feature-columns [:sepal-width :petal-length :petal-width],
  :target-columns [:sepal-length],
- :explained #function[malli.core/-instrument/fn--54275],
+ :explained #function[malli.core/-instrument/fn--53980],
  :R2 0.8586117200664085,
- :id #uuid "26644555-e1c4-414d-a6a0-3cb54a239798",
+ :id #uuid "b0094022-8f93-4062-a5aa-59ba5a3732e0",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.015, 4.690, 4.749, 4.826, 5.080, 5.377, 4.895, 5.021, 4.625, 4.882, 5.216, 5.092, 4.746, 4.533, 5.199, 5.561, 5.094, 4.960, 5.368, 5.226...],
  :predict
- #function[scicloj.noj.v1.stats/regression-model/predict--58503],
+ #function[scicloj.noj.v1.stats/regression-model/predict--58208],
  :options {:model-type :smile.regression/ordinary-least-square}}
 
 ```
@@ -178,14 +178,14 @@ uses specifically the `:smile.regression/ordinary-least-square` model type.
 ```clojure
 {:feature-columns [:sepal-width :petal-length :petal-width],
  :target-columns [:sepal-length],
- :explained #function[malli.core/-instrument/fn--54275],
+ :explained #function[malli.core/-instrument/fn--53980],
  :R2 0.8586117200664085,
- :id #uuid "887a0301-e38e-4cad-ab8b-025cc58e1c2f",
+ :id #uuid "e939e331-b93d-47ea-8933-579bd467a26a",
  :predictions #tech.v3.dataset.column&lt;float64&gt;[150]
 :sepal-length
 [5.015, 4.690, 4.749, 4.826, 5.080, 5.377, 4.895, 5.021, 4.625, 4.882, 5.216, 5.092, 4.746, 4.533, 5.199, 5.561, 5.094, 4.960, 5.368, 5.226...],
  :predict
- #function[scicloj.noj.v1.stats/regression-model/predict--58503],
+ #function[scicloj.noj.v1.stats/regression-model/predict--58208],
  :options {:model-type :smile.regression/ordinary-least-square}}
 
 ```
@@ -269,9 +269,9 @@ to the metadata of that new column.
  :model
  {:feature-columns [:sepal-width :petal-length :petal-width],
   :target-columns [:sepal-length],
-  :explained #function[malli.core/-instrument/fn--54275],
+  :explained #function[malli.core/-instrument/fn--53980],
   :R2 0.8586117200664085,
-  :id #uuid "5264d260-9019-4710-8546-2bd3c3722cfb",
+  :id #uuid "ab469d89-7ecb-479b-97d1-8b7d52f4d04f",
   :options {:model-type :smile.regression/ordinary-least-square}}}
 
 ```
@@ -297,11 +297,11 @@ _unnamed [5 3]:
 
 | :count |      :left |     :right |
 |-------:|-----------:|-----------:|
-|     20 | 0.00237076 | 0.19731628 |
-|     20 | 0.19731628 | 0.39226181 |
-|     22 | 0.39226181 | 0.58720733 |
-|     19 | 0.58720733 | 0.78215285 |
-|     18 | 0.78215285 | 0.97709838 |
+|     18 | 0.01608801 | 0.20848452 |
+|     23 | 0.20848452 | 0.40088102 |
+|     20 | 0.40088102 | 0.59327752 |
+|     14 | 0.59327752 | 0.78567402 |
+|     24 | 0.78567402 | 0.97807052 |
 
 
 
