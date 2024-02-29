@@ -4,7 +4,6 @@
 (clay/make! {:format [:quarto :html]
              :base-source-path "notebooks"
              :source-path ["index.clj"
-                           "image.clj"
                            "python.clj"
                            "stats.clj"
                            "visualization.clj"
