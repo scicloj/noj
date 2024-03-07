@@ -116,19 +116,19 @@ Linear Model:
 
 Residuals:
        Min          1Q      Median          3Q         Max
-   -6.6542     -1.1492      0.2771      1.4711      3.1437
+  -10.7111     -1.0363      0.3926      1.4664      3.7721
 
 Coefficients:
                   Estimate Std. Error    t value   Pr(>|t|)
-Intercept           3.9172     0.4164     9.4083     0.0000 ***
-youtube             0.0441     0.0017    26.4596     0.0000 ***
-facebook            0.1860     0.0093    19.9132     0.0000 ***
+Intercept           3.1931     0.4531     7.0479     0.0000 ***
+youtube             0.0450     0.0018    25.6259     0.0000 ***
+facebook            0.1978     0.0100    19.7013     0.0000 ***
 ---------------------------------------------------------------------
 Significance codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.9513 on 130 degrees of freedom
-Multiple R-squared: 0.9000,    Adjusted R-squared: 0.8985
-F-statistic: 585.1313 on 3 and 130 DF,  p-value: 9.870e-66
+Residual standard error: 2.0922 on 130 degrees of freedom
+Multiple R-squared: 0.8861,    Adjusted R-squared: 0.8844
+F-statistic: 505.8758 on 3 and 130 DF,  p-value: 4.615e-62
 
 ```
 :::
@@ -149,7 +149,7 @@ $RMSE$
 
 ::: {.printedClojure}
 ```clojure
-2.165085930226261
+1.915771411261115
 
 ```
 :::
@@ -168,7 +168,7 @@ $R^2$
 
 ::: {.printedClojure}
 ```clojure
-0.8961621633708953
+0.9169025322742897
 
 ```
 :::
@@ -224,20 +224,20 @@ Linear Model:
 
 Residuals:
        Min          1Q      Median          3Q         Max
-   -7.7157     -0.5148      0.1749      0.7825      1.8404
+   -7.5484     -0.4552      0.1806      0.7091      1.9892
 
 Coefficients:
                   Estimate Std. Error    t value   Pr(>|t|)
-Intercept           7.6873     0.3802    20.2165     0.0000 ***
-youtube             0.0204     0.0019    10.7880     0.0000 ***
-facebook            0.0399     0.0118     3.3807     0.0010 ***
-youtube*facebook     0.0009     0.0001    15.2627     0.0000 ***
+Intercept           8.0777     0.3639    22.1983     0.0000 ***
+youtube             0.0201     0.0019    10.5209     0.0000 ***
+facebook            0.0282     0.0113     2.4841     0.0143 *
+youtube*facebook     0.0009     0.0001    15.8560     0.0000 ***
 ---------------------------------------------------------------------
 Significance codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.2314 on 129 degrees of freedom
-Multiple R-squared: 0.9628,    Adjusted R-squared: 0.9619
-F-statistic: 1112.0992 on 4 and 129 DF,  p-value: 5.908e-92
+Residual standard error: 1.1637 on 129 degrees of freedom
+Multiple R-squared: 0.9673,    Adjusted R-squared: 0.9666
+F-statistic: 1273.0438 on 4 and 129 DF,  p-value: 1.313e-95
 
 ```
 :::
@@ -259,7 +259,7 @@ $RMSE$
 
 ::: {.printedClojure}
 ```clojure
-0.9388250220500347
+1.0868707382818341
 
 ```
 :::
@@ -278,7 +278,7 @@ $R^2$
 
 ::: {.printedClojure}
 ```clojure
-0.9784340716799933
+0.9686613342292784
 
 ```
 :::
