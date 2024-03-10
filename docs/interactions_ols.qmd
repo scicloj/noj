@@ -4,7 +4,7 @@ format:
   html:
     toc: true
     toc-depth: 4
-    theme: [spacelab, notebooks/custom.scss]
+    theme: [cosmo, notebooks/custom.scss]
     output-file: interactions_ols.html
 code-block-background: true
 include-in-header: {text: '<link rel = "icon" href = "data:," />'}
@@ -116,19 +116,19 @@ Linear Model:
 
 Residuals:
        Min          1Q      Median          3Q         Max
-  -10.7111     -1.0363      0.3926      1.4664      3.7721
+  -11.1744     -0.8829      0.2779      1.4044      3.7259
 
 Coefficients:
                   Estimate Std. Error    t value   Pr(>|t|)
-Intercept           3.1931     0.4531     7.0479     0.0000 ***
-youtube             0.0450     0.0018    25.6259     0.0000 ***
-facebook            0.1978     0.0100    19.7013     0.0000 ***
+Intercept           3.3080     0.4632     7.1420     0.0000 ***
+youtube             0.0442     0.0018    24.5581     0.0000 ***
+facebook            0.2052     0.0106    19.4454     0.0000 ***
 ---------------------------------------------------------------------
 Significance codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 2.0922 on 130 degrees of freedom
-Multiple R-squared: 0.8861,    Adjusted R-squared: 0.8844
-F-statistic: 505.8758 on 3 and 130 DF,  p-value: 4.615e-62
+Residual standard error: 2.1107 on 130 degrees of freedom
+Multiple R-squared: 0.8909,    Adjusted R-squared: 0.8893
+F-statistic: 530.9515 on 3 and 130 DF,  p-value: 2.823e-63
 
 ```
 :::
@@ -149,7 +149,7 @@ $RMSE$
 
 ::: {.printedClojure}
 ```clojure
-1.915771411261115
+1.9147482766946498
 
 ```
 :::
@@ -168,7 +168,7 @@ $R^2$
 
 ::: {.printedClojure}
 ```clojure
-0.9169025322742897
+0.900660132622927
 
 ```
 :::
@@ -224,20 +224,20 @@ Linear Model:
 
 Residuals:
        Min          1Q      Median          3Q         Max
-   -7.5484     -0.4552      0.1806      0.7091      1.9892
+   -7.5260     -0.4945      0.2392      0.6995      1.8620
 
 Coefficients:
                   Estimate Std. Error    t value   Pr(>|t|)
-Intercept           8.0777     0.3639    22.1983     0.0000 ***
-youtube             0.0201     0.0019    10.5209     0.0000 ***
-facebook            0.0282     0.0113     2.4841     0.0143 *
-youtube*facebook     0.0009     0.0001    15.8560     0.0000 ***
+Intercept           8.2345     0.3669    22.4439     0.0000 ***
+youtube             0.0185     0.0019     9.8285     0.0000 ***
+facebook            0.0244     0.0106     2.2981     0.0232 *
+youtube*facebook     0.0009     0.0001    17.5522     0.0000 ***
 ---------------------------------------------------------------------
 Significance codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.1637 on 129 degrees of freedom
-Multiple R-squared: 0.9673,    Adjusted R-squared: 0.9666
-F-statistic: 1273.0438 on 4 and 129 DF,  p-value: 1.313e-95
+Residual standard error: 1.1420 on 129 degrees of freedom
+Multiple R-squared: 0.9686,    Adjusted R-squared: 0.9678
+F-statistic: 1324.6963 on 4 and 129 DF,  p-value: 1.097e-96
 
 ```
 :::
@@ -259,7 +259,7 @@ $RMSE$
 
 ::: {.printedClojure}
 ```clojure
-1.0868707382818341
+1.1152894881253825
 
 ```
 :::
@@ -278,7 +278,7 @@ $R^2$
 
 ::: {.printedClojure}
 ```clojure
-0.9686613342292784
+0.9656573755769411
 
 ```
 :::

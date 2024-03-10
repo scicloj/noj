@@ -4,7 +4,7 @@ format:
   html:
     toc: true
     toc-depth: 4
-    theme: [spacelab, notebooks/custom.scss]
+    theme: [cosmo, notebooks/custom.scss]
     output-file: ml_basic.html
 code-block-background: true
 include-in-header: {text: '<link rel = "icon" href = "data:," />'}
@@ -606,9 +606,9 @@ some model explanations, for example the variable importance.
 
 ::: {.printedClojure}
 ```clojure
-({:predictor :sex, :importance 44.90194385903361}
- {:predictor :pclass, :importance 10.012280668992885}
- {:predictor :embarked, :importance 2.0473128914398786})
+({:predictor :sex, :importance 46.65841005642595}
+ {:predictor :pclass, :importance 9.884764985241073}
+ {:predictor :embarked, :importance 2.1766687865881424})
 
 ```
 :::

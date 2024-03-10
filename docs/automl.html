@@ -284,7 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>my-pipeline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb10"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>#function[scicloj.metamorph.core/pipeline/local-pipeline--<span class="dv">49843</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>#function[scicloj.metamorph.core/pipeline/local-pipeline--<span class="dv">38417</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This function is metamorph compliant, so it takes a map (my-pipeline {}) and returns a map.</p>
 <p>But this map cannot be “arbitrary”, it need to adhere to the <code>metamorph</code> conventions.</p>
@@ -312,33 +312,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div style="margin-left:10px;">
 Group: 0 [711 4]:<br>
 :sex:pclass:embarked:survived<br>
-0.03.02.01.0<br>
+1.02.00.01.0<br>
+0.03.00.00.0<br>
+0.03.00.00.0<br>
+0.03.00.00.0<br>
+0.01.02.00.0<br>
+0.01.02.01.0<br>
 0.02.00.00.0<br>
 0.03.00.00.0<br>
-0.03.01.00.0<br>
-1.02.00.01.0<br>
-0.03.02.00.0<br>
-1.02.00.00.0<br>
-0.03.01.00.0<br>
-0.03.00.00.0<br>
-1.02.00.01.0<br>
+0.02.00.00.0<br>
+1.03.00.00.0<br>
 …………<br>
-0.01.02.00.0<br>
-1.03.00.01.0<br>
 0.03.00.00.0<br>
-0.03.00.00.0<br>
-0.01.00.00.0<br>
-1.01.02.01.0<br>
-0.01.02.00.0<br>
-1.02.00.01.0<br>
 0.03.00.00.0<br>
 0.02.00.01.0<br>
-1.03.01.01.0
+1.01.00.01.0<br>
+0.02.00.00.0<br>
+0.03.00.00.0<br>
+0.03.00.00.0<br>
+1.03.00.01.0<br>
+1.01.00.01.0<br>
+0.01.00.01.0<br>
+1.03.00.01.0
 </div></td>
 </tr>
 </tbody>
 </table>
-<div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :fit</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "42699d65-7dff-4d09-b410-9c696e8d33cf" {:model-data {:majority-class 0.0, :distinct-labels (1.0 0.0)}, :options {:model-type :metamorph.ml/dummy-classifier}, :id #uuid "c2bb2161-03fd-4ccb-a026-0bf51c14b192", :feature-columns [:sex :pclass :embarked], :target-columns [:survived], :target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {0 0, 1 1}, :src-column :survived, :result-datatype :float64}}, :scicloj.metamorph.ml/unsupervised? nil}</code></pre></div></div><p>}</p></div>
+<div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :fit</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "63607df9-b95c-45e9-b110-e3fd044256d1" {:model-data {:majority-class 0.0, :distinct-labels (1.0 0.0)}, :options {:model-type :metamorph.ml/dummy-classifier}, :id #uuid "737849a9-7d48-4c13-b152-5b961b0b1eb7", :feature-columns [:sex :pclass :embarked], :target-columns [:survived], :target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {0 0, 1 1}, :src-column :survived, :result-datatype :float64}}, :scicloj.metamorph.ml/unsupervised? nil}</code></pre></div></div><p>}</p></div>
 </div>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb14"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">keys</span> ctx-after-train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -346,7 +346,7 @@ Group: 0 [711 4]:<br>
 <div class="printedClojure">
 <div class="sourceCode" id="cb15"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">:metamorph/data</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a> <span class="at">:metamorph/mode</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a> #uuid <span class="st">"42699d65-7dff-4d09-b410-9c696e8d33cf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a> #uuid <span class="st">"63607df9-b95c-45e9-b110-e3fd044256d1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This context map has the “data”, the “mode” and an UUID for each operation (we had only one in this pipeline)</p>
 <div class="sourceClojure">
@@ -356,33 +356,33 @@ Group: 0 [711 4]:<br>
 
 | :sex | :pclass | :embarked | :survived |
 |-----:|--------:|----------:|----------:|
-|  0.0 |     3.0 |       2.0 |       1.0 |
+|  1.0 |     2.0 |       0.0 |       1.0 |
+|  0.0 |     3.0 |       0.0 |       0.0 |
+|  0.0 |     3.0 |       0.0 |       0.0 |
+|  0.0 |     3.0 |       0.0 |       0.0 |
+|  0.0 |     1.0 |       2.0 |       0.0 |
+|  0.0 |     1.0 |       2.0 |       1.0 |
 |  0.0 |     2.0 |       0.0 |       0.0 |
 |  0.0 |     3.0 |       0.0 |       0.0 |
-|  0.0 |     3.0 |       1.0 |       0.0 |
-|  1.0 |     2.0 |       0.0 |       1.0 |
-|  0.0 |     3.0 |       2.0 |       0.0 |
-|  1.0 |     2.0 |       0.0 |       0.0 |
-|  0.0 |     3.0 |       1.0 |       0.0 |
-|  0.0 |     3.0 |       0.0 |       0.0 |
-|  1.0 |     2.0 |       0.0 |       1.0 |
+|  0.0 |     2.0 |       0.0 |       0.0 |
+|  1.0 |     3.0 |       0.0 |       0.0 |
 |  ... |     ... |       ... |       ... |
-|  0.0 |     1.0 |       2.0 |       0.0 |
-|  1.0 |     3.0 |       0.0 |       1.0 |
 |  0.0 |     3.0 |       0.0 |       0.0 |
-|  0.0 |     3.0 |       0.0 |       0.0 |
-|  0.0 |     1.0 |       0.0 |       0.0 |
-|  1.0 |     1.0 |       2.0 |       1.0 |
-|  0.0 |     1.0 |       2.0 |       0.0 |
-|  1.0 |     2.0 |       0.0 |       1.0 |
 |  0.0 |     3.0 |       0.0 |       0.0 |
 |  0.0 |     2.0 |       0.0 |       1.0 |
-|  1.0 |     3.0 |       1.0 |       1.0 |
+|  1.0 |     1.0 |       0.0 |       1.0 |
+|  0.0 |     2.0 |       0.0 |       0.0 |
+|  0.0 |     3.0 |       0.0 |       0.0 |
+|  0.0 |     3.0 |       0.0 |       0.0 |
+|  1.0 |     3.0 |       0.0 |       1.0 |
+|  1.0 |     1.0 |       0.0 |       1.0 |
+|  0.0 |     1.0 |       0.0 |       1.0 |
+|  1.0 |     3.0 |       0.0 |       1.0 |
 
 "></span><div><pre><code class="sourceCode language-clojure printed-clojure">:fit
 </code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">{:model-data {:majority-class 0.0, :distinct-labels (1.0 0.0)},
  :options {:model-type :metamorph.ml/dummy-classifier},
- :id #uuid "c2bb2161-03fd-4ccb-a026-0bf51c14b192",
+ :id #uuid "737849a9-7d48-4c13-b152-5b961b0b1eb7",
  :feature-columns [:sex :pclass :embarked],
  :target-columns [:survived],
  :target-categorical-maps
@@ -455,7 +455,7 @@ _unnamed [178 1]:<br>
 <tbody>
 <tr class="odd">
 <td data-valign="top"><div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>#uuid "42699d65-7dff-4d09-b410-9c696e8d33cf"</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>#uuid "63607df9-b95c-45e9-b110-e3fd044256d1"</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
 </div></td>
 <td><div style="margin-left:10px;">
 <div>
@@ -486,28 +486,28 @@ _unnamed [178 1]:<br>
 <td><div style="margin-left:10px;">
 Group: 0 [178 3]:<br>
 :sex:pclass:embarked<br>
-0.03.01.0<br>
-0.02.00.0<br>
-0.01.00.0<br>
-1.03.00.0<br>
 0.03.00.0<br>
-0.03.00.0<br>
-0.03.00.0<br>
-0.02.00.0<br>
-0.03.01.0<br>
-0.03.00.0<br>
-………<br>
-0.02.00.0<br>
-1.01.00.0<br>
-0.01.00.0<br>
-1.03.00.0<br>
-0.02.00.0<br>
-0.01.00.0<br>
 0.03.00.0<br>
 1.02.00.0<br>
 0.03.00.0<br>
+1.01.02.0<br>
+1.03.00.0<br>
+1.01.01.0<br>
 0.03.00.0<br>
-0.03.01.0
+0.03.00.0<br>
+0.03.00.0<br>
+………<br>
+0.01.02.0<br>
+0.03.00.0<br>
+1.03.01.0<br>
+0.01.00.0<br>
+0.03.02.0<br>
+0.02.00.0<br>
+1.03.00.0<br>
+0.03.00.0<br>
+1.02.00.0<br>
+0.01.00.0<br>
+0.03.00.0
 </div></td>
 </tr>
 </tbody>
@@ -516,7 +516,7 @@ Group: 0 [178 3]:<br>
 <pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:model-data {:majority-class 0.0, :distinct-labels (1.0 0.0)}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
 </div>
 <div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:id #uuid "c2bb2161-03fd-4ccb-a026-0bf51c14b192"</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:id #uuid "737849a9-7d48-4c13-b152-5b961b0b1eb7"</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
 </div>
 <table data-quarto-postprocess="true" class="table">
 <colgroup>
@@ -531,19 +531,20 @@ Group: 0 [178 3]:<br>
 <td><div style="margin-left:10px;">
 Group: 0 [178 1]:<br>
 :survived<br>
-0.0<br>
 1.0<br>
 0.0<br>
 1.0<br>
 0.0<br>
-0.0<br>
-0.0<br>
-0.0<br>
 1.0<br>
 0.0<br>
+1.0<br>
+1.0<br>
+0.0<br>
+1.0<br>
 …<br>
-1.0<br>
-1.0<br>
+0.0<br>
+0.0<br>
+0.0<br>
 0.0<br>
 1.0<br>
 0.0<br>
@@ -551,7 +552,6 @@ Group: 0 [178 1]:<br>
 0.0<br>
 1.0<br>
 0.0<br>
-1.0<br>
 0.0
 </div></td>
 </tr>
@@ -638,7 +638,7 @@ _unnamed [889 4]:<br>
 </tr>
 </tbody>
 </table>
-<div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :fit</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "6402892d-bc23-41c1-ab97-c6649bef468c" {:model-data {:majority-class 1, :distinct-labels (0.0 1.0)}, :options {:model-type :metamorph.ml/dummy-classifier}, :id #uuid "58cc17ac-d268-45b6-94fa-8117400ae1ac", :feature-columns [:sex :pclass :embarked], :target-columns [:survived], :target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {0 0, 1 1}, :src-column :survived, :result-datatype :float64}}, :scicloj.metamorph.ml/unsupervised? nil}</code></pre></div></div><p>}</p></div>
+<div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :fit</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "6aa1b06f-727e-4c03-89d0-46ba2a7fbb01" {:model-data {:majority-class 1, :distinct-labels (0.0 1.0)}, :options {:model-type :metamorph.ml/dummy-classifier}, :id #uuid "1cb63dff-ede8-4573-82c0-c2ef0f69a059", :feature-columns [:sex :pclass :embarked], :target-columns [:survived], :target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {0 0, 1 1}, :src-column :survived, :result-datatype :float64}}, :scicloj.metamorph.ml/unsupervised? nil}</code></pre></div></div><p>}</p></div>
 </div>
 <p>To show the power of pipelines, I start with doing the simplest possible pipeline, and expand then on it.</p>
 <p>we can already chain train and test with usual functions:</p>
@@ -702,7 +702,7 @@ _unnamed [889 4]:<br>
 <div class="sourceCode" id="cb45"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>(mm/pipeline ops)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb46"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>#function[scicloj.metamorph.core/pipeline/local-pipeline--<span class="dv">49843</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>#function[scicloj.metamorph.core/pipeline/local-pipeline--<span class="dv">38417</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Pipeline as data is as well supported</p>
 <div class="sourceClojure">
@@ -712,7 +712,7 @@ _unnamed [889 4]:<br>
 <div class="sourceCode" id="cb48"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>(mm/-&gt;pipeline op-spec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb49"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>#function[scicloj.metamorph.core/pipeline/local-pipeline--<span class="dv">49843</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>#function[scicloj.metamorph.core/pipeline/local-pipeline--<span class="dv">38417</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>All these do not execute anything, they produce functions which can be executed against a context as part of a metamorph pipeline</p>
 <p>The ’mm/lift<code>function transposes any dataset-&gt;dataset functions into a ctx-&gt;ctx function, while using the e</code>metamorh` convention, as required for metamorph pipeline operations</p>
@@ -866,44 +866,44 @@ _unnamed [889 4]:<br>
 <td>{:model-type :smile.classification/ada-boost}</td>
 </tr>
 <tr class="odd">
+<td>[:sex]</td>
+<td style="text-align: right;">0.78633276</td>
+<td>{:model-type :smile.classification/ada-boost}</td>
+</tr>
+<tr class="even">
 <td>[:sex :pclass]</td>
 <td style="text-align: right;">0.78633276</td>
 <td>{:model-type :smile.classification/logistic-regression}</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>[:sex :embarked]</td>
+<td style="text-align: right;">0.78633276</td>
+<td>{:model-type :smile.classification/logistic-regression}</td>
+</tr>
+<tr class="even">
+<td>[:sex]</td>
 <td style="text-align: right;">0.78633276</td>
 <td>{:model-type :smile.classification/logistic-regression}</td>
 </tr>
 <tr class="odd">
 <td>[:sex]</td>
 <td style="text-align: right;">0.78633276</td>
-<td>{:model-type :smile.classification/logistic-regression}</td>
-</tr>
-<tr class="even">
-<td>[:sex :pclass :embarked]</td>
-<td style="text-align: right;">0.78411096</td>
-<td>{:model-type :smile.classification/random-forest}</td>
-</tr>
-<tr class="odd">
-<td>[:sex :pclass]</td>
-<td style="text-align: right;">0.78408557</td>
 <td>{:model-type :smile.classification/random-forest}</td>
 </tr>
 <tr class="even">
-<td>[:sex :pclass :embarked]</td>
-<td style="text-align: right;">0.77507776</td>
-<td>{:model-type :smile.classification/logistic-regression}</td>
+<td>[:sex :pclass]</td>
+<td style="text-align: right;">0.78521551</td>
+<td>{:model-type :smile.classification/random-forest}</td>
 </tr>
 <tr class="odd">
+<td>[:sex :pclass :embarked]</td>
+<td style="text-align: right;">0.77849299</td>
+<td>{:model-type :smile.classification/random-forest}</td>
+</tr>
+<tr class="even">
 <td>[:sex :pclass]</td>
-<td style="text-align: right;">0.77397321</td>
+<td style="text-align: right;">0.77734400</td>
 <td>{:model-type :smile.classification/ada-boost}</td>
-</tr>
-<tr class="even">
-<td>[:sex :pclass]</td>
-<td style="text-align: right;">0.74138894</td>
-<td>{:model-type :smile.classification/decision-tree}</td>
 </tr>
 <tr class="odd">
 <td>…</td>
@@ -956,12 +956,12 @@ _unnamed [889 4]:<br>
 <td>{:model-type :metamorph.ml/dummy-classifier}</td>
 </tr>
 <tr class="odd">
-<td>[:sex :pclass :embarked]</td>
+<td>[:sex]</td>
 <td style="text-align: right;">0.38243509</td>
 <td>{:model-type :metamorph.ml/dummy-classifier}</td>
 </tr>
 <tr class="even">
-<td>[:sex]</td>
+<td>[:sex :pclass :embarked]</td>
 <td style="text-align: right;">0.38243509</td>
 <td>{:model-type :metamorph.ml/dummy-classifier}</td>
 </tr>
