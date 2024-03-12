@@ -45,6 +45,8 @@
         (merge options)
         (->> (apply concat)
              (apply hc/xform template))
+        (assoc :usermeta
+               {:embedOptions {:renderer :svg}})
         kind/vega-lite)))
 
 (defn collector [template template-key]
