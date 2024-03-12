@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [1-alpha29] - unreleased
+- rendering Hanami plots as SVG by default
+               
 ## [1-alpha28] - 2024-02-29
 - removed the tensor->image function, as it exists in dtype-next now (#14)
 
