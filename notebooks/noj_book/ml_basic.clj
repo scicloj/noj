@@ -1,5 +1,3 @@
-(ns noj-book.ml-basic)
-
 ;; # Machine learning
 ;;
 ;; In this tutorial we will train a simple machine learning model
@@ -7,10 +5,11 @@
 ;; their data.
 ;;
 
-(require '[tablecloth.api :as tc]
-         '[scicloj.metamorph.ml.toydata :as data]
-         '[tech.v3.dataset :as ds]
-         '[camel-snake-kebab.core :as csk])
+(ns noj-book.ml-basic
+  (:require [tablecloth.api :as tc]
+            [scicloj.metamorph.ml.toydata :as data]
+            [tech.v3.dataset :as ds]
+            [camel-snake-kebab.core :as csk]))
 
 ;; ## Inspect data
 ;;

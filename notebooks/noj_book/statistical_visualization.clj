@@ -1,20 +1,13 @@
 ;; # Statistical Visualization
 
 (ns noj-book.statistical-visualization
-  (:require [tablecloth.api :as tc]
-            [aerial.hanami.common :as hc]
-            [aerial.hanami.templates :as ht]
-            [scicloj.noj.v1.vis.hanami.templates :as vht]
+  (:require [aerial.hanami.templates :as ht]
+            [noj-book.datasets :as datasets]
+            [scicloj.kindly.v4.kind :as kind]
+            [scicloj.noj.v1.stats :as stats]
             [scicloj.noj.v1.vis.hanami :as vis.hanami]
             [scicloj.noj.v1.vis.stats :as vis.stats]
-            [scicloj.noj.v1.stats :as stats]
-            [tech.v3.datatype :as dtype]
-            [tech.v3.datatype.functional :as fun]
-            [scicloj.kindly.v4.api :as kindly]
-            [scicloj.kindly.v4.kind :as kind]
-            [hiccup.core :as hiccup]
-            [clojure2d.color :as color]
-            [noj-book.datasets :as datasets]))
+            [tablecloth.api :as tc]))
 
 ;; ## Linear regression
 

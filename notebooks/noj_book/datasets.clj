@@ -1,8 +1,7 @@
 ;; # Datasets
 
 (ns noj-book.datasets
-  (:require [tablecloth.api :as tc]
-            [scicloj.kindly.v4.kind :as kind]))
+  (:require [tablecloth.api :as tc]))
 
 ;; For our tutorials here,
 ;; let us fetch some datasets from [Rdatasets](https://vincentarelbundock.github.io/Rdatasets/)

@@ -1,18 +1,16 @@
 ;; # Ordinary least squares with interactions
 
 (ns noj-book.interactions-ols
-  (:require [tablecloth.api :as tc]
-            [tablecloth.pipeline :as tcpipe]
-            [fastmath.stats :as fmstats]
-            [tech.v3.datatype.functional :as fun]
+  (:require [fastmath.stats :as fmstats]
+            [scicloj.kindly.v4.api :as kindly]
+            [scicloj.kindly.v4.kind :as kind]
             [scicloj.metamorph.core :as mm]
             [scicloj.metamorph.ml :as ml]
             [scicloj.metamorph.ml.loss :as loss]
-            [scicloj.ml.smile.regression]
+            [tablecloth.api :as tc]
+            [tablecloth.pipeline :as tcpipe]
             [tech.v3.dataset.modelling :as modelling]
-            [tech.v3.dataset.metamorph :as tmd.mm]
-            [scicloj.kindly.v4.api :as kindly]
-            [scicloj.kindly.v4.kind :as kind]))
+            [tech.v3.datatype.functional :as fun]))
 
 ^:kindly/hide-code
 (def md

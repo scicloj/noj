@@ -1,6 +1,6 @@
 (ns scicloj.noj.v1.paths
-  (:require [clojure.string :as string]
-            [clojure.java.io :as io]))
+  (:require [clojure.java.io :as io]
+            [clojure.string :as string]))
 
 (defn url? [path]
   (->> path

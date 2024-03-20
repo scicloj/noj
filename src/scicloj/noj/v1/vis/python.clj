@@ -1,12 +1,8 @@
 (ns scicloj.noj.v1.vis.python
-  (:require [tech.v3.dataset :as tmd]
-            [aerial.hanami.common :as hc]
-            [scicloj.noj.v1.paths :as paths]
-            [scicloj.tempfiles.api :as tempfiles]
-            [libpython-clj2.require :refer [require-python]]
+  (:require [libpython-clj2.require :refer [require-python]]
             [libpython-clj2.python :refer [py. py.. py.-] :as py]
-            [tech.v3.datatype :as dtype]
-            [scicloj.kindly.v4.kind :as kind]))
+            [scicloj.kindly.v4.kind :as kind]
+            [scicloj.tempfiles.api :as tempfiles]))
 
 ;; inspiration: http://gigasquidsoftware.com/blog/2020/01/18/parens-for-pyplot/
 

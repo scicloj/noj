@@ -1,14 +1,13 @@
 (ns scicloj.noj.v1.stats
   (:require [fastmath.stats :as stats]
-            [tech.v3.dataset :as tmd]
-            [scicloj.ml.smile.regression :as regression]
             [scicloj.metamorph.ml :as mmml]
-            [tech.v3.datatype :as dtype]
-            [tech.v3.dataset.column-filters :as cf]
-            [tech.v3.dataset.modelling :as ds-mod]
-            [tech.v3.datatype.functional :as fun]
+            [scicloj.ml.smile.regression]
+            [scicloj.noj.v1.util :as util]
             [tablecloth.api :as tc]
-            [scicloj.noj.v1.util :as util]))
+            [tech.v3.dataset :as tmd]
+            [tech.v3.dataset.modelling :as ds-mod]
+            [tech.v3.datatype :as dtype]
+            [tech.v3.datatype.functional :as fun]))
 
 ;; Computing correlation matrices
 

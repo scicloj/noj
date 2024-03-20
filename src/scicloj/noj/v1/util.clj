@@ -1,8 +1,8 @@
 (ns scicloj.noj.v1.util
-  (:require [clojure.string :as string]))
+  (:require [clojure.string :as str]))
 
 (defn concat-keywords [& kws]
   (->> kws
        (map name)
-       (string/join "-")
+       (str/join "-")
        keyword))

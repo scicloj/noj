@@ -1,18 +1,12 @@
 ;; # Visualization
 
 (ns noj-book.visualization
-  (:require [tablecloth.api :as tc]
-            [aerial.hanami.common :as hc]
-            [aerial.hanami.templates :as ht]
-            [scicloj.noj.v1.vis.hanami.templates :as vht]
-            [scicloj.noj.v1.vis.hanami :as vis.hanami]
-            [tech.v3.datatype :as dtype]
-            [tech.v3.datatype.functional :as fun]
-            [scicloj.kindly.v4.api :as kindly]
+  (:require [aerial.hanami.templates :as ht]
+            [noj-book.datasets :as datasets]
             [scicloj.kindly.v4.kind :as kind]
-            [hiccup.core :as hiccup]
-            [clojure2d.color :as color]
-            [noj-book.datasets :as datasets]))
+            [scicloj.noj.v1.vis.hanami :as vis.hanami]
+            [scicloj.noj.v1.vis.hanami.templates :as vht]
+            [tablecloth.api :as tc]))
 
 ;; ## Visualizing datases with Hanami
 
@@ -73,6 +67,7 @@
                       :Y2 :petal-length
                       :OPACITY 0.2
                       :SIZE 3}))
+
 
 ;; ### Layers
 

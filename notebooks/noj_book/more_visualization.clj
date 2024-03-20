@@ -1,15 +1,14 @@
 ;; # More visualization examples
 
 (ns noj-book.more-visualization
-  (:require [clojure2d.color :as color]
-            [scicloj.noj.v1.vis.hanami :as vis.hanami]
-            [scicloj.noj.v1.vis.stats :as vis.stats]
-            [tablecloth.api :as tc]
+  (:require [aerial.hanami.templates :as ht]
+            [clojure2d.color :as color]
             [noj-book.datasets :as datasets]
             [scicloj.kindly.v4.kind :as kind]
             [scicloj.noj.v1.stats :as stats]
-            [aerial.hanami.templates :as ht]))
-
+            [scicloj.noj.v1.vis.hanami :as vis.hanami]
+            [scicloj.noj.v1.vis.stats :as vis.stats]
+            [tablecloth.api :as tc]))
 
 ;; ## Combining a few things together
 ;;

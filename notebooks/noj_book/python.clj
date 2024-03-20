@@ -1,16 +1,11 @@
 ;; # Python
 
 (ns noj-book.python
-  (:require [tablecloth.api :as tc]
-            [scicloj.noj.v1.vis.python :as vis.python]
-            [libpython-clj2.require :refer [require-python]]
+  (:require [libpython-clj2.require :refer [require-python]]
             [libpython-clj2.python :refer [py. py.. py.-] :as py]
-            [tech.v3.datatype :as dtype]
-            [tech.v3.datatype.functional :as fun]
-            [scicloj.kindly.v4.api :as kindly]
-            [scicloj.kindly.v4.kind :as kind]
-            [hiccup.core :as hiccup]
-            hiccup.util))
+            [scicloj.noj.v1.vis.python :as vis.python]
+            [tablecloth.api :as tc]
+            [tech.v3.datatype.functional :as fun]))
 
 
 ;; ## Using Python visualizations

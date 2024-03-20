@@ -1,10 +1,9 @@
 (ns scicloj.noj.v1.vis.stats
-  (:require [scicloj.noj.v1.vis.hanami :as hanami]
+  (:require [aerial.hanami.templates :as ht]
+            [scicloj.kindly.v4.kind :as kind]
             [scicloj.noj.v1.stats :as stats]
-            [scicloj.noj.v1.vis.hanami.templates :as vht]
-            [aerial.hanami.templates :as ht]
-            [tablecloth.api :as tc]
-            [scicloj.kindly.v4.kind :as kind]))
+            [scicloj.noj.v1.vis.hanami :as hanami]
+            [tablecloth.api :as tc]))
 
 (defn histogram [dataset column-name options]
   (let [hist (-> column-name

@@ -1,14 +1,11 @@
 (ns scicloj.noj.v1.vis.hanami
-  (:require [tech.v3.dataset :as tmd]
+  (:require [aerial.hanami.common :as hc]
             [aerial.hanami.templates :as ht]
-            [aerial.hanami.common :as hc]
-            [scicloj.noj.v1.vis.hanami.templates :as vht]
             [scicloj.kindly.v4.kind :as kind]
             [scicloj.noj.v1.paths :as paths]
             [scicloj.tempfiles.api :as tempfiles]
-            [scicloj.noj.v1.stats :as stats]
-            [tablecloth.api :as tc]))
-
+            [tablecloth.api :as tc]
+            [tech.v3.dataset :as tmd]))
 
 (defn prepare-data [data]
   (when data
