@@ -1,4 +1,4 @@
-;; # Python
+;; # Python (experimental 🛠)
 
 (ns noj-book.python
   (:require [libpython-clj2.require :refer [require-python]]

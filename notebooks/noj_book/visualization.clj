@@ -1,4 +1,4 @@
-;; # Visualization
+;; # Visualization (experimental 🛠)
 
 (ns noj-book.visualization
   (:require [aerial.hanami.templates :as ht]

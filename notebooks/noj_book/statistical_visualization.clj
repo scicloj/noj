@@ -1,4 +1,4 @@
-;; # Statistical Visualization
+;; # Statistical Visualization (experimental 🛠)
 
 (ns noj-book.statistical-visualization
   (:require [aerial.hanami.templates :as ht]
