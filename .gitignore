@@ -32,4 +32,5 @@
 .clay.html
 _quarto.yml
 temp
+*.qmd
 
