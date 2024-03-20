@@ -253,6 +253,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-style: none;
 }
 </style>
+<style>.clay-limit-image-width .clay-image {max-width: 100%}
+</style>
 <script src="noj_book.stats_files/md-default0.js" type="text/javascript"></script>
 <script src="noj_book.stats_files/md-default1.js" type="text/javascript"></script>
 <div class="sourceClojure">
@@ -281,6 +283,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    (stats/calc-correlations-matrix</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>     [<span class="at">:sepal-length</span> <span class="at">:sepal-width</span> <span class="at">:petal-length</span> <span class="at">:petal-width</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="clay-dataset">
 <p>_unnamed [16 3]:</p>
 <table class="table">
 <thead>
@@ -373,6 +376,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <section id="multivariate-regression" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="multivariate-regression"><span class="header-section-number">4.3</span> Multivariate regression</h2>
@@ -388,14 +392,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="printedClojure">
 <div class="sourceCode" id="cb5"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>{<span class="at">:feature-columns</span> [<span class="at">:sepal-width</span> <span class="at">:petal-length</span> <span class="at">:petal-width</span>],</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> <span class="at">:target-columns</span> [<span class="at">:sepal-length</span>],</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> <span class="at">:explained</span> #function[malli.core/-instrument/fn--<span class="dv">54083</span>],</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> <span class="at">:R2</span> <span class="fl">0.8582120394597336</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a> <span class="at">:id</span> #uuid <span class="st">"6c953f8f-7e63-442d-833d-4dffd1e2357d"</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> <span class="at">:explained</span> #function[clojure.lang.AFunction/<span class="dv">1</span>],</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> <span class="at">:R2</span> <span class="fl">0.8582120394596505</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a> <span class="at">:id</span> #uuid <span class="st">"37fd28c6-7f01-444a-9b61-34ac0008a08b"</span>,</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a> <span class="at">:predictions</span> #tech.v3.dataset.column&amp;lt<span class="co">;float64&amp;gt;[150]</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="at">:sepal-length</span></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>[<span class="fl">5.022</span>, <span class="fl">4.724</span>, <span class="fl">4.775</span>, <span class="fl">4.851</span>, <span class="fl">5.081</span>, <span class="fl">5.360</span>, <span class="fl">4.911</span>, <span class="fl">5.030</span>, <span class="fl">4.664</span>, <span class="fl">4.903</span>, <span class="fl">5.209</span>, <span class="fl">5.098</span>, <span class="fl">4.775</span>, <span class="fl">4.572</span>, <span class="fl">5.184</span>, <span class="fl">5.522</span>, <span class="fl">5.089</span>, <span class="fl">4.970</span>, <span class="fl">5.352</span>, <span class="dv">5</span>.<span class="dv">217</span>...],</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a> <span class="at">:predict</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a> #function[scicloj.noj.v1.stats/regression-model/predict--<span class="dv">58311</span>],</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a> #function[scicloj.noj.v1.stats/regression-model/predict--<span class="dv">59152</span>],</span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a> <span class="at">:options</span> {<span class="at">:model-type</span> <span class="at">:smile.regression/elastic-net</span>}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="sourceClojure">
@@ -409,14 +413,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="printedClojure">
 <div class="sourceCode" id="cb7"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>{<span class="at">:feature-columns</span> [<span class="at">:sepal-width</span> <span class="at">:petal-length</span> <span class="at">:petal-width</span>],</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a> <span class="at">:target-columns</span> [<span class="at">:sepal-length</span>],</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a> <span class="at">:explained</span> #function[malli.core/-instrument/fn--<span class="dv">54083</span>],</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a> <span class="at">:R2</span> <span class="fl">0.8586117200664085</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a> <span class="at">:id</span> #uuid <span class="st">"9afc24d4-9e19-477a-bd9e-483b6c030785"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a> <span class="at">:explained</span> #function[clojure.lang.AFunction/<span class="dv">1</span>],</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a> <span class="at">:R2</span> <span class="fl">0.8586117200663171</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a> <span class="at">:id</span> #uuid <span class="st">"6ba20147-8131-436d-9eaf-17dccf50166f"</span>,</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a> <span class="at">:predictions</span> #tech.v3.dataset.column&amp;lt<span class="co">;float64&amp;gt;[150]</span></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="at">:sepal-length</span></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>[<span class="fl">5.015</span>, <span class="fl">4.690</span>, <span class="fl">4.749</span>, <span class="fl">4.826</span>, <span class="fl">5.080</span>, <span class="fl">5.377</span>, <span class="fl">4.895</span>, <span class="fl">5.021</span>, <span class="fl">4.625</span>, <span class="fl">4.882</span>, <span class="fl">5.216</span>, <span class="fl">5.092</span>, <span class="fl">4.746</span>, <span class="fl">4.533</span>, <span class="fl">5.199</span>, <span class="fl">5.561</span>, <span class="fl">5.094</span>, <span class="fl">4.960</span>, <span class="fl">5.368</span>, <span class="dv">5</span>.<span class="dv">226</span>...],</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a> <span class="at">:predict</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a> #function[scicloj.noj.v1.stats/regression-model/predict--<span class="dv">58311</span>],</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a> #function[scicloj.noj.v1.stats/regression-model/predict--<span class="dv">59152</span>],</span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a> <span class="at">:options</span> {<span class="at">:model-type</span> <span class="at">:smile.regression/ordinary-least-square</span>}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code>stats/linear-regression-model</code> convenience function uses specifically the <code>:smile.regression/ordinary-least-square</code> model type.</p>
@@ -430,14 +434,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="printedClojure">
 <div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>{<span class="at">:feature-columns</span> [<span class="at">:sepal-width</span> <span class="at">:petal-length</span> <span class="at">:petal-width</span>],</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a> <span class="at">:target-columns</span> [<span class="at">:sepal-length</span>],</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a> <span class="at">:explained</span> #function[malli.core/-instrument/fn--<span class="dv">54083</span>],</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a> <span class="at">:R2</span> <span class="fl">0.8586117200664085</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a> <span class="at">:id</span> #uuid <span class="st">"7612bf5a-3418-4bb8-bdd8-4acb3282e2ce"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a> <span class="at">:explained</span> #function[clojure.lang.AFunction/<span class="dv">1</span>],</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a> <span class="at">:R2</span> <span class="fl">0.8586117200663171</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a> <span class="at">:id</span> #uuid <span class="st">"9be5dcfa-685a-4595-addf-5cc7591c9cd0"</span>,</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a> <span class="at">:predictions</span> #tech.v3.dataset.column&amp;lt<span class="co">;float64&amp;gt;[150]</span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="at">:sepal-length</span></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>[<span class="fl">5.015</span>, <span class="fl">4.690</span>, <span class="fl">4.749</span>, <span class="fl">4.826</span>, <span class="fl">5.080</span>, <span class="fl">5.377</span>, <span class="fl">4.895</span>, <span class="fl">5.021</span>, <span class="fl">4.625</span>, <span class="fl">4.882</span>, <span class="fl">5.216</span>, <span class="fl">5.092</span>, <span class="fl">4.746</span>, <span class="fl">4.533</span>, <span class="fl">5.199</span>, <span class="fl">5.561</span>, <span class="fl">5.094</span>, <span class="fl">4.960</span>, <span class="fl">5.368</span>, <span class="dv">5</span>.<span class="dv">226</span>...],</span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a> <span class="at">:predict</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a> #function[scicloj.noj.v1.stats/regression-model/predict--<span class="dv">58311</span>],</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a> #function[scicloj.noj.v1.stats/regression-model/predict--<span class="dv">59152</span>],</span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a> <span class="at">:options</span> {<span class="at">:model-type</span> <span class="at">:smile.regression/ordinary-least-square</span>}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -451,6 +455,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>     [<span class="at">:sepal-width</span> <span class="at">:petal-length</span> <span class="at">:petal-width</span>]</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>     {<span class="at">:model-type</span> <span class="at">:smile.regression/ordinary-least-square</span>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="clay-dataset">
 <p>https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv [150 7]:</p>
 <table class="table">
 <colgroup>
@@ -674,6 +679,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+</div>
 <p>It attaches the model’s information to the metadata of that new column.</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb11"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> iris</span>
@@ -694,9 +700,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a> <span class="at">:model</span></span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a> {<span class="at">:feature-columns</span> [<span class="at">:sepal-width</span> <span class="at">:petal-length</span> <span class="at">:petal-width</span>],</span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">:target-columns</span> [<span class="at">:sepal-length</span>],</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">:explained</span> #function[malli.core/-instrument/fn--<span class="dv">54083</span>],</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">:R2</span> <span class="fl">0.8586117200664085</span>,</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">:id</span> #uuid <span class="st">"bb82d594-5a79-46a7-8b23-ec4d7c912125"</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">:explained</span> #function[clojure.lang.AFunction/<span class="dv">1</span>],</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">:R2</span> <span class="fl">0.8586117200663171</span>,</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">:id</span> #uuid <span class="st">"cde378cd-d83d-4005-b070-57291f860382"</span>,</span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">:options</span> {<span class="at">:model-type</span> <span class="at">:smile.regression/ordinary-least-square</span>}}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -707,6 +713,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb13"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> (<span class="kw">repeatedly</span> <span class="dv">99</span> <span class="kw">rand</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    (stats/histogram {<span class="at">:bin-count</span> <span class="dv">5</span>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="clay-dataset">
 <p>_unnamed [5 3]:</p>
 <table class="table">
 <thead>
@@ -719,31 +726,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">20</td>
-<td style="text-align: right;">0.0138532</td>
-<td style="text-align: right;">0.2098845</td>
+<td style="text-align: right;">0.00367276</td>
+<td style="text-align: right;">0.20281279</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">0.20281279</td>
+<td style="text-align: right;">0.40195281</td>
+</tr>
+<tr class="odd">
 <td style="text-align: right;">20</td>
-<td style="text-align: right;">0.2098845</td>
-<td style="text-align: right;">0.4059158</td>
+<td style="text-align: right;">0.40195281</td>
+<td style="text-align: right;">0.60109284</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">0.60109284</td>
+<td style="text-align: right;">0.80023287</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">22</td>
-<td style="text-align: right;">0.4059158</td>
-<td style="text-align: right;">0.6019471</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">0.6019471</td>
-<td style="text-align: right;">0.7979784</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">0.7979784</td>
-<td style="text-align: right;">0.9940097</td>
+<td style="text-align: right;">0.80023287</td>
+<td style="text-align: right;">0.99937290</td>
 </tr>
 </tbody>
 </table>
+</div>
 <div style="background-color:grey;height:2px;width:100%;"></div>
 <div><pre><small><small>source: <a href="https://github.com/scicloj/noj/blob/main/notebooks/noj_book/stats.clj">notebooks/noj_book/stats.clj</a></small></small></pre></div>
 

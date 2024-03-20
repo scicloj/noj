@@ -250,6 +250,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-style: none;
 }
 </style>
+<style>.clay-limit-image-width .clay-image {max-width: 100%}
+</style>
 <script src="noj_book.statistical_visualization_files/md-default5.js" type="text/javascript"></script>
 <script src="noj_book.statistical_visualization_files/md-default6.js" type="text/javascript"></script>
 <script src="noj_book.statistical_visualization_files/vega7.js" type="text/javascript"></script>
@@ -257,20 +259,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="noj_book.statistical_visualization_files/vega9.js" type="text/javascript"></script>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb1"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">ns</span> noj-book.statistical-visualization</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  (<span class="at">:require</span> [tablecloth.api <span class="at">:as</span> tc]</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            [aerial.hanami.common <span class="at">:as</span> hc]</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            [aerial.hanami.templates <span class="at">:as</span> ht]</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            [scicloj.noj.v1.vis.hanami.templates <span class="at">:as</span> vht]</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  (<span class="at">:require</span> [aerial.hanami.templates <span class="at">:as</span> ht]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            [noj-book.datasets <span class="at">:as</span> datasets]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            [scicloj.kindly.v4.kind <span class="at">:as</span> kind]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            [scicloj.noj.v1.stats <span class="at">:as</span> stats]</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            [scicloj.noj.v1.vis.hanami <span class="at">:as</span> vis.hanami]</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            [scicloj.noj.v1.vis.stats <span class="at">:as</span> vis.stats]</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            [scicloj.noj.v1.stats <span class="at">:as</span> stats]</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            [tech.v3.datatype <span class="at">:as</span> dtype]</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            [tech.v3.datatype.functional <span class="at">:as</span> fun]</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            [scicloj.kindly.v4.api <span class="at">:as</span> kindly]</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            [scicloj.kindly.v4.kind <span class="at">:as</span> kind]</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            [hiccup.core <span class="at">:as</span> hiccup]</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            [clojure2d.color <span class="at">:as</span> color]</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            [noj-book.datasets <span class="at">:as</span> datasets]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            [tablecloth.api <span class="at">:as</span> tc]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="linear-regression" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="linear-regression"><span class="header-section-number">6.1</span> Linear regression</h2>
@@ -292,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>               <span class="at">:MCOLOR</span> <span class="st">"purple"</span></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>               <span class="at">:YTITLE</span> <span class="at">:mpg</span>}]]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div><script>vegaEmbed(document.currentScript.parentElement, {"usermeta":{"embedOptions":{"renderer":"svg"}},"width":400,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":400,"background":"floralwhite","height":200}],"height":200,"data":{"url":"noj_book.statistical_visualization_files\/0.csv","format":{"type":"csv"}}});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"usermeta":{"embedOptions":{"renderer":"svg"}},"width":400,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"},"y2":{"field":"Y2","type":"quantitative"},"x2":{"field":"X2","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"},"y2":{"field":"Y2","type":"quantitative","axis":{"title":"mpg"}},"x2":{"field":"X2","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":400,"background":"floralwhite","height":200}],"height":200,"data":{"url":"noj_book.statistical_visualization_files\/0.csv","format":{"type":"csv"}}});</script></div>
 <p>Alternatively:</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb3"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/mtcars</span>
@@ -304,7 +299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">:line-options</span> {<span class="at">:MSIZE</span> <span class="dv">5</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">:MCOLOR</span> <span class="st">"purple"</span>}}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div><script>vegaEmbed(document.currentScript.parentElement, {"usermeta":{"embedOptions":{"renderer":"svg"}},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.753"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.753"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.753"},"height":200}],"height":200,"data":{"url":"noj_book.statistical_visualization_files\/0.csv","format":{"type":"csv"}}});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"usermeta":{"embedOptions":{"renderer":"svg"}},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.753"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"},"y2":{"field":"Y2","type":"quantitative"},"x2":{"field":"X2","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.753"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"},"y2":{"field":"Y2","type":"quantitative","axis":{"title":"mpg"}},"x2":{"field":"X2","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.753"},"height":200}],"height":200,"data":{"url":"noj_book.statistical_visualization_files\/0.csv","format":{"type":"csv"}}});</script></div>
 <p>And in a grouped dataset case:</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb4"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/mtcars</span>
@@ -317,6 +312,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">:line-options</span> {<span class="at">:MSIZE</span> <span class="dv">5</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">:MCOLOR</span> <span class="st">"purple"</span>}}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="clay-table">
 <div>
 <div class="table-responsive">
 <table class="table table-hover" data-quarto-postprocess="true">
@@ -326,31 +322,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </colgroup>
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th">:gear</th>
-<th data-quarto-table-cell-role="th">:plot</th>
+<th data-quarto-table-cell-role="th">gear</th>
+<th data-quarto-table-cell-role="th">plot</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>4</td>
 <td><div>
-<script>vegaEmbed(document.currentScript.parentElement, {"usermeta":{"embedOptions":{"renderer":"svg"}},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"height":200}],"height":200,"data":{"url":"noj_book.statistical_visualization_files\/1.csv","format":{"type":"csv"}}});</script>
+<script>vegaEmbed(document.currentScript.parentElement, {"usermeta":{"embedOptions":{"renderer":"svg"}},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"},"y2":{"field":"Y2","type":"quantitative"},"x2":{"field":"X2","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"},"y2":{"field":"Y2","type":"quantitative","axis":{"title":"mpg"}},"x2":{"field":"X2","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"height":200}],"height":200,"data":{"url":"noj_book.statistical_visualization_files\/1.csv","format":{"type":"csv"}}});</script>
 </div></td>
 </tr>
 <tr class="even">
 <td>3</td>
 <td><div>
-<script>vegaEmbed(document.currentScript.parentElement, {"usermeta":{"embedOptions":{"renderer":"svg"}},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"height":200}],"height":200,"data":{"url":"noj_book.statistical_visualization_files\/2.csv","format":{"type":"csv"}}});</script>
+<script>vegaEmbed(document.currentScript.parentElement, {"usermeta":{"embedOptions":{"renderer":"svg"}},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"},"y2":{"field":"Y2","type":"quantitative"},"x2":{"field":"X2","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"},"y2":{"field":"Y2","type":"quantitative","axis":{"title":"mpg"}},"x2":{"field":"X2","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"height":200}],"height":200,"data":{"url":"noj_book.statistical_visualization_files\/2.csv","format":{"type":"csv"}}});</script>
 </div></td>
 </tr>
 <tr class="odd">
 <td>5</td>
 <td><div>
-<script>vegaEmbed(document.currentScript.parentElement, {"usermeta":{"embedOptions":{"renderer":"svg"}},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"height":200}],"height":200,"data":{"url":"noj_book.statistical_visualization_files\/3.csv","format":{"type":"csv"}}});</script>
+<script>vegaEmbed(document.currentScript.parentElement, {"usermeta":{"embedOptions":{"renderer":"svg"}},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"},"y2":{"field":"Y2","type":"quantitative"},"x2":{"field":"X2","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"},"y2":{"field":"Y2","type":"quantitative","axis":{"title":"mpg"}},"x2":{"field":"X2","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"height":200}],"height":200,"data":{"url":"noj_book.statistical_visualization_files\/3.csv","format":{"type":"csv"}}});</script>
 </div></td>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 </section>
@@ -363,7 +360,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    (vis.stats/histogram <span class="at">:sepal-width</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                         {<span class="at">:nbins</span> <span class="dv">10</span>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"url":"noj_book.statistical_visualization_files\/4.csv","format":{"type":"csv"}}});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"field":"left","type":"quantitative","title":"sepal-width","bin":{"binned":true,"step":0.2400000000000002}},"y2":{"field":"Y2","type":"quantitative"},"x2":{"field":"right","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"bar","tooltip":true},"width":400,"background":"floralwhite","height":300,"data":{"url":"noj_book.statistical_visualization_files\/4.csv","format":{"type":"csv"}}});</script></div>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb6"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/iris</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    (vis.stats/histogram <span class="at">:sepal-width</span></span>
@@ -374,14 +371,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb7"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>{<span class="at">:encoding</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a> {<span class="at">:y</span> {<span class="at">:field</span> <span class="at">:count</span>, <span class="at">:type</span> <span class="st">"quantitative"</span>},</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">:x</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  {<span class="at">:scale</span> {<span class="at">:zero</span> <span class="va">false</span>},</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>   <span class="at">:field</span> <span class="at">:left</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">:type</span> <span class="st">"quantitative"</span>,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>   <span class="at">:title</span> <span class="at">:sepal-width</span>},</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">:y2</span> {<span class="at">:field</span> <span class="dv">0</span>, <span class="at">:type</span> <span class="st">"quantitative"</span>},</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">:x2</span> {<span class="at">:scale</span> {<span class="at">:zero</span> <span class="va">false</span>}, <span class="at">:field</span> <span class="at">:right</span>, <span class="at">:type</span> <span class="st">"quantitative"</span>}},</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  {<span class="at">:field</span> <span class="at">:left</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>   <span class="at">:type</span> <span class="st">"quantitative"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">:title</span> <span class="at">:sepal-width</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>   <span class="at">:bin</span> {<span class="at">:binned</span> <span class="va">true</span>, <span class="at">:step</span> <span class="fl">0.2400000000000002</span>}},</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">:y2</span> {<span class="at">:field</span> <span class="at">:Y2</span>, <span class="at">:type</span> <span class="st">"quantitative"</span>},</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">:x2</span> {<span class="at">:field</span> <span class="at">:right</span>, <span class="at">:type</span> <span class="st">"quantitative"</span>}},</span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a> <span class="at">:usermeta</span> {<span class="at">:embedOptions</span> {<span class="at">:renderer</span> <span class="at">:svg</span>}},</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a> <span class="at">:mark</span> <span class="st">"rect"</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a> <span class="at">:mark</span> {<span class="at">:type</span> <span class="st">"bar"</span>, <span class="at">:tooltip</span> <span class="va">true</span>},</span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a> <span class="at">:width</span> <span class="dv">400</span>,</span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a> <span class="at">:background</span> <span class="st">"floralwhite"</span>,</span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a> <span class="at">:height</span> <span class="dv">300</span>,</span>
@@ -399,7 +396,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">assoc</span> <span class="at">:height</span> <span class="dv">125</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">:width</span> <span class="dv">175</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":"rect","width":175,"background":"floralwhite","height":125,"data":{"url":"noj_book.statistical_visualization_files\/4.csv","format":{"type":"csv"}}});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"field":"left","type":"quantitative","title":"sepal-width","bin":{"binned":true,"step":0.2400000000000002}},"y2":{"field":"Y2","type":"quantitative"},"x2":{"field":"right","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"bar","tooltip":true},"width":175,"background":"floralwhite","height":125,"data":{"url":"noj_book.statistical_visualization_files\/4.csv","format":{"type":"csv"}}});</script></div>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="at">:bye</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>

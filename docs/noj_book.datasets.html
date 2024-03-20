@@ -243,12 +243,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-style: none;
 }
 </style>
+<style>.clay-limit-image-width .clay-image {max-width: 100%}
+</style>
 <script src="noj_book.datasets_files/md-default0.js" type="text/javascript"></script>
 <script src="noj_book.datasets_files/md-default1.js" type="text/javascript"></script>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb1"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">ns</span> noj-book.datasets</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  (<span class="at">:require</span> [tablecloth.api <span class="at">:as</span> tc]</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            [scicloj.kindly.v4.kind <span class="at">:as</span> kind]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  (<span class="at">:require</span> [tablecloth.api <span class="at">:as</span> tc]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>For our tutorials here, let us fetch some datasets from <a href="https://vincentarelbundock.github.io/Rdatasets/">Rdatasets</a></p>
 <div class="sourceClojure">
@@ -264,6 +265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceClojure">
 <div class="sourceCode" id="cb3"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>iris</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="clay-dataset">
 <p>https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv [150 6]:</p>
 <table class="table">
 <colgroup>
@@ -463,6 +465,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+</div>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb4"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> mtcars</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> <span class="st">"https://vincentarelbundock.github.io/Rdatasets/csv/datasets/mtcars.csv"</span></span>
@@ -471,6 +474,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceClojure">
 <div class="sourceCode" id="cb5"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mtcars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="clay-dataset">
 <p>https://vincentarelbundock.github.io/Rdatasets/csv/datasets/mtcars.csv [32 12]:</p>
 <table class="table">
 <colgroup>
@@ -814,6 +818,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+</div>
 <div style="background-color:grey;height:2px;width:100%;"></div>
 <div><pre><small><small>source: <a href="https://github.com/scicloj/noj/blob/main/notebooks/noj_book/datasets.clj">notebooks/noj_book/datasets.clj</a></small></small></pre></div>
 
