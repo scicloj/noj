@@ -34,31 +34,37 @@ It collects a few of the main dependencies together with functions allowing to c
 
 
 
-- [python](python.html)
+- [Datasets](datasets.html)
 
 
-- [stats](stats.html)
+- [Python](python.html)
 
 
-- [visualization](visualization.html)
+- [Statistics](stats.html)
 
 
-- [prepare_for_ml](prepare_for_ml.html)
+- [Visualization](visualization.html)
 
 
-- [ml_basic](ml_basic.html)
+- [Statistical Visualization](statistical_visualization.html)
 
 
-- [automl](automl.html)
+- [More visualization examples](more_visualization.html)
 
 
-- [interactions_ols](interactions_ols.html)
+- [Machine learning specific functionality in `tech.ml.dataset`](prepare_for_ml.html)
 
 
+- [Machine learning](ml_basic.html)
 
-## Wishlist
 
-- a subset of [ggplot2](https://ggplot2.tidyverse.org/) ported to Clojure
+- [AutoML using metamorph pipelines](automl.html)
+
+
+- [Ordinary least squares with interactions](interactions_ols.html)
+
+
+- [Curve fitting example](curve_fitting.html)
 
 
 

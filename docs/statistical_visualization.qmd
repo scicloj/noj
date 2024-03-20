@@ -1,0 +1,234 @@
+
+---
+format:
+  html:
+    toc: true
+    toc-depth: 4
+    theme: [cosmo, notebooks/custom.scss]
+    output-file: statistical_visualization.html
+code-block-background: true
+include-in-header: {text: '<link rel = "icon" href = "data:," />'}
+fontsize: 0.9em
+
+---
+<style></style><style>.printedClojure .sourceCode {
+  background-color: transparent;
+  border-style: none;
+}
+</style>
+<script src="statistical_visualization_files/md-default5.js" type="text/javascript"></script><script src="statistical_visualization_files/md-default6.js" type="text/javascript"></script><script src="statistical_visualization_files/vega7.js" type="text/javascript"></script><script src="statistical_visualization_files/vega8.js" type="text/javascript"></script><script src="statistical_visualization_files/vega9.js" type="text/javascript"></script>
+
+# Statistical Visualization
+
+
+::: {.sourceClojure}
+```clojure
+(ns statistical-visualization
+  (:require [tablecloth.api :as tc]
+            [aerial.hanami.common :as hc]
+            [aerial.hanami.templates :as ht]
+            [scicloj.noj.v1.vis.hanami.templates :as vht]
+            [scicloj.noj.v1.vis.hanami :as vis.hanami]
+            [scicloj.noj.v1.vis.stats :as vis.stats]
+            [scicloj.noj.v1.stats :as stats]
+            [tech.v3.datatype :as dtype]
+            [tech.v3.datatype.functional :as fun]
+            [scicloj.kindly.v4.api :as kindly]
+            [scicloj.kindly.v4.kind :as kind]
+            [hiccup.core :as hiccup]
+            [clojure2d.color :as color]
+            [datasets]))
+```
+:::
+
+
+
+## Linear regression
+
+
+::: {.sourceClojure}
+```clojure
+(-> datasets/mtcars
+    (stats/add-predictions :mpg [:wt]
+                           {:model-type :smile.regression/ordinary-least-square})
+    (vis.hanami/combined-plot
+     ht/layer-chart
+     {:X :wt
+      :MSIZE 200
+      :HEIGHT 200}
+     :LAYER [[ht/point-chart
+              {:Y :mpg
+               :WIDTH 200}]
+             [ht/line-chart
+              {:Y :mpg-prediction
+               :MSIZE 5
+               :MCOLOR "purple"
+               :YTITLE :mpg}]]))
+```
+:::
+
+
+
+```{=html}
+<div><script>vegaEmbed(document.currentScript.parentElement, {"usermeta":{"embedOptions":{"renderer":"svg"}},"width":400,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":400,"background":"floralwhite","height":200}],"height":200,"data":{"url":"statistical_visualization_files\/0.csv","format":{"type":"csv"}}});</script></div>
+```
+
+
+Alternatively:
+
+
+::: {.sourceClojure}
+```clojure
+(-> datasets/mtcars
+    (vis.stats/linear-regression-plot
+     :mpg :wt
+     {:HEIGHT 200
+      :WIDTH 200
+      :point-options {:MSIZE 200}
+      :line-options {:MSIZE 5
+                     :MCOLOR "purple"}}))
+```
+:::
+
+
+
+```{=html}
+<div><script>vegaEmbed(document.currentScript.parentElement, {"usermeta":{"embedOptions":{"renderer":"svg"}},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.753"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.753"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.753"},"height":200}],"height":200,"data":{"url":"statistical_visualization_files\/0.csv","format":{"type":"csv"}}});</script></div>
+```
+
+
+And in a grouped dataset case:
+
+
+::: {.sourceClojure}
+```clojure
+(-> datasets/mtcars
+    (tc/group-by [:gear])
+    (vis.stats/linear-regression-plot
+     :mpg :wt
+     {:HEIGHT 200
+      :WIDTH 200
+      :point-options {:MSIZE 200}
+      :line-options {:MSIZE 5
+                     :MCOLOR "purple"}}))
+```
+:::
+
+
+
+```{=html}
+<table class="table table-hover table-responsive"><thead><tr><th>:gear</th><th>:plot</th></tr></thead><tbody><tr><td><span data-qmd="4"></span></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"usermeta":{"embedOptions":{"renderer":"svg"}},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"height":200}],"height":200,"data":{"url":"statistical_visualization_files\/1.csv","format":{"type":"csv"}}});</script></div></td></tr><tr><td><span data-qmd="3"></span></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"usermeta":{"embedOptions":{"renderer":"svg"}},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"height":200}],"height":200,"data":{"url":"statistical_visualization_files\/2.csv","format":{"type":"csv"}}});</script></div></td></tr><tr><td><span data-qmd="5"></span></td><td><div><script>vegaEmbed(document.currentScript.parentElement, {"usermeta":{"embedOptions":{"renderer":"svg"}},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"height":200}],"height":200,"data":{"url":"statistical_visualization_files\/3.csv","format":{"type":"csv"}}});</script></div></td></tr></tbody></table>
+```
+
+
+
+## Histogram
+
+A [histogram](https://en.wikipedia.org/wiki/Histogram) groups values in bins,
+counts them,
+and creates a corresponding bar-chart.
+
+The `vis.stats/histogram` functions does that behind the scenes,
+and generates a Vega-Lite spec using Hanami.
+
+
+::: {.sourceClojure}
+```clojure
+(-> datasets/iris
+    (vis.stats/histogram :sepal-width
+                         {:nbins 10}))
+```
+:::
+
+
+
+```{=html}
+<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"url":"statistical_visualization_files\/4.csv","format":{"type":"csv"}}});</script></div>
+```
+
+
+
+::: {.sourceClojure}
+```clojure
+(-> datasets/iris
+    (vis.stats/histogram :sepal-width
+                         {:nbins 10})
+    kind/pprint)
+```
+:::
+
+
+
+::: {.printedClojure}
+```clojure
+{:encoding
+ {:y {:field :count, :type "quantitative"},
+  :x
+  {:scale {:zero false},
+   :field :left,
+   :type "quantitative",
+   :title :sepal-width},
+  :y2 {:field 0, :type "quantitative"},
+  :x2 {:scale {:zero false}, :field :right, :type "quantitative"}},
+ :usermeta {:embedOptions {:renderer :svg}},
+ :mark "rect",
+ :width 400,
+ :background "floralwhite",
+ :height 300,
+ :data
+ {:values
+  "count,left,right\n4,2.0,2.24\n7,2.24,2.48\n22,2.48,2.72\n24,2.72,2.96\n37,2.96,3.2\n31,3.2,3.4400000000000004\n10,3.4400000000000004,3.6800000000000006\n11,3.6800000000000006,3.9200000000000004\n2,3.9200000000000004,4.16\n2,4.16,4.4\n",
+  :format {:type "csv"}}}
+
+```
+:::
+
+
+The resulting spec can be customized further:
+
+
+::: {.sourceClojure}
+```clojure
+(-> datasets/iris
+    (vis.stats/histogram :sepal-width
+                         {:nbins 10})
+    ;; varying the resulting vega-lite spec:
+    (assoc :height 125
+           :width 175))
+```
+:::
+
+
+
+```{=html}
+<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":"rect","width":175,"background":"floralwhite","height":125,"data":{"url":"statistical_visualization_files\/4.csv","format":{"type":"csv"}}});</script></div>
+```
+
+
+
+::: {.sourceClojure}
+```clojure
+:bye
+```
+:::
+
+
+
+::: {.printedClojure}
+```clojure
+:bye
+
+```
+:::
+
+
+
+```{=html}
+<div style="background-color:grey;height:2px;width:100%;"></div>
+```
+
+
+
+```{=html}
+<div><pre><small><small>source: <a href="https://github.com/scicloj/noj/blob/main/notebooks/statistical_visualization.clj">notebooks/statistical_visualization.clj</a></small></small></pre></div>
+```

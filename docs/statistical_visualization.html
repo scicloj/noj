@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Noj Documentation – 11&nbsp; Ordinary least squares with interactions</title>
+<title>Noj Documentation – 6&nbsp; Statistical Visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./curve_fitting.html" rel="next">
-<link href="./automl.html" rel="prev">
+<link href="./more_visualization.html" rel="next">
+<link href="./visualization.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -104,35 +104,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <link rel="icon" href="data:,">
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -145,7 +116,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./interactions_ols.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ordinary least squares with interactions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_visualization.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistical Visualization</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -202,7 +173,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./statistical_visualization.html" class="sidebar-item-text sidebar-link">
+  <a href="./statistical_visualization.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistical Visualization</span></span></a>
   </div>
 </li>
@@ -232,7 +203,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./interactions_ols.html" class="sidebar-item-text sidebar-link active">
+  <a href="./interactions_ols.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ordinary least squares with interactions</span></span></a>
   </div>
 </li>
@@ -252,8 +223,8 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#additive-model" id="toc-additive-model" class="nav-link active" data-scroll-target="#additive-model"><span class="header-section-number">11.1</span> Additive model</a></li>
-  <li><a href="#interaction-effects" id="toc-interaction-effects" class="nav-link" data-scroll-target="#interaction-effects"><span class="header-section-number">11.2</span> Interaction effects</a></li>
+  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link active" data-scroll-target="#linear-regression"><span class="header-section-number">6.1</span> Linear regression</a></li>
+  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram"><span class="header-section-number">6.2</span> Histogram</a></li>
   </ul>
 </nav>
     </div>
@@ -262,7 +233,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Ordinary least squares with interactions</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistical Visualization</span></h1>
 </div>
 
 
@@ -285,160 +256,164 @@ window.Quarto = {
   border-style: none;
 }
 </style>
-<script src="interactions_ols_files/md-default0.js" type="text/javascript"></script>
-<script src="interactions_ols_files/md-default1.js" type="text/javascript"></script>
+<script src="statistical_visualization_files/md-default5.js" type="text/javascript"></script>
+<script src="statistical_visualization_files/md-default6.js" type="text/javascript"></script>
+<script src="statistical_visualization_files/vega7.js" type="text/javascript"></script>
+<script src="statistical_visualization_files/vega8.js" type="text/javascript"></script>
+<script src="statistical_visualization_files/vega9.js" type="text/javascript"></script>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb1"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">ns</span> interactions-ols</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">ns</span> statistical-visualization</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  (<span class="at">:require</span> [tablecloth.api <span class="at">:as</span> tc]</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            [tablecloth.pipeline <span class="at">:as</span> tcpipe]</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            [fastmath.stats <span class="at">:as</span> fmstats]</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            [tech.v3.datatype.functional <span class="at">:as</span> fun]</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            [scicloj.metamorph.core <span class="at">:as</span> mm]</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            [scicloj.metamorph.ml <span class="at">:as</span> ml]</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            [scicloj.metamorph.ml.loss <span class="at">:as</span> loss]</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            [scicloj.ml.smile.regression]</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            [tech.v3.dataset.modelling <span class="at">:as</span> modelling]</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            [tech.v3.dataset.metamorph <span class="at">:as</span> tmd.mm]</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            [scicloj.kindly.v4.api <span class="at">:as</span> kindly]</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            [scicloj.kindly.v4.kind <span class="at">:as</span> kind]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            [aerial.hanami.common <span class="at">:as</span> hc]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            [aerial.hanami.templates <span class="at">:as</span> ht]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            [scicloj.noj.v1.vis.hanami.templates <span class="at">:as</span> vht]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            [scicloj.noj.v1.vis.hanami <span class="at">:as</span> vis.hanami]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            [scicloj.noj.v1.vis.stats <span class="at">:as</span> vis.stats]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            [scicloj.noj.v1.stats <span class="at">:as</span> stats]</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            [tech.v3.datatype <span class="at">:as</span> dtype]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            [tech.v3.datatype.functional <span class="at">:as</span> fun]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            [scicloj.kindly.v4.api <span class="at">:as</span> kindly]</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            [scicloj.kindly.v4.kind <span class="at">:as</span> kind]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            [hiccup.core <span class="at">:as</span> hiccup]</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            [clojure2d.color <span class="at">:as</span> color]</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            [datasets]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This examples shows how to do interactions in linear regression with <code>metamorph.ml</code>.</p>
-<p>Taking ideas from: <a href="http://www.sthda.com/english/articles/40-regression-analysis/164-interaction-effect-in-multiple-regression-essentials/">Interaction Effect in Multiple Regression: Essentials</a> by Alboukadel Kassambara</p>
-<p>First we load the data:</p>
+<section id="linear-regression" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="linear-regression"><span class="header-section-number">6.1</span> Linear regression</h2>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb2"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> marketing</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  (tc/dataset <span class="st">"https://github.com/scicloj/datarium-CSV/raw/main/data/marketing.csv.gz"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>              {<span class="at">:key-fn</span> <span class="kw">keyword</span>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/mtcars</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    (stats/add-predictions <span class="at">:mpg</span> [<span class="at">:wt</span>]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                           {<span class="at">:model-type</span> <span class="at">:smile.regression/ordinary-least-square</span>})</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    (vis.hanami/combined-plot</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>     ht/layer-chart</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>     {<span class="at">:X</span> <span class="at">:wt</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">:MSIZE</span> <span class="dv">200</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">:HEIGHT</span> <span class="dv">200</span>}</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">:LAYER</span> [[ht/point-chart</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>              {<span class="at">:Y</span> <span class="at">:mpg</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">:WIDTH</span> <span class="dv">200</span>}]</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>             [ht/line-chart</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>              {<span class="at">:Y</span> <span class="at">:mpg-prediction</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>               <span class="at">:MSIZE</span> <span class="dv">5</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>               <span class="at">:MCOLOR</span> <span class="st">"purple"</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>               <span class="at">:YTITLE</span> <span class="at">:mpg</span>}]]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>and do some preprocessing to set up the regression:</p>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"usermeta":{"embedOptions":{"renderer":"svg"}},"width":400,"background":"floralwhite","layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":400,"background":"floralwhite","height":200}],"height":200,"data":{"url":"statistical_visualization_files\/0.csv","format":{"type":"csv"}}});</script></div>
+<p>Alternatively:</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb3"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> preprocessed-data</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> marketing</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>      (tc/drop-columns [<span class="at">:newspaper</span>])</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>      (modelling/set-inference-target <span class="at">:sales</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/mtcars</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    (vis.stats/linear-regression-plot</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">:mpg</span> <span class="at">:wt</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>     {<span class="at">:HEIGHT</span> <span class="dv">200</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">:WIDTH</span> <span class="dv">200</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">:point-options</span> {<span class="at">:MSIZE</span> <span class="dv">200</span>}</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">:line-options</span> {<span class="at">:MSIZE</span> <span class="dv">5</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">:MCOLOR</span> <span class="st">"purple"</span>}}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="additive-model" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="additive-model"><span class="header-section-number">11.1</span> Additive model</h2>
-<p>First we build an additive model, which model equation is <span class="math display">\[sales = b0 + b1 * youtube + b2 * facebook\]</span></p>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"usermeta":{"embedOptions":{"renderer":"svg"}},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.753"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.753"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.753"},"height":200}],"height":200,"data":{"url":"statistical_visualization_files\/0.csv","format":{"type":"csv"}}});</script></div>
+<p>And in a grouped dataset case:</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb4"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> additive-pipeline</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  (mm/pipeline</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>   {<span class="at">:metamorph/id</span> <span class="at">:model</span>}</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>   (ml/model {<span class="at">:model-type</span> <span class="at">:smile.regression/ordinary-least-square</span>})))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/mtcars</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    (tc/group-by [<span class="at">:gear</span>])</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    (vis.stats/linear-regression-plot</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">:mpg</span> <span class="at">:wt</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>     {<span class="at">:HEIGHT</span> <span class="dv">200</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">:WIDTH</span> <span class="dv">200</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">:point-options</span> {<span class="at">:MSIZE</span> <span class="dv">200</span>}</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">:line-options</span> {<span class="at">:MSIZE</span> <span class="dv">5</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">:MCOLOR</span> <span class="st">"purple"</span>}}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We evaluate it,</p>
-<div class="sourceClojure">
-<div class="sourceCode" id="cb5"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> evaluations</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  (ml/evaluate-pipelines</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>   [additive-pipeline]</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>   (tc/split-&gt;seq preprocessed-data <span class="at">:holdout</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>   loss/rmse</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">:loss</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>   {<span class="at">:other-metrices</span> [{<span class="at">:name</span> <span class="at">:r2</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">:metric-fn</span> fmstats/r2-determination}]}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div>
+<div class="table-responsive">
+<table class="table table-hover" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">:gear</th>
+<th data-quarto-table-cell-role="th">:plot</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>4</td>
+<td><div>
+<script>vegaEmbed(document.currentScript.parentElement, {"usermeta":{"embedOptions":{"renderer":"svg"}},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.677"},"height":200}],"height":200,"data":{"url":"statistical_visualization_files\/1.csv","format":{"type":"csv"}}});</script>
+</div></td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td><div>
+<script>vegaEmbed(document.currentScript.parentElement, {"usermeta":{"embedOptions":{"renderer":"svg"}},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.608"},"height":200}],"height":200,"data":{"url":"statistical_visualization_files\/2.csv","format":{"type":"csv"}}});</script>
+</div></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><div>
+<script>vegaEmbed(document.currentScript.parentElement, {"usermeta":{"embedOptions":{"renderer":"svg"}},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"layer":[{"encoding":{"y":{"field":"mpg","type":"quantitative"},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"circle","size":200,"tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"height":200},{"encoding":{"y":{"field":"mpg-prediction","type":"quantitative","axis":{"title":"mpg"}},"x":{"field":"wt","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":{"type":"line","size":5,"color":"purple","tooltip":true},"width":200,"background":"floralwhite","title":{"text":"R^2 = 0.979"},"height":200}],"height":200,"data":{"url":"statistical_visualization_files\/3.csv","format":{"type":"csv"}}});</script>
+</div></td>
+</tr>
+</tbody>
+</table>
 </div>
-<p>and print the result:</p>
-<div class="sourceClojure">
-<div class="sourceCode" id="cb6"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:fit-ctx</span> <span class="at">:model</span> ml/thaw-model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="printedClojure">
-<div class="sourceCode" id="cb7"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Linear Model:</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Residuals:</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>       Min          <span class="dv">1</span>Q      Median          <span class="dv">3</span>Q         Max</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>   -<span class="fl">6.3045</span>     -<span class="fl">1.0313</span>      <span class="fl">0.3623</span>      <span class="fl">1.4510</span>      <span class="fl">3.5406</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>Coefficients:</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                  Estimate Std. Error    t value   Pr(<span class="kw">&gt;</span>|t|)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>Intercept           <span class="fl">3.3567</span>     <span class="fl">0.4295</span>     <span class="fl">7.8156</span>     <span class="fl">0.0000</span> ***</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>youtube             <span class="fl">0.0458</span>     <span class="fl">0.0016</span>    <span class="fl">28.1968</span>     <span class="fl">0.0000</span> ***</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>facebook            <span class="fl">0.1893</span>     <span class="fl">0.0096</span>    <span class="fl">19.6341</span>     <span class="fl">0.0000</span> ***</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>---------------------------------------------------------------------</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>Significance codes:  <span class="dv">0</span> <span class="at">'***'</span> <span class="fl">0.001</span> <span class="at">'**'</span> <span class="fl">0.01</span> <span class="at">'*'</span> <span class="fl">0.05</span> <span class="at">'.'</span> <span class="fl">0.1</span> ' ' <span class="dv">1</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>Residual standard error: <span class="fl">1.9743</span> on <span class="dv">130</span> degrees of freedom</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>Multiple R-squared: <span class="fl">0.9012</span>,    Adjusted R-squared: <span class="fl">0.8997</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>F-statistic: <span class="fl">592.8643</span> on <span class="dv">3</span> <span class="kw">and</span> <span class="dv">130</span> DF,  p-value: <span class="fl">4.576e-66</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We have the following metrics:</p>
-<p><span class="math inline">\(RMSE\)</span></p>
-<div class="sourceClojure">
-<div class="sourceCode" id="cb8"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:test-transform</span> <span class="at">:metric</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="printedClojure">
-<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fl">2.1066041503541197</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><span class="math inline">\(R^2\)</span></p>
-<div class="sourceClojure">
-<div class="sourceCode" id="cb10"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:test-transform</span> <span class="at">:other-metrices</span> <span class="kw">first</span> <span class="at">:metric</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="printedClojure">
-<div class="sourceCode" id="cb11"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.8909625619872069</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="interaction-effects" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="interaction-effects"><span class="header-section-number">11.2</span> Interaction effects</h2>
-<p>Now we add interaction effects to it, resulting in this model equation: <span class="math display">\[sales = b0 + b1 * youtube + b2 * facebook + b3 * (youtube * facebook)\]</span></p>
+<section id="histogram" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="histogram"><span class="header-section-number">6.2</span> Histogram</h2>
+<p>A <a href="https://en.wikipedia.org/wiki/Histogram">histogram</a> groups values in bins, counts them, and creates a corresponding bar-chart.</p>
+<p>The <code>vis.stats/histogram</code> functions does that behind the scenes, and generates a Vega-Lite spec using Hanami.</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb12"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> pipe-interaction</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  (mm/pipeline</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>   (tcpipe/add-column <span class="at">:youtube</span>*facebook (<span class="kw">fn</span> [ds] (fun/* (ds <span class="at">:youtube</span>) (ds <span class="at">:facebook</span>))))</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>   {<span class="at">:metamorph/id</span> <span class="at">:model</span>}(ml/model {<span class="at">:model-type</span> <span class="at">:smile.regression/ordinary-least-square</span>})))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/iris</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    (vis.stats/histogram <span class="at">:sepal-width</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                         {<span class="at">:nbins</span> <span class="dv">10</span>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Again we evaluate the model,</p>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":"rect","width":400,"background":"floralwhite","height":300,"data":{"url":"statistical_visualization_files\/4.csv","format":{"type":"csv"}}});</script></div>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb13"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> evaluations</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  (ml/evaluate-pipelines</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>   [pipe-interaction]</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>   (tc/split-&gt;seq preprocessed-data <span class="at">:holdout</span>)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>   loss/rmse</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">:loss</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>   {<span class="at">:other-metrices</span> [{<span class="at">:name</span> <span class="at">:r2</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">:metric-fn</span> fmstats/r2-determination}]}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>and print it and the performance metrices:</p>
-<div class="sourceClojure">
-<div class="sourceCode" id="cb14"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:fit-ctx</span> <span class="at">:model</span> ml/thaw-model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/iris</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    (vis.stats/histogram <span class="at">:sepal-width</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                         {<span class="at">:nbins</span> <span class="dv">10</span>})</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    kind/pprint)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb15"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>Linear Model:</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>Residuals:</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>       Min          <span class="dv">1</span>Q      Median          <span class="dv">3</span>Q         Max</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>   -<span class="fl">4.6301</span>     -<span class="fl">0.4783</span>      <span class="fl">0.2453</span>      <span class="fl">0.7049</span>      <span class="fl">1.7305</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>Coefficients:</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                  Estimate Std. Error    t value   Pr(<span class="kw">&gt;</span>|t|)</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>Intercept           <span class="fl">7.6825</span>     <span class="fl">0.3217</span>    <span class="fl">23.8826</span>     <span class="fl">0.0000</span> ***</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>youtube             <span class="fl">0.0213</span>     <span class="fl">0.0017</span>    <span class="fl">12.4260</span>     <span class="fl">0.0000</span> ***</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>facebook            <span class="fl">0.0449</span>     <span class="fl">0.0098</span>     <span class="fl">4.5981</span>     <span class="fl">0.0000</span> ***</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>youtube*facebook     <span class="fl">0.0008</span>     <span class="fl">0.0000</span>    <span class="fl">17.1172</span>     <span class="fl">0.0000</span> ***</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>---------------------------------------------------------------------</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>Significance codes:  <span class="dv">0</span> <span class="at">'***'</span> <span class="fl">0.001</span> <span class="at">'**'</span> <span class="fl">0.01</span> <span class="at">'*'</span> <span class="fl">0.05</span> <span class="at">'.'</span> <span class="fl">0.1</span> ' ' <span class="dv">1</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>Residual standard error: <span class="fl">1.0676</span> on <span class="dv">129</span> degrees of freedom</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>Multiple R-squared: <span class="fl">0.9725</span>,    Adjusted R-squared: <span class="fl">0.9719</span></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>F-statistic: <span class="fl">1521.6281</span> on <span class="dv">4</span> <span class="kw">and</span> <span class="dv">129</span> DF,  p-value: <span class="fl">1.875e-100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>{<span class="at">:encoding</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a> {<span class="at">:y</span> {<span class="at">:field</span> <span class="at">:count</span>, <span class="at">:type</span> <span class="st">"quantitative"</span>},</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">:x</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  {<span class="at">:scale</span> {<span class="at">:zero</span> <span class="va">false</span>},</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>   <span class="at">:field</span> <span class="at">:left</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">:type</span> <span class="st">"quantitative"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>   <span class="at">:title</span> <span class="at">:sepal-width</span>},</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">:y2</span> {<span class="at">:field</span> <span class="dv">0</span>, <span class="at">:type</span> <span class="st">"quantitative"</span>},</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">:x2</span> {<span class="at">:scale</span> {<span class="at">:zero</span> <span class="va">false</span>}, <span class="at">:field</span> <span class="at">:right</span>, <span class="at">:type</span> <span class="st">"quantitative"</span>}},</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a> <span class="at">:usermeta</span> {<span class="at">:embedOptions</span> {<span class="at">:renderer</span> <span class="at">:svg</span>}},</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a> <span class="at">:mark</span> <span class="st">"rect"</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a> <span class="at">:width</span> <span class="dv">400</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a> <span class="at">:background</span> <span class="st">"floralwhite"</span>,</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a> <span class="at">:height</span> <span class="dv">300</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a> <span class="at">:data</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a> {<span class="at">:values</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"count,left,right</span><span class="sc">\n</span><span class="st">4,2.0,2.24</span><span class="sc">\n</span><span class="st">7,2.24,2.48</span><span class="sc">\n</span><span class="st">22,2.48,2.72</span><span class="sc">\n</span><span class="st">24,2.72,2.96</span><span class="sc">\n</span><span class="st">37,2.96,3.2</span><span class="sc">\n</span><span class="st">31,3.2,3.4400000000000004</span><span class="sc">\n</span><span class="st">10,3.4400000000000004,3.6800000000000006</span><span class="sc">\n</span><span class="st">11,3.6800000000000006,3.9200000000000004</span><span class="sc">\n</span><span class="st">2,3.9200000000000004,4.16</span><span class="sc">\n</span><span class="st">2,4.16,4.4</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">:format</span> {<span class="at">:type</span> <span class="st">"csv"</span>}}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>As the multiplcation of <code>youtube*facebook</code> is as well statistically relevant, it suggests that there is indeed an interaction between these 2 predictor variables youtube and facebook.</p>
-<p><span class="math inline">\(RMSE\)</span></p>
+<p>The resulting spec can be customized further:</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb16"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:test-transform</span> <span class="at">:metric</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> datasets/iris</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    (vis.stats/histogram <span class="at">:sepal-width</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                         {<span class="at">:nbins</span> <span class="dv">10</span>})</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">;; varying the resulting vega-lite spec:</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">assoc</span> <span class="at">:height</span> <span class="dv">125</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">:width</span> <span class="dv">175</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"y":{"field":"count","type":"quantitative"},"x":{"scale":{"zero":false},"field":"left","type":"quantitative","title":"sepal-width"},"y2":{"field":0,"type":"quantitative"},"x2":{"scale":{"zero":false},"field":"right","type":"quantitative"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"mark":"rect","width":175,"background":"floralwhite","height":125,"data":{"url":"statistical_visualization_files\/4.csv","format":{"type":"csv"}}});</script></div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="at">:bye</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb17"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1.2787188267544456</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="at">:bye</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><span class="math inline">\(R^2\)</span></p>
-<div class="sourceClojure">
-<div class="sourceCode" id="cb18"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:test-transform</span> <span class="at">:other-metrices</span> <span class="kw">first</span> <span class="at">:metric</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="printedClojure">
-<div class="sourceCode" id="cb19"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.9562320046480208</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><span class="math inline">\(RMSE\)</span> and <span class="math inline">\(R^2\)</span> of the intercation model are sligtly better.</p>
-<p>These results suggest that the model with the interaction term is better than the model that contains only main effects. So, for this specific data, we should go for the model with the interaction model.</p>
 <div style="background-color:grey;height:2px;width:100%;"></div>
-<div><pre><small><small>source: <a href="https://github.com/scicloj/noj/blob/main/notebooks/interactions_ols.clj">notebooks/interactions_ols.clj</a></small></small></pre></div>
+<div><pre><small><small>source: <a href="https://github.com/scicloj/noj/blob/main/notebooks/statistical_visualization.clj">notebooks/statistical_visualization.clj</a></small></small></pre></div>
 
 
 </section>
@@ -833,13 +808,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./automl.html" class="pagination-link" aria-label="AutoML using metamorph pipelines">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">AutoML using metamorph pipelines</span></span>
+      <a href="./visualization.html" class="pagination-link" aria-label="Visualization">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Visualization</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./curve_fitting.html" class="pagination-link" aria-label="Curve fitting example">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Curve fitting example</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./more_visualization.html" class="pagination-link" aria-label="More visualization examples">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">More visualization examples</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
