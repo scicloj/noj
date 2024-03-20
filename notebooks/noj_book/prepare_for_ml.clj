@@ -1,4 +1,7 @@
 ;; # Machine learning specific functionality in `tech.ml.dataset`
+
+;; author: Carsten Behring
+
 ;; The library `tech.ml.dataset` contains several functions
 ;; operating on a dataset, which are mainly used in the context of
 ;; machine learning. In the following we will introduce those.

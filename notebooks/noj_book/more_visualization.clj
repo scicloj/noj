@@ -1,5 +1,7 @@
 ;; # More visualization examples (experimental 🛠)
 
+;; author: Daniel Slutsky
+
 (ns noj-book.more-visualization
   (:require [aerial.hanami.templates :as ht]
             [clojure2d.color :as color]

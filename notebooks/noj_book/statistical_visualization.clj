@@ -1,5 +1,7 @@
 ;; # Statistical Visualization (experimental 🛠)
 
+;; author: Daniel Slutsky
+
 (ns noj-book.statistical-visualization
   (:require [aerial.hanami.templates :as ht]
             [noj-book.datasets :as datasets]

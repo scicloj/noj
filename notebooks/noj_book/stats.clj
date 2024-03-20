@@ -1,5 +1,7 @@
 ;; # Statistics (experimental 🛠)
 
+;; author: Daniel Slutsky
+
 (ns noj-book.stats
   (:require [scicloj.noj.v1.stats :as stats]
             [tablecloth.api :as tc]))

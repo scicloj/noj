@@ -1,5 +1,7 @@
 ;; # Ordinary least squares with interactions
 
+;; author: Carsten Behring, Daniel Slutsky
+
 (ns noj-book.interactions-ols
   (:require [fastmath.stats :as fmstats]
             [scicloj.kindly.v4.api :as kindly]

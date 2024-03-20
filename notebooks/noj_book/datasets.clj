@@ -1,5 +1,7 @@
 ;; # Datasets
 
+;; author: Daniel Slutsky
+
 (ns noj-book.datasets
   (:require [tablecloth.api :as tc]))
 
