@@ -2,36 +2,35 @@
   (:require [aerial.hanami.templates :as ht]
             [aerial.hanami.common :as hc]))
 
-(swap! hc/_defaults
-       assoc
-       :X2 com.rpl.specter/NONE
-       :Y2 com.rpl.specter/NONE
-       :X2TYPE (fn [ctx]
-                 (if (-> ctx :X2 (not= com.rpl.specter/NONE))
-                   (:XTYPE ctx)
-                   com.rpl.specter/NONE))
-       :Y2TYPE (fn [ctx]
-                 (if (-> ctx :Y2 (not= com.rpl.specter/NONE))
-                   (:YTYPE ctx)
-                   com.rpl.specter/NONE))
-       :X2ENCODING (fn [ctx]
-                     (if (-> ctx :X2 (not= com.rpl.specter/NONE))
-                       (-> ht/xy-encoding
-                           :x
-                           (assoc :field :X2
-                                  :type :X2TYPE))
-                       com.rpl.specter/NONE))
-       :Y2ENCODING (fn [ctx]
-                     (if (-> ctx :Y2 (not= com.rpl.specter/NONE))
-                       (-> ht/xy-encoding
-                           :y
-                           (assoc :field :Y2
-                                  :type :Y2TYPE))
-                       com.rpl.specter/NONE))
-       :ENCODING (merge
-                  ht/xy-encoding
-                  {:x2 :X2ENCODING
-                   :y2 :Y2ENCODING}))
+(hc/update-defaults
+ {:X2 hc/RMV
+  :Y2 hc/RMV
+  :X2TYPE (fn [ctx]
+            (if (-> ctx :X2 (not= hc/RMV))
+              (:XTYPE ctx)
+              hc/RMV))
+  :Y2TYPE (fn [ctx]
+            (if (-> ctx :Y2 (not= hc/RMV))
+              (:YTYPE ctx)
+              hc/RMV))
+  :X2ENCODING (fn [ctx]
+                (if (-> ctx :X2 (not= hc/RMV))
+                  (-> ht/xy-encoding
+                      :x
+                      (assoc :field :X2
+                             :type :X2TYPE))
+                  hc/RMV))
+  :Y2ENCODING (fn [ctx]
+                (if (-> ctx :Y2 (not= hc/RMV))
+                  (-> ht/xy-encoding
+                      :y
+                      (assoc :field :Y2
+                             :type :Y2TYPE))
+                  hc/RMV))
+  :ENCODING (merge
+             ht/xy-encoding
+             {:x2 :X2ENCODING
+              :y2 :Y2ENCODING})})
 
 (def boxplot-chart
   (assoc ht/view-base
@@ -44,3 +43,9 @@
 (def rect-chart
   (assoc ht/view-base
          :mark "rect"))
+
+(def boxplot-layer
+  {:mark (assoc ht/mark-base :type "boxplot")
+   :selection :SELECTION
+   :transform :TRANSFORM
+   :encoding :ENCODING})
