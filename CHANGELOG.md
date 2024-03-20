@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file. This change
 
 ## [1-alpha31] - unreleased
 - changed histogram implementation - using bar-charts now (#5)
+- updated deps
 
 ## [1-alpha30] - 2024-03-20
 - reorganizing the vis namespaces
