@@ -5,29 +5,14 @@
             [aerial.hanami.common :as hc]
             [aerial.hanami.templates :as ht]
             [scicloj.noj.v1.vis.hanami.templates :as vht]
-            [scicloj.noj.v1.vis.hanami :as hanami]
-            [scicloj.noj.v1.stats :as stats]
+            [scicloj.noj.v1.vis.hanami :as vis.hanami]
             [tech.v3.datatype :as dtype]
             [tech.v3.datatype.functional :as fun]
             [scicloj.kindly.v4.api :as kindly]
             [scicloj.kindly.v4.kind :as kind]
             [hiccup.core :as hiccup]
-            [clojure2d.color :as color]))
-
-;; ## Some datasets
-
-(def iris
-  (-> "https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv"
-      (tc/dataset {:key-fn keyword})
-      (tc/rename-columns {:Sepal.Length :sepal-length
-                          :Sepal.Width :sepal-width
-                          :Petal.Length :petal-length
-                          :Petal.Width :petal-width
-                          :Species :species})))
-
-(def mtcars
-  (-> "https://vincentarelbundock.github.io/Rdatasets/csv/datasets/mtcars.csv"
-      (tc/dataset {:key-fn keyword})))
+            [clojure2d.color :as color]
+            [datasets]))
 
 ;; ## Visualizing datases with Hanami
 
@@ -45,67 +30,67 @@
 ;; We can plot a Tablecloth datasete using a Hanami template:
 
 (-> random-walk
-    (hanami/plot ht/point-chart
+    (vis.hanami/plot ht/point-chart
                  {:MSIZE 200}))
 
 ;; Let us look inside the resulting vega-lite space. We can see the dataset is included as CSV:
 
 (-> random-walk
-    (hanami/plot ht/point-chart
-                 {:MSIZE 200})
+    (vis.hanami/plot ht/point-chart
+                     {:MSIZE 200})
     kind/pprint)
 
 ;; ### Additional Hanami templates
 
 ;; The `scicloj.noj.v1.vis.hanami.templates` namespace add Hanami templates to Hanami's own collection.
 
-(-> mtcars
-    (hanami/plot vht/boxplot-chart
-                 {:X :gear
-                  :XTYPE :nominal
-                  :Y :mpg}))
+(-> datasets/mtcars
+    (vis.hanami/plot vht/boxplot-chart
+                     {:X :gear
+                      :XTYPE :nominal
+                      :Y :mpg}))
 
-(-> iris
-    (hanami/plot vht/rule-chart
-                 {:X :sepal-width
-                  :Y :sepal-length
-                  :X2 :petal-width
-                  :Y2 :petal-length
-                  :OPACITY 0.2
-                  :SIZE 3
-                  :COLOR "species"}))
+(-> datasets/iris
+    (vis.hanami/plot vht/rule-chart
+                     {:X :sepal-width
+                      :Y :sepal-length
+                      :X2 :petal-width
+                      :Y2 :petal-length
+                      :OPACITY 0.2
+                      :SIZE 3
+                      :COLOR "species"}))
 
 ;; ### Grouped datasets
 
 ;; Grouped datasets are handled automatically with a table view.
 
-(-> iris
+(-> datasets/iris
     (tc/group-by [:species])
-    (hanami/plot vht/rule-chart
-                 {:X :sepal-width
-                  :Y :sepal-length
-                  :X2 :petal-width
-                  :Y2 :petal-length
-                  :OPACITY 0.2
-                  :SIZE 3}))
+    (vis.hanami/plot vht/rule-chart
+                     {:X :sepal-width
+                      :Y :sepal-length
+                      :X2 :petal-width
+                      :Y2 :petal-length
+                      :OPACITY 0.2
+                      :SIZE 3}))
 
 ;; ### Layers
 
 (-> random-walk
-    (hanami/layers
+    (vis.hanami/layers
      {:TITLE "points and a line"}
-     [(hanami/plot nil
-                   ht/point-chart
-                   {:MSIZE 400})
-      (hanami/plot nil
-                   ht/line-chart
-                   {:MSIZE 4
-                    :MCOLOR "brown"})]))
+     [(vis.hanami/plot nil
+                       ht/point-chart
+                       {:MSIZE 400})
+      (vis.hanami/plot nil
+                       ht/line-chart
+                       {:MSIZE 4
+                        :MCOLOR "brown"})]))
 
 ;; Alternatively:
 
 (-> random-walk
-    (hanami/combined-plot
+    (vis.hanami/combined-plot
      ht/layer-chart
      {:TITLE "points and a line"}
      :LAYER [[ht/point-chart
@@ -119,24 +104,24 @@
 ;; Vertical
 
 (-> random-walk
-    (hanami/vconcat
+    (vis.hanami/vconcat
      {}
-     [(hanami/plot nil
-                   ht/point-chart
-                   {:MSIZE 400
-                    :HEIGHT 100
-                    :WIDTH 100})
-      (hanami/plot nil
-                   ht/line-chart
-                   {:MSIZE 4
-                    :MCOLOR "brown"
-                    :HEIGHT 100
-                    :WIDTH 100})]))
+     [(vis.hanami/plot nil
+                       ht/point-chart
+                       {:MSIZE 400
+                        :HEIGHT 100
+                        :WIDTH 100})
+      (vis.hanami/plot nil
+                       ht/line-chart
+                       {:MSIZE 4
+                        :MCOLOR "brown"
+                        :HEIGHT 100
+                        :WIDTH 100})]))
 
 ;; Alternatively:
 
 (-> random-walk
-    (hanami/combined-plot
+    (vis.hanami/combined-plot
      ht/vconcat-chart
      {:HEIGHT 100
       :WIDTH 100}
@@ -149,14 +134,14 @@
 ;; Horizontal
 
 (-> random-walk
-    (hanami/hconcat
+    (vis.hanami/hconcat
      {}
-     [(hanami/plot nil
+     [(vis.hanami/plot nil
                        ht/point-chart
                        {:MSIZE 400
                         :HEIGHT 100
                         :WIDTH 100})
-      (hanami/plot nil
+      (vis.hanami/plot nil
                        ht/line-chart
                        {:MSIZE 4
                         :MCOLOR "brown"
@@ -165,7 +150,7 @@
 
 ;; Alternatively:
 (-> random-walk
-    (hanami/combined-plot
+    (vis.hanami/combined-plot
      ht/hconcat-chart
      {:HEIGHT 100
       :WIDTH 100}
@@ -174,167 +159,6 @@
                [ht/line-chart
                 {:MSIZE 4
                  :MCOLOR "brown"}]]))
-
-;; ### Linear regression
-
-(-> mtcars
-    (stats/add-predictions :mpg [:wt]
-                           {:model-type :smile.regression/ordinary-least-square})
-    (hanami/combined-plot
-     ht/layer-chart
-     {:X :wt
-      :MSIZE 200
-      :HEIGHT 200}
-     :LAYER [[ht/point-chart
-              {:Y :mpg
-               :WIDTH 200}]
-             [ht/line-chart
-              {:Y :mpg-prediction
-               :MSIZE 5
-               :MCOLOR "purple"
-               :YTITLE :mpg}]]))
-
-;; Alternatively:
-
-(-> mtcars
-    (hanami/linear-regression-plot
-     :mpg :wt
-     {:HEIGHT 200
-      :WIDTH 200
-      :point-options {:MSIZE 200}
-      :line-options {:MSIZE 5
-                     :MCOLOR "purple"}}))
-
-;; And in a grouped dataset case:
-
-(-> mtcars
-    (tc/group-by [:gear])
-    (hanami/linear-regression-plot
-     :mpg :wt
-     {:HEIGHT 200
-      :WIDTH 200
-      :point-options {:MSIZE 200}
-      :line-options {:MSIZE 5
-                     :MCOLOR "purple"}}))
-
-
-
-;; ### Histogram
-
-;; A [histogram](https://en.wikipedia.org/wiki/Histogram) groups values in bins,
-;; counts them,
-;; and creates a corresponding bar-chart.
-;;
-;; The `hanami/histogram` functions does that behind the scenes,
-;; and generates a Vega-Lite spec using Hanami.
-
-(-> iris
-    (hanami/histogram :sepal-width
-                      {:nbins 10}))
-
-(-> iris
-    (hanami/histogram :sepal-width
-                      {:nbins 10})
-    kind/pprint)
-
-;; The resulting spec can be customized further:
-
-(-> iris
-    (hanami/histogram :sepal-width
-                      {:nbins 10})
-    ;; varying the resulting vega-lite spec:
-    (assoc :height 125
-           :width 175))
-
-;; ### Combining a few things together
-;;
-;; The following is inspired by the example at Plotnine's [main page](https://plotnine.readthedocs.io/en/stable/).
-;; Note how we add regression lines here. We take care of layout and colouring on our side, not using Vega-Lite for that.
-
-(let [pallete (->> :accent
-                   color/palette
-                   (mapv color/format-hex))]
-  (-> mtcars
-      (tc/group-by :gear {:result-type :as-map})
-      (->> (sort-by key)
-           (map-indexed
-            (fn [i [group-name ds]]
-              (-> ds
-                  (hanami/linear-regression-plot
-                   :mpg :wt
-                   {:TITLE (str "grear=" group-name)
-                    :X :wt
-                    :MCOLOR (pallete i)
-                    :HEIGHT 200
-                    :WIDTH 200
-                    :point-options {:MSIZE 200}
-                    :line-options {:MSIZE 5}}))))
-           (hanami/vconcat nil {}))))
-
-;; Alternatively, using a grouped dataset:
-
-(let [pallete (->> :accent
-                   color/palette
-                   (mapv color/format-hex))]
-  (-> mtcars
-      (tc/map-columns :color [:gear] #(-> % (- 3) pallete))
-      (tc/group-by [:gear])
-      (hanami/linear-regression-plot
-       :mpg :wt
-       {:X :wt
-        :MCOLOR {:expr "datum.color"}
-        :HEIGHT 200
-        :WIDTH 200
-        :point-options {:MSIZE 200}
-        :line-options {:MSIZE 5}})
-      (tc/order-by [:gear])))
-
-;; A similar example with histograms:
-
-(let [pallete (->> :accent
-                   color/palette
-                   (mapv color/format-hex))]
-  (-> iris
-      (tc/group-by :species {:result-type :as-map})
-      (->> (sort-by key)
-           (map-indexed
-            (fn [i [group-name ds]]
-              (-> ds
-                  (hanami/histogram :sepal-width
-                                    {:nbins 10}))))
-           (hanami/vconcat nil {}))))
-
-;; Scatterplots and regression lines again,
-;; this time using Vega-Lite for layout and coloring
-;; (using its "facet" option).
-
-(-> mtcars
-    (tc/group-by [:gear])
-    (stats/add-predictions :mpg [:wt]
-                           {:model-type :smile.regression/ordinary-least-square})
-    (tc/ungroup)
-    (tc/select-columns [:gear :wt :mpg :mpg-prediction])
-    (hanami/combined-plot
-     ht/layer-chart
-     {}
-     :LAYER [[ht/point-chart
-              {:X :wt
-               :Y :mpg
-               :MSIZE 200
-               :COLOR "gear"
-               :HEIGHT 100
-               :WIDTH 200}]
-             [ht/line-chart
-              {:X :wt
-               :Y :mpg-prediction
-               :MSIZE 5
-               :COLOR "gear"
-               :YTITLE :mpg}]])
-    ((fn [spec]
-       {:facet {:row {:field "gear"}}
-        :spec (dissoc spec :data)
-        :data (:data spec)}))
-    kind/vega-lite)
 
 
 :bye
