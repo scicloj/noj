@@ -2,7 +2,7 @@
 
 ;; author: Daniel Slutsky
 
-(ns noj-book.stats
+(ns noj-book.statistics
   (:require [scicloj.noj.v1.stats :as stats]
             [tablecloth.api :as tc]))
 
