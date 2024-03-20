@@ -7,16 +7,23 @@
             [scicloj.kindly.v4.kind :as kind]))
 
 (defn histogram [dataset column-name options]
-  (-> column-name
-      dataset
-      (stats/histogram options)
-      (hanami/plot vht/rect-chart
-                   {:X :left
-                    :X2 :right
-                    :Y :count
-                    :Y2 0
-                    :XSCALE {:zero false}})
-      (assoc-in [:encoding :x :title] column-name)))
+  (let [hist (-> column-name
+                 dataset
+                 (stats/histogram options))
+        step (->> hist
+                  :left
+                  (take 2)
+                  reverse
+                  (apply -))]
+    (-> hist
+        (hanami/plot ht/bar-chart
+                     {:X :left
+                      :X2 :right
+                      :Y :count})
+        (assoc-in [:encoding :x :bin] {:binned true
+                                       :step step})
+        (assoc-in [:encoding :x :title] column-name))))
+
 
 (defn linear-regression-plot [dataset target-column feature-column
                               {:as options
