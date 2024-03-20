@@ -1,4 +1,4 @@
-(ns ml-basic)
+(ns noj-book.ml-basic)
 
 ;; # Machine learning
 ;;
@@ -78,7 +78,7 @@
   [(ds-cat/fit-categorical-map relevant-titanic-data :sex ["male" "female"] :float64)
    (ds-cat/fit-categorical-map relevant-titanic-data :pclass [0 1 2] :float64)
    (ds-cat/fit-categorical-map relevant-titanic-data :embarked ["S" "Q" "C"] :float64)])
-  
+
 cat-maps
 
 ;; After the mappings are applied, we have a numeric dataset, as expected

@@ -1,6 +1,6 @@
 ;; # Datasets
 
-(ns datasets
+(ns noj-book.datasets
   (:require [tablecloth.api :as tc]
             [scicloj.kindly.v4.kind :as kind]))
 

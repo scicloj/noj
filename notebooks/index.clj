@@ -1,3 +1,5 @@
+;; # Preface
+
 ^:kindly/hide-code
 (ns index
   (:require [scicloj.kindly.v4.api :as kindly]
@@ -10,7 +12,6 @@
   (comp kindly/hide-code kind/md))
 
 (md "
-# Preface
 
 Noj (scinojure) is an opinionated way to use the emerging Clojure data stack.
 
@@ -28,7 +29,7 @@ It collects a few of the main dependencies together with functions allowing to c
 ^:kindly/hide-code
 (defn chapter->title [chapter]
   (or (some->> chapter
-               (format "notebooks/%s.clj")
+               (format "notebooks/noj_book/%s.clj")
                slurp
                str/split-lines
                (filter #(re-matches #"^;; # .*" %))
@@ -41,7 +42,7 @@ It collects a few of the main dependencies together with functions allowing to c
      clojure.edn/read-string
      (map (fn [chapter]
             (prn [chapter (chapter->title chapter)])
-            (format "\n- [%s](%s.html)\n"
+            (format "\n- [%s](noj_book.%s.html)\n"
                     (chapter->title chapter)
                     chapter)))
      (string/join "\n")

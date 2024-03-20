@@ -1,6 +1,6 @@
 ;; # Ordinary least squares with interactions
 
-(ns interactions-ols
+(ns noj-book.interactions-ols
   (:require [tablecloth.api :as tc]
             [tablecloth.pipeline :as tcpipe]
             [fastmath.stats :as fmstats]

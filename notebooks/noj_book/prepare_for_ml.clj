@@ -1,5 +1,5 @@
-(ns prepare-for-ml)
-  
+(ns noj-book.prepare-for-ml)
+
 
 ;; # Machine learning specific functionality in `tech.ml.dataset`
 ;; The library `tech.ml.dataset` contains several functions

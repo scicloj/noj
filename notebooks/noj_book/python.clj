@@ -1,6 +1,6 @@
 ;; # Python
 
-(ns python
+(ns noj-book.python
   (:require [tablecloth.api :as tc]
             [scicloj.noj.v1.vis.python :as vis.python]
             [libpython-clj2.require :refer [require-python]]

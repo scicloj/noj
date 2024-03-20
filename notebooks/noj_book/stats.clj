@@ -1,6 +1,6 @@
 ;; # Statistics
 
-(ns stats
+(ns noj-book.stats
   (:require [scicloj.noj.v1.stats :as stats]
             [tablecloth.api :as tc]))
 

@@ -1,6 +1,6 @@
 ;; # Visualization
 
-(ns visualization
+(ns noj-book.visualization
   (:require [tablecloth.api :as tc]
             [aerial.hanami.common :as hc]
             [aerial.hanami.templates :as ht]
@@ -12,7 +12,7 @@
             [scicloj.kindly.v4.kind :as kind]
             [hiccup.core :as hiccup]
             [clojure2d.color :as color]
-            [datasets]))
+            [noj-book.datasets :as datasets]))
 
 ;; ## Visualizing datases with Hanami
 

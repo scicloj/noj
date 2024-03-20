@@ -1,4 +1,4 @@
-(ns automl)
+(ns noj-book.automl)
 (require 'ml-basic)
 
 ;; # AutoML using metamorph pipelines
@@ -311,7 +311,7 @@ train-ctx
    titanic-k-fold
    loss/classification-accuracy
    :accuracy))
-   
+
 
 
 ;; By default it returns the best mode only
