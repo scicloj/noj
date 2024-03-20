@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [1-alpha30] - 2024-03-20
+- reorganizing the vis namespaces
+
 ## [1-alpha29] - 2024-03-12
 - rendering Hanami plots as SVG by default
                
