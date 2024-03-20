@@ -25,21 +25,24 @@ It collects a few of the main dependencies together with functions allowing to c
 ## Existing chapters in this book:
 ")
 
-(->> ["python"
-      "stats"
-      "visualization"
-      "prepare_for_ml"
-      "ml_basic"
-      "automl"
-      "interactions_ols"]
-     (map (fn [k]
+^:kindly/hide-code
+(defn chapter->title [chapter]
+  (or (some->> chapter
+               (format "notebooks/%s.clj")
+               slurp
+               str/split-lines
+               (filter #(re-matches #"^;; # .*" %))
+               first
+               (#(str/replace % #"^;; # " "")))
+      chapter))
+
+(->> "notebooks/chapters.edn"
+     slurp
+     clojure.edn/read-string
+     (map (fn [chapter]
+            (prn [chapter (chapter->title chapter)])
             (format "\n- [%s](%s.html)\n"
-                    k k)))
+                    (chapter->title chapter)
+                    chapter)))
      (string/join "\n")
      md)
-
-(md "
-## Wishlist
-
-- a subset of [ggplot2](https://ggplot2.tidyverse.org/) ported to Clojure
-")

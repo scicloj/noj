@@ -1,3 +1,5 @@
+;; # Ordinary least squares with interactions
+
 (ns interactions-ols
   (:require [tablecloth.api :as tc]
             [tablecloth.pipeline :as tcpipe]
