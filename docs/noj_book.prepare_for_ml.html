@@ -1170,26 +1170,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Most models in the <code>metamorph.ml</code> ecosystem can work with data in this format.</p>
 <p>Side remark: If needed, data could as well be easily transformed into a tensor. Most models do this internally anyway (often to primitive arrays)</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb89"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> ds-tensor</span></span>
-<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>  (tech.v3.dataset.tensor/dataset-&gt;tensor ds-ready-for-train))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">require</span> <span class="at">'tech.v3.dataset.tensor</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb90"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>ds-tensor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> ds-tensor</span></span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>  (tech.v3.dataset.tensor/dataset-&gt;tensor ds-ready-for-train))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb91"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>ds-tensor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb91"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>#tech.v3.tensor&amp;lt<span class="co">;float64&amp;gt;[3 6]</span></span>
-<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>[[<span class="fl">0.000</span> <span class="fl">1.000</span> <span class="fl">0.000</span> <span class="fl">0.000</span> <span class="fl">1.000</span> <span class="fl">0.000</span>]</span>
-<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a> [<span class="fl">1.000</span> <span class="fl">0.000</span> <span class="fl">0.000</span> <span class="fl">0.000</span> <span class="fl">0.000</span> <span class="fl">1.000</span>]</span>
-<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a> [<span class="fl">0.000</span> <span class="fl">1.000</span> <span class="fl">1.000</span> <span class="fl">1.000</span> <span class="fl">0.000</span> <span class="fl">0.000</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>#tech.v3.tensor&amp;lt<span class="co">;float64&amp;gt;[3 6]</span></span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>[[<span class="fl">0.000</span> <span class="fl">1.000</span> <span class="fl">0.000</span> <span class="fl">0.000</span> <span class="fl">1.000</span> <span class="fl">0.000</span>]</span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a> [<span class="fl">1.000</span> <span class="fl">0.000</span> <span class="fl">0.000</span> <span class="fl">0.000</span> <span class="fl">0.000</span> <span class="fl">1.000</span>]</span>
+<span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a> [<span class="fl">0.000</span> <span class="fl">1.000</span> <span class="fl">1.000</span> <span class="fl">1.000</span> <span class="fl">0.000</span> <span class="fl">0.000</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>or we can do so, if needed, but this looses the notation of features / inference target</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb92"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>(tech.v3.tensor/-&gt;jvm ds-tensor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>(tech.v3.tensor/-&gt;jvm ds-tensor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb93"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>[[<span class="fl">0.0</span> <span class="fl">1.0</span> <span class="fl">0.0</span> <span class="fl">0.0</span> <span class="fl">1.0</span> <span class="fl">0.0</span>]</span>
-<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a> [<span class="fl">1.0</span> <span class="fl">0.0</span> <span class="fl">0.0</span> <span class="fl">0.0</span> <span class="fl">0.0</span> <span class="fl">1.0</span>]</span>
-<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a> [<span class="fl">0.0</span> <span class="fl">1.0</span> <span class="fl">1.0</span> <span class="fl">1.0</span> <span class="fl">0.0</span> <span class="fl">0.0</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>[[<span class="fl">0.0</span> <span class="fl">1.0</span> <span class="fl">0.0</span> <span class="fl">0.0</span> <span class="fl">1.0</span> <span class="fl">0.0</span>]</span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a> [<span class="fl">1.0</span> <span class="fl">0.0</span> <span class="fl">0.0</span> <span class="fl">0.0</span> <span class="fl">0.0</span> <span class="fl">1.0</span>]</span>
+<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a> [<span class="fl">0.0</span> <span class="fl">1.0</span> <span class="fl">1.0</span> <span class="fl">1.0</span> <span class="fl">0.0</span> <span class="fl">0.0</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div style="background-color:grey;height:2px;width:100%;"></div>
 <div><pre><small><small>source: <a href="https://github.com/scicloj/noj/blob/main/notebooks/noj_book/prepare_for_ml.clj">notebooks/noj_book/prepare_for_ml.clj</a></small></small></pre></div>
