@@ -360,6 +360,8 @@ ds-ready-for-train
 ;; Side remark:
 ;; If needed, data could as well be easily transformed into a tensor.
 ;; Most models do this internally anyway (often to primitive arrays)
+(require 'tech.v3.dataset.tensor)
+
 (def ds-tensor
   (tech.v3.dataset.tensor/dataset->tensor ds-ready-for-train))
 ds-tensor
