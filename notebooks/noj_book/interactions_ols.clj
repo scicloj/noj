@@ -12,7 +12,8 @@
             [tablecloth.api :as tc]
             [tablecloth.pipeline :as tcpipe]
             [tech.v3.dataset.modelling :as modelling]
-            [tech.v3.datatype.functional :as fun]))
+            [tech.v3.datatype.functional :as fun]
+            [scicloj.ml.smile.regression]))
 
 ^:kindly/hide-code
 (def md
