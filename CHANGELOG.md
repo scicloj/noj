@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## [1-alpha31] - unreleased
+## [1-alpha31] - 2024-03-23
 - changed histogram implementation - using bar-charts now (#5)
 - updated deps
 - removed the Hanami templates namespace, as it has been adapter and moved into Hanami itself
