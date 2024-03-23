@@ -35,9 +35,7 @@
                      {:MSIZE 200})
     kind/pprint)
 
-;; ### Additional Hanami templates
-
-;; The `scicloj.noj.v1.vis.hanami.templates` namespace add Hanami templates to Hanami's own collection.
+;; ### More examples
 
 (-> datasets/mtcars
     (vis.hanami/plot ht/boxplot-chart
