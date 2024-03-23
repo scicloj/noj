@@ -3,7 +3,7 @@
         scicloj/tablecloth {:mvn/version "7.021"}
         org.scicloj/kindly {:mvn/version "4-alpha19"}
         generateme/fastmath {:mvn/version "2.4.0"}
-        aerial.hanami/aerial.hanami {:mvn/version "0.19.0"}
+        aerial.hanami/aerial.hanami {:mvn/version "0.20.0"}
         cljplot/cljplot {:mvn/version "0.0.3"}
         ;; scicloj/scicloj.ml {:mvn/version "0.3"}
         scicloj/metamorph.ml {:mvn/version "0.7.8"}

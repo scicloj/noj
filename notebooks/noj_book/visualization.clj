@@ -7,7 +7,6 @@
             [noj-book.datasets :as datasets]
             [scicloj.kindly.v4.kind :as kind]
             [scicloj.noj.v1.vis.hanami :as vis.hanami]
-            [scicloj.noj.v1.vis.hanami.templates :as vht]
             [tablecloth.api :as tc]))
 
 ;; ## Visualizing datases with Hanami
@@ -41,13 +40,13 @@
 ;; The `scicloj.noj.v1.vis.hanami.templates` namespace add Hanami templates to Hanami's own collection.
 
 (-> datasets/mtcars
-    (vis.hanami/plot vht/boxplot-chart
+    (vis.hanami/plot ht/boxplot-chart
                      {:X :gear
                       :XTYPE :nominal
                       :Y :mpg}))
 
 (-> datasets/iris
-    (vis.hanami/plot vht/rule-chart
+    (vis.hanami/plot ht/rule-chart
                      {:X :sepal-width
                       :Y :sepal-length
                       :X2 :petal-width
@@ -62,7 +61,7 @@
 
 (-> datasets/iris
     (tc/group-by [:species])
-    (vis.hanami/plot vht/rule-chart
+    (vis.hanami/plot ht/rule-chart
                      {:X :sepal-width
                       :Y :sepal-length
                       :X2 :petal-width
