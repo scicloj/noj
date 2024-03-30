@@ -23,6 +23,10 @@ It collects a few of the main dependencies together with functions allowing to c
 
 **Status:** Some parts of the underlying libraries are stable. Some part of Noj are still experimental, and the API will change. These details should be clarified soon.
 
+## Getting started
+See the standalone repo example:
+[Noj - getting started - from raw data to a blog post](https://scicloj.github.io/noj-getting-started/)
+
 ## Existing chapters in this book:
 ")
 
