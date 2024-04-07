@@ -20,14 +20,33 @@
 ;;
 ;;  We use the :train part only for this tutorial.
 ;;
+;;
+;;
+(->
+ (data/titanic-ds-split)
+ :train)
+
+
 (defonce titanic-split
   (data/titanic-ds-split))
 
 ;;  this is the full dataset
 (def titanic
-  (:train titanic-split))
-(tc/head
- titanic)
+  (-> titanic-split
+      :train
+      (tc/add-column :survived
+                         (fn [ds]
+                           (map
+                            (fn [el] (case el
+                                        0 "no"
+                                        1 "yes"))
+                            (:survived ds))))))
+
+
+
+
+                                      
+
 
 
 
@@ -71,7 +90,7 @@
   (-> titanic
       (tc/select-columns (conj categorical-feature-columns target-column))
       (ds/drop-missing)
-      (ds/categorical->number [:survived] [0 1] :float64)
+      (ds/categorical->number [:survived] ["no" "yes"] :float64)
       (ds-mod/set-inference-target target-column)))
 
 ;;  of which we can inspect the lookup-tables
