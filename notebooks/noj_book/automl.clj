@@ -208,16 +208,17 @@ train-ctx
 
 ;; All these do not execute anything, they produce
 ;; functions which can be executed against a context as part of
-;; a metamorph pipeline
+;; a metamorph pipeline.
 
 ;;
-;; The 'mm/lift` function transposes any dataset->dataset functions into a ctx->ctx function,
-;; while using the e`metamorh` convention, as required for metamorph pipeline operations
-;;
-;;
+;; The `mm/lift` function transposes any dataset->dataset functions
+;; into a ctx->ctx function,
+;; while using the `metamorh` convention, as required for metamorph
+;; pipeline operations
+;;;;
 ;; For convenience `tablecloth` contains a ns where all `dataset->dataset` functions
 ;; are lifted into ctx->ctx operations, so can be added to pipelines
-;; directly without using lift.
+;; directly without using `lift`.
 
 ;;
 ;; So a metamorph pipeline can encapsulate arbitray transformation
@@ -238,8 +239,9 @@ train-ctx
 
 
 
-;; Automatic ML with `metamorph.ml`
-;; The AutoML support in metamorph consists now in the possibility
+;; ## Automatic ML with `metamorph.ml`
+;;
+;; The AutoML support in metamorph.ml consists now in the possibility
 ;; to create an arbitrary number of different pipelines
 ;; and have them run against arbitray test/train data splits
 ;; and it automatically chooses the best model evaluated by by a
@@ -359,7 +361,8 @@ train-ctx
 ;;  when sorted by accuracy.
 (-> (make-results-ds evaluation-results-all)
     (tc/unique-by)
-    (tc/order-by [:mean-accuracy] :desc))
+    (tc/order-by [:mean-accuracy] :desc)
+    (tc/head))
 
 ;; ## Best practices for data transformation steps in or outside pipeline
 ;;
