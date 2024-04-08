@@ -208,16 +208,17 @@ train-ctx
 
 ;; All these do not execute anything, they produce
 ;; functions which can be executed against a context as part of
-;; a metamorph pipeline
+;; a metamorph pipeline.
 
 ;;
-;; The 'mm/lift` function transposes any dataset->dataset functions into a ctx->ctx function,
-;; while using the e`metamorh` convention, as required for metamorph pipeline operations
-;;
-;;
+;; The `mm/lift` function transposes any dataset->dataset functions
+;; into a ctx->ctx function,
+;; while using the `metamorh` convention, as required for metamorph
+;; pipeline operations
+;;;;
 ;; For convenience `tablecloth` contains a ns where all `dataset->dataset` functions
 ;; are lifted into ctx->ctx operations, so can be added to pipelines
-;; directly without using lift.
+;; directly without using `lift`.
 
 ;;
 ;; So a metamorph pipeline can encapsulate arbitray transformation
@@ -238,8 +239,9 @@ train-ctx
 
 
 
-;; Automatic ML with `metamorph.ml`
-;; The AutoML support in metamorph consists now in the possibility
+;; ## Automatic ML with `metamorph.ml`
+;;
+;; The AutoML support in metamorph.ml consists now in the possibility
 ;; to create an arbitrary number of different pipelines
 ;; and have them run against arbitray test/train data splits
 ;; and it automatically chooses the best model evaluated by by a
@@ -257,7 +259,8 @@ train-ctx
 
 (require '[scicloj.metamorph.ml :as ml]
          '[scicloj.metamorph.ml.loss :as loss]
-         '[scicloj.metamorph.core :as mm])
+         '[scicloj.metamorph.core :as mm]
+         '[scicloj.ml.tribuo])
 
 
 ;; ## Finding the best model automatically
@@ -269,22 +272,34 @@ train-ctx
 ;;  * 5 different model classes
 ;;  * 6 different selections of used features
 ;;  * k-cross validate this with different test / train splits
-(defn make-pipe-fn [model-type features]
+(defn make-pipe-fn [model-spec features]
+
+
   (mm/pipeline
    ;; store the used features in ctx, so we can retrieve them at the end
    (fn [ctx]
      (assoc ctx :used-features features))
    (mm/lift tc/select-columns (conj features :survived))
-   {:metamorph/id :model} (ml/model {:model-type model-type})))
+   {:metamorph/id :model} (ml/model model-spec)))
 
 ;;  create a 5-K cross validation split of the data
 (def titanic-k-fold (tc/split->seq ml-basic/numeric-titanic-data :kfold {:seed 12345}))
 ;; The list of the model types we want to try:
-(def model-types [:metamorph.ml/dummy-classifier
-                  :smile.classification/random-forest
-                  :smile.classification/logistic-regression
-                  :smile.classification/decision-tree
-                  :smile.classification/ada-boost])
+(def models [{:model-type :metamorph.ml/dummy-classifier}
+             {:model-type :smile.classification/random-forest}
+             {:model-type :smile.classification/logistic-regression}
+             {:model-type :smile.classification/decision-tree}
+             {:model-type :smile.classification/ada-boost}
+             {:model-type :scicloj.ml.tribuo/classification
+              :tribuo-components [{:name "trainer"
+                                   :type "org.tribuo.classification.dtree.CARTClassificationTrainer"
+                                   :properties {:maxDepth "8"
+                                                :useRandomSplitPoints "false"
+                                                :fractionFeaturesInSplit "0.5"}}]
+              :tribuo-trainer-name "trainer"}])
+
+
+
 
 ;;  This uses models from smile only, but could be any metamorph.ml
 ;;  compliant model ( library  `sklearn-clj` wraps all python sklearn
@@ -301,9 +316,9 @@ train-ctx
 
 ;; generate 30 pipeline functions:
 (def pipe-fns
-  (for [model-type model-types
+  (for [model models
         feature-combination feature-combinations]
-    (make-pipe-fn model-type feature-combination)))
+    (make-pipe-fn model feature-combination)))
 
 ;; Exceute all pipelines for all splits in the  cross-validations
 ;; and return best model by `classification-accuracy`
@@ -346,27 +361,28 @@ train-ctx
 ;;  when sorted by accuracy.
 (-> (make-results-ds evaluation-results-all)
     (tc/unique-by)
-    (tc/order-by [:mean-accuracy] :desc))
+    (tc/order-by [:mean-accuracy] :desc)
+    (tc/head))
 
-;; ## Best practices for data transformation steps in or
-;; outside pipeline
+;; ## Best practices for data transformation steps in or outside pipeline
+;;
 (require '[scicloj.metamorph.ml.toydata :as data]
          '[tech.v3.dataset.modelling :as ds-mod]
          '[tech.v3.dataset.categorical :as ds-cat]
          '[tech.v3.dataset :as ds])
 ;;
 ;;  We have seen that we have two ways to transform the input
-;;  data, outside the pipeline and inside the pipeline
+;;  data, outside the pipeline and inside the pipeline.
 ;;
 ;;  These are the total steps from raw data to "into the model"
-;;  for the titainc use case.
+;;  for the titanic use case.
 
-;;  raw data
+;;  1. raw data
 (def titanic
   (:train
    (data/titanic-ds-split)))
 
-;;  first transformation, no metamorph pipeline
+;;  2. first transformation, no metamorph pipeline
 (def relevant-titanic-data
   (-> titanic
       (tc/select-columns (conj ml-basic/categorical-feature-columns :survived))
@@ -375,7 +391,7 @@ train-ctx
       (ds/categorical->number [:survived] [0 1] :float64)
       (ds-mod/set-inference-target :survived)))
 
-;; -> transform via pipelines
+;; 3. transform via pipelines
 (defn make-pipe-fn [model-type features]
   (mm/pipeline
    ;; store the used features in ctx, so we can retrieve them at the end
@@ -388,6 +404,9 @@ train-ctx
 ;;  While it would be technically possible to move all steps from
 ;;  the "first transformation"
 ;;  into the pipeline, by just using the "lifted" form of the transformations,
+
+
+
 ;;  I would not do so, even though this should give the same result.
 ;;
 ;; I think it is better to separate the steps which are "fixed",
