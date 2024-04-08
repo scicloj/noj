@@ -178,9 +178,9 @@ train-ctx
 ;; As said before, a metamorph pipeline is composed of `metamorph`
 ;; compliant functions / operations, which take as input and output
 ;; the ctx.
-;; There are three ways to create thoss.
+;; There are three ways to create those.
 ;;
-;; These following three expressions create the same
+;; The following three expressions create the same
 ;; metamorph compliant function
 ;;
 ;; 1. implementing a metamorph compliant function directly via anonymous
@@ -190,7 +190,7 @@ train-ctx
             (assoc ctx :metamorph/data
                  (tc/drop-columns (:metamorph/data ctx) [:embarked]))))
 
-;;  2. using `mm/lift` which does the same as 1)
+;;  2. using `mm/lift` which does the same as 1.
 (def ops (mm/lift tc/drop-columns [:embarked]))
 
 ;;  3. using a name-space containing lifted functions
@@ -215,7 +215,7 @@ train-ctx
 ;; into a ctx->ctx function,
 ;; while using the `metamorh` convention, as required for metamorph
 ;; pipeline operations
-;;;;
+;;
 ;; For convenience `tablecloth` contains a ns where all `dataset->dataset` functions
 ;; are lifted into ctx->ctx operations, so can be added to pipelines
 ;; directly without using `lift`.
@@ -264,17 +264,20 @@ train-ctx
 
 
 ;; ## Finding the best model automatically
+
 ;;  The advantage of the pipelines is even more visible,
 ;;  if we want to have configurable pipelines,
 ;;  and do a grid search to find optimal settings.
 
 ;;  the following will find the best model across:
-;;  * 5 different model classes
+;;
+;;  * 6 different model classes
+;;
 ;;  * 6 different selections of used features
+;;
 ;;  * k-cross validate this with different test / train splits
+;;
 (defn make-pipe-fn [model-spec features]
-
-
   (mm/pipeline
    ;; store the used features in ctx, so we can retrieve them at the end
    (fn [ctx]
@@ -282,7 +285,7 @@ train-ctx
    (mm/lift tc/select-columns (conj features :survived))
    {:metamorph/id :model} (ml/model model-spec)))
 
-;;  create a 5-K cross validation split of the data
+;;  Create a 5-K cross validation split of the data:
 (def titanic-k-fold (tc/split->seq ml-basic/numeric-titanic-data :kfold {:seed 12345}))
 ;; The list of the model types we want to try:
 (def models [{:model-type :metamorph.ml/dummy-classifier}
@@ -301,8 +304,8 @@ train-ctx
 
 
 
-;;  This uses models from smile only, but could be any metamorph.ml
-;;  compliant model ( library  `sklearn-clj` wraps all python sklearn
+;;  This uses models from Smile and Tribuo, but could be any
+;;  metamorph.ml compliant model ( library  `sklearn-clj` wraps all python sklearn
 ;;  models, for example)
 
 ;;  The list of feature combinations to try for each model:
@@ -314,7 +317,7 @@ train-ctx
    [:sex :embarked]
    [:sex :pclass]])
 
-;; generate 30 pipeline functions:
+;; generate 36 pipeline functions:
 (def pipe-fns
   (for [model models
         feature-combination feature-combinations]
@@ -342,7 +345,7 @@ train-ctx
 ;; Both get handled in the same way.
 
 
-;;  Wwe can get all results as well:
+;;  We can get all results as well:
 (def evaluation-results-all
   (ml/evaluate-pipelines
    pipe-fns
@@ -354,7 +357,7 @@ train-ctx
 
 
 ;; In total it creates and evaluates
-;; 5 models * 6 model configurations * 5 CV = 150 models
+;; 6 models * 6 feature configurarions * 5 CV = 180 models
 (->  evaluation-results-all flatten count)
 
 ;;  We can find the best as well by hand, it's the first from the list,
@@ -404,9 +407,6 @@ train-ctx
 ;;  While it would be technically possible to move all steps from
 ;;  the "first transformation"
 ;;  into the pipeline, by just using the "lifted" form of the transformations,
-
-
-
 ;;  I would not do so, even though this should give the same result.
 ;;
 ;; I think it is better to separate the steps which are "fixed",
