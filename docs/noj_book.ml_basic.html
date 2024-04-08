@@ -275,20 +275,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The titanic data is part of <code>metamorph.ml</code> and in the form of a train, test split</p>
 <p>We use the :train part only for this tutorial.</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb2"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defonce</span><span class="fu"> titanic-split</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  (data/titanic-ds-split))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>this is the full dataset</p>
-<div class="sourceClojure">
-<div class="sourceCode" id="cb3"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> titanic</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  (<span class="at">:train</span> titanic-split))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="sourceClojure">
-<div class="sourceCode" id="cb4"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(tc/head</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a> titanic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> (data/titanic-ds-split)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> <span class="at">:train</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="clay-dataset">
-<p>_unnamed [5 12]:</p>
+<p>_unnamed [891 12]:</p>
 <table class="table">
 <colgroup>
 <col style="width: 9%">
@@ -391,8 +383,263 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td></td>
 <td>S</td>
 </tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td>Moran, Mr.&nbsp;James</td>
+<td>male</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td>330877</td>
+<td style="text-align: right;">8.4583</td>
+<td></td>
+<td>Q</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td>McCarthy, Mr.&nbsp;Timothy J</td>
+<td>male</td>
+<td style="text-align: right;">54.0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td>17463</td>
+<td style="text-align: right;">51.8625</td>
+<td>E46</td>
+<td>S</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td>Palsson, Master. Gosta Leonard</td>
+<td>male</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td>349909</td>
+<td style="text-align: right;">21.0750</td>
+<td></td>
+<td>S</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td>Johnson, Mrs.&nbsp;Oscar W (Elisabeth Vilhelmina Berg)</td>
+<td>female</td>
+<td style="text-align: right;">27.0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td>347742</td>
+<td style="text-align: right;">11.1333</td>
+<td></td>
+<td>S</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td>Nasser, Mrs.&nbsp;Nicholas (Adele Achem)</td>
+<td>female</td>
+<td style="text-align: right;">14.0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td>237736</td>
+<td style="text-align: right;">30.0708</td>
+<td></td>
+<td>C</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td>…</td>
+<td>…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td>…</td>
+<td style="text-align: right;">…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">881</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td>Shelley, Mrs.&nbsp;William (Imanita Parrish Hall)</td>
+<td>female</td>
+<td style="text-align: right;">25.0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td>230433</td>
+<td style="text-align: right;">26.0000</td>
+<td></td>
+<td>S</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">882</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td>Markun, Mr.&nbsp;Johann</td>
+<td>male</td>
+<td style="text-align: right;">33.0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td>349257</td>
+<td style="text-align: right;">7.8958</td>
+<td></td>
+<td>S</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">883</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td>Dahlberg, Miss. Gerda Ulrika</td>
+<td>female</td>
+<td style="text-align: right;">22.0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td>7552</td>
+<td style="text-align: right;">10.5167</td>
+<td></td>
+<td>S</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">884</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td>Banfield, Mr.&nbsp;Frederick James</td>
+<td>male</td>
+<td style="text-align: right;">28.0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td>C.A./SOTON 34068</td>
+<td style="text-align: right;">10.5000</td>
+<td></td>
+<td>S</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">885</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td>Sutehall, Mr.&nbsp;Henry Jr</td>
+<td>male</td>
+<td style="text-align: right;">25.0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td>SOTON/OQ 392076</td>
+<td style="text-align: right;">7.0500</td>
+<td></td>
+<td>S</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">886</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td>Rice, Mrs.&nbsp;William (Margaret Norton)</td>
+<td>female</td>
+<td style="text-align: right;">39.0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td>382652</td>
+<td style="text-align: right;">29.1250</td>
+<td></td>
+<td>Q</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">887</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td>Montvila, Rev.&nbsp;Juozas</td>
+<td>male</td>
+<td style="text-align: right;">27.0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td>211536</td>
+<td style="text-align: right;">13.0000</td>
+<td></td>
+<td>S</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">888</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td>Graham, Miss. Margaret Edith</td>
+<td>female</td>
+<td style="text-align: right;">19.0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td>112053</td>
+<td style="text-align: right;">30.0000</td>
+<td>B42</td>
+<td>S</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">889</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td>Johnston, Miss. Catherine Helen “Carrie”</td>
+<td>female</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td>W./C. 6607</td>
+<td style="text-align: right;">23.4500</td>
+<td></td>
+<td>S</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">890</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td>Behr, Mr.&nbsp;Karl Howell</td>
+<td>male</td>
+<td style="text-align: right;">26.0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td>111369</td>
+<td style="text-align: right;">30.0000</td>
+<td>C148</td>
+<td>C</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">891</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td>Dooley, Mr.&nbsp;Patrick</td>
+<td>male</td>
+<td style="text-align: right;">32.0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td>370376</td>
+<td style="text-align: right;">7.7500</td>
+<td></td>
+<td>Q</td>
+</tr>
 </tbody>
 </table>
+</div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb3"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defonce</span><span class="fu"> titanic-split</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  (data/titanic-ds-split))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>this is the full dataset</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb4"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> titanic</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> titanic-split</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">:train</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>      (tc/add-column <span class="at">:survived</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                         (<span class="kw">fn</span> [ds]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                           (<span class="kw">map</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                            (<span class="kw">fn</span> [el] (<span class="kw">case</span> el</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                                        <span class="dv">0</span> <span class="st">"no"</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                                        <span class="dv">1</span> <span class="st">"yes"</span>))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                            (<span class="at">:survived</span> ds))))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>It has various columns</p>
 <div class="sourceClojure">
@@ -466,17 +713,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td>:survived</td>
-<td>:int16</td>
+<td>:string</td>
 <td style="text-align: right;">891</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">0.38383838</td>
-<td></td>
-<td style="text-align: right;">1.0000</td>
-<td style="text-align: right;">0.48659245</td>
-<td style="text-align: right;">0.47852344</td>
-<td>0</td>
-<td>0</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td>no</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td>no</td>
+<td>no</td>
 </tr>
 <tr class="odd">
 <td>:pclass</td>
@@ -626,7 +873,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb8"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> titanic <span class="at">:survived</span> <span class="kw">frequencies</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>{<span class="dv">0</span> <span class="dv">549</span>, <span class="dv">1</span> <span class="dv">342</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>{<span class="st">"no"</span> <span class="dv">549</span>, <span class="st">"yes"</span> <span class="dv">342</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We will make a very simple model, which will predict the column :survived from columns :sex , :pclass and :embark These represent the “gender”, “passenger class” and “port of embarkment”</p>
 <div class="sourceClojure">
@@ -664,7 +911,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> titanic</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>      (tc/select-columns (<span class="kw">conj</span> categorical-feature-columns target-column))</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>      (ds/drop-missing)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>      (ds/categorical-&gt;number [<span class="at">:survived</span>] [<span class="dv">0</span> <span class="dv">1</span>] <span class="at">:float64</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>      (ds/categorical-&gt;number [<span class="at">:survived</span>] [<span class="st">"no"</span> <span class="st">"yes"</span>] <span class="at">:float64</span>)</span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>      (ds-mod/set-inference-target target-column)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>of which we can inspect the lookup-tables</p>
@@ -1176,9 +1423,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a> <span class="kw">reverse</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb42"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>({<span class="at">:predictor</span> <span class="at">:sex</span>, <span class="at">:importance</span> <span class="fl">44.05095738906217</span>}</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a> {<span class="at">:predictor</span> <span class="at">:pclass</span>, <span class="at">:importance</span> <span class="fl">9.824296073595015</span>}</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a> {<span class="at">:predictor</span> <span class="at">:embarked</span>, <span class="at">:importance</span> <span class="fl">1.6441426390534277</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>({<span class="at">:predictor</span> <span class="at">:sex</span>, <span class="at">:importance</span> <span class="fl">41.60747980058071</span>}</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a> {<span class="at">:predictor</span> <span class="at">:pclass</span>, <span class="at">:importance</span> <span class="fl">9.175955488558147</span>}</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a> {<span class="at">:predictor</span> <span class="at">:embarked</span>, <span class="at">:importance</span> <span class="fl">1.739908363852554</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>we can see that :sex is more important to predict :survived then :pclass and :embark</p>
 </section>

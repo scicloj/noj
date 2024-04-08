@@ -220,8 +220,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#the-metamorph-pipeline-abstraction" id="toc-the-metamorph-pipeline-abstraction" class="nav-link active" data-scroll-target="#the-metamorph-pipeline-abstraction"><span class="header-section-number">4.1</span> The metamorph pipeline abstraction</a></li>
   <li><a href="#use-metamorph-pipelines-to-do-model-training-with-higher-level-api" id="toc-use-metamorph-pipelines-to-do-model-training-with-higher-level-api" class="nav-link" data-scroll-target="#use-metamorph-pipelines-to-do-model-training-with-higher-level-api"><span class="header-section-number">4.2</span> Use metamorph pipelines to do model training with higher level API</a></li>
   <li><a href="#create-metamorph-compliant-functions" id="toc-create-metamorph-compliant-functions" class="nav-link" data-scroll-target="#create-metamorph-compliant-functions"><span class="header-section-number">4.3</span> Create metamorph compliant functions</a></li>
-  <li><a href="#finding-the-best-model-automatically" id="toc-finding-the-best-model-automatically" class="nav-link" data-scroll-target="#finding-the-best-model-automatically"><span class="header-section-number">4.4</span> Finding the best model automatically</a></li>
-  <li><a href="#best-practices-for-data-transformation-steps-in-or" id="toc-best-practices-for-data-transformation-steps-in-or" class="nav-link" data-scroll-target="#best-practices-for-data-transformation-steps-in-or"><span class="header-section-number">4.5</span> Best practices for data transformation steps in or</a></li>
+  <li><a href="#automatic-ml-with-metamorph.ml" id="toc-automatic-ml-with-metamorph.ml" class="nav-link" data-scroll-target="#automatic-ml-with-metamorph.ml"><span class="header-section-number">4.4</span> Automatic ML with <code>metamorph.ml</code></a></li>
+  <li><a href="#finding-the-best-model-automatically" id="toc-finding-the-best-model-automatically" class="nav-link" data-scroll-target="#finding-the-best-model-automatically"><span class="header-section-number">4.5</span> Finding the best model automatically</a></li>
+  <li><a href="#best-practices-for-data-transformation-steps-in-or-outside-pipeline" id="toc-best-practices-for-data-transformation-steps-in-or-outside-pipeline" class="nav-link" data-scroll-target="#best-practices-for-data-transformation-steps-in-or-outside-pipeline"><span class="header-section-number">4.6</span> Best practices for data transformation steps in or outside pipeline</a></li>
   </ul>
 </nav>
     </div>
@@ -343,38 +344,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
 <td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
@@ -384,22 +361,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
 <td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">...</td>
@@ -414,39 +415,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1.0</td>
 <td style="text-align: right;">3.0</td>
-<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
@@ -457,20 +446,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
-<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 </tbody>
@@ -480,7 +481,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :fit</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "fb791a68-7b46-4e12-ab0c-f9ac09b143d6" {:model-data {:majority-class 0.0, :distinct-labels (1.0 0.0)}, :options {:model-type :metamorph.ml/dummy-classifier}, :id #uuid "9dd62816-15e5-4d7a-9878-03a838ec6329", :feature-columns [:sex :pclass :embarked], :target-columns [:survived], :target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {0 0, 1 1}, :src-column :survived, :result-datatype :float64}}, :scicloj.metamorph.ml/unsupervised? nil}</code></pre></div></div><p>}</p></div>
+<div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :fit</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "407833bc-568e-44c8-b384-097d8ac279a5" {:model-data {:majority-class 0.0, :distinct-labels (1.0 0.0)}, :options {:model-type :metamorph.ml/dummy-classifier}, :id #uuid "2804b70a-c756-40de-9296-49fcb7106ff5", :feature-columns [:sex :pclass :embarked], :target-columns [:survived], :target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {"no" 0, "yes" 1}, :src-column :survived, :result-datatype :float64}}, :scicloj.metamorph.ml/unsupervised? nil}</code></pre></div></div><p>}</p></div>
 </div>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb13"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">keys</span> ctx-after-train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -488,7 +489,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="printedClojure">
 <div class="sourceCode" id="cb14"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">:metamorph/data</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a> <span class="at">:metamorph/mode</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> #uuid <span class="st">"fb791a68-7b46-4e12-ab0c-f9ac09b143d6"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> #uuid <span class="st">"407833bc-568e-44c8-b384-097d8ac279a5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This context map has the “data”, the “mode” and an UUID for each operation (we had only one in this pipeline)</p>
 <div class="sourceClojure">
@@ -508,38 +509,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
 <td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
@@ -549,22 +526,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
 <td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">...</td>
@@ -579,39 +580,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1.0</td>
 <td style="text-align: right;">3.0</td>
-<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
@@ -622,20 +611,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
-<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 </tbody>
@@ -643,12 +644,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div><div><pre><code class="sourceCode language-clojure printed-clojure">:fit
 </code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">{:model-data {:majority-class 0.0, :distinct-labels (1.0 0.0)},
  :options {:model-type :metamorph.ml/dummy-classifier},
- :id #uuid "9dd62816-15e5-4d7a-9878-03a838ec6329",
+ :id #uuid "2804b70a-c756-40de-9296-49fcb7106ff5",
  :feature-columns [:sex :pclass :embarked],
  :target-columns [:survived],
  :target-categorical-maps
  {:survived
-  {:lookup-table {0 0, 1 1},
+  {:lookup-table {"no" 0, "yes" 1},
    :src-column :survived,
    :result-datatype :float64}},
  :scicloj.metamorph.ml/unsupervised? nil}
@@ -769,7 +770,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td data-valign="top"><div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>#uuid "fb791a68-7b46-4e12-ab0c-f9ac09b143d6"</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>#uuid "407833bc-568e-44c8-b384-097d8ac279a5"</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
 </div></td>
 <td><div style="margin-left:10px;">
 <div>
@@ -779,7 +780,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:feature-columns [:sex :pclass :embarked]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
 </div>
 <div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {0 0, 1 1}, :src-column :survived, :result-datatype :float64}}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {"no" 0, "yes" 1}, :src-column :survived, :result-datatype :float64}}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
 </div>
 <div>
 <pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:target-columns [:survived]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
@@ -810,38 +811,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">1.0</td>
 <td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
 <td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
@@ -851,12 +832,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
 <td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">2.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">2.0</td>
 </tr>
 <tr class="odd">
@@ -866,32 +867,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">2.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">2.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
@@ -900,24 +881,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
 <td style="text-align: right;">1.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
-<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 </tbody>
 </table>
@@ -930,7 +931,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:model-data {:majority-class 0.0, :distinct-labels (1.0 0.0)}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
 </div>
 <div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:id #uuid "9dd62816-15e5-4d7a-9878-03a838ec6329"</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:id #uuid "2804b70a-c756-40de-9296-49fcb7106ff5"</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
 </div>
 <table data-quarto-postprocess="true" class="table">
 <colgroup>
@@ -956,22 +957,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
 <td style="text-align: right;">1.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
@@ -980,22 +969,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
 <td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">...</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">1.0</td>
 </tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-</tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
@@ -1004,7 +999,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1.0</td>
@@ -1013,7 +1008,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
@@ -1229,7 +1230,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :fit</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "2e378827-56f1-45ff-8907-3e0bd19e48b3" {:model-data {:majority-class 1, :distinct-labels (0.0 1.0)}, :options {:model-type :metamorph.ml/dummy-classifier}, :id #uuid "a88653e6-ad63-4bc8-b06f-4fdc3fd43e89", :feature-columns [:sex :pclass :embarked], :target-columns [:survived], :target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {0 0, 1 1}, :src-column :survived, :result-datatype :float64}}, :scicloj.metamorph.ml/unsupervised? nil}</code></pre></div></div><p>}</p></div>
+<div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :fit</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "3e50e3d4-8178-48fa-ac88-bb7cab2432f1" {:model-data {:majority-class 1, :distinct-labels (0.0 1.0)}, :options {:model-type :metamorph.ml/dummy-classifier}, :id #uuid "e724f463-f019-488a-87eb-d2b732315cf8", :feature-columns [:sex :pclass :embarked], :target-columns [:survived], :target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {"no" 0, "yes" 1}, :src-column :survived, :result-datatype :float64}}, :scicloj.metamorph.ml/unsupervised? nil}</code></pre></div></div><p>}</p></div>
 </div>
 <p>To show the power of pipelines, I start with doing the simplest possible pipeline, and expand then on it.</p>
 <p>we can already chain train and test with usual functions:</p>
@@ -1305,13 +1306,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="printedClojure">
 <div class="sourceCode" id="cb47"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>#function[clojure.core/partial/fn--<span class="dv">5908</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>All these do not execute anything, they produce functions which can be executed against a context as part of a metamorph pipeline</p>
-<p>The ’mm/lift<code>function transposes any dataset-&gt;dataset functions into a ctx-&gt;ctx function, while using the e</code>metamorh` convention, as required for metamorph pipeline operations</p>
-<p>For convenience <code>tablecloth</code> contains a ns where all <code>dataset-&gt;dataset</code> functions are lifted into ctx-&gt;ctx operations, so can be added to pipelines directly without using lift.</p>
+<p>All these do not execute anything, they produce functions which can be executed against a context as part of a metamorph pipeline.</p>
+<p>The <code>mm/lift</code> function transposes any dataset-&gt;dataset functions into a ctx-&gt;ctx function, while using the <code>metamorh</code> convention, as required for metamorph pipeline operations</p>
+<p>For convenience <code>tablecloth</code> contains a ns where all <code>dataset-&gt;dataset</code> functions are lifted into ctx-&gt;ctx operations, so can be added to pipelines directly without using <code>lift</code>.</p>
 <p>So a metamorph pipeline can encapsulate arbitray transformation of a dataset in the 2 modes. They can be “stateless” (only chaining the dataset, such as <code>drop-columns</code>) or “state-full”, so they store data in the ctx during <code>:fit</code> and can use it in <code>:transform</code>. In the pipeline above, the trained model is stored in this way.</p>
 <p>This state is not stored globaly, but inside the pipeline so this makes pipeline execution “isolated”.</p>
 <p>So now we can add more operations to the pipeline, and nothing else changes, for example drop columns.</p>
-<p>Automatic ML with <code>metamorph.ml</code> The AutoML support in metamorph consists now in the possibility to create an arbitrary number of different pipelines and have them run against arbitray test/train data splits and it automatically chooses the best model evaluated by by a certain metric.</p>
+</section>
+<section id="automatic-ml-with-metamorph.ml" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="automatic-ml-with-metamorph.ml"><span class="header-section-number">4.4</span> Automatic ML with <code>metamorph.ml</code></h2>
+<p>The AutoML support in metamorph.ml consists now in the possibility to create an arbitrary number of different pipelines and have them run against arbitray test/train data splits and it automatically chooses the best model evaluated by by a certain metric.</p>
 <p>helper for later</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb48"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> make-results-ds </span>[evaluation-results]</span>
@@ -1325,21 +1329,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceClojure">
 <div class="sourceCode" id="cb49"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">require</span> '[scicloj.metamorph.ml <span class="at">:as</span> ml]</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>         '[scicloj.metamorph.ml.loss <span class="at">:as</span> loss]</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>         '[scicloj.metamorph.core <span class="at">:as</span> mm])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>         '[scicloj.metamorph.core <span class="at">:as</span> mm]</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>         '[scicloj.ml.tribuo])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="finding-the-best-model-automatically" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="finding-the-best-model-automatically"><span class="header-section-number">4.4</span> Finding the best model automatically</h2>
+<section id="finding-the-best-model-automatically" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="finding-the-best-model-automatically"><span class="header-section-number">4.5</span> Finding the best model automatically</h2>
 <p>The advantage of the pipelines is even more visible, if we want to have configurable pipelines, and do a grid search to find optimal settings.</p>
 <p>the following will find the best model across: * 5 different model classes * 6 different selections of used features * k-cross validate this with different test / train splits</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb50"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> make-pipe-fn </span>[model-type features]</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  (mm/pipeline</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>   <span class="co">;; store the used features in ctx, so we can retrieve them at the end</span></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>   (<span class="kw">fn</span> [ctx]</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>     (<span class="kw">assoc</span> ctx <span class="at">:used-features</span> features))</span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>   (mm/lift tc/select-columns (<span class="kw">conj</span> features <span class="at">:survived</span>))</span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>   {<span class="at">:metamorph/id</span> <span class="at">:model</span>} (ml/model {<span class="at">:model-type</span> model-type})))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> make-pipe-fn </span>[model-spec features]</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  (mm/pipeline</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>   <span class="co">;; store the used features in ctx, so we can retrieve them at the end</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>   (<span class="kw">fn</span> [ctx]</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>     (<span class="kw">assoc</span> ctx <span class="at">:used-features</span> features))</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>   (mm/lift tc/select-columns (<span class="kw">conj</span> features <span class="at">:survived</span>))</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>   {<span class="at">:metamorph/id</span> <span class="at">:model</span>} (ml/model model-spec)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>create a 5-K cross validation split of the data</p>
 <div class="sourceClojure">
@@ -1347,11 +1354,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>The list of the model types we want to try:</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb52"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> model-types </span>[<span class="at">:metamorph.ml/dummy-classifier</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">:smile.classification/random-forest</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">:smile.classification/logistic-regression</span></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">:smile.classification/decision-tree</span></span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">:smile.classification/ada-boost</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> models </span>[{<span class="at">:model-type</span> <span class="at">:metamorph.ml/dummy-classifier</span>}</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>             {<span class="at">:model-type</span> <span class="at">:smile.classification/random-forest</span>}</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>             {<span class="at">:model-type</span> <span class="at">:smile.classification/logistic-regression</span>}</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>             {<span class="at">:model-type</span> <span class="at">:smile.classification/decision-tree</span>}</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>             {<span class="at">:model-type</span> <span class="at">:smile.classification/ada-boost</span>}</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>             {<span class="at">:model-type</span> <span class="at">:scicloj.ml.tribuo/classification</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">:tribuo-components</span> [{<span class="at">:name</span> <span class="st">"trainer"</span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">:type</span> <span class="st">"org.tribuo.classification.dtree.CARTClassificationTrainer"</span></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">:properties</span> {<span class="at">:maxDepth</span> <span class="st">"8"</span></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>                                                <span class="at">:useRandomSplitPoints</span> <span class="st">"false"</span></span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>                                                <span class="at">:fractionFeaturesInSplit</span> <span class="st">"0.5"</span>}}]</span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">:tribuo-trainer-name</span> <span class="st">"trainer"</span>}])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This uses models from smile only, but could be any metamorph.ml compliant model ( library <code>sklearn-clj</code> wraps all python sklearn models, for example)</p>
 <p>The list of feature combinations to try for each model:</p>
@@ -1367,9 +1381,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>generate 30 pipeline functions:</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb54"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> pipe-fns</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">for</span> [model-type model-types</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">for</span> [model models</span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>        feature-combination feature-combinations]</span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    (make-pipe-fn model-type feature-combination)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    (make-pipe-fn model feature-combination)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Exceute all pipelines for all splits in the cross-validations and return best model by <code>classification-accuracy</code></p>
 <div class="sourceClojure">
@@ -1388,9 +1402,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>_unnamed [1 3]:</p>
 <table class="table">
 <colgroup>
-<col style="width: 29%">
-<col style="width: 17%">
-<col style="width: 52%">
+<col style="width: 23%">
+<col style="width: 14%">
+<col style="width: 62%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1403,7 +1417,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>[:sex :pclass :embarked]</td>
 <td style="text-align: right;">0.81107726</td>
-<td>{:model-type :smile.classification/ada-boost}</td>
+<td>{:model-type :scicloj.ml.tribuo/classification,</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: right;"></td>
+<td>:tribuo-components</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: right;"></td>
+<td>[{:name trainer,</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: right;"></td>
+<td>:type org.tribuo.classification.dtree.CARTClassificationTrainer,</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: right;"></td>
+<td>:properties</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: right;"></td>
+<td>{:maxDepth 8,</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: right;"></td>
+<td>:useRandomSplitPoints false,</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: right;"></td>
+<td>:fractionFeaturesInSplit 0.5}}],</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: right;"></td>
+<td>:tribuo-trainer-name trainer}</td>
 </tr>
 </tbody>
 </table>
@@ -1425,21 +1479,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb58"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span>  evaluation-results-all flatten <span class="kw">count</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb59"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="dv">150</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="dv">180</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can find the best as well by hand, it’s the first from the list, when sorted by accuracy.</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb60"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> (make-results-ds evaluation-results-all)</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    (tc/unique-by)</span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    (tc/order-by [<span class="at">:mean-accuracy</span>] <span class="at">:desc</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    (tc/order-by [<span class="at">:mean-accuracy</span>] <span class="at">:desc</span>)</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>    (tc/head))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="clay-dataset">
-<p>_unnamed [30 3]:</p>
+<p>_unnamed [5 3]:</p>
 <table class="table">
 <colgroup>
-<col style="width: 26%">
-<col style="width: 16%">
-<col style="width: 57%">
+<col style="width: 23%">
+<col style="width: 14%">
+<col style="width: 62%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1452,135 +1507,133 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>[:sex :pclass :embarked]</td>
 <td style="text-align: right;">0.81107726</td>
-<td>{:model-type :smile.classification/ada-boost}</td>
+<td>{:model-type :scicloj.ml.tribuo/classification,</td>
 </tr>
 <tr class="even">
-<td>[:sex]</td>
-<td style="text-align: right;">0.78633276</td>
+<td></td>
+<td style="text-align: right;"></td>
+<td>:tribuo-components</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: right;"></td>
+<td>[{:name trainer,</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: right;"></td>
+<td>:type org.tribuo.classification.dtree.CARTClassificationTrainer,</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: right;"></td>
+<td>:properties</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: right;"></td>
+<td>{:maxDepth 8,</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: right;"></td>
+<td>:useRandomSplitPoints false,</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: right;"></td>
+<td>:fractionFeaturesInSplit 0.5}}],</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: right;"></td>
+<td>:tribuo-trainer-name trainer}</td>
+</tr>
+<tr class="even">
+<td>[:sex :pclass :embarked]</td>
+<td style="text-align: right;">0.81107726</td>
 <td>{:model-type :smile.classification/ada-boost}</td>
 </tr>
 <tr class="odd">
 <td>[:sex :pclass]</td>
-<td style="text-align: right;">0.78633276</td>
-<td>{:model-type :smile.classification/logistic-regression}</td>
+<td style="text-align: right;">0.78633911</td>
+<td>{:model-type :smile.classification/random-forest}</td>
 </tr>
 <tr class="even">
+<td>[:sex]</td>
+<td style="text-align: right;">0.78633276</td>
+<td>{:model-type :scicloj.ml.tribuo/classification,</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: right;"></td>
+<td>:tribuo-components</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: right;"></td>
+<td>[{:name trainer,</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: right;"></td>
+<td>:type org.tribuo.classification.dtree.CARTClassificationTrainer,</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: right;"></td>
+<td>:properties</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: right;"></td>
+<td>{:maxDepth 8,</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: right;"></td>
+<td>:useRandomSplitPoints false,</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: right;"></td>
+<td>:fractionFeaturesInSplit 0.5}}],</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: right;"></td>
+<td>:tribuo-trainer-name trainer}</td>
+</tr>
+<tr class="odd">
 <td>[:sex :embarked]</td>
 <td style="text-align: right;">0.78633276</td>
-<td>{:model-type :smile.classification/logistic-regression}</td>
-</tr>
-<tr class="odd">
-<td>[:sex]</td>
-<td style="text-align: right;">0.78633276</td>
-<td>{:model-type :smile.classification/logistic-regression}</td>
-</tr>
-<tr class="even">
-<td>[:sex]</td>
-<td style="text-align: right;">0.78633276</td>
-<td>{:model-type :smile.classification/random-forest}</td>
-</tr>
-<tr class="odd">
-<td>[:sex :pclass]</td>
-<td style="text-align: right;">0.78521551</td>
-<td>{:model-type :smile.classification/random-forest}</td>
-</tr>
-<tr class="even">
-<td>[:sex :pclass :embarked]</td>
-<td style="text-align: right;">0.77849299</td>
-<td>{:model-type :smile.classification/random-forest}</td>
-</tr>
-<tr class="odd">
-<td>[:sex :pclass]</td>
-<td style="text-align: right;">0.77734400</td>
 <td>{:model-type :smile.classification/ada-boost}</td>
-</tr>
-<tr class="even">
-<td>[:sex :pclass :embarked]</td>
-<td style="text-align: right;">0.77507776</td>
-<td>{:model-type :smile.classification/logistic-regression}</td>
-</tr>
-<tr class="odd">
-<td>…</td>
-<td style="text-align: right;">…</td>
-<td>…</td>
-</tr>
-<tr class="even">
-<td>[:embarked]</td>
-<td style="text-align: right;">0.63780232</td>
-<td>{:model-type :smile.classification/logistic-regression}</td>
-</tr>
-<tr class="odd">
-<td>[:pclass :embarked]</td>
-<td style="text-align: right;">0.63670412</td>
-<td>{:model-type :smile.classification/random-forest}</td>
-</tr>
-<tr class="even">
-<td>[:embarked]</td>
-<td style="text-align: right;">0.63218435</td>
-<td>{:model-type :smile.classification/ada-boost}</td>
-</tr>
-<tr class="odd">
-<td>[:embarked]</td>
-<td style="text-align: right;">0.61419412</td>
-<td>{:model-type :smile.classification/random-forest}</td>
-</tr>
-<tr class="even">
-<td>[:embarked]</td>
-<td style="text-align: right;">0.61305783</td>
-<td>{:model-type :smile.classification/decision-tree}</td>
-</tr>
-<tr class="odd">
-<td>[:sex :pclass]</td>
-<td style="text-align: right;">0.38243509</td>
-<td>{:model-type :metamorph.ml/dummy-classifier}</td>
-</tr>
-<tr class="even">
-<td>[:sex :embarked]</td>
-<td style="text-align: right;">0.38243509</td>
-<td>{:model-type :metamorph.ml/dummy-classifier}</td>
-</tr>
-<tr class="odd">
-<td>[:embarked]</td>
-<td style="text-align: right;">0.38243509</td>
-<td>{:model-type :metamorph.ml/dummy-classifier}</td>
-</tr>
-<tr class="even">
-<td>[:pclass :embarked]</td>
-<td style="text-align: right;">0.38243509</td>
-<td>{:model-type :metamorph.ml/dummy-classifier}</td>
-</tr>
-<tr class="odd">
-<td>[:sex]</td>
-<td style="text-align: right;">0.38243509</td>
-<td>{:model-type :metamorph.ml/dummy-classifier}</td>
-</tr>
-<tr class="even">
-<td>[:sex :pclass :embarked]</td>
-<td style="text-align: right;">0.38243509</td>
-<td>{:model-type :metamorph.ml/dummy-classifier}</td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="best-practices-for-data-transformation-steps-in-or" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="best-practices-for-data-transformation-steps-in-or"><span class="header-section-number">4.5</span> Best practices for data transformation steps in or</h2>
-<p>outside pipeline</p>
+<section id="best-practices-for-data-transformation-steps-in-or-outside-pipeline" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="best-practices-for-data-transformation-steps-in-or-outside-pipeline"><span class="header-section-number">4.6</span> Best practices for data transformation steps in or outside pipeline</h2>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb61"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">require</span> '[scicloj.metamorph.ml.toydata <span class="at">:as</span> data]</span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>         '[tech.v3.dataset.modelling <span class="at">:as</span> ds-mod]</span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>         '[tech.v3.dataset.categorical <span class="at">:as</span> ds-cat]</span>
 <span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>         '[tech.v3.dataset <span class="at">:as</span> ds])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We have seen that we have two ways to transform the input data, outside the pipeline and inside the pipeline</p>
-<p>These are the total steps from raw data to “into the model” for the titainc use case.</p>
-<p>raw data</p>
+<p>We have seen that we have two ways to transform the input data, outside the pipeline and inside the pipeline.</p>
+<p>These are the total steps from raw data to “into the model” for the titanic use case.</p>
+<ol type="1">
+<li>raw data</li>
+</ol>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb62"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> titanic</span></span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  (<span class="at">:train</span></span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>   (data/titanic-ds-split)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>first transformation, no metamorph pipeline</p>
+<ol start="2" type="1">
+<li>first transformation, no metamorph pipeline</li>
+</ol>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb63"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> relevant-titanic-data</span></span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> titanic</span>
@@ -1590,7 +1643,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>      (ds/categorical-&gt;number [<span class="at">:survived</span>] [<span class="dv">0</span> <span class="dv">1</span>] <span class="at">:float64</span>)</span>
 <span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>      (ds-mod/set-inference-target <span class="at">:survived</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>-&gt; transform via pipelines</p>
+<ol start="3" type="1">
+<li>transform via pipelines</li>
+</ol>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb64"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> make-pipe-fn </span>[model-type features]</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  (mm/pipeline</span>
@@ -1600,7 +1655,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>   (mm/lift tc/select-columns (<span class="kw">conj</span> features <span class="at">:survived</span>))</span>
 <span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>   {<span class="at">:metamorph/id</span> <span class="at">:model</span>} (ml/model {<span class="at">:model-type</span> model-type})))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>While it would be technically possible to move all steps from the “first transformation” into the pipeline, by just using the “lifted” form of the transformations, I would not do so, even though this should give the same result.</p>
+<p>While it would be technically possible to move all steps from the “first transformation” into the pipeline, by just using the “lifted” form of the transformations,</p>
+<p>I would not do so, even though this should give the same result.</p>
 <p>I think it is better to separate the steps which are “fixed”, from the steps which are parameterized, so for which we want to find the best values by “trying out”.</p>
 <p>In my view there are two reasons for this: 1. Debugging: It is harder to debug a pipeline and see the results of steps. We have one macro helping in this: <code>mm/def-ctx</code> 2. Performance: The pipeline is executed lots of times, for every split / variant of the pipeline. It should be faster to do things only once, before the pipeline</p>
 <div style="background-color:grey;height:2px;width:100%;"></div>

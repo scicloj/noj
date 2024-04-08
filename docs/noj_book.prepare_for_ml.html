@@ -957,16 +957,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
 </tr>
 </tbody>
 </table>
@@ -1103,25 +1103,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
 </tr>
 </tbody>
 </table>
@@ -1144,7 +1144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb88-11"><a href="#cb88-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">:inference-target</span>? <span class="va">true</span>}</span>
 <span id="cb88-12"><a href="#cb88-12" aria-hidden="true" tabindex="-1"></a> {<span class="at">:categorical</span>? <span class="va">true</span>,</span>
 <span id="cb88-13"><a href="#cb88-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">:name</span> <span class="at">:cat-c</span>,</span>
-<span id="cb88-14"><a href="#cb88-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">:datatype</span> <span class="at">:float64</span>,</span>
+<span id="cb88-14"><a href="#cb88-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">:datatype</span> <span class="at">:int8</span>,</span>
 <span id="cb88-15"><a href="#cb88-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">:n-elems</span> <span class="dv">3</span>,</span>
 <span id="cb88-16"><a href="#cb88-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">:one-hot-map</span></span>
 <span id="cb88-17"><a href="#cb88-17" aria-hidden="true" tabindex="-1"></a>  {<span class="at">:one-hot-table</span> {<span class="at">:c</span> <span class="at">:cat-c</span>, <span class="at">:a</span> <span class="at">:cat-a</span>, <span class="at">:b</span> <span class="at">:cat-b</span>},</span>
@@ -1152,7 +1152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb88-19"><a href="#cb88-19" aria-hidden="true" tabindex="-1"></a>   <span class="at">:result-datatype</span> <span class="at">:float64</span>}}</span>
 <span id="cb88-20"><a href="#cb88-20" aria-hidden="true" tabindex="-1"></a> {<span class="at">:categorical</span>? <span class="va">true</span>,</span>
 <span id="cb88-21"><a href="#cb88-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">:name</span> <span class="at">:cat-a</span>,</span>
-<span id="cb88-22"><a href="#cb88-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">:datatype</span> <span class="at">:float64</span>,</span>
+<span id="cb88-22"><a href="#cb88-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">:datatype</span> <span class="at">:int8</span>,</span>
 <span id="cb88-23"><a href="#cb88-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">:n-elems</span> <span class="dv">3</span>,</span>
 <span id="cb88-24"><a href="#cb88-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">:one-hot-map</span></span>
 <span id="cb88-25"><a href="#cb88-25" aria-hidden="true" tabindex="-1"></a>  {<span class="at">:one-hot-table</span> {<span class="at">:c</span> <span class="at">:cat-c</span>, <span class="at">:a</span> <span class="at">:cat-a</span>, <span class="at">:b</span> <span class="at">:cat-b</span>},</span>
@@ -1160,7 +1160,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb88-27"><a href="#cb88-27" aria-hidden="true" tabindex="-1"></a>   <span class="at">:result-datatype</span> <span class="at">:float64</span>}}</span>
 <span id="cb88-28"><a href="#cb88-28" aria-hidden="true" tabindex="-1"></a> {<span class="at">:categorical</span>? <span class="va">true</span>,</span>
 <span id="cb88-29"><a href="#cb88-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">:name</span> <span class="at">:cat-b</span>,</span>
-<span id="cb88-30"><a href="#cb88-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">:datatype</span> <span class="at">:float64</span>,</span>
+<span id="cb88-30"><a href="#cb88-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">:datatype</span> <span class="at">:int8</span>,</span>
 <span id="cb88-31"><a href="#cb88-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">:n-elems</span> <span class="dv">3</span>,</span>
 <span id="cb88-32"><a href="#cb88-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">:one-hot-map</span></span>
 <span id="cb88-33"><a href="#cb88-33" aria-hidden="true" tabindex="-1"></a>  {<span class="at">:one-hot-table</span> {<span class="at">:c</span> <span class="at">:cat-c</span>, <span class="at">:a</span> <span class="at">:cat-a</span>, <span class="at">:b</span> <span class="at">:cat-b</span>},</span>
