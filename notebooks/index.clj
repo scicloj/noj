@@ -5,7 +5,8 @@
   (:require [scicloj.kindly.v4.api :as kindly]
             [scicloj.kindly.v4.kind :as kind]
             [clojure.string :as str]
-            [clojure.string :as string]))
+            [clojure.string :as string]
+            [scicloj.clay.v2.api :as clay]))
 
 ^:kindly/hide-code
 (def md
@@ -51,3 +52,9 @@ See the standalone repo example:
                     chapter)))
      (string/join "\n")
      md)
+
+
+
+(comment
+  (clay/make! {:base-source-path "notebooks/"
+               :source-path "index.clj"}))
