@@ -69,11 +69,3 @@
     meta
     (update :model
             dissoc :model-data :predict :predictions))
-
-;; ## Histograms
-
-;; The `stats/histogram` function computes the necessary data
-;; to plot a histogram.
-
-(-> (repeatedly 99 rand)
-    (stats/histogram {:bin-count 5}))
