@@ -1,6 +1,7 @@
 (ns scicloj.noj.v1.vis.stats
   (:require [aerial.hanami.templates :as ht]
             [scicloj.kindly.v4.kind :as kind]
+            [fastmath.stats]
             [scicloj.noj.v1.stats :as stats]
             [scicloj.noj.v1.vis.hanami :as hanami]
             [tablecloth.api :as tc]))
