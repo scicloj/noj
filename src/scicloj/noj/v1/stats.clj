@@ -9,33 +9,6 @@
             [tech.v3.datatype :as dtype]
             [tech.v3.datatype.functional :as fun]))
 
-;; Computing correlation matrices
-
-;; Related Zulip discussion:
-;; https://clojurians.zulipchat.com/#narrow/stream/151924-data-science/topic/correlation.20matrix.20plot.20.3F
-
-(defn round
-  [n scale rm]
-  (.setScale ^java.math.BigDecimal (bigdec n)
-             (int scale)
-             ^RoundingMode (if (instance? java.math.RoundingMode rm)
-                             rm
-                             (java.math.RoundingMode/valueOf
-                              (str (if (ident? rm) (symbol rm) rm))))))
-
-(defn calc-correlations-matrix [data cols-to-use]
-  (tc/dataset
-   (for [col-1 cols-to-use
-         col-2 cols-to-use]
-     {:col-1 col-1
-      :col-2 col-2
-      :corr
-      (Float/valueOf
-       (str
-        (round
-         (stats/pearson-correlation (data col-1) (data col-2))
-         2 :DOWN)))})))
-
 ;; Multivariate linear regression
 
 (defn regression-model [dataset target features options]
