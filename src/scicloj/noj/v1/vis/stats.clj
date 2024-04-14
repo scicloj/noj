@@ -6,16 +6,16 @@
             [scicloj.noj.v1.vis.hanami :as hanami]
             [tablecloth.api :as tc]))
 
-(defn histogram [dataset column-name options]
-  (let [hist (-> column-name
-                 dataset
-                 (stats/histogram options))
-        step (->> hist
-                  :left
-                  (take 2)
-                  reverse
-                  (apply -))]
-    (-> hist
+(defn histogram [dataset column-name {:keys [nbins]}]
+  (let [{:keys [bins max step]} (-> column-name
+                                    dataset
+                                    (fastmath.stats/histogram nbins))
+        left (map first bins)]
+    (-> {:left (map first bins)
+         :right (concat (rest left)
+                        [max])
+         :count (map second bins)}
+        tc/dataset
         (hanami/plot ht/bar-chart
                      {:X :left
                       :X2 :right

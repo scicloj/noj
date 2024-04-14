@@ -52,34 +52,3 @@
     (if (tc/grouped? dataset)
       (tc/process-group-data dataset process-fn)
       (process-fn dataset))))
-
-
-
-
-
-;; based on the histogram of https://github.com/techascent/tech.viz
-(defn histogram
-  ([values]
-   (histogram values {}))
-  ([values {:keys [nbins] :as options}]
-   (let [n-values       (count values)
-         minimum        (fun/reduce-min values)
-         maximum        (fun/reduce-max values)
-         nbins      (int (or nbins
-                             (Math/ceil (Math/log n-values))))
-         bin-width      (double (/ (- maximum minimum) nbins))
-         counts (dtype/make-container :int32 nbins)]
-     (doseq [v values]
-       (let [bin-index (min (int (quot (- v minimum)
-                                       bin-width))
-                            (dec nbins))]
-         (->> bin-index
-              counts
-              inc
-              (dtype/set-value! counts bin-index))))
-     (-> {:count counts
-          :left  (dtype/make-reader :float32 nbins
-                                    (+ minimum (* idx bin-width)))
-          :right (dtype/make-reader :float32 nbins
-                                    (+ minimum (* (inc idx) bin-width)))}
-         tmd/->dataset))))
