@@ -11,12 +11,3 @@
              :base-target-path "docs"
              :book {:title "Noj Documentation"}
              :clean-up-target-dir true})
-;; ## Correlation matrices
-
-;; The `stats/calc-correlations-matrix` function commputes the correlation
-;; matrix of selected columns of a given dataset,
-;; organizing the resulting data as a dataset.
-
-(-> iris
-    (stats/calc-correlations-matrix
-     [:sepal-length :sepal-width :petal-length :petal-width]))
