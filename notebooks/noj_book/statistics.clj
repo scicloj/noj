@@ -17,16 +17,6 @@
                           :Petal.Width :petal-width
                           :Species :species})))
 
-;; ## Correlation matrices
-
-;; The `stats/calc-correlations-matrix` function commputes the correlation
-;; matrix of selected columns of a given dataset,
-;; organizing the resulting data as a dataset.
-
-(-> iris
-    (stats/calc-correlations-matrix
-     [:sepal-length :sepal-width :petal-length :petal-width]))
-
 ;; ## Multivariate regression
 
 ;; The `stats/regression-model` function computes a regressiom model (using `scicloj.ml`)
