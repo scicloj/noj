@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. This change
 ## [1-alpha34] - unreleased
 - removed the currently-unnecessary `calc-correlations-matrix` and `round` functions (#22)
 - dropped the histogram computation function and used the one in Fastmath instead (#21)
+- updated deps - in particular, added Tablecloth Columns
 
 ## [1-alpha33] - 2024-04-08
 - updated Tablecloth version

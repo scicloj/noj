@@ -1,7 +1,7 @@
 {:paths ["src" "resources"]
  :deps {org.clojure/clojure {:mvn/version "1.11.1"}
-        scicloj/tablecloth {:mvn/version "7.029"}
-        org.scicloj/kindly {:mvn/version "4-alpha19"}
+        scicloj/tablecloth {:mvn/version "7.029.1"}
+        org.scicloj/kindly {:mvn/version "4-beta2"}
         generateme/fastmath {:mvn/version "2.4.0"}
         aerial.hanami/aerial.hanami {:mvn/version "0.20.0"}
         cljplot/cljplot {:mvn/version "0.0.3"}
