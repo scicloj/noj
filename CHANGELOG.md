@@ -2,8 +2,8 @@
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
 ## [1-alpha34] - 2024-04-15
-- removed the currently-unnecessary `calc-correlations-matrix` and `round` functions (#22)
-- dropped the histogram computation function and used the one in Fastmath instead (#21)
+- removed the currently-unnecessary `calc-correlations-matrix` and `round` functions (#22) - thanks, @behrica
+- dropped the histogram computation function and used the one in Fastmath instead (#21) - thanks, @behrica
 - updated deps - in particular, added Tablecloth Columns
 
 ## [1-alpha33] - 2024-04-08
