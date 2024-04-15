@@ -10,9 +10,9 @@
             [scicloj.metamorph.ml :as ml]
             [scicloj.metamorph.ml.loss :as loss]
             [tablecloth.api :as tc]
+            [tablecloth.column.api :as tcc]
             [tablecloth.pipeline :as tcpipe]
             [tech.v3.dataset.modelling :as modelling]
-            [tech.v3.datatype.functional :as fun]
             [scicloj.ml.smile.regression]))
 
 ^:kindly/hide-code
@@ -68,7 +68,7 @@ $$sales = b0 + b1 * youtube + b2 * facebook$$")
 $$sales = b0 + b1 * youtube + b2 * facebook + b3 * (youtube * facebook)$$")
 (def pipe-interaction
   (mm/pipeline
-   (tcpipe/add-column :youtube*facebook (fn [ds] (fun/* (ds :youtube) (ds :facebook))))
+   (tcpipe/add-column :youtube*facebook (fn [ds] (tcc/* (ds :youtube) (ds :facebook))))
    {:metamorph/id :model}(ml/model {:model-type :smile.regression/ordinary-least-square})))
 
 (md "Again we evaluate the model,")

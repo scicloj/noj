@@ -7,7 +7,7 @@
             [libpython-clj2.python :refer [py. py.. py.-] :as py]
             [scicloj.noj.v1.vis.python :as vis.python]
             [tablecloth.api :as tc]
-            [tech.v3.datatype.functional :as fun]))
+            [tablecloth.column.api :as tcc]))
 
 
 ;; ## Using Python visualizations
@@ -25,7 +25,7 @@
 (def sine-data
   (-> {:x (range 0 (* 3 np/pi) 0.1)}
       tc/dataset
-      (tc/add-column :y #(fun/sin (:x %)))))
+      (tc/add-column :y #(tcc/sin (:x %)))))
 
 (vis.python/with-pyplot
   (matplotlib.pyplot/plot
