@@ -55,7 +55,7 @@
                          :coli coli
                          :colj colj
                          :corr corr
-                         :corr-str (format "%.02f" corr)})))))))
+                         :corr-round (round corr 2 :HALF_EVEN)})))))))
          (apply concat)
          tc/dataset)))
 
@@ -109,4 +109,29 @@
     :min 0
     :max 1}))
 
-;; Note that this plot supports tooltips.
+;; Note the slider control and the tooltips.
+
+;; Here is an example with an actual correlation matrix.
+
+(let [columns-for-correlations [:sepal-length :sepal-width
+                                :petal-length :petal-width]
+      correlations (-> noj-book.datasets/iris
+                       (correlations-dataset columns-for-correlations)
+                       (tc/select-columns [:coli :colj :corr-round])
+                       tc/rows)]
+  (echarts-heatmap {:xyz-data correlations
+                    :xs columns-for-correlations
+                    :ys columns-for-correlations
+                    :min -1
+                    :max 1
+                    :series-name "correlation"}))
+
+;; TODO: Improve the layout so that the slider control does not overlap the labels.
+
+;; ## Drawing a heatmap using Vega
+
+;; coming soon
+
+;; ## Drawing a heatmap using cljplot
+
+;; coming soon
