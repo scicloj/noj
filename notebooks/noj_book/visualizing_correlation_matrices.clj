@@ -13,7 +13,8 @@
             [tablecloth.api :as tc]
             [noj-book.datasets]
             [scicloj.kindly.v4.kind :as kind]
-            [clojure.math :as math]))
+            [clojure.math :as math]
+            [clojure.string :as str]))
 
 ;; ## Auxiliary functions
 
@@ -43,12 +44,10 @@
     (->> matrix
          (map-indexed
           (fn [i row]
-            (prn [i])
             (let [coli (columns-to-use i)]
               (->> row
                    (map-indexed
                     (fn [j corr]
-                      (prn [i j])
                       (let [colj (columns-to-use j)]
                         {:i i
                          :j j
@@ -128,10 +127,11 @@
 
 ;; TODO: Improve the layout so that the slider control does not overlap the labels.
 
-;; ## Drawing a heatmap using Vega
+
+;; ## Drawing a heatmap using cljplot
 
 ;; coming soon
 
-;; ## Drawing a heatmap using cljplot
+;; ## Drawing a heatmap using Vega
 
 ;; coming soon
