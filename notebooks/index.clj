@@ -52,9 +52,3 @@ See the standalone repo example:
                     chapter)))
      (string/join "\n")
      md)
-
-
-
-(comment
-  (clay/make! {:base-source-path "notebooks/"
-               :source-path "index.clj"}))
