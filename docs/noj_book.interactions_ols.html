@@ -348,19 +348,19 @@ window.Quarto = {
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Residuals:</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>       Min          <span class="dv">1</span>Q      Median          <span class="dv">3</span>Q         Max</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  -<span class="fl">10.1808</span>     -<span class="fl">1.2477</span>      <span class="fl">0.3855</span>      <span class="fl">1.4717</span>      <span class="fl">3.5701</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>   -<span class="fl">5.7074</span>     -<span class="fl">0.9998</span>      <span class="fl">0.3252</span>      <span class="fl">1.1840</span>      <span class="fl">3.6785</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>Coefficients:</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                  Estimate Std. Error    t value   Pr(<span class="kw">&gt;</span>|t|)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>Intercept           <span class="fl">3.2517</span>     <span class="fl">0.4605</span>     <span class="fl">7.0615</span>     <span class="fl">0.0000</span> ***</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>youtube             <span class="fl">0.0468</span>     <span class="fl">0.0018</span>    <span class="fl">26.4844</span>     <span class="fl">0.0000</span> ***</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>facebook            <span class="fl">0.1854</span>     <span class="fl">0.0106</span>    <span class="fl">17.4187</span>     <span class="fl">0.0000</span> ***</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>Intercept           <span class="fl">3.3838</span>     <span class="fl">0.3901</span>     <span class="fl">8.6751</span>     <span class="fl">0.0000</span> ***</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>youtube             <span class="fl">0.0438</span>     <span class="fl">0.0016</span>    <span class="fl">27.2563</span>     <span class="fl">0.0000</span> ***</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>facebook            <span class="fl">0.2107</span>     <span class="fl">0.0090</span>    <span class="fl">23.4578</span>     <span class="fl">0.0000</span> ***</span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>---------------------------------------------------------------------</span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>Significance codes:  <span class="dv">0</span> <span class="at">'***'</span> <span class="fl">0.001</span> <span class="at">'**'</span> <span class="fl">0.01</span> <span class="at">'*'</span> <span class="fl">0.05</span> <span class="at">'.'</span> <span class="fl">0.1</span> ' ' <span class="dv">1</span></span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>Residual standard error: <span class="fl">2.1636</span> on <span class="dv">130</span> degrees of freedom</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>Multiple R-squared: <span class="fl">0.8857</span>,    Adjusted R-squared: <span class="fl">0.8840</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>F-statistic: <span class="fl">503.8707</span> on <span class="dv">3</span> <span class="kw">and</span> <span class="dv">130</span> DF,  p-value: <span class="fl">5.801e-62</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>Residual standard error: <span class="fl">1.8727</span> on <span class="dv">130</span> degrees of freedom</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>Multiple R-squared: <span class="fl">0.9216</span>,    Adjusted R-squared: <span class="fl">0.9204</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>F-statistic: <span class="fl">764.3823</span> on <span class="dv">3</span> <span class="kw">and</span> <span class="dv">130</span> DF,  p-value: <span class="fl">1.319e-72</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We have the following metrics:</p>
 <p><span class="math inline">\(RMSE\)</span></p>
@@ -368,14 +368,14 @@ window.Quarto = {
 <div class="sourceCode" id="cb8"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:test-transform</span> <span class="at">:metric</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1.7293393770640264</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fl">2.4136890070958295</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><span class="math inline">\(R^2\)</span></p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb10"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:test-transform</span> <span class="at">:other-metrices</span> <span class="kw">first</span> <span class="at">:metric</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb11"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.9223737393827188</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.8114211930370409</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="interaction-effects" class="level2" data-number="5.2">
@@ -407,20 +407,20 @@ window.Quarto = {
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>Residuals:</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>       Min          <span class="dv">1</span>Q      Median          <span class="dv">3</span>Q         Max</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>   -<span class="fl">4.5744</span>     -<span class="fl">0.5438</span>      <span class="fl">0.2698</span>      <span class="fl">0.6643</span>      <span class="fl">1.7632</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>   -<span class="fl">7.1135</span>     -<span class="fl">0.5183</span>      <span class="fl">0.2392</span>      <span class="fl">0.7820</span>      <span class="fl">1.8570</span></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>Coefficients:</span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                  Estimate Std. Error    t value   Pr(<span class="kw">&gt;</span>|t|)</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>Intercept           <span class="fl">7.4629</span>     <span class="fl">0.3168</span>    <span class="fl">23.5596</span>     <span class="fl">0.0000</span> ***</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>youtube             <span class="fl">0.0220</span>     <span class="fl">0.0017</span>    <span class="fl">13.0535</span>     <span class="fl">0.0000</span> ***</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>facebook            <span class="fl">0.0567</span>     <span class="fl">0.0098</span>     <span class="fl">5.7697</span>     <span class="fl">0.0000</span> ***</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>youtube*facebook     <span class="fl">0.0008</span>     <span class="fl">0.0000</span>    <span class="fl">15.8067</span>     <span class="fl">0.0000</span> ***</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>Intercept           <span class="fl">8.2880</span>     <span class="fl">0.4010</span>    <span class="fl">20.6681</span>     <span class="fl">0.0000</span> ***</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>youtube             <span class="fl">0.0177</span>     <span class="fl">0.0020</span>     <span class="fl">8.8557</span>     <span class="fl">0.0000</span> ***</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>facebook            <span class="fl">0.0145</span>     <span class="fl">0.0126</span>     <span class="fl">1.1561</span>     <span class="fl">0.2498</span> </span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>youtube*facebook     <span class="fl">0.0010</span>     <span class="fl">0.0001</span>    <span class="fl">15.9127</span>     <span class="fl">0.0000</span> ***</span>
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>---------------------------------------------------------------------</span>
 <span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>Significance codes:  <span class="dv">0</span> <span class="at">'***'</span> <span class="fl">0.001</span> <span class="at">'**'</span> <span class="fl">0.01</span> <span class="at">'*'</span> <span class="fl">0.05</span> <span class="at">'.'</span> <span class="fl">0.1</span> ' ' <span class="dv">1</span></span>
 <span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>Residual standard error: <span class="fl">1.0261</span> on <span class="dv">129</span> degrees of freedom</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>Multiple R-squared: <span class="fl">0.9734</span>,    Adjusted R-squared: <span class="fl">0.9728</span></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>F-statistic: <span class="fl">1573.5134</span> on <span class="dv">4</span> <span class="kw">and</span> <span class="dv">129</span> DF,  p-value: <span class="fl">2.287e-101</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>Residual standard error: <span class="fl">1.2082</span> on <span class="dv">129</span> degrees of freedom</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>Multiple R-squared: <span class="fl">0.9613</span>,    Adjusted R-squared: <span class="fl">0.9604</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>F-statistic: <span class="fl">1068.5077</span> on <span class="dv">4</span> <span class="kw">and</span> <span class="dv">129</span> DF,  p-value: <span class="fl">7.058e-91</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>As the multiplcation of <code>youtube*facebook</code> is as well statistically relevant, it suggests that there is indeed an interaction between these 2 predictor variables youtube and facebook.</p>
 <p><span class="math inline">\(RMSE\)</span></p>
@@ -428,14 +428,14 @@ window.Quarto = {
 <div class="sourceCode" id="cb16"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:test-transform</span> <span class="at">:metric</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb17"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1.3886192343479014</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1.0326921147850543</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><span class="math inline">\(R^2\)</span></p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb18"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:test-transform</span> <span class="at">:other-metrices</span> <span class="kw">first</span> <span class="at">:metric</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb19"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.9526434225525324</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.9797845745830085</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><span class="math inline">\(RMSE\)</span> and <span class="math inline">\(R^2\)</span> of the intercation model are sligtly better.</p>
 <p>These results suggest that the model with the interaction term is better than the model that contains only main effects. So, for this specific data, we should go for the model with the interaction model.</p>
