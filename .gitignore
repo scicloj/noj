@@ -35,3 +35,7 @@ temp
 *.qmd
 book
 
+/.RData
+/.Rhistory
+/.Rprofile
+/.clj-kondo/

@@ -11,8 +11,12 @@
   (:require [tablecloth.api :as tc]
             [scicloj.metamorph.ml.toydata :as data]
             [tech.v3.dataset :as ds]
-            [scicloj.metamorph.ml :as ml]
+            [camel-snake-kebab.core :as csk]
+            [scicloj.kindly.v4.kind :as kind]
             [scicloj.kindly.v4.api :as kindly]))
+
+
+
 
 ;; ## Inspect data
 ;;
@@ -91,7 +95,26 @@
    (ds-cat/fit-categorical-map relevant-titanic-data :pclass [0 1 2] :float64)
    (ds-cat/fit-categorical-map relevant-titanic-data :embarked ["S" "Q" "C"] :float64)])
 
+
 cat-maps
+
+(kind/test-last (fn [cat-maps]
+                  (every?
+                   true?
+                   (map
+                    #(.equals %1 %2)
+                    cat-maps
+                    [
+                     {:lookup-table {"male" 0, "female" 1},
+                      :src-column :sex,
+                      :result-datatype :float64}
+                     {:lookup-table {0 0, 1 1, 2 2, 3 3},
+                      :src-column :pclass,
+                      :result-datatype :float64}
+                     {:lookup-table {"S" 0, "Q" 1, "C" 2},
+                      :src-column :embarked,
+                      :result-datatype :float64}]))))
+
 
 ;; After the mappings are applied, we have a numeric dataset, as expected
 ;; by most models.
@@ -102,6 +125,16 @@ cat-maps
           cat-maps))
 (tc/head
  numeric-titanic-data)
+
+
+(kind/test-last (fn [ds]
+                  (=
+                   [[0.0 3.0 0.0 0.0]
+                    [1.0 1.0 2.0 1.0]
+                    [1.0 3.0 0.0 1.0]
+                    [1.0 1.0 0.0 1.0]
+                    [0.0 3.0 0.0 0.0]]
+                   (ds/rowvecs ds))))
 
 ;; Split data into train and test set
 ;;  Now we split the data into train and test. By we use
@@ -143,7 +176,7 @@ split
 (loss/classification-accuracy
  (:survived (ds-cat/reverse-map-categorical-xforms (:test split)))
  (:survived (ds-cat/reverse-map-categorical-xforms dummy-prediction)))
-;;  It's performance is poor, even worse the coin flip.
+;;  It's performance is poor, even worse then coin flip.
 
 
 ;; ## Logistic regression
@@ -166,7 +199,8 @@ split
  (:survived (ds-cat/reverse-map-categorical-xforms (:test split)))
  (:survived (ds-cat/reverse-map-categorical-xforms lreg-prediction)))
 
-;; Its performance is  better, 60 %
+(kind/test-last [= 0.7373737373737373])
+;; Its performance is  better, 73 %
 
 ;; ## Random forest
 ;; Next is random forest
