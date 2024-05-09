@@ -13,6 +13,8 @@
   (:refer-clojure :exclude [test])
   (:require [clojure.tools.build.api :as b]
             [deps-deploy.deps-deploy :as dd]))
+            
+
 
 (def lib 'org.scicloj/noj)
 (def version "2-alpha6")
@@ -65,5 +67,18 @@
 (defn deploy "Deploy the JAR to Clojars." [opts]
   (let [{:keys [jar-file] :as opts} (jar-opts opts)]
     (dd/deploy {:installer :remote :artifact (b/resolve-path jar-file)
-                :pom-file (b/pom-path (select-keys opts [:lib :class-dir]))}))
+                :pom-file (b/pom-path (select-keys opts [:lib "class-dir"]))}))
   opts)
+
+
+
+
+(defn generate-tests [opts]
+  (let [basis    (b/create-basis {:aliases [:gen-tests]})
+                                  
+        cmds     (b/java-command
+                  {:basis     basis
+                   :main      'clojure.main
+                   :main-args ["-e" "(require '[gen-tests])(gen-tests/do-generate-tests)  "]})
+        {:keys [exit]} (b/process cmds)]
+    (when-not (zero? exit) (throw (ex-info "Tests failed" {})))))
