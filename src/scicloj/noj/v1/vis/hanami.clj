@@ -5,28 +5,29 @@
             [scicloj.noj.v1.paths :as paths]
             [scicloj.tempfiles.api :as tempfiles]
             [tablecloth.api :as tc]
-            [tech.v3.dataset :as tmd]))
+            [tech.v3.dataset :as tmd]
+            [tech.v3.dataset :as ds]))
 
-(defn prepare-data [data]
-  (when data
-    (cond (string? data)          (if (paths/url? data) {:UDATA data}
-                                      ;; not a url -- assuming a local path
-                                      (let [file-type (paths/file-type "csv")]
-                                        (case file-type
-                                          "csv" {:DATA (-> data
-                                                           paths/throw-if-not-exists!
-                                                           slurp)
-                                                 :DFMT {:type file-type}}
-                                          (throw (ex-info "Unsupported file type"
-                                                          {:file-type file-type})))))
-          (tmd/dataset? data) {:DFMT {:type "csv"}
-                               :DATA (let [{:keys [path _]}
-                                           (tempfiles/tempfile! ".csv")]
-                                       (-> data
-                                           (tmd/write! path))
-                                       (-> path
-                                           slurp))}
-          :else                   {:DATA data})))
+(defn dataset->csv [dataset]
+  (when dataset
+    (let [{:keys [path _]}
+          (tempfiles/tempfile! ".csv")]
+      (-> dataset
+          (ds/write! path))
+      (slurp path))))
+
+(deftype WrappedValue [value]
+  clojure.lang.IDeref
+  (deref [this] value))
+
+(defn valdata-from-dataset [{:as args
+                             :keys [hana/data
+                                    hana/stat]}]
+  (dataset->csv
+   (if stat
+     (stat args)
+     @data)))
+
 
 (defn plot [data template options]
   (if (tc/grouped? data)
@@ -92,3 +93,13 @@
                             (plot inner-dataset
                                   inner-template
                                   (merge options inner-options)))))))))))
+
+
+(defn update-data [template dataset-fn & args]
+  (-> template
+      (update-in [::ht/defaults :hana/data]
+                 (fn [wrapped-data]
+                   (->WrappedValue
+                    (apply dataset-fn
+                           @wrapped-data
+                           args))))))
