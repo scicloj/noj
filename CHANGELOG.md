@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file. This change
 
 ## [1-alpha35] - unreleased
 - avoding the unnecessary use of Reagent for Python plots
+- updated deps
 
 ## [1-alpha34] - 2024-04-15
 - removed the currently-unnecessary `calc-correlations-matrix` and `round` functions (#22) - thanks, @behrica
