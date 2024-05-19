@@ -1,5 +1,4 @@
-;; # Known Issues
-
+;; # Known Issues ❗
 ^:kindly/hide-code
 (ns known-issues)
 
