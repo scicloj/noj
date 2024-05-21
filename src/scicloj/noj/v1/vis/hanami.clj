@@ -20,13 +20,46 @@
   clojure.lang.IDeref
   (deref [this] value))
 
-(defn valdata-from-dataset [{:as args
-                             :keys [hana/data
-                                    hana/stat]}]
+(defn submap->csv [{:as submap
+                    :keys [hana/data
+                           hana/stat]}]
   (dataset->csv
    (if stat
-     (stat args)
+     (stat submap)
      @data)))
+
+(def default-extenstions
+  {:hana/csv submap->csv
+   :VALDATA :hana/csv
+   :DFMT {:type "csv"}})
+
+(def dataset->defaults [dataset]
+  {:hana/data (->WrappedValue dataset)})
+
+(defn base
+
+  ([dataset-or-template]
+   (base dataset-or-template {}))
+
+  ([dataset-or-template submap]
+   (if (tc/dataset? dataset-or-template)
+     ;; a dataest
+     (base dataset-or-template
+           view-base
+           submap)
+     ;; a template
+     (-> dataset-or-template
+         (update ::ht/defaults merge submap)
+         (assoc :kindly/f #'make-vega-lite)
+         kind/fn)))
+
+  ([dataset template submap]
+   (-> template
+       (update ::ht/defaults merge
+               default-extenstions
+               (dataset->defaults dataset))
+       (base submap))))
+
 
 
 (defn plot [data template options]
