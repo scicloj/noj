@@ -1,6 +1,6 @@
 ;; # Known Issues ❗
 ^:kindly/hide-code
-(ns known-issues)
+(ns noj-book.known-issues)
 
 ;; ## `clj` fails with "mkl" error
 
