@@ -1,6 +1,6 @@
 # scinojure (noj)
 
-Noj is a work-in-progress library collecting a few of the relevant Clojure data & science with additional convenience layers composing them together.
+The Noj library collects a few of the relevant Clojure data & science with additional documentation and convenience layers composing them together.
 
 [![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/noj.svg)](https://clojars.org/org.scicloj/noj)
 
@@ -19,7 +19,6 @@ Some parts are still stabilizing, and are marked as experimental in the docs.
   - [Issues](https://github.com/scicloj/noj) at this repo
 - user questions:
   - the [#data-science stream](https://clojurians.zulipchat.com/#narrow/stream/151924-data-science) at the [Clojurians Zulip chat](https://scicloj.github.io/docs/community/chat/)
-
 
 
 ## License
