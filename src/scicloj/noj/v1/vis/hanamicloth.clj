@@ -10,7 +10,9 @@
             [tech.v3.datatype.functional :as fun]
             [scicloj.metamorph.ml :as ml]
             [tech.v3.dataset.modelling :as modelling]
-            [scicloj.metamorph.ml.toydata :as toydata]))
+            [scicloj.metamorph.ml.toydata :as toydata]
+            [fastmath.stats]
+            [noj-book.datasets :as datasets]))
 
 (defn dataset->csv [dataset]
   (when dataset
@@ -255,3 +257,37 @@
       layer-point
       (layer-smooth {:predictors [:petal_width
                                   :petal_length]})))
+
+
+(def random-walk
+  (let [n 20]
+    (-> {:x (range n)
+         :y (->> (repeatedly n #(- (rand) 0.5))
+                 (reductions +))}
+        tc/dataset)))
+
+(-> random-walk
+    (plot ht/point-chart
+          {:MSIZE 200}))
+
+(-> random-walk
+    (plot ht/point-chart
+          {:MSIZE 200})
+    kind/pprint)
+
+
+(-> datasets/mtcars
+    (plot ht/boxplot-chart
+          {:X :gear
+           :XTYPE :nominal
+           :Y :mpg}))
+
+(-> datasets/iris
+    (plot ht/rule-chart
+          {:X :sepal-width
+           :Y :sepal-length
+           :X2 :petal-width
+           :Y2 :petal-length
+           :OPACITY 0.2
+           :SIZE 3
+           :COLOR "species"}))
