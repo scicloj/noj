@@ -7,7 +7,9 @@
         cljplot/cljplot {:mvn/version "0.0.3"}
         scicloj/metamorph.ml {:mvn/version "0.8.2"}
         scicloj/scicloj.ml.smile {:mvn/version "7.4.1"}
-        scicloj/scicloj.ml.tribuo {:mvn/version "0.1.1"}
+        scicloj/scicloj.ml.tribuo {:git/url "https://github.com/scicloj/scicloj.ml.tribuo"
+                                   :git/sha "1bde7c4"
+                                   :git/tag "v0.1.0"}
         clj-python/libpython-clj {:mvn/version "2.025"}
         scicloj/clojisr {:mvn/version "1.0.0"}
         org.scicloj/tempfiles {:mvn/version "1-alpha2"}
