@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Noj Documentation – 9&nbsp; Visualization (experimental 🛠)</title>
+<title>Noj Documentation – 9&nbsp; Visualization (too be deprecated 🛠)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./noj_book.visualization.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualization (experimental 🛠)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./noj_book.visualization.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualization (too be deprecated 🛠)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -192,19 +192,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./noj_book.visualization.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualization (experimental 🛠)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualization (too be deprecated 🛠)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./noj_book.statistical_visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Statistical Visualization (experimental 🛠)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Statistical Visualization (to be depracated 🛠)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./noj_book.more_visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">More visualization examples (experimental 🛠)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">More visualization examples (to be deprecated 🛠)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -245,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualization (experimental 🛠)</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualization (too be deprecated 🛠)</span></h1>
 </div>
 
 
@@ -276,6 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="noj_book.visualization_files/vega9.js" type="text/javascript"></script>
 <script src="noj_book.visualization_files/vega10.js" type="text/javascript"></script>
 <p>author: Daniel Slutsky</p>
+<p>This functionality will soon be replated by <a href="https://scicloj.github.io/hanamicloth/">Hanamicloth</a>.</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb1"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">ns</span> noj-book.visualization</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  (<span class="at">:require</span> [aerial.hanami.templates <span class="at">:as</span> ht]</span>
@@ -322,7 +323,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a> <span class="at">:height</span> <span class="dv">300</span>,</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a> <span class="at">:data</span></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a> {<span class="at">:values</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"x,y</span><span class="sc">\n</span><span class="st">0,-0.496760467616862</span><span class="sc">\n</span><span class="st">1,-0.6900117679502064</span><span class="sc">\n</span><span class="st">2,-1.0061189501389844</span><span class="sc">\n</span><span class="st">3,-0.8943960807748348</span><span class="sc">\n</span><span class="st">4,-0.6731795201785307</span><span class="sc">\n</span><span class="st">5,-1.0334009585146793</span><span class="sc">\n</span><span class="st">6,-1.0620482227262382</span><span class="sc">\n</span><span class="st">7,-0.713247073838745</span><span class="sc">\n</span><span class="st">8,-1.1644353422067277</span><span class="sc">\n</span><span class="st">9,-1.0907965039890053</span><span class="sc">\n</span><span class="st">10,-0.5965833657306496</span><span class="sc">\n</span><span class="st">11,-1.05901435293754</span><span class="sc">\n</span><span class="st">12,-1.0725855823875092</span><span class="sc">\n</span><span class="st">13,-0.6578982995919632</span><span class="sc">\n</span><span class="st">14,-0.4254092319064601</span><span class="sc">\n</span><span class="st">15,-0.0748553418303769</span><span class="sc">\n</span><span class="st">16,0.007016442555060731</span><span class="sc">\n</span><span class="st">17,0.18694924527823276</span><span class="sc">\n</span><span class="st">18,0.04892440497550976</span><span class="sc">\n</span><span class="st">19,0.369393076450224</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"x,y</span><span class="sc">\n</span><span class="st">0,0.02214212807000815</span><span class="sc">\n</span><span class="st">1,0.12256636230970175</span><span class="sc">\n</span><span class="st">2,-0.2689424010125784</span><span class="sc">\n</span><span class="st">3,0.2159178142686493</span><span class="sc">\n</span><span class="st">4,-0.10036093139369484</span><span class="sc">\n</span><span class="st">5,0.3435393370096972</span><span class="sc">\n</span><span class="st">6,0.4865126452899705</span><span class="sc">\n</span><span class="st">7,0.36286481893189293</span><span class="sc">\n</span><span class="st">8,0.31811939639719633</span><span class="sc">\n</span><span class="st">9,0.7143007330411146</span><span class="sc">\n</span><span class="st">10,0.4155577747710907</span><span class="sc">\n</span><span class="st">11,0.11142605944509731</span><span class="sc">\n</span><span class="st">12,0.030657867228306213</span><span class="sc">\n</span><span class="st">13,0.12669824023885123</span><span class="sc">\n</span><span class="st">14,0.46685765677875435</span><span class="sc">\n</span><span class="st">15,0.7552134393624874</span><span class="sc">\n</span><span class="st">16,0.8645286322619409</span><span class="sc">\n</span><span class="st">17,0.4039081263682941</span><span class="sc">\n</span><span class="st">18,0.4239965740013527</span><span class="sc">\n</span><span class="st">19,0.19399610871539985</span><span class="sc">\n</span><span class="st">"</span>,</span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">:format</span> {<span class="at">:type</span> <span class="st">"csv"</span>}}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -936,8 +937,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./noj_book.statistical_visualization.html" class="pagination-link" aria-label="Statistical Visualization (experimental 🛠)">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Statistical Visualization (experimental 🛠)</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./noj_book.statistical_visualization.html" class="pagination-link" aria-label="Statistical Visualization (to be depracated 🛠)">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Statistical Visualization (to be depracated 🛠)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
