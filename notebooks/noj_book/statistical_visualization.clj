@@ -1,4 +1,6 @@
-;; # Statistical Visualization (experimental 🛠)
+;; # Statistical Visualization (to be depracated 🛠)
+
+;; This functionality will soon be replated by [Hanamicloth](https://scicloj.github.io/hanamicloth/).
 
 ;; author: Daniel Slutsky
 

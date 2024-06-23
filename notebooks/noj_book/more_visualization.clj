@@ -1,6 +1,8 @@
-;; # More visualization examples (experimental 🛠)
+;; # More visualization examples (to be deprecated 🛠)
 
 ;; author: Daniel Slutsky
+
+;; This functionality will soon be replated by [Hanamicloth](https://scicloj.github.io/hanamicloth/).
 
 (ns noj-book.more-visualization
   (:require [aerial.hanami.templates :as ht]
