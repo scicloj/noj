@@ -14,6 +14,8 @@
             [fastmath.stats]
             [noj-book.datasets :as datasets]))
 
+
+
 (defn dataset->csv [dataset]
   (when dataset
     (let [{:keys [path _]}
@@ -21,10 +23,6 @@
       (-> dataset
           (ds/write! path))
       (slurp path))))
-
-(deftype WrappedValue [value]
-  clojure.lang.IDeref
-  (deref [this] value))
 
 (defn submap->csv [{:as submap
                     :keys [hana/data
@@ -34,10 +32,174 @@
      (stat submap)
      @data)))
 
+
 (def default-extenstions
-  {:hana/csv submap->csv
+  {;; defaults for original Hanami templates
    :VALDATA :hana/csv
-   :DFMT {:type "csv"}})
+   :DFMT {:type "csv"}
+   ;; defaults for hanamicloth templates
+   :hana/csv submap->csv
+   :opacity :hana/opacity
+   :row :hana/row
+   :column :hana/column
+   :color :hana/color
+   :size :hana/size
+   :tooltip :hana/tooltip})
+
+(def encoding-base
+  {:opacity :hana/opacity
+   :row :hana/row
+   :column :hana/column
+   :color :hana/color
+   :size :hana/size
+   :tooltip :hana/tooltip})
+
+(def xy-encoding
+  (assoc
+   encoding-base
+   :x {:field :X
+       :type :XTYPE
+       :bin :XBIN
+       :timeUnit :XUNIT
+       :axis :XAXIS
+       :scale :XSCALE
+       :stack :XSTACK
+       :sort :XSORT
+       :aggregate :XAGG}
+   :y {:field :Y
+       :type :YTYPE
+       :bin :YBIN
+       :timeUnit :YUNIT
+       :axis :YAXIS
+       :scale :YSCALE
+       :stack :YSTACK
+       :sort :YSORT
+       :aggregate :YAGG}
+   :x2 :hana/x2-encoding
+   :y2 :hana/y2-encoding))
+
+(def text-encoding
+  (-> encoding-base
+      (dissoc :tooltip)
+      (assoc
+       :text {:field :TXT
+              :type :TTYPE
+              :axis :TAXIS
+              :scale :TSCALE}
+       :color :TCOLOR)))
+
+(def view-base
+  {:usermeta :USERDATA
+   :title :TITLE
+   :height :HEIGHT
+   :width :WIDTH
+   :background :BACKGROUND
+   :selection :SELECTION
+   :data data-options
+   :transform :TRANSFORM
+   :encoding :ENCODING})
+
+(def mark-base
+  {:type :MARK, :point :POINT,
+   :size :MSIZE, :color :MCOLOR,
+   :stroke :MSTROKE :strokeDash :MSDASH
+   :tooltip :MTOOLTIP
+   :filled :MFILLED})
+
+(def bar-layer
+  {:mark (assoc mark-base :type "bar")
+   :selection :SELECTION
+   :transform :TRANSFORM
+   :encoding :ENCODING})
+
+(def line-layer
+  {:mark (assoc mark-base :type "line")
+   :selection :SELECTION
+   :transform :TRANSFORM
+   :encoding :ENCODING})
+
+(def point-layer
+  {:mark (assoc mark-base :type "circle")
+   :selection :SELECTION
+   :transform :TRANSFORM
+   :encoding :ENCODING})
+
+(def text-layer
+  {:mark (assoc mark-base :type "text"
+                :dx :DX
+                :dy :DY
+                :xOffset :XOFFSET
+                :yOffset :YOFFSET
+                :angle :ANGLE
+                :align :ALIGN
+                :baseline :BASELINE
+                :font :FONT
+                :fontStyle :FONTSTYLE
+                :fontWeight :FONTWEIGHT
+                :fontSize :FONTSIZE
+                :lineHeight :LINEHEIGHT
+                :limit :LIMIT)
+   :encoding text-encoding} )
+
+(def rect-layer
+  {:mark (assoc mark-base :type "rect")
+   :encoding (dissoc encoding-base :tooltip)})
+
+(def area-layer
+  {:mark (assoc mark-base :type "area")
+   :selection :SELECTION
+   :transform :TRANSFORM
+   :encoding :ENCODING})
+
+(def gen-encode-layer
+  {:height :HEIGHT, :width :WIDTH
+   :mark :MARK
+   :transform :TRANSFORM
+   :selection :SELECTION
+   :encoding :ENCODING})
+
+
+(def empty-chart
+  {:usermeta :USERDATA})
+
+(def bar-chart
+  (assoc view-base
+         :mark (merge mark-base {:type "bar"})))
+
+(def line-chart
+  (assoc view-base
+         :mark (merge mark-base {:type "line"})))
+
+(def point-chart
+  (assoc view-base
+         :mark (merge mark-base {:type "circle"})))
+
+(def area-chart
+  (assoc view-base
+         :mark (merge mark-base {:type "area"})))
+
+
+(def layer-chart
+  {:usermeta :USERDATA
+   :title  :TITLE
+   :height :HEIGHT
+   :width :WIDTH
+   :background :BACKGROUND
+   :layer :LAYER
+   :transform :TRANSFORM
+   :resolve :RESOLVE
+   :data data-options
+   :config default-config})
+
+
+
+(deftype WrappedValue [value]
+  clojure.lang.IDeref
+  (deref [this] value))
+
+
+
+
 
 (defn dataset->defaults [dataset]
   {:hana/data (->WrappedValue dataset)})
@@ -153,6 +315,35 @@
           ht/line-layer
           (assoc submap
                  :hana/stat smooth-stat))))
+
+
+;; (defn layer-histogram
+;;   ([context]
+;;    (layer-smooth context {}))
+;;   ([context submap]
+;;    (layer context
+;;           ht/bar-layer
+;;           (assoc submap
+;;                  :hana/stat histogram-stat))))
+
+
+;; (defn histogram [dataset column-name {:keys [nbins]}]
+;;   (let [{:keys [bins max step]} (-> column-name
+;;                                     dataset
+;;                                     (fastmath.stats/histogram nbins))
+;;         left (map first bins)]
+;;     (-> {:left (map first bins)
+;;          :right (concat (rest left)
+;;                         [max])
+;;          :count (map second bins)}
+;;         tc/dataset
+;;         (hanami/plot ht/bar-chart
+;;                      {:X :left
+;;                       :X2 :right
+;;                       :Y :count})
+;;         (assoc-in [:encoding :x :bin] {:binned true
+;;                                        :step step})
+;;         (assoc-in [:encoding :x :title] column-name))))
 
 
 (defn update-data [template dataset-fn & submap]
