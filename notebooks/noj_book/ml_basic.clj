@@ -45,7 +45,7 @@
 
 
 
-                                      
+
 
 
 
@@ -161,8 +161,8 @@ split
 
 ;; Its performance is  better, 60 %
 
-;; ## Random forrest
-;; Next is random forrest
+;; ## Random forest
+;; Next is random forest
 (def rf-model (ml/train (:train split) {:model-type :smile.classification/random-forest}))
 (def rf-prediction
   (ml/predict (:test split) rf-model))
