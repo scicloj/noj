@@ -6,7 +6,9 @@
             [scicloj.kindly.v4.kind :as kind]
             [clojure.string :as str]
             [clojure.string :as string]
-            [scicloj.clay.v2.api :as clay]))
+            [scicloj.clay.v2.api :as clay]
+            [tablecloth.api :as tc]
+            [tablecloth.column.api :as tcc]))
 
 ^:kindly/hide-code
 (def md
