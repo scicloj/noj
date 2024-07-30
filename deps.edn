@@ -1,19 +1,20 @@
 {:paths ["src" "resources"]
  :deps {org.clojure/clojure {:mvn/version "1.11.1"}
         scicloj/tablecloth {:mvn/version "7.029.2"}
-        org.scicloj/kindly {:mvn/version "4-beta4"}
-        generateme/fastmath {:mvn/version "2.4.0"}
+        org.scicloj/kindly {:mvn/version "4-beta5"}
+        generateme/fastmath {:mvn/version "3.0.0-SNAPSHOT"}
         aerial.hanami/aerial.hanami {:mvn/version "0.20.0"}
+        org.scicloj/hanamicloth {:mvn/version "1-alpha4-SNAPSHOT"}
         cljplot/cljplot {:mvn/version "0.0.3"}
-        scicloj/metamorph.ml {:mvn/version "0.8.2"}
-        scicloj/scicloj.ml.smile {:mvn/version "7.2"}
+        scicloj/metamorph.ml {:git/url "https://github.com/scicloj/metamorph.ml"
+                              :git/sha "bd1b51fc1f64a5759d242c2052e115108131416e"}
+        ;; scicloj/scicloj.ml.smile {:mvn/version "7.2"}
         scicloj/scicloj.ml.tribuo {:git/url "https://github.com/scicloj/scicloj.ml.tribuo"
-                                   :git/sha "1bde7c4"
-                                   :git/tag "v0.1.0"}
+                                   :git/sha "f4ebf1e1bb78eb99dd35ca886d75b9f65d800e8d"}
+        org.tribuo/tribuo-regression-sgd {:mvn/version "4.2.0"}
         clj-python/libpython-clj {:mvn/version "2.025"}
         scicloj/clojisr {:mvn/version "1.0.0"}
-        org.scicloj/tempfiles {:mvn/version "1-alpha2"}
-        kixi/stats {:mvn/version "0.5.5"}}
+        org.scicloj/tempfiles {:mvn/version "1-alpha2"}}
  :aliases
  {:build {:deps {io.github.clojure/tools.build {:mvn/version "0.9.6"}
                  slipset/deps-deploy {:mvn/version "0.2.1"}}
