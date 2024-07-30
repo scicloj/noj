@@ -9,11 +9,12 @@
             [scicloj.metamorph.core :as mm]
             [scicloj.metamorph.ml :as ml]
             [scicloj.metamorph.ml.loss :as loss]
+            [scicloj.metamorph.ml.regression]
             [tablecloth.api :as tc]
             [tablecloth.column.api :as tcc]
             [tablecloth.pipeline :as tcpipe]
             [tech.v3.dataset.modelling :as modelling]
-            [scicloj.ml.smile.regression]))
+            [scicloj.ml.tribuo]))
 
 ^:kindly/hide-code
 (def md
@@ -38,10 +39,12 @@
 (md "First we build an additive model, which model equation is
 $$sales = b0 + b1 * youtube + b2 * facebook$$")
 
+(def linear-model-config {:model-type :fastmath/ols})
+
 (def additive-pipeline
   (mm/pipeline
    {:metamorph/id :model}
-   (ml/model {:model-type :smile.regression/ordinary-least-square})))
+   (ml/model linear-model-config)))
 
 (md "We evaluate it, ")
 (def evaluations
@@ -53,8 +56,10 @@ $$sales = b0 + b1 * youtube + b2 * facebook$$")
    {:other-metrices [{:name :r2
                       :metric-fn fmstats/r2-determination}]}))
 
-(md "and print the result:")
-(-> evaluations flatten first :fit-ctx :model ml/thaw-model)
+(md "and print the resulting model:
+(note that the `:sales` term means the intercept `b0`)")
+(md "(note that )")
+(-> evaluations flatten first :fit-ctx :model ml/tidy)
 
 (md "We have the following metrics:")
 (md "$RMSE$")
@@ -69,7 +74,7 @@ $$sales = b0 + b1 * youtube + b2 * facebook + b3 * (youtube * facebook)$$")
 (def pipe-interaction
   (mm/pipeline
    (tcpipe/add-column :youtube*facebook (fn [ds] (tcc/* (ds :youtube) (ds :facebook))))
-   {:metamorph/id :model}(ml/model {:model-type :smile.regression/ordinary-least-square})))
+   {:metamorph/id :model} (ml/model linear-model-config)))
 
 (md "Again we evaluate the model,")
 (def evaluations
@@ -82,8 +87,8 @@ $$sales = b0 + b1 * youtube + b2 * facebook + b3 * (youtube * facebook)$$")
                       :metric-fn fmstats/r2-determination}]}))
 
 
-(md "and print it and the performance metrices:")
-(-> evaluations flatten first :fit-ctx :model ml/thaw-model)
+(md "and print it and the performance metrics:")
+(-> evaluations flatten first :fit-ctx :model ml/tidy)
 
 (md "As the multiplcation of `youtube*facebook` is as well statistically relevant, it
 suggests that there is indeed an interaction between these 2 predictor variables youtube and facebook.")
