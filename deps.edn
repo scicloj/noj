@@ -7,7 +7,7 @@
         org.scicloj/hanamicloth {:mvn/version "1-alpha4-SNAPSHOT"}
         cljplot/cljplot {:mvn/version "0.0.3"}
         scicloj/metamorph.ml {:git/url "https://github.com/scicloj/metamorph.ml"
-                              :git/sha "bd1b51fc1f64a5759d242c2052e115108131416e"}
+                              :git/sha "bb151eec256f0e4443cdb4f39be8609f6078a4ad"}
         ;; scicloj/scicloj.ml.smile {:mvn/version "7.2"}
         scicloj/scicloj.ml.tribuo {:git/url "https://github.com/scicloj/scicloj.ml.tribuo"
                                    :git/sha "f4ebf1e1bb78eb99dd35ca886d75b9f65d800e8d"}
