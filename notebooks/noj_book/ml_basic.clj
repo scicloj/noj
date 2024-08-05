@@ -11,7 +11,8 @@
   (:require [tablecloth.api :as tc]
             [scicloj.metamorph.ml.toydata :as data]
             [tech.v3.dataset :as ds]
-            [camel-snake-kebab.core :as csk]))
+            [camel-snake-kebab.core :as csk]
+            [scicloj.metamorph.ml :as ml]))
 
 ;; ## Inspect data
 ;;
@@ -148,9 +149,16 @@ split
 
 ;; ## Logistic regression
 ;; Next model to use is Logistic Regression
-(require '[scicloj.ml.smile.classification])
+(require '[scicloj.ml.tribuo])
 
-(def lreg-model (ml/train (:train split) {:model-type :smile.classification/logistic-regression}))
+
+
+(def lreg-model (ml/train (:train split)
+                          {:model-type :scicloj.ml.tribuo/classification
+                           :tribuo-components [{:name "logistic"
+                                                :type "org.tribuo.classification.sgd.linear.LinearSGDTrainer"}]
+                           :tribuo-trainer-name "logistic"}))
+
 (def lreg-prediction
   (ml/predict (:test split) lreg-model))
 
@@ -163,7 +171,13 @@ split
 
 ;; ## Random forest
 ;; Next is random forest
-(def rf-model (ml/train (:train split) {:model-type :smile.classification/random-forest}))
+(def rf-model (ml/train (:train split) {:model-type :scicloj.ml.tribuo/classification
+                                        :tribuo-components [{:name "random-forest"
+                                                             :type "org.tribuo.classification.dtree.CARTClassificationTrainer"
+                                                             :properties {:maxDepth "8"
+                                                                          :useRandomSplitPoints "false"
+                                                                          :fractionFeaturesInSplit "0.5"}}]
+                                        :tribuo-trainer-name "random-forest"}))
 (def rf-prediction
   (ml/predict (:test split) rf-model))
 
@@ -173,22 +187,7 @@ split
 ;; best so far, 71 %
 ;;
 
-;;  From the logistic regression model we can get via java Interop
-;;  some model explanations, for example the variable importance.
-
-(->>
- (map
-  (fn [predictor importance]
-    (hash-map :predictor (-> predictor str csk/->kebab-case-keyword)
-              :importance importance))
-
-  (-> rf-model ml/thaw-model .formula .predictors)
-  (-> rf-model ml/thaw-model .importance))
- (sort-by :importance)
- reverse)
-
-;;  we can see that :sex is more important to predict :survived then
-;;  :pclass and :embark
+;; TODO: Extract feature importance.
 
 ;; # Next steps
 ;; We could now go further and trying to improve the features / the model type
