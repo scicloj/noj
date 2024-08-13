@@ -3,5 +3,4 @@
  "automl"
  "interactions_ols"
  "datasets"
- "visualizing_correlation_matrices"
- "known_issues"]
+ "visualizing_correlation_matrices"]
