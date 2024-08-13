@@ -3,10 +3,5 @@
  "automl"
  "interactions_ols"
  "datasets"
- "python"
- "statistics"
- "visualization"
- "statistical_visualization"
- "more_visualization"
  "visualizing_correlation_matrices"
  "known_issues"]
