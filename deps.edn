@@ -16,6 +16,7 @@
         org.tribuo/tribuo-classification-sgd {:mvn/version "4.2.0"}
         org.tribuo/tribuo-classification-tree {:mvn/version "4.2.0"}
         clj-python/libpython-clj {:mvn/version "2.025"}
+        org.scicloj/kind-pyplot {:mvn/version "1-beta1"}
         scicloj/clojisr {:mvn/version "1.0.0"}
         org.scicloj/tempfiles {:mvn/version "1-alpha2"}}
  :aliases
