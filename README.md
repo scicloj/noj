@@ -1,6 +1,6 @@
 # scinojure (noj)
 
-![Clay logo](notebooks/Noj.png)
+![Noj logo](resources/Noj.svg)
 
 The Noj library collects a few of the relevant Clojure data & science with additional documentation and convenience layers composing them together.
 
