@@ -1,11 +1,8 @@
 ;; # Preface
 
 ^{:kindly/hide-code true
-  :kindly/kind :kind/hiccup}
-[:img
- {:style {:width "100px"}
-  :src "notebooks/logo.png"
-  :alt "Noj logo"}]
+  :kindly/kind :kind/html}
+(slurp "notebooks/Noj.svg")
 
 ^:kindly/hide-code
 (ns index
