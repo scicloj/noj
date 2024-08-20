@@ -52,10 +52,13 @@ coming soon
 (->> "notebooks/chapters.edn"
      slurp
      clojure.edn/read-string
-     (map (fn [chapter]
-            (prn [chapter (chapter->title chapter)])
-            (format "\n- [%s](noj_book.%s.html)\n"
-                    (chapter->title chapter)
-                    chapter)))
+     (mapcat (fn [{:keys [part chapters]}]
+               (cons (format "- %s" part)
+                     (->> chapters
+                          (map (fn [chapter]
+                                 (prn [chapter (chapter->title chapter)])
+                                 (format "\n  - [%s](noj_book.%s.html)\n"
+                                         (chapter->title chapter)
+                                         chapter)))))))
      (string/join "\n")
      md)
