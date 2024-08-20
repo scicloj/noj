@@ -1,5 +1,5 @@
 [{:part "Overview"
-  :chapters ["libraries"]}
+  :chapters ["underlying_libraries"]}
  {:part "Tutorials"
   :chapters ["ml_basic"
              "prepare_for_ml"
