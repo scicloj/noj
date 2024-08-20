@@ -31,8 +31,7 @@ It collects a few of the main libraries and documents common ways to use them to
 **Status:** Mos of the underlying libraries are stable. The experimental parts are marked as such.
 
 ## Getting started
-See the standalone repo example:
-[Noj - getting started - from raw data to a blog post](https://scicloj.github.io/noj-getting-started/)
+coming soon
 
 ## Existing chapters in this book:
 ")
