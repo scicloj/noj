@@ -6,7 +6,9 @@
 ;; Noj consists of the following libraries:
 
 ;; * [Tablecloth](https://scicloj.github.io/tablecloth/) - dataset processing on top of TMD
-;; [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset) - high-perfrormance table processing
+;; * [tcutils](https://scicloj.github.io/tcutils/) - utility functions for Tablecloth datasets - 🛠 early stage
+;; * [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset) (TMD) - high-perfrormance table processing
+;; * [tmd-parquet](https://github.com/techascent/tech.parquet) - TMD bindings for [Parquet](https://parquet.apache.org/) format
 ;; * [dtype-next](https://github.com/cnuernber/dtype-next) - high-performance array-programming
 ;; * [Kindly](https://scicloj.github.io/kindly-noted/) - datavis standard
 ;; * [Fastmath](https://github.com/generateme/fastmath) - math & stats - 🛠 [snapshot](https://clojars.org/generateme/fastmath/versions/3.0.0-SNAPSHOT) of the upcoming version 3
