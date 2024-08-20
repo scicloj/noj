@@ -28,7 +28,9 @@ It collects a few of the main libraries and documents common ways to use them to
 
 **Artifact:** [2-alpha1-SNAPSHOT](https://clojars.org/org.scicloj/noj/versions/2-alpha1-SNAPSHOT)
 
-**Status:** Mos of the underlying libraries are stable. The experimental parts are marked as such.
+Note we are using `SNAPSHOT` version for now, since a few of the current dependencies are at a snapshot stage for an upcoming release.
+
+**Status:** Most of the underlying libraries are stable. The experimental parts are marked as such. For some of the libraries, we use a branch for an upcoming release.
 
 ## Getting started
 coming soon
