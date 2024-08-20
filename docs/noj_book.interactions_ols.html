@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Noj Documentation – 5&nbsp; Ordinary least squares with interactions</title>
+<title>Scinojure Documentation – 5&nbsp; Ordinary least squares with interactions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -160,7 +160,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Noj Documentation</a> 
+      <a href="./">Scinojure Documentation</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -333,24 +333,24 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td>:sales</td>
-<td style="text-align: right;">7.71769805</td>
-<td style="text-align: right;">3.64302032</td>
-<td style="text-align: right;">2.76045853E-12</td>
-<td style="text-align: right;">0.47203457</td>
+<td style="text-align: right;">9.76691494</td>
+<td style="text-align: right;">3.65860549</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.37459172</td>
 </tr>
 <tr class="even">
 <td>:youtube</td>
-<td style="text-align: right;">23.75130284</td>
-<td style="text-align: right;">0.04521157</td>
-<td style="text-align: right;">0.00000000E+00</td>
-<td style="text-align: right;">0.00190354</td>
+<td style="text-align: right;">29.75459815</td>
+<td style="text-align: right;">0.04383946</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.00147337</td>
 </tr>
 <tr class="odd">
 <td>:facebook</td>
-<td style="text-align: right;">17.86019236</td>
-<td style="text-align: right;">0.18450492</td>
-<td style="text-align: right;">0.00000000E+00</td>
-<td style="text-align: right;">0.01033051</td>
+<td style="text-align: right;">22.80984742</td>
+<td style="text-align: right;">0.19575695</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.00858212</td>
 </tr>
 </tbody>
 </table>
@@ -361,14 +361,14 @@ window.Quarto = {
 <div class="sourceCode" id="cb8"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:test-transform</span> <span class="at">:metric</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1.7581012538303793</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fl">2.520093477718902</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><span class="math inline">\(R^2\)</span></p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb10"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:test-transform</span> <span class="at">:other-metrices</span> <span class="kw">first</span> <span class="at">:metric</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb11"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.9344041363388802</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.863561467821859</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="interaction-effects" class="level2" data-number="5.2">
@@ -399,11 +399,11 @@ window.Quarto = {
 <p>_unnamed [4 5]:</p>
 <table class="table">
 <colgroup>
-<col style="width: 27%">
-<col style="width: 19%">
-<col style="width: 17%">
-<col style="width: 17%">
-<col style="width: 17%">
+<col style="width: 26%">
+<col style="width: 18%">
+<col style="width: 16%">
+<col style="width: 22%">
+<col style="width: 16%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -417,31 +417,31 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td>:sales</td>
-<td style="text-align: right;">23.49552728</td>
-<td style="text-align: right;">8.25976082</td>
-<td style="text-align: right;">0.00000000</td>
-<td style="text-align: right;">0.35154609</td>
+<td style="text-align: right;">22.52526906</td>
+<td style="text-align: right;">8.50803438</td>
+<td style="text-align: right;">0.00000000E+00</td>
+<td style="text-align: right;">0.37771067</td>
 </tr>
 <tr class="even">
 <td>:youtube</td>
-<td style="text-align: right;">10.26339882</td>
-<td style="text-align: right;">0.01809400</td>
-<td style="text-align: right;">0.00000000</td>
-<td style="text-align: right;">0.00176296</td>
+<td style="text-align: right;">9.10304313</td>
+<td style="text-align: right;">0.01758229</td>
+<td style="text-align: right;">1.33226763E-15</td>
+<td style="text-align: right;">0.00193147</td>
 </tr>
 <tr class="odd">
 <td>:facebook</td>
-<td style="text-align: right;">2.11458297</td>
-<td style="text-align: right;">0.02308555</td>
-<td style="text-align: right;">0.03638958</td>
-<td style="text-align: right;">0.01091731</td>
+<td style="text-align: right;">1.03431033</td>
+<td style="text-align: right;">0.01210931</td>
+<td style="text-align: right;">3.02926210E-01</td>
+<td style="text-align: right;">0.01170762</td>
 </tr>
 <tr class="even">
 <td>:youtube*facebook</td>
-<td style="text-align: right;">17.65646101</td>
-<td style="text-align: right;">0.00093842</td>
-<td style="text-align: right;">0.00000000</td>
-<td style="text-align: right;">0.00005315</td>
+<td style="text-align: right;">17.23604040</td>
+<td style="text-align: right;">0.00097612</td>
+<td style="text-align: right;">0.00000000E+00</td>
+<td style="text-align: right;">0.00005663</td>
 </tr>
 </tbody>
 </table>
@@ -452,14 +452,14 @@ window.Quarto = {
 <div class="sourceCode" id="cb15"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:test-transform</span> <span class="at">:metric</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb16"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1.1026912986422122</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1.1027420559559797</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><span class="math inline">\(R^2\)</span></p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb17"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:test-transform</span> <span class="at">:other-metrices</span> <span class="kw">first</span> <span class="at">:metric</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb18"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.9712002908416029</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.9679772881259184</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><span class="math inline">\(RMSE\)</span> and <span class="math inline">\(R^2\)</span> of the intercation model are sligtly better.</p>
 <p>These results suggest that the model with the interaction term is better than the model that contains only main effects. So, for this specific data, we should go for the model with the interaction model.</p>
