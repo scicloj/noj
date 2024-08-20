@@ -5,8 +5,8 @@ All notable changes to this project will be documented in this file. This change
 - added dependencies: tmd-parquet, tcutils
 
 ## [2-alpha1] - 2024-08-20
-- updating the set of depndencies: Fastmath 3-SNAPSHOT, the relevant metamorph.ml branch, kind-pyplot, hanamicloth, etc.
-- removing all Noj namespaces
+- updated the set of depndencies: Fastmath 3-SNAPSHOT, the relevant metamorph.ml branch, kind-pyplot, hanamicloth, etc.
+- removed all Noj namespaces
 
 ## [1-alpha34] - 2024-04-15
 - removed the currently-unnecessary `calc-correlations-matrix` and `round` functions (#22) - thanks, @behrica
