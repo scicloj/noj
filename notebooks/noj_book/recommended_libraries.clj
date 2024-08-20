@@ -12,7 +12,7 @@
 ;; * [inferme](https://github.com/generateme/inferme) - Bayesian inference
 ;; * [cmdstan-clj](https://github.com/scicloj/cmdstan-clj) - bindings for [Stan](https://mc-stan.org/) Bayesian inference - 🛠 early stage
 ;; * [fastmath-clustering](https://generateme.github.io/fastmath-clustering/) - a wrapper for [Smile](https://haifengl.github.io/) 2.6 clustering algorithms
-;; * [scicloj.ml.smile](https://github.com/scicloj/scicloj.ml.smile) - [Smile](https://haifengl.github.io/) 2.y models for [metamorph.ml](https://github.com/scicloj/metamorph.ml)
+;; * [scicloj.ml.smile](https://github.com/scicloj/scicloj.ml.smile) - [Smile](https://haifengl.github.io/) 2.6 models for [metamorph.ml](https://github.com/scicloj/metamorph.ml)
 ;; * [clj-djl](https://github.com/scicloj/clj-djl) - bindings for [Deep Java Library](https://djl.ai/)
 ;; * [scicloj.ml.clj-djl](https://github.com/scicloj/scicloj.ml.clj-djl) - clj-djl models for [metamorph.ml](https://github.com/scicloj/metamorph.ml)
 ;; * [Neanderthal](https://neanderthal.uncomplicate.org/) - high-performance numerical computing
