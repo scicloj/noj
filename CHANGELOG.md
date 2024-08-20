@@ -1,9 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## [1-alpha35] - unreleased
-- avoding the unnecessary use of Reagent for Python plots
-- updated deps
+## [2-alpha1-SNAPSHOT] - unreleased
+- updating the set of depndencies: Fastmath 3-SNAPSHOT, the relevant metamorph.ml branch, kind-pyplot, hanamicloth, etc.
+- removing all Noj namespaces
 
 ## [1-alpha34] - 2024-04-15
 - removed the currently-unnecessary `calc-correlations-matrix` and `round` functions (#22) - thanks, @behrica

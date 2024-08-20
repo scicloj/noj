@@ -8,7 +8,8 @@
 ;;
 
 (ns noj-book.automl
-  (:require [noj-book.ml-basic :as ml-basic]))
+  (:require [noj-book.ml-basic :as ml-basic]
+            [scicloj.kindly.v4.kind :as kind]))
 
 ;; ## The metamorph pipeline abstraction
 ;; For doing automl, it is very useful to be able to handle the steps
@@ -289,19 +290,17 @@ train-ctx
 (def titanic-k-fold (tc/split->seq ml-basic/numeric-titanic-data :kfold {:seed 12345}))
 ;; The list of the model types we want to try:
 (def models [{:model-type :metamorph.ml/dummy-classifier}
-             {:model-type :smile.classification/random-forest}
-             {:model-type :smile.classification/logistic-regression}
-             {:model-type :smile.classification/decision-tree}
-             {:model-type :smile.classification/ada-boost}
              {:model-type :scicloj.ml.tribuo/classification
-              :tribuo-components [{:name "trainer"
+              :tribuo-components [{:name "logistic"
+                                   :type "org.tribuo.classification.sgd.linear.LinearSGDTrainer"}]
+              :tribuo-trainer-name "logistic"}
+             {:model-type :scicloj.ml.tribuo/classification
+              :tribuo-components [{:name "random-forest"
                                    :type "org.tribuo.classification.dtree.CARTClassificationTrainer"
                                    :properties {:maxDepth "8"
                                                 :useRandomSplitPoints "false"
                                                 :fractionFeaturesInSplit "0.5"}}]
-              :tribuo-trainer-name "trainer"}])
-
-
+              :tribuo-trainer-name "random-forest"}])
 
 
 ;;  This uses models from Smile and Tribuo, but could be any
@@ -365,7 +364,8 @@ train-ctx
 (-> (make-results-ds evaluation-results-all)
     (tc/unique-by)
     (tc/order-by [:mean-accuracy] :desc)
-    (tc/head))
+    (tc/head)
+    (kind/table))
 
 ;; ## Best practices for data transformation steps in or outside pipeline
 ;;

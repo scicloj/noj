@@ -1,12 +1,6 @@
-["prepare_for_ml"
- "ml_basic"
+["ml_basic"
+ "prepare_for_ml"
  "automl"
  "interactions_ols"
  "datasets"
- "python"
- "statistics"
- "visualization"
- "statistical_visualization"
- "more_visualization"
- "visualizing_correlation_matrices"
- "known_issues"]
+ "visualizing_correlation_matrices"]

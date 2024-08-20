@@ -1,3 +1,7 @@
+^{:kindly/hide-code true
+  :kindly/kind :kind/html}
+(slurp "notebooks/Noj.svg")
+
 ;; # Preface
 
 ^:kindly/hide-code
@@ -16,19 +20,18 @@
 
 (md "
 
-Noj (scinojure) is an opinionated way to use the emerging Clojure data stack.
+Scinojure is an entry point to the Clojure stack for data & science.
 
-It collects a few of the main dependencies together with functions allowing to conveniently use them together.
+It collects a few of the main libraries and documents common ways to use them together.
 
 **Source:** [![(GitHub repo)](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/scicloj/noj)
 
 **Artifact:** [![(Clojars coordinates)](https://img.shields.io/clojars/v/org.scicloj/noj.svg)](https://clojars.org/org.scicloj/noj)
 
-**Status:** Some parts of the underlying libraries are stable. Some part of Noj are still experimental, and the API will change. These details should be clarified soon.
+**Status:** Mos of the underlying libraries are stable. The experimental parts are marked as such.
 
 ## Getting started
-See the standalone repo example:
-[Noj - getting started - from raw data to a blog post](https://scicloj.github.io/noj-getting-started/)
+coming soon
 
 ## Existing chapters in this book:
 ")
