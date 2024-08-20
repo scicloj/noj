@@ -4,8 +4,7 @@
         org.scicloj/kindly {:mvn/version "4-beta6"}
         generateme/fastmath {:mvn/version "3.0.0-SNAPSHOT"}
         aerial.hanami/aerial.hanami {:mvn/version "0.20.0"}
-        org.scicloj/hanamicloth {:mvn/version "1-alpha5-SNAPSHOT"}
-        cljplot/cljplot {:mvn/version "0.0.3"}
+        org.scicloj/hanamicloth {:mvn/version "1-alpha6-SNAPSHOT"}
         scicloj/metamorph.ml {:git/url "https://github.com/scicloj/metamorph.ml"
                               :git/sha "bb151eec256f0e4443cdb4f39be8609f6078a4ad"}
         scicloj/scicloj.ml.tribuo {:git/url "https://github.com/scicloj/scicloj.ml.tribuo"
