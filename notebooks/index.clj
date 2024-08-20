@@ -26,7 +26,7 @@ It collects a few of the main libraries and documents common ways to use them to
 
 **Source:** [![(GitHub repo)](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/scicloj/noj)
 
-**Artifact:** [![(Clojars coordinates)](https://img.shields.io/clojars/v/org.scicloj/noj.svg)](https://clojars.org/org.scicloj/noj)
+**Artifact:** [2-alpha1-SNAPSHOT](https://clojars.org/org.scicloj/noj/versions/2-alpha1-SNAPSHOT)
 
 **Status:** Mos of the underlying libraries are stable. The experimental parts are marked as such.
 
