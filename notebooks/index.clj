@@ -20,7 +20,7 @@
 
 (md "
 
-Scinojure is an entry point to the Clojure stack for data & science.
+Scinojure (\"Noj\") is an entry point to the Clojure stack for data & science.
 
 It collects a few of the main libraries and documents common ways to use them together.
 
