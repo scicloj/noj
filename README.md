@@ -4,7 +4,7 @@
 
 The Noj library collects a few of the relevant Clojure data & science with additional documentation and convenience layers composing them together.
 
-Clojars: [2-alpha1-SNAPSHOT](https://clojars.org/org.scicloj/noj/versions/)
+Clojars: [2-alpha1-SNAPSHOT](https://clojars.org/org.scicloj/noj/versions/2-alpha1-SNAPSHOT)
 
 ## Status
 
