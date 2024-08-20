@@ -1,5 +1,4 @@
 # Scinojure
-
 ![Noj logo](notebooks/Noj.svg)
 
 Scinojure ("Noj") wraps a few of the relevant Clojure libraries for data & science and documents common ways of using them together.
@@ -7,7 +6,6 @@ Scinojure ("Noj") wraps a few of the relevant Clojure libraries for data & scien
 Clojars: [2-alpha1-SNAPSHOT](https://clojars.org/org.scicloj/noj/versions/2-alpha1-SNAPSHOT)
 
 ## Status
-
 Most of the [underlying libraries](https://scicloj.github.io/noj/noj_book.underlying_libraries.html) are stable. The experimental parts are marked as such. For some of the libraries, we use a branch for an upcoming release.
 The main current goal is to provide a clear picture of the direction the stack is going towards, expecting most of it to stabilize around October 2024.
 
@@ -20,7 +18,6 @@ The main current goal is to provide a clear picture of the direction the stack i
   - [Issues](https://github.com/scicloj/noj) at this repo
 - user questions:
   - the [#data-science stream](https://clojurians.zulipchat.com/#narrow/stream/151924-data-science) at the [Clojurians Zulip chat](https://scicloj.github.io/docs/community/chat/)
-
 
 ## License
 
