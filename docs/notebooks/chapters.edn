@@ -1,6 +1,9 @@
-["ml_basic"
- "prepare_for_ml"
- "automl"
- "interactions_ols"
- "datasets"
- "visualizing_correlation_matrices"]
+[{:part "Overview"
+  :chapters ["underlying_libraries"]}
+ {:part "Tutorials"
+  :chapters ["ml_basic"
+             "prepare_for_ml"
+             "automl"
+             "interactions_ols"
+             "datasets"
+             "visualizing_correlation_matrices"]}]
