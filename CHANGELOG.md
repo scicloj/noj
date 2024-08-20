@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [2-alpha2] - unreleased
+- added dependencies
+
 ## [2-alpha1] - 2024-08-20
 - updating the set of depndencies: Fastmath 3-SNAPSHOT, the relevant metamorph.ml branch, kind-pyplot, hanamicloth, etc.
 - removing all Noj namespaces

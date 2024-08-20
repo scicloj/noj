@@ -1,6 +1,8 @@
 {:paths ["src" "resources"]
  :deps {org.clojure/clojure {:mvn/version "1.11.1"}
         scicloj/tablecloth {:mvn/version "7.029.2"}
+        org.scicloj/tcutils {:mvn/version "0.1.0-alpha2"}
+        com.techascent/tmd-parquet {:mvn/version "1.001"}
         org.scicloj/kindly {:mvn/version "4-beta6"}
         generateme/fastmath {:mvn/version "3.0.0-SNAPSHOT"}
         aerial.hanami/aerial.hanami {:mvn/version "0.20.0"}
