@@ -26,28 +26,20 @@
  (data/titanic-ds-split)
  :train)
 
-
+;; We use `defonce` to avoid reading
+;; the files every time we evaluate
+;; the namespace.
 (defonce titanic-split
   (data/titanic-ds-split))
 
-;;  this is the full dataset
 (def titanic
   (-> titanic-split
       :train
-      (tc/add-column :survived
-                         (fn [ds]
-                           (map
-                            (fn [el] (case el
-                                        0 "no"
-                                        1 "yes"))
-                            (:survived ds))))))
-
-
-
-
-
-
-
+      (tc/map-columns :survived
+                      [:survived]
+                      (fn [el] (case el
+                                 0 "no"
+                                 1 "yes")))))
 
 
 ;;  It has various columns
