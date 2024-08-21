@@ -60,9 +60,8 @@
 (-> titanic :survived frequencies)
 
 ;;  We will make a very simple model, which will
-;;  predict the column :survived from columns :sex , :pclass and :embark
-;;  These represent the "gender", "passenger class" and "port of embarkment"
-;;
+;;  predict the column `:survived` from columns `:sex` , `:pclass` and `:embarked`.
+;;  These represent the "gender", "passenger class" and "port of embarkment".
 (def categorical-feature-columns [:sex :pclass :embarked])
 (def target-column :survived)
 
