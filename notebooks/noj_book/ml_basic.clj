@@ -70,21 +70,21 @@
 ;;  This allows us now to set specifically the values in the conversion to numbers.
 ;; This is a good practice, instead of the relying on the automatic selection of the categorical mapping:
 
-(require
-         '[tech.v3.dataset.categorical :as ds-cat]
+;; (We discuss more about categorical mappings in [another chapter](./noj_book.prepare_for_ml.html).)
+
+(require '[tech.v3.dataset.categorical :as ds-cat]
          '[tech.v3.dataset.modelling :as ds-mod]
          '[tech.v3.dataset.column-filters :as cf])
-
 
 ;; This gives then the selected and numeric columns like this:
 (def relevant-titanic-data
   (-> titanic
       (tc/select-columns (conj categorical-feature-columns target-column))
-      (ds/drop-missing)
+      (tc/drop-missing)
       (ds/categorical->number [:survived] ["no" "yes"] :float64)
       (ds-mod/set-inference-target target-column)))
 
-;;  of which we can inspect the lookup-tables
+;; of which we can inspect the lookup-tables
 (def cat-maps
   [(ds-cat/fit-categorical-map relevant-titanic-data :sex ["male" "female"] :float64)
    (ds-cat/fit-categorical-map relevant-titanic-data :pclass [0 1 2] :float64)
@@ -109,6 +109,7 @@ cat-maps
 (def split
   (first
    (tc/split->seq numeric-titanic-data :holdout {:seed 112723})))
+
 split
 
 ;; ## Train a model
@@ -118,9 +119,16 @@ split
          '[scicloj.metamorph.ml.classification]
          '[scicloj.metamorph.ml.loss :as loss])
 
+
+
+
 ;; ### Dummy model
 ;; We start with a dummy model, which simply predicts the majority class
-(def dummy-model (ml/train (:train split) {:model-type :metamorph.ml/dummy-classifier}))
+(def dummy-model (ml/train (:train split)
+                           {:model-type :metamorph.ml/dummy-classifier}))
+
+
+;; TODO: Is the dummy model wrong about the majority?
 
 
 (def dummy-prediction
