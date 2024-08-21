@@ -11,7 +11,6 @@
   (:require [tablecloth.api :as tc]
             [scicloj.metamorph.ml.toydata :as data]
             [tech.v3.dataset :as ds]
-            [camel-snake-kebab.core :as csk]
             [scicloj.metamorph.ml :as ml]))
 
 ;; ## Inspect data
