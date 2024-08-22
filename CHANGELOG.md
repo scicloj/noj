@@ -1,8 +1,8 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## [2-alpha3-SNAPSHOT] - unreleased
-- using Clojure version "1.12.0-rc1"
+## [2-alpha3-SNAPSHOT] - 2024-08-23
+- changed Clojure version
 
 ## [2-alpha2-SNAPSHOT] - 2024-08-21
 - added dependencies: tmd-parquet, tcutils
