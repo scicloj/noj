@@ -1,10 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## [2-alpha2] - 2024-08-21
+## [2-alpha3-SNAPSHOT] - unreleased
+- using Clojure version "1.12.0-rc1"
+
+## [2-alpha2-SNAPSHOT] - 2024-08-21
 - added dependencies: tmd-parquet, tcutils
 
-## [2-alpha1] - 2024-08-20
+## [2-alpha1-SNAPSHOT] - 2024-08-20
 - updated the set of depndencies: Fastmath 3-SNAPSHOT, the relevant metamorph.ml branch, kind-pyplot, hanamicloth, etc.
 - removed all Noj namespaces
 
