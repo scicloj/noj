@@ -10,7 +10,7 @@ Most of the [underlying libraries](https://scicloj.github.io/noj/noj_book.underl
 The main current goal is to provide a clear picture of the direction the stack is going towards, expecting most of it to stabilize around October 2024.
 
 ## Usage
-[Docs](https://scicloj.github.io/noj/)
+[Docs](https://scicloj.github.io/noj/) (WIP)
 
 ## Where to discuss
 - library development:
