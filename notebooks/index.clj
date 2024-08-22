@@ -33,9 +33,6 @@ Note we are using `SNAPSHOT` version for now, since a few of the current depende
 **Status:** Most of the [underlying libraries](./noj_book.underlying_libraries.html) are stable. The experimental parts are marked as such. For some of the libraries, we use a branch for an upcoming release.
 The main current goal is to provide a clear picture of the direction the stack is going towards, expecting most of it to stabilize around October 2024.
 
-## Getting started
-coming soon
-
 ## Existing chapters in this book:
 ")
 
