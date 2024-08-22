@@ -1,4 +1,4 @@
-;; ## Known issues
+;; ## Known issues ❗
 
 ^:kindly/hide-code
 (ns noj-book.known-issues
