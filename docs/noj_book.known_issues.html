@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Scinojure Documentation – 2&nbsp; Underlying libraries</title>
+<title>Scinojure Documentation – 4&nbsp; Known issues ❗</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./noj_book.recommended_libraries.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./noj_book.ml_basic.html" rel="next">
+<link href="./noj_book.recommended_libraries.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -82,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./noj_book.underlying_libraries.html">Overview</a></li><li class="breadcrumb-item"><a href="./noj_book.underlying_libraries.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Underlying libraries</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./noj_book.underlying_libraries.html">Overview</a></li><li class="breadcrumb-item"><a href="./noj_book.known_issues.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Known issues ❗</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -124,7 +158,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./noj_book.underlying_libraries.html" class="sidebar-item-text sidebar-link active">
+  <a href="./noj_book.underlying_libraries.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Underlying libraries</span></span></a>
   </div>
 </li>
@@ -136,7 +170,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./noj_book.known_issues.html" class="sidebar-item-text sidebar-link">
+  <a href="./noj_book.known_issues.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Known issues ❗</span></span></a>
   </div>
 </li>
@@ -194,15 +228,21 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#scicloj.ml.tribuo" id="toc-scicloj.ml.tribuo" class="nav-link active" data-scroll-target="#scicloj.ml.tribuo"><span class="header-section-number">4.0.1</span> scicloj.ml.tribuo</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./noj_book.underlying_libraries.html">Overview</a></li><li class="breadcrumb-item"><a href="./noj_book.underlying_libraries.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Underlying libraries</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./noj_book.underlying_libraries.html">Overview</a></li><li class="breadcrumb-item"><a href="./noj_book.known_issues.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Known issues ❗</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Underlying libraries</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Known issues ❗</span></h1>
 </div>
 
 
@@ -227,30 +267,20 @@ ul.task-list li input[type="checkbox"] {
 </style>
 <style>.clay-limit-image-width .clay-image {max-width: 100%}
 </style>
-<script src="noj_book.underlying_libraries_files/md-default0.js" type="text/javascript"></script>
-<script src="noj_book.underlying_libraries_files/md-default1.js" type="text/javascript"></script>
-<p>Noj consists of the following libraries:</p>
-<ul>
-<li><a href="https://scicloj.github.io/tablecloth/">Tablecloth</a> - dataset processing on top of TMD</li>
-<li><a href="https://scicloj.github.io/tcutils/">tcutils</a> - utility functions for Tablecloth datasets - 🛠 early stage</li>
-<li><a href="https://github.com/techascent/tech.ml.dataset">tech.ml.dataset</a> (TMD) - high-perfrormance table processing</li>
-<li><a href="https://github.com/techascent/tech.parquet">tmd-parquet</a> - TMD bindings for <a href="https://parquet.apache.org/">Parquet</a> format</li>
-<li><a href="https://github.com/cnuernber/dtype-next">dtype-next</a> - high-performance array-programming</li>
-<li><a href="https://scicloj.github.io/kindly-noted/">Kindly</a> - datavis standard</li>
-<li><a href="https://github.com/generateme/fastmath">Fastmath</a> - math &amp; stats - 🛠 <a href="https://clojars.org/generateme/fastmath/versions/3.0.0-SNAPSHOT">snapshot</a> of the upcoming version 3</li>
-<li><a href="https://scicloj.github.io/hanamicloth/">Hanamicloth</a> - easy layered graphics - 🛠 alpha version - should stabilize soon</li>
-<li><a href="https://github.com/jsa-aerial/hanami">Hanami</a> - interactive datavis</li>
-<li><a href="https://github.com/scicloj/metamorph.ml">metamorph.ml</a> - machine learning platform - 🛠 using the <a href="https://github.com/scicloj/metamorph.ml/tree/addLinearRegression-continued">addLinearRegression-continued branch</a> with upcoming regression functions</li>
-<li><a href="https://github.com/scicloj/scicloj.ml.tribuo">scicloj.ml.tribuo</a> - <a href="https://tribuo.org/">Tribuo</a> machine learning models - see <a href="./noj_book.known_issues.html">known issues</a> ❗</li>
-<li>some Tribuo modules added by default: general-linear and tree ensembles for regression/classification</li>
-<li><a href="https://github.com/clj-python/libpython-clj">libpython-clj</a> - Python bindings</li>
-<li><a href="https://scicloj.github.io/kind-pyplot/">kind-pyplot</a> - Python plotting</li>
-<li><a href="https://scicloj.github.io/clojisr/">ClojisR</a> - R bindings</li>
-</ul>
+<script src="noj_book.known_issues_files/md-default0.js" type="text/javascript"></script>
+<script src="noj_book.known_issues_files/md-default1.js" type="text/javascript"></script>
+<section id="scicloj.ml.tribuo" class="level3" data-number="4.0.1">
+<h3 data-number="4.0.1" class="anchored" data-anchor-id="scicloj.ml.tribuo"><span class="header-section-number">4.0.1</span> scicloj.ml.tribuo</h3>
+<p>Due to a current bug regarding cyclic depdendencies, when using <a href="https://github.com/scicloj/scicloj.ml.tribuo">scicloj.ml.tribuo</a> for machine learning, it is necessary to include it explicitly in your project dependencies (even though it is a depedency of Noj itself):</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb1"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>scicloj/scicloj.ml.tribuo {<span class="at">:git/url</span> <span class="st">"https://github.com/scicloj/scicloj.ml.tribuo"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">:git/sha</span> <span class="st">"f4ebf1e1bb78eb99dd35ca886d75b9f65d800e8d"</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div style="background-color:grey;height:2px;width:100%;"></div>
-<div><pre><small><small>source: <a href="https://github.com/scicloj/noj/blob/main/notebooks/noj_book/underlying_libraries.clj">notebooks/noj_book/underlying_libraries.clj</a></small></small></pre></div>
+<div><pre><small><small>source: <a href="https://github.com/scicloj/noj/blob/main/notebooks/noj_book/known_issues.clj">notebooks/noj_book/known_issues.clj</a></small></small></pre></div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -675,13 +705,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span>
+      <a href="./noj_book.recommended_libraries.html" class="pagination-link" aria-label="Recommended libraries">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Recommended libraries</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./noj_book.recommended_libraries.html" class="pagination-link" aria-label="Recommended libraries">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Recommended libraries</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./noj_book.ml_basic.html" class="pagination-link" aria-label="Machine learning">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Machine learning</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

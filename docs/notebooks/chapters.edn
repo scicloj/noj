@@ -1,6 +1,7 @@
 [{:part "Overview"
   :chapters ["underlying_libraries"
-             "recommended_libraries"]}
+             "recommended_libraries"
+             "known_issues"]}
  {:part "Tutorials"
   :chapters ["ml_basic"
              "prepare_for_ml"
