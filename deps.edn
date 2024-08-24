@@ -1,7 +1,5 @@
 {:paths ["src" "resources"]
  :deps {org.clojure/clojure {:mvn/version "1.12.0-rc1"}
-        scicloj/scicloj.ml.tribuo {:git/url "https://github.com/scicloj/scicloj.ml.tribuo"
-                                   :git/sha "f4ebf1e1bb78eb99dd35ca886d75b9f65d800e8d"}
         scicloj/tablecloth {:mvn/version "7.029.2"}
         org.scicloj/tcutils {:mvn/version "0.1.0-alpha2"}
         com.techascent/tmd-parquet {:mvn/version "1.001"}
@@ -10,7 +8,9 @@
         aerial.hanami/aerial.hanami {:mvn/version "0.20.0"}
         org.scicloj/hanamicloth {:mvn/version "1-alpha6-SNAPSHOT"}
         scicloj/metamorph.ml {:git/url "https://github.com/scicloj/metamorph.ml"
-                              :git/sha "bb151eec256f0e4443cdb4f39be8609f6078a4ad"}
+                              :git/sha "b295c45cdf06e5ab2a398261ddde7b5b43aea914"}
+        scicloj/scicloj.ml.tribuo {:git/url "https://github.com/scicloj/scicloj.ml.tribuo"
+                                   :git/sha "313d3ab4efdafba5d7b7d8794b05ffe052114f3e"}
         org.tribuo/tribuo-regression-sgd {:mvn/version "4.2.0"}
         org.tribuo/tribuo-regression-tree {:mvn/version "4.2.0"}
         org.tribuo/tribuo-classification-sgd {:mvn/version "4.2.0"}

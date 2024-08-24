@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [2-alpha4-SNAPSHOT] - 2024-08-24
+- version updates: metamorph.ml, scicloj.ml.tribuo - fixing some version conflicts
+
 ## [2-alpha3-SNAPSHOT] - 2024-08-23
 - changed Clojure version
 
