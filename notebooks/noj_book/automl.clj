@@ -12,7 +12,7 @@
             [scicloj.kindly.v4.kind :as kind]))
 
 ;; ## The metamorph pipeline abstraction
-;; When doing automl, it is very useful to be able to handle to manage
+;; When doing automl, it is very useful to be able to manage
 ;; the steps of a machine learning pipeline (including data
 ;; transformations and modeling) as a unified function that can be
 ;; freely moved around.
