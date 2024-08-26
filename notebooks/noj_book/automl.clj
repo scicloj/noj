@@ -12,9 +12,10 @@
             [scicloj.kindly.v4.kind :as kind]))
 
 ;; ## The metamorph pipeline abstraction
-;; For doing automl, it is very useful to be able to handle the steps
-;; of machine learning pipeline (so data transformations and modeling)
-;; as a single function which can be moved around freely.
+;; When doing automl, it is very useful to be able to handle to manage
+;; the steps of a machine learning pipeline (including data
+;; transformations and modeling) as a unified function that can be
+;; freely moved around.
 ;; This cannot work with a threading macro, as this executes immediate.
 ;;
 ;; The Clojure way to do this, is function composing and higher level
