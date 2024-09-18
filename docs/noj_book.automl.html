@@ -284,7 +284,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceClojure">
 <div class="sourceCode" id="cb1"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">ns</span> noj-book.automl</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  (<span class="at">:require</span> [noj-book.ml-basic <span class="at">:as</span> ml-basic]</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            [scicloj.kindly.v4.kind <span class="at">:as</span> kind]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            [scicloj.kindly.v4.kind <span class="at">:as</span> kind]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            [tablecloth.api <span class="at">:as</span> tc]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            [scicloj.kindly.v4.api <span class="at">:as</span> kindly]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="the-metamorph-pipeline-abstraction" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="the-metamorph-pipeline-abstraction"><span class="header-section-number">7.1</span> The metamorph pipeline abstraction</h2>
@@ -364,64 +366,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1.0</td>
 <td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">...</td>
@@ -431,21 +433,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1.0</td>
@@ -454,10 +444,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
@@ -473,27 +463,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">2.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 </tbody>
 </table>
@@ -502,14 +504,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :fit</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "76c03ad5-9843-477d-9cb9-481bcfd41181" {:model-data {:majority-class 1.0, :distinct-labels (0.0 1.0)}, :options {:model-type :metamorph.ml/dummy-classifier}, :id #uuid "b009d482-6b86-45fc-be73-839ecdabdde9", :feature-columns [:sex :pclass :embarked], :target-columns [:survived], :target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {"no" 0, "yes" 1}, :src-column :survived, :result-datatype :float64}}, :scicloj.metamorph.ml/unsupervised? nil}</code></pre></div></div><p>}</p></div>
+<div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :fit</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "7bfd5db1-572a-4d62-9c5d-c46b508a16fa" {:model-data {:majority-class 0.0, :distinct-labels (1.0 0.0)}, :options {:model-type :metamorph.ml/dummy-classifier}, :id #uuid "6797a3d7-1171-44de-a7f4-31d7f3971fda", :feature-columns [:sex :pclass :embarked], :target-columns [:survived], :target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {"no" 0, "yes" 1}, :src-column :survived, :result-datatype :float64}}, :scicloj.metamorph.ml/unsupervised? nil}</code></pre></div></div><p>}</p></div>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb13"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">keys</span> ctx-after-train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
 <div class="sourceCode" id="cb14"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">:metamorph/data</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a> <span class="at">:metamorph/mode</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> #uuid <span class="st">"76c03ad5-9843-477d-9cb9-481bcfd41181"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> #uuid <span class="st">"7bfd5db1-572a-4d62-9c5d-c46b508a16fa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This context map has the “data”, the “mode” and an UUID for each operation (we had only one in this pipeline)</p>
 <div class="sourceClojure">
@@ -527,64 +529,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1.0</td>
 <td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">...</td>
@@ -594,21 +596,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1.0</td>
@@ -617,10 +607,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
@@ -636,34 +626,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">2.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 </tbody>
 </table>
 </div><div><pre><code class="sourceCode language-clojure printed-clojure">:fit
-</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">{:model-data {:majority-class 1.0, :distinct-labels (0.0 1.0)},
+</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">{:model-data {:majority-class 0.0, :distinct-labels (1.0 0.0)},
  :options {:model-type :metamorph.ml/dummy-classifier},
- :id #uuid "b009d482-6b86-45fc-be73-839ecdabdde9",
+ :id #uuid "6797a3d7-1171-44de-a7f4-31d7f3971fda",
  :feature-columns [:sex :pclass :embarked],
  :target-columns [:survived],
  :target-categorical-maps
@@ -706,70 +708,70 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">...</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 </tbody>
 </table>
@@ -787,7 +789,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td data-valign="top"><div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>#uuid "76c03ad5-9843-477d-9cb9-481bcfd41181"</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>#uuid "7bfd5db1-572a-4d62-9c5d-c46b508a16fa"</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
 </div></td>
 <td><div style="margin-left:10px;">
 <div>
@@ -829,8 +831,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1.0</td>
@@ -839,13 +851,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">2.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
@@ -853,28 +865,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+</tr>
+<tr class="even">
 <td style="text-align: right;">1.0</td>
 <td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
@@ -884,7 +886,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
@@ -895,47 +897,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td style="text-align: right;">1.0</td>
 <td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">2.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">2.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
 </tr>
 </tbody>
 </table>
@@ -945,10 +947,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:model-data {:majority-class 1.0, :distinct-labels (0.0 1.0)}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:model-data {:majority-class 0.0, :distinct-labels (1.0 0.0)}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
 </div>
 <div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:id #uuid "b009d482-6b86-45fc-be73-839ecdabdde9"</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:id #uuid "6797a3d7-1171-44de-a7f4-31d7f3971fda"</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
 </div>
 <table data-quarto-postprocess="true" class="table">
 <colgroup>
@@ -974,6 +976,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
@@ -986,19 +994,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">...</td>
@@ -1019,10 +1021,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1.0</td>
@@ -1062,7 +1064,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="printedClojure">
 <div class="sourceCode" id="cb30"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>#tech.v3.dataset.column&lt;float64&gt;[<span class="dv">178</span>]</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="at">:survived</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>[<span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="dv">1</span>.<span class="dv">000</span>...]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>[<span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="dv">0</span>.<span class="dv">000</span>...]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This works as long as all operations of the pipeline follow the metamorph convention (we can create such compliant functions, out of normal dataset-&gt;dataset functions, as we will see)</p>
 <p><code>my-pipeline</code> represents therefore a not yet executed model training / prediction. It can be freely moved around and applied to a dataset when needed.</p>
@@ -1245,7 +1247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :fit</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "2052bc2d-77e1-45ae-9252-29965eb0c5d4" {:model-data {:majority-class 1, :distinct-labels (0.0 1.0)}, :options {:model-type :metamorph.ml/dummy-classifier}, :id #uuid "4b86f1d9-6dcb-41ef-a333-b649c7ebafd9", :feature-columns [:sex :pclass :embarked], :target-columns [:survived], :target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {"no" 0, "yes" 1}, :src-column :survived, :result-datatype :float64}}, :scicloj.metamorph.ml/unsupervised? nil}</code></pre></div></div><p>}</p></div>
+<div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :fit</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "7e92dd57-4cff-4f7b-a32a-889aef90f94e" {:model-data {:majority-class 1, :distinct-labels (0.0 1.0)}, :options {:model-type :metamorph.ml/dummy-classifier}, :id #uuid "c6c83a0e-71d3-4663-be2c-50a036e2a556", :feature-columns [:sex :pclass :embarked], :target-columns [:survived], :target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {"no" 0, "yes" 1}, :src-column :survived, :result-datatype :float64}}, :scicloj.metamorph.ml/unsupervised? nil}</code></pre></div></div><p>}</p></div>
 <p>To show the power of pipelines, I start with doing the simplest possible pipeline, and expand then on it.</p>
 <p>we can already chain train and test with usual functions:</p>
 <div class="sourceClojure">
@@ -1257,7 +1259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="printedClojure">
 <div class="sourceCode" id="cb35"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>#tech.v3.dataset.column&lt;float64&gt;[<span class="dv">178</span>]</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="at">:survived</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>[<span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="dv">1</span>.<span class="dv">000</span>...]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>[<span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="dv">0</span>.<span class="dv">000</span>...]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>the same with pipelines</p>
 <div class="sourceClojure">
@@ -1273,7 +1275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="printedClojure">
 <div class="sourceCode" id="cb38"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>#tech.v3.dataset.column&lt;float64&gt;[<span class="dv">178</span>]</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="at">:survived</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>[<span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="dv">1</span>.<span class="dv">000</span>...]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>[<span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="dv">0</span>.<span class="dv">000</span>...]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="create-metamorph-compliant-functions" class="level2" data-number="7.3">
