@@ -37,7 +37,12 @@ org.scicloj/noj {:git/url \"https://github.com/scicloj/noj.git\"
 Note we are using git coordinates at the moment, in order to expose a few relevant features of the current underlying libraries, which are unreleased yet.
 
 **Status:** Most of the [underlying libraries](./noj_book.underlying_libraries.html) are stable. The experimental parts are marked as such. For some of the libraries, we use a branch for an upcoming release.
-The main current goal is to provide a clear picture of the direction the stack is going towards, expecting most of it to stabilize around October 2024.
+The main current goal is to provide a clear picture of the direction the stack is going towards, expecting most of it to stabilize soon.
+
+**Near term plan - till the end of October 2024**
+* Work on stabilizing the upcoming releases of the underlying libraries.
+* Keep documenting core ideas of the underlying librares and ways to combine them in typical workflows.
+* Keep making the docs generate automatic tests using [kindly/check](https://scicloj.github.io/clay/#test-generation).
 
 ## Existing chapters in this book:
 ")
