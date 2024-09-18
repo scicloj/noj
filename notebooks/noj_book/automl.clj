@@ -9,7 +9,9 @@
 
 (ns noj-book.automl
   (:require [noj-book.ml-basic :as ml-basic]
-            [scicloj.kindly.v4.kind :as kind]))
+            [scicloj.kindly.v4.kind :as kind]
+            [tablecloth.api :as tc]
+            [scicloj.kindly.v4.api :as kindly]))
 
 ;; ## The metamorph pipeline abstraction
 ;; When doing automl, it is very useful to be able to manage
@@ -367,6 +369,11 @@ train-ctx
     (tc/order-by [:mean-accuracy] :desc)
     (tc/head)
     (kind/table))
+
+(kindly/check
+ #(-> %
+      tc/rows
+      (= [[[:sex :pclass :embarked] 0.8110772551260077 {:model-type :scicloj.ml.tribuo/classification, :tribuo-components [{:name "random-forest", :type "org.tribuo.classification.dtree.CARTClassificationTrainer", :properties {:maxDepth "8", :useRandomSplitPoints "false", :fractionFeaturesInSplit "0.5"}}], :tribuo-trainer-name "random-forest"}] [[:sex] 0.7863327620135847 {:model-type :scicloj.ml.tribuo/classification, :tribuo-components [{:name "random-forest", :type "org.tribuo.classification.dtree.CARTClassificationTrainer", :properties {:maxDepth "8", :useRandomSplitPoints "false", :fractionFeaturesInSplit "0.5"}}], :tribuo-trainer-name "random-forest"}] [[:sex :pclass] 0.7863327620135847 {:model-type :scicloj.ml.tribuo/classification, :tribuo-components [{:name "logistic", :type "org.tribuo.classification.sgd.linear.LinearSGDTrainer"}], :tribuo-trainer-name "logistic"}] [[:sex :embarked] 0.7863327620135847 {:model-type :scicloj.ml.tribuo/classification, :tribuo-components [{:name "logistic", :type "org.tribuo.classification.sgd.linear.LinearSGDTrainer"}], :tribuo-trainer-name "logistic"}] [[:sex] 0.7863327620135847 {:model-type :scicloj.ml.tribuo/classification, :tribuo-components [{:name "logistic", :type "org.tribuo.classification.sgd.linear.LinearSGDTrainer"}], :tribuo-trainer-name "logistic"}]])))
 
 ;; ## Best practices for data transformation steps in or outside pipeline
 ;;
