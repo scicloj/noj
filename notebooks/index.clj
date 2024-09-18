@@ -20,9 +20,7 @@
 
 (md "
 
-Scinojure (\"Noj\") is an entry point to the Clojure stack for data & science.
-
-It collects a few of the main libraries and documents common ways to use them together.
+Scinojure (\"Noj\") is an entry point to the Clojure stack for data & science. It collects the main libraries together, as one documented and tested artifact.
 
 **Source:** [![(GitHub repo)](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/scicloj/noj)
 

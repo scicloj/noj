@@ -71,12 +71,12 @@
  var17
  (map
   (fn*
-   [p1__66135#]
+   [p1__66565#]
    (hash-map
     :col-name
-    p1__66135#
+    p1__66565#
     :values
-    (distinct (get titanic p1__66135#))))
+    (distinct (get titanic p1__66565#))))
   categorical-feature-columns))
 
 
