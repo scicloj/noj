@@ -3,7 +3,13 @@
 
 Scinojure ("Noj") wraps a few of the relevant Clojure libraries for data & science and documents common ways of using them together.
 
-Clojars: [2-alpha5-SNAPSHOT](https://clojars.org/org.scicloj/noj/versions/2-alpha5-SNAPSHOT)
+deps:
+```clj
+org.scicloj/noj {:git/url "https://github.com/scicloj/noj.git"
+                 :git/tag "2-alpha6"
+                 :git/sha "c7a7240"}
+
+```
 
 ## Status
 Most of the [underlying libraries](https://scicloj.github.io/noj/noj_book.underlying_libraries.html) are stable. The experimental parts are marked as such. For some of the libraries, we use a branch for an upcoming release.

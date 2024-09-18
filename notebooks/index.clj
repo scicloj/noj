@@ -26,9 +26,15 @@ It collects a few of the main libraries and documents common ways to use them to
 
 **Source:** [![(GitHub repo)](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/scicloj/noj)
 
-**Artifact:** [2-alpha5-SNAPSHOT](https://clojars.org/org.scicloj/noj/versions/2-alpha5-SNAPSHOT)
+**Deps:**
 
-Note we are using `SNAPSHOT` version for now, since a few of the current dependencies are at a snapshot stage for an upcoming release.
+```clj
+org.scicloj/noj {:git/url \"https://github.com/scicloj/noj.git\"
+                 :git/tag \"2-alpha6\"
+                 :git/sha \"c7a7240\"}
+```
+
+Note we are using git coordinates at the moment, in order to expose a few relevant features of the current underlying libraries, which are unreleased yet.
 
 **Status:** Most of the [underlying libraries](./noj_book.underlying_libraries.html) are stable. The experimental parts are marked as such. For some of the libraries, we use a branch for an upcoming release.
 The main current goal is to provide a clear picture of the direction the stack is going towards, expecting most of it to stabilize around October 2024.
