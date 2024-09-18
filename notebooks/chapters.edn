@@ -3,9 +3,9 @@
              "recommended_libraries"
              "known_issues"]}
  {:part "Tutorials"
-  :chapters ["ml_basic"
+  :chapters ["datasets"
+             "ml_basic"
              "prepare_for_ml"
              "automl"
              "interactions_ols"
-             "datasets"
              "visualizing_correlation_matrices"]}]

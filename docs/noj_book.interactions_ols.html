@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Scinojure Documentation – 8&nbsp; Ordinary least squares with interactions</title>
+<title>Scinojure Documentation – 9&nbsp; Ordinary least squares with interactions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./noj_book.datasets.html" rel="next">
+<link href="./noj_book.visualizing_correlation_matrices.html" rel="next">
 <link href="./noj_book.automl.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -103,7 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <meta property="og:image" content="https://scicloj.github.io/sci-cloj-logo-transparent.png">
-<meta property="og:title" content="Scinojure Documentation - 8&nbsp; Ordinary least squares with interactions">
+<meta property="og:title" content="Scinojure Documentation - 9&nbsp; Ordinary least squares with interactions">
 <meta property="og:description" content="">
 <link rel="icon" href="data:,">
 
@@ -148,7 +148,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./noj_book.ml_basic.html">Tutorials</a></li><li class="breadcrumb-item"><a href="./noj_book.interactions_ols.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Ordinary least squares with interactions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./noj_book.datasets.html">Tutorials</a></li><li class="breadcrumb-item"><a href="./noj_book.interactions_ols.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Ordinary least squares with interactions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -219,32 +219,32 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./noj_book.datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datasets</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./noj_book.ml_basic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Machine learning</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Machine learning</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./noj_book.prepare_for_ml.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Machine learning specific functionality in <code>tech.ml.dataset</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Machine learning specific functionality in <code>tech.ml.dataset</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./noj_book.automl.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">AutoML using metamorph pipelines</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">AutoML using metamorph pipelines</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./noj_book.interactions_ols.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Ordinary least squares with interactions</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./noj_book.datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Datasets</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Ordinary least squares with interactions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -265,17 +265,17 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#additive-model" id="toc-additive-model" class="nav-link active" data-scroll-target="#additive-model"><span class="header-section-number">8.1</span> Additive model</a></li>
-  <li><a href="#interaction-effects" id="toc-interaction-effects" class="nav-link" data-scroll-target="#interaction-effects"><span class="header-section-number">8.2</span> Interaction effects</a></li>
+  <li><a href="#additive-model" id="toc-additive-model" class="nav-link active" data-scroll-target="#additive-model"><span class="header-section-number">9.1</span> Additive model</a></li>
+  <li><a href="#interaction-effects" id="toc-interaction-effects" class="nav-link" data-scroll-target="#interaction-effects"><span class="header-section-number">9.2</span> Interaction effects</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./noj_book.ml_basic.html">Tutorials</a></li><li class="breadcrumb-item"><a href="./noj_book.interactions_ols.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Ordinary least squares with interactions</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./noj_book.datasets.html">Tutorials</a></li><li class="breadcrumb-item"><a href="./noj_book.interactions_ols.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Ordinary least squares with interactions</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Ordinary least squares with interactions</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Ordinary least squares with interactions</span></h1>
 </div>
 
 
@@ -335,8 +335,8 @@ window.Quarto = {
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>      (tc/drop-columns [<span class="at">:newspaper</span>])</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>      (modelling/set-inference-target <span class="at">:sales</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="additive-model" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="additive-model"><span class="header-section-number">8.1</span> Additive model</h2>
+<section id="additive-model" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="additive-model"><span class="header-section-number">9.1</span> Additive model</h2>
 <p>First we build an additive model, which model equation is <span class="math display">\[sales = b0 + b1 * youtube + b2 * facebook\]</span></p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb4"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> linear-model-config </span>{<span class="at">:model-type</span> <span class="at">:fastmath/ols</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -378,24 +378,24 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td>:sales</td>
-<td style="text-align: right;">7.48297302</td>
-<td style="text-align: right;">3.37089670</td>
-<td style="text-align: right;">9.68780611E-12</td>
-<td style="text-align: right;">0.45047559</td>
+<td style="text-align: right;">7.35205014</td>
+<td style="text-align: right;">3.37650874</td>
+<td style="text-align: right;">1.93951522E-11</td>
+<td style="text-align: right;">0.45926084</td>
 </tr>
 <tr class="even">
 <td>:youtube</td>
-<td style="text-align: right;">25.13895997</td>
-<td style="text-align: right;">0.04597775</td>
+<td style="text-align: right;">26.36537945</td>
+<td style="text-align: right;">0.04606103</td>
 <td style="text-align: right;">0.00000000E+00</td>
-<td style="text-align: right;">0.00182894</td>
+<td style="text-align: right;">0.00174703</td>
 </tr>
 <tr class="odd">
 <td>:facebook</td>
-<td style="text-align: right;">18.79068352</td>
-<td style="text-align: right;">0.19490296</td>
+<td style="text-align: right;">17.92754811</td>
+<td style="text-align: right;">0.18867811</td>
 <td style="text-align: right;">0.00000000E+00</td>
-<td style="text-align: right;">0.01037232</td>
+<td style="text-align: right;">0.01052448</td>
 </tr>
 </tbody>
 </table>
@@ -406,18 +406,18 @@ window.Quarto = {
 <div class="sourceCode" id="cb8"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:test-transform</span> <span class="at">:metric</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1.7909556496625239</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1.7969781330389176</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><span class="math inline">\(R^2\)</span></p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb10"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:test-transform</span> <span class="at">:other-metrices</span> <span class="kw">first</span> <span class="at">:metric</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb11"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.9041582942916887</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.9118440396123145</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="interaction-effects" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="interaction-effects"><span class="header-section-number">8.2</span> Interaction effects</h2>
+<section id="interaction-effects" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="interaction-effects"><span class="header-section-number">9.2</span> Interaction effects</h2>
 <p>Now we add interaction effects to it, resulting in this model equation: <span class="math display">\[sales = b0 + b1 * youtube + b2 * facebook + b3 * (youtube * facebook)\]</span></p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb12"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> pipe-interaction</span></span>
@@ -462,31 +462,31 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td>:sales</td>
-<td style="text-align: right;">22.62882064</td>
-<td style="text-align: right;">8.01586402</td>
+<td style="text-align: right;">21.97881517</td>
+<td style="text-align: right;">8.20944066</td>
 <td style="text-align: right;">0.00000000</td>
-<td style="text-align: right;">0.35423251</td>
+<td style="text-align: right;">0.37351607</td>
 </tr>
 <tr class="even">
 <td>:youtube</td>
-<td style="text-align: right;">10.49300383</td>
-<td style="text-align: right;">0.01908187</td>
+<td style="text-align: right;">9.86342964</td>
+<td style="text-align: right;">0.01865229</td>
 <td style="text-align: right;">0.00000000</td>
-<td style="text-align: right;">0.00181853</td>
+<td style="text-align: right;">0.00189106</td>
 </tr>
 <tr class="odd">
 <td>:facebook</td>
-<td style="text-align: right;">2.89330761</td>
-<td style="text-align: right;">0.03115180</td>
-<td style="text-align: right;">0.00447662</td>
-<td style="text-align: right;">0.01076685</td>
+<td style="text-align: right;">1.80017197</td>
+<td style="text-align: right;">0.02045523</td>
+<td style="text-align: right;">0.07417034</td>
+<td style="text-align: right;">0.01136293</td>
 </tr>
 <tr class="even">
 <td>:youtube*facebook</td>
-<td style="text-align: right;">17.10327854</td>
-<td style="text-align: right;">0.00092831</td>
+<td style="text-align: right;">17.03837770</td>
+<td style="text-align: right;">0.00094339</td>
 <td style="text-align: right;">0.00000000</td>
-<td style="text-align: right;">0.00005428</td>
+<td style="text-align: right;">0.00005537</td>
 </tr>
 </tbody>
 </table>
@@ -497,14 +497,14 @@ window.Quarto = {
 <div class="sourceCode" id="cb15"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:test-transform</span> <span class="at">:metric</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb16"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1.097119133397347</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1.0919873186443243</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><span class="math inline">\(R^2\)</span></p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb17"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> evaluations flatten <span class="kw">first</span> <span class="at">:test-transform</span> <span class="at">:other-metrices</span> <span class="kw">first</span> <span class="at">:metric</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb18"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.9761354566466389</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.9695967649412696</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><span class="math inline">\(RMSE\)</span> and <span class="math inline">\(R^2\)</span> of the intercation model are sligtly better.</p>
 <p>These results suggest that the model with the interaction term is better than the model that contains only main effects. So, for this specific data, we should go for the model with the interaction model.</p>
@@ -938,12 +938,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./noj_book.automl.html" class="pagination-link" aria-label="AutoML using metamorph pipelines">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">AutoML using metamorph pipelines</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">AutoML using metamorph pipelines</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./noj_book.datasets.html" class="pagination-link" aria-label="Datasets">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Datasets</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./noj_book.visualizing_correlation_matrices.html" class="pagination-link" aria-label="Visualizing correlation matrices (experimental 🛠) - DRAFT">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualizing correlation matrices (experimental 🛠) - DRAFT</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

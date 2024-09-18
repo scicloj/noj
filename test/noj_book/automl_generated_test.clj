@@ -218,14 +218,14 @@
    flatten
    (map
     (fn*
-     [p1__65827#]
+     [p1__66267#]
      (hash-map
       :options
-      (-> p1__65827# :test-transform :ctx :model :options)
+      (-> p1__66267# :test-transform :ctx :model :options)
       :used-features
-      (-> p1__65827# :fit-ctx :used-features)
+      (-> p1__66267# :fit-ctx :used-features)
       :mean-accuracy
-      (-> p1__65827# :test-transform :mean))))
+      (-> p1__66267# :test-transform :mean))))
    tc/dataset)))
 
 
@@ -374,9 +374,9 @@
  test70
  (is
   ((fn*
-    [p1__65828#]
+    [p1__66268#]
     (->
-     p1__65828#
+     p1__66268#
      tc/rows
      (=
       [[[:sex :pclass :embarked]
