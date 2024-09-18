@@ -4,7 +4,6 @@ All notable changes to this project will be documented in this file. This change
 ## unreleased
 - updated deps
 
-
 ## [2-alpha5-SNAPSHOT] - 2024-08-25
 - version updates: metamorph.ml, scicloj.ml.tribuo - using mvn versions rather than git deps to resolve some conflicts
 
