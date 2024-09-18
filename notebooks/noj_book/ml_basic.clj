@@ -11,7 +11,8 @@
   (:require [tablecloth.api :as tc]
             [scicloj.metamorph.ml.toydata :as data]
             [tech.v3.dataset :as ds]
-            [scicloj.metamorph.ml :as ml]))
+            [scicloj.metamorph.ml :as ml]
+            [scicloj.kindly.v4.api :as kindly]))
 
 ;; ## Inspect data
 ;;
@@ -182,6 +183,10 @@ split
 (loss/classification-accuracy
  (:survived (ds-cat/reverse-map-categorical-xforms (:test split)))
  (:survived (ds-cat/reverse-map-categorical-xforms rf-prediction)))
+
+(kindly/check
+ = 0.7878787878787878)
+
 ;; best so far, 71 %
 ;;
 
