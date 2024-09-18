@@ -50,7 +50,9 @@ $$sales = b0 + b1 * youtube + b2 * facebook$$")
 (def evaluations
   (ml/evaluate-pipelines
    [additive-pipeline]
-   (tc/split->seq preprocessed-data :holdout)
+   (tc/split->seq preprocessed-data
+                  :holdout
+                  {:seed 112723})
    loss/rmse
    :loss
    {:other-metrices [{:name :r2
@@ -64,9 +66,11 @@ $$sales = b0 + b1 * youtube + b2 * facebook$$")
 (md "We have the following metrics:")
 (md "$RMSE$")
 (-> evaluations flatten first :test-transform :metric)
+(kindly/check = 0.933077510748531)
 
 (md "$R^2$")
 (-> evaluations flatten first :test-transform :other-metrices first :metric)
+(kindly/check = 0.9747551116991899)
 
 (md "## Interaction effects")
 (md "Now we add interaction effects to it, resulting in this model equation:
@@ -80,7 +84,9 @@ $$sales = b0 + b1 * youtube + b2 * facebook + b3 * (youtube * facebook)$$")
 (def evaluations
   (ml/evaluate-pipelines
    [pipe-interaction]
-   (tc/split->seq preprocessed-data :holdout)
+   (tc/split->seq preprocessed-data
+                  :holdout
+                  {:seed 112723})
    loss/rmse
    :loss
    {:other-metrices [{:name :r2
