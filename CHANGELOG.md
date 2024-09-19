@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## unreleased
+- updated Fastmath version (`3.0.0-alpha1`)
+
 ## [2-alpha6] - 2024-09-18
 - updated deps, switched to git deps rather than Clojars for now
 

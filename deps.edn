@@ -3,7 +3,7 @@
         org.scicloj/tcutils {:mvn/version "0.1.0-alpha2"}
         com.techascent/tmd-parquet {:mvn/version "1.001"}
         org.scicloj/kindly {:mvn/version "4-beta12"}
-        generateme/fastmath {:mvn/version "3.0.0-SNAPSHOT"}
+        generateme/fastmath {:mvn/version "3.0.0-alpha1"}
         aerial.hanami/aerial.hanami {:mvn/version "0.20.0"}
         org.scicloj/hanamicloth {:mvn/version "1-alpha7-SNAPSHOT"}
         scicloj/metamorph.ml {:mvn/version "0.8.2-branch-noj-2-alpha4-SNAPSHOT"}
