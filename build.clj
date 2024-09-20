@@ -52,7 +52,18 @@
            :src-dirs  ["src"]
            :pom-data  (pom-template version))))
 
+(defn generate-tests [opts]
+  (let [basis    (b/create-basis {:aliases [:gen-tests]})
+
+        cmds     (b/java-command
+                  {:basis     basis
+                   :main      'clojure.main
+                   :main-args ["-e" "(require '[gen-tests])(gen-tests/do-generate-tests)(System/exit 0)"]})
+        {:keys [exit]} (b/process cmds)]
+    (when-not (zero? exit) (throw (ex-info "Tests generation failed" {})))))
+
 (defn ci "Run the CI pipeline of tests (and build the JAR)." [opts]
+  (generate-tests opts)
   (test opts)
   (b/delete {:path "target"})
   (let [opts (jar-opts opts)]
@@ -73,12 +84,3 @@
 
 
 
-(defn generate-tests [opts]
-  (let [basis    (b/create-basis {:aliases [:gen-tests]})
-                                  
-        cmds     (b/java-command
-                  {:basis     basis
-                   :main      'clojure.main
-                   :main-args ["-e" "(require '[gen-tests])(gen-tests/do-generate-tests)  "]})
-        {:keys [exit]} (b/process cmds)]
-    (when-not (zero? exit) (throw (ex-info "Tests failed" {})))))
