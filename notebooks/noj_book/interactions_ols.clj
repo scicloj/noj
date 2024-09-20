@@ -66,11 +66,11 @@ $$sales = b0 + b1 * youtube + b2 * facebook$$")
 (md "We have the following metrics:")
 (md "$RMSE$")
 (-> evaluations flatten first :test-transform :metric)
-(kindly/check = 0.933077510748531)
+(kindly/check = 1.772159024927988)
 
 (md "$R^2$")
 (-> evaluations flatten first :test-transform :other-metrices first :metric)
-(kindly/check = 0.9747551116991899)
+(kindly/check = 0.9094193687523886)
 
 (md "## Interaction effects")
 (md "Now we add interaction effects to it, resulting in this model equation:

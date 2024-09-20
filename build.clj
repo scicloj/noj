@@ -14,6 +14,8 @@
   (:require [clojure.tools.build.api :as b]
             [deps-deploy.deps-deploy :as dd]))
 
+
+
 (def lib 'org.scicloj/noj)
 (def version "2-alpha6")
 (def snapshot (str version "-SNAPSHOT"))
@@ -22,7 +24,7 @@
 (defn test "Run all the tests." [opts]
   (doseq [alias [:1.11 :1.12 :master]]
     (println "\nRunning tests for Clojure" (name alias))
-    (let [basis    (b/create-basis {:aliases [:test alias]})
+    (let [basis    (b/create-basis {:aliases (concat (opts :aliases [:test alias]))})
           cmds     (b/java-command
                     {:basis     basis
                      :main      'clojure.main
@@ -50,8 +52,19 @@
            :src-dirs  ["src"]
            :pom-data  (pom-template version))))
 
+(defn generate-tests [opts]
+  (let [basis    (b/create-basis {:aliases [:gen-tests :dev]})
+
+        cmds     (b/java-command
+                  {:basis     basis
+                   :main      'clojure.main
+                   :main-args ["-e" "(require '[gen-tests])(gen-tests/do-generate-tests)(System/exit 0)"]})
+        {:keys [exit]} (b/process cmds)]
+    (when-not (zero? exit) (throw (ex-info "Tests generation failed" {})))))
+(def opts {})
 (defn ci "Run the CI pipeline of tests (and build the JAR)." [opts]
-  (test opts)
+  (generate-tests (assoc opts :aliases [:dev]))
+  (test  (assoc opts :aliases [:dev :gen-tests :test]))
   (b/delete {:path "target"})
   (let [opts (jar-opts opts)]
     (println "\nWriting pom.xml...")
@@ -67,3 +80,7 @@
     (dd/deploy {:installer :remote :artifact (b/resolve-path jar-file)
                 :pom-file (b/pom-path (select-keys opts [:lib :class-dir]))}))
   opts)
+
+
+
+

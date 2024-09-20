@@ -16,8 +16,13 @@
         org.scicloj/kind-pyplot {:mvn/version "1-beta1"}
         scicloj/clojisr {:mvn/version "1.0.0"}}
  :aliases
- {:build {:deps {io.github.clojure/tools.build {:mvn/version "0.9.6"}
-                 slipset/deps-deploy {:mvn/version "0.2.1"}}
+ {:gen-tests {:extra-paths ["build"]
+              :extra-deps { org.scicloj/clay {:mvn/version "2-beta16"}}}
+
+  :build {:deps {io.github.clojure/tools.build {:mvn/version "0.9.6"}
+                 slipset/deps-deploy           {:mvn/version "0.2.1"}}
+                 
+
           :ns-default build}
   :test {:extra-paths ["test" "notebooks"]
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}

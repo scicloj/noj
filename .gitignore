@@ -35,3 +35,6 @@ temp
 *.qmd
 book
 
+/.clj-kondo/
+test/noj_book/
+
