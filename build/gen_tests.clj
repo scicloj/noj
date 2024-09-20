@@ -1,12 +1,18 @@
 (ns gen-tests
   (:require
-   [scicloj.clay.v2.api :as clay]))
+   [scicloj.clay.v2.api :as clay]
+   [clojure.java.io :as io]
+   [clojure.string :as str]))
 
 (defn do-generate-tests []
-  (clay/make! {:source-path "notebooks/noj_book/ml_basic.clj" :show false})
-
-  (clay/make! {:source-path "notebooks/noj_book/prepare_for_ml.clj" :show false})
-  (println :done :prepare-for-ml)
-  (clay/make! {:source-path "notebooks/noj_book/automl.clj" :show false})
-  (println :done :automl)
+  (->>
+   (file-seq (io/file "notebooks/noj_book"))
+   (filter #(str/ends-with? (.toPath %) ".clj"))
+   (run!
+    #(let [p (.getAbsolutePath %)]
+       (println :generate-tests p)
+       (clay/make! {:source-path p
+                    :show false}))))
   (shutdown-agents))
+
+(clay/make! {:source-path "notebooks/noj_book/automl.clj" :show false})
