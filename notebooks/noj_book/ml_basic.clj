@@ -176,7 +176,7 @@ split
 (loss/classification-accuracy
  (:survived (ds-cat/reverse-map-categorical-xforms (:test split)))
  (:survived (ds-cat/reverse-map-categorical-xforms dummy-prediction)))
-;;  It's performance is poor, even worse then coin flip.
+;;  It's performance is poor, even worse than coin flip.
 
 
 ;; ## Logistic regression
