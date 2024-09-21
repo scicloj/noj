@@ -26,10 +26,8 @@
                       io.github.cognitect-labs/test-runner
                       {:git/tag "v0.5.1" :git/sha "dfb30dd"}
                       org.scicloj/clay {:mvn/version "2-beta16"}}}
-  :dev {:extra-paths ["notebooks"]
+  :dev {:extra-paths ["notebooks" "build"]
         :extra-deps {org.scicloj/clay {:mvn/version "2-beta16"}
                      scicloj/scicloj.ml.smile {:mvn/version "7.4.1"}
-                     scicloj/sklearn-clj {:git/url "https://github.com/scicloj/sklearn-clj"
-                                          :git/sha "8df470c6ea96fc367cff8b064a61d2431f609543"}
-                     ;{:mvn/version "0.4.0"}
+                     org.scicloj/sklearn-clj {:mvn/version "0.4.1"}
                      }}}}

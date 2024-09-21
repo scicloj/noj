@@ -98,22 +98,12 @@
 
 cat-maps
 
-(kind/test-last (fn [cat-maps]
-                  (every?
-                   true?
-                   (map
-                    #(.equals %1 %2)
-                    cat-maps
-                    [
-                     {:lookup-table {"male" 0, "female" 1},
-                      :src-column :sex,
-                      :result-datatype :float64}
-                     {:lookup-table {0 0, 1 1, 2 2, 3 3},
-                      :src-column :pclass,
-                      :result-datatype :float64}
-                     {:lookup-table {"S" 0, "Q" 1, "C" 2},
-                      :src-column :embarked,
-                      :result-datatype :float64}]))))
+(kindly/check =
+              (map  ds-cat/map->CategoricalMap
+                    [{:lookup-table {"male" 0, "female" 1}, :src-column :sex, :result-datatype :float64}
+                     {:lookup-table {0 0, 1 1, 2 2, 3 3}, :src-column :pclass, :result-datatype :float64}
+                     {:lookup-table {"S" 0, "Q" 1, "C" 2}, :src-column :embarked, :result-datatype :float64}]))
+
 
 
 ;; After the mappings are applied, we have a numeric dataset, as expected
@@ -123,18 +113,21 @@ cat-maps
             (ds-cat/transform-categorical-map ds cat-map))
           relevant-titanic-data
           cat-maps))
+
 (tc/head
  numeric-titanic-data)
 
+(ds/rowvecs 
+ (tc/head
+  numeric-titanic-data))
 
-(kind/test-last (fn [ds]
-                  (=
-                   [[0.0 3.0 0.0 0.0]
-                    [1.0 1.0 2.0 1.0]
-                    [1.0 3.0 0.0 1.0]
-                    [1.0 1.0 0.0 1.0]
-                    [0.0 3.0 0.0 0.0]]
-                   (ds/rowvecs ds))))
+(kindly/check 
+ =
+ [[0.0 3.0 0.0 0.0]
+  [1.0 1.0 2.0 1.0]
+  [1.0 3.0 0.0 1.0]
+  [1.0 1.0 0.0 1.0]
+  [0.0 3.0 0.0 0.0]])
 
 ;; Split data into train and test set
 ;;  Now we split the data into train and test. By we use
@@ -178,6 +171,7 @@ split
  (:survived (ds-cat/reverse-map-categorical-xforms dummy-prediction)))
 ;;  It's performance is poor, even worse than coin flip.
 
+(kindly/check = 0.3973063973063973)
 
 ;; ## Logistic regression
 ;; Next model to use is Logistic Regression
@@ -199,7 +193,7 @@ split
  (:survived (ds-cat/reverse-map-categorical-xforms (:test split)))
  (:survived (ds-cat/reverse-map-categorical-xforms lreg-prediction)))
 
-(kind/test-last [= 0.7373737373737373])
+(kindly/check = 0.7373737373737373)
 ;; Its performance is  better, 73 %
 
 ;; ## Random forest
@@ -214,6 +208,20 @@ split
 (def rf-prediction
   (ml/predict (:test split) rf-model))
 
+;; First five prediction including teh probability distributions 
+;; are
+(-> rf-prediction
+    (tc/head)
+    (tc/rows))
+(kindly/check =
+              [["no" 0.6470588235294118 0.35294117647058826] 
+               ["no" 0.5714285714285714 0.42857142857142855] 
+               ["no" 0.8529411764705882 0.14705882352941177]
+               ["no" 0.9064327485380117 0.0935672514619883] 
+               ["no" 0.9064327485380117 0.0935672514619883]])
+
+
+
 (loss/classification-accuracy
  (:survived (ds-cat/reverse-map-categorical-xforms (:test split)))
  (:survived (ds-cat/reverse-map-categorical-xforms rf-prediction)))
@@ -221,7 +229,7 @@ split
 (kindly/check
  = 0.7878787878787878)
 
-;; best so far, 71 %
+;; best so far, 78 %
 ;;
 
 ;; TODO: Extract feature importance.
@@ -236,3 +244,5 @@ split
 ;; So far we used a single split into 'train' and 'test' data, so we only get
 ;; a point estimate of the accuracy. This should be made more robust
 ;; via cross-validations and using different splits of the data.
+
+

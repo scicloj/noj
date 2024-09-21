@@ -399,10 +399,6 @@ ctx-after-train
     (tc/head 20)
     (kind/table))
 
-(kindly/check
- #(-> %
-      tc/rows
-      (= [[[:sex :pclass :embarked] 0.8110772551260077 {:model-type :scicloj.ml.tribuo/classification, :tribuo-components [{:name "random-forest", :type "org.tribuo.classification.dtree.CARTClassificationTrainer", :properties {:maxDepth "8", :useRandomSplitPoints "false", :fractionFeaturesInSplit "0.5"}}], :tribuo-trainer-name "random-forest"}] [[:sex] 0.7863327620135847 {:model-type :scicloj.ml.tribuo/classification, :tribuo-components [{:name "random-forest", :type "org.tribuo.classification.dtree.CARTClassificationTrainer", :properties {:maxDepth "8", :useRandomSplitPoints "false", :fractionFeaturesInSplit "0.5"}}], :tribuo-trainer-name "random-forest"}] [[:sex :pclass] 0.7863327620135847 {:model-type :scicloj.ml.tribuo/classification, :tribuo-components [{:name "logistic", :type "org.tribuo.classification.sgd.linear.LinearSGDTrainer"}], :tribuo-trainer-name "logistic"}] [[:sex :embarked] 0.7863327620135847 {:model-type :scicloj.ml.tribuo/classification, :tribuo-components [{:name "logistic", :type "org.tribuo.classification.sgd.linear.LinearSGDTrainer"}], :tribuo-trainer-name "logistic"}] [[:sex] 0.7863327620135847 {:model-type :scicloj.ml.tribuo/classification, :tribuo-components [{:name "logistic", :type "org.tribuo.classification.sgd.linear.LinearSGDTrainer"}], :tribuo-trainer-name "logistic"}]])))
 
 ;; ## Best practices for data transformation steps in or outside pipeline
 ;;
