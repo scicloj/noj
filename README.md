@@ -1,3 +1,6 @@
+![ci workflow](https://github.com/scicloj/noj/actions/workflows/ci.yml/badge.svg)
+
+
 # Scinojure
 ![Noj logo](notebooks/Noj.svg)
 
