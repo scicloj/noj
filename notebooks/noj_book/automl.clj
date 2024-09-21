@@ -10,8 +10,8 @@
 (ns noj-book.automl
   (:require [noj-book.ml-basic :as ml-basic]
             [scicloj.kindly.v4.kind :as kind]
-            [tablecloth.api :as tc]
-            [scicloj.kindly.v4.api :as kindly]))
+            [scicloj.kindly.v4.api :as kindly]
+            [scicloj.metamorph.ml :as ml]))
 
 ;; ## The metamorph pipeline abstraction
 ;; When doing automl, it is very useful to be able to manage
@@ -90,16 +90,18 @@ my-pipeline
 ;; But this map cannot be "arbitrary", it need to adhere to the `metamorph` conventions.
 ;;
 ;; The following `trains` a model, because the `ml/model`
-;; function does this when called with :mode :fit
-;; And it is the only operation in the pipeline, so the pipeline does one thing,
-;; it `trains a model`
+;; function does this when called with :mode `:fit`.
+;; And it is the only operation in the pipeline, so the pipeline does one 
+;; thing, it `trains a model`
 (def ctx-after-train
   (my-pipeline {:metamorph/data train-ds
                 :metamorph/mode :fit}))
 ctx-after-train
 
+;; The ctx contains lots of information, so I only show its top level keys
 (keys ctx-after-train)
-;; This context map has the "data", the "mode" and an UUID for each operation (we had only one in this pipeline)
+;; This context map has the "data", the "mode" and an UUID for each operation 
+;; (we had only one in this pipeline)
 ;;
 (vals ctx-after-train)
 
@@ -113,7 +115,7 @@ ctx-after-train
   (my-pipeline (assoc ctx-after-train
                       :metamorph/mode :transform
                       :metamorph/data test-ds)))
-ctx-after-predict
+(keys ctx-after-predict)
 ;; For the dummy-model we do not see a `trained-model`,
 ;; but it "communicates" the majority class from the train data
 ;; to use it for prediction. So the `dummy-model`
@@ -130,13 +132,13 @@ ctx-after-predict
 ;; normal dataset->dataset functions, as we will see)
 ;;
 ;; `my-pipeline` represents therefore a not yet executed model
-;; training / prediction.
-;; It can be freely moved around and applied to a dataset when needed.
+;; training / prediction flow.
+;; It can be freely moved around and applied to  datasets when needed.
 ;;
 ;; ## Use metamorph pipelines to do model training with higher level API
 
 ;; As user of `metamorph.ml` we do not need to deal with this low-level details
-;; of how `metamorph` works, we have convenience functions which hide this
+;; of how `metamorph` works, we have convenience functions which hide this.
 ;;
 ;; The following code will do the same as `train`, but return a
 ;; context object, which contains the trained model,
@@ -156,13 +158,13 @@ ctx-after-predict
 ;; (The dummy-classifier model does not have a lot of state,
 ;; so there is little to see)
 
-train-ctx
+(keys train-ctx)
 
 
 ;; To show the power of pipelines, I start with doing the simplest possible pipeline,
 ;; and expand then on it.
 
-;;  we can already chain train and test with usual functions:
+;;  We can already chain train and test with usual functions:
 (->>
  (ml/train train-ds {:model-type :metamorph.ml/dummy-classifier})
  (ml/predict test-ds)
@@ -190,34 +192,45 @@ train-ctx
 ;; 1. implementing a metamorph compliant function directly via anonymous
 ;; function
 
-(def ops (fn [ctx]
-            (assoc ctx :metamorph/data
-                 (tc/drop-columns (:metamorph/data ctx) [:embarked]))))
+(def ops-1 
+  (fn [ctx]
+    (assoc ctx :metamorph/data
+           (tc/drop-columns (:metamorph/data ctx) [:embarked]))))
 
 ;;  2. using `mm/lift` which does the same as 1.
-(def ops (mm/lift tc/drop-columns [:embarked]))
+(def ops-2 (mm/lift tc/drop-columns [:embarked]))
 
 ;;  3. using a name-space containing lifted functions
 (require '[tablecloth.pipeline])
-(def ops (tablecloth.pipeline/drop-columns [:embarked]))
+(def ops-3 (tablecloth.pipeline/drop-columns [:embarked]))
 
 ;;  All three create the same pipeline op
 ;;  and can be used to make a pipeline
-(mm/pipeline ops)
+(mm/pipeline ops-1)
+(mm/pipeline ops-2)
+(mm/pipeline ops-3)
+
+;; All three can be called as function taking a dataset iwrapped in a ctx
 
 ;; Pipeline as data is as well supported
 (def op-spec [[ml/model {:model-type :metamorph.ml/dummy-classifier}]])
 ;;
 (mm/->pipeline op-spec)
 
-;; All these do not execute anything, they produce
+;; Creating these functions does not yet execute anything, they are
 ;; functions which can be executed against a context as part of
 ;; a metamorph pipeline.
+;; Executions are triggered like this:
+
+(ops-1 {:metamorph/data titanic})
+(ops-2 {:metamorph/data titanic})
+(ops-3 {:metamorph/data titanic})
+
 
 ;;
-;; The `mm/lift` function transposes any dataset->dataset functions
+;; The `mm/lift` function transforms any dataset->dataset function
 ;; into a ctx->ctx function,
-;; while using the `metamorh` convention, as required for metamorph
+;; while using the `metamorph` convention, as required for metamorph
 ;; pipeline operations
 ;;
 ;; For convenience `tablecloth` contains a ns where all `dataset->dataset` functions
@@ -225,14 +238,14 @@ train-ctx
 ;; directly without using `lift`.
 
 ;;
-;; So a metamorph pipeline can encapsulate arbitray transformation
+;; So a metamorph pipeline can encapsulate arbitrary transformation
 ;; of a dataset in the 2 modes. They can be "stateless"
 ;; (only chaining the dataset, such as `drop-columns`) or
 ;; "state-full", so they store data in the ctx during `:fit` and can use
 ;; it in `:transform`. In the pipeline above, the trained model is
 ;; stored in this way.
 ;;
-;;This state is not stored globaly, but inside the pipeline
+;;This state is not stored globally, but inside the pipeline
 ;;so this makes pipeline execution "isolated".
 ;;
 ;;
@@ -247,7 +260,7 @@ train-ctx
 ;;
 ;; The AutoML support in metamorph.ml consists now in the possibility
 ;; to create an arbitrary number of different pipelines
-;; and have them run against arbitray test/train data splits
+;; and have them run against arbitrary test/train data splits
 ;; and it automatically chooses the best model evaluated by by a
 ;; certain metric.
 
@@ -264,7 +277,11 @@ train-ctx
 (require '[scicloj.metamorph.ml :as ml]
          '[scicloj.metamorph.ml.loss :as loss]
          '[scicloj.metamorph.core :as mm]
-         '[scicloj.ml.tribuo])
+         '[scicloj.ml.tribuo] ;; register the tribuo models
+         '[scicloj.ml.smile.classification] ;; register the smile classification models
+         '[scicloj.metamorph.ml.classification] ;; register dummy classifier
+         '[scicloj.sklearn-clj.ml] ;; register all sklern models classifier
+         )
 
 
 ;; ## Finding the best model automatically
@@ -275,12 +292,13 @@ train-ctx
 
 ;;  the following will find the best model across:
 ;;
-;;  * 6 different model classes
+;;  * 4 different model classes
 ;;
 ;;  * 6 different selections of used features
 ;;
 ;;  * k-cross validate this with different test / train splits
 ;;
+
 (defn make-pipe-fn [model-spec features]
   (mm/pipeline
    ;; store the used features in ctx, so we can retrieve them at the end
@@ -291,19 +309,29 @@ train-ctx
 
 ;;  Create a 5-K cross validation split of the data:
 (def titanic-k-fold (tc/split->seq ml-basic/numeric-titanic-data :kfold {:seed 12345}))
+
+(-> titanic-k-fold count)
 ;; The list of the model types we want to try:
 (def models [{:model-type :metamorph.ml/dummy-classifier}
-             {:model-type :scicloj.ml.tribuo/classification
-              :tribuo-components [{:name "logistic"
-                                   :type "org.tribuo.classification.sgd.linear.LinearSGDTrainer"}]
-              :tribuo-trainer-name "logistic"}
-             {:model-type :scicloj.ml.tribuo/classification
-              :tribuo-components [{:name "random-forest"
-                                   :type "org.tribuo.classification.dtree.CARTClassificationTrainer"
-                                   :properties {:maxDepth "8"
-                                                :useRandomSplitPoints "false"
-                                                :fractionFeaturesInSplit "0.5"}}]
-              :tribuo-trainer-name "random-forest"}])
+             
+             {:model-type :sklearn.classification/logistic-regression}
+             
+             {:model-type :smile.classification/random-forest}
+             
+              {:model-type :scicloj.ml.tribuo/classification
+               :tribuo-components [{:name "logistic"
+                                    :type "org.tribuo.classification.sgd.linear.LinearSGDTrainer"}]
+               :tribuo-trainer-name "logistic"}
+              {:model-type :scicloj.ml.tribuo/classification
+               :tribuo-components [{:name "random-forest"
+                                    :type "org.tribuo.classification.dtree.CARTClassificationTrainer"
+                                    :properties {:maxDepth "8"
+                                                 :useRandomSplitPoints "false"
+                                                 :fractionFeaturesInSplit "0.5"}}]
+               :tribuo-trainer-name "random-forest"}
+             
+             
+             ])
 
 
 ;;  This uses models from Smile and Tribuo, but could be any
@@ -319,13 +347,14 @@ train-ctx
    [:sex :embarked]
    [:sex :pclass]])
 
-;; generate 36 pipeline functions:
+;; generate 24 pipeline functions:
 (def pipe-fns
   (for [model models
         feature-combination feature-combinations]
     (make-pipe-fn model feature-combination)))
 
-;; Exceute all pipelines for all splits in the  cross-validations
+(count pipe-fns)
+;; Execute all pipelines for all splits in the  cross-validations
 ;; and return best model by `classification-accuracy`
 
 (def evaluation-results
@@ -359,7 +388,7 @@ train-ctx
 
 
 ;; In total it creates and evaluates
-;; 6 models * 6 feature configurarions * 5 CV = 180 models
+;; 4 models * 6 feature configurations * 5 CV = 120 models
 (->  evaluation-results-all flatten count)
 
 ;;  We can find the best as well by hand, it's the first from the list,
@@ -367,7 +396,7 @@ train-ctx
 (-> (make-results-ds evaluation-results-all)
     (tc/unique-by)
     (tc/order-by [:mean-accuracy] :desc)
-    (tc/head)
+    (tc/head 20)
     (kind/table))
 
 (kindly/check
