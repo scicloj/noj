@@ -4,7 +4,8 @@
 # Scinojure
 ![Noj logo](notebooks/Noj.svg)
 
-Scinojure ("Noj") wraps a few of the relevant Clojure libraries for data & science and documents common ways of using them together.
+Scinojure ("Noj") combines a few of the relevant Clojure libraries for data & science and documents common ways of using them together. The included libraries either use [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset) directly as tabular data structure or provide high interoperability with it.
+
 
 deps:
 ```clj
