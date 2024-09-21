@@ -5,7 +5,7 @@
         org.scicloj/kindly {:mvn/version "4-beta12"}
         generateme/fastmath {:mvn/version "3.0.0-alpha1"}
         aerial.hanami/aerial.hanami {:mvn/version "0.20.0"}
-        org.scicloj/hanamicloth {:mvn/version "1-alpha7-SNAPSHOT"}
+        org.scicloj/hanamicloth {:mvn/version "1-alpha8"}
         scicloj/metamorph.ml {:mvn/version "0.8.2-branch-noj-2-alpha4-SNAPSHOT"}
         org.scicloj/scicloj.ml.tribuo {:mvn/version "0.1.1-branch-noj-2-alpha4-SNAPSHOT"}
         org.tribuo/tribuo-regression-sgd {:mvn/version "4.2.0"}
@@ -21,7 +21,7 @@
 
   :build {:deps {io.github.clojure/tools.build {:mvn/version "0.9.6"}
                  slipset/deps-deploy           {:mvn/version "0.2.1"}}
-                 
+
 
           :ns-default build}
   :test {:extra-paths ["test" "notebooks"]
