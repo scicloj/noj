@@ -1,5 +1,5 @@
 {
-	"name": "my Clojure app",
+	"name": "noj",
 	"build": {
 		"dockerfile": "Dockerfile"
 
@@ -7,23 +7,21 @@
 
 
     "features": {
-	    	"ghcr.io/devcontainers-contrib/features/clojure-asdf:2": {},
-	    	"ghcr.io/devcontainers-contrib/features/tmux-apt-get:1": {},
-		"ghcr.io/devcontainers-contrib/features/bash-command:1": {"command": "apt-get update && apt-get install -y rlwrap"},
+	   	"ghcr.io/devcontainers-contrib/features/clojure-asdf:2": {},
+		"ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {},
+		"ghcr.io/devcontainers-contrib/features/bash-command:1": 
+		    {"command": "apt-get update && apt-get install -y rlwrap"},
 		"ghcr.io/devcontainers-contrib/features/poetry:2" : {},
 		"ghcr.io/rocker-org/devcontainer-features/r-apt:0": {}
 
 
 },
-    "forwardPorts": ["12345","7777"],
 	"customizations": {
 		"vscode": {
 			"settings": { 
 			},
 			"extensions": 
 			[
-				"vscjava.vscode-java-pack",
-				"borkdude.clj-kondo",
 				"betterthantomorrow.calva"
 			]
 		}
