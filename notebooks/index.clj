@@ -30,8 +30,8 @@ It combines a few of the relevant Clojure libraries for data & science and docum
 
 ```clj
 org.scicloj/noj {:git/url \"https://github.com/scicloj/noj.git\"
-                 :git/tag \"2-alpha7\"
-                 :git/sha \"ef8e323\"}
+                 :git/tag \"2-alpha7.1\"
+                 :git/sha \"0949ad1\"}
 ```
 
 Note we are using git coordinates at the moment, in order to expose a few relevant features of the current underlying libraries, which are unreleased yet.
