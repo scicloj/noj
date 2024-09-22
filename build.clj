@@ -17,7 +17,7 @@
 
 
 (def lib 'org.scicloj/noj)
-(def version "2-alpha6")
+(def version "2-alpha7-SNAPSHOT")
 (def snapshot (str version "-SNAPSHOT"))
 (def class-dir "target/classes")
 
@@ -80,7 +80,3 @@
     (dd/deploy {:installer :remote :artifact (b/resolve-path jar-file)
                 :pom-file (b/pom-path (select-keys opts [:lib :class-dir]))}))
   opts)
-
-
-
-

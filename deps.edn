@@ -6,7 +6,8 @@
         generateme/fastmath {:mvn/version "3.0.0-alpha1"}
         aerial.hanami/aerial.hanami {:mvn/version "0.20.0"}
         org.scicloj/hanamicloth {:mvn/version "1-alpha8"}
-        scicloj/metamorph.ml {:mvn/version "0.8.2-branch-noj-2-alpha4-SNAPSHOT"}
+        scicloj/metamorph.ml {:git/url "https://github.com/scicloj/metamorph.ml.git"
+                              :git/sha "50f47dad934a2786b3cf025bef509f1f3d1a7e1d"}
         org.scicloj/scicloj.ml.tribuo {:mvn/version "0.1.1-branch-noj-2-alpha4-SNAPSHOT"}
         org.tribuo/tribuo-regression-sgd {:mvn/version "4.2.0"}
         org.tribuo/tribuo-regression-tree {:mvn/version "4.2.0"}
