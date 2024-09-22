@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
 ## unreleased
-- updated deps (Fastmath, Hanamicloth, metamorph.ml)
+- updated deps (Fastmath, Hanamicloth, metamorph.ml, Tribuo)
 
 ## [2-alpha6] - 2024-09-18
 - updated deps, switched to git deps rather than Clojars for now
