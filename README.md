@@ -10,8 +10,8 @@ Scinojure ("Noj") combines a few of the relevant Clojure libraries for data & sc
 deps:
 ```clj
 org.scicloj/noj {:git/url "https://github.com/scicloj/noj.git"
-                 :git/tag "2-alpha6"
-                 :git/sha "c7a7240"}
+                 :git/tag "2-alpha7"
+                 :git/sha "ef8e323"}
 
 ```
 
