@@ -11,8 +11,10 @@
         org.scicloj/scicloj.ml.tribuo {:mvn/version "0.1.1-branch-noj-2-alpha4-SNAPSHOT"}
         org.tribuo/tribuo-regression-sgd {:mvn/version "4.3.1"}
         org.tribuo/tribuo-regression-tree {:mvn/version "4.3.1"}
+        org.tribuo/tribuo-regression-xgboost {:mvn/version "4.3.1"}
         org.tribuo/tribuo-classification-sgd {:mvn/version "4.3.1"}
         org.tribuo/tribuo-classification-tree {:mvn/version "4.3.1"}
+        org.tribuo/tribuo-classification-xgboost {:mvn/version "4.3.1"}
         clj-python/libpython-clj {:mvn/version "2.025"}
         org.scicloj/kind-pyplot {:mvn/version "1-beta1"}
         scicloj/clojisr {:mvn/version "1.0.0"}}

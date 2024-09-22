@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file. This change
 
 ## unreleased
 - updated deps (Fastmath, Hanamicloth, metamorph.ml, Tribuo)
+- added the deps for Tribuo xgboost models
 
 ## [2-alpha6] - 2024-09-18
 - updated deps, switched to git deps rather than Clojars for now
