@@ -53,7 +53,7 @@
            :pom-data  (pom-template version))))
 
 (defn generate-tests [opts]
-  (let [basis    (b/create-basis {:aliases [:dev]})
+  (let [basis    (b/create-basis {:aliases [:gen-tests :model-integration-tests]})
 
         cmds     (b/java-command
                   {:basis     basis
@@ -80,3 +80,16 @@
     (dd/deploy {:installer :remote :artifact (b/resolve-path jar-file)
                 :pom-file (b/pom-path (select-keys opts [:lib :class-dir]))}))
   opts)
+
+
+(defn models-integration-tests "Run integration tests." [opts]
+    (let [basis    (b/create-basis {  :aliases [:model-integration-tests ]})
+          cmds     (b/java-command
+                    {:basis     basis
+                     :main      'clojure.main
+                     :main-args ["-m" "cognitect.test-runner" "-d" "model-integration-tests"]})]
+      (b/process cmds)
+      )opts)
+  
+
+

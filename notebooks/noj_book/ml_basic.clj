@@ -191,7 +191,7 @@ split
 
 (loss/classification-accuracy
  (:survived (ds-cat/reverse-map-categorical-xforms (:test split)))
- (:survived (ds-cat/reverse-map-categorical-xforms lreg-prediction)))
+ (:survived  lreg-prediction))
 
 (kindly/check = 0.7373737373737373)
 ;; Its performance is  better, 73 %
