@@ -53,7 +53,7 @@
            :pom-data  (pom-template version))))
 
 (defn generate-tests [opts]
-  (let [basis    (b/create-basis {:aliases [:gen-tests :dev]})
+  (let [basis    (b/create-basis {:aliases [:dev]})
 
         cmds     (b/java-command
                   {:basis     basis
@@ -64,7 +64,7 @@
 (def opts {})
 (defn ci "Run the CI pipeline of tests (and build the JAR)." [opts]
   (generate-tests (assoc opts :aliases [:dev]))
-  (test  (assoc opts :aliases [:dev :gen-tests :test]))
+  (test  (assoc opts :aliases [:dev :test]))
   (b/delete {:path "target"})
   (let [opts (jar-opts opts)]
     (println "\nWriting pom.xml...")
