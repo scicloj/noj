@@ -277,11 +277,9 @@ ctx-after-train
 (require '[scicloj.metamorph.ml :as ml]
          '[scicloj.metamorph.ml.loss :as loss]
          '[scicloj.metamorph.core :as mm]
-         '[scicloj.ml.tribuo] ;; register the tribuo models
-         '[scicloj.ml.smile.classification] ;; register the smile classification models
-         '[scicloj.metamorph.ml.classification] ;; register dummy classifier
-         '[scicloj.sklearn-clj.ml] ;; register all sklern models classifier
-         )
+         '[scicloj.ml.tribuo]
+         '[scicloj.ml.xgboost]
+         '[scicloj.sklearn-clj.ml])
 
 
 ;; ## Finding the best model automatically
@@ -312,26 +310,23 @@ ctx-after-train
 
 (-> titanic-k-fold count)
 ;; The list of the model types we want to try:
-(def models [{:model-type :metamorph.ml/dummy-classifier}
-             
+(def models [{ :model-type :xgboost/classification
+               :round 10}
+             {:model-type :sklearn.classification/decision-tree-classifier}
              {:model-type :sklearn.classification/logistic-regression}
-             
-             {:model-type :smile.classification/random-forest}
-             
-              {:model-type :scicloj.ml.tribuo/classification
-               :tribuo-components [{:name "logistic"
-                                    :type "org.tribuo.classification.sgd.linear.LinearSGDTrainer"}]
-               :tribuo-trainer-name "logistic"}
-              {:model-type :scicloj.ml.tribuo/classification
-               :tribuo-components [{:name "random-forest"
-                                    :type "org.tribuo.classification.dtree.CARTClassificationTrainer"
-                                    :properties {:maxDepth "8"
-                                                 :useRandomSplitPoints "false"
-                                                 :fractionFeaturesInSplit "0.5"}}]
-               :tribuo-trainer-name "random-forest"}
-             
-             
-             ])
+             {:model-type :sklearn.classification/random-forest-classifier}
+             {:model-type :metamorph.ml/dummy-classifier}
+             {:model-type :scicloj.ml.tribuo/classification
+              :tribuo-components [{:name "logistic"
+                                   :type "org.tribuo.classification.sgd.linear.LinearSGDTrainer"}]
+              :tribuo-trainer-name "logistic"}
+             {:model-type :scicloj.ml.tribuo/classification
+              :tribuo-components [{:name "random-forest"
+                                   :type "org.tribuo.classification.dtree.CARTClassificationTrainer"
+                                   :properties {:maxDepth "8"
+                                                :useRandomSplitPoints "false"
+                                                :fractionFeaturesInSplit "0.5"}}]
+              :tribuo-trainer-name "random-forest"}])
 
 
 ;;  This uses models from Smile and Tribuo, but could be any
@@ -383,7 +378,8 @@ ctx-after-train
    titanic-k-fold
    loss/classification-accuracy
    :accuracy
-   {:return-best-crossvalidation-only false
+   {:map-fn :map
+    :return-best-crossvalidation-only false
     :return-best-pipeline-only false}))
 
 

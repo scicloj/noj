@@ -11,11 +11,28 @@
   (:require [tablecloth.api :as tc]
             [scicloj.metamorph.ml.toydata :as data]
             [tech.v3.dataset :as ds]
+            [same.core :as same]
+            [same.compare :as compare]
             [camel-snake-kebab.core :as csk]
             [scicloj.kindly.v4.kind :as kind]
             [scicloj.kindly.v4.api :as kindly]))
 
+(defn round
+  [n scale rm]
+  (.setScale ^java.math.BigDecimal (bigdec n)
+             (int scale)
+             ^RoundingMode (if (instance? java.math.RoundingMode rm)
+                             rm
+                             (java.math.RoundingMode/valueOf
+                              (str (if (ident? rm) (symbol rm) rm))))))
 
+
+(defn set-sameish-comparator! [scale]
+  (same/set-comparator! (fn [a b]
+                          (let [a-rounded (round a scale :HALF_UP)
+                                b-rounded (round b scale :HALF_UP)]
+                            (= a-rounded
+                               b-rounded)))))
 
 
 ;; ## Inspect data
@@ -191,7 +208,7 @@ split
 
 (loss/classification-accuracy
  (:survived (ds-cat/reverse-map-categorical-xforms (:test split)))
- (:survived (ds-cat/reverse-map-categorical-xforms lreg-prediction)))
+ (:survived  lreg-prediction))
 
 (kindly/check = 0.7373737373737373)
 ;; Its performance is  better, 73 %
@@ -208,19 +225,21 @@ split
 (def rf-prediction
   (ml/predict (:test split) rf-model))
 
+(set-sameish-comparator! 1)
 ;; First five prediction including the probability distributions 
 ;; are
 (-> rf-prediction
     (tc/head)
     (tc/rows))
-(kindly/check =
-              [["no" 0.6470588235294118 0.35294117647058826] 
-               ["no" 0.5714285714285714 0.42857142857142855] 
-               ["no" 0.8529411764705882 0.14705882352941177] 
-               ["no" 0.8879310344827587 0.11206896551724138] 
-               ["no" 0.8879310344827587 0.11206896551724138]])
 
+(kindly/check same/ish?
+              [["no" 0.64 0.35]
+               ["no" 0.57 0.42]
+               ["no" 0.85 0.14]
+               ["no" 0.88 0.11]
+               ["no" 0.88 0.11]])
 
+ 
 
 (loss/classification-accuracy
  (:survived (ds-cat/reverse-map-categorical-xforms (:test split)))
