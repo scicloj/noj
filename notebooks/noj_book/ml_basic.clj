@@ -11,12 +11,14 @@
   (:require [tablecloth.api :as tc]
             [scicloj.metamorph.ml.toydata :as data]
             [tech.v3.dataset :as ds]
-            [same.core :as same]
-            [same.compare :as compare]
-            [camel-snake-kebab.core :as csk]
             [scicloj.kindly.v4.kind :as kind]
             [scicloj.kindly.v4.api :as kindly]))
 
+^:kindly/hide-code
+(require '[same.core :as same]
+         '[same.compare :as compare])
+
+^:kindly/hide-code
 (defn round
   [n scale rm]
   (.setScale ^java.math.BigDecimal (bigdec n)
@@ -27,6 +29,7 @@
                               (str (if (ident? rm) (symbol rm) rm))))))
 
 
+^:kindly/hide-code
 (defn set-sameish-comparator! [scale]
   (same/set-comparator! (fn [a b]
                           (let [a-rounded (round a scale :HALF_UP)
@@ -134,11 +137,11 @@ cat-maps
 (tc/head
  numeric-titanic-data)
 
-(ds/rowvecs 
+(ds/rowvecs
  (tc/head
   numeric-titanic-data))
 
-(kindly/check 
+(kindly/check
  =
  [[0.0 3.0 0.0 0.0]
   [1.0 1.0 2.0 1.0]
@@ -225,8 +228,11 @@ split
 (def rf-prediction
   (ml/predict (:test split) rf-model))
 
-(set-sameish-comparator! 1)
-;; First five prediction including the probability distributions 
+^:kindly/hide-code
+(kind/hidden
+ (set-sameish-comparator! 1))
+
+;; First five prediction including the probability distributions
 ;; are
 (-> rf-prediction
     (tc/head)
@@ -239,7 +245,7 @@ split
                ["no" 0.88 0.11]
                ["no" 0.88 0.11]])
 
- 
+
 
 (loss/classification-accuracy
  (:survived (ds-cat/reverse-map-categorical-xforms (:test split)))
@@ -263,5 +269,3 @@ split
 ;; So far we used a single split into 'train' and 'test' data, so we only get
 ;; a point estimate of the accuracy. This should be made more robust
 ;; via cross-validations and using different splits of the data.
-
-
