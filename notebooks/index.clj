@@ -26,13 +26,9 @@ It combines a few of the relevant Clojure libraries for data & science and docum
 
 **Source:** [![(GitHub repo)](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/scicloj/noj)
 
-**Deps:**
+**Deps:** [![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/noj.svg)](https://clojars.org/org.scicloj/noj)
 
-```clj
-org.scicloj/noj {:git/url \"https://github.com/scicloj/noj.git\"
-                 :git/tag \"2-alpha7.1\"
-                 :git/sha \"0949ad1\"}
-```
+**Tests:** ![ci workflow](https://github.com/scicloj/noj/actions/workflows/ci.yml/badge.svg)
 
 Note we are using git coordinates at the moment, in order to expose a few relevant features of the current underlying libraries, which are unreleased yet.
 
