@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -283,10 +249,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Scinojure (“Noj”) is an entry point to the Clojure stack for data &amp; science.</p>
 <p>It combines a few of the relevant Clojure libraries for data &amp; science and documents common ways of using them together. The included libraries either use <a href="https://github.com/techascent/tech.ml.dataset">tech.ml.dataset</a> directly as tabular data structure or provide high interoperability with it.</p>
 <p><strong>Source:</strong> <a href="https://github.com/scicloj/noj"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&amp;logo=github&amp;logoColor=white" class="img-fluid" alt="(GitHub repo)"></a></p>
-<p><strong>Deps:</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode clj code-with-copy"><code class="sourceCode clojure"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>org.scicloj/noj {<span class="at">:git/url</span> <span class="st">"https://github.com/scicloj/noj.git"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">:git/tag</span> <span class="st">"2-alpha7.1"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">:git/sha</span> <span class="st">"0949ad1"</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Deps:</strong> <a href="https://clojars.org/org.scicloj/noj"><img src="https://img.shields.io/clojars/v/org.scicloj/noj.svg" class="img-fluid" alt="Clojars Project"></a></p>
+<p><strong>Tests:</strong> <img src="https://github.com/scicloj/noj/actions/workflows/ci.yml/badge.svg" class="img-fluid" alt="ci workflow"></p>
 <p>Note we are using git coordinates at the moment, in order to expose a few relevant features of the current underlying libraries, which are unreleased yet.</p>
 <p><strong>Status:</strong> Most of the <a href="./noj_book.underlying_libraries.html">underlying libraries</a> are stable. The experimental parts are marked as such. For some of the libraries, we use a branch for an upcoming release. The main current goal is to provide a clear picture of the direction the stack is going towards, expecting most of it to stabilize soon.</p>
 <p><strong>Near term plan - till the end of October 2024</strong></p>

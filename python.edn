@@ -1,1 +1,3 @@
-{:python-executable ".venv/bin/python3"}
+{:python-executable "/workspace/anaconda3/bin/python"
+ :library-path "/workspace/anaconda3/lib/libpython3.10.so.1.0"}
+
