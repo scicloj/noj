@@ -28,5 +28,7 @@
 	},
 
 	"remoteUser": "vscode",
-	"postStartCommand": "poetry install --sync" 
+	"postStartCommand": {"install python packages": "poetry install --sync" ,
+	                     "add link to python executable": "ln -s /usr/bin/python3 /usr/local/bin/python"
+                         }
 }
