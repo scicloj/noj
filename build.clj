@@ -53,7 +53,7 @@
            :pom-data  (pom-template version))))
 
 (defn generate-tests [_]
-  (let [basis    (b/create-basis {:aliases [:gen-tests :model-integration-tests]})
+  (let [basis    (b/create-basis {:aliases [:gen-tests :model-integration-tests :test]})
 
         cmds     (b/java-command
                   {:basis     basis
