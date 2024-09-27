@@ -1,18 +1,11 @@
 ![ci workflow](https://github.com/scicloj/noj/actions/workflows/ci.yml/badge.svg)
 
-
 # Scinojure
 ![Noj logo](notebooks/Noj.svg)
 
 Scinojure ("Noj") combines a few of the relevant Clojure libraries for data & science and documents common ways of using them together. The included libraries either use [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset) directly as tabular data structure or provide high interoperability with it.
 
-
-deps:
-```clj
-org.scicloj/noj {:git/url "https://github.com/scicloj/noj.git"
-                 :git/tag "2-alpha7.1"
-                 :git/sha "0949ad1"}
-```
+[![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/noj.svg)](https://clojars.org/org.scicloj/noj)
 
 ## Status
 Most of the [underlying libraries](https://scicloj.github.io/noj/noj_book.underlying_libraries.html) are stable. The experimental parts are marked as such. For some of the libraries, we use a branch for an upcoming release.
