@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [2-alpha8] - 2024-09-23
+- updated deps (metamorph.ml. scicloj.ml.tribuo)
+- reverted Tribuo version to match scicloj.ml.tribuo
+
 ## [2-alpha7.1] - 2024-09-23
 - added exclusions to deps to avoid a version conflict
 
