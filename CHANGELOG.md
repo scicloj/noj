@@ -1,13 +1,16 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [2-alpha8.2] - 2024-09-28
+- added scicloj.ml.xgboost
+
 ## [2-alpha8.1] - 2024-09-28
 - added same/ish dependency
 
 ## [2-alpha8] - 2024-09-27
 - updated deps (metamorph.ml. scicloj.ml.tribuo)
 - reverted Tribuo version to match scicloj.ml.tribuo
-- added deps (scicloj-ml.smile, sklearn-clj) 
+- added scicloj-ml.smile, sklearn-clj
 
 ## [2-alpha7.1] - 2024-09-23
 - added exclusions to deps to avoid a version conflict
