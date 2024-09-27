@@ -285,8 +285,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb1"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">ns</span> noj-book.automl</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  (<span class="at">:require</span> [noj-book.ml-basic <span class="at">:as</span> ml-basic]</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            [scicloj.kindly.v4.kind <span class="at">:as</span> kind]</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            [tablecloth.api <span class="at">:as</span> tc]</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            [scicloj.kindly.v4.api <span class="at">:as</span> kindly]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            [scicloj.kindly.v4.api <span class="at">:as</span> kindly]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            [scicloj.metamorph.ml <span class="at">:as</span> ml]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="the-metamorph-pipeline-abstraction" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="the-metamorph-pipeline-abstraction"><span class="header-section-number">8.1</span> The metamorph pipeline abstraction</h2>
@@ -332,7 +332,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>This function is metamorph compliant, so it takes a map (my-pipeline {}) and returns a map.</p>
 <p>But this map cannot be “arbitrary”, it need to adhere to the <code>metamorph</code> conventions.</p>
-<p>The following <code>trains</code> a model, because the <code>ml/model</code> function does this when called with :mode :fit And it is the only operation in the pipeline, so the pipeline does one thing, it <code>trains a model</code></p>
+<p>The following <code>trains</code> a model, because the <code>ml/model</code> function does this when called with :mode <code>:fit</code>. And it is the only operation in the pipeline, so the pipeline does one thing, it <code>trains a model</code></p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb10"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> ctx-after-train</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  (my-pipeline {<span class="at">:metamorph/data</span> train-ds</span>
@@ -366,10 +366,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
@@ -379,49 +391,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
@@ -432,16 +432,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">...</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
@@ -452,50 +476,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
 </tr>
 </tbody>
 </table>
@@ -504,14 +504,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :fit</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "d235bca6-80c8-429c-88c0-468b6e5424e3" {:model-data {:majority-class 1.0, :distinct-labels (0.0 1.0)}, :options {:model-type :metamorph.ml/dummy-classifier}, :id #uuid "e0fecb13-d830-462b-a2f5-82d3a49d08b6", :feature-columns [:sex :pclass :embarked], :target-columns [:survived], :target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {"no" 0, "yes" 1}, :src-column :survived, :result-datatype :float64}}, :scicloj.metamorph.ml/unsupervised? nil}</code></pre></div></div><p>}</p></div>
+<div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :fit</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "b4342ff0-407e-4c67-8399-693b8477d868" {:model-data {:majority-class 0.0, :distinct-labels (1.0 0.0)}, :options {:model-type :metamorph.ml/dummy-classifier}, :id #uuid "7f76b5eb-5c15-4d0a-8eee-d3ebb5ab32f0", :feature-columns [:sex :pclass :embarked], :target-columns [:survived], :target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {"no" 0, "yes" 1}, :src-column :survived, :result-datatype :float64}}, :scicloj.metamorph.ml/unsupervised? nil}</code></pre></div></div><p>}</p></div>
+<p>The ctx contains lots of information, so I only show its top level keys</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb13"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">keys</span> ctx-after-train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
 <div class="sourceCode" id="cb14"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">:metamorph/data</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a> <span class="at">:metamorph/mode</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> #uuid <span class="st">"d235bca6-80c8-429c-88c0-468b6e5424e3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> #uuid <span class="st">"b4342ff0-407e-4c67-8399-693b8477d868"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This context map has the “data”, the “mode” and an UUID for each operation (we had only one in this pipeline)</p>
 <div class="sourceClojure">
@@ -529,10 +530,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
@@ -542,49 +555,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
@@ -595,16 +596,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">...</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
@@ -615,57 +640,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
 </tr>
 </tbody>
 </table>
 </div><div><pre><code class="sourceCode language-clojure printed-clojure">:fit
-</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">{:model-data {:majority-class 1.0, :distinct-labels (0.0 1.0)},
+</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">{:model-data {:majority-class 0.0, :distinct-labels (1.0 0.0)},
  :options {:model-type :metamorph.ml/dummy-classifier},
- :id #uuid "e0fecb13-d830-462b-a2f5-82d3a49d08b6",
+ :id #uuid "7f76b5eb-5c15-4d0a-8eee-d3ebb5ab32f0",
  :feature-columns [:sex :pclass :embarked],
  :target-columns [:survived],
  :target-categorical-maps
@@ -684,598 +685,74 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">:metamorph/data</span> test-ds)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb17"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ctx-after-predict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">keys</span> ctx-after-predict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div><p>{</p><div class="clay-map" style="margin-left:10%;width:110%;">
-<table data-quarto-postprocess="true" class="table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td data-valign="top"><div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:metamorph/data</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
-</div></td>
-<td><div style="margin-left:10px;">
-<div class="clay-dataset">
-<p>_unnamed [178 1]:</p>
-<table class="table" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">:survived</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">...</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-</tr>
-</tbody>
-</table>
+<div class="printedClojure">
+<div class="sourceCode" id="cb18"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">:metamorph/data</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a> <span class="at">:metamorph/mode</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a> #uuid <span class="st">"b4342ff0-407e-4c67-8399-693b8477d868"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div></td>
-</tr>
-</tbody>
-</table>
-<div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :transform</code></pre></div>
-<table data-quarto-postprocess="true" class="table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td data-valign="top"><div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>#uuid "d235bca6-80c8-429c-88c0-468b6e5424e3"</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
-</div></td>
-<td><div style="margin-left:10px;">
-<div>
-<p>{</p>
-<div class="clay-map" style="margin-left:10%;width:110%;">
-<div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:feature-columns [:sex :pclass :embarked]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
-</div>
-<div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {"no" 0, "yes" 1}, :src-column :survived, :result-datatype :float64}}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
-</div>
-<div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:target-columns [:survived]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
-</div>
-<div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:scicloj.metamorph.ml/unsupervised? nil</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
-</div>
-<table data-quarto-postprocess="true" class="table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td data-valign="top"><div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:scicloj.metamorph.ml/feature-ds</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
-</div></td>
-<td><div style="margin-left:10px;">
-<div class="clay-dataset">
-<p>Group: 0 [178 3]:</p>
-<table class="table" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">:sex</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">:pclass</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">:embarked</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">...</td>
-<td style="text-align: right;">...</td>
-<td style="text-align: right;">...</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">2.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></td>
-</tr>
-</tbody>
-</table>
-<div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:model-data {:majority-class 1.0, :distinct-labels (0.0 1.0)}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
-</div>
-<div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:id #uuid "e0fecb13-d830-462b-a2f5-82d3a49d08b6"</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
-</div>
-<table data-quarto-postprocess="true" class="table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td data-valign="top"><div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:scicloj.metamorph.ml/target-ds</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
-</div></td>
-<td><div style="margin-left:10px;">
-<div class="clay-dataset">
-<p>Group: 0 [178 1]:</p>
-<table class="table" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">:survived</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">...</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></td>
-</tr>
-</tbody>
-</table>
-<div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:options {:model-type :metamorph.ml/dummy-classifier}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
-</div>
-</div>
-<p>}</p>
-</div>
-</div></td>
-</tr>
-</tbody>
-</table>
-</div><p>}</p></div>
 <p>For the dummy-model we do not see a <code>trained-model</code>, but it “communicates” the majority class from the train data to use it for prediction. So the <code>dummy-model</code> has ‘learned’ the majority class from its training data.</p>
 <p>So we can get prediction result out of the ctx:</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb29"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> ctx-after-predict <span class="at">:metamorph/data</span> <span class="at">:survived</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> ctx-after-predict <span class="at">:metamorph/data</span> <span class="at">:survived</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb30"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>#tech.v3.dataset.column&lt;float64&gt;[<span class="dv">178</span>]</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="at">:survived</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>[<span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="dv">1</span>.<span class="dv">000</span>...]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>#tech.v3.dataset.column&lt;float64&gt;[<span class="dv">178</span>]</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="at">:survived</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>[<span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="dv">0</span>.<span class="dv">000</span>...]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This works as long as all operations of the pipeline follow the metamorph convention (we can create such compliant functions, out of normal dataset-&gt;dataset functions, as we will see)</p>
-<p><code>my-pipeline</code> represents therefore a not yet executed model training / prediction. It can be freely moved around and applied to a dataset when needed.</p>
+<p><code>my-pipeline</code> represents therefore a not yet executed model training / prediction flow. It can be freely moved around and applied to datasets when needed.</p>
 </section>
 <section id="use-metamorph-pipelines-to-do-model-training-with-higher-level-api" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="use-metamorph-pipelines-to-do-model-training-with-higher-level-api"><span class="header-section-number">8.2</span> Use metamorph pipelines to do model training with higher level API</h2>
-<p>As user of <code>metamorph.ml</code> we do not need to deal with this low-level details of how <code>metamorph</code> works, we have convenience functions which hide this</p>
+<p>As user of <code>metamorph.ml</code> we do not need to deal with this low-level details of how <code>metamorph</code> works, we have convenience functions which hide this.</p>
 <p>The following code will do the same as <code>train</code>, but return a context object, which contains the trained model, so it will execute the pipeline, and not only create it.</p>
 <p>It uses a convenience function <code>mm/fit</code> which generates compliant context maps internally and executes the pipeline as well.</p>
 <p>The ctx acts a collector of everything “learned” during <code>:fit</code>, mainly the trained model, but it could be as well other information learned from the data during <code>:fit</code> and to be applied at <code>:transform</code> .</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb31"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> train-ctx</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  (mm/fit titanic</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>          (ml/model {<span class="at">:model-type</span> <span class="at">:metamorph.ml/dummy-classifier</span>})))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> train-ctx</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  (mm/fit titanic</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>          (ml/model {<span class="at">:model-type</span> <span class="at">:metamorph.ml/dummy-classifier</span>})))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>(The dummy-classifier model does not have a lot of state, so there is little to see)</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb32"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>train-ctx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div><p>{</p><div class="clay-map" style="margin-left:10%;width:110%;">
-<table data-quarto-postprocess="true" class="table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td data-valign="top"><div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:metamorph/data</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
-</div></td>
-<td><div style="margin-left:10px;">
-<div class="clay-dataset">
-<p>_unnamed [889 4]:</p>
-<table class="table" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">:sex</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">:pclass</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">:embarked</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">:survived</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">...</td>
-<td style="text-align: right;">...</td>
-<td style="text-align: right;">...</td>
-<td style="text-align: right;">...</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></td>
-</tr>
-</tbody>
-</table>
-<div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :fit</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "7d2ea49e-6eed-4c98-80b6-4a277997b00c" {:model-data {:majority-class 1, :distinct-labels (0.0 1.0)}, :options {:model-type :metamorph.ml/dummy-classifier}, :id #uuid "5b65cc8b-e599-4975-a211-b0af7ad4a66d", :feature-columns [:sex :pclass :embarked], :target-columns [:survived], :target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {"no" 0, "yes" 1}, :src-column :survived, :result-datatype :float64}}, :scicloj.metamorph.ml/unsupervised? nil}</code></pre></div></div><p>}</p></div>
-<p>To show the power of pipelines, I start with doing the simplest possible pipeline, and expand then on it.</p>
-<p>we can already chain train and test with usual functions:</p>
-<div class="sourceClojure">
-<div class="sourceCode" id="cb34"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;&gt;</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a> (ml/train train-ds {<span class="at">:model-type</span> <span class="at">:metamorph.ml/dummy-classifier</span>})</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a> (ml/predict test-ds)</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a> <span class="at">:survived</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">keys</span> train-ctx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb35"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>#tech.v3.dataset.column&lt;float64&gt;[<span class="dv">178</span>]</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="at">:survived</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>[<span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="dv">1</span>.<span class="dv">000</span>...]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">:metamorph/data</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a> <span class="at">:metamorph/mode</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a> #uuid <span class="st">"5b7eb8ed-ee7f-474d-b42b-7dddebffeee8"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To show the power of pipelines, I start with doing the simplest possible pipeline, and expand then on it.</p>
+<p>We can already chain train and test with usual functions:</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb24"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;&gt;</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a> (ml/train train-ds {<span class="at">:model-type</span> <span class="at">:metamorph.ml/dummy-classifier</span>})</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a> (ml/predict test-ds)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a> <span class="at">:survived</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="printedClojure">
+<div class="sourceCode" id="cb25"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>#tech.v3.dataset.column&lt;float64&gt;[<span class="dv">178</span>]</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="at">:survived</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>[<span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="dv">0</span>.<span class="dv">000</span>...]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>the same with pipelines</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb36"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> pipeline</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  (mm/pipeline (ml/model {<span class="at">:model-type</span> <span class="at">:metamorph.ml/dummy-classifier</span>})))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> pipeline</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  (mm/pipeline (ml/model {<span class="at">:model-type</span> <span class="at">:metamorph.ml/dummy-classifier</span>})))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb37"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;&gt;</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a> (mm/fit-pipe train-ds pipeline)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a> (mm/transform-pipe test-ds pipeline)</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a> <span class="at">:metamorph/data</span> <span class="at">:survived</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;&gt;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a> (mm/fit-pipe train-ds pipeline)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a> (mm/transform-pipe test-ds pipeline)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a> <span class="at">:metamorph/data</span> <span class="at">:survived</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb38"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>#tech.v3.dataset.column&lt;float64&gt;[<span class="dv">178</span>]</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="at">:survived</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>[<span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="fl">1.000</span>, <span class="dv">1</span>.<span class="dv">000</span>...]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>#tech.v3.dataset.column&lt;float64&gt;[<span class="dv">178</span>]</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="at">:survived</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>[<span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="dv">0</span>.<span class="dv">000</span>...]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="create-metamorph-compliant-functions" class="level2" data-number="8.3">
@@ -1286,52 +763,498 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>implementing a metamorph compliant function directly via anonymous function</li>
 </ol>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb39"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> ops </span>(<span class="kw">fn</span> [ctx]</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>            (<span class="kw">assoc</span> ctx <span class="at">:metamorph/data</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>                 (tc/drop-columns (<span class="at">:metamorph/data</span> ctx) [<span class="at">:embarked</span>]))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> ops-1</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">fn</span> [ctx]</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">assoc</span> ctx <span class="at">:metamorph/data</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>           (tc/drop-columns (<span class="at">:metamorph/data</span> ctx) [<span class="at">:embarked</span>]))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
 <li>using <code>mm/lift</code> which does the same as 1.</li>
 </ol>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb40"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> ops </span>(mm/lift tc/drop-columns [<span class="at">:embarked</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> ops-2 </span>(mm/lift tc/drop-columns [<span class="at">:embarked</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="3" type="1">
 <li>using a name-space containing lifted functions</li>
 </ol>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb41"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">require</span> '[tablecloth.pipeline])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">require</span> '[tablecloth.pipeline])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb42"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> ops </span>(tablecloth.pipeline/drop-columns [<span class="at">:embarked</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> ops-3 </span>(tablecloth.pipeline/drop-columns [<span class="at">:embarked</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>All three create the same pipeline op and can be used to make a pipeline</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb43"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>(mm/pipeline ops)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>(mm/pipeline ops<span class="dv">-1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb44"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>#function[clojure.core/partial/fn--<span class="dv">5908</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>#function[clojure.core/partial/fn--<span class="dv">5908</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb35"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>(mm/pipeline ops<span class="dv">-2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="printedClojure">
+<div class="sourceCode" id="cb36"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>#function[clojure.core/partial/fn--<span class="dv">5908</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb37"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>(mm/pipeline ops<span class="dv">-3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="printedClojure">
+<div class="sourceCode" id="cb38"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>#function[clojure.core/partial/fn--<span class="dv">5908</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>All three can be called as function taking a dataset iwrapped in a ctx</p>
 <p>Pipeline as data is as well supported</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb45"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> op-spec </span>[[ml/model {<span class="at">:model-type</span> <span class="at">:metamorph.ml/dummy-classifier</span>}]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> op-spec </span>[[ml/model {<span class="at">:model-type</span> <span class="at">:metamorph.ml/dummy-classifier</span>}]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb46"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>(mm/-&gt;pipeline op-spec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>(mm/-&gt;pipeline op-spec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb47"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>#function[clojure.core/partial/fn--<span class="dv">5908</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>#function[clojure.core/partial/fn--<span class="dv">5908</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>All these do not execute anything, they produce functions which can be executed against a context as part of a metamorph pipeline.</p>
-<p>The <code>mm/lift</code> function transposes any dataset-&gt;dataset functions into a ctx-&gt;ctx function, while using the <code>metamorh</code> convention, as required for metamorph pipeline operations</p>
+<p>Creating these functions does not yet execute anything, they are functions which can be executed against a context as part of a metamorph pipeline. Executions are triggered like this:</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb42"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>(ops<span class="dv">-1</span> {<span class="at">:metamorph/data</span> titanic})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div><p>{</p><div class="clay-map" style="margin-left:10%;width:110%;">
+<table data-quarto-postprocess="true" class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td data-valign="top"><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:metamorph/data</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+<td><div style="margin-left:10px;">
+<div class="clay-dataset">
+<p>_unnamed [889 3]:</p>
+<table class="table" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">:sex</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">:pclass</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">:survived</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">...</td>
+<td style="text-align: right;">...</td>
+<td style="text-align: right;">...</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div><p>}</p></div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb44"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>(ops<span class="dv">-2</span> {<span class="at">:metamorph/data</span> titanic})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div><p>{</p><div class="clay-map" style="margin-left:10%;width:110%;">
+<table data-quarto-postprocess="true" class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td data-valign="top"><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:metamorph/data</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+<td><div style="margin-left:10px;">
+<div class="clay-dataset">
+<p>_unnamed [889 3]:</p>
+<table class="table" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">:sex</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">:pclass</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">:survived</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">...</td>
+<td style="text-align: right;">...</td>
+<td style="text-align: right;">...</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div><p>}</p></div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb46"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>(ops<span class="dv">-3</span> {<span class="at">:metamorph/data</span> titanic})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div><p>{</p><div class="clay-map" style="margin-left:10%;width:110%;">
+<table data-quarto-postprocess="true" class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td data-valign="top"><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:metamorph/data</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+<td><div style="margin-left:10px;">
+<div class="clay-dataset">
+<p>_unnamed [889 3]:</p>
+<table class="table" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">:sex</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">:pclass</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">:survived</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">...</td>
+<td style="text-align: right;">...</td>
+<td style="text-align: right;">...</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div><p>}</p></div>
+<p>The <code>mm/lift</code> function transforms any dataset-&gt;dataset function into a ctx-&gt;ctx function, while using the <code>metamorph</code> convention, as required for metamorph pipeline operations</p>
 <p>For convenience <code>tablecloth</code> contains a ns where all <code>dataset-&gt;dataset</code> functions are lifted into ctx-&gt;ctx operations, so can be added to pipelines directly without using <code>lift</code>.</p>
-<p>So a metamorph pipeline can encapsulate arbitray transformation of a dataset in the 2 modes. They can be “stateless” (only chaining the dataset, such as <code>drop-columns</code>) or “state-full”, so they store data in the ctx during <code>:fit</code> and can use it in <code>:transform</code>. In the pipeline above, the trained model is stored in this way.</p>
-<p>This state is not stored globaly, but inside the pipeline so this makes pipeline execution “isolated”.</p>
+<p>So a metamorph pipeline can encapsulate arbitrary transformation of a dataset in the 2 modes. They can be “stateless” (only chaining the dataset, such as <code>drop-columns</code>) or “state-full”, so they store data in the ctx during <code>:fit</code> and can use it in <code>:transform</code>. In the pipeline above, the trained model is stored in this way.</p>
+<p>This state is not stored globally, but inside the pipeline so this makes pipeline execution “isolated”.</p>
 <p>So now we can add more operations to the pipeline, and nothing else changes, for example drop columns.</p>
 </section>
 <section id="automatic-ml-with-metamorph.ml" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="automatic-ml-with-metamorph.ml"><span class="header-section-number">8.4</span> Automatic ML with <code>metamorph.ml</code></h2>
-<p>The AutoML support in metamorph.ml consists now in the possibility to create an arbitrary number of different pipelines and have them run against arbitray test/train data splits and it automatically chooses the best model evaluated by by a certain metric.</p>
+<p>The AutoML support in metamorph.ml consists now in the possibility to create an arbitrary number of different pipelines and have them run against arbitrary test/train data splits and it automatically chooses the best model evaluated by by a certain metric.</p>
 <p>helper for later</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb48"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> make-results-ds </span>[evaluation-results]</span>
@@ -1346,7 +1269,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb49"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">require</span> '[scicloj.metamorph.ml <span class="at">:as</span> ml]</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>         '[scicloj.metamorph.ml.loss <span class="at">:as</span> loss]</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>         '[scicloj.metamorph.core <span class="at">:as</span> mm]</span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>         '[scicloj.ml.tribuo])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>         '[scicloj.ml.tribuo]</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>         '[scicloj.ml.xgboost]</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>         '[scicloj.sklearn-clj.ml])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="finding-the-best-model-automatically" class="level2" data-number="8.5">
@@ -1354,7 +1279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The advantage of the pipelines is even more visible, if we want to have configurable pipelines, and do a grid search to find optimal settings.</p>
 <p>the following will find the best model across:</p>
 <ul>
-<li><p>6 different model classes</p></li>
+<li><p>4 different model classes</p></li>
 <li><p>6 different selections of used features</p></li>
 <li><p>k-cross validate this with different test / train splits</p></li>
 </ul>
@@ -1371,51 +1296,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceClojure">
 <div class="sourceCode" id="cb51"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> titanic-k-fold </span>(tc/split-&gt;seq ml-basic/numeric-titanic-data <span class="at">:kfold</span> {<span class="at">:seed</span> <span class="dv">12345</span>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb52"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> titanic-k-fold <span class="kw">count</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="printedClojure">
+<div class="sourceCode" id="cb53"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>The list of the model types we want to try:</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb52"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> models </span>[{<span class="at">:model-type</span> <span class="at">:metamorph.ml/dummy-classifier</span>}</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>             {<span class="at">:model-type</span> <span class="at">:scicloj.ml.tribuo/classification</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">:tribuo-components</span> [{<span class="at">:name</span> <span class="st">"logistic"</span></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">:type</span> <span class="st">"org.tribuo.classification.sgd.linear.LinearSGDTrainer"</span>}]</span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">:tribuo-trainer-name</span> <span class="st">"logistic"</span>}</span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>             {<span class="at">:model-type</span> <span class="at">:scicloj.ml.tribuo/classification</span></span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">:tribuo-components</span> [{<span class="at">:name</span> <span class="st">"random-forest"</span></span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">:type</span> <span class="st">"org.tribuo.classification.dtree.CARTClassificationTrainer"</span></span>
-<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">:properties</span> {<span class="at">:maxDepth</span> <span class="st">"8"</span></span>
-<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>                                                <span class="at">:useRandomSplitPoints</span> <span class="st">"false"</span></span>
-<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>                                                <span class="at">:fractionFeaturesInSplit</span> <span class="st">"0.5"</span>}}]</span>
-<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">:tribuo-trainer-name</span> <span class="st">"random-forest"</span>}])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> models </span>[{ <span class="at">:model-type</span> <span class="at">:xgboost/classification</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">:round</span> <span class="dv">10</span>}</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>             {<span class="at">:model-type</span> <span class="at">:sklearn.classification/decision-tree-classifier</span>}</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>             {<span class="at">:model-type</span> <span class="at">:sklearn.classification/logistic-regression</span>}</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>             {<span class="at">:model-type</span> <span class="at">:sklearn.classification/random-forest-classifier</span>}</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>             {<span class="at">:model-type</span> <span class="at">:metamorph.ml/dummy-classifier</span>}</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>             {<span class="at">:model-type</span> <span class="at">:scicloj.ml.tribuo/classification</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">:tribuo-components</span> [{<span class="at">:name</span> <span class="st">"logistic"</span></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">:type</span> <span class="st">"org.tribuo.classification.sgd.linear.LinearSGDTrainer"</span>}]</span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">:tribuo-trainer-name</span> <span class="st">"logistic"</span>}</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>             {<span class="at">:model-type</span> <span class="at">:scicloj.ml.tribuo/classification</span></span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">:tribuo-components</span> [{<span class="at">:name</span> <span class="st">"random-forest"</span></span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">:type</span> <span class="st">"org.tribuo.classification.dtree.CARTClassificationTrainer"</span></span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">:properties</span> {<span class="at">:maxDepth</span> <span class="st">"8"</span></span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>                                                <span class="at">:useRandomSplitPoints</span> <span class="st">"false"</span></span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a>                                                <span class="at">:fractionFeaturesInSplit</span> <span class="st">"0.5"</span>}}]</span>
+<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a>              <span class="at">:tribuo-trainer-name</span> <span class="st">"random-forest"</span>}])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This uses models from Smile and Tribuo, but could be any metamorph.ml compliant model ( library <code>sklearn-clj</code> wraps all python sklearn models, for example)</p>
 <p>The list of feature combinations to try for each model:</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb53"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> feature-combinations</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  [[<span class="at">:sex</span> <span class="at">:pclass</span> <span class="at">:embarked</span>]</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>   [<span class="at">:sex</span>]</span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>   [<span class="at">:pclass</span> <span class="at">:embarked</span>]</span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>   [<span class="at">:embarked</span>]</span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>   [<span class="at">:sex</span> <span class="at">:embarked</span>]</span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>   [<span class="at">:sex</span> <span class="at">:pclass</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> feature-combinations</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  [[<span class="at">:sex</span> <span class="at">:pclass</span> <span class="at">:embarked</span>]</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>   [<span class="at">:sex</span>]</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>   [<span class="at">:pclass</span> <span class="at">:embarked</span>]</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>   [<span class="at">:embarked</span>]</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>   [<span class="at">:sex</span> <span class="at">:embarked</span>]</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>   [<span class="at">:sex</span> <span class="at">:pclass</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>generate 36 pipeline functions:</p>
+<p>generate 24 pipeline functions:</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb54"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> pipe-fns</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">for</span> [model models</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>        feature-combination feature-combinations]</span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    (make-pipe-fn model feature-combination)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> pipe-fns</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">for</span> [model models</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>        feature-combination feature-combinations]</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    (make-pipe-fn model feature-combination)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Exceute all pipelines for all splits in the cross-validations and return best model by <code>classification-accuracy</code></p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb55"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> evaluation-results</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  (ml/evaluate-pipelines</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>   pipe-fns</span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>   titanic-k-fold</span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>   loss/classification-accuracy</span>
-<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">:accuracy</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">count</span> pipe-fns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="printedClojure">
+<div class="sourceCode" id="cb58"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="dv">42</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Execute all pipelines for all splits in the cross-validations and return best model by <code>classification-accuracy</code></p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb59"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> evaluation-results</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  (ml/evaluate-pipelines</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>   pipe-fns</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>   titanic-k-fold</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>   loss/classification-accuracy</span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">:accuracy</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>By default it returns the best mode only</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb56"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>(make-results-ds evaluation-results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>(make-results-ds evaluation-results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="clay-dataset">
 <p>_unnamed [1 3]:</p>
@@ -1484,29 +1426,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The key observation is here, that the <code>metamorph</code> pipelines allow to not only grid-search over the model hyper-parameters, but as well over arbitrary <code>pipeline variations</code>, like which features to include. Both get handled in the same way.</p>
 <p>We can get all results as well:</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb57"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> evaluation-results-all</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  (ml/evaluate-pipelines</span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>   pipe-fns</span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>   titanic-k-fold</span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>   loss/classification-accuracy</span>
-<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">:accuracy</span></span>
-<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>   {<span class="at">:return-best-crossvalidation-only</span> <span class="va">false</span></span>
-<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">:return-best-pipeline-only</span> <span class="va">false</span>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> evaluation-results-all</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  (ml/evaluate-pipelines</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>   pipe-fns</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>   titanic-k-fold</span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>   loss/classification-accuracy</span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">:accuracy</span></span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>   {<span class="at">:map-fn</span> <span class="at">:map</span></span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">:return-best-crossvalidation-only</span> <span class="va">false</span></span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">:return-best-pipeline-only</span> <span class="va">false</span>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In total it creates and evaluates 6 models * 6 feature configurarions * 5 CV = 180 models</p>
+<p>In total it creates and evaluates 4 models * 6 feature configurations * 5 CV = 120 models</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb58"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span>  evaluation-results-all flatten <span class="kw">count</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span>  evaluation-results-all flatten <span class="kw">count</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb59"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="dv">90</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="dv">210</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can find the best as well by hand, it’s the first from the list, when sorted by accuracy.</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb60"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> (make-results-ds evaluation-results-all)</span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    (tc/unique-by)</span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    (tc/order-by [<span class="at">:mean-accuracy</span>] <span class="at">:desc</span>)</span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>    (tc/head)</span>
-<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>    (kind/table))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> (make-results-ds evaluation-results-all)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>    (tc/unique-by)</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>    (tc/order-by [<span class="at">:mean-accuracy</span>] <span class="at">:desc</span>)</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>    (tc/head <span class="dv">20</span>)</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>    (kind/table))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="clay-table">
 <div class="table-responsive">
@@ -1530,22 +1473,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div></td>
 <td>0.8110772551260077</td>
 <td><div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>{:model-type :scicloj.ml.tribuo/classification,
- :tribuo-components
- [{:name "random-forest",
-   :type "org.tribuo.classification.dtree.CARTClassificationTrainer",
-   :properties
-   {:maxDepth "8",
-    :useRandomSplitPoints "false",
-    :fractionFeaturesInSplit "0.5"}}],
- :tribuo-trainer-name "random-forest"}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>{:model-type :sklearn.classification/random-forest-classifier}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
 </div></td>
 </tr>
 <tr class="even">
 <td><div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>[:sex]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>[:sex :pclass :embarked]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
 </div></td>
-<td>0.7863327620135847</td>
+<td>0.8110772551260077</td>
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>{:model-type :sklearn.classification/decision-tree-classifier}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+</tr>
+<tr class="odd">
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>[:sex :pclass :embarked]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+<td>0.8110772551260077</td>
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>{:model-type :xgboost/classification, :round 10}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+</tr>
+<tr class="even">
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>[:sex :pclass :embarked]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+<td>0.8110772551260077</td>
 <td><div>
 <pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>{:model-type :scicloj.ml.tribuo/classification,
  :tribuo-components
@@ -1597,6 +1550,135 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  :tribuo-trainer-name "logistic"}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
 </div></td>
 </tr>
+<tr class="even">
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>[:sex :embarked]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+<td>0.7863327620135847</td>
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>{:model-type :sklearn.classification/random-forest-classifier}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+</tr>
+<tr class="odd">
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>[:sex]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+<td>0.7863327620135847</td>
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>{:model-type :sklearn.classification/random-forest-classifier}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+</tr>
+<tr class="even">
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>[:sex :pclass]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+<td>0.7863327620135847</td>
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>{:model-type :sklearn.classification/logistic-regression}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+</tr>
+<tr class="odd">
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>[:sex :embarked]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+<td>0.7863327620135847</td>
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>{:model-type :sklearn.classification/logistic-regression}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+</tr>
+<tr class="even">
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>[:sex]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+<td>0.7863327620135847</td>
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>{:model-type :sklearn.classification/logistic-regression}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+</tr>
+<tr class="odd">
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>[:sex :embarked]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+<td>0.7863327620135847</td>
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>{:model-type :sklearn.classification/decision-tree-classifier}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+</tr>
+<tr class="even">
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>[:sex]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+<td>0.7863327620135847</td>
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>{:model-type :xgboost/classification, :round 10}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+</tr>
+<tr class="odd">
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>[:sex :embarked]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+<td>0.7863327620135847</td>
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>{:model-type :xgboost/classification, :round 10}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+</tr>
+<tr class="even">
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>[:sex]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+<td>0.7863327620135847</td>
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>{:model-type :sklearn.classification/decision-tree-classifier}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+</tr>
+<tr class="odd">
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>[:sex]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+<td>0.7863327620135847</td>
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>{:model-type :scicloj.ml.tribuo/classification,
+ :tribuo-components
+ [{:name "random-forest",
+   :type "org.tribuo.classification.dtree.CARTClassificationTrainer",
+   :properties
+   {:maxDepth "8",
+    :useRandomSplitPoints "false",
+    :fractionFeaturesInSplit "0.5"}}],
+ :tribuo-trainer-name "random-forest"}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+</tr>
+<tr class="even">
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>[:sex :pclass :embarked]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+<td>0.7852091665079668</td>
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>{:model-type :scicloj.ml.tribuo/classification,
+ :tribuo-components
+ [{:name "logistic",
+   :type "org.tribuo.classification.sgd.linear.LinearSGDTrainer"}],
+ :tribuo-trainer-name "logistic"}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+</tr>
+<tr class="odd">
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>[:sex :pclass :embarked]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+<td>0.7750777629657843</td>
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>{:model-type :sklearn.classification/logistic-regression}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+</tr>
+<tr class="even">
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>[:sex :pclass]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+<td>0.773973211451787</td>
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>{:model-type :sklearn.classification/random-forest-classifier}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1605,10 +1687,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="best-practices-for-data-transformation-steps-in-or-outside-pipeline" class="level2" data-number="8.6">
 <h2 data-number="8.6" class="anchored" data-anchor-id="best-practices-for-data-transformation-steps-in-or-outside-pipeline"><span class="header-section-number">8.6</span> Best practices for data transformation steps in or outside pipeline</h2>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb71"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">require</span> '[scicloj.metamorph.ml.toydata <span class="at">:as</span> data]</span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>         '[tech.v3.dataset.modelling <span class="at">:as</span> ds-mod]</span>
-<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>         '[tech.v3.dataset.categorical <span class="at">:as</span> ds-cat]</span>
-<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>         '[tech.v3.dataset <span class="at">:as</span> ds])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">require</span> '[scicloj.metamorph.ml.toydata <span class="at">:as</span> data]</span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a>         '[tech.v3.dataset.modelling <span class="at">:as</span> ds-mod]</span>
+<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a>         '[tech.v3.dataset.categorical <span class="at">:as</span> ds-cat]</span>
+<span id="cb105-4"><a href="#cb105-4" aria-hidden="true" tabindex="-1"></a>         '[tech.v3.dataset <span class="at">:as</span> ds])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We have seen that we have two ways to transform the input data, outside the pipeline and inside the pipeline.</p>
 <p>These are the total steps from raw data to “into the model” for the titanic use case.</p>
@@ -1616,33 +1698,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>raw data</li>
 </ol>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb72"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> titanic</span></span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>  (<span class="at">:train</span></span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>   (data/titanic-ds-split)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> titanic</span></span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>  (<span class="at">:train</span></span>
+<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a>   (data/titanic-ds-split)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
 <li>first transformation, no metamorph pipeline</li>
 </ol>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb73"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> relevant-titanic-data</span></span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> titanic</span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>      (tc/select-columns (<span class="kw">conj</span> ml-basic/categorical-feature-columns <span class="at">:survived</span>))</span>
-<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>      (tc/drop-missing)</span>
-<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>      (ds/categorical-&gt;number [<span class="at">:sex</span> <span class="at">:pclass</span> <span class="at">:embarked</span>] [<span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span> <span class="st">"male"</span> <span class="st">"female"</span> <span class="st">"S"</span> <span class="st">"Q"</span> <span class="st">"C"</span>] <span class="at">:float64</span>)</span>
-<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>      (ds/categorical-&gt;number [<span class="at">:survived</span>] [<span class="dv">0</span> <span class="dv">1</span>] <span class="at">:float64</span>)</span>
-<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>      (ds-mod/set-inference-target <span class="at">:survived</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> relevant-titanic-data</span></span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> titanic</span>
+<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>      (tc/select-columns (<span class="kw">conj</span> ml-basic/categorical-feature-columns <span class="at">:survived</span>))</span>
+<span id="cb107-4"><a href="#cb107-4" aria-hidden="true" tabindex="-1"></a>      (tc/drop-missing)</span>
+<span id="cb107-5"><a href="#cb107-5" aria-hidden="true" tabindex="-1"></a>      (ds/categorical-&gt;number [<span class="at">:sex</span> <span class="at">:pclass</span> <span class="at">:embarked</span>] [<span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span> <span class="st">"male"</span> <span class="st">"female"</span> <span class="st">"S"</span> <span class="st">"Q"</span> <span class="st">"C"</span>] <span class="at">:float64</span>)</span>
+<span id="cb107-6"><a href="#cb107-6" aria-hidden="true" tabindex="-1"></a>      (ds/categorical-&gt;number [<span class="at">:survived</span>] [<span class="dv">0</span> <span class="dv">1</span>] <span class="at">:float64</span>)</span>
+<span id="cb107-7"><a href="#cb107-7" aria-hidden="true" tabindex="-1"></a>      (ds-mod/set-inference-target <span class="at">:survived</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="3" type="1">
 <li>transform via pipelines</li>
 </ol>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb74"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> make-pipe-fn </span>[model-type features]</span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>  (mm/pipeline</span>
-<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>   <span class="co">;; store the used features in ctx, so we can retrieve them at the end</span></span>
-<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>   (<span class="kw">fn</span> [ctx]</span>
-<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>     (<span class="kw">assoc</span> ctx <span class="at">:used-features</span> features))</span>
-<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>   (mm/lift tc/select-columns (<span class="kw">conj</span> features <span class="at">:survived</span>))</span>
-<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>   {<span class="at">:metamorph/id</span> <span class="at">:model</span>} (ml/model {<span class="at">:model-type</span> model-type})))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> make-pipe-fn </span>[model-type features]</span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>  (mm/pipeline</span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>   <span class="co">;; store the used features in ctx, so we can retrieve them at the end</span></span>
+<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a>   (<span class="kw">fn</span> [ctx]</span>
+<span id="cb108-5"><a href="#cb108-5" aria-hidden="true" tabindex="-1"></a>     (<span class="kw">assoc</span> ctx <span class="at">:used-features</span> features))</span>
+<span id="cb108-6"><a href="#cb108-6" aria-hidden="true" tabindex="-1"></a>   (mm/lift tc/select-columns (<span class="kw">conj</span> features <span class="at">:survived</span>))</span>
+<span id="cb108-7"><a href="#cb108-7" aria-hidden="true" tabindex="-1"></a>   {<span class="at">:metamorph/id</span> <span class="at">:model</span>} (ml/model {<span class="at">:model-type</span> model-type})))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>While it would be technically possible to move all steps from the “first transformation” into the pipeline, by just using the “lifted” form of the transformations, I would not do so, even though this should give the same result.</p>
 <p>I think it is better to separate the steps which are “fixed”, from the steps which are parameterized, so for which we want to find the best values by “trying out”.</p>
