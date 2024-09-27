@@ -11,11 +11,28 @@
   (:require [tablecloth.api :as tc]
             [scicloj.metamorph.ml.toydata :as data]
             [tech.v3.dataset :as ds]
+            [same.core :as same]
+            [same.compare :as compare]
             [camel-snake-kebab.core :as csk]
             [scicloj.kindly.v4.kind :as kind]
             [scicloj.kindly.v4.api :as kindly]))
 
+(defn round
+  [n scale rm]
+  (.setScale ^java.math.BigDecimal (bigdec n)
+             (int scale)
+             ^RoundingMode (if (instance? java.math.RoundingMode rm)
+                             rm
+                             (java.math.RoundingMode/valueOf
+                              (str (if (ident? rm) (symbol rm) rm))))))
 
+
+(defn set-sameish-comparator! [scale]
+  (same/set-comparator! (fn [a b]
+                          (let [a-rounded (round a scale :HALF_UP)
+                                b-rounded (round b scale :HALF_UP)]
+                            (= a-rounded
+                               b-rounded)))))
 
 
 ;; ## Inspect data
@@ -98,22 +115,12 @@
 
 cat-maps
 
-(kind/test-last (fn [cat-maps]
-                  (every?
-                   true?
-                   (map
-                    #(.equals %1 %2)
-                    cat-maps
-                    [
-                     {:lookup-table {"male" 0, "female" 1},
-                      :src-column :sex,
-                      :result-datatype :float64}
-                     {:lookup-table {0 0, 1 1, 2 2, 3 3},
-                      :src-column :pclass,
-                      :result-datatype :float64}
-                     {:lookup-table {"S" 0, "Q" 1, "C" 2},
-                      :src-column :embarked,
-                      :result-datatype :float64}]))))
+(kindly/check =
+              (map  ds-cat/map->CategoricalMap
+                    [{:lookup-table {"male" 0, "female" 1}, :src-column :sex, :result-datatype :float64}
+                     {:lookup-table {0 0, 1 1, 2 2, 3 3}, :src-column :pclass, :result-datatype :float64}
+                     {:lookup-table {"S" 0, "Q" 1, "C" 2}, :src-column :embarked, :result-datatype :float64}]))
+
 
 
 ;; After the mappings are applied, we have a numeric dataset, as expected
@@ -123,18 +130,21 @@ cat-maps
             (ds-cat/transform-categorical-map ds cat-map))
           relevant-titanic-data
           cat-maps))
+
 (tc/head
  numeric-titanic-data)
 
+(ds/rowvecs 
+ (tc/head
+  numeric-titanic-data))
 
-(kind/test-last (fn [ds]
-                  (=
-                   [[0.0 3.0 0.0 0.0]
-                    [1.0 1.0 2.0 1.0]
-                    [1.0 3.0 0.0 1.0]
-                    [1.0 1.0 0.0 1.0]
-                    [0.0 3.0 0.0 0.0]]
-                   (ds/rowvecs ds))))
+(kindly/check 
+ =
+ [[0.0 3.0 0.0 0.0]
+  [1.0 1.0 2.0 1.0]
+  [1.0 3.0 0.0 1.0]
+  [1.0 1.0 0.0 1.0]
+  [0.0 3.0 0.0 0.0]])
 
 ;; Split data into train and test set
 ;;  Now we split the data into train and test. By we use
@@ -178,6 +188,7 @@ split
  (:survived (ds-cat/reverse-map-categorical-xforms dummy-prediction)))
 ;;  It's performance is poor, even worse than coin flip.
 
+(kindly/check = 0.3973063973063973)
 
 ;; ## Logistic regression
 ;; Next model to use is Logistic Regression
@@ -197,9 +208,9 @@ split
 
 (loss/classification-accuracy
  (:survived (ds-cat/reverse-map-categorical-xforms (:test split)))
- (:survived (ds-cat/reverse-map-categorical-xforms lreg-prediction)))
+ (:survived  lreg-prediction))
 
-(kind/test-last [= 0.7373737373737373])
+(kindly/check = 0.7373737373737373)
 ;; Its performance is  better, 73 %
 
 ;; ## Random forest
@@ -214,6 +225,22 @@ split
 (def rf-prediction
   (ml/predict (:test split) rf-model))
 
+(set-sameish-comparator! 1)
+;; First five prediction including the probability distributions 
+;; are
+(-> rf-prediction
+    (tc/head)
+    (tc/rows))
+
+(kindly/check same/ish?
+              [["no" 0.64 0.35]
+               ["no" 0.57 0.42]
+               ["no" 0.85 0.14]
+               ["no" 0.88 0.11]
+               ["no" 0.88 0.11]])
+
+ 
+
 (loss/classification-accuracy
  (:survived (ds-cat/reverse-map-categorical-xforms (:test split)))
  (:survived (ds-cat/reverse-map-categorical-xforms rf-prediction)))
@@ -221,7 +248,7 @@ split
 (kindly/check
  = 0.7878787878787878)
 
-;; best so far, 71 %
+;; best so far, 78 %
 ;;
 
 ;; TODO: Extract feature importance.
@@ -236,3 +263,5 @@ split
 ;; So far we used a single split into 'train' and 'test' data, so we only get
 ;; a point estimate of the accuracy. This should be made more robust
 ;; via cross-validations and using different splits of the data.
+
+

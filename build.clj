@@ -52,8 +52,8 @@
            :src-dirs  ["src"]
            :pom-data  (pom-template version))))
 
-(defn generate-tests [opts]
-  (let [basis    (b/create-basis {:aliases [:gen-tests :dev]})
+(defn generate-tests [_]
+  (let [basis    (b/create-basis {:aliases [:gen-tests :model-integration-tests :test]})
 
         cmds     (b/java-command
                   {:basis     basis
@@ -63,8 +63,8 @@
     (when-not (zero? exit) (throw (ex-info "Tests generation failed" {})))))
 (def opts {})
 (defn ci "Run the CI pipeline of tests (and build the JAR)." [opts]
-  (generate-tests (assoc opts :aliases [:dev]))
-  (test  (assoc opts :aliases [:dev :gen-tests :test]))
+  (generate-tests nil)
+  (test  (assoc opts :aliases [:dev :test]))
   (b/delete {:path "target"})
   (let [opts (jar-opts opts)]
     (println "\nWriting pom.xml...")
@@ -80,3 +80,16 @@
     (dd/deploy {:installer :remote :artifact (b/resolve-path jar-file)
                 :pom-file (b/pom-path (select-keys opts [:lib :class-dir]))}))
   opts)
+
+
+(defn models-integration-tests "Run integration tests." [opts]
+    (let [basis    (b/create-basis {  :aliases [:model-integration-tests ]})
+          cmds     (b/java-command
+                    {:basis     basis
+                     :main      'clojure.main
+                     :main-args ["-m" "cognitect.test-runner" "-d" "model-integration-tests"]})]
+      (b/process cmds)
+      )opts)
+  
+
+
