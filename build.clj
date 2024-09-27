@@ -17,7 +17,7 @@
 
 
 (def lib 'org.scicloj/noj)
-(def version "2-alpha7.1")
+(def version "2-alpha8")
 (def snapshot (str version "-SNAPSHOT"))
 (def class-dir "target/classes")
 
@@ -61,7 +61,9 @@
                    :main-args ["-e" "(require '[gen-tests])(gen-tests/do-generate-tests)(System/exit 0)"]})
         {:keys [exit]} (b/process cmds)]
     (when-not (zero? exit) (throw (ex-info "Tests generation failed" {})))))
+
 (def opts {})
+
 (defn ci "Run the CI pipeline of tests (and build the JAR)." [opts]
   (generate-tests nil)
   (test  (assoc opts :aliases [:dev :test]))
@@ -83,13 +85,10 @@
 
 
 (defn models-integration-tests "Run integration tests." [opts]
-    (let [basis    (b/create-basis {  :aliases [:model-integration-tests ]})
-          cmds     (b/java-command
-                    {:basis     basis
-                     :main      'clojure.main
-                     :main-args ["-m" "cognitect.test-runner" "-d" "model-integration-tests"]})]
-      (b/process cmds)
-      )opts)
-  
-
-
+  (let [basis    (b/create-basis {  :aliases [:model-integration-tests ]})
+        cmds     (b/java-command
+                  {:basis     basis
+                   :main      'clojure.main
+                   :main-args ["-m" "cognitect.test-runner" "-d" "model-integration-tests"]})]
+    (b/process cmds))
+  opts)
