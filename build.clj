@@ -52,7 +52,7 @@
            :src-dirs  ["src"]
            :pom-data  (pom-template version))))
 
-(defn generate-tests [opts]
+(defn generate-tests [_]
   (let [basis    (b/create-basis {:aliases [:gen-tests :model-integration-tests]})
 
         cmds     (b/java-command
@@ -63,7 +63,7 @@
     (when-not (zero? exit) (throw (ex-info "Tests generation failed" {})))))
 (def opts {})
 (defn ci "Run the CI pipeline of tests (and build the JAR)." [opts]
-  (generate-tests (assoc opts :aliases [:dev]))
+  (generate-tests nil)
   (test  (assoc opts :aliases [:dev :test]))
   (b/delete {:path "target"})
   (let [opts (jar-opts opts)]
