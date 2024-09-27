@@ -91,7 +91,7 @@ my-pipeline
 ;;
 ;; The following `trains` a model, because the `ml/model`
 ;; function does this when called with :mode `:fit`.
-;; And it is the only operation in the pipeline, so the pipeline does one 
+;; And it is the only operation in the pipeline, so the pipeline does one
 ;; thing, it `trains a model`
 (def ctx-after-train
   (my-pipeline {:metamorph/data train-ds
@@ -100,7 +100,7 @@ ctx-after-train
 
 ;; The ctx contains lots of information, so I only show its top level keys
 (keys ctx-after-train)
-;; This context map has the "data", the "mode" and an UUID for each operation 
+;; This context map has the "data", the "mode" and an UUID for each operation
 ;; (we had only one in this pipeline)
 ;;
 (vals ctx-after-train)
@@ -192,7 +192,7 @@ ctx-after-train
 ;; 1. implementing a metamorph compliant function directly via anonymous
 ;; function
 
-(def ops-1 
+(def ops-1
   (fn [ctx]
     (assoc ctx :metamorph/data
            (tc/drop-columns (:metamorph/data ctx) [:embarked]))))
