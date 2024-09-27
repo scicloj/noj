@@ -18,7 +18,8 @@
         org.tribuo/tribuo-classification-xgboost {:mvn/version "4.2.0"}
         clj-python/libpython-clj {:mvn/version "2.025"}
         org.scicloj/kind-pyplot {:mvn/version "1-beta1"}
-        scicloj/clojisr {:mvn/version "1.0.0"}}
+        scicloj/clojisr {:mvn/version "1.0.0"}
+        same/ish {:mvn/version "0.1.6"}}
  :aliases
  {:gen-tests {:extra-paths ["build"]}
 
