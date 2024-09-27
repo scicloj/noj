@@ -208,7 +208,7 @@ split
 (def rf-prediction
   (ml/predict (:test split) rf-model))
 
-;; First five prediction including teh probability distributions 
+;; First five prediction including the probability distributions 
 ;; are
 (-> rf-prediction
     (tc/head)
@@ -216,9 +216,9 @@ split
 (kindly/check =
               [["no" 0.6470588235294118 0.35294117647058826] 
                ["no" 0.5714285714285714 0.42857142857142855] 
-               ["no" 0.8529411764705882 0.14705882352941177]
-               ["no" 0.9064327485380117 0.0935672514619883] 
-               ["no" 0.9064327485380117 0.0935672514619883]])
+               ["no" 0.8529411764705882 0.14705882352941177] 
+               ["no" 0.8879310344827587 0.11206896551724138] 
+               ["no" 0.8879310344827587 0.11206896551724138]])
 
 
 
