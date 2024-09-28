@@ -5,9 +5,7 @@ on:
     branches:
       - '*'
 
-  pull_request:
-    branches:
-      - '*'  
+  pull_request_target:
 
 jobs:
 
@@ -34,6 +32,9 @@ jobs:
     
     steps:
     - uses: actions/checkout@v4
+      with:
+      repository: ${{ github.event.pull_request.head.repo.full_name }}
+      ref: ${{ github.head_ref }}
   
     - name: Make docs in dev container
       uses: devcontainers/ci@v0.3
