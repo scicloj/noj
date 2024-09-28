@@ -1,7 +1,10 @@
 name: Clojure CI
 
 on:
-  push
+  push:
+    branches:
+      - '*'
+      
   pull_request_target:
     branches:
         - main
