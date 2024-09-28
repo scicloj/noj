@@ -20,7 +20,12 @@ jobs:
                push: never
                runCmd: clj -T:build ci
 
+
+  make-doc:
+
+    steps:
     - uses: actions/checkout@v4
+  
     - name: Make docs in dev container
       uses: devcontainers/ci@v0.3
       with:    
