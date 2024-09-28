@@ -15,4 +15,3 @@
                     :show false}))))
   (shutdown-agents))
 
-#_(clay/make! {:source-path "notebooks/noj_book/automl.clj" :show false})
