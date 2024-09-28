@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [2-alpha9.1] - 2024-09-28
+- brought back same/ish dep which was removed by mistake
+
+## [2-alpha9] - 2024-09-28
+- updated deps (scicloj.ml.tribuo, Tribuo models)
+- same/ish dep was removed by mistake
+
 ## [2-alpha8.2] - 2024-09-28
 - added scicloj.ml.xgboost
 

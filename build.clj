@@ -17,7 +17,7 @@
 
 
 (def lib 'org.scicloj/noj)
-(def version "2-alpha8.2")
+(def version "2-alpha9.1")
 (def snapshot (str version "-SNAPSHOT"))
 (def class-dir "target/classes")
 
@@ -64,8 +64,20 @@
 
 (def opts {})
 
+(defn models-integration-tests "Run integration tests." [opts]
+  (let [basis    (b/create-basis {:aliases [:model-integration-tests]})
+        cmds     (b/java-command
+                  {:basis     basis
+                   :main      'clojure.main
+                   :main-args ["-m" "cognitect.test-runner"
+                               "-d" "model-integration-tests"]})]
+    (b/process cmds))
+  opts)
+
+
 (defn ci "Run the CI pipeline of tests (and build the JAR)." [opts]
   (generate-tests nil)
+  (models-integration-tests nil)
   (test  (assoc opts :aliases [:dev :test]))
   (b/delete {:path "target"})
   (let [opts (jar-opts opts)]
@@ -81,14 +93,4 @@
   (let [{:keys [jar-file] :as opts} (jar-opts opts)]
     (dd/deploy {:installer :remote :artifact (b/resolve-path jar-file)
                 :pom-file (b/pom-path (select-keys opts [:lib :class-dir]))}))
-  opts)
-
-
-(defn models-integration-tests "Run integration tests." [opts]
-  (let [basis    (b/create-basis {  :aliases [:model-integration-tests ]})
-        cmds     (b/java-command
-                  {:basis     basis
-                   :main      'clojure.main
-                   :main-args ["-m" "cognitect.test-runner" "-d" "model-integration-tests"]})]
-    (b/process cmds))
   opts)
