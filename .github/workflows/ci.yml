@@ -23,6 +23,7 @@ jobs:
                push: never
                runCmd: |
                   pwd
+                  ls -la
                   ls -la .venv
                   clj -T:build ci
 
