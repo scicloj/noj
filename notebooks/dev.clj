@@ -1,7 +1,8 @@
 (ns dev
   (:require [scicloj.clay.v2.api :as clay]))
 
-(clay/make! {:format [:quarto :html]
+(clay/make! {:show false
+             :format [:quarto :html]
              :base-source-path "notebooks"
              :source-path (->> "notebooks/chapters.edn"
                                slurp
@@ -19,3 +20,4 @@
 <meta property=\"og:title\" content=\"Scinojure Documentation\"/>
 <meta property=\"og:description\" content=\"Clojure libraries for data and science\"/>
 <link rel = \"icon\" href = \"data:,\" />"}}})
+(System/exit 0)

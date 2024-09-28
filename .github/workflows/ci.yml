@@ -19,3 +19,34 @@ jobs:
       with:    
                push: never
                runCmd: clj -T:build ci
+
+    - uses: actions/checkout@v4
+    - name: Run make ci-build in dev container
+      uses: devcontainers/ci@v0.3
+      with:    
+               push: never
+               runCmd: clj -T:build ci
+
+
+    - uses: actions/checkout@v4
+    - name: Make docs in dev container
+      uses: devcontainers/ci@v0.3
+      with:    
+          push: never
+          runCmd: clj -Adev notebooks/dev.clj 
+           
+    - name: fix permisions
+      run: sudo chmod o+w docs/
+    
+
+    - name: check git status
+      run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          ls docs
+          git status
+
+
+    - name: push updated docs
+      uses: stefanzweifel/git-auto-commit-action@v5      
+      
