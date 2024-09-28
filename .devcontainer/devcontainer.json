@@ -28,7 +28,9 @@
 	},
 
 	"remoteUser": "vscode",
-	"postCreateCommand": {"install python packages": "poetry install --sync" ,
-	                     "add link to python executable": "sudo ln -s /usr/bin/python3 /usr/local/bin/python"
+	"postCreateCommand": {
+		"debug": "ls -la .venv/bin",
+		"install python packages": "poetry install --sync" ,
+	    "add link to python executable": "sudo ln -s /usr/bin/python3 /usr/local/bin/python"
                          }
 }
