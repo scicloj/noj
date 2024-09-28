@@ -25,6 +25,7 @@ jobs:
       uses: devcontainers/ci@v0.3
       with:    
           push: never
+          noCache: true      
           runCmd: clj -Adev notebooks/dev.clj 
            
     - name: fix permisions
@@ -40,4 +41,4 @@ jobs:
 
 
     - name: push updated docs
-      uses: stefanzweifel/git-auto-commit-action@v5      
+      uses: stefanzweifel/git-auto-commit-action@v5
