@@ -3,6 +3,8 @@ name: Clojure CI
 on:
   push
   pull_request_target:
+    branches:
+        - main
 
 jobs:
 
