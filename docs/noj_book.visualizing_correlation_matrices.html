@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>10&nbsp; Visualizing correlation matrices (experimental 🛠) - DRAFT – Scinojure Documentation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./noj_book.interactions_ols.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<meta property="og:image" content="https://scicloj.github.io/sci-cloj-logo-transparent.png">
+<meta property="og:title" content="10&nbsp; Visualizing correlation matrices (experimental 🛠) - DRAFT – Scinojure Documentation">
+<meta property="og:description" content="">
+<link rel="icon" href="data:,">
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./noj_book.datasets.html">Tutorials</a></li><li class="breadcrumb-item"><a href="./noj_book.visualizing_correlation_matrices.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualizing correlation matrices (experimental 🛠) - DRAFT</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Scinojure Documentation</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Overview</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./noj_book.underlying_libraries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Underlying libraries</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./noj_book.recommended_libraries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Recommended libraries</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./noj_book.known_issues.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Known issues ❗</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Tutorials</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./noj_book.datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datasets</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./noj_book.ml_basic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Machine learning</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./noj_book.prepare_for_ml.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Machine learning specific functionality in <code>tech.ml.dataset</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./noj_book.automl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">AutoML using metamorph pipelines</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./noj_book.interactions_ols.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Ordinary least squares with interactions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./noj_book.visualizing_correlation_matrices.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualizing correlation matrices (experimental 🛠) - DRAFT</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#auxiliary-functions" id="toc-auxiliary-functions" class="nav-link active" data-scroll-target="#auxiliary-functions"><span class="header-section-number">10.1</span> Auxiliary functions</a></li>
+  <li><a href="#computing-a-correlation-matrix-and-representing-it-as-a-dataset" id="toc-computing-a-correlation-matrix-and-representing-it-as-a-dataset" class="nav-link" data-scroll-target="#computing-a-correlation-matrix-and-representing-it-as-a-dataset"><span class="header-section-number">10.2</span> Computing a correlation matrix and representing it as a dataset:</a></li>
+  <li><a href="#drawing-a-heatmap-using-echarts" id="toc-drawing-a-heatmap-using-echarts" class="nav-link" data-scroll-target="#drawing-a-heatmap-using-echarts"><span class="header-section-number">10.3</span> Drawing a heatmap using Echarts</a></li>
+  <li><a href="#drawing-a-heatmap-using-cljplot" id="toc-drawing-a-heatmap-using-cljplot" class="nav-link" data-scroll-target="#drawing-a-heatmap-using-cljplot"><span class="header-section-number">10.4</span> Drawing a heatmap using cljplot</a></li>
+  <li><a href="#drawing-a-heatmap-using-vega" id="toc-drawing-a-heatmap-using-vega" class="nav-link" data-scroll-target="#drawing-a-heatmap-using-vega"><span class="header-section-number">10.5</span> Drawing a heatmap using Vega</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./noj_book.datasets.html">Tutorials</a></li><li class="breadcrumb-item"><a href="./noj_book.visualizing_correlation_matrices.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualizing correlation matrices (experimental 🛠) - DRAFT</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualizing correlation matrices (experimental 🛠) - DRAFT</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style></style>
+<style>.printedClojure .sourceCode {
+  background-color: transparent;
+  border-style: none;
+}
+</style>
+<style>.clay-limit-image-width .clay-image {max-width: 100%}
+.clay-side-by-side .sourceCode {margin: 0}
+.clay-side-by-side {margin: 1em 0}
+</style>
+<script src="noj_book.visualizing_correlation_matrices_files/md-default0.js" type="text/javascript"></script>
+<script src="noj_book.visualizing_correlation_matrices_files/md-default1.js" type="text/javascript"></script>
+<script src="noj_book.visualizing_correlation_matrices_files/echarts2.js" type="text/javascript"></script>
+<p>This tutorial explores various ways to visualize a correlation matrix as a heatmap. It is inspired by the discussion at the <a href="https://scicloj.github.io/docs/community/chat/">Clojurians Zulip chat</a>: <a href="https://clojurians.zulipchat.com/#narrow/stream/151924-data-science/topic/correlation.20matrix.20plot.20.3F">#data-science &gt; correlation matrix plot ?</a></p>
+<p>author: Daniel Slutsky</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb1"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">ns</span> noj-book.visualizing-correlation-matrices</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  (<span class="at">:require</span> [fastmath.stats]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            [fastmath.core <span class="at">:as</span> fastmath]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            [tablecloth.api <span class="at">:as</span> tc]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            [noj-book.datasets]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            [scicloj.kindly.v4.kind <span class="at">:as</span> kind]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            [clojure.math <span class="at">:as</span> math]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            [clojure.string <span class="at">:as</span> <span class="kw">str</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="auxiliary-functions" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="auxiliary-functions"><span class="header-section-number">10.1</span> Auxiliary functions</h2>
+<p>Rounding numbers:</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb2"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> round</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  [n scale rm]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  (.setScale ^java.math.BigDecimal (<span class="kw">bigdec</span> n)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>             (<span class="kw">int</span> scale)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>             ^RoundingMode (<span class="kw">if</span> (<span class="kw">instance?</span> java.math.RoundingMode rm)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                             rm</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                             (java.math.RoundingMode/valueOf</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                              (<span class="kw">str</span> (<span class="kw">if</span> (ident? rm) (<span class="kw">symbol</span> rm) rm))))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For example (see <a href="https://docs.oracle.com/javase/8/docs/api/java/math/RoundingMode.html">RoundingMode</a>)</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb3"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(round (<span class="kw">/</span> <span class="fl">2.0</span> <span class="dv">3</span>) <span class="dv">2</span> <span class="at">:DOWN</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="printedClojure">
+<div class="sourceCode" id="cb4"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.66M</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb5"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(round (<span class="kw">/</span> <span class="fl">2.0</span> <span class="dv">3</span>) <span class="dv">2</span> <span class="at">:UP</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="printedClojure">
+<div class="sourceCode" id="cb6"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.67M</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb7"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(round (<span class="kw">/</span> <span class="fl">2.0</span> <span class="dv">3</span>) <span class="dv">2</span> <span class="at">:HALF</span>_EVEN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="printedClojure">
+<div class="sourceCode" id="cb8"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.67M</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="computing-a-correlation-matrix-and-representing-it-as-a-dataset" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="computing-a-correlation-matrix-and-representing-it-as-a-dataset"><span class="header-section-number">10.2</span> Computing a correlation matrix and representing it as a dataset:</h2>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> correlations-dataset </span>[data columns-to-use]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [matrix (<span class="kw">-&gt;&gt;</span> columns-to-use</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                    (<span class="kw">mapv</span> #(<span class="kw">get</span> data <span class="va">%</span>))</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                    fastmath.stats/correlation-matrix)]</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">-&gt;&gt;</span> matrix</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>         (map-indexed</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>          (<span class="kw">fn</span> [i row]</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>            (<span class="kw">let</span> [coli (columns-to-use i)]</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>              (<span class="kw">-&gt;&gt;</span> row</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                   (map-indexed</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                    (<span class="kw">fn</span> [j corr]</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>                      (<span class="kw">let</span> [colj (columns-to-use j)]</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>                        {<span class="at">:i</span> i</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>                         <span class="at">:j</span> j</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>                         <span class="at">:coli</span> coli</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>                         <span class="at">:colj</span> colj</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>                         <span class="at">:corr</span> corr</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>                         <span class="at">:corr-round</span> (round corr <span class="dv">2</span> <span class="at">:HALF</span>_EVEN)})))))))</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>         (<span class="kw">apply</span> <span class="kw">concat</span>)</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>         tc/dataset)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For example:</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb10"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> noj-book.datasets/iris</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    (correlations-dataset [<span class="at">:sepal-length</span> <span class="at">:sepal-width</span> <span class="at">:petal-length</span> <span class="at">:petal-width</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="clay-dataset">
+<p>_unnamed [16 6]:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">:i</th>
+<th style="text-align: right;">:j</th>
+<th>:coli</th>
+<th>:colj</th>
+<th style="text-align: right;">:corr</th>
+<th>:corr-round</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td>:sepal-length</td>
+<td>:sepal-length</td>
+<td style="text-align: right;">1.00000000</td>
+<td>1.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td>:sepal-length</td>
+<td>:sepal-width</td>
+<td style="text-align: right;">-0.11756978</td>
+<td>-0.1200</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td>:sepal-length</td>
+<td>:petal-length</td>
+<td style="text-align: right;">0.87175378</td>
+<td>0.8700</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td>:sepal-length</td>
+<td>:petal-width</td>
+<td style="text-align: right;">0.81794113</td>
+<td>0.8200</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td>:sepal-width</td>
+<td>:sepal-length</td>
+<td style="text-align: right;">-0.11756978</td>
+<td>-0.1200</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td>:sepal-width</td>
+<td>:sepal-width</td>
+<td style="text-align: right;">1.00000000</td>
+<td>1.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td>:sepal-width</td>
+<td>:petal-length</td>
+<td style="text-align: right;">-0.42844010</td>
+<td>-0.4300</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td>:sepal-width</td>
+<td>:petal-width</td>
+<td style="text-align: right;">-0.36612593</td>
+<td>-0.3700</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td>:petal-length</td>
+<td>:sepal-length</td>
+<td style="text-align: right;">0.87175378</td>
+<td>0.8700</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td>:petal-length</td>
+<td>:sepal-width</td>
+<td style="text-align: right;">-0.42844010</td>
+<td>-0.4300</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td>:petal-length</td>
+<td>:petal-length</td>
+<td style="text-align: right;">1.00000000</td>
+<td>1.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td>:petal-length</td>
+<td>:petal-width</td>
+<td style="text-align: right;">0.96286543</td>
+<td>0.9600</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td>:petal-width</td>
+<td>:sepal-length</td>
+<td style="text-align: right;">0.81794113</td>
+<td>0.8200</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td>:petal-width</td>
+<td>:sepal-width</td>
+<td style="text-align: right;">-0.36612593</td>
+<td>-0.3700</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td>:petal-width</td>
+<td>:petal-length</td>
+<td style="text-align: right;">0.96286543</td>
+<td>0.9600</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td>:petal-width</td>
+<td>:petal-width</td>
+<td style="text-align: right;">1.00000000</td>
+<td>1.000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="drawing-a-heatmap-using-echarts" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="drawing-a-heatmap-using-echarts"><span class="header-section-number">10.3</span> Drawing a heatmap using Echarts</h2>
+<p>The following function is inspired by <a href="https://github.com/apache/echarts/blob/master/test/heatmap-large.html">an Apache Echarts heatmap tutorial</a>.</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb11"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> echarts-heatmap </span>[{<span class="at">:keys</span> [xyz-data xs ys</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                               <span class="kw">min</span> <span class="kw">max</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                               series-name]</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">:or</span> {series-name <span class="st">""</span>}}]</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  (kind/echarts</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>   {<span class="at">:tooltip</span> {}</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">:xAxis</span> {<span class="at">:type</span> <span class="at">:category</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">:data</span> xs}</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">:yAxis</span> {<span class="at">:type</span> <span class="at">:category</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">:data</span> ys}</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">:visualMap</span> {<span class="at">:min</span> <span class="kw">min</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">:max</span> <span class="kw">max</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">:calculable</span> <span class="va">true</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">:splitNumber</span> <span class="dv">8</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">:inRange</span> {<span class="at">:color</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>                          [<span class="st">"#313695"</span> <span class="st">"#4575b4"</span> <span class="st">"#74add1"</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"#abd9e9"</span> <span class="st">"#e0f3f8"</span> <span class="st">"#ffffbf"</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"#fee090"</span> <span class="st">"#fdae61"</span> <span class="st">"#f46d43"</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"#d73027"</span> <span class="st">"#a50026"</span>]}}</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">:series</span> [{<span class="at">:name</span> series-name</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>              <span class="at">:type</span> <span class="at">:heatmap</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>              <span class="at">:data</span> xyz-data</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>              <span class="at">:itemStyle</span> {<span class="at">:emphasis</span> {<span class="at">:borderColor</span> <span class="st">"#333"</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">:borderWidth</span> <span class="dv">2</span>}}</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>              <span class="at">:progressive</span> <span class="dv">1000</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>              <span class="at">:animation</span> <span class="va">false</span>}]}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here is an example using synthetic data:</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb12"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">let</span> [n <span class="dv">30</span>]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  (echarts-heatmap</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>   {<span class="at">:xyz-data</span> (<span class="kw">for</span> [i (<span class="kw">range</span> n)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                    j (<span class="kw">range</span> n)]</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                [i j (fastmath/logistic (<span class="kw">*</span>  (<span class="kw">+</span> (<span class="kw">-</span> i j))</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                                            (<span class="kw">rand</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                                            (<span class="kw">/</span> <span class="dv">2</span> (<span class="kw">double</span> n))))])</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">:x-data</span> (<span class="kw">range</span> n)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">:y-data</span> (<span class="kw">range</span> n)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">:min</span> <span class="dv">0</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">:max</span> <span class="dv">1</span>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div style="height:400px;width:100%;"><script>
+{
+  var myChart = echarts.init(document.currentScript.parentElement);
+  myChart.setOption({"tooltip":{},"xAxis":{"type":"category","data":null},"yAxis":{"type":"category","data":null},"visualMap":{"min":0,"max":1,"calculable":true,"splitNumber":8,"inRange":{"color":["#313695","#4575b4","#74add1","#abd9e9","#e0f3f8","#ffffbf","#fee090","#fdae61","#f46d43","#d73027","#a50026"]}},"series":[{"name":"","type":"heatmap","data":[[0,0,0.5],[0,1,0.48745739109101344],[0,2,0.47234270740373235],[0,3,0.46678983132858787],[0,4,0.4593977371855165],[0,5,0.44074394818520374],[0,6,0.4893002944098152],[0,7,0.4992247778041303],[0,8,0.4931856937835043],[0,9,0.4114210713482732],[0,10,0.4856984463452912],[0,11,0.4850786710066883],[0,12,0.39855039572195566],[0,13,0.40630736037739634],[0,14,0.40074157682599554],[0,15,0.27776719291294827],[0,16,0.4327451331865302],[0,17,0.3558311726216227],[0,18,0.2627630469037045],[0,19,0.2725315823053555],[0,20,0.483762953345709],[0,21,0.2505102417202266],[0,22,0.3736245164033626],[0,23,0.33135340387971685],[0,24,0.26836544446219973],[0,25,0.3237530660963334],[0,26,0.17950573465114386],[0,27,0.21347641675675977],[0,28,0.39593092550630304],[0,29,0.4397589374418666],[1,0,0.5067119984644607],[1,1,0.5],[1,2,0.48488232728451197],[1,3,0.49162718592480964],[1,4,0.4612622953996557],[1,5,0.44872593734282545],[1,6,0.46675042394666627],[1,7,0.4939617139359435],[1,8,0.4027138937443291],[1,9,0.41776393704652415],[1,10,0.3562249157057224],[1,11,0.3613371752415375],[1,12,0.48646390210994517],[1,13,0.4248977603970862],[1,14,0.46364293851966204],[1,15,0.4860790462698667],[1,16,0.3130259195335632],[1,17,0.28629389585578985],[1,18,0.33025004785918005],[1,19,0.34235982627127953],[1,20,0.4818634229625535],[1,21,0.34730476471049176],[1,22,0.3990382532425414],[1,23,0.4251124119476067],[1,24,0.39986735329758627],[1,25,0.23337076880608912],[1,26,0.40330836951712973],[1,27,0.3992498274972907],[1,28,0.390453929368046],[1,29,0.30915732647155364],[2,0,0.5102060525129167],[2,1,0.5100739120060297],[2,2,0.5],[2,3,0.49219875491100473],[2,4,0.4812506371327286],[2,5,0.4864712641803375],[2,6,0.47992414343751194],[2,7,0.46150241582514373],[2,8,0.4239264794451613],[2,9,0.4625960333221559],[2,10,0.4732560427248749],[2,11,0.41204004874824207],[2,12,0.44937516432121855],[2,13,0.3641612948187082],[2,14,0.4037668183087565],[2,15,0.30325138171203797],[2,16,0.42206747321638105],[2,17,0.281046658364497],[2,18,0.3633587933211292],[2,19,0.4927845664900605],[2,20,0.49684424076141726],[2,21,0.293194812432742],[2,22,0.463079290622159],[2,23,0.3117031566498094],[2,24,0.449417010001422],[2,25,0.46610417519239716],[2,26,0.26648045894767164],[2,27,0.23363905821531117],[2,28,0.19602594211347063],[2,29,0.3716900486210914],[3,0,0.5260276514194969],[3,1,0.5008074239018319],[3,2,0.5011678886216795],[3,3,0.5],[3,4,0.49771906903235996],[3,5,0.4930460020246994],[3,6,0.4590229578195463],[3,7,0.4799438909166591],[3,8,0.45239602936946277],[3,9,0.4922620079558233],[3,10,0.4967044375481698],[3,11,0.404919864183238],[3,12,0.4788544541656612],[3,13,0.4112478172944783],[3,14,0.46081299606115805],[3,15,0.4511213170331548],[3,16,0.3565903139638275],[3,17,0.29053979105739886],[3,18,0.44374751022399556],[3,19,0.31397254522182416],[3,20,0.4410870119418341],[3,21,0.4967670741748895],[3,22,0.37812762349075285],[3,23,0.25255274420630347],[3,24,0.23684406315164636],[3,25,0.4105677345393248],[3,26,0.48139453224478773],[3,27,0.4066372500017679],[3,28,0.36377430732380567],[3,29,0.1749269238733067],[4,0,0.5477570101397801],[4,1,0.5442012028585951],[4,2,0.5072583898408782],[4,3,0.5026853987765421],[4,4,0.5],[4,5,0.48671214032400756],[4,6,0.47761432523957625],[4,7,0.4942619209858037],[4,8,0.45504763772680706],[4,9,0.42509688649504757],[4,10,0.47155876926642104],[4,11,0.4404209011864477],[4,12,0.41402145741847957],[4,13,0.4207827236377585],[4,14,0.49853779112537444],[4,15,0.4310171994670599],[4,16,0.3974750177650228],[4,17,0.3780279954653449],[4,18,0.3938338782566066],[4,19,0.28585281574764915],[4,20,0.28293146626488686],[4,21,0.45493344550277354],[4,22,0.4203245694677477],[4,23,0.3763261194676042],[4,24,0.27612955237854253],[4,25,0.4656085126605995],[4,26,0.23222421692725356],[4,27,0.17782765467873402],[4,28,0.2655442938708874],[4,29,0.20856469497377692],[5,0,0.5425926409337054],[5,1,0.5075610747747338],[5,2,0.5394715111545837],[5,3,0.5148846130998452],[5,4,0.5055635457978862],[5,5,0.5],[5,6,0.49592185341506007],[5,7,0.49560907319308967],[5,8,0.4888040916388918],[5,9,0.49526342889625585],[5,10,0.4779086582818942],[5,11,0.46454894381577566],[5,12,0.4186390953360891],[5,13,0.401175783286493],[5,14,0.3798631114589415],[5,15,0.38009389240414093],[5,16,0.3483739714797648],[5,17,0.42319069527605013],[5,18,0.3013345483887768],[5,19,0.490092875944289],[5,20,0.3319102839382666],[5,21,0.3980864815628657],[5,22,0.42496718689042],[5,23,0.29416815685794817],[5,24,0.24216592512225413],[5,25,0.22375614445787045],[5,26,0.2374960404608943],[5,27,0.21987176099273875],[5,28,0.2929242160959546],[5,29,0.4035338111226701],[6,0,0.5352113732224342],[6,1,0.5057081725578807],[6,2,0.5012354515034483],[6,3,0.5333227086266269],[6,4,0.5277586977874131],[6,5,0.5061846423109231],[6,6,0.5],[6,7,0.49508012972886156],[6,8,0.48385935936506885],[6,9,0.497500249153259],[6,10,0.43957006373623736],[6,11,0.47737719747652],[6,12,0.4104847644108677],[6,13,0.44068447341027844],[6,14,0.3736672962748679],[6,15,0.4066333308268211],[6,16,0.46117638174090525],[6,17,0.3356708322236613],[6,18,0.49755742269859987],[6,19,0.39413413034648537],[6,20,0.31133056931214065],[6,21,0.28509757391600854],[6,22,0.45070919020115086],[6,23,0.29627835867192187],[6,24,0.29256963300922184],[6,25,0.2865103586776754],[6,26,0.4296630857720013],[6,27,0.22548476474859255],[6,28,0.2950024248246024],[6,29,0.300702663877557],[7,0,0.5003869471687301],[7,1,0.5244276746809848],[7,2,0.5357280896071683],[7,3,0.5336634716539665],[7,4,0.5063951527920977],[7,5,0.5253795237964216],[7,6,0.5054400183705547],[7,7,0.5],[7,8,0.4858383128965465],[7,9,0.4801536626440088],[7,10,0.45920018670394835],[7,11,0.43969837253124305],[7,12,0.44416847552901917],[7,13,0.42912406897389865],[7,14,0.4568244778098777],[7,15,0.37484934734661324],[7,16,0.405534426716399],[7,17,0.35892598857061575],[7,18,0.463351281888442],[7,19,0.3974769350419646],[7,20,0.3079330046709612],[7,21,0.31075797882749295],[7,22,0.30399641502553404],[7,23,0.33384618361444496],[7,24,0.30073457073827187],[7,25,0.3934441477281944],[7,26,0.3292266935679407],[7,27,0.36789996028566696],[7,28,0.2994733983583493],[7,29,0.27653661607434077],[8,0,0.5425882680143144],[8,1,0.6130568391516582],[8,2,0.5027642630660653],[8,3,0.5206727294320002],[8,4,0.5041936615831382],[8,5,0.5021438976752803],[8,6,0.5162494198415678],[8,7,0.5031510870935716],[8,8,0.5],[8,9,0.4926410606327746],[8,10,0.4836805255795543],[8,11,0.48899599500647467],[8,12,0.4455371179801034],[8,13,0.47764691765907913],[8,14,0.42186358933496965],[8,15,0.3920917574123645],[8,16,0.4426931623511205],[8,17,0.44111970390590766],[8,18,0.41969379185184225],[8,19,0.43640877529474353],[8,20,0.3236716564438547],[8,21,0.4778546238071001],[8,22,0.43845720980063063],[8,23,0.3480129282867306],[8,24,0.48726433639805516],[8,25,0.41894432256016256],[8,26,0.3287107713748861],[8,27,0.2758602749374467],[8,28,0.24047193502602918],[8,29,0.3216735431515755],[9,0,0.563943028718187],[9,1,0.5894968645384923],[9,2,0.5498440159840186],[9,3,0.5882246643294866],[9,4,0.5443992013181483],[9,5,0.559172206442006],[9,6,0.5426282464824517],[9,7,0.52057672764265],[9,8,0.5053703905078213],[9,9,0.5],[9,10,0.4992616722283417],[9,11,0.49553623747740505],[9,12,0.46261083829579897],[9,13,0.47754511040801173],[9,14,0.44334273821814346],[9,15,0.4507709432591254],[9,16,0.4259840144677744],[9,17,0.49571506752840216],[9,18,0.40667742634202825],[9,19,0.4577768375200442],[9,20,0.3996283361538795],[9,21,0.3777543046777014],[9,22,0.4853118822434521],[9,23,0.465206633546738],[9,24,0.45707070422332824],[9,25,0.4829090872591591],[9,26,0.3686608033899248],[9,27,0.4349287716141345],[9,28,0.22891068000541015],[9,29,0.369735940306469],[10,0,0.6170752793367345],[10,1,0.5073044502144743],[10,2,0.6118702639620129],[10,3,0.5583102519401165],[10,4,0.5345052963260777],[10,5,0.5532000217516345],[10,6,0.5360927580685343],[10,7,0.5423100418700828],[10,8,0.5166490383608654],[10,9,0.5160667240007201],[10,10,0.5],[10,11,0.48374778107666805],[10,12,0.4800234704438545],[10,13,0.4662739760876153],[10,14,0.49773700308980134],[10,15,0.47058890037757645],[10,16,0.4537323078165343],[10,17,0.4294160541355648],[10,18,0.40371269872730176],[10,19,0.374459087550954],[10,20,0.4479164702993523],[10,21,0.3915878340030887],[10,22,0.41133335384117686],[10,23,0.35112799531929056],[10,24,0.3650379918003059],[10,25,0.28531812606254187],[10,26,0.2714644382127045],[10,27,0.29008331158924044],[10,28,0.35680051370622634],[10,29,0.47681687197015715],[11,0,0.6628419931109221],[11,1,0.5656278708435333],[11,2,0.5796286283030305],[11,3,0.5105171351999868],[11,4,0.5036394941560712],[11,5,0.5176100409438434],[11,6,0.5550823129740701],[11,7,0.5179641570271484],[11,8,0.5313143274650799],[11,9,0.5242128264146878],[11,10,0.5120772462055203],[11,11,0.5],[11,12,0.49708455994608536],[11,13,0.48406498280944243],[11,14,0.4772612650452629],[11,15,0.47388720224219566],[11,16,0.4677308895378501],[11,17,0.41328915229269053],[11,18,0.4315880309032205],[11,19,0.44707778903064904],[11,20,0.3602653532065501],[11,21,0.4095448648093791],[11,22,0.33712319822854736],[11,23,0.4485445044624373],[11,24,0.31810604523212077],[11,25,0.4776873053735454],[11,26,0.3111266980469938],[11,27,0.3413129357404439],[11,28,0.30505105754806544],[11,29,0.3909229755032765],[12,0,0.6438056456260998],[12,1,0.6671945714526485],[12,2,0.589745144006477],[12,3,0.5956928438917474],[12,4,0.592002165873942],[12,5,0.5180626150390735],[12,6,0.5475241311693209],[12,7,0.5717019387231077],[12,8,0.5365520315535046],[12,9,0.5366394734001092],[12,10,0.5197270244771346],[12,11,0.5037150535470443],[12,12,0.5],[12,13,0.4935994549904852],[12,14,0.4711846337174375],[12,15,0.464489200887745],[12,16,0.49806252724881095],[12,17,0.43714178627705214],[12,18,0.4277398528852755],[12,19,0.39384689632967274],[12,20,0.41984358773310837],[12,21,0.3879879222198198],[12,22,0.4810554210460819],[12,23,0.450441600642682],[12,24,0.3986828759637347],[12,25,0.45836703572050097],[12,26,0.3912766265905694],[12,27,0.4919504990527885],[12,28,0.33824968390638477],[12,29,0.28382741203766837],[13,0,0.6641648608805568],[13,1,0.5224127782364546],[13,2,0.5402156882057679],[13,3,0.6367334368985967],[13,4,0.5331902480114151],[13,5,0.5209545365720358],[13,6,0.5486066047814312],[13,7,0.5687026309291665],[13,8,0.5590163486458916],[13,9,0.5480052479857285],[13,10,0.5199710891155016],[13,11,0.5139964079316572],[13,12,0.5065391475459828],[13,13,0.5],[13,14,0.493956342853263],[13,15,0.4826997736390679],[13,16,0.4733396696582035],[13,17,0.47598069887521843],[13,18,0.4185101355349592],[13,19,0.40421779863379215],[13,20,0.46163957564094193],[13,21,0.4481527684030948],[13,22,0.4732883611899796],[13,23,0.4491281894815164],[13,24,0.37956481432311867],[13,25,0.4615258824021441],[13,26,0.38282665341062305],[13,27,0.4654576651633034],[13,28,0.30807506994922657],[13,29,0.4883895251869501],[14,0,0.5635590131730098],[14,1,0.5265407401772318],[14,2,0.62858838779676],[14,3,0.5229294270826979],[14,4,0.603471560179351],[14,5,0.5525340904927013],[14,6,0.5390760131075917],[14,7,0.5737024290679634],[14,8,0.5865336980930199],[14,9,0.559217788598197],[14,10,0.5103745331805674],[14,11,0.549614442856195],[14,12,0.5249876910872378],[14,13,0.5150117802999118],[14,14,0.5],[14,15,0.4846537847019659],[14,16,0.48885260485337184],[14,17,0.4560825311615635],[14,18,0.49317871495427074],[14,19,0.4973435252954509],[14,20,0.429512484807365],[14,21,0.41181337947124463],[14,22,0.42552056062526034],[14,23,0.38881957376268866],[14,24,0.44326834506723367],[14,25,0.45969738408385297],[14,26,0.3483803304605103],[14,27,0.3452273105167245],[14,28,0.2952997479293538],[14,29,0.3703632137987629],[15,0,0.6728216311109136],[15,1,0.6594617307802484],[15,2,0.6934947769939409],[15,3,0.5166355581527097],[15,4,0.6441135359332646],[15,5,0.6020502481304635],[15,6,0.6407521975622297],[15,7,0.5821735811537595],[15,8,0.6041797179560265],[15,9,0.5324724019977372],[15,10,0.5486361099597187],[15,11,0.5555372899495042],[15,12,0.5134448113057204],[15,13,0.5136008431127386],[15,14,0.5071988349483517],[15,15,0.5],[15,16,0.4939546524589491],[15,17,0.473820073976274],[15,18,0.4684633311111955],[15,19,0.4477693772733606],[15,20,0.4546506824268331],[15,21,0.43212801124900324],[15,22,0.4981620529255236],[15,23,0.43490128154366015],[15,24,0.37142836869608886],[15,25,0.49313122404944065],[15,26,0.49900761121127657],[15,27,0.4295695255596961],[15,28,0.38044401427083396],[15,29,0.4808979198338821],[16,0,0.5720066426055578],[16,1,0.6318672541861684],[16,2,0.6876748575446561],[16,3,0.6435263143700527],[16,4,0.6806150201815236],[16,5,0.5652722000335841],[16,6,0.5757843553970597],[16,7,0.570424606010617],[16,8,0.5474928817947364],[16,9,0.5626713343633946],[16,10,0.512073254674968],[16,11,0.5073401806419057],[16,12,0.5024741608837736],[16,13,0.5244249715813215],[16,14,0.5313895250219915],[16,15,0.5128367863516629],[16,16,0.5],[16,17,0.48689785476700154],[16,18,0.499815573364613],[16,19,0.4678974137857949],[16,20,0.43588439786136235],[16,21,0.47159137907248855],[16,22,0.416367408506535],[16,23,0.4646652156308335],[16,24,0.4828021774477724],[16,25,0.43493678537129826],[16,26,0.4940947055388934],[16,27,0.49287010435198914],[16,28,0.36355427971939713],[16,29,0.37586648389860045],[17,0,0.6617710734392566],[17,1,0.7204097071995098],[17,2,0.6074591615750505],[17,3,0.6269697142656689],[17,4,0.5899861459835954],[17,5,0.6850653493277242],[17,6,0.5016130072618764],[17,7,0.522062283244015],[17,8,0.5962540425695373],[17,9,0.5025388524860094],[17,10,0.5206682030125716],[17,11,0.5181481589433802],[17,12,0.5228865389822234],[17,13,0.5497622295174922],[17,14,0.5277849835260046],[17,15,0.5131438759053282],[17,16,0.5023689808949944],[17,17,0.5],[17,18,0.4952962057147888],[17,19,0.4797525667102711],[17,20,0.4987683621354034],[17,21,0.4596952835488264],[17,22,0.4201261776937416],[17,23,0.4034972511576808],[17,24,0.47801152036650624],[17,25,0.38913315779330526],[17,26,0.3683204627723013],[17,27,0.43533479655426144],[17,28,0.3912939163886543],[17,29,0.3534611656180845],[18,0,0.6674201832956159],[18,1,0.6153218699596488],[18,2,0.6764113621031028],[18,3,0.5753826520628778],[18,4,0.5750021097908157],[18,5,0.6610768543254913],[18,6,0.5653121187814909],[18,7,0.583773589864825],[18,8,0.6350635123921823],[18,9,0.6152367204355192],[18,10,0.577240254844978],[18,11,0.5141194249423935],[18,12,0.537162759782438],[18,13,0.5421901426452629],[18,14,0.5394233947850374],[18,15,0.533838447532058],[18,16,0.5146068660681372],[18,17,0.5049561120572637],[18,18,0.5],[18,19,0.49188887978049084],[18,20,0.4831918246458894],[18,21,0.4837037006198957],[18,22,0.45182829223100923],[18,23,0.498212545227939],[18,24,0.4150618095067066],[18,25,0.4716622126682452],[18,26,0.44245841236250133],[18,27,0.43952239099247387],[18,28,0.4549836498113473],[18,29,0.41456878740348013],[19,0,0.7022986256499838],[19,1,0.5390830710278238],[19,2,0.6828463943633255],[19,3,0.7064343479191153],[19,4,0.7178745540932555],[19,5,0.5483866383387634],[19,6,0.6849023593697485],[19,7,0.5144479307216855],[19,8,0.5731415521218203],[19,9,0.6122801092772644],[19,10,0.6319869887160793],[19,11,0.6037048372416844],[19,12,0.5228590426626751],[19,13,0.5465613960896673],[19,14,0.5053723705066189],[19,15,0.5206655292844378],[19,16,0.5022493137468413],[19,17,0.5209264284888176],[19,18,0.5053788292349651],[19,19,0.5],[19,20,0.48433647268898594],[19,21,0.46780233395697557],[19,22,0.4885307263657781],[19,23,0.4609276112165154],[19,24,0.4709160380301434],[19,25,0.46330125761136504],[19,26,0.4527172141904177],[19,27,0.38924624497515287],[19,28,0.38196473321868835],[19,29,0.3930116811369835],[20,0,0.5015269422854419],[20,1,0.5609896795769573],[20,2,0.7420775920885544],[20,3,0.5008592726567768],[20,4,0.6036022440497205],[20,5,0.5922520203892196],[20,6,0.7014932821171352],[20,7,0.6466307792346039],[20,8,0.59124265541386],[20,9,0.5327752258496415],[20,10,0.6554070008612461],[20,11,0.6252031078572509],[20,12,0.5742555655125928],[20,13,0.604117197169549],[20,14,0.5972945727053248],[20,15,0.5106801115830605],[20,16,0.526277439640027],[20,17,0.520470755909281],[20,18,0.5153364766438695],[20,19,0.5137220338748331],[20,20,0.5],[20,21,0.49511448232981464],[20,22,0.4963906801688882],[20,23,0.46820317159599634],[20,24,0.4420378586602972],[20,25,0.49762957715541245],[20,26,0.4252616251173707],[20,27,0.4530692737290567],[20,28,0.48561308844379436],[20,29,0.36337531074569485],[21,0,0.764167473860615],[21,1,0.6638945358519301],[21,2,0.6937007832627303],[21,3,0.7218494385014064],[21,4,0.6607248053590932],[21,5,0.5836441304846334],[21,6,0.5659959723955799],[21,7,0.6277720519169385],[21,8,0.5578916489995712],[21,9,0.6606514681882462],[21,10,0.5381055822317657],[21,11,0.5039588184721097],[21,12,0.5936406222541116],[21,13,0.5162976324784748],[21,14,0.5370416248526079],[21,15,0.5567368647691597],[21,16,0.507912072664542],[21,17,0.5243067701860471],[21,18,0.5307996157950539],[21,19,0.5033337471776358],[21,20,0.5147306053838152],[21,21,0.5],[21,22,0.4936210959787869],[21,23,0.49908647786296856],[21,24,0.45146876392913177],[21,25,0.4488223758907847],[21,26,0.4716032907832958],[21,27,0.42202843242100424],[21,28,0.46220592610728867],[21,29,0.4248160801791475],[22,0,0.7138752564121686],[22,1,0.7137951623554208],[22,2,0.6952908864533138],[22,3,0.5286447603288595],[22,4,0.7091992017319234],[22,5,0.7124586790618792],[22,6,0.6095847299485806],[22,7,0.6422164235627817],[22,8,0.7083589207996721],[22,9,0.5889523064335702],[22,10,0.5850703684147743],[22,11,0.6140065466204794],[22,12,0.6585567182247241],[22,13,0.5577565335913027],[22,14,0.547744203532775],[22,15,0.5147124338805122],[22,16,0.5408607830060667],[22,17,0.5474155629153624],[22,18,0.5425215542997943],[22,19,0.5340339469107784],[22,20,0.5147869247353387],[22,21,0.5140901515841223],[22,22,0.5],[22,23,0.4922374605576776],[22,24,0.48528744686264924],[22,25,0.4876454509182628],[22,26,0.4839557471908612],[22,27,0.4427138913266132],[22,28,0.4077103722423414],[22,29,0.4702424794516499],[23,0,0.5610151996910735],[23,1,0.7161449031978592],[23,2,0.6585791943253199],[23,3,0.7723517181284968],[23,4,0.5603807865413617],[23,5,0.7391512237745638],[23,6,0.5900216697904629],[23,7,0.7123162749928547],[23,8,0.7239461496207832],[23,9,0.6370826844845391],[23,10,0.6043963766338349],[23,11,0.5711917676934144],[23,12,0.6180526642238603],[23,13,0.5525663845027636],[23,14,0.5500395787864162],[23,15,0.6025248677302929],[23,16,0.5853835969691304],[23,17,0.5739608077899807],[23,18,0.5511263418953752],[23,19,0.5638639432642272],[23,20,0.5142540956663744],[23,21,0.5044488008245395],[23,22,0.5106798832745669],[23,23,0.5],[23,24,0.4843292909386034],[23,25,0.46695490065786266],[23,26,0.46153339942813476],[23,27,0.46905676932845825],[23,28,0.43482174287214],[23,29,0.4864837879314811],[24,0,0.6916235558383081],[24,1,0.5376481525929279],[24,2,0.670721086477088],[24,3,0.6955345478947106],[24,4,0.7814494669414286],[24,5,0.6413993695254556],[24,6,0.5878224386432503],[24,7,0.53262750892225],[24,8,0.654368657443641],[24,9,0.6824577342577226],[24,10,0.6752150301262467],[24,11,0.5875605051203089],[24,12,0.6545441687023715],[24,13,0.555093955726467],[24,14,0.5487609944335592],[24,15,0.6171223145116361],[24,16,0.6017893832745873],[24,17,0.5673364801529215],[24,18,0.554681357969729],[24,19,0.5110289897390276],[24,20,0.5215432471392609],[24,21,0.51165768890457],[24,22,0.5026418644032228],[24,23,0.5146728696387254],[24,24,0.5],[24,25,0.49767887230984975],[24,26,0.4834844251121759],[24,27,0.45765716872889417],[24,28,0.49197668000079653],[24,29,0.4313661331713636],[25,0,0.521996760049119],[25,1,0.8025386732660665],[25,2,0.7913231599246167],[25,3,0.6766531256483523],[25,4,0.6129989016184485],[25,5,0.7496233772922688],[25,6,0.616389002798075],[25,7,0.536678328339205],[25,8,0.5862685381449757],[25,9,0.6505294737101158],[25,10,0.7223888793299084],[25,11,0.6931071578418767],[25,12,0.6336416427977087],[25,13,0.5975705308860413],[25,14,0.5781304880052618],[25,15,0.50003239003168],[25,16,0.5433602654466625],[25,17,0.5555951662161278],[25,18,0.5383533582433315],[25,19,0.5414352503424001],[25,20,0.5456520897858981],[25,21,0.565513779829166],[25,22,0.5418720936162618],[25,23,0.5237287420135212],[25,24,0.5088027338883672],[25,25,0.5],[25,26,0.4868234136304305],[25,27,0.49219815996761274],[25,28,0.48125712732780473],[25,29,0.4559736644571956],[26,0,0.5387139870124619],[26,1,0.731658736249697],[26,2,0.7500734129494266],[26,3,0.711228321927999],[26,4,0.6622645699467916],[26,5,0.7253391696801892],[26,6,0.6439929591610117],[26,7,0.6483474246218566],[26,8,0.6285169770060525],[26,9,0.6101055661940394],[26,10,0.6167415143405692],[26,11,0.6052881956149094],[26,12,0.5373674061054253],[26,13,0.6223518793099786],[26,14,0.6805601479392756],[26,15,0.5494061935823022],[26,16,0.5926895691350024],[26,17,0.5970416097021704],[26,18,0.6258254838673339],[26,19,0.6106417077576052],[26,20,0.531529829713516],[26,21,0.5657156905812939],[26,22,0.5353666007234211],[26,23,0.5042484554609061],[26,24,0.5317632347254021],[26,25,0.5040596255922601],[26,26,0.5],[26,27,0.49139730275872795],[26,28,0.4869443648083216],[26,29,0.46902546158158387],[27,0,0.8265824032356658],[27,1,0.6280199282335697],[27,2,0.6041842315869754],[27,3,0.8053234510897535],[27,4,0.6604302512844258],[27,5,0.8042310970411878],[27,6,0.580275286968935],[27,7,0.7138254255314166],[27,8,0.6491817155066757],[27,9,0.5460817252708281],[27,10,0.749825050867417],[27,11,0.5538161341508842],[27,12,0.5565964356927003],[27,13,0.5915884565378365],[27,14,0.6723389221134014],[27,15,0.5351464211811651],[27,16,0.6046679041088064],[27,17,0.6264625364366971],[27,18,0.5391396312836325],[27,19,0.6008954986273878],[27,20,0.5027591068481517],[27,21,0.5874665609763812],[27,22,0.5308771551140453],[27,23,0.5656456271897681],[27,24,0.5307112830092152],[27,25,0.5013280906606115],[27,26,0.5125803285285762],[27,27,0.5],[27,28,0.4843430509676426],[27,29,0.4748354964111691],[28,0,0.7535976668229273],[28,1,0.810691429899397],[28,2,0.8242866258056797],[28,3,0.7677138190561427],[28,4,0.7036308740703365],[28,5,0.7176057570095475],[28,6,0.6005202915367299],[28,7,0.529750358110799],[28,8,0.7502774883183594],[28,9,0.593299748398357],[28,10,0.625238850929249],[28,11,0.6993353989338914],[28,12,0.708884950379303],[28,13,0.72073241391524],[28,14,0.5393377822764382],[28,15,0.5554281169188046],[28,16,0.5309053585780285],[28,17,0.665944211357628],[28,18,0.6292366862892359],[28,19,0.5947495145688583],[28,20,0.6269670476708696],[28,21,0.5277217428896758],[28,22,0.5820102103014408],[28,23,0.5658196924362855],[28,24,0.5490073036456196],[28,25,0.5091781882098967],[28,26,0.5265281004629572],[28,27,0.5056836826019155],[28,28,0.5],[28,29,0.49786458834298686],[29,0,0.6947720894135013],[29,1,0.8310780006335645],[29,2,0.5507861678206064],[29,3,0.8277384788681243],[29,4,0.5440949452664986],[29,5,0.5084690698060036],[29,6,0.7875948830222609],[29,7,0.7456018294520158],[29,8,0.7627561591211302],[29,9,0.5138397240079283],[29,10,0.7732977464270585],[29,11,0.6210274350687505],[29,12,0.5661224681600336],[29,13,0.6645231605129266],[29,14,0.5350810495944549],[29,15,0.67885707711576],[29,16,0.655701764125872],[29,17,0.5935207869378074],[29,18,0.6544411917486073],[29,19,0.5711096754571343],[29,20,0.5722847428893485],[29,21,0.539106555694936],[29,22,0.5327260224215046],[29,23,0.5717708678972457],[29,24,0.5749767209667211],[29,25,0.5148647822758656],[29,26,0.5396213618816875],[29,27,0.527759297692994],[29,28,0.5124458665366028],[29,29,0.5]],"itemStyle":{"emphasis":{"borderColor":"#333","borderWidth":2}},"progressive":1000,"animation":false}]});
+};</script></div>
+<p>Note the slider control and the tooltips.</p>
+<p>Here is an example with an actual correlation matrix.</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb13"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">let</span> [columns-for-correlations [<span class="at">:sepal-length</span> <span class="at">:sepal-width</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                                <span class="at">:petal-length</span> <span class="at">:petal-width</span>]</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>      correlations (<span class="kw">-&gt;</span> noj-book.datasets/iris</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                       (correlations-dataset columns-for-correlations)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                       (tc/select-columns [<span class="at">:coli</span> <span class="at">:colj</span> <span class="at">:corr-round</span>])</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                       tc/rows)]</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  (echarts-heatmap {<span class="at">:xyz-data</span> correlations</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">:xs</span> columns-for-correlations</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">:ys</span> columns-for-correlations</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>                    <span class="at">:min</span> -<span class="dv">1</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">:max</span> <span class="dv">1</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">:series-name</span> <span class="st">"correlation"</span>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div style="height:400px;width:100%;"><script>
+{
+  var myChart = echarts.init(document.currentScript.parentElement);
+  myChart.setOption({"tooltip":{},"xAxis":{"type":"category","data":["sepal-length","sepal-width","petal-length","petal-width"]},"yAxis":{"type":"category","data":["sepal-length","sepal-width","petal-length","petal-width"]},"visualMap":{"min":-1,"max":1,"calculable":true,"splitNumber":8,"inRange":{"color":["#313695","#4575b4","#74add1","#abd9e9","#e0f3f8","#ffffbf","#fee090","#fdae61","#f46d43","#d73027","#a50026"]}},"series":[{"name":"correlation","type":"heatmap","data":[["sepal-length","sepal-length",1.00],["sepal-length","sepal-width",-0.12],["sepal-length","petal-length",0.87],["sepal-length","petal-width",0.82],["sepal-width","sepal-length",-0.12],["sepal-width","sepal-width",1.00],["sepal-width","petal-length",-0.43],["sepal-width","petal-width",-0.37],["petal-length","sepal-length",0.87],["petal-length","sepal-width",-0.43],["petal-length","petal-length",1.00],["petal-length","petal-width",0.96],["petal-width","sepal-length",0.82],["petal-width","sepal-width",-0.37],["petal-width","petal-length",0.96],["petal-width","petal-width",1.00]],"itemStyle":{"emphasis":{"borderColor":"#333","borderWidth":2}},"progressive":1000,"animation":false}]});
+};</script></div>
+<p>TODO: Improve the layout so that the slider control does not overlap the labels.</p>
+</section>
+<section id="drawing-a-heatmap-using-cljplot" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="drawing-a-heatmap-using-cljplot"><span class="header-section-number">10.4</span> Drawing a heatmap using cljplot</h2>
+<p>coming soon</p>
+</section>
+<section id="drawing-a-heatmap-using-vega" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="drawing-a-heatmap-using-vega"><span class="header-section-number">10.5</span> Drawing a heatmap using Vega</h2>
+<p>coming soon</p>
+<div style="background-color:grey;height:2px;width:100%;"></div>
+<div><pre><small><small>source: <a href="https://github.com/scicloj/noj/blob/main/notebooks/noj_book/visualizing_correlation_matrices.clj">notebooks/noj_book/visualizing_correlation_matrices.clj</a></small></small></pre></div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./noj_book.interactions_ols.html" class="pagination-link" aria-label="Ordinary least squares with interactions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Ordinary least squares with interactions</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
