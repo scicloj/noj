@@ -17,7 +17,7 @@
 
 
 (def lib 'org.scicloj/noj)
-(def version "2-alpha8.2")
+(def version "2-alpha9")
 (def snapshot (str version "-SNAPSHOT"))
 (def class-dir "target/classes")
 
@@ -69,7 +69,7 @@
         cmds     (b/java-command
                   {:basis     basis
                    :main      'clojure.main
-                   :main-args ["-m" "cognitect.test-runner" 
+                   :main-args ["-m" "cognitect.test-runner"
                                "-d" "model-integration-tests"]})]
     (b/process cmds))
   opts)
@@ -94,5 +94,3 @@
     (dd/deploy {:installer :remote :artifact (b/resolve-path jar-file)
                 :pom-file (b/pom-path (select-keys opts [:lib :class-dir]))}))
   opts)
-
-

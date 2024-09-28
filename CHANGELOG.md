@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## [2-alpha9] - unreleased
+## [2-alpha9] - 2024-09-28
 - updated deps (scicloj.ml.tribuo, Tribuo models)
 
 ## [2-alpha8.2] - 2024-09-28
