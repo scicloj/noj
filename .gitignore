@@ -38,5 +38,5 @@ book
 /.clj-kondo/
 test/noj_book/
 
-.venv/
-docs/
+.venv/*
+!.venv/.keep

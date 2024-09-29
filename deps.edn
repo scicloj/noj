@@ -35,19 +35,24 @@
   :test {:extra-paths ["test" "notebooks"]
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
                       io.github.cognitect-labs/test-runner {:git/tag "v0.5.1" :git/sha "dfb30dd"}
+                      same/ish {:mvn/version "0.1.6"}
+                      org.slf4j/slf4j-simple {:mvn/version "2.0.16"}
                       org.scicloj/clay {:mvn/version "2-beta16"}}}
 
   :model-integration-tests
   {:extra-paths ["model-integration-tests" "notebooks"]
    :extra-deps {;; are needed by certain smile models
+                
                 org.bytedeco/arpack-ng {:mvn/version "3.7.0-1.5.4"}
                 org.bytedeco/openblas-platform {:mvn/version "0.3.10-1.5.4"}
                 org.bytedeco/arpack-ng-platform {:mvn/version "3.7.0-1.5.4"}
                 org.bytedeco/openblas {:mvn/version "0.3.10-1.5.4"}
                 org.bytedeco/javacpp {:mvn/version "1.5.4"}
 
+                org.slf4j/slf4j-simple {:mvn/version "2.0.16"}
                 io.github.cognitect-labs/test-runner {:git/tag "v0.5.1" :git/sha "dfb30dd"}}}
 
 
   :dev {:extra-paths ["notebooks"]
-        :extra-deps {org.scicloj/clay {:mvn/version "2-beta16"}}}}}
+        :extra-deps {org.scicloj/clay {:mvn/version "2-beta16"}
+                     same/ish {:mvn/version "0.1.6"}}}}}

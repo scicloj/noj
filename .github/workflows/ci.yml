@@ -2,10 +2,9 @@ name: Clojure CI
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
+    branches:
+      - '*'
+  pull_request_target:  
 jobs:
 
   build:
@@ -18,4 +17,41 @@ jobs:
       uses: devcontainers/ci@v0.3
       with:    
                push: never
-               runCmd: clj -T:build ci
+               runCmd: |
+                  pwd
+                  ls -la
+                  ls -laR .venv
+                  clj -T:build ci
+
+
+  make-doc:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+        ref: ${{ github.head_ref }}
+  
+    - name: Make docs in dev container
+      uses: devcontainers/ci@v0.3
+      with:    
+          push: never
+          noCache: true      
+          runCmd: clj -Adev notebooks/dev.clj 
+           
+    - name: fix permisions
+      run: sudo chmod o+w docs/
+    
+
+    - name: check git status
+      run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          ls docs
+          git status
+
+
+    - name: push updated docs
+      uses: stefanzweifel/git-auto-commit-action@v5
