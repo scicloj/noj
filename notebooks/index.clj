@@ -43,7 +43,7 @@ The main current goal is to provide a clear picture of the direction the stack i
 
 * Keep making the docs generate automatic tests using [kindly/check](https://scicloj.github.io/clay/#test-generation).
 
-## Existing chapters in this book:
+## Chapters in this book:
 ")
 
 ^:kindly/hide-code
