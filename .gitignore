@@ -34,6 +34,7 @@ _quarto.yml
 temp
 *.qmd
 book
+docs-draft
 
 /.clj-kondo/
 test/noj_book/
