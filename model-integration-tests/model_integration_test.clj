@@ -233,7 +233,7 @@ warnings.simplefilter('ignore')")
         (->
          (data/iris-ds)
          ds-cat/reverse-map-categorical-xforms
-         ( ds/categorical->number [:species] {} :float-64))]
+         (ds/categorical->number [:species] {} :float64))]
     (run!
      #(verify-fn % iris)
      model-specs)))
@@ -257,7 +257,7 @@ warnings.simplefilter('ignore')")
       ))
     ))
 
-(deftest verify-classification-iris-nil-catmap
+(deftest verify-classification-iris-nil-catmap-int
   (let [iris
         (->
          (data/iris-ds)
@@ -275,6 +275,23 @@ warnings.simplefilter('ignore')")
          ))
      )
     )
+
+(deftest verify-classification-iris-nil-catmap-float
+  (let [iris
+        (->
+         (data/iris-ds)
+         (ds-cat/reverse-map-categorical-xforms)
+         (ds/categorical->number [:species] {} :float64)
+         (ds/assoc-metadata [:species] :categorical-map nil))]
+    (run!
+     #(verify-fn % iris)
+     (-> model-specs
+         ;;https://github.com/scicloj/scicloj.ml.tribuo/issues/6 
+         (remove-model-type  :scicloj.ml.tribuo/classification)
+         ;;https://github.com/scicloj/scicloj.ml.smile/issues/19
+         (remove-model-type  :smile.classification/mlp)
+         ;;https://github.com/scicloj/scicloj.ml.xgboost/issues/1
+         (remove-model-type  :xgboost/classification)))))
 
   ;;(classify (-> smile-model-specs first second) iris-3)
 
