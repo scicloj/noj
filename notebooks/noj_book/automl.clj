@@ -1,6 +1,6 @@
 ;; # AutoML using metamorph pipelines
 
-;; author: Carsten Behring
+;; Author: Carsten Behring
 
 ;;  In this tutorial we see how to use `metamorph.ml` to perform automatic machine learning.
 ;;  With AutoML we mean to try lots of different models and hyper parameters and rely on automatic
