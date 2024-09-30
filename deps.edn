@@ -39,7 +39,7 @@
                       org.scicloj/clay {:mvn/version "2-beta16"}}}
 
   :model-integration-tests
-  {:extra-paths ["model-integration-tests" "notebooks" "test-resources"]
+  {:extra-paths ["model-integration-tests" "notebooks"]
    :extra-deps {;; are needed by certain smile models
                 org.bytedeco/arpack-ng {:mvn/version "3.7.0-1.5.4"}
                 org.bytedeco/openblas-platform {:mvn/version "0.3.10-1.5.4"}
