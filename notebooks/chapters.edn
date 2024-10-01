@@ -7,7 +7,7 @@
  {:part "Machine Learning"
   :chapters ["ml_basic"
              "prepare_for_ml"
-             #_"automl"
+             "automl"
              "interactions_ols"]}
  {:part "Tutorials"
   :chapters ["visualizing_correlation_matrices"]}]
