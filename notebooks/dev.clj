@@ -31,5 +31,5 @@
       clay/make!))
 
 
-(clay/make! base-config)
+(clay/make! (base-config))
 (System/exit 0)
