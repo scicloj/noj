@@ -234,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Tutorials</span></a>
+ <span class="menu-text">Data Visualization</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -242,8 +242,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./noj_book.echarts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Visualization with Echarts - DRAFT 🛠</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./noj_book.visualizing_correlation_matrices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualizing correlation matrices (experimental 🛠) - DRAFT</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Visualizing correlation matrices (experimental) - DRAFT 🛠</span></span></a>
   </div>
 </li>
       </ul>
@@ -350,7 +356,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb8"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>my-pipeline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>#object[clojure.core$partial$fn__5927 <span class="bn">0x3a2c5042</span> <span class="st">"clojure.core$partial$fn__5927@3a2c5042"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>#object[clojure.core$partial$fn__5927 <span class="bn">0x57362f5f</span> <span class="st">"clojure.core$partial$fn__5927@57362f5f"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This function is metamorph compliant, so it takes a map (my-pipeline {}) and returns a map.</p>
 <p>But this map cannot be “arbitrary”, it need to adhere to the <code>metamorph</code> conventions.</p>
@@ -395,19 +401,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
@@ -424,27 +418,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">1.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
@@ -454,68 +460,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">...</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">2.0</td>
 <td style="text-align: right;">1.0</td>
 </tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
 <tr class="even">
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
@@ -526,7 +532,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :fit</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "c8875300-d4f8-4a65-9c26-a3c8893c4285" {:model-data {:majority-class 0.0, :distinct-labels (1.0 0.0)}, :options {:model-type :metamorph.ml/dummy-classifier}, :id #uuid "caec0379-ad2d-4968-bb48-2ed4ac421213", :feature-columns [:sex :pclass :embarked], :target-columns [:survived], :target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {"no" 0, "yes" 1}, :src-column :survived, :result-datatype :float64}}, :scicloj.metamorph.ml/unsupervised? nil}</code></pre></div></div><p>}</p></div>
+<div><pre><code class="sourceCode language-clojure printed-clojure">:metamorph/mode :fit</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">#uuid "aa1c5a6e-ff6b-47e8-9e0e-0e0e847d2f5a" {:model-data {:majority-class 0.0, :distinct-labels (1.0 0.0)}, :options {:model-type :metamorph.ml/dummy-classifier}, :id #uuid "a8427aa1-5f9c-4c59-9c04-4f516d3c75b8", :feature-columns [:sex :pclass :embarked], :target-columns [:survived], :target-categorical-maps {:survived #tech.v3.dataset.categorical.CategoricalMap{:lookup-table {"no" 0, "yes" 1}, :src-column :survived, :result-datatype :float64}}, :scicloj.metamorph.ml/unsupervised? nil}</code></pre></div></div><p>}</p></div>
 <p>The ctx contains lots of information, so I only show its top level keys</p>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb13"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">keys</span> ctx-after-train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -534,7 +540,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="printedClojure">
 <div class="sourceCode" id="cb14"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">:metamorph/data</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a> <span class="at">:metamorph/mode</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> #uuid <span class="st">"c8875300-d4f8-4a65-9c26-a3c8893c4285"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> #uuid <span class="st">"aa1c5a6e-ff6b-47e8-9e0e-0e0e847d2f5a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This context map has the “data”, the “mode” and an UUID for each operation (we had only one in this pipeline)</p>
 <div class="sourceClojure">
@@ -559,19 +565,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
@@ -588,27 +582,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">1.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
@@ -618,68 +624,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">...</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">2.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1.0</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">2.0</td>
 <td style="text-align: right;">1.0</td>
 </tr>
-<tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
 <tr class="even">
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0.0</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">0.0</td>
 </tr>
@@ -688,7 +694,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div><div><pre><code class="sourceCode language-clojure printed-clojure">:fit
 </code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">{:model-data {:majority-class 0.0, :distinct-labels (1.0 0.0)},
  :options {:model-type :metamorph.ml/dummy-classifier},
- :id #uuid "caec0379-ad2d-4968-bb48-2ed4ac421213",
+ :id #uuid "a8427aa1-5f9c-4c59-9c04-4f516d3c75b8",
  :feature-columns [:sex :pclass :embarked],
  :target-columns [:survived],
  :target-categorical-maps
@@ -712,7 +718,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="printedClojure">
 <div class="sourceCode" id="cb18"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">:metamorph/data</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a> <span class="at">:metamorph/mode</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a> #uuid <span class="st">"c8875300-d4f8-4a65-9c26-a3c8893c4285"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a> #uuid <span class="st">"aa1c5a6e-ff6b-47e8-9e0e-0e0e847d2f5a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>For the dummy-model we do not see a <code>trained-model</code>, but it “communicates” the majority class from the train data to use it for prediction. So the <code>dummy-model</code> has ‘learned’ the majority class from its training data.</p>
 <p>So we can get prediction result out of the ctx:</p>
@@ -745,7 +751,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="printedClojure">
 <div class="sourceCode" id="cb23"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">:metamorph/data</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a> <span class="at">:metamorph/mode</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a> #uuid <span class="st">"9b91418c-66a3-436e-b045-925a1cc3efb1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a> #uuid <span class="st">"8ff5c26c-a793-4b84-a60d-aeb9e13b153d"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To show the power of pipelines, I start with doing the simplest possible pipeline, and expand then on it.</p>
 <p>We can already chain train and test with usual functions:</p>
@@ -810,19 +816,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb33"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>(mm/pipeline ops<span class="dv">-1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb34"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>#object[clojure.core$partial$fn__5927 <span class="bn">0x7bdb1918</span> <span class="st">"clojure.core$partial$fn__5927@7bdb1918"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>#object[clojure.core$partial$fn__5927 <span class="bn">0x1d0ab9ee</span> <span class="st">"clojure.core$partial$fn__5927@1d0ab9ee"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb35"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>(mm/pipeline ops<span class="dv">-2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb36"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>#object[clojure.core$partial$fn__5927 <span class="bn">0x29bfe521</span> <span class="st">"clojure.core$partial$fn__5927@29bfe521"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>#object[clojure.core$partial$fn__5927 <span class="bn">0x59184eb1</span> <span class="st">"clojure.core$partial$fn__5927@59184eb1"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="sourceClojure">
 <div class="sourceCode" id="cb37"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>(mm/pipeline ops<span class="dv">-3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb38"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>#object[clojure.core$partial$fn__5927 <span class="bn">0x10f13284</span> <span class="st">"clojure.core$partial$fn__5927@10f13284"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>#object[clojure.core$partial$fn__5927 <span class="bn">0x601af90</span> <span class="st">"clojure.core$partial$fn__5927@601af90"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>All three can be called as function taking a dataset iwrapped in a ctx</p>
 <p>Pipeline as data is as well supported</p>
@@ -833,7 +839,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb40"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>(mm/-&gt;pipeline op-spec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb41"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>#object[clojure.core$partial$fn__5927 <span class="bn">0x473b9ee3</span> <span class="st">"clojure.core$partial$fn__5927@473b9ee3"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>#object[clojure.core$partial$fn__5927 <span class="bn">0x418edaa5</span> <span class="st">"clojure.core$partial$fn__5927@418edaa5"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Creating these functions does not yet execute anything, they are functions which can be executed against a context as part of a metamorph pipeline. Executions are triggered like this:</p>
 <div class="sourceClojure">
@@ -1685,20 +1691,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>[:sex :pclass]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+<td>0.775096806957405</td>
+<td><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>{:model-type :sklearn.classification/random-forest-classifier}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+</tr>
+<tr class="even">
+<td><div>
 <pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>[:sex :pclass :embarked]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
 </div></td>
 <td>0.7750777629657843</td>
 <td><div>
 <pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>{:model-type :sklearn.classification/logistic-regression}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
-</div></td>
-</tr>
-<tr class="even">
-<td><div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>[:sex :pclass]</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
-</div></td>
-<td>0.773973211451787</td>
-<td><div>
-<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>{:model-type :sklearn.classification/random-forest-classifier}</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
 </div></td>
 </tr>
 </tbody>

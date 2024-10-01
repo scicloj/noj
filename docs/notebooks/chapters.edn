@@ -9,5 +9,6 @@
              "prepare_for_ml"
              "automl"
              "interactions_ols"]}
- {:part "Tutorials"
-  :chapters ["visualizing_correlation_matrices"]}]
+ {:part "Data Visualization"
+  :chapters ["echarts"
+             "visualizing_correlation_matrices"]}]
