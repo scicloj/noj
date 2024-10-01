@@ -1,4 +1,4 @@
-;; # Visualizing correlation matrices (experimental 🛠) - DRAFT
+;; # Visualizing correlation matrices (experimental) - DRAFT 🛠
 
 ;; This tutorial explores various ways to visualize a correlation matrix
 ;; as a heatmap.
