@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Scinojure Documentation</title>
+<title>12&nbsp; Intro to Linear Algebra - DRAFT 🛠 – Scinojure Documentation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./noj_book.underlying_libraries.html" rel="next">
+<link href="./noj_book.visualizing_correlation_matrices.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <meta property="og:image" content="https://scicloj.github.io/sci-cloj-logo-transparent.png">
-<meta property="og:title" content="Scinojure Documentation">
+<meta property="og:title" content="12&nbsp; Intro to Linear Algebra - DRAFT 🛠 – Scinojure Documentation">
 <meta property="og:description" content="">
 <link rel="icon" href="data:,">
 
@@ -84,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./noj_book.linear_algebra_intro.html">Linear Algebra</a></li><li class="breadcrumb-item"><a href="./noj_book.linear_algebra_intro.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Intro to Linear Algebra - DRAFT 🛠</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -111,7 +145,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
   </div>
 </li>
@@ -230,7 +264,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./noj_book.linear_algebra_intro.html" class="sidebar-item-text sidebar-link">
+  <a href="./noj_book.linear_algebra_intro.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Intro to Linear Algebra - DRAFT 🛠</span></span></a>
   </div>
 </li>
@@ -246,19 +280,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface"><span class="header-section-number">1</span> Preface</a>
-  <ul>
-  <li><a href="#chapters-of-this-book" id="toc-chapters-of-this-book" class="nav-link" data-scroll-target="#chapters-of-this-book"><span class="header-section-number">1.1</span> Chapters of this book:</a></li>
-  </ul></li>
+  <li><a href="#addition" id="toc-addition" class="nav-link active" data-scroll-target="#addition"><span class="header-section-number">12.1</span> Addition</a></li>
+  <li><a href="#scalar-multiplication" id="toc-scalar-multiplication" class="nav-link" data-scroll-target="#scalar-multiplication"><span class="header-section-number">12.2</span> Scalar multiplication</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./noj_book.linear_algebra_intro.html">Linear Algebra</a></li><li class="breadcrumb-item"><a href="./noj_book.linear_algebra_intro.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Intro to Linear Algebra - DRAFT 🛠</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Scinojure Documentation</h1>
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Intro to Linear Algebra - DRAFT 🛠</span></h1>
 </div>
 
 
@@ -285,60 +317,37 @@ ul.task-list li input[type="checkbox"] {
 .clay-side-by-side .sourceCode {margin: 0}
 .clay-side-by-side {margin: 1em 0}
 </style>
-<script src="index_files/md-default0.js" type="text/javascript"></script>
-<script src="index_files/md-default1.js" type="text/javascript"></script>
-<svg fill="none" height="128" stroke-linecap="round" stroke-linejoin="round" stroke-width="31" viewbox="-128 -128 256 256" width="128" xmlns="http://www.w3.org/2000/svg"><circle cx="0" cy="0" fill="#2F4179" r="128" stroke="none"></circle><g stroke-linecap="butt"><path d="M -128,0 Q -112,0 -112,20 -100,100 -20,112 0,112 0,128" stroke="#62B132"></path><path d="M 128,0 Q 112,0 112,-20 100,-100 20,-112  0,-112 0,-128" stroke="#5881D8"></path></g><g fill="#FFCD52" id="north star"><path d="M 0 -80 L 8 0 0 80 -8 0 Z"></path><path d="M -80 0 L 0 8 80 0 0 -8 Z"></path><path d="M -40.0 -40.0 L -8 0 40.0 40.0 8 0 Z"></path><path d="M -40.0 40.0 L -8 0 40.0 -40.0 8 0 Z"></path></g></svg>
-
-<section id="preface" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Preface</h1>
-<p>Scinojure (“Noj”) is an entry point to the Clojure stack for data &amp; science.</p>
-<p>It combines a few of the relevant Clojure libraries for data &amp; science and documents common ways of using them together. The included libraries either use <a href="https://github.com/techascent/tech.ml.dataset">tech.ml.dataset</a> directly as tabular data structure or provide high interoperability with it.</p>
-<p><strong>Source:</strong> <a href="https://github.com/scicloj/noj"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&amp;logo=github&amp;logoColor=white" class="img-fluid" alt="(GitHub repo)"></a></p>
-<p><strong>Deps:</strong> <a href="https://clojars.org/org.scicloj/noj"><img src="https://img.shields.io/clojars/v/org.scicloj/noj.svg" class="img-fluid" alt="Clojars Project"></a></p>
-<p><strong>Tests:</strong> <img src="https://github.com/scicloj/noj/actions/workflows/ci.yml/badge.svg" class="img-fluid" alt="ci workflow"></p>
-<p>Note we are using git coordinates at the moment, in order to expose a few relevant features of the current underlying libraries, which are unreleased yet.</p>
-<p><strong>Status:</strong> Most of the <a href="./noj_book.underlying_libraries.html">underlying libraries</a> are stable. The experimental parts are marked as such. For some of the libraries, we use a branch for an upcoming release. The main current goal is to provide a clear picture of the direction the stack is going towards, expecting most of it to stabilize soon.</p>
-<p><strong>Near term plan - till the end of October 2024</strong></p>
-<ul>
-<li><p>Work on stabilizing the upcoming releases of the underlying libraries.</p></li>
-<li><p>Keep documenting core ideas of the underlying librares and ways to combine them in typical workflows.</p></li>
-<li><p>Keep making the docs generate automatic tests using <a href="https://scicloj.github.io/clay/#test-generation">kindly/check</a>.</p></li>
-</ul>
-<section id="chapters-of-this-book" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="chapters-of-this-book"><span class="header-section-number">1.1</span> Chapters of this book:</h2>
-<ul>
-<li><p>Overview</p>
-<ul>
-<li><p><a href="noj_book.underlying_libraries.html">Underlying libraries</a></p></li>
-<li><p><a href="noj_book.recommended_libraries.html">Recommended libraries</a></p></li>
-<li><p><a href="noj_book.known_issues.html">Known issues ❗</a></p></li>
-</ul></li>
-<li><p>Datasets</p>
-<ul>
-<li><a href="noj_book.datasets.html">Datasets</a></li>
-</ul></li>
-<li><p>Machine Learning</p>
-<ul>
-<li><p><a href="noj_book.ml_basic.html">Machine learning</a></p></li>
-<li><p><a href="noj_book.prepare_for_ml.html">Machine learning specific functionality in <code>tech.ml.dataset</code></a></p></li>
-<li><p><a href="noj_book.automl.html">AutoML using metamorph pipelines</a></p></li>
-<li><p><a href="noj_book.interactions_ols.html">Ordinary least squares with interactions</a></p></li>
-</ul></li>
-<li><p>Data Visualization</p>
-<ul>
-<li><p><a href="noj_book.echarts.html">Data Visualization with Echarts - DRAFT 🛠</a></p></li>
-<li><p><a href="noj_book.visualizing_correlation_matrices.html">Visualizing correlation matrices (experimental) - DRAFT 🛠</a></p></li>
-</ul></li>
-<li><p>Linear Algebra</p>
-<ul>
-<li><a href="noj_book.linear_algebra_intro.html">Intro to Linear Algebra - DRAFT 🛠</a></li>
-</ul></li>
-</ul>
-<div style="background-color:grey;height:2px;width:100%;"></div>
-<div><pre><small><small>source: <a href="https://github.com/scicloj/noj/blob/main/notebooks/index.clj">notebooks/index.clj</a></small></small></pre></div>
-
-
+<script src="noj_book.linear_algebra_intro_files/md-default0.js" type="text/javascript"></script>
+<script src="noj_book.linear_algebra_intro_files/md-default1.js" type="text/javascript"></script>
+<p>In this tutorial, we introduce basic linear algebra concepts and the way they can be computed using <a href="https://github.com/generateme/fastmath">Fastmath</a>.</p>
+<p>For additional backgrounds, see <a href="https://web.stanford.edu/~boyd/vmls/">Introduction to Applied Linear Algebra – Vectors, Matrices, and Least Squares</a> by Stephen Boyd &amp; Lieven Vandenberghe, Cambridge University Press, UK, 2018.</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb1"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">ns</span> noj-book.linear-algebra-intro</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  (<span class="at">:require</span> [fastmath.<span class="kw">vector</span> <span class="at">:as</span> <span class="kw">vec</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="addition" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="addition"><span class="header-section-number">12.1</span> Addition</h2>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb2"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(vec/add [<span class="dv">1</span> <span class="dv">9</span>]</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>         [<span class="dv">0</span> -<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="printedClojure">
+<div class="sourceCode" id="cb3"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>[<span class="fl">1.0</span> <span class="fl">6.0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
+<section id="scalar-multiplication" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="scalar-multiplication"><span class="header-section-number">12.2</span> Scalar multiplication</h2>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb4"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(vec/mult [<span class="dv">1</span> <span class="dv">9</span>]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>          <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="printedClojure">
+<div class="sourceCode" id="cb5"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>[<span class="fl">1000.0</span> <span class="fl">9000.0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div style="background-color:grey;height:2px;width:100%;"></div>
+<div><pre><small><small>source: <a href="https://github.com/scicloj/noj/blob/main/notebooks/noj_book/linear_algebra_intro.clj">notebooks/noj_book/linear_algebra_intro.clj</a></small></small></pre></div>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -764,11 +773,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./noj_book.visualizing_correlation_matrices.html" class="pagination-link" aria-label="Visualizing correlation matrices (experimental) - DRAFT 🛠">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Visualizing correlation matrices (experimental) - DRAFT 🛠</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./noj_book.underlying_libraries.html" class="pagination-link" aria-label="Underlying libraries">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Underlying libraries</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
