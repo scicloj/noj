@@ -13,7 +13,7 @@ permissions:
 
 jobs:
 
-  build:
+  run-tests:
 
     runs-on: ubuntu-latest
 
