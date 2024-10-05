@@ -17,8 +17,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
-    
+   
     - uses: actions/checkout@v4
 
     - name: Login to GitHub Container Registry
@@ -28,22 +27,6 @@ jobs:
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Cache deps.edn project dependencies
-      uses: actions/cache@v4
-      with:
-       path: ~/.m2/repository
-       key: ${{ runner.os }}-clojure-${{ hashFiles('**/deps.edn') }}
-       restore-keys: |
-         ${{ runner.os }}-clojure
-
-
-    - name: debug
-      uses: devcontainers/ci@v0.3
-      with:    
-               imageName: ghcr.io/scicloj/noj-devontainer
-               cacheFrom: ghcr.io/scicloj/noj-devontainer
-               push: always               
-               runCmd: clojure -Spath
 
     - name: Run make ci-build in dev container
       uses: devcontainers/ci@v0.3
@@ -51,9 +34,7 @@ jobs:
                imageName: ghcr.io/scicloj/noj-devontainer
                cacheFrom: ghcr.io/scicloj/noj-devontainer
                push: always               
-               runCmd: |
-                  ls -laR .venv
-                  clj -T:build ci
+               runCmd: clj -T:build ci
 
   make-doc:
 
@@ -69,33 +50,17 @@ jobs:
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Cache deps.edn project dependencies
-      uses: actions/cache@v4
-      with:
-       path: ~/.m2/repository
-       key: ${{ runner.os }}-clojure-${{ hashFiles('**/deps.edn') }}
-       restore-keys: |
-         ${{ runner.os }}-clojure
-
-  
     - name: Make docs in dev container
       uses: devcontainers/ci@v0.3
       with: 
           imageName: ghcr.io/scicloj/noj-devontainer
           cacheFrom: ghcr.io/scicloj/noj-devontainer
           push: always
-          
-             
           runCmd: clj -Adev notebooks/dev.clj 
            
     - name: fix permisions
-      run: | 
-          sudo chmod o+w docs/
-          sudo chmod o+w ~/.m2/
+      run:  sudo chmod o+w docs/
           
-    - name: check .m2
-      run: ls -lar ~/.m2/repository
-
     - name: Setup Pages
       uses: actions/configure-pages@v5
     - name: Build with Jekyll
