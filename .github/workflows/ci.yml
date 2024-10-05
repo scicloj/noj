@@ -1,11 +1,14 @@
 name: Clojure CI
 
-on: push
+on: 
+ - push
+ - workflow_dispatch
 
 permissions:
   contents: read
   pages: write
   id-token: write
+  packages: write
 
 jobs:
 
@@ -14,11 +17,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+    
     - uses: actions/checkout@v4
+
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v2 
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    
     - name: Run make ci-build in dev container
       uses: devcontainers/ci@v0.3
       with:    
-               push: never
+               imageName: ghcr.io/behrica/noj-devontainer
+               cacheFrom: ghcr.io/behrica/noj-devontainer
+               push: always               
                runCmd: |
                   ls -laR .venv
                   clj -T:build ci
@@ -29,12 +44,23 @@ jobs:
     
     steps:
     - uses: actions/checkout@v4
+
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v2 
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
   
     - name: Make docs in dev container
       uses: devcontainers/ci@v0.3
-      with:    
-          push: never
-          noCache: true      
+      with: 
+          imageName: ghcr.io/behrica/noj-devontainer
+          cacheFrom: ghcr.io/behrica/noj-devontainer
+          push: always
+          
+             
           runCmd: clj -Adev notebooks/dev.clj 
            
     - name: fix permisions

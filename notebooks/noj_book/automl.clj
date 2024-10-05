@@ -1,6 +1,8 @@
 ;; # AutoML using metamorph pipelines
 
 ;; Author: Carsten Behring
+;;
+;; Updated: 05.10.2024
 
 ;;  In this tutorial we see how to use `metamorph.ml` to perform automatic machine learning.
 ;;  With AutoML we mean to try lots of different models and hyper parameters and rely on automatic
@@ -21,15 +23,16 @@
 ;; This cannot work with a threading macro, as this executes immediate.
 ;;
 ;; The Clojure way to do this, is function composing and higher level
-;; functions
+;; functions.
 ;;
 ;; (The following is a very low level explanation of `metamorph`, as a
 ;; `metamorph.ml` user
 ;; we do not use this low-level functions , see next chapter)
 ;;
-;; While before we saw how to use the pair of `train` and `predict` to
+;; While in the basic tutorial we saw how to use the pair of `train` 
+;; and `predict` to
 ;; perform machine learning, AutoML requires us to use an other
-;; abstraction, in order to encapsulate both train and predict in
+;; abstraction, in order to encapsulate both train and predict in a
 ;; single function.(or other any operation)
 ;;
 ;;  We will use the concept of a "metamorph pipeline", which is a
@@ -44,10 +47,10 @@
 ;; will do `train` in mode
 ;; `:fit` and `predict` in mode `:transform`
 ;;
-;; The names `:fit` and `:transform` come from the fact that functions
-;; could do other things then
-;; `train` and `predict`, so `:fit` and `:transform` represent a
-;; more general concept then train/predict
+;; The names `:fit` and `:transform` come from the fact that the functions
+;; could do other things then  `train` and `predict`, 
+;; so `:fit` and `:transform` represent a
+;; more general concept then train/predict.
 
 (require '[scicloj.metamorph.ml :as ml]
          '[scicloj.metamorph.core :as mm]
@@ -58,7 +61,7 @@
 (def titanic ml-basic/numeric-titanic-data)
 
 
-;;  so lets create splits of the data first.
+;;  so lets create splits of the data first:
 
 (def splits (first (tc/split->seq titanic)))
 (def train-ds (:train splits))
