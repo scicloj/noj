@@ -1,10 +1,6 @@
 name: Clojure CI
 
-on:
-  push:
-    branches:
-      - '*'
-  pull_request_target:  
+on: push
 
 permissions:
   contents: read
@@ -24,8 +20,6 @@ jobs:
       with:    
                push: never
                runCmd: |
-                  pwd
-                  ls -la
                   ls -laR .venv
                   clj -T:build ci
 
@@ -35,9 +29,6 @@ jobs:
     
     steps:
     - uses: actions/checkout@v4
-      with:
-        repository: ${{ github.event.pull_request.head.repo.full_name }}
-        ref: ${{ github.head_ref }}
   
     - name: Make docs in dev container
       uses: devcontainers/ci@v0.3
