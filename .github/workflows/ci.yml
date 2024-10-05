@@ -81,7 +81,12 @@ jobs:
           runCmd: clj -Adev notebooks/dev.clj 
            
     - name: fix permisions
-      run: sudo chmod o+w docs/
+      run: | 
+          sudo chmod o+w docs/
+          sudo chmod o+w ~/.m2/
+          
+    - name: check .m2
+      run: ls -lar ~/.m2/repository
 
     - name: Setup Pages
       uses: actions/configure-pages@v5
