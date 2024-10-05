@@ -27,6 +27,15 @@ jobs:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Cache deps.edn project dependencies
+      uses: actions/cache@v4
+      with:
+       path: ~/.m2/repository
+       key: ${{ runner.os }}-clojure-${{ hashFiles('**/deps.edn') }}
+       restore-keys: |
+         ${{ runner.os }}-clojure
+
     
     - name: Run make ci-build in dev container
       uses: devcontainers/ci@v0.3
@@ -51,6 +60,14 @@ jobs:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Cache deps.edn project dependencies
+      uses: actions/cache@v4
+      with:
+       path: ~/.m2/repository
+       key: ${{ runner.os }}-clojure-${{ hashFiles('**/deps.edn') }}
+       restore-keys: |
+         ${{ runner.os }}-clojure
 
   
     - name: Make docs in dev container
