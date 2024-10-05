@@ -3,7 +3,7 @@
 ^:kindly/hide-code
 (ns noj-book.recommended-libraries)
 
-;; We recommend combining Noj with the following libraries in addition to its own [underlying libraries](./noj_book.underlying_libraries.html)
+;; We recommend combining Noj with the following libraries in addition to its own [underlying libraries](./noj_book.underlying_libraries.html).
 
 ;; * [Wolframite](https://scicloj.github.io/wolframite/) - Wolfram Language bindings
 ;; * [cljplot](https://github.com/generateme/cljplot) - plotting - 🛠 early stage
