@@ -1,13 +1,15 @@
 name: Clojure CI
 
-on:
-  push:
-    branches:
-      - '*'
-  pull_request_target:  
+on: push
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
 
-  build:
+  run-tests:
 
     runs-on: ubuntu-latest
 
@@ -18,11 +20,8 @@ jobs:
       with:    
                push: never
                runCmd: |
-                  pwd
-                  ls -la
                   ls -laR .venv
                   clj -T:build ci
-
 
   make-doc:
 
@@ -30,9 +29,6 @@ jobs:
     
     steps:
     - uses: actions/checkout@v4
-      with:
-        repository: ${{ github.event.pull_request.head.repo.full_name }}
-        ref: ${{ github.head_ref }}
   
     - name: Make docs in dev container
       uses: devcontainers/ci@v0.3
@@ -43,15 +39,27 @@ jobs:
            
     - name: fix permisions
       run: sudo chmod o+w docs/
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v5
+    - name: Build with Jekyll
+      uses: actions/jekyll-build-pages@v1
+      with:
+         source: ./docs
+         destination: ./_site
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+    
+  # Deployment job
+  deploy-pages:
+   environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+   runs-on: ubuntu-latest
+   needs: make-doc
+   steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
     
 
-    - name: check git status
-      run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          ls docs
-          git status
-
-
-    - name: push updated docs
-      uses: stefanzweifel/git-auto-commit-action@v5
