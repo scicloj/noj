@@ -36,7 +36,15 @@ jobs:
        restore-keys: |
          ${{ runner.os }}-clojure
 
-    
+
+    - name: debug
+      uses: devcontainers/ci@v0.3
+      with:    
+               imageName: ghcr.io/scicloj/noj-devontainer
+               cacheFrom: ghcr.io/scicloj/noj-devontainer
+               push: always               
+               runCmd: clojure -Spath
+
     - name: Run make ci-build in dev container
       uses: devcontainers/ci@v0.3
       with:    
