@@ -2,11 +2,11 @@
 
 ;; author: Daniel Slutsky
 
+;; For our tutorials here,
+;; let us fetch some datasets from [Rdatasets](https://vincentarelbundock.github.io/Rdatasets/):
+
 (ns noj-book.datasets
   (:require [tablecloth.api :as tc]))
-
-;; For our tutorials here,
-;; let us fetch some datasets from [Rdatasets](https://vincentarelbundock.github.io/Rdatasets/)
 
 (def iris
   (-> "https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv"

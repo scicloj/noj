@@ -1,7 +1,7 @@
 (ns dev
   (:require [scicloj.clay.v2.api :as clay]))
 
-(def base-config
+(defn base-config []
   {:show false
    :format [:quarto :html]
    :base-source-path "notebooks"
@@ -25,11 +25,11 @@
 
 ;; For interactive local testing:
 (comment
-  (-> base-config
+  (-> (base-config)
       (assoc :show true
              :base-target-path "docs-draft")
       clay/make!))
 
 
-(clay/make! base-config)
+(clay/make! (base-config))
 (System/exit 0)
