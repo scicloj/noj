@@ -1,4 +1,4 @@
-;; # Recommended libraries
+;; # Other recommended libraries
 
 ^:kindly/hide-code
 (ns noj-book.recommended-libraries)
