@@ -53,9 +53,12 @@
 ;; [Tablecloth](https://scicloj.github.io/tablecloth/) dataset?
 
 (def sales
-  (tc/dataset
-   {:item ["Shirts", "Cardigans", "Chiffons", "Pants", "Heels", "Socks"]
-    :amount [5, 20, 36, 10, 10, 20]}))
+  (-> {:item ["Shirts", "Cardigans", "Chiffons", "Pants", "Heels", "Socks"]
+       :amount [5, 20, 36, 10, 10, 20]}
+      tc/dataset
+      (tc/set-dataset-name "Sales")))
+
+sales
 
 ;; A dataset is also a map, and the keys are the column names:
 
