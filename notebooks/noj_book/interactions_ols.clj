@@ -14,7 +14,8 @@
             [tablecloth.column.api :as tcc]
             [tablecloth.pipeline :as tcpipe]
             [tech.v3.dataset.modelling :as modelling]
-            [scicloj.ml.tribuo]))
+            [scicloj.ml.tribuo]
+            [scicloj.metamorph.ml.design-matrix :as dm]))
 
 ^:kindly/hide-code
 (def md
@@ -101,12 +102,76 @@ suggests that there is indeed an interaction between these 2 predictor variables
 
 (md "$RMSE$")
 (-> evaluations flatten first :test-transform :metric)
+(kindly/check = 0.933077510748531)
 
 (md "$R^2$")
 (-> evaluations flatten first :test-transform :other-metrices first :metric)
+(kindly/check = 0.9747551116991899)
 
 (md "$RMSE$ and $R^2$ of the intercation model are sligtly better.
 
 These results suggest that the model with the interaction term is better than the model that contains only main effects.
 So, for this specific data, we should go for the model with the interaction model.
 ")
+
+
+;; ## use design matric
+;; Since `metamorph.ml 0.9.0` we have a simpler way to express the same inteactions as before.
+;;
+;; We can express the same formula 
+;; $$sales = b0 + b1 * youtube + b2 * facebook + b3 * (youtube * facebook)$$
+;; by specifying a design matrix.
+
+
+(require '[scicloj.metamorph.ml.design-matrix :as dm])
+
+(def dm
+  (dm/create-design-matrix 
+   preprocessed-data
+   [:sales]                                         ;; predictor
+   [
+    [:youtube '(identity youtube)]                  ;; youtube stays as-is
+    [:facebook '(identity facebook)]                ;; facebook stays as-is
+    [:youtube*facebook '(* youtube facebook)]       ;; new term is created
+    
+    ]      
+
+   ))
+
+
+;; The result of the `create-design-matrix` function is directly "ready" to be used
+;; without any further preprocessing:
+;; - only specified terms are present
+;; - all numeric
+;; - predictor is "marked" as such 
+;; all present terms are added
+
+dm
+
+;; Having such numeric dataset the pipeline is "minimal", only containing the model:
+
+(def pipe-mode-only
+  (mm/pipeline
+   {:metamorph/id :model} (ml/model linear-model-config)))
+
+(def evaluations-dm
+  (ml/evaluate-pipelines
+   [pipe-mode-only]
+   (tc/split->seq dm
+                  :holdout
+                  {:seed 112723})
+   loss/rmse
+   :loss
+   {:other-metrices [{:name :r2
+                      :metric-fn fmstats/r2-determination}]}))
+
+;; we get the same metrices as before, ()as it is the same model specification):
+
+(md "$RMSE$")
+(-> evaluations-dm flatten first :test-transform :metric)
+(kindly/check = 0.933077510748531)
+
+(md "$R^2$")
+(-> evaluations-dm flatten first :test-transform :other-metrices first :metric)
+(kindly/check = 0.9747551116991899)
+
