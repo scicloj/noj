@@ -24,7 +24,8 @@
 (defn test "Run all the tests." [opts]
   (doseq [alias [:1.11 :1.12 :master]]
     (println "\nRunning tests for Clojure" (name alias))
-    (let [basis    (b/create-basis {:aliases (concat (opts :aliases [:test alias]))})
+    (let [opts     (or opts {})
+          basis    (b/create-basis {:aliases (concat (opts :aliases [:test alias]))})
           cmds     (b/java-command
                     {:basis     basis
                      :main      'clojure.main
