@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 - upgraded scicloj.ml.xgboost to 6.1.0
 
+## [2-alpha10] - unreleased
+- updated deps (Fastmath, Hanamicloth)
+
 ## [2-alpha9.1] - 2024-09-28
 - brought back same/ish dep which was removed by mistake
 
