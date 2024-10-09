@@ -77,6 +77,8 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
    runs-on: ubuntu-latest
+   # only run github-pages deployemnts on main, not on PRs for example
+   if: github.ref == 'refs/heads/main'
    needs: make-doc
    steps:
       - name: Deploy to GitHub Pages
