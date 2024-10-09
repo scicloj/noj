@@ -12,7 +12,7 @@
 
 ;; util vars
 
-(def java-double-array (make-array Double/TYPE 5))
+(def java-double-array (double-array 5))
 
 ;; ## Addition
 
@@ -41,25 +41,25 @@
          [8 4])
 
 ;; ## Converters
-;; ### Vector to Java array of doubles `[D`. 
+;; ### Vector to Java array of doubles `[D`.
 
 (vec/vec->array [10 5])
 
 (type (vec/vec->array [10 5]))
 
-;; ### Java array to Clojure sequence. 
+;; ### Java array to Clojure sequence.
 (identity java-double-array)
 
 (type (vec/vec->seq java-double-array))
 
-;; ### Vector or Java array to Apache Commons Math RealVector. 
+;; ### Vector or Java array to Apache Commons Math RealVector.
 (type (vec/vec->RealVector [10 5]))
 
 (identity java-double-array)
 
 (type (vec/vec->RealVector java-double-array))
 
-;; ### Clojure vector or Java array to primitive vector `Vec`. 
+;; ### Clojure vector or Java array to primitive vector `Vec`.
 
 (vec/vec->Vec [10 5])
 
@@ -73,6 +73,5 @@
 ;; ### WIP -- if two vectors are passed it takes count of elemets from first vec and returns same count of elements from second vec??
 (vec/as-vec [10 2] [5 10 15])
 
-;; ### WIP -- if one vector is passed it takes count of elemets from vec and returns same count of elemets from new vector with each value being `0,0`. 
+;; ### WIP -- if one vector is passed it takes count of elemets from vec and returns same count of elemets from new vector with each value being `0,0`.
 (vec/as-vec [5 10 15])
-
