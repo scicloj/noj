@@ -10,6 +10,10 @@
 (ns noj-book.linear-algebra-intro
   (:require [fastmath.vector :as vec]))
 
+;; util vars
+
+(def java-double-array (make-array Double/TYPE 5))
+
 ;; ## Addition
 
 (vec/add [1 9]
@@ -19,3 +23,56 @@
 
 (vec/mult [1 9]
           1000)
+
+;; ## Subtraction
+;; When we pass single vector to fastmath/sub function it will be multiplied by `-1.0`.
+
+(vec/sub [10 5])
+
+;; When we pass two vectors to fastmath/sub function it will perform basic vector subtraction.
+
+(vec/sub [10 5]
+         [8 4])
+
+;; ## Dot product
+;; When we pass two vectors to fastmath/dot function it will perform dot product operation on them.
+;; `a · b = a₁b₁ + a₂b₂ + … + anbn`
+(vec/dot [10 5]
+         [8 4])
+
+;; ## Converters
+;; ### Vector to Java array of doubles `[D`. 
+
+(vec/vec->array [10 5])
+
+(type (vec/vec->array [10 5]))
+
+;; ### Java array to Clojure sequence. 
+(identity java-double-array)
+
+(type (vec/vec->seq java-double-array))
+
+;; ### Vector or Java array to Apache Commons Math RealVector. 
+(type (vec/vec->RealVector [10 5]))
+
+(identity java-double-array)
+
+(type (vec/vec->RealVector java-double-array))
+
+;; ### Clojure vector or Java array to primitive vector `Vec`. 
+
+(vec/vec->Vec [10 5])
+
+(type (vec/vec->Vec [10 5]))
+
+(identity java-double-array)
+
+(type (vec/vec->Vec java-double-array))
+
+
+;; ### WIP -- if two vectors are passed it takes count of elemets from first vec and returns same count of elements from second vec??
+(vec/as-vec [10 2] [5 10 15])
+
+;; ### WIP -- if one vector is passed it takes count of elemets from vec and returns same count of elemets from new vector with each value being `0,0`. 
+(vec/as-vec [5 10 15])
+
