@@ -23,7 +23,7 @@
 
 (defn test "Run all the tests." [opts]
   (let [opts     (or opts {})
-        basis    (b/create-basis {:aliases (concat (opts :aliases [:test alias]))})
+        basis    (b/create-basis {:aliases (concat (opts :aliases [:test]))})
         cmds     (b/java-command
                   {:basis     basis
                    :main      'clojure.main
