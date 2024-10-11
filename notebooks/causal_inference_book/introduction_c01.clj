@@ -87,10 +87,37 @@
 
 
 
-;; ### Display a boxplot of the ENEM scores against Tablets
+;; ### ENEM scores against Tablets
 (-> data
     (ploclo/layer-boxplot
      {:=x :tablets
       :=y :enem-score
       :=title "ENEM score by Tablet in Class"
+      :=color :tablets}))  
+
+;; ### ATE vs ATT
+(-> {:i [1 2 3 4]
+     :Y0 [500 600 800 700]
+     :Y1 [450 600 600 750]
+     :T  [0 0 1 1]
+     :Y  [500 600 600 750]
+     :TE [-50 0 -200 50]}
+    tc/dataset
+    (print/print-range 10))
+
+(-> {:i [1 2 3 4]
+     :Y0 [500 600 800 700]
+     :Y1 [450 600 600 750]
+     :T  [0 0 1 1]
+     :Y  [500 600 600 750]
+     :TE [##NaN ##NaN ##NaN ##NaN]}
+    tc/dataset
+    (print/print-range 10))
+
+;; ### ENEM score by Tuition Cost
+(-> data
+    (ploclo/layer-point
+     {:=x :tuitions
+      :=y :enem-score
+      :=title "ENEM score by Tuition Cost"
       :=color :tablets}))  
