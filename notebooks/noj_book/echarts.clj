@@ -58,6 +58,7 @@
 ;; and yet it's important to know what options are available out there.
 
 ;; So, here we've collected some info about keys and values of this vital object:
+
 ;; - `:xAxis`, whose value is an object with these keys:
 ;;   - `:type`, its value could be:
 ;;     - `:category`
