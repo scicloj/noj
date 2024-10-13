@@ -29,7 +29,7 @@
   :xAxis {:data ["Shirts", "Cardigans", "Chiffons", "Pants", "Heels", "Socks"]}
   :yAxis {}
   :series [{:name "sales"
-            :type "bar"
+            :type :bar
             :data [5, 20, 36, 10, 10, 20]}]})
 
 ;; ### Styling
@@ -43,7 +43,7 @@
   :xAxis {:data ["Shirts", "Cardigans", "Chiffons", "Pants", "Heels", "Socks"]}
   :yAxis {}
   :series [{:name "sales"
-            :type "bar"
+            :type :bar
             :data [5, 20, 36, 10, 10, 20]}]}
  {:style {:height "200px"}})
 
@@ -107,7 +107,7 @@ sales
   :xAxis {:data (:item sales)}
   :yAxis {}
   :series [{:name "sales"
-            :type "bar"
+            :type :bar
             :data (:amount sales)}]}
  {:style {:height "200px"}})
 
@@ -120,7 +120,7 @@ sales
     :xAxis {:data item}
     :yAxis {}
     :series [{:name "sales"
-              :type "bar"
+              :type :bar
               :data amount}]}
    {:style {:height "200px"}}))
 
@@ -157,9 +157,9 @@ data-for-multi-series
    {:tooltip {}
     :xAxis {:data days}
     :yAxis {}
-    :series [{:type "bar"
+    :series [{:type :bar
               :data values-a}
-             {:type "bar"
+             {:type :bar
               :data values-b}]}))
 
 ;; #### Stacked Bar Chart
@@ -181,10 +181,10 @@ data-for-multi-series
    {:tooltip {}
     :xAxis {:data x-axis-data}
     :yAxis {}
-    :series [{:type "bar"
+    :series [{:type :bar
               :data values-a
               :stack "x"}
-             {:type "bar"
+             {:type :bar
               :data values-b
               :stack "x"}]}))
 
@@ -227,11 +227,11 @@ data-for-waterfall
            :right "4%"
            :bottom "3%"
            :containLabel true}
-    :xAxis {:type "category"
+    :xAxis {:type :category
             :splitLine {:show false}
             :data (map #(str "Oct/" %) (range 1 12))}
-    :yAxis {:type "value"}
-    :series [{:type "bar"
+    :yAxis {:type :value}
+    :series [{:type :bar
               :stack "all"
               :itemStyle {:normal {:barBorderColor "rgba(0,0,0,0)"
                                    :color "rgba(0,0,0,0)"}
@@ -239,11 +239,11 @@ data-for-waterfall
                                      :color "rgba(0,0,0,0)"}}
               :data suspended-cumulative}
              {:name "positive"
-              :type "bar"
+              :type :bar
               :stack "all"
               :data positive}
              {:name "negative"
-              :type "bar"
+              :type :bar
               :stack "all"
               :data negative
               :itemStyle {:color "#f33"}}]}))
@@ -276,20 +276,20 @@ reshaped-stocks
 
 (kind/echarts
  {:tooltip {}
-  :xAxis {:type "category"
+  :xAxis {:type :category
           :data ["A" "B" "C"]}
-  :yAxis {:type "value"}
-  :series [{:type "line"
+  :yAxis {:type :value}
+  :series [{:type :line
             :data [120 200 150]}]})
 
 ;; Now, we can try the prepared dataset to see how it goes:
 
 (kind/echarts
  {:tooltip {}
-  :xAxis {:type "category"
+  :xAxis {:type :category
           :data (tc/column reshaped-stocks :date)}
-  :yAxis {:type "value"}
-  :series [{:type "line"
+  :yAxis {:type :value}
+  :series [{:type :line
             :data (tc/column reshaped-stocks :MSFT)}]})
 
 ;; #### Stacked Line Chart
@@ -297,25 +297,25 @@ reshaped-stocks
 ;; Now let's stack a few more lines onto the same chart by adding more data `series`:
 
 (kind/echarts
- {:xAxis {:type "category"
+ {:xAxis {:type :category
           :data (tc/column reshaped-stocks :date)}
-  :yAxis {:type "value"}
-  :series [{:type "line"
+  :yAxis {:type :value}
+  :series [{:type :line
             :data (tc/column reshaped-stocks :MSFT)}
-           {:type "line"
+           {:type :line
             :data (tc/column reshaped-stocks :AMZN)}]})
 
 ;; So far so good. But it's confusing without legend for these lines, so let's add it.
 
 (kind/echarts
- {:xAxis {:type "category"
+ {:xAxis {:type :category
           :data (tc/column reshaped-stocks :date)}
-  :yAxis {:type "value"}
+  :yAxis {:type :value}
   :legend {:data [:MSFT :AMZN]}
-  :series [{:type "line"
+  :series [{:type :line
             :data (tc/column reshaped-stocks :MSFT)
             :name :MSFT}
-           {:type "line"
+           {:type :line
             :data (tc/column reshaped-stocks :AMZN)
             :name :AMZN}]})
 
@@ -335,14 +335,14 @@ reshaped-stocks
    (echarts-line ds x-col y-cols nil))
   ([ds x-col y-cols series-fn]
    (kind/echarts
-    {:xAxis {:type "category"
+    {:xAxis {:type :category
              :data (tc/column ds x-col)}
-     :yAxis {:type "value"}
+     :yAxis {:type :value}
      :legend {:data y-cols}
      :tooltip {}
      :series (->> y-cols
                   (map (fn [col]
-                         (let [series {:type "line"
+                         (let [series {:type :line
                                        :data (tc/column ds col)
                                        :name col}]
                            (if series-fn
