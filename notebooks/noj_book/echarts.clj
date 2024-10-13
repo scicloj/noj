@@ -47,6 +47,39 @@
             :data [5, 20, 36, 10, 10, 20]}]}
  {:style {:height "200px"}})
 
+;; Note that these styles are on Kindly's side,
+;; so they can't instruct on what styles would be applied to charts themselves.
+
+;; ### ECharts' Option Object
+;; It looks like there isn't docs yet about the option object passed to
+;; [setOption](https://echarts.apache.org/en/api.html#echartsInstance.setOption)
+;; at Echarts' website,
+;; and yet it's important to know what options are available out there.
+
+;; So, here we've collected some info about keys and values of this vital object:
+;; - :xAxis, whose value is an object with these keys:
+;;   - :type, its value could be:
+;;     - :category
+;;     - :time
+;; - :yAxis, whose value is an object with these keys:
+;;   - :type, its value could be:
+;;     - :value
+;; - :series, it contains an array of data series, each element of which contains:
+;;   - :type, it specifies what type of chart to make and the value could be:
+;;     - :bar, a bar chart
+;;     - :line, a line chart
+;;   - :symbol, the symbol shown for a data point, which by default is a tiny white circle, its value could be:
+;;     - :none, just hide the symbol
+;; - :title, things about the chart title, whose value is an object with keys:
+;;   - :text, the title text
+;; - :legend, chart legend
+;;   - :data, whose value is an array of legend names
+;; - :tooltip, it would pop up a tooltip when your pointer hover over data points in the chart, which is something you definitely want to have.
+;;   - :trigger, whose value could be:
+;;     - :axis, show all series data of the current X on the tooltip.
+;;   - :order, by what order to show the values, which could be one of:
+;;     - :valueDesc
+
 ;; ### Passing datasets
 
 ;; Now, what do we do if our data is held in a
@@ -97,6 +130,11 @@ sales
 
 ;; Let's explore more examples from the ECharts
 ;; [How To Guides](https://echarts.apache.org/handbook/en/how-to/chart-types/bar/basic-bar#multi-series-bar-chart).
+
+;; To make it work in Clay, you may also find it helpful to first try out each chart
+;; by clicking into the ones interesting to you on
+;; [Echarts' Examples Page](https://echarts.apache.org/examples/en/index.html),
+;; where it lists all of the charts, so that you can get a sense of how it works using JSON.
 
 ;; ### Bar
 
@@ -209,3 +247,144 @@ data-for-waterfall
               :stack "all"
               :data negative
               :itemStyle {:color "#f33"}}]}))
+
+;; ### Line
+;; #### Dataset Preparation
+;; Before we plot any line charts, it's helpful to prepare the dataset first.
+
+(def stocks
+  (tc/dataset
+   "https://raw.githubusercontent.com/techascent/tech.ml.dataset/master/test/data/stocks.csv"
+   {:key-fn keyword}))
+
+;; This dataset originally contains three columns:
+(tc/head stocks)
+
+;; To make it better serve this tutorial, let's widen it:
+(def reshaped-stocks
+  (-> stocks
+      (tc/pivot->wider [:symbol] [:price] {:drop-missing? false})
+      (tc/rename-columns keyword)))
+
+reshaped-stocks
+
+;; As you can see, now it has a date column and a few other columns for every company's stock price.
+
+;; #### Basic Line Chart
+
+;; First let's try it out with some simple data manually:
+
+(kind/echarts
+ {:tooltip {}
+  :xAxis {:type "category"
+          :data ["A" "B" "C"]}
+  :yAxis {:type "value"}
+  :series [{:type "line"
+            :data [120 200 150]}]})
+
+;; Now, we can try the prepared dataset to see how it goes:
+
+(kind/echarts
+ {:tooltip {}
+  :xAxis {:type "category"
+          :data (tc/column reshaped-stocks :date)}
+  :yAxis {:type "value"}
+  :series [{:type "line"
+            :data (tc/column reshaped-stocks :MSFT)}]})
+
+;; #### Stacked Line Chart
+
+;; Now let's stack a few more lines onto the same chart by adding more data `series`:
+
+(kind/echarts
+ {:xAxis {:type "category"
+          :data (tc/column reshaped-stocks :date)}
+  :yAxis {:type "value"}
+  :series [{:type "line"
+            :data (tc/column reshaped-stocks :MSFT)}
+           {:type "line"
+            :data (tc/column reshaped-stocks :AMZN)}]})
+
+;; So far so good. But it's confusing without legend for these lines, so let's add it.
+
+(kind/echarts
+ {:xAxis {:type "category"
+          :data (tc/column reshaped-stocks :date)}
+  :yAxis {:type "value"}
+  :legend {:data [:MSFT :AMZN]}
+  :series [{:type "line"
+            :data (tc/column reshaped-stocks :MSFT)
+            :name :MSFT}
+           {:type "line"
+            :data (tc/column reshaped-stocks :AMZN)
+            :name :AMZN}]})
+
+;; Please note that you can toggle each line on and off by clicking its legend, which is a really nice feature.
+
+;; It's a bit tedious to have column names here and there,
+;; so we can define a helper function here to make life easier (maybe someday we can expand `kind` with this):
+
+(defn echarts-line
+  "Return a line chart as echart.
+  - `ds` the dataset.
+  - `x-col` the column name of the dataset for the x axis.
+  - `y-cols` the column names for the data series.
+  - `series-fn` the function to add more info to a series.
+  "
+  ([ds x-col y-cols]
+   (echarts-line ds x-col y-cols nil))
+  ([ds x-col y-cols series-fn]
+   (kind/echarts
+    {:xAxis {:type "category"
+             :data (tc/column ds x-col)}
+     :yAxis {:type "value"}
+     :legend {:data y-cols}
+     :tooltip {}
+     :series (->> y-cols
+                  (map (fn [col]
+                         (let [series {:type "line"
+                                       :data (tc/column ds col)
+                                       :name col}]
+                           (if series-fn
+                             (series-fn series)
+                             series)))))})))
+
+;; Now, if you want to have a single line chart, you can just do this:
+
+(echarts-line reshaped-stocks :date [:AMZN])
+
+;; Or a stacked line chart? No problem, just add more columns:
+
+(echarts-line reshaped-stocks :date [:AMZN :GOOG])
+
+;; So it looks like "Basic Line" and "Stacked Line" are just the same thing,
+;; the only difference lies on how many lines we want to plot.
+
+;; #### Smooth Line
+
+;; You can smooth the line a little bit if you think it's too sharp:
+
+(echarts-line reshaped-stocks :date [:AMZN :GOOG] #(assoc % :smooth true))
+
+;; #### Area Chart
+
+;; Associating the data series with a `areaStyle` will make it an area chart.
+
+(let [colors {:AMZN "#9b59b6"
+              :MSFT "#3498db"}]
+  (echarts-line reshaped-stocks
+                :date
+                [:AMZN :MSFT]
+                #(assoc % :areaStyle {:color (get colors (:name %))})))
+
+;; #### Step Line Chart
+;; Attach an extra `:step` attribute to each series will make it a step chart.
+;; Depending on where you want the change occur on chart for every step line,
+;; you can specify `:start`, `:middle`, or `:end`.
+
+(echarts-line (tc/head reshaped-stocks)
+              :date
+              [:AMZN :MSFT]
+              #(assoc % :step (if (= (:name %) :AMZN)
+                                :middle
+                                :start)))
