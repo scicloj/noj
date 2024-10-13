@@ -2,6 +2,7 @@
 
 ;; author: Daniel Slutsky
 
+;; ## Rdatasets
 ;; For our tutorials here,
 ;; let us fetch some datasets from [Rdatasets](https://vincentarelbundock.github.io/Rdatasets/):
 
@@ -24,3 +25,19 @@ iris
       (tc/dataset {:key-fn keyword})))
 
 mtcars
+
+;; ## Plotly
+;; We can also use datasets from [Plotly Sample Datasets](https://plotly.github.io/datasets/)
+
+(-> "https://raw.githubusercontent.com/plotly/datasets/refs/heads/master/1962_2006_walmart_store_openings.csv"
+    (tc/dataset {:key-fn keyword})
+    (tc/head))
+
+;; ## tech.ml.dataset (TMD)
+;; [TMD's repo](https://github.com/techascent/tech.ml.dataset/tree/master/test/data)
+;; also has some datasets that we can use:
+
+(def stocks
+  (tc/dataset
+   "https://raw.githubusercontent.com/techascent/tech.ml.dataset/master/test/data/stocks.csv"
+   {:key-fn keyword}))
