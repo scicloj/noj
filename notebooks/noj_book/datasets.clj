@@ -32,3 +32,12 @@ mtcars
 (-> "https://raw.githubusercontent.com/plotly/datasets/refs/heads/master/1962_2006_walmart_store_openings.csv"
     (tc/dataset {:key-fn keyword})
     (tc/head))
+
+;; ## tech.ml.dataset (TMD)
+;; [TMD's repo](https://github.com/techascent/tech.ml.dataset/tree/master/test/data)
+;; also has some datasets that we can use:
+
+(def stocks
+  (tc/dataset
+   "https://raw.githubusercontent.com/techascent/tech.ml.dataset/master/test/data/stocks.csv"
+   {:key-fn keyword}))

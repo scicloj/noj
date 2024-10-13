@@ -6,6 +6,7 @@
 
 (ns noj-book.echarts
   (:require [tablecloth.api :as tc]
+            [noj-book.datasets]
             [scicloj.kindly.v4.kind :as kind]))
 
 ;; ## Getting started
@@ -57,28 +58,28 @@
 ;; and yet it's important to know what options are available out there.
 
 ;; So, here we've collected some info about keys and values of this vital object:
-;; - :xAxis, whose value is an object with these keys:
-;;   - :type, its value could be:
-;;     - :category
-;;     - :time
-;; - :yAxis, whose value is an object with these keys:
-;;   - :type, its value could be:
-;;     - :value
-;; - :series, it contains an array of data series, each element of which contains:
-;;   - :type, it specifies what type of chart to make and the value could be:
-;;     - :bar, a bar chart
-;;     - :line, a line chart
-;;   - :symbol, the symbol shown for a data point, which by default is a tiny white circle, its value could be:
-;;     - :none, just hide the symbol
-;; - :title, things about the chart title, whose value is an object with keys:
-;;   - :text, the title text
-;; - :legend, chart legend
-;;   - :data, whose value is an array of legend names
-;; - :tooltip, it would pop up a tooltip when your pointer hover over data points in the chart, which is something you definitely want to have.
-;;   - :trigger, whose value could be:
-;;     - :axis, show all series data of the current X on the tooltip.
-;;   - :order, by what order to show the values, which could be one of:
-;;     - :valueDesc
+;; - `:xAxis`, whose value is an object with these keys:
+;;   - `:type`, its value could be:
+;;     - `:category`
+;;     - `:time`
+;; - `:yAxis`, whose value is an object with these keys:
+;;   - `:type`, its value could be:
+;;     - `:value`
+;; - `:series`, it contains an array of data series, each element of which contains:
+;;   - `:type`, it specifies what type of chart to make and the value could be:
+;;     - `:bar`, a bar chart
+;;     - `:line`, a line chart
+;;   - `:symbol`, the symbol shown for a data point, which by default is a tiny white circle, its value could be:
+;;     - `:none`, just hide the symbol
+;; - `:title`, things about the chart title, whose value is an object with keys:
+;;   - `:text`, the title text
+;; - `:legend`, chart legend
+;;   - `:data`, whose value is an array of legend names
+;; - `:tooltip`, it would pop up a tooltip when your pointer hover over data points in the chart, which is something you definitely want to have.
+;;   - `:trigger`, whose value could be:
+;;     - `:axis`, show all series data of the current X on the tooltip.
+;;   - `:order`, by what order to show the values, which could be one of:
+;;     - `:valueDesc`
 
 ;; ### Passing datasets
 
@@ -131,7 +132,7 @@ sales
 ;; Let's explore more examples from the ECharts
 ;; [How To Guides](https://echarts.apache.org/handbook/en/how-to/chart-types/bar/basic-bar#multi-series-bar-chart).
 
-;; To make it work in Clay, you may also find it helpful to first try out each chart
+;; To try charts work as expected with `kind/echarts`, you may also find it helpful to first try out each chart
 ;; by clicking into the ones interesting to you on
 ;; [Echarts' Examples Page](https://echarts.apache.org/examples/en/index.html),
 ;; where it lists all of the charts, so that you can get a sense of how it works using JSON.
@@ -252,17 +253,12 @@ data-for-waterfall
 ;; #### Dataset Preparation
 ;; Before we plot any line charts, it's helpful to prepare the dataset first.
 
-(def stocks
-  (tc/dataset
-   "https://raw.githubusercontent.com/techascent/tech.ml.dataset/master/test/data/stocks.csv"
-   {:key-fn keyword}))
-
 ;; This dataset originally contains three columns:
-(tc/head stocks)
+(tc/head noj-book.datasets/stocks)
 
 ;; To make it better serve this tutorial, let's widen it:
 (def reshaped-stocks
-  (-> stocks
+  (-> noj-book.datasets/stocks
       (tc/pivot->wider [:symbol] [:price] {:drop-missing? false})
       (tc/rename-columns keyword)))
 
@@ -322,7 +318,8 @@ reshaped-stocks
 ;; Please note that you can toggle each line on and off by clicking its legend, which is a really nice feature.
 
 ;; It's a bit tedious to have column names here and there,
-;; so we can define a helper function here to make life easier (maybe someday we can expand `kind` with this):
+;; so we can define a helper function here to make life easier
+;; (maybe someday we can put this into `kind` or elsewhere):
 
 (defn echarts-line
   "Return a line chart as echart.
