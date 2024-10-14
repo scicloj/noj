@@ -71,15 +71,38 @@
 ;;   - `:type`, it specifies what type of chart to make and the value could be:
 ;;     - `:bar`, a bar chart
 ;;     - `:line`, a line chart
-;;   - `:symbol`, the symbol shown for a data point, which by default is a tiny white circle, its value could be:
+;;     - `:pie`, a pie chart
+;;   - `:data`, which typically contains an array, whose item definitions vary depending on the above `:type`:
+;;     - For `:line`, its value is an array of numbers;
+;;     - For `:pie`, its value is an array of items with these keys:
+;;       - `:name`, its value specifies the segment name
+;;       - `:value`, whose value represents the segment value
+;;   - `:symbol`, (optional) the symbol shown for a data point, which by default is a tiny white circle, its value could be:
 ;;     - `:none`, just hide the symbol
+;;
+;;   Below keys are for `:pie` charts:
+;;   - `:radius`, its value could be:
+;;     - A string like `"60%"` specifying the chart radius.
+;;     - An array of two strings like `["60%", "80%"]` specifying the radiuses of the doughnut chart.
+;;   - `:roseType`, whose value could be:
+;;     - `:area`, indicates plotting a rose chart.
+
 ;; - `:title`, things about the chart title, whose value is an object with keys:
 ;;   - `:text`, the title text
+;;   - `:subtext`, the subtitle text
+;;   - `:top` and `:left` specify the top-left corner of the title element:
+;;     For `:top`, we can specify `:top` (the default), `:center`, or `:bottom`.
+;;     And for `:left`, the value could be one of `:left` (the default), `:center` or `:right`.
+
 ;; - `:legend`, chart legend
 ;;   - `:data`, whose value is an array of legend names
+;;   - `:top` and `:left` can be used to specify the legend's top-left corner, just as in `:title`.
+;;   - `:orient`, the orientation, whose value could be `:vertical` or `:horizontal` (the default).
+
 ;; - `:tooltip`, it would pop up a tooltip when your pointer hover over data points in the chart, which is something you definitely want to have.
 ;;   - `:trigger`, whose value could be:
 ;;     - `:axis`, show all series data of the current X on the tooltip.
+;;     - `:item`
 ;;   - `:order`, by what order to show the values, which could be one of:
 ;;     - `:valueDesc`
 
@@ -387,3 +410,39 @@ reshaped-stocks
               #(assoc % :step (if (= (:name %) :AMZN)
                                 :middle
                                 :start)))
+;; ### Pie
+;; #### Basic Pie
+;; It's quite easy to plot a basic pie chart following the [Basic Pie Chart Example](https://echarts.apache.org/handbook/en/how-to/chart-types/pie/basic-pie):
+
+(kind/echarts {:series [{:type :pie
+                         :data [{:name "Direct Visit"
+                                 :value 335}
+                                {:name "Union Ad"
+                                 :value 234}
+                                {:name "Search Engine"
+                                 :value 1548}]}]})
+
+;; #### Doughnut Chart (Ring-style Pie Chart)
+;; Quote [Doughnut Chart Guide](https://echarts.apache.org/handbook/en/how-to/chart-types/pie/doughnut):
+;; > Doughnut charts are also used to show the proportion of values compared with the total. Different from the pie chart, the blank in the middle of the chart can be used to provide some extra info. It makes a doughnut chart commonly used chart type.
+
+;; A basic doughnut chart would work like this:
+(kind/echarts {:title {:text "A Simple Doughnut Chart"
+                       :left :center
+                       :top :bottom}
+               :series [{:type :pie
+                         :data [{:name "A" :value 335}
+                                {:name "B" :value 234}
+                                {:name "C" :value 1548}]
+                         :radius ["40%" "70%"]}]})
+
+;; #### Rose Chart (Nightingale Chart)
+;; Rose Chart, aka Nightingale Chart, usually indicates categories by sector with the same radius but different values.
+
+(kind/echarts {:series [{:type :pie
+                         :roseType :area
+                         :data [{:name "A" :value 100}
+                                {:name "B" :value 200}
+                                {:name "C" :value 300}
+                                {:name "D" :value 400}
+                                {:name "E" :value 500}]}]})
