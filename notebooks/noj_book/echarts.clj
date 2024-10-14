@@ -1,5 +1,7 @@
 ;; # Data Visualization with Echarts - DRAFT 🛠
 
+;; author: Zuzhi Hu, Ken Huang
+
 ;; In this tutorial, we explore how we can use
 ;; [Apache Echarts](https://echarts.apache.org/)
 ;; to visualize data.
