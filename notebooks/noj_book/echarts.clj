@@ -72,13 +72,25 @@
 ;;     - `:bar`, a bar chart
 ;;     - `:line`, a line chart
 ;;     - `:pie`, a pie chart
+;;     - `:scatter`, a scatter chart
+;;     - `:effectScatter`, a scatter chart with an animation effect
 ;;   - `:data`, which typically contains an array, whose item definitions vary depending on the above `:type`:
 ;;     - For `:line`, its value is an array of numbers;
 ;;     - For `:pie`, its value is an array of items with these keys:
 ;;       - `:name`, its value specifies the segment name
 ;;       - `:value`, whose value represents the segment value
-;;   - `:symbol`, (optional) the symbol shown for a data point, which by default is a tiny white circle, its value could be:
+;;   - `:symbol`, (optional) the symbol shown for a data point, which by default is a tiny circle, its value could be:
+;;     - `:circle` a circle
+;;     - `:rect`, a rectangle
+;;     - `:roundRect` a rounded rectangle
+;;     - `:triangle`
+;;     - `:diamond`
+;;     - `:pin`
+;;     - `:arrow`
 ;;     - `:none`, just hide the symbol
+;;   - `:symbolSize`, its value could be:
+;;     - a number to specify pixels of the symbol
+;;     - an array of two numbers to specify pixels for the symbol's width and height
 ;;
 ;;   Below keys are for `:pie` charts:
 ;;   - `:radius`, its value could be:
@@ -446,3 +458,38 @@ reshaped-stocks
                                 {:name "C" :value 300}
                                 {:name "D" :value 400}
                                 {:name "E" :value 500}]}]})
+
+;; ### Scatter
+;; #### Basic Scatter Chart
+;; If the data for x-axis is discrete, we need to feed data to x-axis and series separately:
+
+(kind/echarts {:xAxis {:data ["Sun" "Mon" "Tue" "Wed" "Thu" "Fir" "Sat"]}
+               :yAxis {}
+               :series [{:type :scatter
+                         :data [220 182 191 234 290 330 310]}]})
+
+;; Or, if both axes data are numbers as in [Cartesian Coordinate System](https://en.wikipedia.org/wiki/Cartesian_coordinate_system), we only need to feed data into `:data` at once, each of which is an 2-number array for the x and y axis:
+(kind/echarts {:xAxis {}
+               :yAxis {}
+               :series [{:type :scatter
+                         :data [[100.0 8.04]
+                                [12.2 7.83]
+                                [2.02 4.47]
+                                [1.05 3.33]
+                                [4.05 4.96]
+                                [6.03 7.24]
+                                [12.0 6.26]
+                                [12.0 8.84]
+                                [7.08 5.82]
+                                [5.02 5.68]]}]})
+
+;; Now, let's use a dataset to render more data onto the chart:
+
+(tc/row-count noj-book.datasets/scatter)
+
+(kind/echarts {:xAxis {}
+               :yAxis {}
+               :series [{:type :scatter
+                         :data (-> noj-book.datasets/scatter
+                                   (tc/select-columns [:x :y])
+                                   (tc/rows :as-vecs))}]})

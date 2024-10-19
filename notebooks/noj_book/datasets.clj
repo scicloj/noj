@@ -1,6 +1,6 @@
 ;; # Datasets
 
-;; author: Daniel Slutsky
+;; author: Daniel Slutsky, Ken Huang
 
 ;; ## Rdatasets
 ;; For our tutorials here,
@@ -25,6 +25,12 @@ iris
       (tc/dataset {:key-fn keyword})))
 
 mtcars
+
+(def scatter
+  (-> "https://vincentarelbundock.github.io/Rdatasets/csv/openintro/simulated_scatter.csv"
+      (tc/dataset {:key-fn keyword})))
+
+(tc/head scatter)
 
 ;; ## Plotly
 ;; We can also use datasets from [Plotly Sample Datasets](https://plotly.github.io/datasets/)
