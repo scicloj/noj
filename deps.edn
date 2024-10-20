@@ -5,7 +5,7 @@
         org.scicloj/kindly                        {:mvn/version "4-beta12"}
         generateme/fastmath                       {:mvn/version "3.0.0-alpha2"}
         aerial.hanami/aerial.hanami               {:mvn/version "0.20.0"}
-        org.scicloj/hanamicloth                   {:mvn/version "1-alpha9"}
+        org.scicloj/tableplot                     {:mvn/version "1-alpha10"}
         org.scicloj/metamorph.ml                  {:mvn/version "0.9.0"}
         org.scicloj/scicloj.ml.smile              {:mvn/version "7.4.2"}
         org.scicloj/sklearn-clj                   {:mvn/version "0.4.1"}
