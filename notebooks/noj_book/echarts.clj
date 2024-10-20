@@ -60,6 +60,7 @@
 ;; and yet it's important to know what options are available out there.
 
 ;; So, here we've collected some info about keys and values of this vital object:
+
 ;; - `:xAxis`, whose value is an object with these keys:
 ;;   - `:type`, its value could be:
 ;;     - `:category`
@@ -93,6 +94,7 @@
 ;;     - an array of two numbers to specify pixels for the symbol's width and height
 ;;
 ;;   Below keys are for `:pie` charts:
+
 ;;   - `:radius`, its value could be:
 ;;     - A string like `"60%"` specifying the chart radius.
 ;;     - An array of two strings like `["60%", "80%"]` specifying the radiuses of the doughnut chart.
