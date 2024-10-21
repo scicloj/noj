@@ -51,9 +51,8 @@ jobs:
     - name: Make docs in dev container
       uses: devcontainers/ci@v0.3
       with: 
-          imageName: ghcr.io/scicloj/noj-devontainer
-          cacheFrom: ghcr.io/scicloj/noj-devontainer
-          push: always
+          
+          push: never
           runCmd: clj -Adev notebooks/dev.clj 
            
     - name: fix permisions
