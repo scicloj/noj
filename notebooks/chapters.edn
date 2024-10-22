@@ -13,4 +13,6 @@
   :chapters ["echarts"
              "visualizing_correlation_matrices"]}
  {:part "Linear Algebra"
-  :chapters ["linear_algebra_intro"]}]
+  :chapters ["linear_algebra_intro"]}
+ {:part "Use Cases"
+  :chapters ["chicago_bike_times"]}]
