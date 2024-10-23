@@ -41,25 +41,25 @@
          [8 4])
 
 ;; ## Converters
-;; ### Vector to Java array of doubles `[D`.
+;; ### Vector to Java array of doubles `[D`. 
 
 (vec/vec->array [10 5])
 
 (type (vec/vec->array [10 5]))
 
-;; ### Java array to Clojure sequence.
+;; ### Java array to Clojure sequence. 
 (identity java-double-array)
 
 (type (vec/vec->seq java-double-array))
 
-;; ### Vector or Java array to Apache Commons Math RealVector.
+;; ### Vector or Java array to Apache Commons Math RealVector. 
 (type (vec/vec->RealVector [10 5]))
 
 (identity java-double-array)
 
 (type (vec/vec->RealVector java-double-array))
 
-;; ### Clojure vector or Java array to primitive vector `Vec`.
+;; ### Clojure vector or Java array to primitive vector `Vec`. 
 
 (vec/vec->Vec [10 5])
 
@@ -69,9 +69,25 @@
 
 (type (vec/vec->Vec java-double-array))
 
+;; ### WIP -- if two vectors are passed it takes count of elemets from first vec and
+;; returns same count of elements from second vec??
+(vec/as-vec [10 2] [5 10 15]) ;; -> [5 10]
 
-;; ### WIP -- if two vectors are passed it takes count of elemets from first vec and returns same count of elements from second vec??
-(vec/as-vec [10 2] [5 10 15])
+;; ### WIP -- if one vector is passed it takes count of elemets from vec and returns same 
+;; count of elemets from new vector with each value being `0,0`. 
+(vec/as-vec [5 10 15]) ;; -> [0.0 0.0 0.0]
 
-;; ### WIP -- if one vector is passed it takes count of elemets from vec and returns same count of elemets from new vector with each value being `0,0`.
-(vec/as-vec [5 10 15])
+;; Magnitude of the vector calculated using Pythagoras(norm).  
+(vec/mag [3 4]) ;; -> 5.0
+
+;; Round the value from the vector based on second argument
+(vec/approx [math/PI])
+(kindly/check = [3.14])
+(vec/approx [math/PI math/PI math/PI] 5) ;; -> [3.14159 3.14159 3.14159]
+
+;; Equality tolerance
+(vec/edelta-eq [math/PI] (vec/approx [math/PI] 4)) ;; -> false
+(vec/edelta-eq [math/PI] (vec/approx [math/PI] 4) 0.001) ;; -> true
+(vec/edelta-eq [math/PI] (vec/approx [math/PI] 4) 0.000001) ;; -> false 
+
+
