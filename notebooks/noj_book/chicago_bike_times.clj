@@ -1,6 +1,7 @@
 ;; # Analysing Chicago Bike Times
 
 ;; author: Daniel Slutsky
+;;
 ;; last update: 2024-10-23
 
 ;; This tutorial demonstrates a simple analysis of time patterns
