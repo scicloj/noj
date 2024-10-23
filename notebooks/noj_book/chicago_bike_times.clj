@@ -16,7 +16,10 @@
 
 (ns chicago-bike-times
   (:require [tablecloth.api :as tc]
+            [tech.v3.dataset :as ds]
+            [tech.v3.dataset.modelling :as dsmod]
             [tech.v3.datatype.datetime :as datetime]
+            [scicloj.metamorph.ml :as ml]
             [scicloj.tableplot.v1.hanami :as hanami]
             [scicloj.kindly.v4.kind :as kind]))
 
@@ -63,12 +66,16 @@
 (-> processed-trips
     (tc/group-by [:day-of-week :hour])
     (tc/aggregate {:n tc/row-count})
-    (tc/group-by [:day-of-week])
+    (tc/group-by :day-of-week)
+    (tc/without-grouping->
+        (tc/order-by [:name]))
     (tc/process-group-data #(hanami/layer-bar
                              %
                              {:=x :hour
                               :=y :n}))
     kind/table)
+
+
 
 ;; ## Conclusion
 
@@ -76,3 +83,19 @@
 ;; weekdays in terms of the hours
 ;; in which people tend to use
 ;; their bikes.
+
+;; ## Exploring further
+
+;; How are they different?
+
+;; (draft)
+
+(-> processed-trips
+    (tc/group-by [:day-of-week :hour])
+    (tc/aggregate {:n tc/row-count})
+    (tc/order-by [:day-of-week :hour])
+    (ds/categorical->one-hot [:day-of-week :hour])
+    (dsmod/set-inference-target :n)
+    (tc/drop-columns [:day-of-week-7 :hour-23])
+    (ml/train {:model-type :fastmath/ols})
+    :model-data)
