@@ -15,7 +15,7 @@
                                  (partial map #(format "noj_book/%s.clj" %))))))
                      (cons "index.clj"))
    :base-target-path "docs"
-   :book {:title "Scinojure Documentation"}
+   :book {:title "Noj"}
    :clean-up-target-dir true
    :quarto {:include-in-header {:text "<meta property=\"og:image\" content=\"https://scicloj.github.io/sci-cloj-logo-transparent.png\"/>
 <meta property=\"og:title\" content=\"Scinojure Documentation\"/>
