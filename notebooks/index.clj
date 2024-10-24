@@ -20,7 +20,7 @@
 
 (md "
 
-Scinojure (\"Noj\") is an entry point to the Clojure stack for data & science.
+Noj is an entry point to the Clojure stack for data & science.
 
 It combines a few of the relevant Clojure libraries for data & science and documents common ways of using them together. The included libraries either use [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset) directly as tabular data structure or provide high interoperability with it.
 
