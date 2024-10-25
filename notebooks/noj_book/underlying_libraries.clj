@@ -5,6 +5,9 @@
 
 ;; Noj consists of the following libraries:
 
+;; (See also the list of [other recommended libraries](./noj_book.recommended_libraries.html),
+;; which are not included in Noj.)
+
 ;; ## High-performance computing
 ;; * [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset) (TMD) - high-perfrormance table processing
 ;; * [dtype-next](https://github.com/cnuernber/dtype-next) - high-performance array-programming
