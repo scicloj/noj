@@ -25,9 +25,9 @@
 ;; * [sklearn-clj](https://github.com/scicloj/sklearn-clj) - Plugin to use [sklearn](https://scikit-learn.org/) models in metamorph.ml
 
 ;; ## Data visualization
-;; * [Kindly](https://scicloj.github.io/kindly-noted/) - datavis standard
-;; * [Hanami](https://github.com/jsa-aerial/hanami) - interactive datavis
 ;; * [Tableplot](https://scicloj.github.io/tableplot/) - easy layered graphics - 🛠 alpha version - should stabilize soon
+;; * [Hanami](https://github.com/jsa-aerial/hanami) - interactive datavis
+;; * [Kindly](https://scicloj.github.io/kindly-noted/) - datavis standard
 
 ;; ## Bridges to other languages
 ;; * [libpython-clj](https://github.com/clj-python/libpython-clj) - Python bindings
