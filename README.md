@@ -1,11 +1,14 @@
 ![ci workflow](https://github.com/scicloj/noj/actions/workflows/ci.yml/badge.svg)
 [![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/noj.svg)](https://clojars.org/org.scicloj/noj)
 
-# Scinojure
+# Noj
 ![Noj logo](notebooks/Noj.svg)
 
-Scinojure ("Noj") combines a few of the relevant Clojure libraries for data & science and documents common ways of using them together. The included libraries either use [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset) directly as tabular data structure or provide high interoperability with it.
+Noj gets you started with Clojure for data and science.
+* You get a collection of good libraries out of the box
+* .. and documentation that shows you how to use the different libraries together
 
+The included libraries either use [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset) directly as tabular data structure or provide high interoperability with it.
 
 ## Status
 Most of the [underlying libraries](https://scicloj.github.io/noj/noj_book.underlying_libraries.html) are stable. The experimental parts are marked as such. For some of the libraries, we use a branch for an upcoming release.
@@ -13,6 +16,8 @@ The main current goal is to provide a clear picture of the direction the stack i
 
 ## Usage
 [Docs](https://scicloj.github.io/noj/) (WIP)
+
+## Getting started
 
 ## Where to discuss
 - library development:
