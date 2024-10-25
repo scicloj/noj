@@ -82,6 +82,9 @@
     (plotly/layer-line {:=x :truncated-datetime
                         :=y :n}))
 
+;; We can visibly see the seasonal pattern of days,
+;; and maybe also some seasonality of weeks.
+
 ;; ## Analysis
 
 ;; Counts by hour
