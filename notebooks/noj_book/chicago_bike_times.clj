@@ -113,20 +113,16 @@
 ;; weekdays in terms of the hours in which people tend to use
 ;; their bikes.
 
-;; ## Exploring further
+;; ## Exploring further - DRAFT
 
 ;; How are they different?
 
-;; (draft)
-
-(-> processed-trips
-    (tc/group-by [:day-of-week :hour])
-    (tc/aggregate {:n tc/row-count})
-    (tc/order-by [:day-of-week :hour])
-    (ds/categorical->one-hot [:day-of-week :hour])
-    (dsmod/set-inference-target :n)
-    (tc/drop-columns [:day-of-week-7 :hour-23])
-    (ml/train {:model-type :fastmath/ols})
-    :model-data
-    :residuals
-    :raw)
+#_(-> processed-trips
+      (tc/group-by [:day-of-week :hour])
+      (tc/aggregate {:n tc/row-count})
+      (tc/order-by [:day-of-week :hour])
+      (ds/categorical->one-hot [:day-of-week :hour])
+      (dsmod/set-inference-target :n)
+      (tc/drop-columns [:day-of-week-7 :hour-23])
+      (ml/train {:model-type :fastmath/ols})
+      :model-data)
