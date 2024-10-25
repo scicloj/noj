@@ -1,4 +1,4 @@
-;; # Analysing Chicago Bike Times
+;; # Analysing Chicago Bike Times - DRAFT 🛠
 
 ;; author: Daniel Slutsky
 ;;
@@ -20,9 +20,16 @@
             [tech.v3.dataset :as ds]
             [tech.v3.dataset.modelling :as dsmod]
             [tech.v3.datatype.datetime :as datetime]
+            [tech.v3.dataset.reductions :as reductions]
             [scicloj.metamorph.ml :as ml]
+            [scicloj.kindly.v4.kind :as kind]
+            [clojure.string :as str]
+            [scicloj.metamorph.ml.regression]
             [scicloj.tableplot.v1.hanami :as hanami]
-            [scicloj.kindly.v4.kind :as kind]))
+            [scicloj.tableplot.v1.plotly :as plotly]
+            [fastmath.transform :as transform]
+            [fastmath.core :as fastmath]))
+
 
 ;; ## Reading data
 
@@ -42,27 +49,51 @@
 
 (def processed-trips
   (-> raw-trips
-      (tc/add-columns {:hour (fn [ds]
-                               (->> ds
-                                    :started_at
-                                    (datetime/long-temporal-field
-                                     :hours)))
+      (tc/add-columns {:day (fn [ds]
+                              (->> ds
+                                   :started_at
+                                   (datetime/long-temporal-field
+                                    :days)))
                        :day-of-week (fn [ds]
                                       (->> ds
                                            :started_at
                                            (datetime/long-temporal-field
-                                            :day-of-week)))})))
+                                            :day-of-week)))
+                       :hour (fn [ds]
+                               (->> ds
+                                    :started_at
+                                    (datetime/long-temporal-field
+                                     :hours)))})
+      (tc/map-columns :truncated-datetime
+                      [:day :hour]
+                      (fn [d h]
+                        (format "2023-04-%02dT%02d:00:00" d h)))))
 
+
+(-> processed-trips
+    (tc/select-columns [:started_at :truncated-datetime :day :day-of-week :hour]))
+
+;; ## The time series of hourly counts
+
+(-> processed-trips
+    (tc/group-by [:truncated-datetime])
+    (tc/aggregate {:n tc/row-count})
+    (tc/order-by [:truncated-datetime])
+    (plotly/layer-line {:=x :truncated-datetime
+                        :=y :n}))
 
 ;; ## Analysis
+
+;; Counts by hour
 
 (-> processed-trips
     (tc/group-by [:hour])
     (tc/aggregate {:n tc/row-count})
     (tc/order-by [:hour])
-    (hanami/layer-bar {:=x :hour
+    (plotly/layer-bar {:=x :hour
                        :=y :n}))
 
+;; Counts by day-of-week and hour
 
 (-> processed-trips
     (tc/group-by [:day-of-week :hour])
@@ -70,19 +101,16 @@
     (tc/group-by :day-of-week)
     (tc/without-grouping->
         (tc/order-by [:name]))
-    (tc/process-group-data #(hanami/layer-bar
+    (tc/process-group-data #(plotly/layer-bar
                              %
                              {:=x :hour
                               :=y :n}))
     kind/table)
 
+;; ## Intermeidate conclusion
 
-
-;; ## Conclusion
-
-;; Yes. Weekends are different from
-;; weekdays in terms of the hours
-;; in which people tend to use
+;; The pictutres show that weekends are different from
+;; weekdays in terms of the hours in which people tend to use
 ;; their bikes.
 
 ;; ## Exploring further
@@ -99,4 +127,6 @@
     (dsmod/set-inference-target :n)
     (tc/drop-columns [:day-of-week-7 :hour-23])
     (ml/train {:model-type :fastmath/ols})
-    :model-data)
+    :model-data
+    :residuals
+    :raw)
