@@ -18,9 +18,8 @@ The included libraries either use [tech.ml.dataset](https://github.com/techascen
 |Tests |![ci workflow](https://github.com/scicloj/noj/actions/workflows/ci.yml/badge.svg)|
 |License |[EPLv1.0](https://github.com/scicloj/noj/blob/main/LICENSE)|
 |Status |Getting close to Beta stage.|
-|Dev chat|[#noj-dev](https://clojurians.zulipchat.com/#narrow/stream/321125-noj-dev) stream at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)
-|User chat|[#data-science stream](https://clojurians.zulipchat.com/#narrow/stream/151924-data-science) stream at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)
-|
+|Dev chat|[#noj-dev](https://clojurians.zulipchat.com/#narrow/stream/321125-noj-dev) at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)|
+|User chat|[#data-science](https://clojurians.zulipchat.com/#narrow/stream/151924-data-science) at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)|
 
 ## License
 
