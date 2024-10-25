@@ -15,7 +15,7 @@
 
 ;; ## Setup
 
-(ns noj-book/chicago-bike-times
+(ns noj-book.chicago-bike-times
   (:require [tablecloth.api :as tc]
             [tech.v3.dataset :as ds]
             [tech.v3.dataset.modelling :as dsmod]
