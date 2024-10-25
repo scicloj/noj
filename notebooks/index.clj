@@ -50,7 +50,7 @@ directly as tabular data structure or provide high interoperability with it.
 |User chat|[#data-science](https://clojurians.zulipchat.com/#narrow/stream/151924-data-science) at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)|
 
 ## Getting started
-🌟coming soon🌟
+🎥📖 a revised version is coming soon🌟
 
 ")
 
