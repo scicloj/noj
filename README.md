@@ -8,7 +8,11 @@ Noj gets you started with Clojure for data and science.
 * You get a collection of good libraries out of the box
 * .. and documentation that shows you how to use the different libraries together
 
-The included libraries either use [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset) directly as tabular data structure or provide high interoperability with it.
+Noj is a library that does not add any API of its own.
+It includes the [underlying libraries](https://scicloj.github.io/noj/noj_book.underlying_libraries.html)
+as dependencies, and adds documentation and integration tests
+The included libraries either use [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset)
+directly as tabular data structure or provide high interoperability with it.
 
 |||
 |-|-|
