@@ -12,19 +12,15 @@ The included libraries either use [tech.ml.dataset](https://github.com/techascen
 
 |||
 |-|-|
-|**Website** | [https://scicloj.github.io/noj/](https://scicloj.github.io/noj/)
-|**Source** |[![(GitHub repo)](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/scicloj/noj)|
-|**Deps** |[![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/noj.svg)](https://clojars.org/org.scicloj/noj)|
-|**Tests** |![ci workflow](https://github.com/scicloj/noj/actions/workflows/ci.yml/badge.svg)|
-|**License** |[EPLv1.0](https://github.com/scicloj/noj/blob/main/LICENSE)|
-|**Status** |Getting close to Beta stage.|
-
-## Where to discuss
-- library development:
-  - the [#noj-dev](https://clojurians.zulipchat.com/#narrow/stream/321125-noj-dev) stream at the [Clojurians Zulip chat](https://scicloj.github.io/docs/community/chat/)
-  - [Issues](https://github.com/scicloj/noj) at this repo
-- user questions:
-  - the [#data-science stream](https://clojurians.zulipchat.com/#narrow/stream/151924-data-science) at the [Clojurians Zulip chat](https://scicloj.github.io/docs/community/chat/)
+|Website | [https://scicloj.github.io/noj/](https://scicloj.github.io/noj/)
+|Source |[![(GitHub repo)](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/scicloj/noj)|
+|Deps |[![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/noj.svg)](https://clojars.org/org.scicloj/noj)|
+|Tests |![ci workflow](https://github.com/scicloj/noj/actions/workflows/ci.yml/badge.svg)|
+|License |[EPLv1.0](https://github.com/scicloj/noj/blob/main/LICENSE)|
+|Status |Getting close to Beta stage.|
+|Dev chat|[#noj-dev](https://clojurians.zulipchat.com/#narrow/stream/321125-noj-dev) stream at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)
+|User chat|[#data-science stream](https://clojurians.zulipchat.com/#narrow/stream/151924-data-science) stream at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)
+|
 
 ## License
 
