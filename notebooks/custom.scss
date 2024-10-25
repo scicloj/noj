@@ -5,7 +5,8 @@
 
 code {font-family: 'Fira Code Medium', monospace;}
 
-.clay-dataset .table {
+.table {
+    @extend .table-striped;
     @extend .table-hover;
     @extend .table-responsive;
 }
