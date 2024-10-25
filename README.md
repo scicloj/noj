@@ -10,6 +10,8 @@ Noj gets you started with Clojure for data and science.
 
 The included libraries either use [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset) directly as tabular data structure or provide high interoperability with it.
 
+|||
+|-|-|
 |**Website** | [https://scicloj.github.io/noj/](https://scicloj.github.io/noj/)
 |**Source** |[![(GitHub repo)](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/scicloj/noj)|
 |**Deps** |[![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/noj.svg)](https://clojars.org/org.scicloj/noj)|
