@@ -20,28 +20,24 @@
 
 (md "
 
-Noj is an entry point to the Clojure stack for data & science.
+Noj gets you started with Clojure for data and science.
 
-It combines a few of the relevant Clojure libraries for data & science and documents common ways of using them together. The included libraries either use [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset) directly as tabular data structure or provide high interoperability with it.
+* You get a collection of good libraries out of the box
+* .. and documentation that shows you how to use the different libraries together
 
-**Source:** [![(GitHub repo)](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/scicloj/noj)
+The included libraries either use [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset) directly as tabular data structure or provide high interoperability with it.
 
-**Deps:** [![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/noj.svg)](https://clojars.org/org.scicloj/noj)
-
-**Tests:** ![ci workflow](https://github.com/scicloj/noj/actions/workflows/ci.yml/badge.svg)
-
-Note we are using git coordinates at the moment, in order to expose a few relevant features of the current underlying libraries, which are unreleased yet.
-
-**Status:** Most of the [underlying libraries](./noj_book.underlying_libraries.html) are stable. The experimental parts are marked as such. For some of the libraries, we use a branch for an upcoming release.
-The main current goal is to provide a clear picture of the direction the stack is going towards, expecting most of it to stabilize soon.
-
-**Near term plan - till the end of October 2024**
-
-* Work on stabilizing the upcoming releases of the underlying libraries.
-
-* Keep documenting core ideas of the underlying librares and ways to combine them in typical workflows.
-
-* Keep making the docs generate automatic tests using [kindly/check](https://scicloj.github.io/clay/#test-generation).
+## General info
+|||
+|-|-|
+|Website | [https://scicloj.github.io/noj/](https://scicloj.github.io/noj/)
+|Source |[![(GitHub repo)](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/scicloj/noj)|
+|Deps |[![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/noj.svg)](https://clojars.org/org.scicloj/noj)|
+|Tests |![ci workflow](https://github.com/scicloj/noj/actions/workflows/ci.yml/badge.svg)|
+|License |[EPLv1.0](https://github.com/scicloj/noj/blob/main/LICENSE)|
+|Status |Getting close to Beta stage.|
+|Dev chat|[#noj-dev](https://clojurians.zulipchat.com/#narrow/stream/321125-noj-dev) at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)|
+|User chat|[#data-science](https://clojurians.zulipchat.com/#narrow/stream/151924-data-science) at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)|
 
 ## Chapters of this book:
 ")
