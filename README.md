@@ -11,13 +11,10 @@ Noj gets you started with Clojure for data and science.
 The included libraries either use [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset) directly as tabular data structure or provide high interoperability with it.
 
 ## Status
-Most of the [underlying libraries](https://scicloj.github.io/noj/noj_book.underlying_libraries.html) are stable. The experimental parts are marked as such. For some of the libraries, we use a branch for an upcoming release.
-The main current goal is to provide a clear picture of the direction the stack is going towards, expecting most of it to stabilize around October 2024.
+Getting close to Beta stage.
 
 ## Usage
-[Docs](https://scicloj.github.io/noj/) (WIP)
-
-## Getting started
+[Docs](https://scicloj.github.io/noj/)
 
 ## Where to discuss
 - library development:
