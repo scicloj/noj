@@ -6,9 +6,11 @@
 ;; For additional backgrounds, see
 ;; [Introduction to Applied Linear Algebra – Vectors, Matrices, and Least Squares](https://web.stanford.edu/~boyd/vmls/)
 ;; by Stephen Boyd & Lieven Vandenberghe, Cambridge University Press, UK, 2018.
-
 (ns noj-book.linear-algebra-intro
-  (:require [fastmath.vector :as vec]))
+  (:require
+   [clojure.math :as math]
+   [fastmath.vector :as vec]
+   [scicloj.kindly.v4.api :as kindly]))
 
 ;; util vars
 
@@ -71,23 +73,26 @@
 
 ;; ### WIP -- if two vectors are passed it takes count of elemets from first vec and
 ;; returns same count of elements from second vec??
-(vec/as-vec [10 2] [5 10 15]) ;; -> [5 10]
+(vec/as-vec [10 2] [5 10 15])
 
 ;; ### WIP -- if one vector is passed it takes count of elemets from vec and returns same 
 ;; count of elemets from new vector with each value being `0,0`. 
-(vec/as-vec [5 10 15]) ;; -> [0.0 0.0 0.0]
+(vec/as-vec [5 10 15])
 
 ;; Magnitude of the vector calculated using Pythagoras(norm).  
-(vec/mag [3 4]) ;; -> 5.0
+(vec/mag [3 4])
 
 ;; Round the value from the vector based on second argument
 (vec/approx [math/PI])
 (kindly/check = [3.14])
-(vec/approx [math/PI math/PI math/PI] 5) ;; -> [3.14159 3.14159 3.14159]
+(vec/approx [math/PI math/PI math/PI] 5)
 
 ;; Equality tolerance
-(vec/edelta-eq [math/PI] (vec/approx [math/PI] 4)) ;; -> false
-(vec/edelta-eq [math/PI] (vec/approx [math/PI] 4) 0.001) ;; -> true
-(vec/edelta-eq [math/PI] (vec/approx [math/PI] 4) 0.000001) ;; -> false 
-
+;; "Element-wise equality with given absolute (and/or relative) tolerance."
+(vec/edelta-eq [math/PI] (vec/approx [math/PI] 4))
+(vec/edelta-eq [math/PI] (vec/approx [math/PI] 4) 0.001)
+(vec/edelta-eq [math/PI] (vec/approx [math/PI] 4) 0.000001) 
+;; Equality with given absolute (and/or relative) tolerance.
+(vec/delta-eq [math/PI] (vec/approx [math/PI] 4))
+(vec/delta-eq [math/PI] (vec/approx [math/PI] 4) 0.000001)
 
