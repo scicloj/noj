@@ -138,3 +138,28 @@
     (plotly/base {:=x :truncated-datetime})
     (plotly/layer-line {:=y :n})
     (plotly/layer-line {:=y :predicted-n}))
+
+
+(-> processed-trips
+    (tc/group-by [:day-of-week :hour])
+    (tc/aggregate {:n tc/row-count})
+    (tc/order-by [:day-of-week :hour])
+    (tc/add-column :predicted-n
+                   (fn [ds]
+                     (-> ds
+                         (ds/categorical->one-hot [:day-of-week :hour])
+                         (dsmod/set-inference-target :n)
+                         (tc/drop-columns [:day-of-week-7
+                                           :hour-23])
+                         (ml/train {:model-type :fastmath/ols})
+                         :model-data
+                         :fitted)))
+    (tc/group-by :day-of-week)
+    (tc/without-grouping->
+        (tc/order-by [:name]))
+    (tc/process-group-data (fn [ds]
+                             (-> ds
+                                 (plotly/base {:=x :hour})
+                                 (plotly/layer-bar {:=y :n})
+                                 (plotly/layer-line {:=y :predicted-n}))))
+    kind/table)
