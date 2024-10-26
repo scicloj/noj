@@ -75,10 +75,13 @@
 
 ;; ## The time series of hourly counts
 
-(-> processed-trips
-    (tc/group-by [:truncated-datetime])
-    (tc/aggregate {:n tc/row-count})
-    (tc/order-by [:truncated-datetime])
+(def hourly-time-series
+  (-> processed-trips
+      (tc/group-by [:truncated-datetime :day-of-week :hour])
+      (tc/aggregate {:n tc/row-count})
+      (tc/order-by [:truncated-datetime])))
+
+(-> hourly-time-series
     (plotly/layer-line {:=x :truncated-datetime
                         :=y :n}))
 
@@ -120,12 +123,18 @@
 
 ;; How are they different?
 
-#_(-> processed-trips
-      (tc/group-by [:day-of-week :hour])
-      (tc/aggregate {:n tc/row-count})
-      (tc/order-by [:day-of-week :hour])
-      (ds/categorical->one-hot [:day-of-week :hour])
-      (dsmod/set-inference-target :n)
-      (tc/drop-columns [:day-of-week-7 :hour-23])
-      (ml/train {:model-type :fastmath/ols})
-      :model-data)
+(-> hourly-time-series
+    (tc/add-column :predicted-n
+                   (fn [ds]
+                     (-> ds
+                         (ds/categorical->one-hot [:day-of-week :hour])
+                         (dsmod/set-inference-target :n)
+                         (tc/drop-columns [:truncated-datetime
+                                           :day-of-week-7
+                                           :hour-23])
+                         (ml/train {:model-type :fastmath/ols})
+                         :model-data
+                         :fitted)))
+    (plotly/base {:=x :truncated-datetime})
+    (plotly/layer-line {:=y :n})
+    (plotly/layer-line {:=y :predicted-n}))
