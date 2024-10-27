@@ -35,8 +35,10 @@ mtcars
 ;; ## Plotly
 ;; We can also use datasets from [Plotly Sample Datasets](https://plotly.github.io/datasets/)
 
-(-> "https://raw.githubusercontent.com/plotly/datasets/refs/heads/master/2011_february_aa_flight_paths.csv"
-    (tc/dataset {:key-fn keyword})
+(-> "https://raw.githubusercontent.com/plotly/datasets/refs/heads/master/1962_2006_walmart_store_openings.csv"
+    (tc/dataset {:key-fn keyword
+                 :parser-fn {:OPENDATE :string
+                             :date_super :string}})
     (tc/head))
 
 ;; ## tech.ml.dataset (TMD)
