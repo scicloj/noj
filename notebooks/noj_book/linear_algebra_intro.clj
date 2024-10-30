@@ -3,9 +3,37 @@
 ;; In this tutorial, we introduce basic linear algebra concepts
 ;; and the way they can be computed using [Fastmath](https://github.com/generateme/fastmath).
 
-;; For additional backgrounds, see
-;; [Introduction to Applied Linear Algebra – Vectors, Matrices, and Least Squares](https://web.stanford.edu/~boyd/vmls/)
+;; ## What is it about?
+
+;; Linear algebra focuses on *vectors* and certain kinds of transformations of them, called *linear transformations*.
+
+;; In our context here, our vectors are *ordered collections of floating-point numbers*.
+
+;; This is a concrete special case of a more absract and more general notion of elements of [vector spaces](https://en.wikipedia.org/wiki/Vector_space). As usual, abstraction can be useful for our reasoning. We recommend learning abouthe more general ideas of linear algebra. Probably, for Clojurians who appreciate simplicity and functional composition, those ideas can be attractive.
+
+;; Linear transformations are transformations which are simple, in a certain sense which can be made precise. They are often useful when mixed and composed with nonlinear transformations, and of course, the Fastmath API offers both kinds, as we will see below.
+
+;; Implementation-wise, vectors can be represented in many ways. Clojure's persistent vectors are one way (assuming they contain only numbers). It is a bit heavy in time and space, since all numbers are [boxed](https://en.wikipedia.org/wiki/Boxing_(computer_programming)) in objects. Java arrays are a more lightweight representatin.
+
+;; ## Recommended reading
+
+;; ### Applied
+
+;; * [Introduction to Applied Linear Algebra – Vectors, Matrices, and Least Squares](https://web.stanford.edu/~boyd/vmls/)
 ;; by Stephen Boyd & Lieven Vandenberghe, Cambridge University Press, UK, 2018.
+
+;; * [Numerical Linear Algebra for Programmers](https://aiprobook.com/numerical-linear-algebra-for-programmers/) - An Interactive Tutorial with GPU, CUDA, OpenCL, MKL, Java, and Clojure
+;; by Dragan Djurich, 2019.
+
+;; * [Mathematics for Machine Learning](https://mml-book.github.io/)
+;; by Marc Peter Deisenroth, A. Aldo Faisal, and Cheng Soon, Cambridge University Press, 2020.
+
+;; ### Abstract
+;; * [Linear Algebra Done Right](https://linear.axler.net/) 4th  by Sheldon Axler, Springer, 2024.
+
+
+;; ## Setup
+
 (ns noj-book.linear-algebra-intro
   (:require
    [clojure.math :as math]
@@ -13,8 +41,12 @@
    [scicloj.kindly.v4.api :as kindly]))
 
 ;; util vars
-
 (def java-double-array (double-array 5))
+
+
+;; ## What is a linear transformation?
+;; (coming soon)
+
 
 ;; ## Addition
 
@@ -43,25 +75,25 @@
          [8 4])
 
 ;; ## Converters
-;; ### Vector to Java array of doubles `[D`. 
+;; ### Vector to Java array of doubles `[D`.
 
 (vec/vec->array [10 5])
 
 (type (vec/vec->array [10 5]))
 
-;; ### Java array to Clojure sequence. 
+;; ### Java array to Clojure sequence.
 (identity java-double-array)
 
 (type (vec/vec->seq java-double-array))
 
-;; ### Vector or Java array to Apache Commons Math RealVector. 
+;; ### Vector or Java array to Apache Commons Math RealVector.
 (type (vec/vec->RealVector [10 5]))
 
 (identity java-double-array)
 
 (type (vec/vec->RealVector java-double-array))
 
-;; ### Clojure vector or Java array to primitive vector `Vec`. 
+;; ### Clojure vector or Java array to primitive vector `Vec`.
 
 (vec/vec->Vec [10 5])
 
@@ -75,11 +107,11 @@
 ;; returns same count of elements from second vec??
 (vec/as-vec [10 2] [5 10 15])
 
-;; ### WIP -- if one vector is passed it takes count of elemets from vec and returns same 
-;; count of elemets from new vector with each value being `0,0`. 
+;; ### WIP -- if one vector is passed it takes count of elemets from vec and returns same
+;; count of elemets from new vector with each value being `0,0`.
 (vec/as-vec [5 10 15])
 
-;; Magnitude of the vector calculated using Pythagoras(norm).  
+;; Magnitude of the vector calculated using Pythagoras(norm).
 (vec/mag [3 4])
 
 ;; Round the value from the vector based on second argument
@@ -91,8 +123,7 @@
 ;; "Element-wise equality with given absolute (and/or relative) tolerance."
 (vec/edelta-eq [math/PI] (vec/approx [math/PI] 4))
 (vec/edelta-eq [math/PI] (vec/approx [math/PI] 4) 0.001)
-(vec/edelta-eq [math/PI] (vec/approx [math/PI] 4) 0.000001) 
+(vec/edelta-eq [math/PI] (vec/approx [math/PI] 4) 0.000001)
 ;; Equality with given absolute (and/or relative) tolerance.
 (vec/delta-eq [math/PI] (vec/approx [math/PI] 4))
 (vec/delta-eq [math/PI] (vec/approx [math/PI] 4) 0.000001)
-
