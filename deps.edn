@@ -55,4 +55,4 @@
 
 
   :dev {:extra-paths ["notebooks"]
-        :extra-deps {org.scicloj/clay {:mvn/version "2-beta20"}}}}}
+        :extra-deps {org.scicloj/clay {:mvn/version "2-beta21"}}}}}
