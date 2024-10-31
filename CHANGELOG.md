@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [2-alpha10] - 2024-10-31
+- added deps: sci, emmy-viewers
+
 ## [2-alpha9.3] - 2024-10-20
 - updated deps (renaming Hanamicloth to Tableplot)
 

@@ -23,7 +23,10 @@
         org.scicloj/kind-pyplot                   {:mvn/version "1-beta1"}
         scicloj/clojisr                           {:mvn/version "1.0.0"}
 
-        same/ish                                  {:mvn/version "0.1.6"}}
+        same/ish                                  {:mvn/version "0.1.6"}
+
+        org.babashka/sci {:mvn/version "0.8.40"}
+        org.mentat/emmy-viewers {:mvn/version "0.3.2"}}
  :aliases
  {:gen-tests {:extra-paths ["build"]}
 
