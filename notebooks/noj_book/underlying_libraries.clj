@@ -27,9 +27,10 @@
 ;; * [scicloj.ml.smile](https://github.com/scicloj/scicloj.ml.smile) - [Smile](https://haifengl.github.io/) (v 2.6) machine learning models
 ;; * [sklearn-clj](https://github.com/scicloj/sklearn-clj) - Plugin to use [sklearn](https://scikit-learn.org/) models in metamorph.ml
 
-;; ## Data visualization
+;; ## Visualization
 ;; * [Tableplot](https://scicloj.github.io/tableplot/) - easy layered graphics - 🛠 alpha version - should stabilize soon
 ;; * [Hanami](https://github.com/jsa-aerial/hanami) - interactive datavis
+;; * [Emmy-viewers](https://github.com/mentat-collective/emmy-viewers?tab=readme-ov-file) - math visualization
 ;; * [Kindly](https://scicloj.github.io/kindly-noted/) - datavis standard
 
 ;; ## Bridges to other languages
