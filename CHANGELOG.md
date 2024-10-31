@@ -1,12 +1,14 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
-- upgraded scicloj.ml.xgboost to 6.1.0
+
+## [2-alpha10] - 2024-10-31
+- added deps: sci, emmy-viewers
 
 ## [2-alpha9.3] - 2024-10-20
 - updated deps (renaming Hanamicloth to Tableplot)
 
 ## [2-alpha9.2] - 2024-10-15
-- updated deps (Fastmath, Hanamicloth)
+- updated deps (Fastmath, Hanamicloth, scicloj.ml.xgboost)
 
 ## [2-alpha9.1] - 2024-09-28
 - brought back same/ish dep which was removed by mistake
