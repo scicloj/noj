@@ -1,5 +1,7 @@
 ;; # 2d and 3d geometry with `fastmath.vector` - DRAFT 🛠
 
+;; authors: Nedeljko Radovanovic, Epidiah Ravachol, Daniel Slutsky
+
 (ns noj-book.fastmath-vector-geom2d3d
   (:require [fastmath.vector :as vec]
             [clojure.math :as math]
