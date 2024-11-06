@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [2-alpha10.1] - 2024-11-06
+- updated deps (Kindly, Hanami, Tableplot, Kind-pyplot, SCI)
+
 ## [2-alpha10] - 2024-10-31
 - added deps: sci, emmy-viewers
 

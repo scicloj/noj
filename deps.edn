@@ -2,10 +2,10 @@
  :deps {scicloj/tablecloth                        {:mvn/version "7.029.2"}
         org.scicloj/tcutils                       {:mvn/version "0.1.0-alpha2"}
         com.techascent/tmd-parquet                {:mvn/version "1.001"}
-        org.scicloj/kindly                        {:mvn/version "4-beta12"}
+        org.scicloj/kindly                        {:mvn/version "4-beta13"}
         generateme/fastmath                       {:mvn/version "3.0.0-alpha2"}
-        aerial.hanami/aerial.hanami               {:mvn/version "0.20.0"}
-        org.scicloj/tableplot                     {:mvn/version "1-alpha10"}
+        aerial.hanami/aerial.hanami               {:mvn/version "0.20.1"}
+        org.scicloj/tableplot                     {:mvn/version "1-alpha12"}
         org.scicloj/metamorph.ml                  {:mvn/version "0.9.0"}
         org.scicloj/scicloj.ml.smile              {:mvn/version "7.4.2"}
         org.scicloj/sklearn-clj                   {:mvn/version "0.4.1"}
@@ -20,12 +20,12 @@
         org.tribuo/tribuo-classification-xgboost  {:mvn/version "4.3.1"}
 
         clj-python/libpython-clj                  {:mvn/version "2.025"}
-        org.scicloj/kind-pyplot                   {:mvn/version "1-beta1"}
+        org.scicloj/kind-pyplot                   {:mvn/version "1-beta2.1"}
         scicloj/clojisr                           {:mvn/version "1.0.0"}
 
         same/ish                                  {:mvn/version "0.1.6"}
 
-        org.babashka/sci {:mvn/version "0.8.40"}
+        org.babashka/sci {:mvn/version "0.9.44"}
         org.mentat/emmy-viewers {:mvn/version "0.3.2"}}
  :aliases
  {:gen-tests {:extra-paths ["build"]}
