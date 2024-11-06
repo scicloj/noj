@@ -100,18 +100,6 @@
 (-> processed-trips
     (tc/group-by [:day-of-week :hour])
     (tc/aggregate {:n tc/row-count})
-    (tc/group-by :day-of-week {:result-type :as-map})
-    (->> (into (sorted-map)))
-    (update-vals #(plotly/layer-bar
-                   %
-                   {:=x :hour
-                    :=y :n}))
-    (update-keys i->day))
-
-
-(-> processed-trips
-    (tc/group-by [:day-of-week :hour])
-    (tc/aggregate {:n tc/row-count})
     (tc/group-by [:day-of-week])
     (tc/aggregate {:plot (fn [ds]
                            [(plotly/layer-bar
@@ -119,6 +107,9 @@
                              {:=x :hour
                               :=y :n})])})
     (tc/order-by [:day-of-week])
+    (tc/map-columns :day-of-week
+                    [:day-of-week]
+                    i->day)
     kind/table)
 
 
