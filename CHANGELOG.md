@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [2-alpha11] - 2024-11-06
+- added dependency: clojure.java-time
+
 ## [2-alpha10.1] - 2024-11-06
 - updated deps (Kindly, Hanami, Tableplot, Kind-pyplot, SCI)
 
