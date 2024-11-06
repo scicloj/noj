@@ -29,10 +29,7 @@
             [scicloj.tableplot.v1.plotly :as plotly]
             [fastmath.transform :as transform]
             [fastmath.core :as fastmath]
-            [java-time.api])
-  (:import java.time.temporal.ChronoUnit
-           java.time.LocalDateTime))
-
+            [java-time.api :as java-time]))
 
 ;; ## Reading data
 
@@ -52,12 +49,7 @@
 
 (def processed-trips
   (-> raw-trips
-      (tc/add-columns {:day (fn [ds]
-                              (->> ds
-                                   :started_at
-                                   (datetime/long-temporal-field
-                                    :days)))
-                       :day-of-week (fn [ds]
+      (tc/add-columns {:day-of-week (fn [ds]
                                       (->> ds
                                            :started_at
                                            (datetime/long-temporal-field
@@ -69,8 +61,7 @@
                                      :hours)))})
       (tc/map-columns :truncated-datetime
                       [:started_at]
-                      (fn [^LocalDateTime started-at]
-                        (.truncatedTo started-at ChronoUnit/HOURS)))))
+                      #(java-time/truncate-to % :hours))))
 
 
 (-> processed-trips
