@@ -28,7 +28,10 @@
             [scicloj.tableplot.v1.hanami :as hanami]
             [scicloj.tableplot.v1.plotly :as plotly]
             [fastmath.transform :as transform]
-            [fastmath.core :as fastmath]))
+            [fastmath.core :as fastmath]
+            [java-time.api])
+  (:import java.time.temporal.ChronoUnit
+           java.time.LocalDateTime))
 
 
 ;; ## Reading data
@@ -65,9 +68,9 @@
                                     (datetime/long-temporal-field
                                      :hours)))})
       (tc/map-columns :truncated-datetime
-                      [:day :hour]
-                      (fn [d h]
-                        (format "2023-04-%02dT%02d:00:00" d h)))))
+                      [:started_at]
+                      (fn [^LocalDateTime started-at]
+                        (.truncatedTo started-at ChronoUnit/HOURS)))))
 
 
 (-> processed-trips
@@ -77,7 +80,7 @@
 
 (def hourly-time-series
   (-> processed-trips
-      (tc/group-by [:truncated-datetime :day-of-week :hour])
+      (tc/group-by [:truncated-datetime])
       (tc/aggregate {:n tc/row-count})
       (tc/order-by [:truncated-datetime])))
 
@@ -101,17 +104,32 @@
 
 ;; Counts by day-of-week and hour
 
+(def i->day (comp [:Mon :Tue :Wed :Thu :Fri :Sat :Sun] dec))
+
 (-> processed-trips
     (tc/group-by [:day-of-week :hour])
     (tc/aggregate {:n tc/row-count})
-    (tc/group-by :day-of-week)
-    (tc/without-grouping->
-        (tc/order-by [:name]))
-    (tc/process-group-data #(plotly/layer-bar
-                             %
+    (tc/group-by :day-of-week {:result-type :as-map})
+    (->> (into (sorted-map)))
+    (update-vals #(plotly/layer-bar
+                   %
+                   {:=x :hour
+                    :=y :n}))
+    (update-keys i->day))
+
+
+(-> processed-trips
+    (tc/group-by [:day-of-week :hour])
+    (tc/aggregate {:n tc/row-count})
+    (tc/group-by [:day-of-week])
+    (tc/aggregate {:plot (fn [ds]
+                           [(plotly/layer-bar
+                             ds
                              {:=x :hour
-                              :=y :n}))
+                              :=y :n})])})
+    (tc/order-by [:day-of-week])
     kind/table)
+
 
 ;; ## Intermeidate conclusion
 
@@ -123,43 +141,37 @@
 
 ;; How are they different?
 
-(-> hourly-time-series
-    (tc/add-column :predicted-n
-                   (fn [ds]
+#_(-> processed-trips
+      (tc/group-by [:day-of-week :hour])
+      (tc/aggregate {:n tc/row-count})
+      (tc/log :logn :n)
+      (tc/add-column :predicted-logn
+                     (fn [ds]
+                       (-> ds
+                           (ds/categorical->one-hot [:day-of-week :hour])
+                           (dsmod/set-inference-target :logn)
+                           (tc/drop-columns [:day-of-week-7
+                                             :hour-23
+                                             :n])
+                           (ml/train {:model-type :fastmath/ols})
+                           :model-data
+                           :fitted)))
+      :predicted-logn
+      (tc/exp :predicted-n :predicted-logn)
+      (tc/map-columns :time
+                      [:day-of-week :hour]
+                      (fn [dow h]
+                        (+ h (* 24 (- dow 1)))))
+      (tc/order-by [:time])
+      (plotly/base [:=x :time])
+      (plotly/layer-bar {:=y :logn})
+      (plotly/layer-line {:=y :predicted-logn})
+      (tc/group-by :day-of-week {:result-type :as-map})
+      (->> (into (sorted-map)))
+      (update-vals (fn [ds]
                      (-> ds
-                         (ds/categorical->one-hot [:day-of-week :hour])
-                         (dsmod/set-inference-target :n)
-                         (tc/drop-columns [:truncated-datetime
-                                           :day-of-week-7
-                                           :hour-23])
-                         (ml/train {:model-type :fastmath/ols})
-                         :model-data
-                         :fitted)))
-    (plotly/base {:=x :truncated-datetime})
-    (plotly/layer-line {:=y :n})
-    (plotly/layer-line {:=y :predicted-n}))
-
-
-(-> processed-trips
-    (tc/group-by [:day-of-week :hour])
-    (tc/aggregate {:n tc/row-count})
-    (tc/order-by [:day-of-week :hour])
-    (tc/add-column :predicted-n
-                   (fn [ds]
-                     (-> ds
-                         (ds/categorical->one-hot [:day-of-week :hour])
-                         (dsmod/set-inference-target :n)
-                         (tc/drop-columns [:day-of-week-7
-                                           :hour-23])
-                         (ml/train {:model-type :fastmath/ols})
-                         :model-data
-                         :fitted)))
-    (tc/group-by :day-of-week)
-    (tc/without-grouping->
-        (tc/order-by [:name]))
-    (tc/process-group-data (fn [ds]
-                             (-> ds
-                                 (plotly/base {:=x :hour})
-                                 (plotly/layer-bar {:=y :n})
-                                 (plotly/layer-line {:=y :predicted-n}))))
-    kind/table)
+                         (tc/order-by [:hour])
+                         (plotly/base {:=x :hour})
+                         ;; (plotly/layer-bar {:=y :logn})
+                         (plotly/layer-line {:=y :predicted-logn}))))
+      (update-keys i->day))
