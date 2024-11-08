@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [2-alpha12] - 2024-11-08
+- updated deps (Metamorph.ml, scicloj.ml.xgboost, Tableplot)
+
 ## [2-alpha11] - 2024-11-06
 - added dependency: clojure.java-time
 
