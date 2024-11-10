@@ -2,6 +2,8 @@
 
 ;; authors: Nedeljko Radovanovic, Epidiah Ravachol, Daniel Slutsky
 
+;; ## Setup
+
 (ns noj-book.fastmath-vector-geom2d3d
   (:require [fastmath.vector :as vec]
             [clojure.math :as math]
@@ -111,3 +113,6 @@
                             Math/PI)
                random-shape))
          (shape->plotly-coords [[0 0 0]])]})
+
+
+random-shape
