@@ -42,6 +42,8 @@
    (vec/sub female male)
    (vec/sub queen king)))
 
+;; compared to:
+
 (let [{:keys [queen king data programming]} embeddings]
   (vec/dist
    (vec/sub data programming)
