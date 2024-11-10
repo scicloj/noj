@@ -14,6 +14,7 @@
              "visualizing_correlation_matrices"]}
  {:part "Linear Algebra"
   :chapters ["linear_algebra_intro"
-             "fastmath_vector_geom2d3d"]}
+             "fastmath_vector_geom2d3d"
+             "fastmath_vector_word_embeddings"]}
  {:part "Use Cases"
   :chapters ["chicago_bike_times"]}]
