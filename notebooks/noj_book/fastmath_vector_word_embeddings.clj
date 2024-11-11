@@ -84,3 +84,12 @@
    (vec/sub data programming)
    (vec/sub queen king)))
 
+;; A different way to pharse it is:
+;; "queen minus female plus male is close to king".
+
+(let [{:keys [queen king female male]} embeddings]
+  (-> queen
+      (vec/sub female)
+      (vec/add male)
+      (vec/dist king)))
+
