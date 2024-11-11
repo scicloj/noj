@@ -52,6 +52,20 @@
     tc/dataset
     tc/info)
 
+;; ## Exploring distances
+
+(-> (for [[token1 vec1] embeddings
+          [token2 vec2] embeddings
+          :when (pos? (compare token1 token2))]
+      {:token1 token1
+       :token2 token2
+       :distance (vec/dist vec1 vec2)})
+    tc/dataset
+    (tc/drop-rows #(= (:token1 %)
+                      (:token2 %)))
+    (tc/order-by [:distance])
+    (kind/table {:use-datatables true}))
+
 ;; ## Exploring relationships
 
 ;; female-male is relatively close to queen-king.
@@ -63,10 +77,10 @@
    (vec/sub female male)
    (vec/sub queen king)))
 
-
 ;; compared to:
 
 (let [{:keys [queen king data programming]} embeddings]
   (vec/dist
    (vec/sub data programming)
    (vec/sub queen king)))
+
