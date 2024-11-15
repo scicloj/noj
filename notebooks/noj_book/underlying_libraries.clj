@@ -16,7 +16,7 @@
 ;; * [Tablecloth](https://scicloj.github.io/tablecloth/) - dataset processing on top of TMD
 ;; * [tcutils](https://scicloj.github.io/tcutils/) - utility functions for Tablecloth datasets - 🛠 early stage
 ;; * [tmd-parquet](https://github.com/techascent/tech.parquet) - TMD bindings for [Parquet](https://parquet.apache.org/) format
-;; * [clojure.java-tim](https://github.com/dm3/clojure.java-time) - Java 8 Date-Time API for Clojure
+;; * [clojure.java-time](https://github.com/dm3/clojure.java-time) - Java 8 Date-Time API for Clojure
 
 ;; ## Math and statistics
 ;; * [Fastmath](https://github.com/generateme/fastmath) - math & stats - alpha stage of version 3
