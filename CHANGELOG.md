@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
 ## [2-alpha12.1] - 2024-11-16
-- updated deps (Kindyl, Fastmath, Tableplot)
+- updated deps (Kindly, Fastmath, Tableplot)
 
 ## [2-alpha12] - 2024-11-08
 - updated deps (Metamorph.ml, scicloj.ml.xgboost, Tableplot)
