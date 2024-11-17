@@ -59,4 +59,12 @@
 
 
   :dev {:extra-paths ["notebooks"]
-        :extra-deps {org.scicloj/clay {:mvn/version "2-beta21"}}}}}
+        :extra-deps {org.scicloj/clay {:mvn/version "2-beta21"}
+                     same/ish {:mvn/version "0.1.6"}
+                     clj-http/clj-http {:mvn/version "3.13.0"}
+                     }}
+  
+  :outdated {;; Note that it is `:deps`, not `:extra-deps`
+             :deps {com.github.liquidz/antq {:mvn/version "RELEASE"}}
+             :main-opts ["-m" "antq.core"]}
+  }}
