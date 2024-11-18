@@ -22,5 +22,6 @@
   :chapters ["chicago_bike_times"]}
   
  {:part "model reference"
-  :chapters ["smile_classification"]}
+  :chapters ["smile_classification"
+             "smile_regression"]}
  ]

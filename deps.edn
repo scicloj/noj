@@ -62,6 +62,12 @@
         :extra-deps {org.scicloj/clay {:mvn/version "2-beta21"}
                      same/ish {:mvn/version "0.1.6"}
                      clj-http/clj-http {:mvn/version "3.13.0"}
+                     org.bytedeco/arpack-ng {:mvn/version "3.7.0-1.5.4"}
+                     org.bytedeco/openblas-platform {:mvn/version "0.3.10-1.5.4"}
+                     org.bytedeco/arpack-ng-platform {:mvn/version "3.7.0-1.5.4"}
+                     org.bytedeco/openblas {:mvn/version "0.3.10-1.5.4"}
+                     org.bytedeco/javacpp {:mvn/version "1.5.4"}
+
                      }}
   
   :outdated {;; Note that it is `:deps`, not `:extra-deps`
