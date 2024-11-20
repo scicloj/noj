@@ -15,6 +15,7 @@
  {:part "Linear Algebra"
   :chapters ["linear_algebra_intro"
              "fastmath_vector_geom2d3d"
-             "fastmath_vector_word_embeddings"]}
+             "fastmath_vector_word_embeddings"
+             "fastmath_matrix_intro"]}
  {:part "Use Cases"
   :chapters ["chicago_bike_times"]}]
