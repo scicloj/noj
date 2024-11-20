@@ -53,7 +53,7 @@
 (vec/mag
  (vec/->Vec2 3 4))
 
-;; (You may veriffy that 5 is the distance
+;; (You may verify that 5 is the distance
 ;; between `(0,0)` to `(3,4)` in the plane
 ;; using Pythagoras theorem.)
 
@@ -84,14 +84,21 @@
 ;; which are *linear*.
 
 ;; The way to apply the matrix as a function to a vector
-;; is called "multiplying the matrix by the vector".
+;; is called "multiplying the vector by the matrix".
+;; We multiply from the left -- algebraically, the matrix
+;; will be written to the left of the vector.
 
 ;; The multiplication of a $k \times l$ matrix $M$ with 
 ;; an $l$-dimensional vector $v$ is an $k$-dimensional vector $Mv$.
-;; Each element of $Mv$ a dot product (as defined above)
+
+;; Each element of $Mv$ is a dot product (as defined above)
 ;; of the corresponding row of $M$ with $v$.
 
-;; For example:
+;; ## Example: 2x3
+
+;; - M - 2x3 matrix
+;; - v - 3-dimensional vector
+;; - Mv - 2-dimensional vector
 
 (mat/mulv (mat/rows->RealMatrix
            [[1 1 1]
@@ -99,21 +106,76 @@
           (vec/vec->RealVector
            [10 20 30]))
 
+;; Concretely, its elements will be:
+
+(vec/dot (vec/->Vec3 1 1 1)
+         (vec/->Vec3 10 20 30))
+
+(vec/dot (vec/->Vec3 1 0 -1)
+         (vec/->Vec3 10 20 30))
+
 ;; You see, multiplying this 2x3 matrix by a vector of dimension 3
 ;; resulted in a vector of dimension 2. This matrix acts as follows:
 
 ;; * The first new element is the sum of three old elements.
 ;; * The second new element is the difference of the first and last old elements.
 
+;; ### Example: 1x3
+
+;; The case of a matrix with one row is basically dot product.
+;; (but considering the result as a 1-dim vector rather than a number).
+
+(mat/mulv (mat/rows->RealMatrix
+            [[1 0 -1]])
+          (vec/vec->RealVector
+            [10 20 30]))
+
+(vec/dot (vec/vec->RealVector
+          [1 0 -1])
+         (vec/vec->RealVector
+          [10 20 30]))
+
+;; ### Example: 3x2
+
+(mat/mulv (mat/rows->RealMatrix
+           [[1 1]
+            [1 0]
+            [0 1]])
+          (vec/vec->RealVector
+           [10 20]))
+
+;; ### Application
+
+;; Assume that our vectors are 2 dimensional and represent
+;; our sales: `(apples,oranges)`.
+;; We wish to add the income.
+;; Assume we receive 20 cents for an apple and 30 cents for an orange.
+
+;; Example sales: 10 apples, 100 oranges.
+;; 
+(mat/mulv (mat/rows->RealMatrix
+           [[1 0]
+            [0 1]
+            [20 30]])
+          (vec/vec->RealVector
+           [10 100]))
+
+;; a lot of cents!!
+
+;; ### Example: 2x2
+
 ;; A square-shaped matrix can be seen as a transformation
 ;; from a vector space to itself.
-;; For example, a 2x2 matrix takes vectors of dimension 2 to vectors of dimension 2.
+;; For example, a 2x2 matrix takes vectors of dimension 2 
+;; to vectors of dimension 2.
 
 (mat/mulv (mat/->Mat2x2
            1 1
            1 0)
           (vec/->Vec2
            10 20))
+
+;; ### Multiplying by a matrix is a linear transformation
 
 ;; We still need to explain what linear transformations are, 
 ;; and how they can be implemented with matrices.
@@ -158,21 +220,6 @@
 (mat/transpose
  (mat/->Mat2x2 0 1 2 0))
 
-;; ## Matrix multiplication
-
-;; [Matrix multiplication](https://en.wikipedia.org/wiki/Matrix_multiplication) is one important operation:
-(mat/mulm
- (mat/->Mat2x2 0 1 1 0)
- (mat/->Mat2x2 2 0 3 0))
-
-;; The multiplication $MN$ of a $k \times l$ matrix $M$ with an $l \times m$ matrix $N$ is defined as
-;; a $k \times m$ matrix. Each of its columns is the matrix-vector multiplication 
-;; of $M$ by the corresponding column of $N$, seen as a vector.
-
-;; Importantly, if we see matrices as transformations as suggested above,
-;; then multiplication is just composition of functions.
-;; At the moment, we will not try to explain why this is true.
-
 ;; ## What are linear transformations?
 
 ;; Given a matrix $M$, the function $v \mapsto M v$,
@@ -187,6 +234,8 @@
 ;; For example, `(3,4)` is a linear combination of `(1,0)` and `(0,1)`:
 (vec/add (vec/mult (vec/->Vec2 1 0) 3)
          (vec/mult (vec/->Vec2 0 1) 4))
+
+;; 3 * (1,0) + 4 * (0,1) = (3,4)
 
 ;; Linear transformations are
 ;; functions vectors->vectors
@@ -209,7 +258,6 @@
 
 (vec/add (vec/mult (T (vec/->Vec2 1 0)) 3)
          (vec/mult (T (vec/->Vec2 0 1)) 4))
-
 
 ;; You see, it does not matter whether we apply T before or after taking a linear combination.
 ;; In other words, it respects the linear structure of our vector space.
@@ -293,4 +341,33 @@
 ;; which acts the same way as $T$.
 
 
+;; ## Matrix multiplication
 
+;; [Matrix multiplication](https://en.wikipedia.org/wiki/Matrix_multiplication) is one important operation:
+
+(mat/->Mat2x2 0 1 1 0)
+
+(mat/->Mat2x2 2 0 3 0)
+
+(mat/mulm
+ (mat/->Mat2x2 0 1 1 0)
+ (mat/->Mat2x2 2 0 3 0))
+
+;; The multiplication $MN$ of a $k \times l$ matrix $M$ with an $l \times m$ matrix $N$ is defined as
+;; a $k \times m$ matrix. Each of its columns is the matrix-vector multiplication 
+;; of $M$ by the corresponding column of $N$, seen as a vector.
+
+;; Importantly, if we see matrices as transformations as suggested above,
+;; then multiplication is just composition of functions.
+;; At the moment, we will not try to explain why this is true.
+
+
+;; Matrix multiplication is non-commutative -- the order matters:
+
+(mat/mulm
+ (mat/->Mat2x2 0 1 1 0)
+ (mat/->Mat2x2 2 0 0 3))
+
+(mat/mulm
+  (mat/->Mat2x2 2 0 0 3)
+  (mat/->Mat2x2 0 1 1 0))
