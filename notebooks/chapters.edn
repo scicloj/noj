@@ -26,5 +26,6 @@
              "smile_regression"
              "smile_others"
              "xgboost"
-             "sklearn_reference"]}
+             "sklearn_reference"
+             "transformer_references"]}
  ]
