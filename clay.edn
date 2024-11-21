@@ -1,8 +1,17 @@
 {:remote-repo {:git-url "https://github.com/scicloj/noj"
                :branch "main"}
- :quarto {:format {:html {:toc true
-                          :toc-depth 4
-                          :theme [:cosmo "notebooks/custom.scss"]}}
+ :page-layout :full
+ :quarto {:format {:html
+                   {:toc true
+                    :toc-depth 4
+                    :theme [:cosmo "notebooks/custom.scss"]
+                    ;:page-layout :full
+                     :grid
+                     {:sidebar-width "500px"
+                      :body-width "2500px"
+                      :margin-width "500px"}
+                    
+                    }}
           :fontsize "0.9em"
           :code-block-background true
           :include-in-header {:text "<link rel = \"icon\" href = \"data:,\" />"}}

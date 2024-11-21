@@ -38,7 +38,8 @@
 ;; No we go over a sequence of lambdas and fit a pipeline for all off them
 ;; and store the coefficients for each predictor variable:
 (def diabetes (datasets/diabetes-ds))
-diabetes
+(ds/column-names diabetes)
+(ds/shape diabetes)
 
 (def coefs-vs-lambda
   (flatten
@@ -67,7 +68,7 @@ diabetes
          (-> model-instance .coefficients seq)
          predictors)))
     (range 1 100000 100))))
-coefs-vs-lambda
+
 
 ;; Then we plot the coefficients over the log of lambda.
 
@@ -94,14 +95,12 @@ coefs-vs-lambda
 
 ;; First we load the data and split into train and test sets.
 ;;
-^{:nextjournal.clerk/viewer :hide-result}
-(def diabetes (datasets/diabetes-ds))
 
-^{:nextjournal.clerk/viewer :hide-result}
+
 (def diabetes-train
   (ds/head diabetes 422))
 
-^{:nextjournal.clerk/viewer :hide-result}
+
 (def diabetes-test
   (ds/tail diabetes 20))
 
@@ -197,3 +196,5 @@ diabetes-test-trueth
 
 ^:kindly/hide-code
 (render-key-info ":smile.regression/ridge")
+
+

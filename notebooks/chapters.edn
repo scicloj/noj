@@ -23,5 +23,7 @@
   
  {:part "model reference"
   :chapters ["smile_classification"
-             "smile_regression"]}
+             "smile_regression"
+             "smile_others"
+             "xgboost"]}
  ]
