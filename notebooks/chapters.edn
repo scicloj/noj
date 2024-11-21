@@ -25,5 +25,6 @@
   :chapters ["smile_classification"
              "smile_regression"
              "smile_others"
-             "xgboost"]}
+             "xgboost"
+             "sklearn_reference"]}
  ]
