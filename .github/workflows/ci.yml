@@ -53,7 +53,7 @@ jobs:
       with: 
           
           push: never
-          runCmd: clj -Adev notebooks/dev.clj 
+          runCmd: clj -A:dev -X dev/render-all-notebooks 
            
     - name: fix permisions
       run:  sudo chmod o+w docs/
