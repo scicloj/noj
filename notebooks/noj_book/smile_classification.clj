@@ -4,13 +4,11 @@
    [scicloj.kindly.v4.kind :as kind]
    [scicloj.metamorph.core :as mm]
    [scicloj.metamorph.ml :as ml]
-   [scicloj.metamorph.ml.preprocessing :as preprocessing]
    [scicloj.metamorph.ml.toydata :as datasets]
    [tablecloth.api :as tc]
-   [tablecloth.pipeline :as tc-mm]
    [tech.v3.dataset.metamorph :as ds-mm]
    [tech.v3.dataset.modelling :as ds-mod]
-   [tech.v3.datatype.functional :as dtf]
+   [scicloj.ml.xgboost]
    [noj-book.render-tools :refer [render-key-info kroki surface-plot iris-std]]))
 ^:kindly/hide-code
 (require '[scicloj.ml.smile.classification])

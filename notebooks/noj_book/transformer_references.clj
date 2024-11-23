@@ -17,10 +17,7 @@
    [tech.v3.dataset.print]))
 
 
-
-
-
-^kind/hidden
+^:kindly/hide-code
 (defn docu-fn [v]
   (let [m (meta v)]
     (kindly/hide-code 
@@ -32,7 +29,7 @@
        (kind/md "----------------------------------------------------------")]))))
 
   
-
+;; ## Transformer reference
 
 (docu-fn (var nlp/count-vectorize))
 
@@ -53,7 +50,7 @@ data
 
 
 
-fitted-ctx
+(:metamorph/data fitted-ctx)
 
 (def bow-ds
   (:metamorph/data fitted-ctx))
@@ -74,8 +71,8 @@ bow-ds
                 :stemmer :none})))
 
 
-fitted-ctx
 
+(:metamorph/data fitted-ctx)
 ;;or passing in a implementation of a tokenizer function
 
 (def fitted-ctx
@@ -86,7 +83,7 @@ fitted-ctx
     {:text->bow-fn (fn [text options]
                      {:a 1 :b 2})})))
 
-fitted-ctx
+(:metamorph/data fitted-ctx)
 
 
 (docu-fn (var smile-mm/bow->SparseArray))
@@ -211,7 +208,7 @@ iris
    pipe-fn))
 
 
-^kind/hidden
+^:kindly/hide-code
 (defn dissoc-in [m ks]
   (let [parent-path (butlast ks)
         leaf-key (last ks)]

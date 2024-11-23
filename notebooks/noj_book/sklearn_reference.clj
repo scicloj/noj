@@ -6,7 +6,8 @@
    [scicloj.metamorph.ml :as ml]
    [tech.v3.dataset.tensor :as dst]
    [libpython-clj2.python :refer [py.- ->jvm]]
-   [tech.v3.dataset.metamorph :as ds-mm]))
+   [tech.v3.dataset.metamorph :as ds-mm]
+   [noj-book.render-tools-sklearn]))
 
 (require '[scicloj.sklearn-clj.ml])
 
@@ -93,7 +94,8 @@
 ;;## :sklearn.classification
 ^:kindly/hide-code
 (render-key-info ":sklearn.classification" {:level "###"
-                                            :remove-s ":sklearn.classification"})
+                                            :remove-s ":sklearn.classification"
+                                            :docu-doc-string-fn noj-book.render-tools-sklearn/docu-doc-string})
 
 
 ;;## :sklearn.regression

@@ -11,11 +11,8 @@
    [tablecloth.api :as tc]
    [tech.v3.dataset.modelling :as ds-mod]
    [tech.v3.datatype.functional :as dtf]
-   [libpython-clj2.python :as py]
-   )
+   [libpython-clj2.python :as py])
   )
-(py/initialize!)
-(def doc->markdown (py/import-module "docstring_to_markdown"))
   
 
 (defn anchor-or-nothing [x text]
@@ -38,24 +35,16 @@
    (tc/reorder-columns :name :type :default)))
 
 
-(defn docu-doc-string [model-key]
-  ;;TODO needed ?
-  (try
-    (kind/md
-     (py/py. doc->markdown convert
-             (or
-              (get-in @ml/model-definitions* [model-key :documentation :doc-string]) "")))
-    (catch Exception e ""))
-  )
-^:kindly/hide-code
+
+
 (defn flatten-one-level [coll]
   (mapcat  #(if (sequential? %) % [%]) coll))
 
 (str/replace "hello" "he" "" )
 
-^:kindly/hide-code
+
 (defn render-key-info 
-  ([prefix {:keys [level remove-s]}]
+  ([prefix {:keys [level remove-s docu-doc-string-fn]}]
    (->> @ml/model-definitions*
         (sort-by first)
         (filter #(str/starts-with? (first %) (str prefix)))
@@ -78,7 +67,10 @@
                             stringify-enum
                             (kind/table))))
                        [:span
-                        (docu-doc-string key)]
+                        (when (fn? docu-doc-string-fn)
+                          (docu-doc-string-fn key)
+                          )
+                        ]
 
                        [:hr]
                        [:hr]])])))
