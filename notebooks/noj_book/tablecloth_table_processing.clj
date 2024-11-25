@@ -64,12 +64,15 @@
 ;; We create a namespace and require the Tablecloth API namespaces:
 ;; The main API `tablecloth.api`
 ;; and the Column API `tablecloth.column.api` that we'll see below.
+;; We will also use `clojure.string` for some string processing
+;; and [Kindly](https://scicloj.github.io/kindly-noted/) to control
+;; the way certain things are displayed.
 
 (ns noj-book.tablecloth-table-processing 
   (:require [tablecloth.api :as tc]
             [tablecloth.column.api :as tcc]
             [clojure.string :as str]
-            [tech.v3.datatype.datetime :as datetime]))
+            [scicloj.kindly.v4.kind :as kind]))
 
 ;; ## Creating a dataset
 
@@ -112,10 +115,7 @@
              :end-lat       [41.92393131136619 41.8895 41.886875]
              :end-lng       [-87.63582453131676 -87.688257 -87.62603]})
 
-
-;; ## What is a dataset?
-
-;; Let us explore this data structure, our little dataset of bike trips.
+;; Let us give it a name to explore it further:
 
 (def some-trips
   (tc/dataset {:rideable-type ["classic_bike" "electric_bike" "classic_bike"]
@@ -124,7 +124,43 @@
                :end-lat       [41.92393131136619 41.8895 41.886875]
                :end-lng       [-87.63582453131676 -87.688257 -87.62603]}))
 
+;; ## Displaying a dataset
+
+;; In an environment compatible with the [Kindly](https://scicloj.github.io/kindly/)
+;; standard, the default rendering of a dataset is by printing it.
+
 some-trips
+
+;; We may control the printing using the `tech.v3.dataset.print` namespace.
+;; For now, the default seems good for us.
+
+;; We may also turn it into an HTML table
+(kind/table some-trips)
+
+;; This does not matter much for now, but it can be handy when certain
+;; inner values should be visualized in a certain way.
+
+;; It is possible to use [datatables](https://datatables.net/) to reneder `kind/table`
+;; and specify [datatables options](https://datatables.net/manual/options)
+;; (see [the full list](https://datatables.net/reference/option/)).
+
+ (kind/table some-trips
+             {:use-datatables true
+              :datatables     {:scrollY 100}})
+
+;; For use in this tutorial, let us define our own customized view:
+
+(defn compact-view [dataset]
+  (kind/table dataset
+              {:use-datatables true
+               :datatables     {:scrollX true
+                                :scrollY   400
+                                :searching false
+                                :info      false}}))
+
+;; ## What is a dataset?
+
+;; Let us explore this data structure, our little dataset of bike trips.
 
 ;; A dataset is a value of `Dataset` datatype defined in the tech.ml.dataset library:
 
@@ -320,8 +356,8 @@ some-trips
                                      keyword))
                     :parser-fn {"started_at" datetime-parser
                                 "ended-at"   datetime-parser}})))
-
-(tc/info trips)
+(compact-view
+ (tc/info trips))
 
 ;; It is a whole month of bike trips!
 
