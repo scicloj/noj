@@ -40,24 +40,16 @@
   :kindly/hide-code true}
 {:youtube-id "kME868FvT2A"}
 
-;; ## Setup
-
-;; We create a namespace and require the Tablecloth API namespaces:
-;; The main API `tablecloth.api`
-;; and the Column API `tablecloth.column.api` that we'll see below.
-
-(ns noj-book.tablecloth-table-processing 
-  (:require [tablecloth.api :as tc]
-            [tablecloth.column.api :as tcc]))
-
 ;; ## About this tutorial
 
 ;; In this tutorial, we will demonstrate the ergonomics of so-called dataset
 ;; datastrucutes provided by Tablecloth.
 
-;; A lot of what we demonstrate can also be implemented with the
+;; We will assume basic familiarity with Clojure.
+
+;; A lot of what we demonstrate here can also be implemented with the
 ;; classical Clojure data strucures: vectors and maps.
-;; Datasets are table-like data structures, often  called data-frames
+;; Datasets are table-like data structures, often called data-frames
 ;; in other data science platforms. They provide not only performance
 ;; advantages in space and time, but also certain usability features,
 ;; which are arguably expressive and powerful.
@@ -66,6 +58,18 @@
 ;; mostly [`->`](https://clojuredocs.org/clojure.core/-%3E).
 ;; This approach is compatible with data science cultures such as
 ;; the one of the Tidyverse in R.
+
+;; ## Setup
+
+;; We create a namespace and require the Tablecloth API namespaces:
+;; The main API `tablecloth.api`
+;; and the Column API `tablecloth.column.api` that we'll see below.
+
+(ns noj-book.tablecloth-table-processing 
+  (:require [tablecloth.api :as tc]
+            [tablecloth.column.api :as tcc]
+            [clojure.string :as str]
+            [tech.v3.datatype.datetime :as datetime]))
 
 ;; ## Creating a dataset
 
@@ -134,8 +138,8 @@ some-trips
 (map? some-trips)
 
 ;; The keys are the column names:
-
 (keys some-trips)
+(tc/column-names some-trips)
 
 ;; .. and the values are the columns:
 
@@ -198,7 +202,7 @@ some-trips
     (tcc/* (/ Math/PI 180)))
 
 ;; You see, columns are typed, and this has implications for both
-;; for both performance (time and space) and ergonomics.
+;; for time and space performance as well as ergonomics.
 
 ;; ## The data in columns
 
@@ -230,7 +234,7 @@ some-trips
     :start-lat
     (nth 2))
 
-;; The following is quick!
+;; The following is quick too!
 (-> (range 1000000) 
     (tcc/* 1000) 
     (nth 10000)) 
@@ -239,16 +243,85 @@ some-trips
 ;; semantics of the undelying [dtype-next](https://github.com/cnuernber/dtype-next) library,
 ;; which is a topic worth its own tutorial.
 
+;; ## Summarizing datasets
+
+;; We can use the `tc/info` function to summarize a dataset:
+
+(tc/info some-trips)
+
 ;; ## Reading datasets
 
-;; Datasets are oftewn read from files.
+;; Datasets are often read from files.
 
 ;; Let us read a file from the 
 ;; [Chicago bike trips](https://www.kaggle.com/datasets/godofoutcasts/cyclistic-bike-share-2023) dataset.
 ;; In this case, it is a [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) file 
 ;; compressed by [gzip](https://en.wikipedia.org/wiki/Gzip), but other formats are supported as well.
 
+;; First, let us read just a few rows:
+
+(->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
+     (tc/dataset {:num-rows 3}))
+
+;; So reading a dataset is easy, but sometimes we may wish to pass a few options
+;; to handle it a bit better.
+
+;; For example, you see that by default, the column names are strings:
+(->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
+     (tc/dataset {:num-rows 9})
+     tc/column-names)
+
+;; We can apply the `keyword` function to all of them, to conveniently have keywords instead.
+(->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
+     (tc/dataset {:num-rows 9
+                  :key-fn keyword})
+     tc/column-names)
+
+;; Even better, we may process the names to replace underscores with dashes.
+(->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
+     (tc/dataset {:num-rows 9
+                  :key-fn (fn [s]
+                            (-> s
+                                (str/replace #"_" "-")
+                                keyword))})
+     tc/column-names)
+
+;; Also, the date-time columns are parsed as strings.
+(->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
+     (tc/dataset {:num-rows 9
+                  :key-fn (fn [s]
+                            (-> s
+                                (str/replace #"_" "-")
+                                keyword))})
+     :started-at)
+
+;; Let us specify our own parsing for these columns.
+
+(def datetime-parser [:local-date-time
+                      "yyyy-MM-dd HH:mm:ss"])
+
+(->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
+     (tc/dataset {:num-rows 9
+                  :key-fn (fn [s]
+                            (-> s
+                                (str/replace #"_" "-")
+                                keyword))
+                  :parser-fn {"started_at" datetime-parser
+                              "ended-at" datetime-parser}})
+     :started-at)
+
+;; Let us now read the whole dataset and give it a name for further processing:
+
 (def trips
-  (tc/dataset "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
-              {:key-fn keyword}))
+  (->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
+       (tc/dataset {:key-fn    (fn [s]
+                                 (-> s
+                                     (str/replace #"_" "-")
+                                     keyword))
+                    :parser-fn {"started_at" datetime-parser
+                                "ended-at"   datetime-parser}})))
+
+(tc/info trips)
+
+;; It is a whole month of bike trips!
 
