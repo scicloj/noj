@@ -2,7 +2,7 @@
 
 ;; author: Daniel Slutsky
 
-;; last change: 2024-11-24
+;; last change: 2024-11-25
 
 
 ;; [Tablecloth](https://scicloj.github.io/tablecloth/) 
@@ -59,7 +59,7 @@
 ;; classical Clojure data strucures: vectors and maps.
 ;; Datasets are table-like data structures, often  called data-frames
 ;; in other data science platforms. They provide not only performance
-;; advantages in memory and time, but also certain usability features,
+;; advantages in space and time, but also certain usability features,
 ;; which are arguably expressive and powerful.
 
 ;; We will oftwen use [treading macros](https://clojure.org/guides/threading_macros),
@@ -67,31 +67,177 @@
 ;; This approach is compatible with data science cultures such as
 ;; the one of the Tidyverse in R.
 
-;; ## Creating datasets
+;; ## Creating a dataset
 
-;; Assume we have a Clojure data structure representing bike trips.
+;; Assume we have a vector of vectors representing bike trips.
 ;; Each trip has a type of bike and the coordinates of its start and end.
-
-(def bike-trips-as-vectors 
-  [["classic_bike" 41.906866 -87.626217 41.92393131136619 -87.63582453131676]
-   ["electric_bike" 41.869312286 -87.673897266 41.8895 -87.688257]
-   ["classic_bike" 41.95600355078549 -87.68016144633293 41.886875 -87.62603]])
-
 ;; We can turn this data structure into a dataset:
 
-(-> bike-trips-as-vectors
-    tc/dataset)
-
-;; We may add column names:
-
-(-> bike-trips-as-vectors
-    (tc/dataset {:column-names [:rideable_type
-                                :start_lat :start_lng
-                                :end_lat :end_lng]}))
+(tc/dataset [["classic_bike" 41.906866 -87.626217 41.92393131136619 -87.63582453131676]
+             ["electric_bike" 41.869312286 -87.673897266 41.8895 -87.688257]
+             ["classic_bike" 41.95600355078549 -87.68016144633293 41.886875 -87.62603]]
+            {:column-names [:rideable-type
+                            :start-lat :start-lng
+                            :end-lat :end-lng]})
 
 
-;; We may also
+;; Sometimes, data may arrive in different shapes.
+;; We can also create such a dataset from a vector of maps:
 
+(tc/dataset [{:rideable-type "classic_bike"
+              :start-lat     41.906866
+              :start-lng     -87.626217
+              :end-lat       41.92393131136619
+              :end-lng       -87.63582453131676}
+             {:rideable-type "electric_bike"
+              :start-lat     41.869312286
+              :start-lng     -87.673897266
+              :end-lat       41.8895
+              :end-lng       -87.688257 }
+             {:rideable-type "classic_bike"
+              :start-lat     41.95600355078549
+              :start-lng     -87.68016144633293
+              :end-lat       41.886875
+              :end-lng       -87.62603}])
+
+;; .. and also, from a map of vectors:
+
+(tc/dataset {:rideable-type ["classic_bike" "electric_bike" "classic_bike"]
+             :start-lat     [41.906866 41.869312286 41.95600355078549]
+             :start-lng     [-87.626217 -87.673897266 -87.68016144633293]
+             :end-lat       [41.92393131136619 41.8895 41.886875]
+             :end-lng       [-87.63582453131676 -87.688257 -87.62603]})
+
+
+;; ## What is a dataset?
+
+;; Let us explore this data structure, our little dataset of bike trips.
+
+(def some-trips
+  (tc/dataset {:rideable-type ["classic_bike" "electric_bike" "classic_bike"]
+               :start-lat     [41.906866 41.869312286 41.95600355078549]
+               :start-lng     [-87.626217 -87.673897266 -87.68016144633293]
+               :end-lat       [41.92393131136619 41.8895 41.886875]
+               :end-lng       [-87.63582453131676 -87.688257 -87.62603]}))
+
+some-trips
+
+;; A dataset is a value of `Dataset` datatype defined in the tech.ml.dataset library:
+
+(type some-trips)
+
+;; One thing worth knowing about this datatype is that it is extended by
+;; quite a few interfaces and protocos.
+
+;; For example, it behaves as a map.
+
+(map? some-trips)
+
+;; The keys are the column names:
+
+(keys some-trips)
+
+;; .. and the values are the columns:
+
+(:start-lat some-trips)
+
+;; Now we need to discuss what columns are.
+
+;; ## What is a column?
+
+(:start-lat some-trips)
+
+;; A column is a value of `Dataset` datatype defined in the tech.ml.dataset library:
+
+(-> some-trips
+    :start-lat
+    type)
+
+;; This datatype is also extended by quite a few interfaces and protocols.
+
+;; For example, it is sequential.
+
+(-> some-trips
+    :start-lat
+    sequential?)
+
+;; So, we can use the sequence abstraction with it:
+
+(->> (:start-lat some-trips)
+     (take 2))
+
+(->> (:rideable-type some-trips)
+     (filter #{"classic_bike"}))
+
+;; It is also assiciative:
+
+(-> some-trips
+    :rideable-type
+     (assoc 2 "my strange and unique bike"))
+
+;; ## Working with Columns
+
+;; We may use Tablecloth's Column API to create and process columns.
+;; For example:
+
+(tcc/column ["classic_bike" "electrical_bike" "classic_bike"])
+
+;; What is the average latitude where trips tend to start?
+(-> some-trips
+    :start-lat
+    tcc/mean)
+
+;; What is the type of elements in this Column?
+(-> some-trips
+    :start-lat
+    tcc/typeof)
+
+;; Let us look into our latitudes in radians:
+(-> some-trips
+    :start-lat
+    (tcc/* (/ Math/PI 180)))
+
+;; You see, columns are typed, and this has implications for both
+;; for both performance (time and space) and ergonomics.
+
+;; ## The data in columns
+
+;; You will probably not need this detail most times, but it is worth knowing
+;; that the data actually held by the Column can be accessed as the `.data` field,
+;; and it can be of varying data structures.
+
+;; For example:
+
+(-> some-trips
+    :start-lat 
+    .data
+    type)
+
+(-> some-trips
+    :rideable-type
+    .data
+     type)
+
+(-> (range 9)
+    tcc/column
+    .data
+    type)
+
+;; Behind the scenes, tech.ml.dataset makes sure to use efficient data structures
+;; for columns, so that, e.g., random access by index will be efficient:
+
+(-> some-trips
+    :start-lat
+    (nth 2))
+
+;; The following is quick!
+(-> (range 1000000) 
+    (tcc/* 1000) 
+    (nth 10000)) 
+
+;; That is thanks to the "lazy and noncaching" 
+;; semantics of the undelying [dtype-next](https://github.com/cnuernber/dtype-next) library,
+;; which is a topic worth its own tutorial.
 
 ;; ## Reading datasets
 
