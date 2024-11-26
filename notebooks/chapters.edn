@@ -3,7 +3,8 @@
              "recommended_libraries"
              "known_issues"]}
  {:part "Datasets"
-  :chapters ["datasets"]}
+  :chapters ["tablecloth_table_processing"
+             "datasets"]}
  {:part "Machine Learning"
   :chapters ["ml_basic"
              "prepare_for_ml"
