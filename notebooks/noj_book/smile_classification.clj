@@ -14,7 +14,7 @@
 (require '[scicloj.ml.smile.classification])
 
 
-;; ## Smile classification models
+;; ## Smile classification models reference - DRAFT 🛠
 
 ^:kindly/hide-code
 (render-key-info :smile.classification/ada-boost)

@@ -5,7 +5,7 @@
    [scicloj.ml.smile.projections]
    [noj-book.render-tools :refer [render-key-info]]))
 
-;; ## Smile Others
+;; ## Smile other models reference - DRAFT 🛠
 ;; ## Smile manifolds
 
 ^:kindly/hide-code

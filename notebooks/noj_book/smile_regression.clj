@@ -12,7 +12,7 @@
 
 (require '[scicloj.ml.smile.regression])
 
-;; ## Smile regression models
+;; ## Smile regression models reference - DRAFT 🛠
 ^:kindly/hide-code
 (render-key-info ":smile.regression/elastic-net")
 
