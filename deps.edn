@@ -18,7 +18,10 @@
         org.scicloj/sklearn-clj                   {:mvn/version "0.4.1"}
         org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.2.0"}
 
-        org.scicloj/scicloj.ml.tribuo             {:mvn/version "0.1.3"}
+        org.scicloj/scicloj.ml.tribuo             {:mvn/version "0.1.4"}
+        ;techascent/tech.ml.dataset                {:mvn/version "7.032"}   ;; JVM crash
+        ;;techascent/tech.ml.dataset                {:mvn/version "7.033"}  ;; JVM crash
+        techascent/tech.ml.dataset                {:mvn/version "7.034"}
         org.tribuo/tribuo-regression-sgd          {:mvn/version "4.3.1"}
         org.tribuo/tribuo-regression-tree         {:mvn/version "4.3.1"}
         org.tribuo/tribuo-regression-xgboost      {:mvn/version "4.3.1"}
