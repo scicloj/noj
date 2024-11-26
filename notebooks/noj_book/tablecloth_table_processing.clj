@@ -2,10 +2,10 @@
 
 ;; author: Daniel Slutsky
 
-;; last change: 2024-11-25
+;; last change: 2024-11-26
 
 
-;; [Tablecloth](https://scicloj.github.io/tablecloth/) 
+;; [Tablecloth](https://scicloj.github.io/tablecloth/)
 ;; is a table processing library
 ;; inspired by the dataframe ergonomics typicall to the [R](https://www.r-project.org/)
 ;; ecosystem, specifically the [Tidyverse](https://www.tidyverse.org/),
@@ -13,7 +13,7 @@
 
 ;; It is built on top of the data structures
 ;; and functions of [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset),
-;; a high-performance table processing library, but adds its own 
+;; a high-performance table processing library, but adds its own
 ;; concepts and functionality.
 
 ;; In this tutorial, we will see a few of the core ideas of Tablecloth.
@@ -25,7 +25,7 @@
 ;; * [Data Manipulation in Clojure Compared to R and Python](https://codewithkira.com/2024-07-18-tablecloth-dplyr-pandas-polars.html)
 ;; by Kira Howe (McLean) (2024-07-18)
 
-;; * [Dealing with out-of-memory faulty csv’s with Clojure, Duckdb, and Parquet](https://lebenswelt.space/blog-posts/processing-faulty-csv-with-clojure-duckdb-parquet/) 
+;; * [Dealing with out-of-memory faulty csv’s with Clojure, Duckdb, and Parquet](https://lebenswelt.space/blog-posts/processing-faulty-csv-with-clojure-duckdb-parquet/)
 ;; by Georgy Toporkov (2024-01-22)
 
 ;; * A beginner-friendly intro by Mey Beisaron (Func Prog Sweden, 2023-03-22):
@@ -68,7 +68,7 @@
 ;; and [Kindly](https://scicloj.github.io/kindly-noted/) to control
 ;; the way certain things are displayed.
 
-(ns noj-book.tablecloth-table-processing 
+(ns noj-book.tablecloth-table-processing
   (:require [tablecloth.api :as tc]
             [tablecloth.column.api :as tcc]
             [clojure.string :as str]
@@ -134,7 +134,7 @@ some-trips
 ;; We may control the printing using the `tech.v3.dataset.print` namespace.
 ;; For now, the default seems good for us.
 
-;; We may also turn it into an HTML table
+;; We may also turn it into an HTML table:
 (kind/table some-trips)
 
 ;; This does not matter much for now, but it can be handy when certain
@@ -144,19 +144,30 @@ some-trips
 ;; and specify [datatables options](https://datatables.net/manual/options)
 ;; (see [the full list](https://datatables.net/reference/option/)).
 
- (kind/table some-trips
-             {:use-datatables true
-              :datatables     {:scrollY 100}})
+(kind/table some-trips
+            {:use-datatables true
+             :datatables     {:scrollY 100}})
+
+;; We may also nest the usual printed table inside other visualization
+;; kinds, such as Hiccup.
+
+(kind/hiccup
+ [:div {:style {:width "60%"
+                :max-height "400px"
+                :overflow-x :auto
+                :overflow-y :auto
+                :background "floralwhite"}}
+  some-trips])
 
 ;; For use in this tutorial, let us define our own customized view:
 
 (defn compact-view [dataset]
-  (kind/table dataset
-              {:use-datatables true
-               :datatables     {:scrollX true
-                                :scrollY   400
-                                :searching false
-                                :info      false}}))
+  (kind/hiccup
+   [:div {:style {:width "100%"
+                  :max-height "400px"
+                  :overflow-x :auto
+                  :overflow-y :auto}}
+    dataset]))
 
 ;; ## What is a dataset?
 
@@ -213,7 +224,7 @@ some-trips
 
 (-> some-trips
     :rideable-type
-     (assoc 2 "my strange and unique bike"))
+    (assoc 2 "my strange and unique bike"))
 
 ;; ## Working with Columns
 
@@ -249,14 +260,14 @@ some-trips
 ;; For example:
 
 (-> some-trips
-    :start-lat 
+    :start-lat
     .data
     type)
 
 (-> some-trips
     :rideable-type
     .data
-     type)
+    type)
 
 (-> (range 9)
     tcc/column
@@ -271,11 +282,11 @@ some-trips
     (nth 2))
 
 ;; The following is quick too!
-(-> (range 1000000) 
-    (tcc/* 1000) 
-    (nth 10000)) 
+(-> (range 1000000)
+    (tcc/* 1000)
+    (nth 10000))
 
-;; That is thanks to the "lazy and noncaching" 
+;; That is thanks to the "lazy and noncaching"
 ;; semantics of the undelying [dtype-next](https://github.com/cnuernber/dtype-next) library,
 ;; which is a topic worth its own tutorial.
 
@@ -283,21 +294,23 @@ some-trips
 
 ;; We can use the `tc/info` function to summarize a dataset:
 
-(tc/info some-trips)
+(compact-view
+ (tc/info some-trips))
 
 ;; ## Reading datasets
 
 ;; Datasets are often read from files.
 
-;; Let us read a file from the 
+;; Let us read a file from the
 ;; [Chicago bike trips](https://www.kaggle.com/datasets/godofoutcasts/cyclistic-bike-share-2023) dataset.
-;; In this case, it is a [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) file 
+;; In this case, it is a [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) file
 ;; compressed by [gzip](https://en.wikipedia.org/wiki/Gzip), but other formats are supported as well.
 
 ;; First, let us read just a few rows:
 
-(->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
-     (tc/dataset {:num-rows 3}))
+(compact-view
+ (->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
+      (tc/dataset {:num-rows 3})))
 
 ;; So reading a dataset is easy, but sometimes we may wish to pass a few options
 ;; to handle it a bit better.
@@ -357,7 +370,49 @@ some-trips
                     :parser-fn {"started_at" datetime-parser
                                 "ended-at"   datetime-parser}})))
 (compact-view
+ trips)
+
+(compact-view
  (tc/info trips))
 
 ;; It is a whole month of bike trips!
 
+;; ## Getting the rows of a dataset
+
+;; Datasets are organized by columns for efficiency,
+;; making use of the knowledge of homogenous types in columns.
+
+;; Sometimes, however, it is useful to work with rows as well.
+
+;; The `tc/rows` function provides the rows of a dataset,
+;; either as vectors or as maps.
+;; Note, however, that it does not copy the data. Rather,
+;; it provides a rowwise view of the columnwise dataset.
+
+(take 2 (tc/rows trips))
+
+(take 2 (tc/rows trips :as-maps))
+
+;; ## Querying datasets
+
+;; Tablecloth offers various ways to view a subset of a dataset.
+;; Typically, they do not copy the data but provide views of the
+;; same space in memory.
+
+;; The first few trips:
+
+(compact-view
+ (-> trips
+     tc/head))
+
+;; The first few trips, showing just a few columns:
+(-> trips
+    tc/head
+    (tc/select-columns [:rideable-type :started-at :ended-at]))
+
+;; The first few trips of classical bikes,  showing just a few columns:
+(-> trips
+    (tc/select-rows (fn [row]
+                      (-> row :rideable-type (= "classic_bike"))))
+    tc/head
+    (tc/select-columns [:rideable-type :started-at :ended-at]))
