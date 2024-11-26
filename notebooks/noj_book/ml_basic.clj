@@ -14,7 +14,10 @@
             [scicloj.metamorph.ml.toydata :as data]
             [tech.v3.dataset :as ds]
             [scicloj.kindly.v4.kind :as kind]
-            [scicloj.kindly.v4.api :as kindly]))
+            [scicloj.kindly.v4.api :as kindly]
+            [tech.v3.dataset.categorical :as ds-cat]))
+
+
 
 ^:kindly/hide-code
 (require '[same.core :as same]
@@ -213,7 +216,7 @@ split
 
 (loss/classification-accuracy
  (:survived (ds-cat/reverse-map-categorical-xforms (:test split)))
- (:survived  lreg-prediction))
+ (:survived (ds-cat/reverse-map-categorical-xforms lreg-prediction)))
 
 (kindly/check = 0.7373737373737373)
 ;; Its performance is  better, 73 %
@@ -271,3 +274,6 @@ split
 ;; So far we used a single split into 'train' and 'test' data, so we only get
 ;; a point estimate of the accuracy. This should be made more robust
 ;; via cross-validations and using different splits of the data.
+
+
+
