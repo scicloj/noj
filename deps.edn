@@ -8,9 +8,7 @@
         aerial.hanami/aerial.hanami               {:mvn/version "0.20.1"}
         org.scicloj/tableplot                     {:mvn/version "1-alpha14.1"}
         org.scicloj/metamorph.ml                  {:mvn/version "0.10.3"}
-        org.scicloj/scicloj.ml.smile              {:git/url "https://github.com/scicloj/scicloj.ml.smile"
-                                                   :git/sha "8cc29dfc52c55ebf0bb7b5c27c47c175f8ec5090"}
-        ;{:mvn/version "7.4.2"}
+        org.scicloj/scicloj.ml.smile              {:mvn/version "7.4.3"}
         org.scicloj/sklearn-clj                   {:mvn/version "0.4.1"}
         org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.2.0"}
 
