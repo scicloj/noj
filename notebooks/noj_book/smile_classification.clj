@@ -9,9 +9,8 @@
    [tech.v3.dataset.metamorph :as ds-mm]
    [tech.v3.dataset.modelling :as ds-mod]
    [scicloj.ml.xgboost]
+   [scicloj.ml.smile.classification]
    [noj-book.render-tools :refer [render-key-info kroki surface-plot iris-std]]))
-^:kindly/hide-code
-(require '[scicloj.ml.smile.classification])
 
 
 ;; ## Smile classification models reference - DRAFT 🛠

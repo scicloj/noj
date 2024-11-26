@@ -1,3 +1,4 @@
+^:kindly/hide-code
 (ns noj-book.smile-regression 
   (:require
    [noj-book.render-tools :refer [render-key-info]]
@@ -10,6 +11,7 @@
    [tech.v3.dataset.metamorph :as ds-mm]
    [tech.v3.datatype.functional :as dtf]))
 
+^:kindly/hide-code
 (require '[scicloj.ml.smile.regression])
 
 ;; ## Smile regression models reference - DRAFT 🛠

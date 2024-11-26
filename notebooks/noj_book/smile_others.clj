@@ -1,3 +1,4 @@
+^:kindly/hide-code
 (ns noj-book.smile-others
   (:require
    [scicloj.ml.smile.manifold]

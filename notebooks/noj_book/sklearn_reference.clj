@@ -1,3 +1,4 @@
+^:kindly/hide-code
 (ns noj-book.sklearn-reference
   (:require
    [noj-book.render-tools :refer [render-key-info]]
@@ -7,13 +8,14 @@
    [tech.v3.dataset.tensor :as dst]
    [libpython-clj2.python :refer [py.- ->jvm]]
    [tech.v3.dataset.metamorph :as ds-mm]
-   [noj-book.render-tools-sklearn]))
+   [noj-book.render-tools-sklearn]
+   [scicloj.sklearn-clj.ml]))
 
-(require '[scicloj.sklearn-clj.ml])
 
-;;## Sklearn models
 
-;;Example: logistic regression
+;;## Sklearn model reference - DRAFT 🛠
+
+;;## Example: logistic regression
 
 (def ds (dst/tensor->dataset [[0 0 0] [1 1 1] [2 2 2]]))
 
@@ -48,7 +50,7 @@
 
 
 
-;;"All model attributes are as well in the context"
+;;All model attributes are as well in the context
 
 (def model-attributes
   (-> fitted-ctx :model :model-data :attributes))
@@ -64,7 +66,6 @@
 
 
 
-;;# Models
 
 ;;Below all models are listed with their parameters and the original documentation.
 ;;
@@ -73,32 +74,16 @@
 ;;
 ;;But the translation between the two should be obvious.
 
-;^:kindly/hide-code
-;; (kind/hiccup
-;;  [:ul
 
 
-;;   (->>
-;;    (ml/model-definition-names)
-;;    (filter #(contains? #{"sklearn.classification"
-;;                          "sklearn.regression"}
-
-;;                        (namespace %)))
-;;    sort
-;;    (map
-;;     #(vector :li [:a {:href (str "#" (str %))} (str %)])))])
-
-
-
-
-;;## :sklearn.classification
+;;## :sklearn.classification models
 ^:kindly/hide-code
 (render-key-info ":sklearn.classification" {:level "###"
                                             :remove-s ":sklearn.classification"
                                             :docu-doc-string-fn noj-book.render-tools-sklearn/docu-doc-string})
 
 
-;;## :sklearn.regression
+;;## :sklearn.regression models
 ^:kindly/hide-code
 (render-key-info ":sklearn.regression" {:level "###"
                                         :remove-s ":sklearn.regression"})
