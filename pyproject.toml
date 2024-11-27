@@ -5,4 +5,5 @@ package-mode = false
 python = "3.11.2"
 scikit-learn = "1.5.2"
 pandas = "2.2.3"
+docstring-to-markdown = "0.15"
 

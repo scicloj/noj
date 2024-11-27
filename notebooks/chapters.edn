@@ -19,4 +19,13 @@
              "fastmath_vector_word_embeddings"
              "fastmath_matrix_intro"]}
  {:part "Use Cases"
-  :chapters ["chicago_bike_times"]}]
+  :chapters ["chicago_bike_times"]}
+  
+ {:part "Model references"
+  :chapters ["smile_classification"
+             "smile_regression"
+             "smile_others"
+             "xgboost"
+             "sklearn_reference"
+             "transformer_references"]}
+ ]

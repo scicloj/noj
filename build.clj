@@ -63,20 +63,23 @@
 
 (def opts {})
 
+  
+
 (defn models-integration-tests "Run integration tests." [opts]
   (let [basis    (b/create-basis {:aliases [:model-integration-tests]})
         cmds     (b/java-command
                   {:basis     basis
                    :main      'clojure.main
                    :main-args ["-m" "cognitect.test-runner"
-                               "-d" "model-integration-tests"]})]
-    (b/process cmds))
+                               "-d" "model-integration-tests"]})
+        {:keys [exit]} (b/process cmds)]
+    (when-not (zero? exit) (throw (ex-info "Integration tests failed" {}))))
   opts)
 
 
 (defn ci "Run the CI pipeline of tests (and build the JAR)." [opts]
-  (generate-tests nil)
   (models-integration-tests nil)
+  (generate-tests nil)
   (test  (assoc opts :aliases [:dev :test]))
   (b/delete {:path "target"})
   (let [opts (jar-opts opts)]
