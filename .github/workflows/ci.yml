@@ -33,7 +33,7 @@ jobs:
       uses: devcontainers/ci@v0.3
       with:
                push: never             
-               runCmd: clj -T:build ci
+               runCmd: clj -Sthreads 1 -T:build ci
 
   make-doc:
 
@@ -54,7 +54,7 @@ jobs:
       with: 
           
           push: never
-          runCmd: clj -A:dev -X dev/render-all-notebooks 
+          runCmd: clj -Sthreads 1 -A:dev -X dev/render-all-notebooks 
            
     - name: fix permisions
       run:  sudo chmod o+w docs/
