@@ -31,10 +31,8 @@ jobs:
 
     - name: Run make ci-build in dev container
       uses: devcontainers/ci@v0.3
-      with:    
-               imageName: ghcr.io/scicloj/noj-devontainer
-               cacheFrom: ghcr.io/scicloj/noj-devontainer
-               push: always               
+      with:
+               push: never             
                runCmd: clj -T:build ci
 
   make-doc:
@@ -54,10 +52,9 @@ jobs:
     - name: Make docs in dev container
       uses: devcontainers/ci@v0.3
       with: 
-          imageName: ghcr.io/scicloj/noj-devontainer
-          cacheFrom: ghcr.io/scicloj/noj-devontainer
-          push: always
-          runCmd: clj -Adev notebooks/dev.clj 
+          
+          push: never
+          runCmd: clj -A:dev -X dev/render-all-notebooks 
            
     - name: fix permisions
       run:  sudo chmod o+w docs/
