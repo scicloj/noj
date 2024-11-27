@@ -26,8 +26,8 @@
 
         same/ish                                  {:mvn/version "0.1.6"}
 
-        org.babashka/sci {:mvn/version "0.9.44"}
-        org.mentat/emmy-viewers {:mvn/version "0.3.2"}}
+        org.babashka/sci                          {:mvn/version "0.9.44"}
+        org.mentat/emmy-viewers                   {:mvn/version "0.3.2"}}
  :aliases
  {:gen-tests {:extra-paths ["build"]}
 
@@ -68,8 +68,8 @@
                      org.bytedeco/arpack-ng-platform {:mvn/version "3.7.0-1.5.4"}
                      org.bytedeco/openblas {:mvn/version "0.3.10-1.5.4"}
                      org.bytedeco/javacpp {:mvn/version "1.5.4"}
-         
-                     }}
+                     com.oracle.labs.olcut/olcut-config-edn    {:mvn/version "5.1.4"}
+                     com.oracle.labs.olcut/olcut-config-json    {:mvn/version "5.1.4"}}}
   
   :outdated {;; Note that it is `:deps`, not `:extra-deps`
              :deps {com.github.liquidz/antq {:mvn/version "RELEASE"}}

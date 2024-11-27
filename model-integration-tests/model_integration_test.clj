@@ -1,20 +1,26 @@
 (ns model-integration-test
-  (:require [scicloj.metamorph.core :as mm]
-            [scicloj.metamorph.ml :as ml]
-            [scicloj.metamorph.ml.loss :as loss]
-            [scicloj.metamorph.ml.toydata :as data]
-            [tech.v3.dataset.categorical :as ds-cat]
-            [tablecloth.api :as tc]
-            [clojure.string :as str]
-            [clojure.set :as set]
-            [clojure.test :refer [is deftest]]
-            [tech.v3.dataset :as ds]
-            [taoensso.nippy :as nippy]
-            [libpython-clj2.python :as py])
+  (:require
+   [clojure.java.io :as io]
+   [clojure.set :as set]
+   [clojure.string :as str]
+   [clojure.test :refer [deftest is]]
+   [libpython-clj2.python :as py]
+   [scicloj.metamorph.core :as mm]
+   [scicloj.metamorph.ml :as ml]
+   [scicloj.metamorph.ml.loss :as loss]
+   [scicloj.metamorph.ml.toydata :as data]
+   [tablecloth.api :as tc]
+   [taoensso.nippy :as nippy]
+   [tech.v3.dataset :as ds]
+   [tech.v3.dataset.categorical :as ds-cat])
   (:import
-   [java.util.logging Logger]
    [org.slf4j.bridge SLF4JBridgeHandler]
-   (smile.base.mlp ActivationFunction Cost HiddenLayerBuilder LayerBuilder OutputFunction OutputLayerBuilder)))
+   (smile.base.mlp
+    ActivationFunction
+    Cost
+    HiddenLayerBuilder
+    OutputFunction
+    OutputLayerBuilder)))
 
 (py/initialize!)
 (py/run-simple-string "
@@ -265,17 +271,14 @@ warnings.simplefilter('ignore')")
          (ds/assoc-metadata [:species] :categorical-map nil))]
     (run!
      #(verify-fn % iris)
-      
+
      (-> model-specs
          ;;https://github.com/scicloj/scicloj.ml.tribuo/issues/6 
          (remove-model-type  :scicloj.ml.tribuo/classification)
          ;;https://github.com/scicloj/scicloj.ml.smile/issues/19
          (remove-model-type  :smile.classification/mlp)
          ;;https://github.com/scicloj/scicloj.ml.xgboost/issues/1
-         (remove-model-type  :xgboost/classification)
-         ))
-     )
-    )
+         (remove-model-type  :xgboost/classification)))))
 
 (deftest verify-classification-iris-nil-catmap-float
   (let [iris
@@ -316,3 +319,23 @@ warnings.simplefilter('ignore')")
   )
 
 
+(comment
+  ;; inspect trainer
+  (import '[ com.oracle.labs.mlrg.olcut.config DescribeConfigurable
+            ConfigurationManager]
+          '[com.oracle.labs.mlrg.olcut.config.edn EdnConfigFactory]
+          '[com.oracle.labs.mlrg.olcut.config.json JsonConfigFactory])
+  
+
+  (ConfigurationManager/addFileFormatFactory (EdnConfigFactory.))
+  
+  (ConfigurationManager/addFileFormatFactory (JsonConfigFactory.))
+  
+
+  (DescribeConfigurable/writeExampleConfig 
+   (io/output-stream "/tmp/sdg.edn")
+   "edn"
+   org.tribuo.classification.sgd.linear.LinearSGDTrainer
+   (DescribeConfigurable/generateFieldInfo org.tribuo.classification.sgd.linear.LinearSGDTrainer)
+   )
+  )
