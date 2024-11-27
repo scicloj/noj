@@ -1,4 +1,3 @@
-^:kindly/hide-code
 (ns noj-book.smile-regression 
   (:require
    [noj-book.render-tools :refer [render-key-info]]

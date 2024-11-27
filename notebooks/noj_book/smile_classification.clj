@@ -1,4 +1,3 @@
-^:kindly/hide-code
 (ns noj-book.smile-classification
   (:require
    [scicloj.kindly.v4.kind :as kind]

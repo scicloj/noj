@@ -1,4 +1,3 @@
-^:kindly/hide-code
 (ns noj-book.sklearn-reference
   (:require
    [noj-book.render-tools :refer [render-key-info]]
