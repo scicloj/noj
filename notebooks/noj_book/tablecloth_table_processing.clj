@@ -17,7 +17,7 @@
 ;; concepts and functionality.
 
 ;; In this tutorial, we will see a few of the core ideas of Tablecloth.
-;; You are encouraget to look into [the main documentation](https://scicloj.github.io/tablecloth/)
+;; You are encouraged to look into [the main documentation](https://scicloj.github.io/tablecloth/)
 ;; for more information.
 
 ;; ## Recommended resources
@@ -43,21 +43,21 @@
 ;; ## About this tutorial
 
 ;; In this tutorial, we will demonstrate the ergonomics of so-called dataset
-;; datastrucutes provided by Tablecloth.
+;; data strucures provided by Tablecloth. Datasets are table-like data structures,
+;; often called data-frames in other data science platforms.
 
 ;; We will assume basic familiarity with Clojure.
 
 ;; A lot of what we demonstrate here can also be implemented with the
-;; classical Clojure data strucures: vectors and maps.
-;; Datasets are table-like data structures, often called data-frames
-;; in other data science platforms. They provide not only performance
+;; usual Clojure data strucures such as vectors and maps.
+;; However, datasets offer not only performance
 ;; advantages in space and time, but also certain usability features,
 ;; which are arguably expressive and powerful.
 
-;; We will oftwen use [treading macros](https://clojure.org/guides/threading_macros),
+;; We will often use [treading macros](https://clojure.org/guides/threading_macros),
 ;; mostly [`->`](https://clojuredocs.org/clojure.core/-%3E).
 ;; This approach is compatible with data science cultures such as
-;; the one of the Tidyverse in R.
+;; the Tidyverse in R.
 
 ;; ## Setup
 
@@ -77,7 +77,8 @@
 ;; ## Creating a dataset
 
 ;; Assume we have a vector of vectors representing bike trips.
-;; Each trip has a type of bike and the coordinates of its start and end.
+;; Each trip has the type of the bike and the coordinates
+;; (latitude and longitude) of the trip's start and end.
 ;; We can turn this data structure into a dataset:
 
 (tc/dataset [["classic_bike" 41.906866 -87.626217 41.92393131136619 -87.63582453131676]
@@ -115,7 +116,7 @@
              :end-lat       [41.92393131136619 41.8895 41.886875]
              :end-lng       [-87.63582453131676 -87.688257 -87.62603]})
 
-;; Let us give it a name to explore it further:
+;; Let us hold it in a var to explore it further:
 
 (def some-trips
   (tc/dataset {:rideable-type ["classic_bike" "electric_bike" "classic_bike"]
@@ -127,14 +128,13 @@
 ;; ## Displaying a dataset
 
 ;; In an environment compatible with the [Kindly](https://scicloj.github.io/kindly/)
-;; standard, the default rendering of a dataset is by printing it.
+;; standard, the default way a dataset is displayed is by printing it.
 
 some-trips
 
-;; We may control the printing using the `tech.v3.dataset.print` namespace.
-;; For now, the default seems good for us.
+;; If necessary, we may customize the printing using the `tech.v3.dataset.print` namespace.
 
-;; We may also turn it into an HTML table:
+;; We may also explicitly turn it into an HTML table:
 (kind/table some-trips)
 
 ;; This does not matter much for now, but it can be handy when certain
@@ -173,12 +173,12 @@ some-trips
 
 ;; Let us explore this data structure, our little dataset of bike trips.
 
-;; A dataset is a value of `Dataset` datatype defined in the tech.ml.dataset library:
+;; A dataset is a value of the `Dataset` datatype defined in the tech.ml.dataset library:
 
 (type some-trips)
 
 ;; One thing worth knowing about this datatype is that it is extended by
-;; quite a few interfaces and protocos.
+;; quite a few interfaces and protocols.
 
 ;; For example, it behaves as a map.
 
@@ -198,7 +198,7 @@ some-trips
 
 (:start-lat some-trips)
 
-;; A column is a value of `Dataset` datatype defined in the tech.ml.dataset library:
+;; A column is a value of `Column` datatype defined in the tech.ml.dataset library:
 
 (-> some-trips
     :start-lat
@@ -243,7 +243,7 @@ some-trips
     :start-lat
     tcc/typeof)
 
-;; Let us look into our latitudes in radians:
+;; Let us look into our latitudes in radians rather than degrees:
 (-> some-trips
     :start-lat
     (tcc/* (/ Math/PI 180)))
@@ -286,7 +286,7 @@ some-trips
     (tcc/* 1000)
     (nth 10000))
 
-;; That is thanks to the "lazy and noncaching"
+;; Here we rely on the "lazy and noncaching"
 ;; semantics of the undelying [dtype-next](https://github.com/cnuernber/dtype-next) library,
 ;; which is a topic worth its own tutorial.
 
@@ -342,7 +342,8 @@ some-trips
                             (-> s
                                 (str/replace #"_" "-")
                                 keyword))})
-     :started-at)
+     :started-at
+     tcc/typeof)
 
 ;; Let us specify our own parsing for these columns.
 
@@ -357,9 +358,11 @@ some-trips
                                 keyword))
                   :parser-fn {"started_at" datetime-parser
                               "ended-at" datetime-parser}})
-     :started-at)
+     :started-at
+     tcc/typeof)
 
-;; Let us now read the whole dataset and give it a name for further processing:
+;; Let us now read the whole dataset and hold it in a var
+;; for further exploration:
 
 (def trips
   (->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
@@ -387,11 +390,16 @@ some-trips
 ;; The `tc/rows` function provides the rows of a dataset,
 ;; either as vectors or as maps.
 ;; Note, however, that it does not copy the data. Rather,
-;; it provides a rowwise view of the columnwise dataset.
+;; it provides a rowwise *view* of the columnwise dataset.
 
 (take 2 (tc/rows trips))
 
 (take 2 (tc/rows trips :as-maps))
+
+;; As you may know, Clojure shines in processing plain data,
+;; structured or unstructured, such as vectors and maps of any content.
+;; We do not lose any of that when using datasets, as we can still
+;; view them as rows which are just maps or vectors.
 
 ;; ## Querying datasets
 
