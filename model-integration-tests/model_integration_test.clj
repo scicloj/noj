@@ -273,8 +273,6 @@ warnings.simplefilter('ignore')")
      #(verify-fn % iris)
 
      (-> model-specs
-         ;;https://github.com/scicloj/scicloj.ml.tribuo/issues/6 
-         (remove-model-type  :scicloj.ml.tribuo/classification)
          ;;https://github.com/scicloj/scicloj.ml.smile/issues/19
          (remove-model-type  :smile.classification/mlp)
          ;;https://github.com/scicloj/scicloj.ml.xgboost/issues/1
@@ -291,8 +289,6 @@ warnings.simplefilter('ignore')")
 
      #(verify-fn % iris)
      (-> model-specs
-         ;;https://github.com/scicloj/scicloj.ml.tribuo/issues/6 
-         (remove-model-type  :scicloj.ml.tribuo/classification)
          ;;https://github.com/scicloj/scicloj.ml.smile/issues/19
          (remove-model-type  :smile.classification/mlp)
          ;;https://github.com/scicloj/scicloj.ml.xgboost/issues/1

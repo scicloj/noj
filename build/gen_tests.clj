@@ -12,6 +12,5 @@
     #(let [p (.getAbsolutePath %)]
        (println :generate-tests p)
        (clay/make! {:source-path p
-                    :show false}))))
-  (shutdown-agents))
+                    :show false})))))
 
