@@ -307,8 +307,9 @@ some-trips
 
 ;; We can use the `tc/info` function to summarize a dataset:
 
-(compact-view
- (tc/info some-trips))
+(-> some-trips
+    tc/info
+    compact-view)
 
 ;; ## Reading datasets
 
@@ -321,9 +322,9 @@ some-trips
 
 ;; First, let us read just a few rows:
 
-(compact-view
- (->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
-      (tc/dataset {:num-rows 3})))
+(->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
+     (tc/dataset {:num-rows 3})
+     compact-view)
 
 ;; So reading a dataset is easy, but sometimes we may wish to pass a few options
 ;; to handle it a bit better.
@@ -369,8 +370,10 @@ some-trips
                             (-> s
                                 (str/replace #"_" "-")
                                 keyword))
+                  ;; Note we use the original column names
+                  ;; when defining the parser:
                   :parser-fn {"started_at" datetime-parser
-                              "ended-at" datetime-parser}})
+                              "ended_at" datetime-parser}})
      :started-at
      tcc/typeof)
 
@@ -387,12 +390,13 @@ some-trips
                                      (str/replace #"_" "-")
                                      keyword))
                     :parser-fn {"started_at" datetime-parser
-                                "ended-at"   datetime-parser}})))
+                                "ended_at"   datetime-parser}})))
 (compact-view
  trips)
 
-(compact-view
- (tc/info trips))
+(-> trips
+    tc/info
+    compact-view)
 
 ;; It is a whole month of bike trips!
 
@@ -425,21 +429,22 @@ some-trips
 
 ;; The first few trips:
 
-(compact-view
- (-> trips
-     tc/head))
-
-;; The first few trips, showing just a few columns:
 (-> trips
     tc/head
-    (tc/select-columns [:rideable-type :started-at :ended-at]))
+    compact-view)
 
-;; The first few trips of classical bikes,  showing just a few columns:
+;; Just a few columns:
+(-> trips
+    (tc/select-columns [:rideable-type :started-at :ended-at])
+    (print/print-range 5))
+
+;; Only rows about classical bikes, and just a few columns:
 (-> trips
     (tc/select-rows (fn [row]
                       (-> row :rideable-type (= "classic_bike"))))
     tc/head
-    (tc/select-columns [:rideable-type :started-at :ended-at]))
+    (tc/select-columns [:rideable-type :started-at :ended-at])
+    (print/print-range 5))
 
 
 ;; ## Adding columns
@@ -447,11 +452,61 @@ some-trips
 ;; Here we will demonstrate some of the ways to extend a dataset with new columns.
 
 ;; Let us compute how the bike trips are.
-;; For clarity, let us focus on a dataset with just the columns we need:
+;; For clarity, let us focus on a dataset with just a few of the columns:
 
 (-> trips
-    (tc/select-columns [:started-at :ended-at])
+    (tc/select-columns [:rideable-type :started-at :ended-at])
     (print/print-range 5))
 
 ;; The `tc/map-columns` function is useful when one needs to apply a function
 ;; to the values in one or more of the existings columns, for every row.
+
+(-> trips
+    (tc/select-columns [:rideable-type :started-at :ended-at])
+    (print/print-range 5)
+    (tc/map-columns :duration
+                    [:started-at :ended-at]
+                    java-time/duration))
+
+(-> trips
+    (tc/select-columns [:rideable-type :started-at :ended-at])
+    (print/print-range 5)
+    (tc/map-columns :duration
+                    [:started-at :ended-at]
+                    java-time/duration)
+    (tc/map-columns :duration-in-seconds
+                    [:duration]
+                    #(java-time/as % :seconds)))
+
+;; The `tc/add-columns` function is useful when one needs to apply a function
+;; to a whole dataset and return a whole column at once.
+;; This combines nicely with the column API (`tcc`).
+
+(-> trips
+    (tc/select-columns [:rideable-type :started-at :ended-at])
+    (print/print-range 5)
+    (tc/map-columns :duration
+                    [:started-at :ended-at]
+                    java-time/duration)
+    (tc/map-columns :duration-in-seconds
+                    [:duration]
+                    #(java-time/as % :seconds))
+    (tc/add-column :duration-in-minutes
+                   (fn [ds]
+                     (-> ds
+                         :duration-in-seconds
+                         (tcc/* 1/60)))))
+
+(-> trips
+    (tc/select-columns [:rideable-type :started-at :ended-at])
+    (print/print-range 5)
+    (tc/map-columns :duration
+                    [:started-at :ended-at]
+                    java-time/duration)
+    (tc/map-columns :duration-in-seconds
+                    [:duration]
+                    #(java-time/as % :seconds)))
+
+
+
+
