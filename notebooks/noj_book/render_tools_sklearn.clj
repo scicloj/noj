@@ -1,18 +1,8 @@
-
 (ns noj-book.render-tools-sklearn
   (:require
-   [clj-http.client :as client]
-   [clojure.string :as str]
-   [clojure.walk :as walk]
+   [libpython-clj2.python :as py]
    [scicloj.kindly.v4.kind :as kind]
-   [scicloj.metamorph.core :as mm]
-   [scicloj.metamorph.ml :as ml]
-   [tablecloth.pipeline :as tc-mm]
-   [scicloj.metamorph.ml.preprocessing :as preprocessing]
-   [tablecloth.api :as tc]
-   [tech.v3.dataset.modelling :as ds-mod]
-   [tech.v3.datatype.functional :as dtf]
-   [libpython-clj2.python :as py]))
+   [scicloj.metamorph.ml :as ml]))
 
 (py/initialize!)
 (def doc->markdown (py/import-module "docstring_to_markdown"))
