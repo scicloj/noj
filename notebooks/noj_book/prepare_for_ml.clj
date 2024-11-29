@@ -1,6 +1,4 @@
-;; # Machine learning specific functionality in `tech.ml.dataset`
-
-;; author: Carsten Behring
+;; # Preprocessing of categorical variables
 
 ;; The library `tech.ml.dataset` contains several functions
 ;; operating on a dataset, which are mainly used in the context of
