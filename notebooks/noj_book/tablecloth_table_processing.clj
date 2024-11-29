@@ -13,8 +13,8 @@
 
 ;; It is built on top of the data structures
 ;; and functions of [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset),
-;; a high-performance table processing library, but adds its own
-;; concepts and functionality.
+;; a high-performance table processing library (often called TMD), but adds its own
+;; concepts and functionality on top of that.
 
 ;; In this tutorial, we will see a few of the core ideas of Tablecloth.
 ;; You are encouraged to look into [the main documentation](https://scicloj.github.io/tablecloth/)
@@ -64,15 +64,20 @@
 ;; We create a namespace and require the Tablecloth API namespaces:
 ;; The main API `tablecloth.api`
 ;; and the Column API `tablecloth.column.api` that we'll see below.
-;; We will also use `clojure.string` for some string processing
-;; and [Kindly](https://scicloj.github.io/kindly-noted/) to control
-;; the way certain things are displayed.
+;; We will also use `tech.v3.dataset.print` to control printing,
+;; `clojure.string` for some string processing,
+;; [Kindly](https://scicloj.github.io/kindly-noted/) to control
+;; the way certain things are displayed,
+;; and [Clojure.Java-Time](https://github.com/dm3/clojure.java-time)
+;; for some time calculations.
 
 (ns noj-book.tablecloth-table-processing
   (:require [tablecloth.api :as tc]
             [tablecloth.column.api :as tcc]
+            [tech.v3.dataset.print]
             [clojure.string :as str]
-            [scicloj.kindly.v4.kind :as kind]))
+            [scicloj.kindly.v4.kind :as kind]
+            [java-time.api :as java-time]))
 
 ;; ## Creating a dataset
 
@@ -132,7 +137,15 @@
 
 some-trips
 
-;; If necessary, we may customize the printing using the `tech.v3.dataset.print` namespace.
+;; If necessary, we may customize the printing using the [tech.v3.dataset.print](https://techascent.github.io/tech.ml.dataset/tech.v3.dataset.print.html) namespace of the tech.ml.dataset library.
+
+;; For example:
+
+(-> {:x (range 99)
+     :y (repeatedly 99 rand)}
+    tc/dataset
+    ;; show at most 9 values
+    (print/print-range 9))
 
 ;; We may also explicitly turn it into an HTML table:
 (kind/table some-trips)
@@ -294,8 +307,9 @@ some-trips
 
 ;; We can use the `tc/info` function to summarize a dataset:
 
-(compact-view
- (tc/info some-trips))
+(-> some-trips
+    tc/info
+    compact-view)
 
 ;; ## Reading datasets
 
@@ -308,9 +322,9 @@ some-trips
 
 ;; First, let us read just a few rows:
 
-(compact-view
- (->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
-      (tc/dataset {:num-rows 3})))
+(->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
+     (tc/dataset {:num-rows 3})
+     compact-view)
 
 ;; So reading a dataset is easy, but sometimes we may wish to pass a few options
 ;; to handle it a bit better.
@@ -356,27 +370,33 @@ some-trips
                             (-> s
                                 (str/replace #"_" "-")
                                 keyword))
+                  ;; Note we use the original column names
+                  ;; when defining the parser:
                   :parser-fn {"started_at" datetime-parser
-                              "ended-at" datetime-parser}})
+                              "ended_at" datetime-parser}})
      :started-at
      tcc/typeof)
 
 ;; Let us now read the whole dataset and hold it in a var
-;; for further exploration:
+;; for further exploration.
+;; We use `defonce` so that next time we evaluate this
+;; expression, nothing will happen.
+;; This practice is handy when reading big files.
 
-(def trips
+(defonce trips
   (->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
        (tc/dataset {:key-fn    (fn [s]
                                  (-> s
                                      (str/replace #"_" "-")
                                      keyword))
                     :parser-fn {"started_at" datetime-parser
-                                "ended-at"   datetime-parser}})))
+                                "ended_at"   datetime-parser}})))
 (compact-view
  trips)
 
-(compact-view
- (tc/info trips))
+(-> trips
+    tc/info
+    compact-view)
 
 ;; It is a whole month of bike trips!
 
@@ -409,18 +429,84 @@ some-trips
 
 ;; The first few trips:
 
-(compact-view
- (-> trips
-     tc/head))
-
-;; The first few trips, showing just a few columns:
 (-> trips
     tc/head
-    (tc/select-columns [:rideable-type :started-at :ended-at]))
+    compact-view)
 
-;; The first few trips of classical bikes,  showing just a few columns:
+;; Just a few columns:
+(-> trips
+    (tc/select-columns [:rideable-type :started-at :ended-at])
+    (print/print-range 5))
+
+;; Only rows about classical bikes, and just a few columns:
 (-> trips
     (tc/select-rows (fn [row]
                       (-> row :rideable-type (= "classic_bike"))))
     tc/head
-    (tc/select-columns [:rideable-type :started-at :ended-at]))
+    (tc/select-columns [:rideable-type :started-at :ended-at])
+    (print/print-range 5))
+
+
+;; ## Adding columns
+
+;; Here we will demonstrate some of the ways to extend a dataset with new columns.
+
+;; Let us compute how the bike trips are.
+;; For clarity, let us focus on a dataset with just a few of the columns:
+
+(-> trips
+    (tc/select-columns [:rideable-type :started-at :ended-at])
+    (print/print-range 5))
+
+;; The `tc/map-columns` function is useful when one needs to apply a function
+;; to the values in one or more of the existings columns, for every row.
+
+(-> trips
+    (tc/select-columns [:rideable-type :started-at :ended-at])
+    (print/print-range 5)
+    (tc/map-columns :duration
+                    [:started-at :ended-at]
+                    java-time/duration))
+
+(-> trips
+    (tc/select-columns [:rideable-type :started-at :ended-at])
+    (print/print-range 5)
+    (tc/map-columns :duration
+                    [:started-at :ended-at]
+                    java-time/duration)
+    (tc/map-columns :duration-in-seconds
+                    [:duration]
+                    #(java-time/as % :seconds)))
+
+;; The `tc/add-columns` function is useful when one needs to apply a function
+;; to a whole dataset and return a whole column at once.
+;; This combines nicely with the column API (`tcc`).
+
+(-> trips
+    (tc/select-columns [:rideable-type :started-at :ended-at])
+    (print/print-range 5)
+    (tc/map-columns :duration
+                    [:started-at :ended-at]
+                    java-time/duration)
+    (tc/map-columns :duration-in-seconds
+                    [:duration]
+                    #(java-time/as % :seconds))
+    (tc/add-column :duration-in-minutes
+                   (fn [ds]
+                     (-> ds
+                         :duration-in-seconds
+                         (tcc/* 1/60)))))
+
+(-> trips
+    (tc/select-columns [:rideable-type :started-at :ended-at])
+    (print/print-range 5)
+    (tc/map-columns :duration
+                    [:started-at :ended-at]
+                    java-time/duration)
+    (tc/map-columns :duration-in-seconds
+                    [:duration]
+                    #(java-time/as % :seconds)))
+
+
+
+
