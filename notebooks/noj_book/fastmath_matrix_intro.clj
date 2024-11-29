@@ -19,7 +19,7 @@
 ;; [*vector spaces*](https://en.wikipedia.org/wiki/Vector_space)
 ;; (or *linear spaces*).
 ;;
-;; We often represent vectors them as arrays of numbers. 
+;; We often represent vectors them as arrays of numbers.
 ;; The `fastmath.vector` API supports a few datatypes of this kind.
 
 (vec/->Vec2 3 4)
@@ -69,7 +69,7 @@
 
 ;; ## Matrices as transformations
 
-;; Matrices are arrays of numbers of rectangular shape: 
+;; Matrices are arrays of numbers of rectangular shape:
 
 (mat/->Mat2x2 0 1 2 0)
 
@@ -88,7 +88,7 @@
 ;; We multiply from the left -- algebraically, the matrix
 ;; will be written to the left of the vector.
 
-;; The multiplication of a $k \times l$ matrix $M$ with 
+;; The multiplication of a $k \times l$ matrix $M$ with
 ;; an $l$-dimensional vector $v$ is an $k$-dimensional vector $Mv$.
 
 ;; Each element of $Mv$ is a dot product (as defined above)
@@ -152,7 +152,7 @@
 ;; Assume we receive 20 cents for an apple and 30 cents for an orange.
 
 ;; Example sales: 10 apples, 100 oranges.
-;; 
+;;
 (mat/mulv (mat/rows->RealMatrix
            [[1 0]
             [0 1]
@@ -166,7 +166,7 @@
 
 ;; A square-shaped matrix can be seen as a transformation
 ;; from a vector space to itself.
-;; For example, a 2x2 matrix takes vectors of dimension 2 
+;; For example, a 2x2 matrix takes vectors of dimension 2
 ;; to vectors of dimension 2.
 
 (mat/mulv (mat/->Mat2x2
@@ -202,7 +202,7 @@
 ;; but the order of rows is changes.
 (mat/->Mat2x2 0 1 1 0)
 
-;; It acts by changing the order of 
+;; It acts by changing the order of
 ;; coordinates.
 (mat/mulv
  (mat/->Mat2x2 0 1 1 0)
@@ -241,7 +241,7 @@
 ;; functions vectors->vectors
 ;; which respect linear combinations.
 
-;; Example: 
+;; Example:
 (defn T [v]
   [(+ (* -1 (v 0))
       (* 9 (v 1)))
@@ -287,7 +287,7 @@
 (vec/add (vec/mult (M (vec/->Vec2 1 0)) 3)
          (vec/mult (M (vec/->Vec2 0 1)) 4))
 
-;; Actually, note that by the definition of 
+;; Actually, note that by the definition of
 ;; multiplication between matrices and vectors,
 ;; `T` and `M` are actually the same function.
 
@@ -354,7 +354,7 @@
  (mat/->Mat2x2 2 0 3 0))
 
 ;; The multiplication $MN$ of a $k \times l$ matrix $M$ with an $l \times m$ matrix $N$ is defined as
-;; a $k \times m$ matrix. Each of its columns is the matrix-vector multiplication 
+;; a $k \times m$ matrix. Each of its columns is the matrix-vector multiplication
 ;; of $M$ by the corresponding column of $N$, seen as a vector.
 
 ;; Importantly, if we see matrices as transformations as suggested above,
@@ -369,5 +369,7 @@
  (mat/->Mat2x2 2 0 0 3))
 
 (mat/mulm
-  (mat/->Mat2x2 2 0 0 3)
-  (mat/->Mat2x2 0 1 1 0))
+ (mat/->Mat2x2 2 0 0 3)
+ (mat/->Mat2x2 0 1 1 0))
+
+
