@@ -1,7 +1,11 @@
 ;; # Underlying libraries
 
 ^:kindly/hide-code
-(ns noj-book.underlying-libraries)
+(ns noj-book.underlying-libraries 
+  (:require
+   [clojure.edn :as edn]
+   [scicloj.kindly.v4.kind :as kind]
+   [tablecloth.api :as tc]))
 
 ;; Noj consists of the following libraries:
 
@@ -35,6 +39,42 @@
 ;; * [Kindly](https://github.com/scicloj/kindly-noted) - datavis standard [(reference)](https://scicloj.github.io/kindly-noted/kindly)
 
 ;; ## Bridges to other languages
-;; * [libpython-clj](https://github.com/clj-python/libpython-clj) - Python bindings [(reference)](https://clj-python.github.io/libpython-clj/)
-;; * [kind-pyplot](https://github.com/scicloj/kind-pyplot) - Python plotting [(reference)](https://scicloj.github.io/kind-pyplot/)
-;; * [ClojisR](https://github.com/scicloj/clojisr) - R bindings [(reference)](https://clj-python.github.io/libpython-clj/)
+;; * [libpython-clj](https://github.com/clj-python/libpython-clj) - Python bindings
+;; * [kind-pyplot](https://scicloj.github.io/kind-pyplot/) - Python plotting
+;; * [ClojisR](https://scicloj.github.io/clojisr/) - R bindings
+
+^:kindly/hide-code
+(def direct-deps
+  (->
+   (edn/read-string (slurp "deps.edn"))
+   :deps
+   keys
+   ))
+^:kindly/hide-code
+(def all-deps-info
+  (-> 
+   (clojure.java.shell/sh  "clj" "-X:deps" "list" ":format" ":edn")
+   :out
+   (edn/read-string)))
+
+^:kindly/hide-code
+(def direct-deps-info 
+  (select-keys
+   all-deps-info
+   direct-deps))
+
+;; ## List of all direct noj dependencies 
+
+^:kindly/hide-code
+(kind/table
+ (->
+  (map
+   (fn [[dep info]]
+     (hash-map :lib (str dep)
+               :version (:mvn/version info)
+               :license (-> info :license :name))
+     )
+   direct-deps-info)
+  (tc/dataset)
+  (tc/select-columns [:lib :version :license])
+  (tc/order-by [:lib])))
