@@ -2,7 +2,7 @@
 
 ;; author: Daniel Slutsky
 
-;; last change: 2024-11-26
+;; last change: 2024-11-29
 
 
 ;; [Tablecloth](https://scicloj.github.io/tablecloth/)
@@ -74,7 +74,7 @@
 (ns noj-book.tablecloth-table-processing
   (:require [tablecloth.api :as tc]
             [tablecloth.column.api :as tcc]
-            [tech.v3.dataset.print]
+            [tech.v3.dataset.print :as print]
             [clojure.string :as str]
             [scicloj.kindly.v4.kind :as kind]
             [java-time.api :as java-time]))
