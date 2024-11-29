@@ -48,7 +48,7 @@
 
 ;; E.g., we may add a notion of magnitude of vectors, so called *norm*.
 ;; When we represent vectors as arrays of numbers, one standard way to define 
-;; a norm is to compute the corresponding points from zero.
+;; a norm is to compute the distance of the corresponding points from zero.
 
 (vec/mag
  (vec/->Vec2 3 4))
@@ -177,7 +177,7 @@
 
 ;; ### Multiplying by a matrix is a linear transformation
 
-;; We still need to explain what linear transformations are, 
+;; We still need to explain what linear transformations are,
 ;; and how they can be implemented with matrices.
 
 ;; ## Special cases
