@@ -275,8 +275,7 @@ warnings.simplefilter('ignore')")
      (-> model-specs
          ;;https://github.com/scicloj/scicloj.ml.smile/issues/19
          (remove-model-type  :smile.classification/mlp)
-         ;;https://github.com/scicloj/scicloj.ml.xgboost/issues/1
-         (remove-model-type  :xgboost/classification)))))
+         ))))
 
 (deftest verify-classification-iris-nil-catmap-float
   (let [iris
@@ -295,24 +294,6 @@ warnings.simplefilter('ignore')")
          (remove-model-type  :xgboost/classification)
          ))))
 
-  ;;(classify (-> smile-model-specs first second) iris-3)
-
-(comment
-  (def iris-no-cats
-    (->
-     (data/iris-ds)
-     (ds/shuffle)
-     ;(ds-cat/reverse-map-categorical-xforms)
-     ;( ds/categorical->number) [:species] {} :float64)
-     ;(ds/assoc-metadata [:species] :categorical-map nil)
-     ))
-  
-
-
-  (def model (ml/train iris-no-cats {:model-type :xgboost/classification
-                                     :num-class 4}))
-  (ml/predict iris-no-cats model)
-  )
 
 
 (comment
