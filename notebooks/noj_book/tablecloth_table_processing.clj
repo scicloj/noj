@@ -13,8 +13,8 @@
 
 ;; It is built on top of the data structures
 ;; and functions of [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset),
-;; a high-performance table processing library, but adds its own
-;; concepts and functionality.
+;; a high-performance table processing library (often called TMD), but adds its own
+;; concepts and functionality on top of that.
 
 ;; In this tutorial, we will see a few of the core ideas of Tablecloth.
 ;; You are encouraged to look into [the main documentation](https://scicloj.github.io/tablecloth/)
@@ -64,15 +64,20 @@
 ;; We create a namespace and require the Tablecloth API namespaces:
 ;; The main API `tablecloth.api`
 ;; and the Column API `tablecloth.column.api` that we'll see below.
-;; We will also use `clojure.string` for some string processing
-;; and [Kindly](https://scicloj.github.io/kindly-noted/) to control
-;; the way certain things are displayed.
+;; We will also use `tech.v3.dataset.print` to control printing,
+;; `clojure.string` for some string processing,
+;; [Kindly](https://scicloj.github.io/kindly-noted/) to control
+;; the way certain things are displayed,
+;; and [Clojure.Java-Time](https://github.com/dm3/clojure.java-time)
+;; for some time calculations.
 
 (ns noj-book.tablecloth-table-processing
   (:require [tablecloth.api :as tc]
             [tablecloth.column.api :as tcc]
+            [tech.v3.dataset.print]
             [clojure.string :as str]
-            [scicloj.kindly.v4.kind :as kind]))
+            [scicloj.kindly.v4.kind :as kind]
+            [java-time.api :as java-time]))
 
 ;; ## Creating a dataset
 
@@ -132,7 +137,15 @@
 
 some-trips
 
-;; If necessary, we may customize the printing using the `tech.v3.dataset.print` namespace.
+;; If necessary, we may customize the printing using the [tech.v3.dataset.print](https://techascent.github.io/tech.ml.dataset/tech.v3.dataset.print.html) namespace of the tech.ml.dataset library.
+
+;; For example:
+
+(-> {:x (range 99)
+     :y (repeatedly 99 rand)}
+    tc/dataset
+    ;; show at most 9 values
+    (print/print-range 9))
 
 ;; We may also explicitly turn it into an HTML table:
 (kind/table some-trips)
@@ -362,9 +375,12 @@ some-trips
      tcc/typeof)
 
 ;; Let us now read the whole dataset and hold it in a var
-;; for further exploration:
+;; for further exploration.
+;; We use `defonce` so that next time we evaluate this
+;; expression, nothing will happen.
+;; This practice is handy when reading big files.
 
-(def trips
+(defonce trips
   (->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
        (tc/dataset {:key-fn    (fn [s]
                                  (-> s
@@ -424,3 +440,18 @@ some-trips
                       (-> row :rideable-type (= "classic_bike"))))
     tc/head
     (tc/select-columns [:rideable-type :started-at :ended-at]))
+
+
+;; ## Adding columns
+
+;; Here we will demonstrate some of the ways to extend a dataset with new columns.
+
+;; Let us compute how the bike trips are.
+;; For clarity, let us focus on a dataset with just the columns we need:
+
+(-> trips
+    (tc/select-columns [:started-at :ended-at])
+    (print/print-range 5))
+
+;; The `tc/map-columns` function is useful when one needs to apply a function
+;; to the values in one or more of the existings columns, for every row.
