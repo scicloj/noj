@@ -13,8 +13,8 @@
 
 ;; It is built on top of the data structures
 ;; and functions of [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset),
-;; a high-performance table processing library (often called TMD), but adds its own
-;; concepts and functionality on top of that.
+;; a high-performance table processing library (often called TMD),
+;; which is built on top of [dtype-next](https://github.com/cnuernber/dtype-next), an array-programming library.
 
 ;; In this tutorial, we will see a few of the core ideas of Tablecloth.
 ;; You are encouraged to look into [the main documentation](https://scicloj.github.io/tablecloth/)
@@ -62,14 +62,15 @@
 ;; ## Setup
 
 ;; We create a namespace and require the Tablecloth API namespaces:
-;; The main API `tablecloth.api`
-;; and the Column API `tablecloth.column.api` that we'll see below.
-;; We will also use `tech.v3.dataset.print` to control printing,
+;; The main Dataset API [`tablecloth.api`](https://scicloj.github.io/tablecloth/#dataset-api)
+;; and the Column API [`tablecloth.column.api`](https://scicloj.github.io/tablecloth/#column-api) that we'll see below.
+;; We will also use [`tech.v3.dataset.print`](https://techascent.github.io/tech.ml.dataset/tech.v3.dataset.print.html) to control printing,
 ;; `clojure.string` for some string processing,
 ;; [Kindly](https://scicloj.github.io/kindly-noted/) to control
 ;; the way certain things are displayed,
-;; and [Clojure.Java-Time](https://github.com/dm3/clojure.java-time)
-;; for some time calculations.
+;; [Clojure.Java-Time](https://github.com/dm3/clojure.java-time)
+;; for some time calculations, and the [`datetime`](https://cnuernber.github.io/dtype-next/tech.v3.datatype.datetime.html)
+;; namespace of dtype-next. 
 
 (ns noj-book.tablecloth-table-processing
   (:require [tablecloth.api :as tc]
@@ -77,7 +78,8 @@
             [tech.v3.dataset.print :as print]
             [clojure.string :as str]
             [scicloj.kindly.v4.kind :as kind]
-            [java-time.api :as java-time]))
+            [java-time.api :as java-time]
+            [tech.v3.datatype.datetime :as datetime]))
 
 ;; ## Creating a dataset
 
@@ -137,7 +139,7 @@
 
 some-trips
 
-;; If necessary, we may customize the printing using the [tech.v3.dataset.print](https://techascent.github.io/tech.ml.dataset/tech.v3.dataset.print.html) namespace of the tech.ml.dataset library.
+;; If necessary, we may customize the printing using the [`tech.v3.dataset.print`](https://techascent.github.io/tech.ml.dataset/tech.v3.dataset.print.html) namespace of the tech.ml.dataset library.
 
 ;; For example:
 
@@ -176,7 +178,7 @@ some-trips
 
 (defn compact-view [dataset]
   (kind/hiccup
-   [:div {:style {:width "100%"
+   [:div {:style {:max-width "100%"
                   :max-height "400px"
                   :overflow-x :auto
                   :overflow-y :auto}}
@@ -241,7 +243,7 @@ some-trips
 
 ;; ## Working with Columns
 
-;; We may use Tablecloth's Column API to create and process columns.
+;; We may use Tablecloth's [Column API](https://scicloj.github.io/tablecloth/#column-api) to create and process columns.
 ;; For example:
 
 (tcc/column ["classic_bike" "electrical_bike" "classic_bike"])
@@ -497,16 +499,86 @@ some-trips
                          :duration-in-seconds
                          (tcc/* 1/60)))))
 
+
+
+;; ## Grouping and summarizing
+
+;; How does bike usage change througout the day?
+
+;; Let us see how the number of trips and their median length change by the hour.
+;; To do that, we will group the dataset by the hour.
+
+;; To do that, we will first add the hour as a column.
+;; Earlier, we did some time processing using the `java-time` API.
+;; Now, we will demonstrate a different way, using the
+;; [`datetime`](https://cnuernber.github.io/dtype-next/tech.v3.datatype.datetime.html)
+;; namespace of dtype-next.
+;; This namespace offers some handy functions that act on whole columns.
+
 (-> trips
-    (tc/select-columns [:rideable-type :started-at :ended-at])
+    (tc/select-columns [:started-at :ended-at])
     (print/print-range 5)
     (tc/map-columns :duration
                     [:started-at :ended-at]
                     java-time/duration)
     (tc/map-columns :duration-in-seconds
                     [:duration]
-                    #(java-time/as % :seconds)))
+                    #(java-time/as % :seconds))
+    (tc/add-column :hour
+                   (fn [ds]
+                     (datetime/long-temporal-field
+                      :hours
+                      (:started-at ds)))))
 
 
+;; Now, we will group by it.
 
+(-> trips
+    (tc/select-columns [:started-at :ended-at])
+    (tc/map-columns :duration
+                    [:started-at :ended-at]
+                    java-time/duration)
+    (tc/map-columns :duration-in-seconds
+                    [:duration]
+                    #(java-time/as % :seconds))
+    (tc/add-column :hour
+                   (fn [ds]
+                     (datetime/long-temporal-field
+                      :hours
+                      (:started-at ds))))
+    (tc/group-by [:hour])
+    (print/print-range 5))
 
+;; The resulting dataset is a dataset of a special kind, a grouped dataset.
+;; Its `:data` column contains whole datasets, which are the groups.
+;; In our case, these are the groups of bike trips starting in a given hour,
+;; for every hour throughout the day.
+
+;; Now, we can aggregate over the groups to recieve a summary.
+;; The resulting summary dataset will no longer be a grouped dataset.
+;; We will order the summary by the hour.   
+
+(-> trips
+    (tc/select-columns [:started-at :ended-at])
+    (tc/map-columns :duration
+                    [:started-at :ended-at]
+                    java-time/duration)
+    (tc/map-columns :duration-in-seconds
+                    [:duration]
+                    #(java-time/as % :seconds))
+    (tc/add-column :hour
+                   (fn [ds]
+                     (datetime/long-temporal-field
+                      :hours
+                      (:started-at ds))))
+    (tc/group-by [:hour])
+    (tc/aggregate {:n-trips tc/row-count
+                   :median-duration (fn [ds]
+                                      (tcc/median (:duration-in-seconds ds)))})
+    (tc/order-by [:hour])
+    (print/print-range :all)
+    compact-view)
+
+;; We can see a peak of usage between 17:00 to 18:00
+;; and a possibly slight tendendcy for longer trips (in time)
+;; around the afternoon hours.
