@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [???] - unreleased
+- updated deps (tech.ml.dataset, metamorph.ml, scicloj.ml.tribuo)
+
 ## [2-alpha12.1] - 2024-11-16
 - updated deps (Kindly, Fastmath, Tableplot)
 
