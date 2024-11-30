@@ -88,7 +88,7 @@
         (kind/md (str "#### " (str/replace (.getName (:class trainer))
                                            #"org\.tribuo" "o..t..")))
         (kind/hiccup [:a {:href (class->tribuo-url (:class trainer))} "javadoc"])
-        (kind/dataset
+        (kind/table
          (->
           trainer
           :options
