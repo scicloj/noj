@@ -1,4 +1,4 @@
-;; # Data Visualization with Echarts - DRAFT 🛠
+;; # Data Visualization with Echarts
 
 ;; author: Zuzhi Hu, Ken Huang
 
