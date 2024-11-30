@@ -27,5 +27,6 @@
              "smile_others"
              "xgboost"
              "sklearn_reference"
+             "tribuo_reference"
              "transformer_references"]}
  ]
