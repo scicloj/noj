@@ -1,7 +1,11 @@
 ;; # Underlying libraries
 
 ^:kindly/hide-code
-(ns noj-book.underlying-libraries)
+(ns noj-book.underlying-libraries 
+  (:require
+   [clojure.edn :as edn]
+   [scicloj.kindly.v4.kind :as kind]
+   [tablecloth.api :as tc]))
 
 ;; Noj consists of the following libraries:
 
@@ -23,7 +27,7 @@
 ;; * [same-ish](https://github.com/microsoft/same-ish) - approximate comparisons - useful for notebook testability
 
 ;; ## Machine learning
-;; * [metamorph.ml](https://github.com/scicloj/metamorph.ml) - machine learning platform [(reference)](https://cljdoc.org/badge/scicloj/metamorph.ml)
+;; * [metamorph.ml](https://github.com/scicloj/metamorph.ml) - machine learning platform [(reference)](https://cljdoc.org/d/scicloj/metamorph.ml)
 ;; * [scicloj.ml.tribuo](https://github.com/scicloj/scicloj.ml.tribuo) - [Tribuo](https://tribuo.org/) machine learning models
 ;; * [scicloj.ml.smile](https://github.com/scicloj/scicloj.ml.smile) - [Smile](https://haifengl.github.io/) (v 2.6) machine learning models
 ;; * [sklearn-clj](https://github.com/scicloj/sklearn-clj) - Plugin to use [sklearn](https://scikit-learn.org/) models in metamorph.ml
@@ -38,3 +42,38 @@
 ;; * [libpython-clj](https://github.com/clj-python/libpython-clj) - Python bindings [(reference)](https://clj-python.github.io/libpython-clj/)
 ;; * [kind-pyplot](https://github.com/scicloj/kind-pyplot) - Python plotting [(reference)](https://scicloj.github.io/kind-pyplot/)
 ;; * [ClojisR](https://github.com/scicloj/clojisr) - R bindings [(reference)](https://clj-python.github.io/libpython-clj/)
+^:kindly/hide-code
+(def direct-deps
+  (->
+   (edn/read-string (slurp "deps.edn"))
+   :deps
+   keys
+   ))
+^:kindly/hide-code
+(def all-deps-info
+  (-> 
+   (clojure.java.shell/sh  "clj" "-X:deps" "list" ":format" ":edn")
+   :out
+   (edn/read-string)))
+
+^:kindly/hide-code
+(def direct-deps-info 
+  (select-keys
+   all-deps-info
+   direct-deps))
+
+;; ## List of all direct noj dependencies 
+
+^:kindly/hide-code
+(kind/table
+ (->
+  (map
+   (fn [[dep info]]
+     (hash-map :lib (str dep)
+               :version (:mvn/version info)
+               :license (-> info :license :name))
+     )
+   direct-deps-info)
+  (tc/dataset)
+  (tc/select-columns [:lib :version :license])
+  (tc/order-by [:lib])))

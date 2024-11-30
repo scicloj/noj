@@ -10,9 +10,7 @@
    [scicloj.metamorph.ml.preprocessing :as preprocessing]
    [tablecloth.api :as tc]
    [tech.v3.dataset.modelling :as ds-mod]
-   [tech.v3.datatype.functional :as dtf]
-   [libpython-clj2.python :as py])
-  )
+   [tech.v3.datatype.functional :as dtf]))
   
 
 (defn anchor-or-nothing [x text]
@@ -79,7 +77,6 @@
   ( [prefix] (render-key-info prefix {:level "##"
                                       :remove-s ""})))
 
-^:kindly/hide-code
 (defn kroki [s type format]
   (client/post "https://kroki.io/" {:content-type :json
                                     :as :byte-array

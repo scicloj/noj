@@ -7,12 +7,15 @@
         generateme/fastmath                       {:mvn/version "3.0.0-alpha3"}
         aerial.hanami/aerial.hanami               {:mvn/version "0.20.1"}
         org.scicloj/tableplot                     {:mvn/version "1-alpha14.1"}
-        org.scicloj/metamorph.ml                  {:mvn/version "0.10.3"}
         org.scicloj/scicloj.ml.smile              {:mvn/version "7.4.3"}
+        org.scicloj/metamorph.ml                  {:mvn/version "0.10.4"}
         org.scicloj/sklearn-clj                   {:mvn/version "0.4.1"}
         org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.2.0"}
 
-        org.scicloj/scicloj.ml.tribuo             {:mvn/version "0.1.3"}
+        org.scicloj/scicloj.ml.tribuo             {:mvn/version "0.1.4"}
+        techascent/tech.ml.dataset                {:mvn/version "7.032"}   ;; no JVM crash
+        ;;techascent/tech.ml.dataset                {:mvn/version "7.033"}  ;; JVM crash
+        ;;techascent/tech.ml.dataset                {:mvn/version "7.034"} ;; JVM crash
         org.tribuo/tribuo-regression-sgd          {:mvn/version "4.3.1"}
         org.tribuo/tribuo-regression-tree         {:mvn/version "4.3.1"}
         org.tribuo/tribuo-regression-xgboost      {:mvn/version "4.3.1"}
