@@ -2,15 +2,26 @@
 (ns noj-book.tribuo-reference
   (:require
    [clojure.java.classpath]
+   [clojure.pprint :as pprint]
    [clojure.reflect]
    [clojure.string :as str]
+   [scicloj.kindly.v4.kind :as kind]
+   [scicloj.ml.tribuo]
+   [scicloj.metamorph.ml :as ml]
+   [tech.v3.dataset.modelling :as ds-mod]
    [tablecloth.api :as tc]
-   [scicloj.kindly.v4.kind :as kind])
+   [noj-book.render-tools :as rt ]
+   )
   (:import
-   [java.util.regex Matcher]
-   [com.oracle.labs.mlrg.olcut.config DescribeConfigurable]))
+   [com.oracle.labs.mlrg.olcut.config DescribeConfigurable]
+   [java.util.regex Matcher]))
+
+
+
+
 
 ;; ## Tribuo reference
+
 
 ^:kindly/hide-code
 (defn all-configurables [interface]
@@ -78,25 +89,59 @@
 
 
 
+
+(def extra-doc 
+  {"org.tribuo.classification.baseline.DummyClassifierTrainer"
+
+   (rt/->eval-code
+    ^:kindly/hide-code
+    (kind/md "The DummyClassifier predicts a value, using a 'dummy' algorithm ")
+    (def df
+      (->
+       (tc/dataset  {:a [1 2]  :target [:x :x]})
+       (ds-mod/set-inference-target :target)))
+    (kind/table df)
+    (def model (ml/train df {:model-type :scicloj.ml.tribuo/classification
+                             :tribuo-components [{:name "dummy"
+                                                  :type "org.tribuo.classification.baseline.DummyClassifierTrainer"
+                                                  :properties {:dummyType :CONSTANT
+                                                               :constantLabel "c"}}]
+                             :tribuo-trainer-name "dummy"}))
+    model
+    ^:kindly/hide-code
+    (kind/md "'c' in this case:")
+    (ml/predict df model))
+   })
+
+
+
+
 ^:kindly/hide-code
 (defn render-configurables [configurables]
   (kind/fragment
    (map
     (fn [trainer]
-      (kind/fragment
-       [
-        (kind/md (str "#### " (str/replace (.getName (:class trainer))
-                                           #"org\.tribuo" "o..t..")))
-        (kind/hiccup [:a {:href (class->tribuo-url (:class trainer))} "javadoc"])
-        (kind/table
-         (->
-          trainer
-          :options
-          vec
-          tc/dataset))]))
+      (let [class-name (.getName (:class trainer))]
+        (kind/fragment
+         (concat 
+          [
+           (kind/md (str "#### " (str/replace class-name
+                                              #"org\.tribuo" "o..t..")))
+           (kind/hiccup [:a {:href (class->tribuo-url (:class trainer))} "javadoc"])]
+
+          (get extra-doc class-name)
+          [(kind/md (str "All configurable options for " class-name ":"))
+           (kind/table
+             (->
+              trainer
+              :options
+              vec
+              tc/dataset))]
+          
+          ))))
     configurables)))
 
-;; ### Tribuo trainer reference 
+; ### Tribuo trainer reference 
 ^:kindly/hide-code
 (render-configurables (trainer-infos))
 
