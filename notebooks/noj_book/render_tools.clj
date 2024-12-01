@@ -10,9 +10,7 @@
    [scicloj.metamorph.ml.preprocessing :as preprocessing]
    [tablecloth.api :as tc]
    [tech.v3.dataset.modelling :as ds-mod]
-   [tech.v3.datatype.functional :as dtf]
-   [noj-book.example-code :refer [example-code]]
-   ))
+   [tech.v3.datatype.functional :as dtf]))
   
 
 (defn anchor-or-nothing [x text]
