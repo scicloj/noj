@@ -1,15 +1,14 @@
 (ns noj-book.render-tools
   (:require
    [clj-http.client :as client]
-   [clojure.pprint :as pprint]
    [clojure.string :as str]
    [clojure.walk :as walk]
    [scicloj.kindly.v4.kind :as kind]
    [scicloj.metamorph.core :as mm]
    [scicloj.metamorph.ml :as ml]
+   [tablecloth.pipeline :as tc-mm]
    [scicloj.metamorph.ml.preprocessing :as preprocessing]
    [tablecloth.api :as tc]
-   [tablecloth.pipeline :as tc-mm]
    [tech.v3.dataset.modelling :as ds-mod]
    [tech.v3.datatype.functional :as dtf]
    [noj-book.example-code :refer [example-code]]
@@ -46,26 +45,26 @@
 
 (defn render-info-block [key definition remove-s level docu-doc-string-fn]
   (let [print-key (str/replace-first key remove-s "")]
-    [(kind/md (str level " " print-key))
-     (kind/hiccup
-      [:span
-       (anchor-or-nothing (:javadoc (:documentation definition)) "javadoc")
-       (anchor-or-nothing (:user-guide (:documentation definition)) "user guide")
-  
-       (let [docu-ds (docu-options key)]
-         (if  (tc/empty-ds? docu-ds)
-           ""
-           (->
-            docu-ds
-            (tc/rows :as-maps)
-            seq
-            stringify-enum
-            (kind/table))))
-       [:span
-        (when (fn? docu-doc-string-fn)
+                    [(kind/md (str level " " print-key))
+                     (kind/hiccup
+                      [:span
+                       (anchor-or-nothing (:javadoc (:documentation definition)) "javadoc")
+                       (anchor-or-nothing (:user-guide (:documentation definition)) "user guide")
+
+                       (let [docu-ds (docu-options key)]
+                         (if  (tc/empty-ds? docu-ds)
+                           ""
+                           (->
+                            docu-ds
+                            (tc/rows :as-maps)
+                            seq
+                            stringify-enum
+                            (kind/table))))
+                       [:span
+                        (when (fn? docu-doc-string-fn)
           (docu-doc-string-fn key))]
-  
-       [:hr]
+
+                       [:hr]
        [:hr]])])
 
 )
@@ -88,8 +87,10 @@
           (filter #(str/starts-with? (first %) (str prefix)))
           (mapcat 
            (fn [[key definition]]
-             (render-info-block key definition remove-s level docu-doc-string-fn))))
-     (get example-code prefix))))
+             (concat
+              (render-info-block key definition remove-s level docu-doc-string-fn)
+              (get example-code key)))))
+     )))
   
   ( [prefix] (render-key-info prefix {:level "##"
                                       :remove-s ""})))

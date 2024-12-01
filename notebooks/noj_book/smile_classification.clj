@@ -17,45 +17,7 @@
 ;; ## Smile classification models reference - DRAFT 🛠
 
 
-
-^:kindly/hide-code
-(render-key-info :smile.classification/ada-boost)
-
-^:kindly/hide-code
-(render-key-info :smile.classification/decision-tree)
-
-^:kindly/hide-code
-(render-key-info :smile.classification/discrete-naive-bayes)
-
-^:kindly/hide-code
-(render-key-info :smile.classification/gradient-tree-boost)
-
-^:kindly/hide-code
-(render-key-info  :smile.classification/knn)
-
-
-^:kindly/hide-code
-(render-key-info  :smile.classification/logistic-regression)
-
-^:kindly/hide-code
-(render-key-info  :smile.classification/maxent-binomial)
-
-^:kindly/hide-code
-(render-key-info  :smile.classification/maxent-multinomial)
-
-^:kindly/hide-code
-(render-key-info :smile.classification/random-forest)
-
-
-^:kindly/hide-code
-(render-key-info :smile.classification/sparse-logistic-regression)
-
-^:kindly/hide-code
-(render-key-info  :smile.classification/sparse-svm)
-
-^:kindly/hide-code
-(render-key-info  :smile.classification/svm)
-
+(render-key-info :smile.classification)
 
 ;; # Compare decision surfaces of different classification models
 

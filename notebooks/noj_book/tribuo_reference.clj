@@ -10,7 +10,8 @@
    [scicloj.metamorph.ml :as ml]
    [tech.v3.dataset.modelling :as ds-mod]
    [tablecloth.api :as tc]
-   [noj-book.render-tools :as rt ]
+   [ noj-book.eval-code :refer [->eval-code]]
+   
    )
   (:import
    [com.oracle.labs.mlrg.olcut.config DescribeConfigurable]
@@ -93,7 +94,7 @@
 (def extra-doc 
   {"org.tribuo.classification.baseline.DummyClassifierTrainer"
 
-   (rt/->eval-code
+   (->eval-code
     ^:kindly/hide-code
     (kind/md "The DummyClassifier predicts a value, using a 'dummy' algorithm ")
     (def df
