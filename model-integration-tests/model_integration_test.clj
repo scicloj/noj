@@ -112,43 +112,53 @@ warnings.simplefilter('ignore')")
                   not-working-with-iris-data-or-default-params-or-no-probab))))))
 
 (def tribuo-model-specs [
-    [0.93 {:model-type :scicloj.ml.tribuo/classification
-       :tribuo-components [{:name "logistic"
-                            :type "org.tribuo.classification.sgd.linear.LinearSGDTrainer"
-                            :properties {:seed "1234"
-                                         :shuffle "false"
-                                         :epochs "10"}}]
-       :tribuo-trainer-name "logistic"}]
-[0.93 {:model-type :scicloj.ml.tribuo/classification
-       :tribuo-components [{:name "liblinear"
-                            :type "org.tribuo.classification.liblinear.LibLinearClassificationTrainer"
-                           :properties {:seed "1234"}}]
-       :tribuo-trainer-name "liblinear"}]   
+                         [0.95 {:model-type :scicloj.ml.tribuo/classification
+                                :tribuo-components [{:name "logistic"
+                                                     :type "org.tribuo.classification.sgd.linear.LinearSGDTrainer"
+                                                     :properties {:seed "1234"
+                                                                  :shuffle "false"
+                                                                  :epochs "10"}}
+                                                    {:name "ada"
+                                                     :type "org.tribuo.classification.ensemble.AdaBoostTrainer"
+                                                     :properties {:innerTrainer "logistic"
+                                                                  :numMembers "5"
+                                                                  :seed "1234"
+                                                                  }}]
+                                :tribuo-trainer-name "ada"}]
+                         
+                         [0.93 {:model-type :scicloj.ml.tribuo/classification
+                                :tribuo-components [{:name "logistic"
+                                                     :type "org.tribuo.classification.sgd.linear.LinearSGDTrainer"
+                                                     :properties {:seed "1234"
+                                                                  :shuffle "false"
+                                                                  :epochs "10"}}]
+                                :tribuo-trainer-name "logistic"}]
+                         [0.93 {:model-type :scicloj.ml.tribuo/classification
+                                :tribuo-components [{:name "liblinear"
+                                                     :type "org.tribuo.classification.liblinear.LibLinearClassificationTrainer"
+                                                     :properties {:seed "1234"}}]
+                                :tribuo-trainer-name "liblinear"}]
 
-[0.93 {:model-type :scicloj.ml.tribuo/classification
-       :tribuo-components [{:name "C_SVC"
-                            :type "org.tribuo.classification.libsvm.SVMClassificationType"
-                            :properties {:type "C_SVC"}
-                            }
-                           
-                           {:name "libsvm"
-                            :type "org.tribuo.classification.libsvm.LibSVMClassificationTrainer"
-                            :properties {:seed "1234"
-                                         :svmType "C_SVC"
-                                         }}]
-       :tribuo-trainer-name "libsvm"}]   
+                         [0.93 {:model-type :scicloj.ml.tribuo/classification
+                                :tribuo-components [{:name "C_SVC"
+                                                     :type "org.tribuo.classification.libsvm.SVMClassificationType"
+                                                     :properties {:type "C_SVC"}}
 
-                          
+                                                    {:name "libsvm"
+                                                     :type "org.tribuo.classification.libsvm.LibSVMClassificationTrainer"
+                                                     :properties {:seed "1234"
+                                                                  :svmType "C_SVC"}}]
+                                :tribuo-trainer-name "libsvm"}]
 
-[0.93 {:model-type :scicloj.ml.tribuo/classification
-       :tribuo-components [{:name "random-forest"
-                            :type "org.tribuo.classification.dtree.CARTClassificationTrainer"
-                            :properties {:maxDepth "8"
-                                         :useRandomSplitPoints "false"
-                                         :fractionFeaturesInSplit "0.5"}}]
-       :tribuo-trainer-name "random-forest"}]
-                   
-])
+
+
+                         [0.93 {:model-type :scicloj.ml.tribuo/classification
+                                :tribuo-components [{:name "random-forest"
+                                                     :type "org.tribuo.classification.dtree.CARTClassificationTrainer"
+                                                     :properties {:maxDepth "8"
+                                                                  :useRandomSplitPoints "false"
+                                                                  :fractionFeaturesInSplit "0.5"}}]
+                                :tribuo-trainer-name "random-forest"}]])
 (def xgboost-specs [
                     [0.94 {:model-type :xgboost/classification
                            :num-class 3}]])
@@ -172,9 +182,6 @@ warnings.simplefilter('ignore')")
 
 
 (defn my-classification-accuracy [lhs rhs]
-  ;(println :lhs (meta lhs))
-  ;(println :rhs (meta rhs))
-
   (loss/classification-accuracy lhs rhs))
 
 (defn- validate-nippy-round-trip [model-spec result val-ds]
@@ -245,15 +252,12 @@ warnings.simplefilter('ignore')")
       (is
        (>= acc
            expected-acc)
-  
+
        (format "%s: expect at least: %s, found : %s"
                (:model-type spec)
                expected-acc acc)))
-  
-    (catch Exception e  (is false e)))
-  )
 
-
+    (catch Exception e  (is false e))))
 
 
 (deftest verify-classification-iris-int-catmap
@@ -280,7 +284,7 @@ warnings.simplefilter('ignore')")
          )]
     (run!
      #(verify-fn % iris)
-     ;; only tribuo can deal with "string" target
+     ;; only tribuo can deal with "string" target column
      ;;https://github.com/scicloj/noj/issues/36
      (concat
       ;other-specs
@@ -344,13 +348,15 @@ warnings.simplefilter('ignore')")
   (let [ model
         (ml/train
          iris-ds-regression--train
-         model-map)]
+         model-map)
+        mae 
+        (loss/mae
+         (-> iris-ds-regression--test :sepal_length)
+         (-> (ml/predict iris-ds-regression--test model) :sepal_length))]
 
-    (is ( > 0.33
-          (loss/mae
-           (-> iris-ds-regression--test :sepal_length)
-           (-> ( ml/predict iris-ds-regression--test model) :sepal_length)
-           )))))
+    (println :mae mae)
+    (is ( > 0.33  mae
+          ))))
 
 
 (deftest regression-works
@@ -402,23 +408,3 @@ warnings.simplefilter('ignore')")
                   :properties {:svmType "nu"}}]]))))
 
 
-(comment
-  ;; inspect trainer
-  (import '[ com.oracle.labs.mlrg.olcut.config DescribeConfigurable
-            ConfigurationManager]
-          '[com.oracle.labs.mlrg.olcut.config.edn EdnConfigFactory]
-          '[com.oracle.labs.mlrg.olcut.config.json JsonConfigFactory])
-  
-
-  (ConfigurationManager/addFileFormatFactory (EdnConfigFactory.))
-  
-  (ConfigurationManager/addFileFormatFactory (JsonConfigFactory.))
-  
-
-  (DescribeConfigurable/writeExampleConfig 
-   (io/output-stream "/tmp/sdg.edn")
-   "edn"
-   org.tribuo.classification.sgd.linear.LinearSGDTrainer
-   (DescribeConfigurable/generateFieldInfo org.tribuo.classification.sgd.linear.LinearSGDTrainer)
-   )
-  )
