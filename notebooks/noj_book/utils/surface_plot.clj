@@ -1,4 +1,4 @@
-(ns noj-book.surface-plot 
+(ns noj-book.utils.surface-plot 
   (:require
    [scicloj.metamorph.core :as mm]
    [tablecloth.api :as tc]

@@ -1,8 +1,8 @@
 (ns noj-book.smile-classification
   (:require
-   [noj-book.example-code :refer [iris-std]]
-   [noj-book.render-tools :refer [render-key-info]]
-   [noj-book.surface-plot :refer [surface-plot]]
+   [noj-book.utils.example-code :refer [iris-std]]
+   [noj-book.utils.render-tools :refer [render-key-info]]
+   [noj-book.utils.surface-plot :refer [surface-plot]]
    [scicloj.kindly.v4.kind :as kind]
    [scicloj.metamorph.core :as mm]
    [scicloj.metamorph.ml :as ml]

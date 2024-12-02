@@ -1,8 +1,8 @@
-(ns noj-book.render-tools
+(ns noj-book.utils.render-tools
   (:require
    [clojure.string :as str]
    [clojure.walk :as walk]
-   [noj-book.example-code :refer [example-code]]
+   [noj-book.utils.example-code :refer [example-code]]
    [scicloj.kindly.v4.kind :as kind]
    [scicloj.metamorph.ml :as ml]
    [tablecloth.api :as tc]))

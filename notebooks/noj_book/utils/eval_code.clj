@@ -1,4 +1,4 @@
-(ns noj-book.eval-code 
+(ns noj-book.utils.eval-code 
   (:require
    [clojure.pprint :as pprint]
    [scicloj.kindly.v4.kind :as kind]))

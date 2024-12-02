@@ -1,13 +1,13 @@
 (ns noj-book.sklearn-reference
   (:require
-   [noj-book.render-tools :refer [render-key-info]]
+   [noj-book.utils.render-tools :refer [render-key-info]]
    [scicloj.kindly.v4.kind :as kind]
    [scicloj.metamorph.core :as mm]
    [scicloj.metamorph.ml :as ml]
    [tech.v3.dataset.tensor :as dst]
    [libpython-clj2.python :refer [py.- ->jvm]]
    [tech.v3.dataset.metamorph :as ds-mm]
-   [noj-book.render-tools-sklearn]
+   [noj-book.utils.render-tools-sklearn]
    [scicloj.sklearn-clj.ml]))
 
 
@@ -79,7 +79,7 @@
 ^:kindly/hide-code
 (render-key-info ":sklearn.classification" {:level "###"
                                             :remove-s ":sklearn.classification"
-                                            :docu-doc-string-fn noj-book.render-tools-sklearn/docu-doc-string})
+                                            :docu-doc-string-fn noj-book.utils.render-tools-sklearn/docu-doc-string})
 
 
 ;;## :sklearn.regression models

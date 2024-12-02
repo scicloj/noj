@@ -1,4 +1,4 @@
-(ns noj-book.render-tools-sklearn
+(ns noj-book.utils.render-tools-sklearn
   (:require
    [libpython-clj2.python :as py]
    [scicloj.kindly.v4.kind :as kind]

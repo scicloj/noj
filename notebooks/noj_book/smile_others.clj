@@ -4,7 +4,7 @@
    [scicloj.ml.smile.manifold]
    [scicloj.ml.smile.clustering]
    [scicloj.ml.smile.projections]
-   [noj-book.render-tools :refer [render-key-info]]))
+   [noj-book.utils.render-tools :refer [render-key-info]]))
 
 ;; ## Smile other models reference - DRAFT 🛠
 ;; ## Smile manifolds
