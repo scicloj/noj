@@ -14,6 +14,7 @@
    [tech.v3.dataset :as ds]
    [tech.v3.dataset.categorical :as ds-cat])
   (:import
+   [org.tribuo.classification.libsvm SVMClassificationType$SVMMode]
    [org.slf4j.bridge SLF4JBridgeHandler]
    (smile.base.mlp
     ActivationFunction
@@ -115,6 +116,27 @@ warnings.simplefilter('ignore')")
                                          :epochs "10"}}]
        :tribuo-trainer-name "logistic"}]
 [0.93 {:model-type :scicloj.ml.tribuo/classification
+       :tribuo-components [{:name "liblinear"
+                            :type "org.tribuo.classification.liblinear.LibLinearClassificationTrainer"
+                           :properties {:seed "1234"}}]
+       :tribuo-trainer-name "liblinear"}]   
+
+[0.93 {:model-type :scicloj.ml.tribuo/classification
+       :tribuo-components [{:name "C_SVC"
+                            :type "org.tribuo.classification.libsvm.SVMClassificationType"
+                            :properties {:type "C_SVC"}
+                            }
+                           
+                           {:name "libsvm"
+                            :type "org.tribuo.classification.libsvm.LibSVMClassificationTrainer"
+                            :properties {:seed "1234"
+                                         :svmType "C_SVC"
+                                         }}]
+       :tribuo-trainer-name "libsvm"}]   
+
+                          
+
+[0.93 {:model-type :scicloj.ml.tribuo/classification
        :tribuo-components [{:name "random-forest"
                             :type "org.tribuo.classification.dtree.CARTClassificationTrainer"
                             :properties {:maxDepth "8"
@@ -138,7 +160,8 @@ warnings.simplefilter('ignore')")
    other-specs
    tribuo-model-specs
    smile-model-specs
-   sklearn-model-specs))
+   sklearn-model-specs)
+   )
 
 
 
