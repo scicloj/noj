@@ -1,93 +1,16 @@
-(ns noj-book.render-tools
+(ns noj-book.utils.surface-plot 
   (:require
-   [clj-http.client :as client]
-   [clojure.string :as str]
-   [clojure.walk :as walk]
-   [scicloj.kindly.v4.kind :as kind]
    [scicloj.metamorph.core :as mm]
-   [scicloj.metamorph.ml :as ml]
-   [tablecloth.pipeline :as tc-mm]
-   [scicloj.metamorph.ml.preprocessing :as preprocessing]
    [tablecloth.api :as tc]
+   [tablecloth.pipeline :as tc-mm]
    [tech.v3.dataset.modelling :as ds-mod]
    [tech.v3.datatype.functional :as dtf]))
-  
 
-(defn anchor-or-nothing [x text]
-  (if (empty? x)
-    [:div ""]
-    [:div
-     [:a {:href x} text]]))
-
-
-(defn stringify-enum [form]
-  (walk/postwalk (fn [x] (do (if  (instance? Enum x) (str x) x)))
-                 form))
-(defn docu-options[model-key]
-  (->
-   (tc/dataset
-    (or
-     (get-in @ml/model-definitions* [model-key :options])
-     {:name [] :type [] :default []}))
-
-   (tc/reorder-columns :name :type :default)))
-
-
-
-
-(defn flatten-one-level [coll]
-  (mapcat  #(if (sequential? %) % [%]) coll))
-
-(str/replace "hello" "he" "" )
-
-
-(defn render-key-info 
-  ([prefix {:keys [level remove-s docu-doc-string-fn]}]
-   (->> @ml/model-definitions*
-        (sort-by first)
-        (filter #(str/starts-with? (first %) (str prefix)))
-        (mapcat (fn [[key definition]]
-                  (let [print-key (str/replace-first key remove-s "" )
-                         ]
-                    [(kind/md (str level " " print-key))
-                     (kind/hiccup
-                      [:span
-                       (anchor-or-nothing (:javadoc (:documentation definition)) "javadoc")
-                       (anchor-or-nothing (:user-guide (:documentation definition)) "user guide")
-
-                       (let [docu-ds (docu-options key)]
-                         (if  (tc/empty-ds? docu-ds)
-                           ""
-                           (->
-                            docu-ds
-                            (tc/rows :as-maps)
-                            seq
-                            stringify-enum
-                            (kind/table))))
-                       [:span
-                        (when (fn? docu-doc-string-fn)
-                          (docu-doc-string-fn key)
-                          )
-                        ]
-
-                       [:hr]
-                       [:hr]])])))
-        kind/fragment))
-  
-  ( [prefix] (render-key-info prefix {:level "##"
-                                      :remove-s ""})))
-
-(defn kroki [s type format]
-  (client/post "https://kroki.io/" {:content-type :json
-                                    :as :byte-array
-                                    :form-params
-                                    {:diagram_source s
-                                     :diagram_type (name type)
-                                     :output_format (name format)}}))
 
 (defn stepped-range [start end n-steps]
   (let [diff (- end start)]
     (range start end (/ diff n-steps))))
+
 
 (defn surface-plot [iris cols raw-pipe-fn model-name]
   (let [pipe-fn
@@ -152,8 +75,7 @@
                        prediction-iris)]
 
     ;; create a 2 layer Vega lite specification
-    {
-     :layer
+    {:layer
      [{:data {:values (seq (tc/rows grid-ds-prediction :as-maps))}
        :title (str "Decision surfaces for model: " model-name " - " cols)
        ;:width 400
@@ -194,19 +116,6 @@
 
                   :stroke {:value :black}
                   :size {:value 300}}}]}))
-
-(def iris-test
-  (tc/dataset
-   "https://raw.githubusercontent.com/scicloj/metamorph.ml/main/test/data/iris.csv" {:key-fn keyword}))
-
-
-
-
-;; Standarise the data:
-(def iris-std
-  (mm/pipe-it
-   iris-test
-   (preprocessing/std-scale [:sepal_length :sepal_width :petal_length :petal_width] {})))
 
 
 
