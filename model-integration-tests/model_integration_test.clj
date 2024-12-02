@@ -12,7 +12,8 @@
    [tablecloth.api :as tc]
    [taoensso.nippy :as nippy]
    [tech.v3.dataset :as ds]
-   [tech.v3.dataset.categorical :as ds-cat])
+   [tech.v3.dataset.categorical :as ds-cat]
+   [tech.v3.dataset.modelling :as ds-mod])
   (:import
    [org.tribuo.classification.libsvm SVMClassificationType$SVMMode]
    [org.slf4j.bridge SLF4JBridgeHandler]
@@ -39,7 +40,10 @@ warnings.simplefilter('ignore')")
 
 
 (require '[scicloj.metamorph.ml.classification]
+         '[scicloj.metamorph.ml.regression]
          '[scicloj.ml.smile.classification]
+         '[scicloj.ml.smile.regression]
+         
          '[scicloj.ml.tribuo]
          '[scicloj.sklearn-clj.ml]
          '[scicloj.ml.xgboost])
@@ -313,10 +317,89 @@ warnings.simplefilter('ignore')")
      (-> model-specs
          ;;https://github.com/scicloj/scicloj.ml.smile/issues/19
          (remove-model-type  :smile.classification/mlp)
-         ;;https://github.com/scicloj/scicloj.ml.xgboost/issues/1
-         (remove-model-type  :xgboost/classification)
          ))))
 
+(def iris-ds-regression
+  (->
+   (data/iris-ds)
+   (tc/drop-columns [:species])
+   (ds-mod/set-inference-target :sepal_length)))
+
+
+(def split
+  (first
+   (tc/split->seq 
+    iris-ds-regression
+    :holdout
+    )))
+
+(def iris-ds-regression--train
+  (:train split))
+
+(def iris-ds-regression--test
+  (:test split))
+
+
+(defn validate-regression [model-map]
+  (let [ model
+        (ml/train
+         iris-ds-regression--train
+         model-map)]
+
+    (is ( > 0.33
+          (loss/mae
+           (-> iris-ds-regression--test :sepal_length)
+           (-> ( ml/predict iris-ds-regression--test model) :sepal_length)
+           )))))
+
+
+(deftest regression-works
+  (is
+   (every? true?
+           (map 
+            #(validate-regression {:model-type %})
+            [:metamorph.ml/ols
+             :fastmath/ols
+             :smile.regression/ordinary-least-square
+             :smile.regression/elastic-net
+             :smile.regression/lasso
+             :smile.regression/ridge
+             :smile.regression/gradient-tree-boost
+             :smile.regression/random-forest
+             :xgboost/linear-regression
+             :xgboost/regression
+             :sklearn.regression/linear-regression
+             :sklearn.regression/decision-tree-regressor
+             :sklearn.regression/random-forest-regressor
+
+             ]))))
+
+(deftest tribuo-regression-works
+  (is (every? true?
+              (map
+               #(validate-regression
+                 {:model-type :scicloj.ml.tribuo/regression
+                  :tribuo-trainer-name "reg"
+                  :tribuo-components %})
+               [[{:name "loss"
+                  :type "org.tribuo.regression.sgd.objectives.AbsoluteLoss"}
+                 {:name "reg"
+                  :type "org.tribuo.regression.sgd.linear.LinearSGDTrainer"
+                  :properties {:objective "loss"}}]
+
+                [{:name "reg"
+                  :type "org.tribuo.regression.rtree.CARTRegressionTrainer"}]
+
+                [{:name "reg"
+                  :type "org.tribuo.regression.xgboost.XGBoostRegressionTrainer"
+                  :properties {:numTrees "10"}}]
+
+                [{:name "nu"
+                  :type "org.tribuo.regression.libsvm.SVMRegressionType"
+                  :properties {:type "NU_SVR"}}
+                 {:name "reg"
+                  :type "org.tribuo.regression.libsvm.LibSVMRegressionTrainer"
+                  :properties {:svmType "nu"}}]]))))
 
 
 (comment
