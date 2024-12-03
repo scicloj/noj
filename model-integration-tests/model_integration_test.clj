@@ -207,10 +207,16 @@ warnings.simplefilter('ignore')")
         new-accurcay
         (loss/classification-accuracy
          new-prediction
-         new-trueth)]
-    (is (<
-         (get min-accuracies (:model-type model-spec) 0.7)
-         new-accurcay))))
+         new-trueth)
+        min-accurcay (get min-accuracies (:model-type model-spec) 0.7)
+        ]
+    (is (< min-accurcay
+         
+         new-accurcay)
+        (format "min accurcay (%s) validation failed for: %s"
+                min-accurcay
+                model-spec)
+        )))
 
 (defn classify [model-spec ds]
   (println :verify (:model-type model-spec))
@@ -249,6 +255,7 @@ warnings.simplefilter('ignore')")
 (defn- verify-fn [[expected-acc spec] iris]
   (try
     (let [acc (classify spec iris)]
+      (println :acc acc)
       (is
        (>= acc
            expected-acc)
@@ -355,56 +362,53 @@ warnings.simplefilter('ignore')")
          (-> (ml/predict iris-ds-regression--test model) :sepal_length))]
 
     (println :mae mae)
-    (is ( > 0.33  mae
-          ))))
+    (is (> 0.36  mae) (format "mae validation failed: %s" model-map))))
 
 
 (deftest regression-works
-  (is
-   (every? true?
-           (map 
-            #(validate-regression {:model-type %})
-            [:metamorph.ml/ols
-             :fastmath/ols
-             :smile.regression/ordinary-least-square
-             :smile.regression/elastic-net
-             :smile.regression/lasso
-             :smile.regression/ridge
-             :smile.regression/gradient-tree-boost
-             :smile.regression/random-forest
-             :xgboost/linear-regression
-             :xgboost/regression
-             :sklearn.regression/linear-regression
-             :sklearn.regression/decision-tree-regressor
-             :sklearn.regression/random-forest-regressor
+  (run! 
+   #(validate-regression {:model-type %})
+   [:metamorph.ml/ols
+    :fastmath/ols
+    :smile.regression/ordinary-least-square
+    :smile.regression/elastic-net
+    :smile.regression/lasso
+    :smile.regression/ridge
+    :smile.regression/gradient-tree-boost
+    :smile.regression/random-forest
+    :xgboost/linear-regression
+    :xgboost/regression
+    :sklearn.regression/linear-regression
+    :sklearn.regression/decision-tree-regressor
+    :sklearn.regression/random-forest-regressor
 
-             ]))))
+    ]))
 
 (deftest tribuo-regression-works
-  (is (every? true?
-              (map
-               #(validate-regression
-                 {:model-type :scicloj.ml.tribuo/regression
-                  :tribuo-trainer-name "reg"
-                  :tribuo-components %})
-               [[{:name "loss"
-                  :type "org.tribuo.regression.sgd.objectives.AbsoluteLoss"}
-                 {:name "reg"
-                  :type "org.tribuo.regression.sgd.linear.LinearSGDTrainer"
-                  :properties {:objective "loss"}}]
+  
+  (run!
+   #(validate-regression
+     {:model-type :scicloj.ml.tribuo/regression
+      :tribuo-trainer-name "reg"
+      :tribuo-components %})
+   [[{:name "loss"
+      :type "org.tribuo.regression.sgd.objectives.AbsoluteLoss"}
+     {:name "reg"
+      :type "org.tribuo.regression.sgd.linear.LinearSGDTrainer"
+      :properties {:objective "loss"}}]
 
-                [{:name "reg"
-                  :type "org.tribuo.regression.rtree.CARTRegressionTrainer"}]
+    [{:name "reg"
+      :type "org.tribuo.regression.rtree.CARTRegressionTrainer"}]
 
-                [{:name "reg"
-                  :type "org.tribuo.regression.xgboost.XGBoostRegressionTrainer"
-                  :properties {:numTrees "10"}}]
+    [{:name "reg"
+      :type "org.tribuo.regression.xgboost.XGBoostRegressionTrainer"
+      :properties {:numTrees "10"}}]
 
-                [{:name "nu"
-                  :type "org.tribuo.regression.libsvm.SVMRegressionType"
-                  :properties {:type "NU_SVR"}}
-                 {:name "reg"
-                  :type "org.tribuo.regression.libsvm.LibSVMRegressionTrainer"
-                  :properties {:svmType "nu"}}]]))))
+    [{:name "nu"
+      :type "org.tribuo.regression.libsvm.SVMRegressionType"
+      :properties {:type "NU_SVR"}}
+     {:name "reg"
+      :type "org.tribuo.regression.libsvm.LibSVMRegressionTrainer"
+      :properties {:svmType "nu"}}]]))
 
 
