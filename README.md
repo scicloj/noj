@@ -5,8 +5,9 @@
 ![Noj logo](notebooks/Noj.svg)
 
 Noj gets you started with Clojure for data and science.
-* You get a collection of good libraries out of the box
+* You get a collection of good libraries out of the box which are tested and known-to-work-together
 * .. and documentation that shows you how to use the different libraries together
+* (and if you want: a 'devcontainer' setup which is known to work with the native parts of te libraries)
 
 Noj is a library that does not add any API of its own.
 It includes the [underlying libraries](https://scicloj.github.io/noj/noj_book.underlying_libraries.html)
