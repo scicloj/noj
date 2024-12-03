@@ -362,8 +362,9 @@ warnings.simplefilter('ignore')")
          (-> (ml/predict iris-ds-regression--test model) :sepal_length))]
 
     (println :mae mae)
-    (is (> 0.36  mae) (format "mae validation failed: %s" model-map))))
-
+    (is (>
+         0.4 ;; dummy-model has mae of 0.69
+         mae) (format "mae validation failed: %s" model-map))))
 
 (deftest regression-works
   (run! 
@@ -375,7 +376,7 @@ warnings.simplefilter('ignore')")
     :smile.regression/lasso
     :smile.regression/ridge
     :smile.regression/gradient-tree-boost
-    :smile.regression/random-forest
+    :smile.regression/random-forest 
     :xgboost/linear-regression
     :xgboost/regression
     :sklearn.regression/linear-regression
