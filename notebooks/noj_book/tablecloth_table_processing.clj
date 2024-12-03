@@ -1,4 +1,4 @@
-;; # Table processing with Tablecloth - DRAFT 🛠
+;; # Table processing with Tablecloth
 
 ;; author: Daniel Slutsky
 
