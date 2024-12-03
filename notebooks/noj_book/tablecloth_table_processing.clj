@@ -34,7 +34,7 @@
   :kindly/hide-code true}
 {:youtube-id "a0T_d_N7wbg"}
 
-;; * An in-depth warlkthrough by Ethan Miller (data-recur group, 2022-11-05):
+;; * An in-depth walkthrough by Ethan Miller (data-recur group, 2022-11-05):
 
 ^{:kindly/kind :kind/video
   :kindly/hide-code true}
