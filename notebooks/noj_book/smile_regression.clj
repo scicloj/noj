@@ -13,7 +13,16 @@
 ^:kindly/hide-code
 (require '[scicloj.ml.smile.regression])
 
-;; ## Smile regression models reference - DRAFT 🛠
+;; ## Smile regression models reference
+;; In the following we have a list of all model keys of Smile regression models
+;; including parameters.
+;; They can be used like this:
+
+(comment
+  (ml/train df
+            {:model-type <model-key>
+             :param-1 0
+             :param-2 1}))
 
 ^:kindly/hide-code
 (render-key-info :smile.regression)

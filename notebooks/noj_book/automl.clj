@@ -257,6 +257,16 @@ ctx-after-train
 ;;  So now we can add more operations to the pipeline,
 ;;  and nothing else changes, for example drop columns.
 
+;; While most metamorph compliant operations behave the same in  
+;; :fit and :transform, there are some which do behave differently.
+;; They have a certain notion of "fit" and "transform".
+;;
+;; They are therefore called "transformer" and are listed in the 
+;; "Transformer reference" 
+;; at the end of the Noj book.
+;;
+;; Some transformers exist as well as model and can be used with
+;; function `ml/model`
 
 
 ;; ## Automatic ML with `metamorph.ml`
