@@ -363,7 +363,7 @@ warnings.simplefilter('ignore')")
 
     (println :mae mae)
     (is (>
-         0.4 ;; dummy-model has mae of 0.69
+         0.5 ;; dummy-model has mae of 0.69
          mae) (format "mae validation failed: %s" model-map))))
 
 (deftest regression-works
