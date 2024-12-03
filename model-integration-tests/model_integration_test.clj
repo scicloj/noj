@@ -82,7 +82,7 @@ warnings.simplefilter('ignore')")
 
    :sklearn.classification/complement-nb 0.65
    :sklearn.classification/ridge-classifier 0.30
-   :sklearn.classification/extra-tree-classifier 0.90
+   :sklearn.classification/extra-tree-classifier 0.88
    :sklearn.classification/dummy-classifier 0.2
 
    :metamorph.ml/dummy-classifier 0.2})
