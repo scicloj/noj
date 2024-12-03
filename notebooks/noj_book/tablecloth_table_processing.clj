@@ -576,8 +576,7 @@ some-trips
                    :median-duration (fn [ds]
                                       (tcc/median (:duration-in-seconds ds)))})
     (tc/order-by [:hour])
-    (print/print-range :all)
-    compact-view)
+    (print/print-range :all))
 
 ;; We can see a peak of usage between 17:00 to 18:00
 ;; and a possibly slight tendendcy for longer trips (in time)
