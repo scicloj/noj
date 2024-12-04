@@ -1,3 +1,5 @@
+;; # Transformer reference  - DRAFT 🛠
+
 (ns noj-book.transformer-references
   (:require
    [scicloj.kindly.v4.api :as kindly]
@@ -28,8 +30,7 @@
        (kind/md (:doc m))
        (kind/md "----------------------------------------------------------")]))))
 
-  
-;; ## Transformer reference  - DRAFT 🛠
+
 
 (docu-fn (var nlp/count-vectorize))
 
