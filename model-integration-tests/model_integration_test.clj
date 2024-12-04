@@ -342,6 +342,7 @@ warnings.simplefilter('ignore')")
    (tc/split->seq 
     iris-ds-regression
     :holdout
+    {:seed 12345}
     )))
 
 (def iris-ds-regression--train
@@ -396,7 +397,8 @@ warnings.simplefilter('ignore')")
       :type "org.tribuo.regression.sgd.objectives.AbsoluteLoss"}
      {:name "reg"
       :type "org.tribuo.regression.sgd.linear.LinearSGDTrainer"
-      :properties {:objective "loss"}}]
+      :properties {:objective "loss"
+                   :epochs "20"}}]
 
     [{:name "reg"
       :type "org.tribuo.regression.rtree.CARTRegressionTrainer"}]
