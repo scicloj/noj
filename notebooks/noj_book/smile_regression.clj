@@ -1,3 +1,5 @@
+;; # Smile regression models reference - DRAFT 🛠
+
 (ns noj-book.smile-regression 
   (:require
    [noj-book.utils.render-tools :refer [render-key-info]]
@@ -13,7 +15,6 @@
 ^:kindly/hide-code
 (require '[scicloj.ml.smile.regression])
 
-;; ## Smile regression models reference - DRAFT 🛠
 
 ^:kindly/hide-code
 (render-key-info :smile.regression)

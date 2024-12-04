@@ -1,3 +1,5 @@
+;; # Smile classification models reference - DRAFT 🛠
+
 (ns noj-book.smile-classification
   (:require
    [noj-book.utils.example-code :refer [iris-std]]
@@ -14,7 +16,6 @@
 
 
 
-;; ## Smile classification models reference - DRAFT 🛠
 
 
 (render-key-info :smile.classification)
