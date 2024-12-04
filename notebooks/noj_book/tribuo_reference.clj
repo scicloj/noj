@@ -7,13 +7,13 @@
    [noj-book.utils.tribuo-render-tools :refer [trainer-infos all-non-trainer render-configurables]]))
 
 
-;; ## Tribuo reference - DRAFT 🛠
+;; # Tribuo reference - DRAFT 🛠
 
-; ### Tribuo trainer reference 
+;; ## Tribuo trainer reference 
 ^:kindly/hide-code
 (render-configurables (trainer-infos))
 
-;; ### Tribuo component reference 
+;; ## Tribuo component reference 
 ^:kindly/hide-code
 (render-configurables  (all-non-trainer))
 

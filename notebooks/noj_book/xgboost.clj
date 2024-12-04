@@ -5,6 +5,6 @@
    [noj-book.utils.render-tools :refer [render-key-info]]))
 
 
-;; ## Xgboost model reference - DRAFT 🛠
+;; # Xgboost model reference - DRAFT 🛠
 ^:kindly/hide-code
 (render-key-info :xgboost)
