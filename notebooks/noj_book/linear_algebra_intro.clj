@@ -127,3 +127,73 @@
 ;; Equality with given absolute (and/or relative) tolerance.
 (vec/delta-eq [math/PI] (vec/approx [math/PI] 4))
 (vec/delta-eq [math/PI] (vec/approx [math/PI] 4) 0.000001)
+
+;; Returns smallest number element from vector
+(vec/mn [5 10 15])
+
+;; Returns largest number element from vector
+(vec/mx [5 10 15])
+
+;; Removes negative sign from vector elements and return positive element
+(vec/abs [-5 -10 -15])
+
+;; Does vector division by int or float.
+(vec/div [5 10 15] 2)
+
+;; Compares vector values x[i] ? y[i] and returns vector with min values.
+(vec/emn [1 10 15] [2.5 5 20])
+
+;; Compares vector values x[i] ? y[i] and returns vector with max values.
+(vec/emx [1 10 15] [2.5 5 20])
+
+;; TODO: Euclidean distance probably calculated with Pythagorean theorem
+;; We can also use more dimensional vectors with it.. 
+; (3, 4) *       <-- Point A
+;        |\
+;        | \
+;        |  \       d(A, B) = 5
+;        |   \
+;        |    \
+;        |     \
+;        *------* (7, 1) <-- Point B
+(vec/dist [3 4] [7 1])
+
+;; Iterates over vectors and does element vise division.
+(vec/ediv [5 10 15] [2 2 2])
+
+;; Map over vector and apply function to each element and returns a same type..
+;; In case that we do calculus on elements with float point number we get
+;; vector with float poing elements eg: 0.5  
+(vec/fmap [5 10 15] #(/ 2.0 %))
+
+;; In case that we do calculus on elements with whole int we get
+;; vector with division representation elements eg: 1/2  
+;; TODO: Check if this is intended!
+(vec/fmap (vec/vec->RealVector [5 10 15]) #(/ 2 %))
+;; Calculates difference between same positioned elements and multiples
+;; that difference by `t` in this example 5.
+(vec/lerp [1 0 1] [1 1 1] 5)
+
+(vec/lerp (vec/vec->RealVector [1 0 1]) (vec/vec->RealVector [1 1 1]) 5)
+;; Multiples all elements in the vector.
+(vec/prod [5 10 15])
+
+
+; (vec/clamp)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
