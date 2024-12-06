@@ -16,5 +16,5 @@
 ;; ```
 ;; from your terminal.
 
-;; See [deps issue report](https://clojurians-log.clojureverse.org/tools-deps/2021-09-16).
+;; See [Ask Clojure](https://ask.clojure.org/index.php/12730/error-could-acquire-write-lock-artifact-org-bytedeco-opencv).
 
