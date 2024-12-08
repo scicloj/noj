@@ -45,7 +45,7 @@ directly for tabular data structures or provide high interoperability with it.
 |Deps |[![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/noj.svg)](https://clojars.org/org.scicloj/noj)|
 |Tests |![ci workflow](https://github.com/scicloj/noj/actions/workflows/ci.yml/badge.svg)|
 |License |[EPLv1.0](https://github.com/scicloj/noj/blob/main/LICENSE)|
-|Status |Getting close to Beta stage.|
+|Status |Beta stage.|
 |Dev chat|[#noj-dev](https://clojurians.zulipchat.com/#narrow/stream/321125-noj-dev) at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)|
 |User chat|[#data-science](https://clojurians.zulipchat.com/#narrow/stream/151924-data-science) at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)|
 
