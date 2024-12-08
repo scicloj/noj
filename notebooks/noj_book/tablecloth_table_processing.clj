@@ -2,7 +2,7 @@
 
 ;; author: Daniel Slutsky
 
-;; last change: 2024-11-29
+;; last change: 2024-12-08
 
 
 ;; [Tablecloth](https://scicloj.github.io/tablecloth/)
@@ -499,14 +499,8 @@ some-trips
                          :duration-in-seconds
                          (tcc/* 1/60)))))
 
-
-
-;; ## Grouping and summarizing
-
-;; How does bike usage change througout the day?
-
-;; Let us see how the number of trips and their median length change by the hour.
-;; To do that, we will group the dataset by the hour.
+;; Let us also add a column of the hour where each
+;; trip started -- an integer between 0 to 23.
 
 ;; To do that, we will first add the hour as a column.
 ;; Earlier, we did some time processing using the `java-time` API.
@@ -515,37 +509,40 @@ some-trips
 ;; namespace of dtype-next.
 ;; This namespace offers some handy functions that act on whole columns.
 
-(-> trips
-    (tc/select-columns [:started-at :ended-at])
-    (print/print-range 5)
-    (tc/map-columns :duration
-                    [:started-at :ended-at]
-                    java-time/duration)
-    (tc/map-columns :duration-in-seconds
-                    [:duration]
-                    #(java-time/as % :seconds))
-    (tc/add-column :hour
-                   (fn [ds]
-                     (datetime/long-temporal-field
-                      :hours
-                      (:started-at ds)))))
+;; Let us keep this dataset in a var.
 
+(def preprocessed-trips
+  (-> trips
+      (tc/select-columns [:rideable-type :started-at :ended-at])
+      (print/print-range 5)
+      (tc/map-columns :duration
+                      [:started-at :ended-at]
+                      java-time/duration)
+      (tc/map-columns :duration-in-seconds
+                      [:duration]
+                      #(java-time/as % :seconds))
+      (tc/add-column :duration-in-minutes
+                     (fn [ds]
+                       (-> ds
+                           :duration-in-seconds
+                           (tcc/* 1/60))))
+      (tc/add-column :hour
+                     (fn [ds]
+                       (datetime/long-temporal-field
+                        :hours
+                        (:started-at ds))))))
 
-;; Now, we will group by it.
+preprocessed-trips
 
-(-> trips
-    (tc/select-columns [:started-at :ended-at])
-    (tc/map-columns :duration
-                    [:started-at :ended-at]
-                    java-time/duration)
-    (tc/map-columns :duration-in-seconds
-                    [:duration]
-                    #(java-time/as % :seconds))
-    (tc/add-column :hour
-                   (fn [ds]
-                     (datetime/long-temporal-field
-                      :hours
-                      (:started-at ds))))
+;; ## Grouping and summarizing
+
+;; How does bike usage change througout the day?
+
+;; Let us see how the number of trips and their median length change by the hour.
+
+;; Let us group the trips by the hour:
+
+(-> preprocessed-trips
     (tc/group-by [:hour])
     (print/print-range 5))
 
@@ -558,19 +555,7 @@ some-trips
 ;; The resulting summary dataset will no longer be a grouped dataset.
 ;; We will order the summary by the hour.   
 
-(-> trips
-    (tc/select-columns [:started-at :ended-at])
-    (tc/map-columns :duration
-                    [:started-at :ended-at]
-                    java-time/duration)
-    (tc/map-columns :duration-in-seconds
-                    [:duration]
-                    #(java-time/as % :seconds))
-    (tc/add-column :hour
-                   (fn [ds]
-                     (datetime/long-temporal-field
-                      :hours
-                      (:started-at ds))))
+(-> preprocessed-trips
     (tc/group-by [:hour])
     (tc/aggregate {:n-trips tc/row-count
                    :median-duration (fn [ds]
