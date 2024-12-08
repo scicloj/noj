@@ -27,20 +27,66 @@
 
 ;; Let us check how frequent that is.
 
-(defn unreasonable-trip-length? [{:keys [duration-in-seconds]}]
-  (or (neg?  duration-in-seconds)
-      ;; Let us consider more than three hours unreasonable.
-      (> duration-in-seconds (* 3 3600))))
+(defn duration-diagnostics [{:keys [duration-in-minutes]}]
+  {:negative-duration (neg? duration-in-minutes)
+   :unreasonably-long-duration (> duration-in-minutes (* 2 60))})
 
 (-> preprocessed-trips
-    (tc/group-by {:unreasoanable-trip-length
-                  unreasonable-trip-length?})
-    (tc/aggregate {:tripseount tc/row-count}))
+    (tc/group-by duration-diagnostics)
+    (tc/aggregate {:trips tc/row-count}))
 
+;; ## Data cleaning
+
+;; Let us keep only trips of reasonable duration.
+
+(def clean-trips
+  (-> preprocessed-trips
+      (tc/select-rows (fn [{:keys [duration-in-minutes]}]
+                        (<= 0
+                            duration-in-minutes
+                            (* 2 60))))))
 
 ;; ## Visually exploring the distribution of variables
 
-;; Histograms:
+;; The distribution of start hour:
 
-(-> preprocessed-trips
-    (plotly/layer-histogram {:=x :duration-in-seconds}))
+(-> clean-trips
+    (tc/group-by [:hour])
+    (tc/aggregate {:n tc/row-count})
+    (plotly/layer-bar {:=x :hour
+                       :=y :n}))
+
+;; The distribution of trip duration:
+;; Let us use histograms -- binning the values and counting.
+
+(-> clean-trips
+    (plotly/layer-histogram {:=x :duration-in-minutes
+                             :=histogram-nbins 100}))
+
+;; The distribution of trip duration
+;; in different parts of the day:
+
+(-> clean-trips
+    (tc/map-columns :day-part
+                    [:hour]
+                    (fn [hour]
+                      (cond (<= 6 hour 12) :morning
+                            (<= 12 hour 18) :afternoon
+                            (<= 18 hour 23) :evening
+                            :else :night)))
+    (plotly/layer-histogram {:=x :duration-in-minutes
+                             :=histogram-nbins 100
+                             :=color :day-part
+                             :=mark-opacity 0.8}))
+
+;; TODO: Use density estimates rather than histograms here.
+
+;; The distribution of trip duration
+;; for different bike types:
+
+(-> clean-trips
+    (plotly/layer-histogram {:=x :duration-in-minutes
+                             :=histogram-nbins 100
+                             :=color :rideable-type
+                             :=mark-opacity 0.8}))
+
