@@ -5,6 +5,8 @@
  {:part "Datasets"
   :chapters ["tablecloth_table_processing"
              "datasets"]}
+ {:part "Statistics"
+  :chapters ["linear_regression_intro"]}
  {:part "Machine Learning"
   :chapters ["ml_basic"
              "prepare_for_ml"
@@ -20,7 +22,7 @@
              "fastmath_matrix_intro"]}
  {:part "Use Cases"
   :chapters ["chicago_bike_times"]}
-  
+ 
  {:part "Model references"
   :chapters ["smile_classification"
              "smile_regression"
