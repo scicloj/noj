@@ -33,7 +33,7 @@
 ;; * [sklearn-clj](https://github.com/scicloj/sklearn-clj) - Plugin to use [sklearn](https://scikit-learn.org/) models in metamorph.ml
 
 ;; ## Visualization
-;; * [Tableplot](https://github.com/scicloj/tableplot) - easy layered graphics - 🛠 alpha version - should stabilize soon [(reference)](https://scicloj.github.io/tableplot/)
+;; * [Tableplot](https://github.com/scicloj/tableplot) - easy layered graphics [(reference)](https://scicloj.github.io/tableplot/)
 ;; * [Hanami](https://github.com/jsa-aerial/hanami) - interactive datavis
 ;; * [Emmy-viewers](https://github.com/mentat-collective/emmy-viewers?tab=readme-ov-file) - math visualization
 ;; * [Kindly](https://github.com/scicloj/kindly-noted) - datavis standard [(reference)](https://scicloj.github.io/kindly-noted/kindly)
@@ -42,6 +42,10 @@
 ;; * [libpython-clj](https://github.com/clj-python/libpython-clj) - Python bindings [(reference)](https://clj-python.github.io/libpython-clj/)
 ;; * [kind-pyplot](https://github.com/scicloj/kind-pyplot) - Python plotting [(reference)](https://scicloj.github.io/kind-pyplot/)
 ;; * [ClojisR](https://github.com/scicloj/clojisr) - R bindings [(reference)](https://clj-python.github.io/libpython-clj/)
+
+;; ## Notebooks
+;; * [Clay](https://github.com/scicloj/clay) - easy layered graphics [(reference)](https://scicloj.github.io/clay/)
+
 ^:kindly/hide-code
 (def direct-deps
   (->
