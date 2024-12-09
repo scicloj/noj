@@ -37,7 +37,9 @@
         same/ish                                  {:mvn/version "0.1.6"}
 
         org.babashka/sci                          {:mvn/version "0.9.44"}
-        org.mentat/emmy-viewers                   {:mvn/version "0.3.2"}}
+        org.mentat/emmy-viewers                   {:mvn/version "0.3.2"}
+        
+        org.scicloj/clay                          {:mvn/version "2-beta25"}}
  :aliases
  {:gen-tests {:extra-paths ["build"]}
 
@@ -50,7 +52,7 @@
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
                       io.github.cognitect-labs/test-runner {:git/tag "v0.5.1" :git/sha "dfb30dd"}
                       org.slf4j/slf4j-nop {:mvn/version "2.0.16"}
-                      org.scicloj/clay {:mvn/version "2-beta21"}
+                      org.scicloj/clay {:mvn/version "2-beta25"}
                       clj-http/clj-http {:mvn/version "3.13.0"}}}
 
   :model-integration-tests

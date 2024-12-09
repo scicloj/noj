@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [2-beta2] - 2024-12-10
+- added Clay
+
 ## [2-beta1] - 2024-12-08
 - added libsvm and liblinear Tribuo models
 - updated deps (tech.ml.dataset, metamorph.ml, scicloj.ml.tribuo, clojure.java-time, Tableplot)
