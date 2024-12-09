@@ -2,7 +2,7 @@
 
 ;; Here we offer an intro to [linear regression](https://en.wikipedia.org/wiki/Linear_regression)
 ;; following the
-;; [In Depth: Linear Regression](https://jakevdp.github.io/PythonDataScienceHandbook/05.06-linear-regression.htmlhttps://jakevdp.github.io/PythonDataScienceHandbook/05.06-linear-regression.html)
+;; [In Depth: Linear Regression](https://jakevdp.github.io/PythonDataScienceHandbook/05.06-linear-regression.html)
 ;; section of the
 ;; [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
 ;; by Jake VanderPlas.
@@ -48,4 +48,3 @@
     (tc/group-by (fn [{:keys [datetime]}]
                    {:date (datetime/local-date-time->local-date datetime)}))
     (tc/aggregate {:total (comp tcc/sum :total)}))
-
