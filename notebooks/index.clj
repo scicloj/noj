@@ -51,7 +51,6 @@ directly for tabular data structures or provide high interoperability with it.
 
 ## Getting started
 🎥📖 a revised version is coming soon🌟
-
 ")
 
 ;; ## Chapters of this book
