@@ -110,24 +110,41 @@ totals-with-day-of-week
                                         (tcc/* 1)))))
               totals-with-day-of-week
               days-of-week)
-      (tc/drop-columns [:day-of-week])))
+      (tc/drop-columns [:day-of-week])
+      (dsmod/set-inference-target :total)))
 
-totals-with-one-hot-days-of-week
+(-> totals-with-one-hot-days-of-week
+    (tc/select-columns dsmod/inference-column?))
 
 ;; Let us compute the linear regression model using Fastmath.
+;; We will use this wrapper function that handles a dataset
+;; (a concept which is unknown to Fastmath):
+
+(defn lm [dataset options]
+  (let [inference-column-name (-> dataset
+                                  dsmod/inference-target-column-names
+                                  first)
+        ds-without-target (-> dataset
+                              (tc/drop-columns [inference-column-name]))]
+    (reg/lm
+     ;; ys
+     (get dataset inference-column-name)
+     ;; xss
+     (tc/rows ds-without-target)
+     ;; options
+     (merge {:names (-> ds-without-target
+                        tc/column-names
+                        vec)}
+            options))))
+
 ;; The binary columns are collinear (sum up to 1),
 ;; but we will avoide the intercept.
 ;; This way, the interpretation of each coefficient is the expected
 ;; bike count for the corresponding day of week.
 
-(def fit
-  (let [data-without-target (-> totals-with-one-hot-days-of-week
-                                (tc/drop-columns [:total]))]
-    data-without-target
-    (reg/lm (:total totals-with-one-hot-days-of-week)
-            (tc/rows data-without-target)
-            {:intercept? false
-             :names (vec (tc/column-names data-without-target))})))
+(def days-of-week-model
+  (lm totals-with-one-hot-days-of-week
+      {:intercept? false}))
 
 ;; Here are the regression results:
 
