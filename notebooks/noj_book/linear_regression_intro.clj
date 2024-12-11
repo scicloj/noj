@@ -16,7 +16,9 @@
    [tablecloth.column.api :as tcc]
    [tech.v3.datatype.datetime :as datetime]
    [tech.v3.dataset.modelling :as dsmod]
-   [scicloj.metamorph.ml :as ml]))
+   [scicloj.metamorph.ml :as ml]
+   [fastmath.ml.regression :as reg]
+   [scicloj.kindly.v4.kind :as kind]))
 
 ;; ## Reading and parsing data
 
@@ -44,12 +46,16 @@ weather
 
 ;; ## Preprocessing
 
-;; no good support for this in tablecloth
+;; Our bike counts data are hourly, but the weather data is daily.
+;; To join them, we will need to convert the bike hourly counts to daily counts.
+
+;; In the Python book, this is done as follows in Pandas:
 ;; ```python
 ;; daily = counts.resample('d').sum()
 ;; ```
 
-;; day column, group by, aggregate, sum.
+;; Tablecloth's full support for time series is still under construction.
+;; For now, we will have to be a bit more verbose:
 
 (def daily-totals
   (-> counts
@@ -62,38 +68,70 @@ weather
 
 daily-totals
 
-(:date daily-totals)
+;; ## Prediction by weekday
 
-(datetime/long-temporal-field
- :day-of-week
- (:date daily-totals))
+;; Let us prepare the data for regression on the day of week.
+
+
+(def days-of-week
+  [:Mon :Tue :Wed :Thu :Fri :Sat :Sun])
+
+
+;; We will convert numbers to days-of-week keywords:
 
 (def idx->day-of-week
-  (comp [:Mon :Tue :Wed :Thu :Fri :Sat :Sun]
-        dec))
+  (comp days-of-week dec))
 
+;; E.g., 
 (idx->day-of-week 1)
 (idx->day-of-week 7)
 
-(def data-for-prediction
+;; Now, let us prepare the data:
+
+(def totals-with-day-of-week
   (-> daily-totals
-      (tc/select-columns [:date :total])
-      (tc/add-column :dow
+      (tc/add-column :day-of-week
                      (fn [ds]
                        (map idx->day-of-week
                             (datetime/long-temporal-field
                              :day-of-week
                              (:date ds)))))
-      (ds/categorical->one-hot [:dow])
-      (tc/drop-columns [:date :dow-Sun])
-      (dsmod/set-inference-target :total)))
+      (tc/select-columns [:total :day-of-week])))
 
-data-for-prediction
+totals-with-day-of-week
 
-;; C + A0*Mon + A1*Tue + ... + A5*Sat
-;; The prediction for Mon: C+A0
-;; The prediction for Sun: C
+(def totals-with-one-hot-days-of-week
+  (-> (reduce (fn [dataset day-of-week]
+                (-> dataset
+                    (tc/add-column day-of-week
+                                   #(-> (:day-of-week %)
+                                        (tcc/eq day-of-week)
+                                        ;; turn booleans into 0s and 1s
+                                        (tcc/* 1)))))
+              totals-with-day-of-week
+              days-of-week)
+      (tc/drop-columns [:day-of-week])))
 
-(-> data-for-prediction
-    :total
-    meta)
+totals-with-one-hot-days-of-week
+
+;; Let us compute the linear regression model using Fastmath.
+;; The binary columns are collinear (sum up to 1),
+;; but we will avoide the intercept.
+;; This way, the interpretation of each coefficient is the expected
+;; bike count for the corresponding day of week.
+
+(def fit
+  (reg/lm (:total totals-with-one-hot-days-of-week)
+          (-> totals-with-one-hot-days-of-week
+              (tc/drop-columns [:total])
+              tc/rows)
+          {:intercept? false}))
+
+;; Here are the regression results:
+
+(-> fit
+    println
+    with-out-str
+    kind/code)
+
+;; We can see the difference between weekends and weekdays.
