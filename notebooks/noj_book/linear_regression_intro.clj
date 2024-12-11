@@ -68,7 +68,7 @@ weather
 
 daily-totals
 
-;; ## Prediction by weekday
+;; ## Prediction by day-of-week
 
 ;; Let us prepare the data for regression on the day of week.
 
