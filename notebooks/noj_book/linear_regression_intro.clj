@@ -121,11 +121,13 @@ totals-with-one-hot-days-of-week
 ;; bike count for the corresponding day of week.
 
 (def fit
-  (reg/lm (:total totals-with-one-hot-days-of-week)
-          (-> totals-with-one-hot-days-of-week
-              (tc/drop-columns [:total])
-              tc/rows)
-          {:intercept? false}))
+  (let [data-without-target (-> totals-with-one-hot-days-of-week
+                                (tc/drop-columns [:total]))]
+    data-without-target
+    (reg/lm (:total totals-with-one-hot-days-of-week)
+            (tc/rows data-without-target)
+            {:intercept? false
+             :names (vec (tc/column-names data-without-target))})))
 
 ;; Here are the regression results:
 
