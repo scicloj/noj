@@ -148,7 +148,7 @@ totals-with-day-of-week
 
 ;; Here are the regression results:
 
-(-> fit
+(-> days-of-week-model
     println
     with-out-str
     kind/code)
