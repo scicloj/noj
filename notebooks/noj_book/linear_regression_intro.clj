@@ -15,8 +15,7 @@
    [tablecloth.api :as tc]
    [tablecloth.column.api :as tcc]
    [tech.v3.datatype.datetime :as datetime]
-   [tech.v3.dataset.modelling :as dsmod]
-   [scicloj.metamorph.ml :as ml]
+   [tech.v3.dataset.modelling :as ds-mod]
    [fastmath.ml.regression :as reg]
    [scicloj.kindly.v4.kind :as kind]))
 
@@ -111,10 +110,10 @@ totals-with-day-of-week
               totals-with-day-of-week
               days-of-week)
       (tc/drop-columns [:day-of-week])
-      (dsmod/set-inference-target :total)))
+      (ds-mod/set-inference-target :total)))
 
 (-> totals-with-one-hot-days-of-week
-    (tc/select-columns dsmod/inference-column?))
+    (tc/select-columns ds-mod/inference-column?))
 
 ;; Let us compute the linear regression model using Fastmath.
 ;; We will use this wrapper function that handles a dataset
@@ -122,7 +121,7 @@ totals-with-day-of-week
 
 (defn lm [dataset options]
   (let [inference-column-name (-> dataset
-                                  dsmod/inference-target-column-names
+                                  ds-mod/inference-target-column-names
                                   first)
         ds-without-target (-> dataset
                               (tc/drop-columns [inference-column-name]))]
