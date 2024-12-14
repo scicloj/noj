@@ -18,3 +18,17 @@
 
 ;; See [Ask Clojure](https://ask.clojure.org/index.php/12730/error-could-acquire-write-lock-artifact-org-bytedeco-opencv).
 
+;; ## Native Dependencies
+;; Several of the machine learning models included in Noj are known to have native, operating system level,
+;; dependencies. For most OS these get "autoinstalled" via depedencies to jars.
+;; 
+;; For some OS this is not working or needs manual instalations or configuration.
+;;
+;; We maintain a complete integration test suite, which exercises all models, and we have a known-to-work
+;; [devcontainer setup](https://github.com/scicloj/noj/tree/main/.devcontainer) in which all models do work.
+;;
+;; This can be used for reference or as a starting point to use Noj, if one desires.
+;; ### scicloj.ml.smile
+;; Some of the Smile based models require native dependencies. This is documented in [Smile](https://github.com/haifengl/smile)
+
+
