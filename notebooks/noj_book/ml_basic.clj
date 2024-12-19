@@ -155,8 +155,9 @@ cat-maps
   [0.0 3.0 0.0 0.0]])
 
 ;; Split data into train and test set
-;;  Now we split the data into train and test. By we use
-;;  a :holdout strategy, so will get a single split in training an test data.
+;;
+;; Now we split the data into train and test. By we use
+;; a :holdout strategy, so will get a single split in training an test data.
 ;;
 (def split
   (first
@@ -165,7 +166,7 @@ cat-maps
 split
 
 ;; ## Train a model
-;; Now its time to train a model.
+;; Now its time to train a model:
 
 (require '[scicloj.metamorph.ml :as ml]
          '[scicloj.metamorph.ml.classification]
