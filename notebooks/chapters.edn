@@ -9,7 +9,8 @@
   :chapters ["statistics_intro"
              "linear_regression_intro"]}
  {:part "Machine Learning"
-  :chapters ["ml_basic"
+  :chapters ["metamorph"
+             "ml_basic"
              "prepare_for_ml"
              "automl"
              "interactions_ols"]}
