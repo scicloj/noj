@@ -96,5 +96,5 @@
 ;; - Allow for conditional behavior within pipeline steps.  
 ;; - Can be easily moved, assigned, and called like functions.  
 
-;; *Note: The implementation details of Metamorph pipelines are beyond the scope of this namespace  
+;; *Note: The implementation details of Metamorph pipelines are beyond the scope of this chapter
 ;; but are designed to fulfill the goals outlined above.*  
