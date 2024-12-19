@@ -22,7 +22,8 @@
 			},
 			"extensions": 
 			[
-				"betterthantomorrow.calva"
+				"betterthantomorrow.calva",
+				"streetsidesoftware.code-spell-checker"
 			]
 		}
 	},
