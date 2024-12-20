@@ -1,8 +1,5 @@
 ;; # AutoML using metamorph pipelines
 
-;; Author: Carsten Behring
-;;
-;; Updated: 05.10.2024
 
 ;;  In this tutorial we see how to use `metamorph.ml` to perform automatic machine learning.
 ;;  With AutoML we mean to try lots of different models and hyper parameters and rely on automatic
@@ -25,9 +22,8 @@
 ;; The Clojure way to do this, is function composing and higher level
 ;; functions.
 ;;
-;; (The following is a very low level explanation of `metamorph`, as a
-;; `metamorph.ml` user
-;; we do not use this low-level functions , see next chapter)
+;; (The following is a quick explanation of `metamorph`, 
+;; see chapter "Machine learning pipelines" for more details.
 ;;
 ;; While in the basic tutorial we saw how to use the pair of `train` 
 ;; and `predict` to
@@ -345,7 +341,7 @@ ctx-after-train
    [:sex :embarked]
    [:sex :pclass]])
 
-;; generate 24 pipeline functions:
+;; generate 42 pipeline functions:
 (def pipe-fns
   (for [model models
         feature-combination feature-combinations]
@@ -387,7 +383,7 @@ ctx-after-train
 
 
 ;; In total it creates and evaluates
-;; 4 models * 6 feature configurations * 5 CV = 120 models
+;; 7 models * 6 feature configurations * 5 CV = 210 models
 (->  evaluation-results-all flatten count)
 
 ;;  We can find the best as well by hand, it's the first from the list,
@@ -441,12 +437,18 @@ ctx-after-train
 ;;  into the pipeline, by just using the "lifted" form of the transformations,
 ;;  I would not do so, even though this should give the same result.
 ;;
-;; I think it is better to separate the steps which are "fixed",
+;; Often it is better to separate the steps which are "fixed",
 ;; from the steps which are parameterized, so for which we want to find
 ;; the best values by "trying out".
 ;;
 ;; In my view there are two reasons for this:
-;; 1. Debugging: It is harder to debug a pipeline and see the results
+;; * Debugging: It is harder to debug a pipeline and see the results
 ;;   of steps. We have one macro helping in this: `mm/def-ctx`
-;; 2. Performance: The pipeline is executed lots of times, for every split / variant
-;;    of the pipeline. It should be faster to do things only once, before the pipeline
+;; * Performance: The pipeline is executed lots of times, for every split / variant
+;;    of the pipeline. It should be faster to do data transformations only once, 
+;;    before the metamorph pipeline starts.
+;; 
+;; Nevertheless is some scenarios it is very useful to create a full transformation pipeline
+;; as a metamorph pipeline. This would for example allow to perform very different transformation steps per model
+;; and still only have a single seq of pipeline functions to manage,
+;; therefore having fully self contained pipelines.
