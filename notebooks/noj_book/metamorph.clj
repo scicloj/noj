@@ -99,6 +99,7 @@
 ;; - Allow for conditional behavior within pipeline steps.  
 ;; - Can be easily moved, assigned, and called like functions.  
 
+
 ; ### A pipeline is a composition of functions
 
 ;; A metamorph pipeline is created by the function `scicloj.metamorph.core/pipeline`.  
