@@ -1,10 +1,9 @@
+^:kindly/hide-code
 (ns noj-book.metamorph
   (:require
-   [clojure.string :as str]
-   [scicloj.kindly.v4.kind :as kind]
-   [scicloj.metamorph.core :as mm]))
+   [scicloj.kindly.v4.kind :as kind]))
 
-;; # Machine learning pipelines - DRAFT 🛠
+;; # Machine learning pipelines
 ;; ## Clojure Core Pipelines  
 
 ;; Clojure has built-in support for data processing pipelines—a series of functions where the output  
@@ -13,6 +12,7 @@
 
 ;; ### Example: Using the Threading Macro  
 
+(require '[clojure.string :as str])
 (-> "hello"
     (str/upper-case)
     (str/reverse)
@@ -91,7 +91,7 @@
 
 ;; ## Introducing Metamorph Pipelines  
 
-;; To address these limitations, **Metamorph pipelines** were developed. Metamorph provides a way to  
+;; To address these limitations, **Metamorph pipelines** were developed. [Metamorph](https://github.com/scicloj/metamorph) provides a way to  
 ;; create pipelines that:  
 
 ;; - Compose processing steps in a readable, sequential order.  
@@ -105,6 +105,7 @@
 ;; It takes functions as input and composes them in order (unlike `comp`, which composes them in reverse order).  
 ;; Note that it is not a macro, so it cannot take expressions such as `(str/upper-case)` directly.  
 
+(require '[scicloj.metamorph.core :as mm] )
 (def metamorph-pipeline-1
   (mm/pipeline
    str/upper-case

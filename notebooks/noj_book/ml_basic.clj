@@ -1,9 +1,5 @@
 ;; # Machine learning
 
-;; author: Carsten Behring
-;;
-;; latest update: 05.10.2024
-
 ;; In this tutorial we will train a simple machine learning model
 ;; in order to predict the survival of titanic passengers given
 ;; their data.
