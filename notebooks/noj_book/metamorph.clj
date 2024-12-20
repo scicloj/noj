@@ -294,8 +294,9 @@
 ;; As we have seen so far, the data object at key `:metamorph/data`
 ;; can be anything, so far we have used a `String`.
 ;;
-;; In machine leading pipelines we use a `tech.v3.dataset` instead,
-;; and the pipeline step functions transform the dataset.
+;; In machine learning pipelines we use a `tech.v3.dataset` instead,
+;; and the pipeline step functions transform mainly the dataset or train
+;; a model.
 ;; 
 ;; The **state** is often the result of a **model** function. It is calculated in `:fit` 
 ;; on training data and applied in `:transform` on other data to make a prediction.
