@@ -467,11 +467,6 @@ logistic-regression-specs
 ;; In my view there are two reasons for this:
 ;; * Debugging: It is harder to debug a pipeline and see the results
 ;;   of steps. We have one macro helping in this: `mm/def-ctx`
-;; 2. Performance: The pipeline is executed lots of times, for every split / variant
-;;    of the pipeline. It should be faster to do things only once, before the pipeline
-
-
-
 ;; * Performance: The pipeline is executed lots of times, for every split / variant
 ;;    of the pipeline. It should be faster to do data transformations only once, 
 ;;    before the metamorph pipeline starts.
