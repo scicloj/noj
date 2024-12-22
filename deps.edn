@@ -13,9 +13,6 @@
         org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.2.0"}
 
         org.scicloj/scicloj.ml.tribuo             {:mvn/version "0.1.4"}
-        techascent/tech.ml.dataset                {:mvn/version "7.032"}   ;; no JVM crash
-        ;;techascent/tech.ml.dataset                {:mvn/version "7.033"}  ;; JVM crash
-        ;;techascent/tech.ml.dataset                {:mvn/version "7.034"} ;; JVM crash
         
         org.tribuo/tribuo-regression-liblinear    {:mvn/version "4.3.1"}
         org.tribuo/tribuo-regression-libsvm       {:mvn/version "4.3.1"}
@@ -30,7 +27,7 @@
         org.tribuo/tribuo-classification-xgboost   {:mvn/version "4.3.1"}
         
 
-        clj-python/libpython-clj                  {:mvn/version "2.025"}
+        clj-python/libpython-clj                  {:mvn/version "2.026"}
         org.scicloj/kind-pyplot                   {:mvn/version "1-beta2.1"}
         scicloj/clojisr                           {:mvn/version "1.0.0"}
 
