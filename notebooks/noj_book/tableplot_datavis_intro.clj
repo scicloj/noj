@@ -12,7 +12,6 @@
             [scicloj.kindly.v4.kind :as kind]
             [tech.v3.dataset.print :as ds-print]))
 
-
 ;; ## Introduction
 
 ;; Tableplot is a Clojure library for creating data visualizations using a functional grammar inspired by [ggplot2](https://ggplot2.tidyverse.org/) and the layered grammar of graphics. It allows for composable plots, where layers can be built up incrementally and data transformations can be seamlessly integrated.
@@ -248,35 +247,6 @@
         :=y :y-variable})
       (plotly/layer-point)
       (plotly/layer-smooth)))
-
-;; ### Customization
-
-;; The Tableplot API allows for detailed customization of plot aesthetics by adjusting parameters in the layer functions.
-
-;; ### Exploring the Data with `tablecloth`
-
-;; In addition to plotting, we can use Tablecloth's functions to manipulate and explore the dataset.
-
-;; #### Summarizing the Data
-
-(tc/info iris)
-
-;; #### Grouping and Aggregation
-
-;; Let's calculate the mean sepal length for each species.
-
-(-> iris
-    (tc/group-by :species)
-    (tc/aggregate {:mean-sepal-length #(tcc/mean (:sepal_length %))}))
-
-;; #### Filtering Data
-
-;; We can filter the dataset to include only one species.
-
-(def setosa-data
-  (tc/select-rows iris #(= (:species %) "setosa")))
-
-(tc/head setosa-data)
 
 ;; ## References
 
