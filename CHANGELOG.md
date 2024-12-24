@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## [2-beta3] - unreleased
+## [2-beta3] - 2024-12-24
 - updated deps (Libpython-clj, Tableplot, Clay)
 
 ## [2-beta2] - 2024-12-10
