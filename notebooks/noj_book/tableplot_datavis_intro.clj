@@ -42,8 +42,7 @@ datasets/iris
 (-> datasets/iris
     (plotly/layer-point
      {:=x :sepal-length
-      :=y :sepal-width
-      :=mark-size 7}))
+      :=y :sepal-width}))
 
 ;; This plot shows the distribution of sepal length and width for the flowers in the dataset.
 
@@ -55,8 +54,7 @@ datasets/iris
     (plotly/layer-point
      {:=x :sepal-length
       :=y :sepal-width
-      :=color :species
-      :=mark-size 7}))
+      :=color :species}))
 
 ;; Now, each species is represented by a different color, making it easier to see any patterns or differences between them.
 
@@ -68,8 +66,7 @@ datasets/iris
     (plotly/layer-point
      {:=x :petal-length
       :=y :petal-width
-      :=color :species
-      :=mark-size 7}))
+      :=color :species}))
 
 ;; This plot shows a clearer separation between species based on petal measurements compared to sepal measurements.
 
@@ -139,9 +136,8 @@ datasets/iris
      {:=x :sepal-length
       :=y :sepal-width
       :=color :species})
-    (plotly/layer-point
-     {:=mark-size 7})
-    (plotly/layer-smooth))
+    plotly/layer-point
+    plotly/layer-smooth)
 
 ;; This plot shows a scatter plot of sepal measurements with trend lines added for each species.
 
@@ -158,6 +154,16 @@ datasets/iris
       :=color :species
       :=symbol :species
       :=mark-size 15}))
+
+;; ### Changing Marker Color (for all marks)
+
+(-> datasets/iris
+    (plotly/layer-point
+     {:=x :sepal-length
+      :=y :sepal-width
+      :=symbol :species
+      :=mark-size 15
+      :=mark-color :darkblue}))
 
 ;; ### Adjusting Opacity
 
@@ -216,6 +222,7 @@ datasets/iris
 ;; - `:=symbol`: Variable used to determine marker symbols.
 ;; - `:=mark-opacity`: Opacity of the markers.
 ;; - `:=mark-size`: Size of the markers.
+;; - `:=mark-color`: Color of the markers.
 ;; - `:=histogram-nbins`: Number of bins in the x-axis for histograms.
 ;; - `:=box-visible`: Whether to show box plot inside violin plots.
 ;; - `:=meanline-visible`: Whether to show mean line in violin plots.
@@ -230,15 +237,16 @@ datasets/iris
        {:=x :x-variable
         :=y :y-variable})))
 
-;; Multiple layers can be added to create more complex plots.
+;; Multiple layers can be added to create more complex plots,
+;; sharing parameters defined in  `base`.
 
 (comment
   (-> dataset
       (plotly/base
        {:=x :x-variable
         :=y :y-variable})
-      (plotly/layer-point)
-      (plotly/layer-smooth)))
+      (plotly/layer-point {... ...})
+      (plotly/layer-smooth {... ...})))
 
 ;; ## References
 
