@@ -1,4 +1,4 @@
-;; # Intro to data visualization with Tableplot
+;; # Intro to data visualization with Tableplot - DRAFT 🛠
 
 ;; This tutorial will guide us through an exploration of the classic Iris dataset using the [Tableplot](https://scicloj.github.io/tableplot) library in Clojure. We will demonstrate how to use Tableplot's Plotly API to create various visualizations, while explaining the core ideas and functionality of the API.
 
@@ -20,7 +20,7 @@
 ;; - Explore the relationships between different variables in the dataset.
 ;; - Demonstrate how to customize plots and use different features of the API.
 
-;; ## Loading the Iris Dataset
+;; ## Looking into the Iris Dataset
 
 ;; First, let's look into the Iris dataset we have read
 ;; [in the datasets chapter](./noj_book.datasets).
@@ -43,7 +43,7 @@ datasets/iris
     (plotly/layer-point
      {:=x :sepal-length
       :=y :sepal-width
-      :=mark-size 10}))
+      :=mark-size 7}))
 
 ;; This plot shows the distribution of sepal length and width for the flowers in the dataset.
 
@@ -56,7 +56,7 @@ datasets/iris
      {:=x :sepal-length
       :=y :sepal-width
       :=color :species
-      :=mark-size 10}))
+      :=mark-size 7}))
 
 ;; Now, each species is represented by a different color, making it easier to see any patterns or differences between them.
 
@@ -69,7 +69,7 @@ datasets/iris
      {:=x :petal-length
       :=y :petal-width
       :=color :species
-      :=mark-size 10}))
+      :=mark-size 7}))
 
 ;; This plot shows a clearer separation between species based on petal measurements compared to sepal measurements.
 
@@ -140,7 +140,7 @@ datasets/iris
       :=y :sepal-width
       :=color :species})
     (plotly/layer-point
-     {:=mark-size 10})
+     {:=mark-size 7})
     (plotly/layer-smooth))
 
 ;; This plot shows a scatter plot of sepal measurements with trend lines added for each species.
@@ -149,7 +149,7 @@ datasets/iris
 
 ;; Tableplot allows for customization of plot aesthetics.
 
-;; ### Changing Marker Symbols
+;; ### Changing Marker Sizes
 
 (-> datasets/iris
     (plotly/layer-point
@@ -157,7 +157,7 @@ datasets/iris
       :=y :sepal-width
       :=color :species
       :=symbol :species
-      :=mark-size 10}))
+      :=mark-size 15}))
 
 ;; ### Adjusting Opacity
 
@@ -166,12 +166,12 @@ datasets/iris
      {:=x :sepal-length
       :=y :sepal-width
       :=color :species
-      :=mark-size 10
+      :=mark-size 15
       :=mark-opacity 0.6}))
 
-;; ## Surface Plot (3D Visualization)
+;; ## 3d Scatter Plot
 
-;; We can create a surface plot to visualize relationships in three dimensions.
+;; We can create a 3d scatter plot to visualize relationships in three dimensions.
 
 (-> datasets/iris
     (plotly/layer-point
@@ -242,6 +242,8 @@ datasets/iris
 
 ;; ## References
 
+;; - [Tableplot documentation](https://scicloj.github.io/tableplot/)
+;; - [Tableplot's reference for its Plotly API](https://scicloj.github.io/tableplot/tableplot_book.plotly_reference.html)
 ;; - [Tableplot GitHub Repository](https://github.com/scicloj/tableplot)
 ;; - [Plotly.js Documentation](https://plotly.com/javascript/)
 ;; - [Tablecloth Documentation](https://scicloj.github.io/tablecloth/)
