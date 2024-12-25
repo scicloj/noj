@@ -15,7 +15,8 @@
              "automl"
              "interactions_ols"]}
  {:part "Data Visualization"
-  :chapters ["echarts"
+  :chapters ["tableplot_datavis_intro"
+             "echarts"
              "visualizing_correlation_matrices"]}
  {:part "Linear Algebra"
   :chapters ["linear_algebra_intro"
