@@ -1,16 +1,13 @@
 ;; # Intro to data visualization with Tableplot
 
-;; This tutorial will guide us through an exploration of the classic Iris dataset using the Tableplot library in Clojure. We will demonstrate how to use Tableplot's Plotly API to create various visualizations, while explaining the core ideas and functionality of the API.
+;; This tutorial will guide us through an exploration of the classic Iris dataset using the [Tableplot](https://scicloj.github.io/tableplot) library in Clojure. We will demonstrate how to use Tableplot's Plotly API to create various visualizations, while explaining the core ideas and functionality of the API.
 
 ;; ## Setup
 
 (ns tableplot-book.tableplot-datavis-intro
   (:require [scicloj.tableplot.v1.plotly :as plotly]
             [tablecloth.api :as tc]
-            [tablecloth.column.api :as tcc]
-            [scicloj.kindly.v4.api :as kindly]
-            [scicloj.kindly.v4.kind :as kind]
-            [tech.v3.dataset.print :as ds-print]))
+            [noj-book.datasets :as datasets]))
 
 ;; ## Introduction
 
@@ -18,40 +15,35 @@
 
 ;; In this tutorial, we will:
 
-;; - Load and inspect the Iris dataset using Tablecloth.
+;; - Inspect the Iris dataset using [Tablecloth](https://scicloj.github.io/tablecloth/).
 ;; - Create various types of plots using Tableplot's Plotly API.
 ;; - Explore the relationships between different variables in the dataset.
 ;; - Demonstrate how to customize plots and use different features of the API.
 
 ;; ## Loading the Iris Dataset
 
-;; First, let's load the Iris dataset. We can use Tablecloth's `read-dataset` function to read the data.
+;; First, let's look into the Iris dataset we have read
+;; [in the datasets chapter](./noj_book.datasets).
 
-(def iris
-  (tc/dataset "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv"
-              {:key-fn keyword}))
-
-;; Let's take a look at the first few rows of the dataset.
-
-(tc/head iris)
+datasets/iris
 
 ;; The Iris dataset contains measurements for 150 iris flowers from three species (`setosa`, `versicolor`, `virginica`). The variables are:
 
-;; - `sepal_length`: Length of the sepal (cm)
-;; - `sepal_width`: Width of the sepal (cm)
-;; - `petal_length`: Length of the petal (cm)
-;; - `petal_width`: Width of the petal (cm)
+;; - `sepal-length`: Length of the sepal (cm)
+;; - `sepal-width`: Width of the sepal (cm)
+;; - `petal-length`: Length of the petal (cm)
+;; - `petal-width`: Width of the petal (cm)
 ;; - `species`: Species of the iris flower
 
 ;; ## Scatter Plot
 
-;; Let's start by creating a simple scatter plot to visualize the relationship between `sepal_length` and `sepal_width`.
+;; Let's start by creating a simple scatter plot to visualize the relationship between `sepal-length` and `sepal-width`.
 
-(-> iris
+(-> datasets/iris
     (plotly/layer-point
-      {:=x :sepal_length
-       :=y :sepal_width
-       :=mark-size 10}))
+     {:=x :sepal-length
+      :=y :sepal-width
+      :=mark-size 10}))
 
 ;; This plot shows the distribution of sepal length and width for the flowers in the dataset.
 
@@ -59,12 +51,12 @@
 
 ;; To distinguish between the different species, we can add color encoding based on the `species` column.
 
-(-> iris
+(-> datasets/iris
     (plotly/layer-point
-      {:=x :sepal_length
-       :=y :sepal_width
-       :=color :species
-       :=mark-size 10}))
+     {:=x :sepal-length
+      :=y :sepal-width
+      :=color :species
+      :=mark-size 10}))
 
 ;; Now, each species is represented by a different color, making it easier to see any patterns or differences between them.
 
@@ -72,12 +64,12 @@
 
 ;; Next, let's explore how petal measurements vary across species.
 
-(-> iris
+(-> datasets/iris
     (plotly/layer-point
-      {:=x :petal_length
-       :=y :petal_width
-       :=color :species
-       :=mark-size 10}))
+     {:=x :petal-length
+      :=y :petal-width
+      :=color :species
+      :=mark-size 10}))
 
 ;; This plot shows a clearer separation between species based on petal measurements compared to sepal measurements.
 
@@ -85,32 +77,32 @@
 
 ;; We can create a scatter plot matrix (SPLOM) to visualize the relationships between all pairs of variables.
 
-(-> iris
+(-> datasets/iris
     (plotly/splom
-      {:=colnames [:sepal_length :sepal_width :petal_length :petal_width]
-       :=color :species
-       :=height 600
-       :=width 600}))
+     {:=colnames [:sepal-length :sepal-width :petal-length :petal-width]
+      :=color :species
+      :=height 600
+      :=width 600}))
 
 ;; The SPLOM shows pairwise scatter plots for all combinations of the selected variables, with points colored by species.
 
 ;; ## Histograms
 
-;; Let's create histograms to explore the distribution of `sepal_length`.
+;; Let's create histograms to explore the distribution of `sepal-length`.
 
-(-> iris
+(-> datasets/iris
     (plotly/layer-histogram
-     {:=x :sepal_length
+     {:=x :sepal-length
       :=histnorm "count"
       :=histogram-nbins 20}))
 
 ;; ### Histograms by Species
 
-;; To see how the distribution of `sepal_length` varies by species, we can add color encoding.
+;; To see how the distribution of `sepal-length` varies by species, we can add color encoding.
 
-(-> iris
+(-> datasets/iris
     (plotly/layer-histogram
-     {:=x :sepal_length
+     {:=x :sepal-length
       :=color :species
       :=histnorm "count"
       :=histogram-nbins 20
@@ -120,35 +112,35 @@
 
 ;; Box plots are useful for comparing distributions across categories.
 
-(-> iris
+(-> datasets/iris
     (plotly/layer-boxplot
-      {:=y :sepal_length
-       :=x :species}))
+     {:=y :sepal-length
+      :=x :species}))
 
-;; This box plot shows the distribution of `sepal_length` for each species.
+;; This box plot shows the distribution of `sepal-length` for each species.
 
 ;; ## Violin Plots
 
 ;; Violin plots provide a richer representation of the distribution.
 
-(-> iris
+(-> datasets/iris
     (plotly/layer-violin
-      {:=y :sepal_length
-       :=x :species
-       :=box-visible true
-       :=meanline-visible true}))
+     {:=y :sepal-length
+      :=x :species
+      :=box-visible true
+      :=meanline-visible true}))
 
 ;; ## Scatter Plot with Trend Lines
 
 ;; We can add a smoothing layer to show trend lines in the data.
 
-(-> iris
+(-> datasets/iris
     (plotly/base
-      {:=x :sepal_length
-       :=y :sepal_width
-       :=color :species})
+     {:=x :sepal-length
+      :=y :sepal-width
+      :=color :species})
     (plotly/layer-point
-      {:=mark-size 10})
+     {:=mark-size 10})
     (plotly/layer-smooth))
 
 ;; This plot shows a scatter plot of sepal measurements with trend lines added for each species.
@@ -159,33 +151,33 @@
 
 ;; ### Changing Marker Symbols
 
-(-> iris
+(-> datasets/iris
     (plotly/layer-point
-      {:=x :sepal_length
-       :=y :sepal_width
-       :=color :species
-       :=symbol :species
-       :=mark-size 10}))
+     {:=x :sepal-length
+      :=y :sepal-width
+      :=color :species
+      :=symbol :species
+      :=mark-size 10}))
 
 ;; ### Adjusting Opacity
 
-(-> iris
+(-> datasets/iris
     (plotly/layer-point
-      {:=x :sepal_length
-       :=y :sepal_width
-       :=color :species
-       :=mark-size 10
-       :=mark-opacity 0.6}))
+     {:=x :sepal-length
+      :=y :sepal-width
+      :=color :species
+      :=mark-size 10
+      :=mark-opacity 0.6}))
 
 ;; ## Surface Plot (3D Visualization)
 
 ;; We can create a surface plot to visualize relationships in three dimensions.
 
-(-> iris
+(-> datasets/iris
     (plotly/layer-point
-     {:=x :sepal_length
-      :=y :sepal_width
-      :=z :petal_length
+     {:=x :sepal-length
+      :=y :sepal-width
+      :=z :petal-length
       :=color :species
       :=coordinates :3d
       :=mark-size 3}))
