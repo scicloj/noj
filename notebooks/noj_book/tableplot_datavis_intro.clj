@@ -4,7 +4,7 @@
 
 ;; ## Setup
 
-(ns tableplot-book.tableplot-datavis-intro
+(ns noj-book.tableplot-datavis-intro
   (:require [scicloj.tableplot.v1.plotly :as plotly]
             [tablecloth.api :as tc]
             [noj-book.datasets :as datasets]))
