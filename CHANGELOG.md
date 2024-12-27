@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## unreleased
+- updated deps (scicloj.ml.smile,scicloj.ml.tribuo,metamorph.ml)
+
 ## [2-beta3] - 2024-12-24
 - updated deps (Libpython-clj, Tableplot, Clay)
 
