@@ -196,7 +196,8 @@ simple-linear-data-model
 ;; Visualizing multiple dimensions is more involved. Below is a 3D
 ;; scatter plot using Tableplot's Plotly API, along with an explicit
 ;; Plotly surface spec for the regression plane. We expect to simplify this
-;; process in the future, so these details become part of higher-level layers. 🛠
+;; process in the future, so these details can be represented as
+;; composable Tableplot layers. 🛠
 
 (-> multiple-linear-data
     (plotly/layer-point {:=coordinates :3d
