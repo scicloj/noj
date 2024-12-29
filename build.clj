@@ -96,3 +96,49 @@
     (dd/deploy {:installer :remote :artifact (b/resolve-path jar-file)
                 :pom-file (b/pom-path (select-keys opts [:lib :class-dir]))}))
   opts)
+
+
+
+  
+(def clojupyter-kernel-file (format "target/%s-%s-clojupyter.jar" (name lib) version))
+
+(defn create-clojupyter-kernel "Create clojupyter kernel with noj" [opts]
+  (b/compile-clj {:basis (b/create-basis {:aliases [:clojupyter]})
+                  :ns-compile ['clojupyter.kernel.core]
+                  :class-dir class-dir})
+  (b/uber {:uber-file clojupyter-kernel-file
+           :class-dir "target/classes"
+           :basis (b/create-basis {:aliases [:clojupyter]})}))
+
+
+(defn install-clojupyter-kernel "Install  clojupyter kernel in local Jupyter" [opts]
+  
+  (let [basis    (b/create-basis {:aliases [:clojupyter]})
+        cmds     (b/java-command
+                  {:basis     basis
+                   :main      'clojure.main
+                   :main-args ["-m" "clojupyter.cmdline"
+                               "install"
+                               "--ident" (str "noj-jupyter-" version)
+                               "--jarfile" clojupyter-kernel-file]})
+        {:keys [exit]} (b/process cmds)]
+    (when-not (zero? exit) (throw (ex-info "Install  clojupyter kernel failed" {})))))
+  
+  
+(defn remove-clojupyter-kernel "Install  clojupyter kernel in local Jupyter" [opts]
+  (let [basis    (b/create-basis {:aliases [:clojupyter]})
+        cmds     (b/java-command
+                  {:basis     basis
+                   :main      'clojure.main
+                   :main-args ["-m" "clojupyter.cmdline"
+                               "remove-install"
+                               (str "noj-jupyter-" version)
+                               ]})
+        {:keys [exit]} (b/process cmds)]
+    (when-not (zero? exit) (throw (ex-info "Remove clojupyter kernel failed" {})))))
+  
+
+(defn replace-clojupyter-kernel "Replaces local clojupyter kernel in local Jupyter" [opts]
+     (remove-clojupyter-kernel nil)
+      (install-clojupyter-kernel nil))
+  
