@@ -23,7 +23,7 @@
    [fastmath.random :as rand]
    [scicloj.tableplot.v1.plotly :as plotly]))
 
-;; ## Simple Linear Regrssion
+;; ## Simple Linear Regression
 
 ;; Let us start with the basic model of a straight-line fit, where points $(x,y)$ are
 ;; assumed to have a relationship where $y$ can be predicted as $$y=ax+b.$$
@@ -159,7 +159,7 @@ simple-linear-data-model
 ;; We can use Tableplot to visualize the regression model
 ;; as and additional layer.
 ;; Behind the scenes, it uses Fastmath `lm` by default, so
-;; the result should be compatibile.
+;; the result should be compatible.
 
 (-> simple-linear-data
     plotly/layer-point
@@ -176,7 +176,7 @@ simple-linear-data-model
 
 ;; ## Multiple linear regression
 
-;; Linear dependency on a few variables can be estimatd the same way.
+;; Linear dependency on a few variables can be estimated the same way.
 
 (def multiple-linear-data
   (let [rng (rand/rng 1234)
@@ -233,7 +233,7 @@ simple-linear-data-model
 ;; ## Example: Predicting Bicycle Traffic
 
 ;; Following the Python Data Science Handbook, we will look into predicting
-;; the daily number of bicycle trips across Fremob Bridge in Seattle.
+;; the daily number of bicycle trips across Fremont Bridge in Seattle.
 ;; We can use the information of weather, season, day of week, etc.
 
 ;; ### Reading and parsing data
@@ -332,7 +332,7 @@ totals-with-day-of-week
     (tc/select-columns ds-mod/inference-column?))
 
 ;; The binary columns are collinear (sum up to 1),
-;; but we will avoide the intercept.
+;; but we will avoid the intercept.
 ;; This way, the interpretation of each coefficient is the expected
 ;; bike count for the corresponding day of week.
 
