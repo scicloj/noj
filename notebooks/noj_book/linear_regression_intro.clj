@@ -152,8 +152,8 @@ simple-linear-data-model
 ;; Tableplot makes this convenient:
 
 (-> simple-linear-data
-    plotly/layer-point
-    plotly/layer-smooth)
+    (plotly/layer-point {:=name "data"})
+    (plotly/layer-smooth {:=name "prediction"}))
 
 ;; Alternatively, we can build the regression line explicitly.
 ;; We'll obtain predictions and then plot them:
@@ -162,8 +162,9 @@ simple-linear-data-model
     (tc/map-columns :prediction
                     [:x]
                     simple-linear-data-model)
-    plotly/layer-point
-    (plotly/layer-smooth {:=y :prediction}))
+    (plotly/layer-point {:=name "data"})
+    (plotly/layer-smooth {:=y :prediction
+                          :=name "prediction"}))
 
 ;; ## Multiple linear regression
 
