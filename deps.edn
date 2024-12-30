@@ -13,7 +13,7 @@
         org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.2.0"}
 
         org.scicloj/scicloj.ml.tribuo             {:mvn/version "0.1.4"}
-        
+
         org.tribuo/tribuo-regression-liblinear    {:mvn/version "4.3.1"}
         org.tribuo/tribuo-regression-libsvm       {:mvn/version "4.3.1"}
         org.tribuo/tribuo-regression-sgd          {:mvn/version "4.3.1"}
@@ -25,7 +25,7 @@
         org.tribuo/tribuo-classification-sgd       {:mvn/version "4.3.1"}
         org.tribuo/tribuo-classification-tree      {:mvn/version "4.3.1"}
         org.tribuo/tribuo-classification-xgboost   {:mvn/version "4.3.1"}
-        
+
 
         clj-python/libpython-clj                  {:mvn/version "2.026"}
         org.scicloj/kind-pyplot                   {:mvn/version "1-beta2.1"}
@@ -35,7 +35,7 @@
 
         org.babashka/sci                          {:mvn/version "0.9.44"}
         org.mentat/emmy-viewers                   {:mvn/version "0.3.2"}
-        
+
         org.scicloj/clay                          {:mvn/version "2-beta26"}}
  :aliases
  {:gen-tests {:extra-paths ["build"]}
@@ -77,8 +77,11 @@
                      org.bytedeco/javacpp {:mvn/version "1.5.4"}
                      com.oracle.labs.olcut/olcut-config-edn    {:mvn/version "5.1.4"}
                      com.oracle.labs.olcut/olcut-config-json    {:mvn/version "5.1.4"}}}
-  
+
   :outdated {;; Note that it is `:deps`, not `:extra-deps`
              :deps {com.github.liquidz/antq {:mvn/version "RELEASE"}}
              :main-opts ["-m" "antq.core"]}
-  }}
+  :clojupyter {:extra-deps {clojupyter/clojupyter {:git/url "https://github.com/behrica/clojupyter"
+                                                   :git/sha "d46e5b5c6a363e326934790f428ef8bfe0c8900a"}}
+                            ;{:mvn/version "0.4.332"}
+               }}}
