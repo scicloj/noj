@@ -85,6 +85,6 @@
              :deps {com.github.liquidz/antq {:mvn/version "RELEASE"}}
              :main-opts ["-m" "antq.core"]}
   :clojupyter {:extra-deps {clojupyter/clojupyter {:git/url "https://github.com/behrica/clojupyter"
-                                                   :git/sha "8d07f9e23355708776778dbde453e8712c525dcb"}}
+                                                   :git/sha "d46e5b5c6a363e326934790f428ef8bfe0c8900a"}}
                             ;{:mvn/version "0.4.332"}
                }}}
