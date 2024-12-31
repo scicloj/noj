@@ -29,7 +29,6 @@
 ;; ## Machine learning
 ;; * [metamorph.ml](https://github.com/scicloj/metamorph.ml) - machine learning platform [(reference)](https://cljdoc.org/d/scicloj/metamorph.ml)
 ;; * [scicloj.ml.tribuo](https://github.com/scicloj/scicloj.ml.tribuo) - [Tribuo](https://tribuo.org/) machine learning models
-;; * [scicloj.ml.smile](https://github.com/scicloj/scicloj.ml.smile) - [Smile](https://haifengl.github.io/) (v 2.6) machine learning models
 ;; * [sklearn-clj](https://github.com/scicloj/sklearn-clj) - Plugin to use [sklearn](https://scikit-learn.org/) models in metamorph.ml
 
 ;; ## Visualization
