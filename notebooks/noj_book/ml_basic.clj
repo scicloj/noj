@@ -97,7 +97,7 @@
 ;;  The titanic data is part of `metamorph.ml` and in the form of a
 ;;  train, test split
 ;;
-;;  We use the :train part only for this tutorial.
+;;  We use the `:train` part only for this tutorial.
 ;;
 ;;
 ;;
@@ -206,7 +206,7 @@ cat-maps
 ;; Split data into train and test set
 ;;
 ;; Now we split the data into train and test. By we use
-;; a :holdout strategy, so will get a single split in training an test data.
+;; a `:holdout` strategy, so will get a single split in training an test data.
 ;;
 (def split
   (first

@@ -38,7 +38,7 @@
 
 
 ;; In the following we see the decision surfaces of some models on the
-;; same data from the Iris dataset using 2 columns :sepal_width and sepal_length:
+;; same data from the Iris dataset using 2 columns `:sepal_width` and `:sepal_length`:
 
 ^:kindly/hide-code
 (defn make-iris-pipeline [model-options]
