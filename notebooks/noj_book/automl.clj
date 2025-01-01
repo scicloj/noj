@@ -1,19 +1,24 @@
 ;; # AutoML using metamorph pipelines
 
-;; Author: Carsten Behring
-;;
-;; Updated: 05.10.2024
 
 ;;  In this tutorial we see how to use `metamorph.ml` to perform automatic machine learning.
 ;;  With AutoML we mean to try lots of different models and hyper parameters and rely on automatic
 ;;  validation to pick the best performing model automatically.
 ;;
 
+;; Note that this chapter reqiures `scicloj.ml.smile` as an additional
+;; dependency to Noj.
+;; [![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/scicloj.ml.smile.svg)](https://clojars.org/org.scicloj/scicloj.ml.smile)
+
 (ns noj-book.automl
   (:require [noj-book.ml-basic :as ml-basic]
             [scicloj.kindly.v4.kind :as kind]
-            [scicloj.kindly.v4.api :as kindly]
-            [scicloj.metamorph.ml :as ml]))
+            [scicloj.metamorph.ml :as ml]
+            [tablecloth.api :as tc]
+            [scicloj.metamorph.ml.loss :as loss]
+            [scicloj.metamorph.core :as mm]
+            [scicloj.metamorph.ml.gridsearch :as gs]
+            [tech.v3.dataset.modelling :as ds-mod]))
 
 ;; ## The metamorph pipeline abstraction
 ;; When doing automl, it is very useful to be able to manage
@@ -25,9 +30,8 @@
 ;; The Clojure way to do this, is function composing and higher level
 ;; functions.
 ;;
-;; (The following is a very low level explanation of `metamorph`, as a
-;; `metamorph.ml` user
-;; we do not use this low-level functions , see next chapter)
+;; (The following is a quick explanation of `metamorph`, 
+;; see chapter "Machine learning pipelines" for more details.
 ;;
 ;; While in the basic tutorial we saw how to use the pair of `train` 
 ;; and `predict` to
@@ -292,6 +296,7 @@ ctx-after-train
          '[scicloj.metamorph.core :as mm]
          '[scicloj.ml.tribuo]
          '[scicloj.ml.xgboost]
+         '[scicloj.ml.smile.classification]
          '[scicloj.sklearn-clj.ml])
 
 
@@ -303,7 +308,7 @@ ctx-after-train
 
 ;;  the following will find the best model across:
 ;;
-;;  * 4 different model classes
+;;  * 4 different model classes with different hyper params
 ;;
 ;;  * 6 different selections of used features
 ;;
@@ -322,29 +327,59 @@ ctx-after-train
 (def titanic-k-fold (tc/split->seq ml-basic/numeric-titanic-data :kfold {:seed 12345}))
 
 (-> titanic-k-fold count)
+
+;; We add as well 10 hyper-parameter variants for logistic regression
+;; obtained via Sobol search over the hyper parameter space of the model.
+(def hyper-params 
+  (->>
+   (ml/hyperparameters :smile.classification/logistic-regression)
+   (gs/sobol-gridsearch)
+   (take 10)))
+hyper-params
+
+(def logistic-regression-specs
+  (map
+   #(assoc %
+           :model-type :smile.classification/logistic-regression)
+   hyper-params))
+logistic-regression-specs
+
+
 ;; The list of the model types we want to try:
-(def models [{ :model-type :xgboost/classification
-               :round 10}
-             {:model-type :sklearn.classification/decision-tree-classifier}
-             {:model-type :sklearn.classification/logistic-regression}
-             {:model-type :sklearn.classification/random-forest-classifier}
-             {:model-type :metamorph.ml/dummy-classifier}
-             {:model-type :scicloj.ml.tribuo/classification
-              :tribuo-components [{:name "logistic"
-                                   :type "org.tribuo.classification.sgd.linear.LinearSGDTrainer"}]
-              :tribuo-trainer-name "logistic"}
-             {:model-type :scicloj.ml.tribuo/classification
-              :tribuo-components [{:name "random-forest"
-                                   :type "org.tribuo.classification.dtree.CARTClassificationTrainer"
-                                   :properties {:maxDepth "8"
-                                                :useRandomSplitPoints "false"
-                                                :fractionFeaturesInSplit "0.5"}}]
-              :tribuo-trainer-name "random-forest"}])
+(def models-specs 
+  (concat logistic-regression-specs
+          [{:model-type :scicloj.ml.tribuo/classification
+            :tribuo-components [{:name "cart"
+                                 :type "org.tribuo.classification.dtree.CARTClassificationTrainer"
+                                 :properties {:maxDepth "8"
+                                              :useRandomSplitPoints "false"
+                                              :fractionFeaturesInSplit "0.5"}}
+                                {:name "combiner"
+                                 :type "org.tribuo.classification.ensemble.VotingCombiner"}
+           
+                                {:name "random-forest"
+                                 :type "org.tribuo.common.tree.RandomForestTrainer"
+                                 :properties {:innerTrainer "cart"
+                                              :combiner "combiner"
+                                              :seed "1234"
+                                              :numMembers "500"}}]
+            :tribuo-trainer-name "random-forest"}
+           
+           {:model-type :xgboost/classification :round 10}
+           {:model-type :sklearn.classification/decision-tree-classifier}
+           {:model-type :sklearn.classification/logistic-regression}
+           {:model-type :sklearn.classification/random-forest-classifier}
+           {:model-type :metamorph.ml/dummy-classifier}
+           {:model-type :scicloj.ml.tribuo/classification
+            :tribuo-components [{:name "logistic"
+                                 :type "org.tribuo.classification.sgd.linear.LogisticRegressionTrainer"}]
+            :tribuo-trainer-name "logistic"}
+           
+           ]))
 
 
-;;  This uses models from Smile and Tribuo, but could be any
-;;  metamorph.ml compliant model ( library  `sklearn-clj` wraps all python sklearn
-;;  models, for example)
+;;  This uses models from Smile, Tribuo and sklearn but could be any
+;;  metamorph.ml compliant model 
 
 ;;  The list of feature combinations to try for each model:
 (def feature-combinations
@@ -355,16 +390,17 @@ ctx-after-train
    [:sex :embarked]
    [:sex :pclass]])
 
-;; generate 24 pipeline functions:
+;; generate 102 pipeline functions:
 (def pipe-fns
-  (for [model models
+  (for [model-spec models-specs
         feature-combination feature-combinations]
-    (make-pipe-fn model feature-combination)))
+    (make-pipe-fn model-spec feature-combination)))
 
 (count pipe-fns)
 ;; Execute all pipelines for all splits in the  cross-validations
 ;; and return best model by `classification-accuracy`
 
+(add-tap println)
 (def evaluation-results
   (ml/evaluate-pipelines
    pipe-fns
@@ -397,7 +433,7 @@ ctx-after-train
 
 
 ;; In total it creates and evaluates
-;; 4 models * 6 feature configurations * 5 CV = 120 models
+;; 17 models (incl. hyper parameters variations) * 6 feature configurations * 5 CV = 510 models
 (->  evaluation-results-all flatten count)
 
 ;;  We can find the best as well by hand, it's the first from the list,
@@ -406,7 +442,7 @@ ctx-after-train
     (tc/unique-by)
     (tc/order-by [:mean-accuracy] :desc)
     (tc/head 20)
-    (kind/table))
+    (kind/dataset))
 
 
 ;; ## Best practices for data transformation steps in or outside pipeline
@@ -451,12 +487,18 @@ ctx-after-train
 ;;  into the pipeline, by just using the "lifted" form of the transformations,
 ;;  I would not do so, even though this should give the same result.
 ;;
-;; I think it is better to separate the steps which are "fixed",
+;; Often it is better to separate the steps which are "fixed",
 ;; from the steps which are parameterized, so for which we want to find
 ;; the best values by "trying out".
 ;;
 ;; In my view there are two reasons for this:
-;; 1. Debugging: It is harder to debug a pipeline and see the results
+;; * Debugging: It is harder to debug a pipeline and see the results
 ;;   of steps. We have one macro helping in this: `mm/def-ctx`
-;; 2. Performance: The pipeline is executed lots of times, for every split / variant
-;;    of the pipeline. It should be faster to do things only once, before the pipeline
+;; * Performance: The pipeline is executed lots of times, for every split / variant
+;;    of the pipeline. It should be faster to do data transformations only once, 
+;;    before the metamorph pipeline starts.
+;; 
+;; Nevertheless is some scenarios it is very useful to create a full transformation pipeline
+;; as a metamorph pipeline. This would for example allow to perform very different transformation steps per model
+;; and still only have a single seq of pipeline functions to manage,
+;; therefore having fully self contained pipelines.

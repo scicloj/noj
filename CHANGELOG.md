@@ -1,9 +1,19 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## [???] - unreleased
+## [2-beta4] - 2025-01-01
+- removed the Scicloj.ml.smile from the direct Noj dependencies (though it is still recommended to use with Noj)
+- updated deps (Metamorph.ml. Scicloj.ml.tribuo, Clay, Tableplot)
+
+## [2-beta3] - 2024-12-24
+- updated deps (Libpython-clj, Tableplot, Clay)
+
+## [2-beta2] - 2024-12-10
+- added Clay
+
+## [2-beta1] - 2024-12-08
 - added libsvm and liblinear Tribuo models
-- updated deps (tech.ml.dataset, metamorph.ml, scicloj.ml.tribuo)
+- updated deps (tech.ml.dataset, metamorph.ml, scicloj.ml.tribuo, clojure.java-time, Tableplot)
 
 ## [2-alpha12.1] - 2024-11-16
 - updated deps (Kindly, Fastmath, Tableplot)

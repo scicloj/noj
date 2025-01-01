@@ -1,19 +1,9 @@
-(ns noj-book.smile-regression 
-  (:require
-   [noj-book.utils.render-tools :refer [render-key-info]]
-   [scicloj.kindly.v4.kind :as kind]
-   [scicloj.metamorph.core :as mm]
-   [scicloj.metamorph.ml :as ml]
-   [scicloj.metamorph.ml.toydata :as datasets]
-   [tablecloth.api :as tc]
-   [tech.v3.dataset :as ds]
-   [tech.v3.dataset.metamorph :as ds-mm]
-   [tech.v3.datatype.functional :as dtf]))
+;; # Smile regression models reference - DRAFT 🛠
 
-^:kindly/hide-code
-(require '[scicloj.ml.smile.regression])
+;; Note that this chapter reqiures `scicloj.ml.smile` as an additional
+;; dependency to Noj.
+;; [![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/scicloj.ml.smile.svg)](https://clojars.org/org.scicloj/scicloj.ml.smile)
 
-;; ## Smile regression models reference
 ;; In the following we have a list of all model keys of Smile regression models
 ;; including parameters.
 ;; They can be used like this:
@@ -23,6 +13,15 @@
             {:model-type <model-key>
              :param-1 0
              :param-2 1}))
+
+(require '[scicloj.ml.smile.regression]
+         '[scicloj.ml.tribuo])
+
+^:kindly/hide-code
+(ns noj-book.smile-regression 
+  (:require
+   [noj-book.utils.render-tools :refer [render-key-info]]
+   [scicloj.ml.tribuo]))
 
 ^:kindly/hide-code
 (render-key-info :smile.regression)

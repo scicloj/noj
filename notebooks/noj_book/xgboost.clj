@@ -1,3 +1,5 @@
+;; # Xgboost model reference - DRAFT 🛠
+
 ^:kindly/hide-code
 (ns noj-book.xgboost
   (:require
@@ -5,7 +7,6 @@
    [noj-book.utils.render-tools :refer [render-key-info]]))
 
 
-;; ## Xgboost model reference
 ;; In the following we have a list of all model keys of Xgboost models
 ;; including parameters.
 ;; They can be used like this:

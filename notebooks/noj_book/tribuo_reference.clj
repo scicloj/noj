@@ -1,3 +1,5 @@
+;; # Tribuo reference - DRAFT 🛠
+
 ^:kindly/hide-code
 (ns noj-book.tribuo-reference
   (:require
@@ -9,7 +11,6 @@
    [scicloj.metamorph.ml :as ml]))
 
 
-;; ## Tribuo reference
 ;;The following is a refeference for all Tribuo trainers.
 ;; They can be used as the model specification in `ml/train` on the :type
 ;; of the tribuo trainer
@@ -27,11 +28,12 @@
 ;; There is as well a reference on all non-trainer compotents of Tribuo.
 ;; These could potentialy as well be used in Tribuo model specs.
 
-; ### Tribuo trainer reference 
+
+;; ## Tribuo trainer reference 
 ^:kindly/hide-code
 (render-configurables (trainer-infos))
 
-;; ### Tribuo component reference 
+;; ## Tribuo component reference 
 ^:kindly/hide-code
 (render-configurables  (all-non-trainer))
 

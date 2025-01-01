@@ -1,6 +1,10 @@
 ;; # Machine learning
 
-;; Preface: machine learning models in Noj
+;; In this tutorial we will train a simple machine learning model
+;; in order to predict the survival of titanic passengers given
+;; their data.
+
+;; ## Preface: machine learning models in Noj
 ;;
 ;; ML models in Noj are available as different plugins to the 
 ;; `metamorph.ml` library. 
@@ -52,12 +56,7 @@
 ;; It lists as well all other "Configurable" which could be refered to in a component map.
 
 
-
-;; ML tutorial
-;; In this tutorial we will train a simple machine learning model
-;; in order to predict the survival of titanic passengers given
-;; their data.
-;;
+;; ## Setup
 
 (ns noj-book.ml-basic
   (:require [tablecloth.api :as tc]
@@ -205,8 +204,9 @@ cat-maps
   [0.0 3.0 0.0 0.0]])
 
 ;; Split data into train and test set
-;;  Now we split the data into train and test. By we use
-;;  a :holdout strategy, so will get a single split in training an test data.
+;;
+;; Now we split the data into train and test. By we use
+;; a :holdout strategy, so will get a single split in training an test data.
 ;;
 (def split
   (first
@@ -215,7 +215,7 @@ cat-maps
 split
 
 ;; ## Train a model
-;; Now its time to train a model.
+;; Now its time to train a model:
 
 (require '[scicloj.metamorph.ml :as ml]
          '[scicloj.metamorph.ml.classification]

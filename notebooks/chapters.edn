@@ -5,13 +5,18 @@
  {:part "Datasets"
   :chapters ["tablecloth_table_processing"
              "datasets"]}
+ {:part "Statistics"
+  :chapters ["statistics_intro"
+             "linear_regression_intro"]}
  {:part "Machine Learning"
-  :chapters ["ml_basic"
+  :chapters ["metamorph"
+             "ml_basic"
              "prepare_for_ml"
              "automl"
              "interactions_ols"]}
  {:part "Data Visualization"
-  :chapters ["echarts"
+  :chapters ["tableplot_datavis_intro"
+             "echarts"
              "visualizing_correlation_matrices"]}
  {:part "Linear Algebra"
   :chapters ["linear_algebra_intro"
@@ -20,7 +25,7 @@
              "fastmath_matrix_intro"]}
  {:part "Use Cases"
   :chapters ["chicago_bike_times"]}
-  
+ 
  {:part "Model references"
   :chapters ["smile_classification"
              "smile_regression"

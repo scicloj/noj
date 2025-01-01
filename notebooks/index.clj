@@ -27,6 +27,7 @@ Noj gets you started with Clojure for data and science.
 
 * You get a collection of good libraries out of the box
 * .. and documentation that shows you how to use the different libraries together
+* (and if you want: a 'devcontainer' setup which is known to work with the native parts of the libraries)
 
 Noj is a library that does not add any API of its own.
 It includes the [underlying libraries](https://scicloj.github.io/noj/noj_book.underlying_libraries.html)
@@ -45,13 +46,12 @@ directly for tabular data structures or provide high interoperability with it.
 |Deps |[![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/noj.svg)](https://clojars.org/org.scicloj/noj)|
 |Tests |![ci workflow](https://github.com/scicloj/noj/actions/workflows/ci.yml/badge.svg)|
 |License |[EPLv1.0](https://github.com/scicloj/noj/blob/main/LICENSE)|
-|Status |Getting close to Beta stage.|
+|Status |Beta stage.|
 |Dev chat|[#noj-dev](https://clojurians.zulipchat.com/#narrow/stream/321125-noj-dev) at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)|
 |User chat|[#data-science](https://clojurians.zulipchat.com/#narrow/stream/151924-data-science) at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)|
 
 ## Getting started
 🎥📖 a revised version is coming soon🌟
-
 ")
 
 ;; ## Chapters of this book
@@ -68,15 +68,15 @@ directly for tabular data structures or provide high interoperability with it.
       chapter))
 
 (->> "notebooks/chapters.edn"
-slurp
-clojure.edn/read-string
-(mapcat (fn [{:keys [part chapters]}]
-          (cons (format "- %s" part)
-                (->> chapters
-                     (map (fn [chapter]
-                            (prn [chapter (chapter->title chapter)])
-                            (format "\n  - [%s](noj_book.%s.html)\n"
-                                    (chapter->title chapter)
-                                    chapter)))))))
-(str/join "\n")
-md)
+     slurp
+     clojure.edn/read-string
+     (mapcat (fn [{:keys [part chapters]}]
+               (cons (format "- %s" part)
+                     (->> chapters
+                          (map (fn [chapter]
+                                 (prn [chapter (chapter->title chapter)])
+                                 (format "\n  - [%s](noj_book.%s.html)\n"
+                                         (chapter->title chapter)
+                                         chapter)))))))
+     (str/join "\n")
+     md)
