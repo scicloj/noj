@@ -12,10 +12,17 @@
    [noj-book.utils.render-tools-sklearn]
    [scicloj.sklearn-clj.ml]))
 
+;;## Sklearn model reference
+
+;;Below we find all sklearn models with their parameters and the original documentation.
+;;
+;;The parameters are given as Clojure keys in kebap-case. As the document texts are 
+;;imported from python they refer to the python spelling of the parameter. 
+;;
+;;But the translation between the two should be obvious.
 
 
-
-;;## Example: logistic regression
+;;Example: logistic regression
 
 (def ds (dst/tensor->dataset [[0 0 0] [1 1 1] [2 2 2]]))
 
@@ -65,14 +72,6 @@
        model-attributes)])
 
 
-
-
-;;Below all models are listed with their parameters and the original documentation.
-;;
-;;The parameters are given as Clojure keys in kebap-case. As the document texts are 
-;;imported from python they refer to the python spelling of the parameter. 
-;;
-;;But the translation between the two should be obvious.
 
 
 

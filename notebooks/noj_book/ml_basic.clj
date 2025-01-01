@@ -3,7 +3,60 @@
 ;; In this tutorial we will train a simple machine learning model
 ;; in order to predict the survival of titanic passengers given
 ;; their data.
+
+;; ## Preface: machine learning models in Noj
 ;;
+;; ML models in Noj are available as different plugins to the 
+;; `metamorph.ml` library. 
+
+;; The `metamorph.ml` library itself has no models  (except for a linear regression model),
+;; but it contains the various functions to "train" and "predict" based on data.
+
+;; Models are available via Clojure wrappers of existing ML libraries.
+;; These are currently part of Noj:
+
+^{:kindly/hide-code true
+  :kindly/kind :kind/hiccup}
+(->> [
+      [ "Tribuo" "scicloj.ml.tribuo"]
+      [ "Smile" "scicloj.ml.smile"]
+      [ "Xgboost4J" "scicloj.ml.xgboost"]
+      [ "scikit-learn" "sklearn-clj"]
+      ]
+     (map (fn [[library wrapper]]
+            [:tr
+             [:td library]
+             [:td wrapper]
+             ]))
+     (into [:table [:tr [:th "Library" ] [:th "Clojure Wrapper"]]]))
+
+
+;; These libraries do not have any functions for the models they contain.
+;; `metamorph.ml` has instead of funtcions per model the concept of each model having a 
+;; unique `key`, the :model-type , which needs to be given when calling 
+;;`metamorph.ml/train`
+;;
+;; The model libraries register their models under these keys, when their main ns 
+;; is `require`d. (and the model keys get printed on screen when getting registered)
+;; So we cannot provide cljdoc for the models, as they do no have corresponding functions.
+;;
+;; Instead we provide in the the last chapters of the Noj book a complete list
+;; of all models (and their keys) incl. the parameters they take with a description.
+;; For some models this reference documentation contains as well code examples.
+;; This can be used to browse or search for models and their parameters.
+
+;; The Tribuo plugin and their models are special in this. 
+;; It only contains 2 model types a keys,
+;; namely :scicloj.ml.tribuo/classification and :scicloj.ml.tribuo/regression.
+;; The model as such is encoded in the same ways as the Triuo Java libraries does this,
+;; namely as a map of all Tribuo components in place, of which one is the model, 
+;; the so called "Trainer", always needed and having a certin :type, the model class.
+;;
+;; The reference documentation therefore lists all "Trainer" and their name incl. parameters
+;; It lists as well all other "Configurable" which could be refered to in a component map.
+
+
+;; ## Setup
 
 (ns noj-book.ml-basic
   (:require [tablecloth.api :as tc]
