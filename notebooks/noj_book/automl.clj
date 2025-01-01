@@ -97,7 +97,7 @@ my-pipeline
 ;; But this map cannot be "arbitrary", it need to adhere to the `metamorph` conventions.
 ;;
 ;; The following `trains` a model, because the `ml/model`
-;; function does this when called with :mode `:fit`.
+;; function does this when called with `:mode` `:fit`.
 ;; And it is the only operation in the pipeline, so the pipeline does one
 ;; thing, it `trains a model`
 (def ctx-after-train
