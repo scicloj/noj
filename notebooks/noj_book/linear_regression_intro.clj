@@ -1,4 +1,4 @@
-;; # Introduction to Linear Regression - DRAFT 🛠
+;; # Introduction to Linear Regression   
 
 ;; **last update:** 2024-12-29
 
