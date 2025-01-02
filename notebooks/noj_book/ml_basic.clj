@@ -17,12 +17,9 @@
 
 ^{:kindly/hide-code true
   :kindly/kind :kind/hiccup}
-(->> [
-      [ "Tribuo" "scicloj.ml.tribuo"]
-      [ "Smile" "scicloj.ml.smile"]
+(->> [[ "Tribuo" "scicloj.ml.tribuo"]
       [ "Xgboost4J" "scicloj.ml.xgboost"]
-      [ "scikit-learn" "sklearn-clj"]
-      ]
+      [ "scikit-learn" "sklearn-clj"]]
      (map (fn [[library wrapper]]
             [:tr
              [:td library]
