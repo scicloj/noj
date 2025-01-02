@@ -1,4 +1,4 @@
-;; # Intro to data visualization with Tableplot - DRAFT 🛠
+;; # Intro to data visualization with Tableplot
 
 ;; This tutorial will guide us through an exploration of the classic Iris dataset using the [Tableplot](https://scicloj.github.io/tableplot) library in Clojure. We will demonstrate how to use Tableplot's Plotly API to create various visualizations, while explaining the core ideas and functionality of the API.
 
@@ -186,7 +186,7 @@ datasets/iris
       :=z :petal-length
       :=color :species
       :=coordinates :3d
-      :=mark-size 3}))
+      :=mark-size 5}))
 
 ;; ## Conclusion
 

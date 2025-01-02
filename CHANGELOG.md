@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [2-beta4] - 2025-01-01
+- removed the Scicloj.ml.smile from the direct Noj dependencies (though it is still recommended to use with Noj)
+- updated deps (Metamorph.ml. Scicloj.ml.tribuo, Clay, Tableplot)
+
 ## [2-beta3] - 2024-12-24
 - updated deps (Libpython-clj, Tableplot, Clay)
 

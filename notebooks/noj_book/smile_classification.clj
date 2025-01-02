@@ -1,5 +1,10 @@
 ;; # Smile classification models reference - DRAFT 🛠
 
+;; Note that this chapter reqiures `scicloj.ml.smile` as an additional
+;; dependency to Noj.
+;; [![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/scicloj.ml.smile.svg)](https://clojars.org/org.scicloj/scicloj.ml.smile)
+
+
 (ns noj-book.smile-classification
   (:require
    [noj-book.utils.example-code :refer [iris-std]]
@@ -14,7 +19,16 @@
 
 
 
+;; ## Smile classification models reference
+;; In the following we have a list of all model keys of Smile classification models
+;; including parameters.
+;; They can be used like this:
 
+(comment
+  (ml/train df
+            {:model-type <model-key>
+             :param-1 0
+             :param-2 1}))
 
 
 
@@ -24,7 +38,7 @@
 
 
 ;; In the following we see the decision surfaces of some models on the
-;; same data from the Iris dataset using 2 columns :sepal_width and sepal_length:
+;; same data from the Iris dataset using 2 columns `:sepal_width` and `:sepal_length`:
 
 ^:kindly/hide-code
 (defn make-iris-pipeline [model-options]

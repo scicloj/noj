@@ -1,5 +1,10 @@
 ;; # Transformer reference  - DRAFT 🛠
 
+;; Note that this chapter reqiures `scicloj.ml.smile` as an additional
+;; dependency to Noj.
+;; [![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/scicloj.ml.smile.svg)](https://clojars.org/org.scicloj/scicloj.ml.smile)
+
+
 (ns noj-book.transformer-references
   (:require
    [scicloj.kindly.v4.api :as kindly]
@@ -11,12 +16,15 @@
    [scicloj.ml.smile.metamorph :as smile-mm]
    [scicloj.ml.smile.nlp :as nlp]
    [scicloj.ml.smile.projections :as projections]
+   [scicloj.ml.smile.clustering :as clustering]
    [tablecloth.api :as tc]
    [tech.v3.dataset :as ds]
    [tech.v3.dataset.categorical :as ds-cat]
    [tech.v3.dataset.metamorph :as ds-mm]
    [tech.v3.dataset.modelling :as ds-mod]
    [tech.v3.dataset.print]))
+
+
 
 
 ^:kindly/hide-code
@@ -29,8 +37,6 @@
        (kind/md "__Clojure doc__:\n")
        (kind/md (:doc m))
        (kind/md "----------------------------------------------------------")]))))
-
-
 
 (docu-fn (var nlp/count-vectorize))
 
@@ -380,3 +386,6 @@ data
 
 ;; It even seems, that the reduction to 2 dimensions removes
 ;; too much information for predicting of the material for any type of model.
+
+
+(docu-fn (var clustering/cluster))

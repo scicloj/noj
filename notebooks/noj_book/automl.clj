@@ -6,6 +6,10 @@
 ;;  validation to pick the best performing model automatically.
 ;;
 
+;; Note that this chapter reqiures `scicloj.ml.smile` as an additional
+;; dependency to Noj.
+;; [![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/scicloj.ml.smile.svg)](https://clojars.org/org.scicloj/scicloj.ml.smile)
+
 (ns noj-book.automl
   (:require [noj-book.ml-basic :as ml-basic]
             [scicloj.kindly.v4.kind :as kind]
@@ -93,7 +97,7 @@ my-pipeline
 ;; But this map cannot be "arbitrary", it need to adhere to the `metamorph` conventions.
 ;;
 ;; The following `trains` a model, because the `ml/model`
-;; function does this when called with :mode `:fit`.
+;; function does this when called with `:mode` `:fit`.
 ;; And it is the only operation in the pipeline, so the pipeline does one
 ;; thing, it `trains a model`
 (def ctx-after-train
@@ -257,6 +261,16 @@ ctx-after-train
 ;;  So now we can add more operations to the pipeline,
 ;;  and nothing else changes, for example drop columns.
 
+;; While most metamorph compliant operations behave the same in  
+;; :fit and :transform, there are some which do behave differently.
+;; They have a certain notion of "fit" and "transform".
+;;
+;; They are therefore called "transformer" and are listed in the 
+;; "Transformer reference" 
+;; at the end of the Noj book.
+;;
+;; Some transformers exist as well as model and can be used with
+;; function `ml/model`
 
 
 ;; ## Automatic ML with `metamorph.ml`
