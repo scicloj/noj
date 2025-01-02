@@ -77,7 +77,7 @@
 ;; - **Readability**: Write pipeline steps in order for easier understanding.
 ;; - **Movability**: The entire pipeline should be assignable to a variable or addable to a sequence,
 ;;   making it modular and reusable.
-;; - **Callable**: The pipeline should be callable like a function, taking data as input and returning
+;; - **Callability**: The pipeline should be callable like a function, taking data as input and returning
 ;;   the transformed data.
 
 ;; ### The Need for a New Approach
@@ -100,7 +100,7 @@
 ;; - Can be easily moved, assigned, and called like functions.
 
 
-; ### A pipeline is a composition of functions
+;; ### A pipeline is a composition of functions
 
 ;; A metamorph pipeline is created by the function `scicloj.metamorph.core/pipeline`.
 ;; It takes functions as input and composes them in order (unlike `comp`, which composes them in reverse order).
@@ -119,7 +119,8 @@
 ;; However, this would fail because metamorph pipeline functions are expected to return a map,
 ;; but the above functions return a string.
 ;;
-; ### Pipelines steps input/output a context map
+
+;; ### Pipelines steps input/output a context map
 ;;
 ;; To maintain state and allow for **stateful steps**, we conventionally use a **context map** that is 
 ;; passed through each function.
@@ -133,7 +134,7 @@
    (fn [ctx] ctx)
    (fn [ctx] ctx)))
 
-; ### Context map key :metamorph/data 
+                                        ; ### Context map key :metamorph/data 
 
 ;; A second convention is that the map should have several "default keys", and all functions should understand them.
 ;; One of these keys is `:metamorph/data`.
@@ -166,7 +167,7 @@
 
 (metamorph-pipeline-3-b {:metamorph/data "hello"})
 
-; ### Pass additional state
+                                        ; ### Pass additional state
 
 ;; We can pass a main data object and any state through the pipeline.
 
@@ -188,7 +189,7 @@
 (metamorph-pipeline-4 {:metamorph/data "hello"})
 
 ;;
-; ### Step functions can pass state to themselves (in other :mode)
+;; ### Step functions can pass state to themselves (in other :mode)
 
 ;; In nearly all cases, a step function wants to pass information only to itself.
 ;; It learns something in mode `:fit` and wants to use it in a second run of the pipeline in mode `:transform`.
@@ -222,10 +223,9 @@
 ;; context map: `:metamorph/mode`.
 ;;
 ;; This can take two values, `:fit` and `:transform`, representing the concept of running the pipeline to 
-; learn something from the data (train or fit the pipeline/model)
+;; learn something from the data (train or fit the pipeline/model)
 ;; and apply what was learned on new data (predict or transform).
 ;; The learned information can be stored in the context map, becoming available in later runs.
-
 
 ;; This passing of state only makes sense if the state is written to the map in one pass
 ;; and used in a different pass.
@@ -249,7 +249,7 @@
      (assoc ctx
             :metamorph/data (first (:metamorph/data ctx))))))
 
-; ### Run first in :fit then in :transform
+;; ### Run first in :fit then in :transform
 
 ;; This shows how the pipeline is supposed to be run twice.
 ;; First in `:fit` mode and then in `:transform` mode, passing the full state context (`ctx`)
@@ -258,16 +258,16 @@
 ;; Usage:
 
 (def fitted-ctx
-   (metamorph-pipeline-6 {:metamorph/data "hello"
-                          :metamorph/mode :fit}))
+  (metamorph-pipeline-6 {:metamorph/data "hello"
+                         :metamorph/mode :fit}))
 
 ;; This will print `:state "5"` in the terminal, showing that the state from the `:fit` phase is used during the 
 ;; `:transform` phase.
 
 (metamorph-pipeline-6
-  (merge fitted-ctx
-         {:metamorph/data "world"
-          :metamorph/mode :transform}))
+ (merge fitted-ctx
+        {:metamorph/data "world"
+         :metamorph/mode :transform}))
 
 
 ;; #### Lifting to create pipeline functions
