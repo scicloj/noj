@@ -29,28 +29,28 @@
 
 
 ;; These libraries do not have any functions for the models they contain.
-;; `metamorph.ml` has instead of funtcions per model the concept of each model having a 
-;; unique `key`, the :model-type , which needs to be given when calling 
-;;`metamorph.ml/train`
+;; Instead of funtcions per model, `metamorph.ml` has the concept of each model having a 
+;; unique `key`, the `:model-type` , which needs to be given when calling 
+;;`metamorph.ml/train`.
 ;;
-;; The model libraries register their models under these keys, when their main ns 
-;; is `require`d. (and the model keys get printed on screen when getting registered)
+;; The model libraries register their models under these keys, when their main `ns` 
+;; is `require`d (and the model keys get printed on screen when getting registered).
 ;; So we cannot provide cljdoc for the models, as they do no have corresponding functions.
 ;;
-;; Instead we provide in the the last chapters of the Noj book a complete list
+;; Instead, we provide in the the last chapters of the Noj book a complete list
 ;; of all models (and their keys) incl. the parameters they take with a description.
 ;; For some models this reference documentation contains as well code examples.
 ;; This can be used to browse or search for models and their parameters.
 
-;; The Tribuo plugin and their models are special in this. 
-;; It only contains 2 model types a keys,
-;; namely :scicloj.ml.tribuo/classification and :scicloj.ml.tribuo/regression.
-;; The model as such is encoded in the same ways as the Triuo Java libraries does this,
+;; The [Tribuo](https://tribuo.org/) plugins and their models are special in this aspect.
+;; The `scicloj.ml.tribuo` library only contains 2 model types as keys,
+;; namely `:scicloj.ml.tribuo/classification` and `:scicloj.ml.tribuo/regression`.
+;; The model as such is encoded in the same way as the Triuo Java libraries does this,
 ;; namely as a map of all Tribuo components in place, of which one is the model, 
-;; the so called "Trainer", always needed and having a certin :type, the model class.
+;; the so called "Trainer", is always needed and has a certin `:type`, the model class.
 ;;
-;; The reference documentation therefore lists all "Trainer" and their name incl. parameters
-;; It lists as well all other "Configurable" which could be refered to in a component map.
+;; The reference documentation therefore lists all "Trainer"s and their name incl. parameters.
+;; It lists as well all other "Configurable"s which could be refered to in a component map.
 
 
 ;; ## Setup
@@ -202,8 +202,8 @@ cat-maps
 
 ;; Split data into train and test set
 ;;
-;; Now we split the data into train and test. By we use
-;; a `:holdout` strategy, so will get a single split in training an test data.
+;; Now we split the data into train and test. We use
+;; a `:holdout` strategy, so will get a single split in training and test data.
 ;;
 (def split
   (first
@@ -212,7 +212,7 @@ cat-maps
 split
 
 ;; ## Train a model
-;; Now its time to train a model:
+;; Now it's time to train a model:
 
 (require '[scicloj.metamorph.ml :as ml]
          '[scicloj.metamorph.ml.classification]
@@ -222,33 +222,31 @@ split
 
 
 ;; ### Dummy model
-;; We start with a dummy model, which simply predicts the majority class
+;; We start with a dummy model, which simply predicts the majority class.
 (def dummy-model (ml/train (:train split)
                            {:model-type :metamorph.ml/dummy-classifier}))
 
-
 ;; TODO: Is the dummy model wrong about the majority?
-
 
 (def dummy-prediction
   (ml/predict (:test split) dummy-model))
 ;; It always predicts a single class, as expected:
 (-> dummy-prediction :survived frequencies)
 
-;;  we can calculate accuracy by using a metric after having converted
-;;  the numerical data back to original (important !)
+;;  We can calculate accuracy by using a metric after having converted
+;;  the numerical data back to original (important!).
 ;;  We should never compare mapped columns directly.
 (loss/classification-accuracy
  (:survived (ds-cat/reverse-map-categorical-xforms (:test split)))
  (:survived (ds-cat/reverse-map-categorical-xforms dummy-prediction)))
-;;  It's performance is poor, even worse than coin flip.
+;;  Its performance is poor, even worse than a coin flip.
 
 (kindly/check = 0.3973063973063973)
 
 ;; ## Logistic regression
-;; Next model to use is Logistic Regression
-(require '[scicloj.ml.tribuo])
+;; Next model to use is Logistic Regression:
 
+(require '[scicloj.ml.tribuo])
 
 
 (def lreg-model (ml/train (:train split)
@@ -266,10 +264,10 @@ split
  (:survived (ds-cat/reverse-map-categorical-xforms lreg-prediction)))
 
 (kindly/check = 0.7373737373737373)
-;; Its performance is  better, 73 %
+;; Its performance is  better, 73 %.
 
 ;; ## Random forest
-;; Next is random forest
+;; Next is random forest:
 (def rf-model (ml/train (:train split) {:model-type :scicloj.ml.tribuo/classification
                                         :tribuo-components [{:name "random-forest"
                                                              :type "org.tribuo.classification.dtree.CARTClassificationTrainer"
@@ -284,8 +282,9 @@ split
 (kind/hidden
  (set-sameish-comparator! 1))
 
-;; First five prediction including the probability distributions
-;; are
+;; Let us extract the first five prediction
+;; and the probabilities provided by the mode.
+
 (-> rf-prediction
     (tc/head)
     (tc/rows))
@@ -298,7 +297,6 @@ split
                [0.0 0.88 0.11]])
 
 
-
 (loss/classification-accuracy
  (:survived (ds-cat/reverse-map-categorical-xforms (:test split)))
  (:survived (ds-cat/reverse-map-categorical-xforms rf-prediction)))
@@ -306,21 +304,19 @@ split
 (kindly/check
  = 0.7878787878787878)
 
-;; best so far, 78 %
-;;
+;; best so far, 78 %.
 
-;; TODO: Extract feature importance.
-
-;; # Next steps
+;; ## Next steps
 ;; We could now go further and trying to improve the features / the model type
 ;; in order to find the best performing model for the data we have.
 ;; All models types have a range of configurations,
-;; so called hyper-parameters. They can have as well influence on the
+;; so-called hyper-parameters. They can have as well influence on the
 ;; model accuracy.
 ;;
 ;; So far we used a single split into 'train' and 'test' data, so we only get
 ;; a point estimate of the accuracy. This should be made more robust
-;; via cross-validations and using different splits of the data.
+;; via [cross-validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)) and using different splits
+;; of the data.
 
 
 
