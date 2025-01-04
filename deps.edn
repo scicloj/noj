@@ -84,7 +84,13 @@
   :outdated {;; Note that it is `:deps`, not `:extra-deps`
              :deps {com.github.liquidz/antq {:mvn/version "RELEASE"}}
              :main-opts ["-m" "antq.core"]}
-  :clojupyter {:extra-deps {clojupyter/clojupyter {:git/url "https://github.com/behrica/clojupyter"
-                                                   :git/sha "d46e5b5c6a363e326934790f428ef8bfe0c8900a"}}
+  :clojupyter {:extra-deps {clojupyter/clojupyter
+
+                            ;{:git/url "https://github.com/clojupyter/clojupyter"
+                             ;:git/sha "3fb4f11c735e9f1bf4e6c8ed99e9ff47808eca18"}
+                            {:git/url "https://github.com/behrica/clojupyter"
+                             :git/sha "4f8b96429c4c7edbad0b70c79c45adb0ee8a6bba"}}
+                            
+                            
                             ;{:mvn/version "0.4.332"}
                }}}
