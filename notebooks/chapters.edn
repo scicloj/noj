@@ -16,8 +16,7 @@
              "interactions_ols"]}
  {:part "Data Visualization"
   :chapters ["tableplot_datavis_intro"
-             "echarts"
-             "visualizing_correlation_matrices"]}
+             "echarts"]}
  {:part "Linear Algebra"
   :chapters ["linear_algebra_intro"
              "fastmath_vector_geom2d3d"
