@@ -50,7 +50,7 @@
                       org.slf4j/slf4j-nop {:mvn/version "2.0.16"}
                       org.scicloj/clay {:mvn/version "2-beta25"}
                       clj-http/clj-http {:mvn/version "3.13.0"}
-                      org.scicloj/scicloj.ml.smile              {:mvn/version "7.4.3"}}}
+                      org.scicloj/scicloj.ml.smile              {:mvn/version "7.4.4"}}}
 
   :model-integration-tests
   {:extra-paths ["model-integration-tests" "notebooks"]
@@ -60,7 +60,7 @@
                 org.bytedeco/arpack-ng-platform {:mvn/version "3.7.0-1.5.4"}
                 org.bytedeco/openblas {:mvn/version "0.3.10-1.5.4"}
                 org.bytedeco/javacpp {:mvn/version "1.5.4"}
-                org.scicloj/scicloj.ml.smile              {:mvn/version "7.4.3"}
+                org.scicloj/scicloj.ml.smile              {:mvn/version "7.4.4"}
 
                 com.taoensso/nippy {:mvn/version "3.4.2"}
 
@@ -79,7 +79,7 @@
                      org.bytedeco/javacpp {:mvn/version "1.5.4"}
                      com.oracle.labs.olcut/olcut-config-edn    {:mvn/version "5.1.4"}
                      com.oracle.labs.olcut/olcut-config-json    {:mvn/version "5.1.4"}
-                     org.scicloj/scicloj.ml.smile              {:mvn/version "7.4.3"}}}
+                     org.scicloj/scicloj.ml.smile              {:mvn/version "7.4.4"}}}
   
   :outdated {;; Note that it is `:deps`, not `:extra-deps`
              :deps {com.github.liquidz/antq {:mvn/version "RELEASE"}}
