@@ -103,12 +103,15 @@
 (def clojupyter-kernel-file (format "target/%s-%s-clojupyter.jar" (name lib) version))
 
 (defn create-clojupyter-kernel "Create clojupyter kernel with noj" [opts]
-  (b/compile-clj {:basis (b/create-basis {:aliases [:clojupyter]})
-                  :ns-compile ['clojupyter.kernel.core]
-                  :class-dir class-dir})
-  (b/uber {:uber-file clojupyter-kernel-file
-           :class-dir "target/classes"
-           :basis (b/create-basis {:aliases [:clojupyter]})}))
+  (let [basis (b/create-basis {:aliases [:clojupyter]})]
+    (b/compile-clj {:basis basis
+                    :ns-compile ['clojupyter.kernel.core]
+                    :class-dir class-dir})
+    
+    (b/uber {:uber-file clojupyter-kernel-file
+             :class-dir "target/classes"
+             ;:conflict-handlers {:default  :warn }
+             :basis basis})))
 
 
 (defn install-clojupyter-kernel "Install  clojupyter kernel in local Jupyter" [opts]
@@ -122,7 +125,7 @@
                                "--ident" (str "noj-jupyter-" version)
                                "--jarfile" clojupyter-kernel-file]})
         {:keys [exit]} (b/process cmds)]
-    (when-not (zero? exit) (throw (ex-info "Install  clojupyter kernel failed" {})))))
+    (when-not (zero? exit) (throw (ex-info "Install clojupyter kernel failed" {})))))
   
   
 (defn remove-clojupyter-kernel "Install  clojupyter kernel in local Jupyter" [opts]
