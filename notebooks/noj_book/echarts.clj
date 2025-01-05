@@ -9,7 +9,8 @@
 (ns noj-book.echarts
   (:require [tablecloth.api :as tc]
             [noj-book.datasets]
-            [scicloj.kindly.v4.kind :as kind]))
+            [scicloj.kindly.v4.kind :as kind]
+            [reagent.core :as r]))
 
 ;; ## Getting started
 
@@ -164,6 +165,82 @@ sales
               :data amount}]}
    {:style {:height "200px"}}))
 
+;; ### ECharts Dataset
+
+;; ECharts has a concept of dataset, too. [Dataset](https://echarts.apache.org/handbook/en/concepts/dataset/) is the recommend way to
+;; manage the data since ECharts 4.
+
+;; Here is a simple dataset example, We provide a set of data under dataset.source:
+(kind/echarts
+ {:legend {}
+  :tooltip {}
+  :dataset {:source [["product" "2015" "2016" "2017"] ;;
+                     ["Matcha Latte" 43.3 85.8 93.7]
+                     ["Milk Tea" 83.1 73.4 55.1]
+                     ["Cheese Cocoa" 86.4 65.2 82.5]
+                     ["Walnut Brownie" 72.4 53.9 39.1]]}
+  :xAxis {:type "category"}
+  :yAxis {}
+  :series [{:type "bar"} {:type "bar"} {:type "bar"}]})
+
+;; In this example, we don't give any mapping configuration(only source provided)
+;; so that ECharts will follow the default:
+;; if x-axis is category, the category map the first column in the dataset, and every
+;; series will auto-map to each column by default.
+
+;; With that in mind, we can use Tablecloth dataset for the ECharts dataset:
+
+(def tc-dataset
+  (tc/dataset {"product" ["Matcha Latte" "Milk Tea" "Cheese Cocoa" "Walnut Brownie"]
+               "2015" [43.3 83.1 86.4 72.4]
+               "2016" [85.8 73.4 65.2 53.9]
+               "2017" [93.7 55.1 82.5 39.1]}))
+
+tc-dataset
+
+(tc/column-names tc-dataset)
+
+(tc/rows tc-dataset)
+
+(kind/echarts
+ {:legend {}
+  :tooltip {}
+  :dataset {:dimensions (tc/column-names tc-dataset)
+            :source (tc/rows tc-dataset)}
+  :xAxis {:type "category"}
+  :yAxis {}
+  :series [{:type "bar"} {:type "bar"} {:type "bar"}]})
+
+;; In this example, we use dimensions to map data.
+;; In cartesian coordinate system, if the type of x-axis is category, map the first
+;; dimension to x-axis by default, the second dimension to y-axis.
+
+;; We can also use the "array of classes" format:
+(kind/echarts
+ {:legend {}
+  :tooltip {}
+  :dataset {:dimensions ["product" "2015" "2016" "2017"]
+            :source [{"product" "Matcha Latte" "2015" 43.3 "2016" 85.8 "2017" 93.7}
+                     {"product" "Milk Tea" "2015" 83.1 "2016" 73.4 "2017" 55.1}
+                     {"product" "Cheese Cocoa" "2015" 86.4 "2016" 65.2 "2017" 82.5}
+                     {"product" "Walnut Brownie" "2015" 72.4 "2016" 53.9 "2017" 39.1}]}
+  :xAxis {:type "category"}
+  :yAxis {}
+  :series [{:type "bar"} {:type "bar"} {:type "bar"}]})
+
+;; As we can use `:as-maps` for tc/rows to get the same format of data.
+
+(tc/rows tc-dataset :as-maps)
+
+(kind/echarts
+ {:legend {}
+  :tooltip {}
+  :dataset {:dimensions ["product" "2015" "2016" "2017"]
+            :source (tc/rows tc-dataset :as-maps)}
+  :xAxis {:type "category"}
+  :yAxis {}
+  :series [{:type "bar"} {:type "bar"} {:type "bar"}]})
+
 ;; ## Common Charts
 
 ;; Ready to see more charts in action?
@@ -233,6 +310,73 @@ data-for-multi-series
 ;; Bar race is a chart that shows changes in the ranking of data over time.
 
 ;; TODO
+;;
+;; We don't support Bar racing chart for now.
+;;
+;; But to give you the idea of what a Bar Racing Chart,
+
+;; ATTEMPT ONE
+
+;; check how reagent works
+(defn simple-component []
+  [:div
+   [:p "I am a component!"]
+   [:p.someclass
+    "I have " [:strong "bold"]
+    [:span {:style {:color "red"}} " and red "] "text."]])
+
+(kind/hiccup (simple-component))
+
+(kind/reagent [:div
+               [:p "I am a component!"]
+               [:p.someclass
+                "I have " [:strong "bold"]
+                [:span {:style {:color "red"}} " and red "] "text."]])
+
+;; reagent's atom makes dynamic changes possible
+(kind/reagent
+ ['(fn []
+     (let [*click-count (reagent.core/atom 0)]
+       (fn []
+         [:div
+          "The atom " [:code "*click-count"] " has value: "
+          @*click-count ". "
+          [:input {:type "button" :value "Click me!"
+                   :on-click #(swap! *click-count inc)}]])))])
+
+;; reagent's timer
+(kind/reagent
+ ['(fn []
+     (let [*seconds-elapsed (reagent.core/atom 0)]
+       (fn []
+         (js/setTimeout #(swap! *seconds-elapsed inc) 1000)
+         [:div
+          "Seconds Elapsed: " @*seconds-elapsed])))])
+
+;; TODO try js/setTimeout
+(kind/echarts
+ ['(fn []
+     (let [*seconds-elapsed (reagent.core/atom 0)]
+       (fn []
+         (js/setTimeout #(swap! *seconds-elapsed inc) 1000)
+         [:div
+          "Seconds Elapsed: " @*seconds-elapsed])))]
+ {:tooltip {}
+  :legend {}
+  :xAxis {:type "category"}
+  :yAxis {}
+  :dataset {:source [
+                     ["product", "2015", "2016", "2017"],
+                     ["Matcha Latte", 43.3, 85.8, 93.7],
+                     ["Milk Tea", 83.1, 73.4, 55.1],
+                     ["Cheese Cocoa", 86.4, 65.2, 82.5],
+                     ["Walnut Brownie", 72.4, 53.9, 39.1]
+                     ]}
+  :series [{:type "bar"}, {:type "bar"}, {:type "bar"}]
+  ;;:series [{:name "sales"
+  ;;          :type :bar
+  ;;          :data [5, 20, 36, 10, 10, 20]}]
+  })
 
 ;; #### Waterfall Chart
 
