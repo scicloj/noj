@@ -31,99 +31,179 @@
 ;; ### Abstract
 ;; * [Linear Algebra Done Right](https://linear.axler.net/) 4th  by Sheldon Axler, Springer, 2024.
 
-
 ;; ## Setup
-
 (ns noj-book.linear-algebra-intro
   (:require
    [clojure.math :as math]
    [fastmath.vector :as vec]
    [scicloj.kindly.v4.api :as kindly]))
 
-;; util vars
+;; Define a utility variable for demonstration purposes: a Java double array of length 5.
 (def java-double-array (double-array 5))
 
+;; ## Linear Algebra Concepts with `fastmath.vector`
+;; Below are examples and explanations of common operations using the `fastmath.vector` library.
 
-;; ## What is a linear transformation?
-;; (coming soon)
+;; ### What is a Linear Transformation?
+;; A linear transformation is a mathematical function that maps vectors from one 
+;; vector space to another (or to itself) while preserving the operations of vector
+;; addition and scalar multiplication. In simpler terms, it is a transformation that maintains 
+;; the structure of a vector space.
 
-
-;; ## Addition
-
+;; ### Vector Addition
+;; Adding two vectors element-wise. This operation combines corresponding elements of two vectors.
 (vec/add [1 9]
          [0 -3])
 
-;; ## Scalar multiplication
-
+;; ### Scalar Multiplication
+;; Multiplying each element of a vector by a scalar value. This operation scales the vector proportionally.
 (vec/mult [1 9]
           1000)
 
-;; ## Subtraction
-;; When we pass single vector to fastmath/sub function it will be multiplied by `-1.0`.
-
+;; ### Vector Subtraction
+;; #### Case 1: Single vector passed to `vec/sub`
+;; Negates the vector by multiplying each element by `-1.0`.
 (vec/sub [10 5])
 
-;; When we pass two vectors to fastmath/sub function it will perform basic vector subtraction.
-
+;; #### Case 2: Two vectors passed to `vec/sub`
+;; Performs element-wise subtraction between the first and second vectors.
 (vec/sub [10 5]
          [8 4])
 
-;; ## Dot product
-;; When we pass two vectors to fastmath/dot function it will perform dot product operation on them.
-;; `a · b = a₁b₁ + a₂b₂ + … + anbn`
+;; ### Dot Product
+;; The dot product of two vectors is a scalar that measures the similarity of their directions.
+;; It is calculated as: `a · b = a₁b₁ + a₂b₂ + ... + aₙbₙ`.
 (vec/dot [10 5]
          [8 4])
 
-;; ## Converters
-;; ### Vector to Java array of doubles `[D`.
+;; ### Converters
+;; The following examples demonstrate various conversions between vector types and formats.
 
+;; #### Convert a vector to a Java array of doubles `[D`.
 (vec/vec->array [10 5])
-
 (type (vec/vec->array [10 5]))
 
-;; ### Java array to Clojure sequence.
+;; #### Convert a Java double array back to a Clojure sequence.
 (identity java-double-array)
-
 (type (vec/vec->seq java-double-array))
 
-;; ### Vector or Java array to Apache Commons Math RealVector.
+;; #### Convert a vector or Java array to an Apache Commons Math RealVector.
 (type (vec/vec->RealVector [10 5]))
-
 (identity java-double-array)
-
 (type (vec/vec->RealVector java-double-array))
 
-;; ### Clojure vector or Java array to primitive vector `Vec`.
-
+;; #### Convert a Clojure vector or Java array to a primitive vector `Vec`.
 (vec/vec->Vec [10 5])
-
 (type (vec/vec->Vec [10 5]))
-
 (identity java-double-array)
-
 (type (vec/vec->Vec java-double-array))
 
-;; ### WIP -- if two vectors are passed it takes count of elemets from first vec and
-;; returns same count of elements from second vec??
+;; ### Specialized Operations
+;; #### Transform elements from one vector to match the count of another.
+;; This operation extracts the same number of elements from the second vector as there are in the first.
 (vec/as-vec [10 2] [5 10 15])
 
-;; ### WIP -- if one vector is passed it takes count of elemets from vec and returns same
-;; count of elemets from new vector with each value being `0,0`.
+;; #### Create a zero vector matching the size of the input vector.
 (vec/as-vec [5 10 15])
 
-;; Magnitude of the vector calculated using Pythagoras(norm).
+;; ### Vector Magnitude
+;; Calculates the magnitude (length) of a vector using the Pythagorean theorem.
 (vec/mag [3 4])
 
-;; Round the value from the vector based on second argument
+;; ### Approximation
+;; Rounds each value in the vector to the specified number of decimal places.
 (vec/approx [math/PI])
 (kindly/check = [3.14])
 (vec/approx [math/PI math/PI math/PI] 5)
 
-;; Equality tolerance
-;; "Element-wise equality with given absolute (and/or relative) tolerance."
+;; ### Equality Tolerance
+;; #### Element-wise Equality with Tolerance
+;; Checks if elements of two vectors are equal within a given absolute (and/or relative) tolerance.
 (vec/edelta-eq [math/PI] (vec/approx [math/PI] 4))
 (vec/edelta-eq [math/PI] (vec/approx [math/PI] 4) 0.001)
 (vec/edelta-eq [math/PI] (vec/approx [math/PI] 4) 0.000001)
-;; Equality with given absolute (and/or relative) tolerance.
+
+;; #### Vector Equality with Tolerance
+;; Similar to `edelta-eq`, but compares entire vectors for equality with tolerance.
 (vec/delta-eq [math/PI] (vec/approx [math/PI] 4))
 (vec/delta-eq [math/PI] (vec/approx [math/PI] 4) 0.000001)
+
+;; ### Normalization
+;; Scales the vector to have a magnitude of 1, keeping its direction. 
+;; This is often used to create unit vectors.
+(vec/normalize [3 4])
+
+;; ### Vector Projection
+;; Projects one vector onto another. 
+;; The result is the component of the first vector in the direction of the second vector.
+(def first-real-vec
+  (vec/vec->RealVector [3 4]))
+
+(def second-real-vec
+  (vec/vec->RealVector [1 0]))
+
+(vec/project [3 4] [1 0])
+
+(vec/project first-real-vec second-real-vec)
+
+;; ### Vector Rotation
+;; Rotates a 2D or 3D vector by a given angle/angles (in radians). Useful for geometric transformations.
+(vec/rotate (vec/vec2 [1 2]) (/ math/PI 2))
+(vec/rotate (vec/vec3 [1 2 3]) 0.5 0.5 0.5)
+
+;; ### Linear Interpolation
+;; Performs linear interpolation between two vectors based on a parameter `t` (0 ≤ t ≤ 1).
+;; Great for smooth transitions between points.
+(vec/lerp (vec/vec2 [1 1]) (vec/vec2 [4 4]) 0.5)
+
+;; ### Cross Product
+;; Computes the cross product of two vectors. 
+;; The result is a vector perpendicular to both input vectors.
+(vec/cross (vec/vec3 [1 0 0]) (vec/vec3 [0 1 0]))
+(vec/cross (vec/vec2 [1 0]) (vec/vec2 [0 1]))
+
+;; ### Angle Between
+;; Calculates the angle (in radians) between two vectors. 
+;; Useful for determining directional differences.
+(vec/angle-between (vec/vec2 [1 0]) (vec/vec2 [0 1]))
+
+;; ### Vector Distance
+;; Computes the Euclidean distance between two vectors (points in space).
+(vec/distances (vec/vec2 [1 1]) (vec/vec2 [4 5]))
+
+;; ### Clamp
+;; Restricts each component of a vector to lie within a specified range.
+(vec/clamp (vec/vec3 [-10 3 7]) 0 5)
+
+;; ### Absolute value
+;; Computes the absolute value of each component of the vector.
+(vec/abs [-10 -5 3])
+
+;; ### Maximum value
+;; Returns largest element value from vector.
+(vec/mx (vec/vec3 [-10 3 7]))
+
+;; ### Maximum value index
+;; Returns largest element index from vector.
+(vec/maxdim (vec/vec3 [-10 3 7]))
+
+;; ### Minimum value
+;; Returns smallest element value from vector.
+(vec/mn (vec/vec3 [-10 3 7]))
+
+;; ### Minimum value index
+;; Returns smallest element index from vector.
+(vec/mindim (vec/vec3 [-10 3 7]))
+
+;; ### Vector Set Magnitude
+;; Rescales a vector to have a specific magnitude without requiring 
+;; normalization first.
+(vec/set-mag (vec/vec2 [10 3]) 4)
+
+;; ### Vector Limit Magnitude
+;; Restricts the magnitude of a vector to a specified maximum value.
+(vec/limit (vec/vec2 [3 4]) 2)
+
+;; ### Distance Squared
+;; Calculates the squared distance between two vectors
+(vec/dist-sq [1 1] [4 5])
