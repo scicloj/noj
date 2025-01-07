@@ -105,7 +105,7 @@
 (defn create-clojupyter-kernel "Create clojupyter kernel with noj" [opts]
   (let [basis (b/create-basis {:aliases [:clojupyter]})]
     (b/compile-clj {:basis basis
-                    :ns-compile ['clojupyter.kernel.core]
+                    :ns-compile ['clojupyter.kernel.core 'clojupyter.cmdline]
                     :class-dir class-dir})
     
     (b/uber {:uber-file clojupyter-kernel-file
