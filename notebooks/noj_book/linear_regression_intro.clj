@@ -194,25 +194,26 @@ simple-linear-data-model
 
 (summary multiple-linear-data-model)
 
-;; Visualizing multiple dimensions is more involved. Below is a 3D
-;; scatter plot using Tableplot's Plotly API, along with an explicit
-;; Plotly surface spec for the regression plane. We expect to simplify this
-;; process in the future, so these details can be represented as
-;; composable Tableplot layers. 🛠
+;; Visualizing multiple dimensions is more involved. In the case of two
+;; features, we can use a 3D scatterplot and a 3D surface.
+;; Let us do that using Tableplot's Plotly API.
 
 (-> multiple-linear-data
     (plotly/layer-point {:=coordinates :3d
                          :=x :x0
                          :=y :x1
-                         :=z :y}) 
-    plotly/plot
-    (assoc-in [:data 1]
-              {:type :surface
-               :z (for [i (range 11)]
-                    (for [j (range 11)]
-                      (multiple-linear-data-model
-                       [j i])))
-               :opacity 0.5}))
+                         :=z :y})
+    (plotly/layer-surface {:=dataset (let [xs (range 11)
+                                           ys (range 11)]
+                                       (tc/dataset
+                                        {:x xs
+                                         :y ys
+                                         :z (for [y ys]
+                                              (for [x xs]
+                                                (multiple-linear-data-model
+                                                 [x y])))}))
+                           :=mark-opacity 0.5}))
+
 
 ;; ## Coming soon: Polynomial regression 🛠
 
