@@ -10,6 +10,7 @@
   (:require [tablecloth.api :as tc]
             [noj-book.datasets]
             [fastmath.core :as fm]
+            [fastmath.stats]
             [scicloj.kindly.v4.kind :as kind]))
 
 ;; ## Getting started
