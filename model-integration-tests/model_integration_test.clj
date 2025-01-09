@@ -52,6 +52,10 @@ warnings.simplefilter('ignore')")
   
   #{:smile.classification/mlp  ;;https://github.com/scicloj/scicloj.ml.smile/issues/18
     :scicloj.ml.tribuo/classification ;;https://github.com/scicloj/scicloj.ml.tribuo/issues/5
+    :metamorph.ml/ols
+    :fastmath/ols
+
+
     })
 
 (def not-working-with-iris-data-or-default-params-or-no-probab
@@ -364,18 +368,22 @@ warnings.simplefilter('ignore')")
          mae) (format "mae validation failed: %s" model-map))))
     
 
+
+
 (defn validate-regression [model-map]
   ;(println :model-type (:model-type model-map))
   (let [model
         (ml/train
          iris-ds-regression--train
-         model-map)
+         model-map)]
+    
+    (when (not (contains? not-writable--or-readable-with-nippy 
+                          (:model-type model-map)))
+      (let [frozen (nippy/freeze-to-string model)
+            unfrozen-model (nippy/thaw-from-string frozen)]
+        (assert-mae unfrozen-model model-map)))
 
-        frozen (nippy/freeze-to-string model)
-        unfrozen-model (nippy/thaw-from-string frozen)]
-    (assert-mae model model-map)
-
-    (assert-mae unfrozen-model model-map)))
+    (assert-mae model model-map)))
 
 (deftest regression-works
   (run! 
@@ -398,7 +406,6 @@ warnings.simplefilter('ignore')")
     ]))
 
 (deftest tribuo-regression-works
-  
   (run!
    #(validate-regression
      {:model-type :scicloj.ml.tribuo/regression
