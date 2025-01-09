@@ -352,20 +352,30 @@ warnings.simplefilter('ignore')")
   (:test split))
 
 
-(defn validate-regression [model-map]
-  (let [ model
-        (ml/train
-         iris-ds-regression--train
-         model-map)
-        mae 
+(defn assert-mae [model model-map]
+  (let [mae
         (loss/mae
          (-> iris-ds-regression--test :sepal_length)
          (-> (ml/predict iris-ds-regression--test model) :sepal_length))]
-
     (println :mae mae)
+
     (is (>
-         0.5 ;; dummy-model has mae of 0.69
+         0.4 ;; dummy-model has mae of 0.69
          mae) (format "mae validation failed: %s" model-map))))
+    
+
+(defn validate-regression [model-map]
+  ;(println :model-type (:model-type model-map))
+  (let [model
+        (ml/train
+         iris-ds-regression--train
+         model-map)
+
+        frozen (nippy/freeze-to-string model)
+        unfrozen-model (nippy/thaw-from-string frozen)]
+    (assert-mae model model-map)
+
+    (assert-mae unfrozen-model model-map)))
 
 (deftest regression-works
   (run! 
@@ -383,6 +393,7 @@ warnings.simplefilter('ignore')")
     :sklearn.regression/linear-regression
     :sklearn.regression/decision-tree-regressor
     :sklearn.regression/random-forest-regressor
+    
 
     ]))
 
@@ -394,7 +405,7 @@ warnings.simplefilter('ignore')")
       :tribuo-trainer-name "reg"
       :tribuo-components %})
    [[{:name "loss"
-      :type "org.tribuo.regression.sgd.objectives.AbsoluteLoss"}
+      :type "org.tribuo.regression.sgd.objectives.SquaredLoss"}
      {:name "reg"
       :type "org.tribuo.regression.sgd.linear.LinearSGDTrainer"
       :properties {:objective "loss"
