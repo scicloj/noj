@@ -226,8 +226,6 @@ split
 (def dummy-model (ml/train (:train split)
                            {:model-type :metamorph.ml/dummy-classifier}))
 
-;; TODO: Is the dummy model wrong about the majority?
-
 (def dummy-prediction
   (ml/predict (:test split) dummy-model))
 ;; It always predicts a single class, as expected:
