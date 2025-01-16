@@ -130,13 +130,10 @@ So, for this specific data, we should go for the model with the interaction mode
    preprocessed-data
    [:sales]                                         ;; predictor
    [
-    [:youtube '(identity youtube)]                  ;; youtube stays as-is
-    [:facebook '(identity facebook)]                ;; facebook stays as-is
-    [:youtube*facebook '(* youtube facebook)]       ;; new term is created
-    
-    ]      
-
-   ))
+    [:youtube '(identity :youtube)]                  ;; youtube stays as-is
+    [:facebook '(identity :facebook)]                ;; facebook stays as-is
+    [:youtube*facebook '(* :youtube :facebook)]       ;; new term is created
+    ]))
 
 
 ;; The result of the `create-design-matrix` function is directly "ready" to be used

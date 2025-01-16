@@ -226,8 +226,6 @@ split
 (def dummy-model (ml/train (:train split)
                            {:model-type :metamorph.ml/dummy-classifier}))
 
-;; TODO: Is the dummy model wrong about the majority?
-
 (def dummy-prediction
   (ml/predict (:test split) dummy-model))
 ;; It always predicts a single class, as expected:
@@ -239,9 +237,8 @@ split
 (loss/classification-accuracy
  (:survived (ds-cat/reverse-map-categorical-xforms (:test split)))
  (:survived (ds-cat/reverse-map-categorical-xforms dummy-prediction)))
-;;  Its performance is poor, even worse than a coin flip.
 
-(kindly/check = 0.3973063973063973)
+(kindly/check = 0.6026936026936027)
 
 ;; ## Logistic regression
 ;; Next model to use is Logistic Regression:
