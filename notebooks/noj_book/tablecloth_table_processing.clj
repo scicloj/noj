@@ -2,8 +2,7 @@
 
 ;; author: Daniel Slutsky
 
-;; last change: 2024-12-08
-
+;; last change: 2025-01-17
 
 ;; [Tablecloth](https://scicloj.github.io/tablecloth/)
 ;; is a table processing library
@@ -42,7 +41,7 @@
 
 ;; ## About this tutorial
 
-;; In this tutorial, we will demonstrate the ergonomics of so-called dataset
+;; In this tutorial, we will demonstrate the ergonomics of so-called *dataset*
 ;; data strucures provided by Tablecloth. Datasets are table-like data structures,
 ;; often called data-frames in other data science platforms.
 
@@ -174,16 +173,6 @@ some-trips
                 :background "floralwhite"}}
   some-trips])
 
-;; For use in this tutorial, let us define our own customized view:
-
-(defn compact-view [dataset]
-  (kind/hiccup
-   [:div {:style {:max-width "100%"
-                  :max-height "400px"
-                  :overflow-x :auto
-                  :overflow-y :auto}}
-    dataset]))
-
 ;; ## What is a dataset?
 
 ;; Let us explore this data structure, our little dataset of bike trips.
@@ -309,9 +298,7 @@ some-trips
 
 ;; We can use the `tc/info` function to summarize a dataset:
 
-(-> some-trips
-    tc/info
-    compact-view)
+(tc/info some-trips)
 
 ;; ## Reading datasets
 
@@ -325,8 +312,7 @@ some-trips
 ;; First, let us read just a few rows:
 
 (->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
-     (tc/dataset {:num-rows 3})
-     compact-view)
+     (tc/dataset {:num-rows 3}))
 
 ;; So reading a dataset is easy, but sometimes we may wish to pass a few options
 ;; to handle it a bit better.
@@ -393,12 +379,9 @@ some-trips
                                      keyword))
                     :parser-fn {"started_at" datetime-parser
                                 "ended_at"   datetime-parser}})))
-(compact-view
- trips)
+trips
 
-(-> trips
-    tc/info
-    compact-view)
+(tc/info trips)
 
 ;; It is a whole month of bike trips!
 
@@ -431,9 +414,7 @@ some-trips
 
 ;; The first few trips:
 
-(-> trips
-    tc/head
-    compact-view)
+(tc/head trips)
 
 ;; Just a few columns:
 (-> trips
