@@ -12,8 +12,8 @@
    [scicloj.ml.smile.projections]
    [noj-book.utils.render-tools :refer [render-key-info]]))
 
-;; In the following we have a list of all model keys of Smile model-like
-;; algorithms including parameters.
+;; In the following we have a list of all model keys of
+;; [Smile](https://haifengl.github.io/) model-like algorithms, including parameters.
 ;; They can be used in the same way as other models:
 (comment
   (ml/train df
@@ -22,7 +22,8 @@
              :param-2 1}))
 
 ;; Some do not support `ml/predict` and are defined as `unsupervised` learners.
-;; Clustering and PCA are in this group.
+;; Clustering and [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis)
+;; are in this group.
 
 ;; ## Smile manifolds
 
