@@ -4,8 +4,8 @@
 ;; dependency to Noj.
 ;; [![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/scicloj.ml.smile.svg)](https://clojars.org/org.scicloj/scicloj.ml.smile)
 
-;; In the following we have a list of all model keys of Smile regression models
-;; including parameters.
+;; In the following we have a list of all model keys of
+;; [Smile](https://haifengl.github.io/) regression models, including parameters.
 ;; They can be used like this:
 
 (comment

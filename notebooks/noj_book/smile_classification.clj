@@ -20,8 +20,8 @@
 
 
 ;; ## Smile classification models reference
-;; In the following we have a list of all model keys of Smile classification models
-;; including parameters.
+;; In the following we have a list of all model keys of
+;; [Smile](https://haifengl.github.io/) classification models, including parameters.
 ;; They can be used like this:
 
 (comment
@@ -30,8 +30,7 @@
              :param-1 0
              :param-2 1}))
 
-
-
+^:kindly/hide-code
 (render-key-info :smile.classification)
 
 ;; # Compare decision surfaces of different classification models

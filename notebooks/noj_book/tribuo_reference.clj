@@ -11,9 +11,9 @@
    [scicloj.metamorph.ml :as ml]))
 
 
-;;The following is a refeference for all Tribuo trainers.
-;; They can be used as the model specification in `ml/train` on the :type
-;; of the tribuo trainer
+;; The following is a refeference for all [Tribuo](https://tribuo.org/) trainers.
+;; They can be used as the model specification in `ml/train` on the `:type`
+;; of the tribuo trainer.
 (comment
   (ml/train
    ds
@@ -25,15 +25,15 @@
                                       :fractionFeaturesInSplit "0.5"}}]
     :tribuo-trainer-name "random-forest"}))
 
-;; There is as well a reference on all non-trainer compotents of Tribuo.
-;; These could potentialy as well be used in Tribuo model specs.
+;; There is also a reference to all non-trainer compotents of Tribuo.
+;; These could also be potentiall used in Tribuo model specs.
 
 
-;; ## Tribuo trainer reference 
+;; ## Tribuo trainer reference
 ^:kindly/hide-code
 (render-configurables (trainer-infos))
 
-;; ## Tribuo component reference 
+;; ## Tribuo component reference
 ^:kindly/hide-code
 (render-configurables  (all-non-trainer))
 
