@@ -162,7 +162,7 @@ dm
    {:other-metrices [{:name :r2
                       :metric-fn fmstats/r2-determination}]}))
 
-;; we get the same metrices as before, ()as it is the same model specification):
+;; we get the same metrics as before, (as it is the same model specification):
 
 (md "$RMSE$")
 (-> evaluations-dm flatten first :test-transform :metric)
