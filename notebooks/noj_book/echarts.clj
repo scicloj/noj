@@ -230,12 +230,6 @@ data-for-multi-series
               :data values-b
               :stack "x"}]}))
 
-;; #### Bar Racing Chart
-
-;; Bar race is a chart that shows changes in the ranking of data over time.
-
-;; TODO
-
 ;; #### Waterfall Chart
 
 ;; There is no waterfall series in Apache ECharts, but we can simulate the
