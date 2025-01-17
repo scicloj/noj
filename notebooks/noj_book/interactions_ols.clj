@@ -115,7 +115,7 @@ So, for this specific data, we should go for the model with the interaction mode
 ")
 
 
-;; ## use design matric
+;; ## use design matrix
 ;; Since `metamorph.ml 0.9.0` we have a simpler way to express the same inteactions as before.
 ;;
 ;; We can express the same formula 
