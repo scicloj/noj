@@ -177,8 +177,12 @@ ctx-sparse
 ;; The `model` transformer allows to execute all machine learning models
 ;; which register themself inside the `metamorph.ml` system via the function
 ;; `scicloj.metamorph.ml/define-model!`.
-;; The built-in models are listed here:
-;; https://scicloj.github.io/scicloj.ml/userguide-models.html
+;; Models can be added at runing by require relevant namespaces
+;; as documented in the various "model reference" chapters of the Noj book.
+;; The currently defined models can be looked up via
+;; `(ml/model-definition-names)`.
+
+
 
 ;; We use the Iris data for this example:
 
