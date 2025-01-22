@@ -4,7 +4,8 @@
              "known_issues"]}
  {:part "Datasets"
   :chapters ["tablecloth_table_processing"
-             "datasets"]}
+             "datasets"
+             "tablecloth_advanced_data_processing"]}
  {:part "Statistics"
   :chapters ["statistics_intro"
              "linear_regression_intro"]}
