@@ -78,15 +78,15 @@ directly for tabular data structures or provide high interoperability with it.
       chapter))
 
 (->> "notebooks/chapters.edn"
-slurp
-clojure.edn/read-string
-(mapcat (fn [{:keys [part chapters]}]
-          (cons (format "- %s" part)
-                (->> chapters
-                     (map (fn [chapter]
-                            (prn [chapter (chapter->title chapter)])
-                            (format "\n  - [%s](noj_book.%s.html)\n"
-                                    (chapter->title chapter)
-                                    chapter)))))))
-(str/join "\n")
-md)
+     slurp
+     clojure.edn/read-string
+     (mapcat (fn [{:keys [part chapters]}]
+               (cons (format "- %s" part)
+                     (->> chapters
+                          (map (fn [chapter]
+                                 (prn [chapter (chapter->title chapter)])
+                                 (format "\n  - [%s](noj_book.%s.html)\n"
+                                         (chapter->title chapter)
+                                         chapter)))))))
+     (str/join "\n")
+     md)
