@@ -50,9 +50,19 @@ directly for tabular data structures or provide high interoperability with it.
 |Dev chat|[#noj-dev](https://clojurians.zulipchat.com/#narrow/stream/321125-noj-dev) at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)|
 |User chat|[#data-science](https://clojurians.zulipchat.com/#narrow/stream/151924-data-science) at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)|
 
-## Getting started
-🎥📖 a revised version is coming soon🌟
+## Video tutorials
+
 ")
+
+
+;; * From raw data to a blog post, 2025-01-24
+;; ([📖 notebook](https://scicloj.github.io/noj-v2-getting-started/),
+;; [📁 repo](https://github.com/scicloj/noj-v2-getting-started)):
+^:kindly/hide-code
+(kind/video
+ {:youtube-id "vnvcKtHHMVQ"
+  :iframe-width 240
+  :iframe-height 135})
 
 ;; ## Chapters of this book
 
