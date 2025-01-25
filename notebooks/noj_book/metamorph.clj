@@ -6,11 +6,11 @@
 ;; # Machine learning pipelines
 ;; ## Clojure Core Pipelines
 
-;; Clojure has built-in support for data processing pipelines—a series of functions where the output
+;; Clojure has built-in support for data processing pipelines, a series of functions where the output
 ;; of one step is the input to the next. In core Clojure, these are supported by the so-called
 ;; **threading macro**.
 
-;; ### Example: Using the Threading Macro
+;; ## Using the Threading Macro
 
 (require '[clojure.string :as str])
 (-> "hello"
@@ -29,10 +29,10 @@
 ;; We can achieve the same result using **function composition** with `comp`. Note that when using
 ;; `comp`, the order of functions is reversed compared to the threading macro.
 
+
 (def upper-reverse-first
   (comp first str/reverse str/upper-case))
 
-(upper-reverse-first "hello")
 
 ;; This defines a function `upper-reverse-first` that:
 
@@ -167,9 +167,9 @@
 
 (metamorph-pipeline-3-b {:metamorph/data "hello"})
 
-                                        ; ### Pass additional state
+;; ### Pass additional state
 
-;; We can pass a main data object and any state through the pipeline.
+;; We can pass a main data object and any state through the pipeline:
 
 (def metamorph-pipeline-4
   (mm/pipeline
@@ -225,6 +225,7 @@
 ;; This can take two values, `:fit` and `:transform`, representing the concept of running the pipeline to 
 ;; learn something from the data (train or fit the pipeline/model)
 ;; and apply what was learned on new data (predict or transform).
+
 ;; The learned information can be stored in the context map, becoming available in later runs.
 
 ;; This passing of state only makes sense if the state is written to the map in one pass
@@ -261,8 +262,8 @@
   (metamorph-pipeline-6 {:metamorph/data "hello"
                          :metamorph/mode :fit}))
 
-;; This will print `:state "5"` in the terminal, showing that the state from the `:fit` phase is used during the 
-;; `:transform` phase.
+;; This will print `:state "5"` in the terminal, showing that the state from the 
+;; `:fit` phase is used during the `:transform` phase.
 
 (metamorph-pipeline-6
  (merge fitted-ctx
@@ -272,7 +273,7 @@
 
 ;; #### Lifting to create pipeline functions
 ;; As we have seen , most pipeline functions will behave exactly the same
-;; in `:fit` and `:transform`, so they neither need state.
+;; in `:fit` and `:transform`, so they don't need to remember / pass state.
 ;;
 ;; Example:
 
@@ -287,6 +288,9 @@
    (mm/lift str/reverse)
    (mm/lift first)))
 
+;; The lifting creates a vriant of te original function which acts on the
+;; data in te context under key :metamparph/data
+
 (metamorph-pipeline-7 {:metamorph/data "hello"})
 
 
@@ -294,12 +298,13 @@
 ;; As we have seen so far, the data object at key `:metamorph/data`
 ;; can be anything, so far we have used a `String`.
 ;;
-;; In machine learning pipelines we use a `tech.v3.dataset` instead,
+;; In machine learning pipelines we usually use a `tech.v3.dataset` instead,
 ;; and the pipeline step functions transform mainly the dataset or train
-;; a model.
+;; a model from the dataset.
 ;; 
-;; The **state** is often the result of a **model** function. It is calculated in `:fit` 
-;; on training data and applied in `:transform` on other data to make a prediction.
+;; The **state** is often the result of a **model** function. The model is 
+;; calculated in `:fit` on training data and applied in `:transform` on other
+;; data to make a prediction.
 
 ;; All the rest stays the same.
 
