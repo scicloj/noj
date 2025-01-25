@@ -59,6 +59,7 @@ directly for tabular data structures or provide high interoperability with it.
 ;; * 📖 [notebook](https://scicloj.github.io/noj-v2-getting-started/)
 ;; * 📁 [repo](https://github.com/scicloj/noj-v2-getting-started)
 ;; * 💾 [data source - the Clojure Events Calendar Feed](https://clojureverse.org/t/the-clojure-events-calendar-feed-turns-2/)
+;; * 💡 main topics: Tablcloth (processing), Tableplot (datavis), Clay (notebooking), Emacs, CIDER
 ^:kindly/hide-code
 (kind/video
  {:youtube-id "vnvcKtHHMVQ"})
