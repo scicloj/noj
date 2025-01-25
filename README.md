@@ -26,6 +26,16 @@ The included libraries either use [tech.ml.dataset](https://github.com/techascen
 |Dev chat|[#noj-dev](https://clojurians.zulipchat.com/#narrow/stream/321125-noj-dev) at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)|
 |User chat|[#data-science](https://clojurians.zulipchat.com/#narrow/stream/151924-data-science) at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)|
 
+## Video tutorials
+
+### From raw data to a blog post, 2025-01-24
+
+* 🎥 [![Noj v2 video tutorial](https://img.youtube.com/vi/vnvcKtHHMVQ/0.jpg)](https://www.youtube.com/watch?v=vnvcKtHHMVQ)
+* 📖 [notebook](https://scicloj.github.io/noj-v2-getting-started/)
+* 📁 [repo](https://github.com/scicloj/noj-v2-getting-started)
+* 💾 [data source - the Clojure Events Calendar Feed](https://clojureverse.org/t/the-clojure-events-calendar-feed-turns-2/)
+* 💡 main topics: Tablcloth (processing), Tableplot (datavis), Clay (notebooking), Emacs, CIDER
+
 ## License
 
 Copyright © 2025 Scicloj
