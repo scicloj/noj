@@ -33,6 +33,8 @@ The included libraries either use [tech.ml.dataset](https://github.com/techascen
 * 📁 [repo](https://github.com/scicloj/noj-v2-getting-started)
 * 💾 [data source - the Clojure Events Calendar Feed](https://clojureverse.org/t/the-clojure-events-calendar-feed-turns-2/)
 * 💡 main topics: Tablcloth (processing), Tableplot (datavis), Clay (notebooking), Emacs, CIDER
+* 🎥 video: 
+
 [![Noj v2 video tutorial](https://img.youtube.com/vi/vnvcKtHHMVQ/0.jpg)](https://www.youtube.com/watch?v=vnvcKtHHMVQ)
 
 ## License
