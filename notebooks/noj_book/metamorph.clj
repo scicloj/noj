@@ -288,8 +288,8 @@
    (mm/lift str/reverse)
    (mm/lift first)))
 
-;; The lifting creates a vriant of te original function which acts on the
-;; data in te context under key :metamparph/data
+;; The lifting creates a variant of the original function which acts on the
+;; data in the context under key :metamorph/data
 
 (metamorph-pipeline-7 {:metamorph/data "hello"})
 

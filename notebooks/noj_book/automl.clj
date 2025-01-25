@@ -115,7 +115,7 @@ ctx-after-train
 ;;
 (vals ctx-after-train)
 
-;; The `model` function has closed over the id, so is knows "its id", so in the
+;; The `model` function has closed over the id, so it knows "its id", so in the
 ;; `transform`  mode it can get the data created at `:fit`.  So the `model` 
 ;; function can "send" data to itself from `:fit` to `:transform`, 
 ;; the `trained model`.
