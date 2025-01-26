@@ -1,6 +1,5 @@
 ;; # AutoML using metamorph pipelines
 
-
 ;;  In this tutorial we see how to use `metamorph.ml` to perform automatic machine learning.
 ;;  With AutoML we mean to try lots of different models and hyper parameters and rely on automatic
 ;;  validation to pick the best performing model automatically.
@@ -21,7 +20,7 @@
             [tech.v3.dataset.modelling :as ds-mod]))
 
 ;; ## The metamorph pipeline abstraction
-;; When doing automl, it is very useful to be able to manage
+;; When using automl, it is very useful to be able to manage all
 ;; the steps of a machine learning pipeline (including data
 ;; transformations and modeling) as a unified function that can be
 ;; freely moved around.
@@ -47,6 +46,7 @@
 ;;  functions of the pipeline can (but don't need to) do
 ;;  different things depend on the `mode`
 ;;
+;; ### metamorph.ml/model
 ;; Specifically we have a function called `metamorph.ml/model` which
 ;; will do `train` in mode
 ;; `:fit` and `predict` in mode `:transform`
@@ -64,6 +64,7 @@
 ;;
 (def titanic ml-basic/numeric-titanic-data)
 
+;;  ### Split the data
 
 ;;  so lets create splits of the data first:
 
@@ -71,7 +72,7 @@
 (def train-ds (:train splits))
 (def test-ds (:test splits))
 
-
+;; ### Create pipeline
 
 ;; In its foundation a metamorph pipeline is a sequential composition of
 ;; functions,
@@ -96,6 +97,8 @@ my-pipeline
 ;;
 ;; But this map cannot be "arbitrary", it need to adhere to the `metamorph` conventions.
 ;;
+;; ### run pipeline = train model
+;;
 ;; The following `trains` a model, because the `ml/model`
 ;; function does this when called with `:mode` `:fit`.
 ;; And it is the only operation in the pipeline, so the pipeline does one
@@ -112,11 +115,12 @@ ctx-after-train
 ;;
 (vals ctx-after-train)
 
-;; The `model` function has closed over the id, so is knows "his id", so in the `transform`
-;; mode it can get the data created at `:fit`.  So the `model` function can "send" data to itself
-;; from `:fit` to `:transform`, the `trained model`.
+;; The `model` function has closed over the id, so it knows "its id", so in the
+;; `transform`  mode it can get the data created at `:fit`.  So the `model` 
+;; function can "send" data to itself from `:fit` to `:transform`, 
+;; the `trained model`.
 ;;
-;; So this will do the `predict` on new data
+;; So this will do the `predict` on new data:
 
 (def ctx-after-predict
   (my-pipeline (assoc ctx-after-train
@@ -217,9 +221,9 @@ ctx-after-train
 (mm/pipeline ops-2)
 (mm/pipeline ops-3)
 
-;; All three can be called as function taking a dataset iwrapped in a ctx
+;; All three can be called as function taking a dataset wrapped in a ctx map.
 
-;; Pipeline as data is as well supported
+;; Pipeline as data is as well supported:
 (def op-spec [[ml/model {:model-type :metamorph.ml/dummy-classifier}]])
 ;;
 (mm/->pipeline op-spec)
@@ -278,8 +282,8 @@ ctx-after-train
 ;; The AutoML support in metamorph.ml consists now in the possibility
 ;; to create an arbitrary number of different pipelines
 ;; and have them run against arbitrary test/train data splits
-;; and it automatically chooses the best model evaluated by by a
-;; certain metric.
+;; and it automatically chooses the best model evaluated by a
+;; user provided metric function.
 
 ;;  helper for later
 (defn make-results-ds [evaluation-results]
@@ -498,7 +502,8 @@ logistic-regression-specs
 ;;    of the pipeline. It should be faster to do data transformations only once, 
 ;;    before the metamorph pipeline starts.
 ;; 
-;; Nevertheless is some scenarios it is very useful to create a full transformation pipeline
-;; as a metamorph pipeline. This would for example allow to perform very different transformation steps per model
-;; and still only have a single seq of pipeline functions to manage,
+;; Nevertheless in some scenarios it is very useful to create a full 
+;; transformation pipeline as a metamorph pipeline. 
+;; This would for example allow to perform very different transformation steps per 
+;; model and still only have a single seq of pipeline functions to manage,
 ;; therefore having fully self contained pipelines.

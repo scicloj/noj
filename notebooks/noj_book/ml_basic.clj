@@ -28,8 +28,8 @@
      (into [:table [:tr [:th "Library" ] [:th "Clojure Wrapper"]]]))
 
 
-;; These libraries do not have any functions for the models they contain.
-;; Instead of funtcions per model, `metamorph.ml` has the concept of each model having a 
+;; These libraries do not have specific Clojure functions for the models they contain.
+;; Instead of functions per model, `metamorph.ml` has the concept of each model having a 
 ;; unique `key`, the `:model-type` , which needs to be given when calling 
 ;;`metamorph.ml/train`.
 ;;
@@ -47,10 +47,10 @@
 ;; namely `:scicloj.ml.tribuo/classification` and `:scicloj.ml.tribuo/regression`.
 ;; The model as such is encoded in the same way as the Triuo Java libraries does this,
 ;; namely as a map of all Tribuo components in place, of which one is the model, 
-;; the so called "Trainer", is always needed and has a certin `:type`, the model class.
+;; the so called "Trainer", is always needed and has a certain `:type`, the model class.
 ;;
 ;; The reference documentation therefore lists all "Trainer"s and their name incl. parameters.
-;; It lists as well all other "Configurable"s which could be refered to in a component map.
+;; It lists as well all other "Configurable"s which could be referred to in a component map.
 
 
 ;; ## Setup
@@ -200,7 +200,7 @@ cat-maps
   [1.0 1.0 0.0 1.0]
   [0.0 3.0 0.0 0.0]])
 
-;; Split data into train and test set
+;; ## Split data into train and test set
 ;;
 ;; Now we split the data into train and test. We use
 ;; a `:holdout` strategy, so will get a single split in training and test data.
@@ -234,6 +234,8 @@ split
 ;;  We can calculate accuracy by using a metric after having converted
 ;;  the numerical data back to original (important!).
 ;;  We should never compare mapped columns directly.
+
+;; We get an accuray of: 
 (loss/classification-accuracy
  (:survived (ds-cat/reverse-map-categorical-xforms (:test split)))
  (:survived (ds-cat/reverse-map-categorical-xforms dummy-prediction)))
@@ -241,7 +243,7 @@ split
 (kindly/check = 0.6026936026936027)
 
 ;; ## Logistic regression
-;; Next model to use is Logistic Regression:
+;; Next model to use is Logistic Regression
 
 (require '[scicloj.ml.tribuo])
 
@@ -255,7 +257,7 @@ split
 (def lreg-prediction
   (ml/predict (:test split) lreg-model))
 
-
+;; with accuracy of:
 (loss/classification-accuracy
  (:survived (ds-cat/reverse-map-categorical-xforms (:test split)))
  (:survived (ds-cat/reverse-map-categorical-xforms lreg-prediction)))
@@ -301,10 +303,10 @@ split
 (kindly/check
  = 0.7878787878787878)
 
-;; best so far, 78 %.
+;; best accuracy so far, 78 %.
 
 ;; ## Next steps
-;; We could now go further and trying to improve the features / the model type
+;; We could now go further and try to improve the features / the model type
 ;; in order to find the best performing model for the data we have.
 ;; All models types have a range of configurations,
 ;; so-called hyper-parameters. They can have as well influence on the
