@@ -1,4 +1,12 @@
-;; # Tribuo reference - DRAFT 🛠
+;; # Tribuo reference
+
+;; As discussed in the [Machine Learning](../noj_book.ml_basic.html) chapter,
+;; this book contains reference chapters for machine learning models
+;; that can be registered in [metamorph.ml](https://github.com/scicloj/metamorph.ml).
+
+;; This specific chapter focuses on the models of the
+;; [Tribuo](https://tribuo.org/) Java library,
+;; which is wrapped by [scicloj.ml.tribuo](https://github.com/scicloj/scicloj.ml.tribuo).
 
 ^:kindly/hide-code
 (ns noj-book.tribuo-reference

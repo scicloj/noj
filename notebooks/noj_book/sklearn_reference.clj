@@ -1,4 +1,12 @@
-;; # Sklearn model reference - DRAFT 🛠
+;; # Sklearn model reference
+
+;; As discussed in the [Machine Learning](../noj_book.ml_basic.html) chapter,
+;; this book contains reference chapters for machine learning models
+;; that can be registered in [metamorph.ml](https://github.com/scicloj/metamorph.ml).
+
+;; This specific chapter focuses on the models of the
+;; [scijit-learn](https://scikit-learn.org/stable/) Python library,
+;; which is wrapped by [sklearn-clj](https://github.com/scicloj/sklearn-clj).
 
 (ns noj-book.sklearn-reference
   (:require
@@ -23,7 +31,7 @@
 ;; But the translation between the two should be obvious.
 
 
-;;Example: [logistic regression](https://en.wikipedia.org/wiki/Logistic_regression)
+;; Example: [logistic regression](https://en.wikipedia.org/wiki/Logistic_regression)
 
 (def ds (dst/tensor->dataset [[0 0 0] [1 1 1] [2 2 2]]))
 

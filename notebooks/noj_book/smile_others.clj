@@ -1,4 +1,14 @@
-;; # Smile other models reference - DRAFT 🛠
+;; # Smile other models reference
+
+;; As discussed in the [Machine Learning](../noj_book.ml_basic.html) chapter,
+;; this book contains reference chapters for machine learning models
+;; that can be registered in [metamorph.ml](https://github.com/scicloj/metamorph.ml).
+
+;; This specific chapter focuses on model-like algorithms
+;; such as clustering and dimension-reduction in
+;; [Smile](https://haifengl.github.io/) version 2.6,
+;; which are wrapped by
+;; [scicloj.ml.smile](https://github.com/scicloj/scicloj.ml.smile).
 
 ;; Note that this chapter reqiures `scicloj.ml.smile` as an additional
 ;; dependency to Noj.
