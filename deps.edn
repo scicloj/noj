@@ -7,11 +7,18 @@
         generateme/fastmath                       {:mvn/version "3.0.0-alpha3"}
         aerial.hanami/aerial.hanami               {:mvn/version "0.20.1"}
         org.scicloj/tableplot                     {:mvn/version "1-beta9.1"}
-        org.scicloj/metamorph.ml                  {:mvn/version "0.12"}
-        org.scicloj/sklearn-clj                   {:mvn/version "0.4.1"}
-        org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.2.0"}
-
-        org.scicloj/scicloj.ml.tribuo             {:mvn/version "0.1.6"}
+        org.scicloj/metamorph.ml                  {:git/url "https://github.com/scicloj/metamorph.ml"
+                                                   :git/sha "6813b48ef0c090d41131da8fc4fd548f5f3973b0"}
+        ;{:mvn/version "0.12"}
+        org.scicloj/sklearn-clj                   {:git/url "https://github.com/scicloj/sklearn-clj"
+                                                   :git/sha "5188433c72710485fe2816be2f45fd1001bad6d7"}
+        ;{:mvn/version "0.4.1"}
+        org.scicloj/scicloj.ml.xgboost            {:git/url "https://github.com/scicloj/scicloj.ml.xgboost"
+                                                   :git/sha "2d6f9b259c94cf517b78c5884365cb2c20959120"}
+        ;{:mvn/version "6.2.0"}
+        
+        org.scicloj/scicloj.ml.tribuo              {:mvn/version "0.1.6"}
+        
         
         org.tribuo/tribuo-regression-liblinear    {:mvn/version "4.3.1"}
         org.tribuo/tribuo-regression-libsvm       {:mvn/version "4.3.1"}
@@ -50,7 +57,9 @@
                       org.slf4j/slf4j-nop {:mvn/version "2.0.16"}
                       org.scicloj/clay {:mvn/version "2-beta25"}
                       clj-http/clj-http {:mvn/version "3.13.0"}
-                      org.scicloj/scicloj.ml.smile              {:mvn/version "7.4.4"}}}
+                      org.scicloj/scicloj.ml.smile          {:git/url "https://github.com/scicloj/scicloj.ml.smile"
+                                                             :git/sha "b302bd8846a5f99abfb92276c3b8c09fd91b4a92"}}}
+                      ;;{:mvn/version "7.4.4"}
 
   :model-integration-tests
   {:extra-paths ["model-integration-tests" "notebooks"]
@@ -60,7 +69,9 @@
                 org.bytedeco/arpack-ng-platform {:mvn/version "3.7.0-1.5.4"}
                 org.bytedeco/openblas {:mvn/version "0.3.10-1.5.4"}
                 org.bytedeco/javacpp {:mvn/version "1.5.4"}
-                org.scicloj/scicloj.ml.smile              {:mvn/version "7.4.4"}
+                org.scicloj/scicloj.ml.smile          {:git/url "https://github.com/scicloj/scicloj.ml.smile"
+                                                       :git/sha "b302bd8846a5f99abfb92276c3b8c09fd91b4a92"}    
+                ;{:mvn/version "7.4.4"}
 
                 com.taoensso/nippy {:mvn/version "3.4.2"}
 
@@ -79,7 +90,10 @@
                      org.bytedeco/javacpp {:mvn/version "1.5.4"}
                      com.oracle.labs.olcut/olcut-config-edn    {:mvn/version "5.1.4"}
                      com.oracle.labs.olcut/olcut-config-json    {:mvn/version "5.1.4"}
-                     org.scicloj/scicloj.ml.smile              {:mvn/version "7.4.4"}}}
+                     org.scicloj/scicloj.ml.smile          {:git/url "https://github.com/scicloj/scicloj.ml.smile"
+                                                            :git/sha "b302bd8846a5f99abfb92276c3b8c09fd91b4a92"}
+                     ;{:mvn/version "7.4.4"}
+                     }}
   
   :outdated {;; Note that it is `:deps`, not `:extra-deps`
              :deps {com.github.liquidz/antq {:mvn/version "RELEASE"}}

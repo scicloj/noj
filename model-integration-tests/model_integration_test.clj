@@ -13,7 +13,9 @@
    [taoensso.nippy :as nippy]
    [tech.v3.dataset :as ds]
    [tech.v3.dataset.categorical :as ds-cat]
-   [tech.v3.dataset.modelling :as ds-mod])
+   [tech.v3.dataset.modelling :as ds-mod]
+   [scicloj.ml.tribuo]
+   )
   (:import
    [org.tribuo.classification.libsvm SVMClassificationType$SVMMode]
    [org.slf4j.bridge SLF4JBridgeHandler]

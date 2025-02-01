@@ -243,7 +243,7 @@ split
 (kindly/check = 0.6026936026936027)
 
 ;; ## Logistic regression
-;; Next model to use is Logistic Regression
+;; Next model to use is Logistic Regression from Tribuo
 
 (require '[scicloj.ml.tribuo])
 
