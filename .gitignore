@@ -42,3 +42,5 @@ test/noj_book/
 .venv/*
 !.venv/.keep
 docs/
+
+.ipynb_checkpoints/
