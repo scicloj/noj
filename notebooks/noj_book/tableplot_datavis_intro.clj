@@ -7,6 +7,7 @@
 (ns noj-book.tableplot-datavis-intro
   (:require [scicloj.tableplot.v1.plotly :as plotly]
             [tablecloth.api :as tc]
+            [tablecloth.column.api :as tcc]
             [noj-book.datasets :as datasets]))
 
 ;; ## Introduction
@@ -70,6 +71,15 @@ datasets/iris
 
 ;; This plot shows a clearer separation between species based on petal measurements compared to sepal measurements.
 
+;; ### Text plots
+;; In certain cases, it might be useful to label the datapoints
+(-> datasets/iris
+    (tc/map-columns :species-short [:species] #(subs % 0 2))
+    (plotly/layer-text
+     {:=x :petal-length
+      :=y :petal-width
+      :=text :species-short}))
+
 ;; ## Combining Sepal and Petal Measurements
 
 ;; We can create a scatter plot matrix (SPLOM) to visualize the relationships between all pairs of variables.
@@ -105,14 +115,29 @@ datasets/iris
       :=histogram-nbins 20
       :=mark-opacity 0.7}))
 
+;; ## Density Plots
+;; Another way to visualize the distribution of a variable is with a density plot. These can also be colored by species.
+(-> datasets/iris
+    (plotly/layer-density
+     {:=x :sepal-length
+      :=color :species}))
+
+;; ## Bar Charts
+(-> datasets/iris
+    (tc/group-by [:species])
+    (tc/aggregate {:mean-width #(tcc/mean (:sepal-width %))})
+    (plotly/layer-bar
+     {:=x :species
+      :=y :mean-width}))
+
 ;; ## Box Plots
 
 ;; Box plots are useful for comparing distributions across categories.
 
 (-> datasets/iris
-    (plotly/layer-boxplot
-     {:=y :sepal-length
-      :=x :species}))
+(plotly/layer-boxplot
+ {:=y :sepal-length
+  :=x :species}))
 
 ;; This box plot shows the distribution of `sepal-length` for each species.
 
@@ -121,23 +146,23 @@ datasets/iris
 ;; Violin plots provide a richer representation of the distribution.
 
 (-> datasets/iris
-    (plotly/layer-violin
-     {:=y :sepal-length
-      :=x :species
-      :=box-visible true
-      :=meanline-visible true}))
+(plotly/layer-violin
+ {:=y :sepal-length
+  :=x :species
+  :=box-visible true
+  :=meanline-visible true}))
 
 ;; ## Scatter Plot with Trend Lines
 
 ;; We can add a smoothing layer to show trend lines in the data.
 
 (-> datasets/iris
-    (plotly/base
-     {:=x :sepal-length
-      :=y :sepal-width
-      :=color :species})
-    plotly/layer-point
-    plotly/layer-smooth)
+(plotly/base
+ {:=x :sepal-length
+  :=y :sepal-width
+  :=color :species})
+plotly/layer-point
+plotly/layer-smooth)
 
 ;; This plot shows a scatter plot of sepal measurements with trend lines added for each species.
 
@@ -148,32 +173,44 @@ datasets/iris
 ;; ### Changing Marker Sizes
 
 (-> datasets/iris
-    (plotly/layer-point
-     {:=x :sepal-length
-      :=y :sepal-width
-      :=color :species
-      :=symbol :species
-      :=mark-size 15}))
+(plotly/layer-point
+ {:=x :sepal-length
+  :=y :sepal-width
+  :=color :species
+  :=symbol :species
+  :=mark-size 15}))
 
 ;; ### Changing Marker Color (for all marks)
 
 (-> datasets/iris
-    (plotly/layer-point
-     {:=x :sepal-length
-      :=y :sepal-width
-      :=symbol :species
-      :=mark-size 15
-      :=mark-color :darkblue}))
+(plotly/layer-point
+ {:=x :sepal-length
+  :=y :sepal-width
+  :=symbol :species
+  :=mark-size 15
+  :=mark-color :darkblue}))
 
 ;; ### Adjusting Opacity
 
 (-> datasets/iris
-    (plotly/layer-point
-     {:=x :sepal-length
-      :=y :sepal-width
-      :=color :species
-      :=mark-size 15
-      :=mark-opacity 0.6}))
+(plotly/layer-point
+ {:=x :sepal-length
+  :=y :sepal-width
+  :=color :species
+  :=mark-size 15
+  :=mark-opacity 0.6}))
+
+;; ### Changing axis titles
+;; If you desire different axis titles than the variable names, those can be changed as well: 
+(-> datasets/iris
+(plotly/layer-point
+ {:=x :sepal-length
+  :=y :sepal-width
+  :=color :species
+  :=mark-size 15
+  :=mark-opacity 0.6
+  :=x-title "Sepal length"
+  :=y-title "Sepal width"}))
 
 ;; ## 3d Scatter Plot
 
@@ -202,12 +239,14 @@ datasets/iris
 
 ;; ### Basic Functions
 
+;; - `plotly/base`: Specifies common parameters of layers.
 ;; - `plotly/layer-point`: Adds a scatter plot layer with points.
 ;; - `plotly/layer-line`: Adds a line plot layer.
 ;; - `plotly/layer-bar`: Adds a bar plot layer.
 ;; - `plotly/layer-boxplot`: Adds a box plot layer.
 ;; - `plotly/layer-violin`: Adds a violin plot layer.
 ;; - `plotly/layer-histogram`: Adds a histogram layer.
+;; - `plotly/layer-density`: Adds a density plot layer.
 ;; - `plotly/layer-smooth`: Adds a smoothing layer (trend line).
 ;; - `plotly/splom`: Creates a scatter plot matrix (SPLOM).
 
@@ -226,6 +265,10 @@ datasets/iris
 ;; - `:=histogram-nbins`: Number of bins in the x-axis for histograms.
 ;; - `:=box-visible`: Whether to show box plot inside violin plots.
 ;; - `:=meanline-visible`: Whether to show mean line in violin plots.
+;; - `:=x-title`: The title of the x-axis.
+;; - `:=y-title`: The title of the y-axis.
+
+;; For a complete list of parameters, see the [Plotly API reference](https://scicloj.github.io/tableplot/tableplot_book.plotly_reference.html#substitution-keys)
 
 ;; ### Composing Plots
 
@@ -241,12 +284,12 @@ datasets/iris
 ;; sharing parameters defined in  `base`.
 
 (comment
-  (-> dataset
-      (plotly/base
-       {:=x :x-variable
-        :=y :y-variable})
-      (plotly/layer-point {... ...})
-      (plotly/layer-smooth {... ...})))
+(-> dataset
+    (plotly/base
+     {:=x :x-variable
+      :=y :y-variable})
+    (plotly/layer-point {... ...})
+    (plotly/layer-smooth {... ...})))
 
 ;; ## References
 
