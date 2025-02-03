@@ -1,4 +1,13 @@
-;; # Smile classification models reference - DRAFT 🛠
+;; # Smile classification models reference
+
+;; As discussed in the [Machine Learning](../noj_book.ml_basic.html) chapter,
+;; this book contains reference chapters for machine learning models
+;; that can be registered in [metamorph.ml](https://github.com/scicloj/metamorph.ml).
+
+;; This specific chapter focuses on classification models of
+;; [Smile](https://haifengl.github.io/) version 2.6,
+;; which are wrapped by
+;; [scicloj.ml.smile](https://github.com/scicloj/scicloj.ml.smile).
 
 ;; Note that this chapter reqiures `scicloj.ml.smile` as an additional
 ;; dependency to Noj.

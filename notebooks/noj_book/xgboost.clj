@@ -1,4 +1,11 @@
-;; # Xgboost model reference - DRAFT 🛠
+;; # Xgboost model reference
+
+;; As discussed in the [Machine Learning](../noj_book.ml_basic.html) chapter,
+;; this book contains reference chapters for machine learning models
+;; that can be registered in [metamorph.ml](https://github.com/scicloj/metamorph.ml).
+
+;; This specific chapter focuses on the [XGBoost](https://en.wikipedia.org/wiki/XGBoost)
+;; algorithm provided by [scicloj.ml.xgboost](https://github.com/scicloj/scicloj.ml.xgboost).
 
 ^:kindly/hide-code
 (ns noj-book.xgboost

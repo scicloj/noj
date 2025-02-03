@@ -266,8 +266,10 @@ ctx-after-train
 ;;  and nothing else changes, for example drop columns.
 
 ;; While most metamorph compliant operations behave the same in  
-;; :fit and :transform, there are some which do behave differently.
-;; They have a certain notion of "fit" and "transform".
+;; `:fit` and `:transform`, there are some which do behave differently.
+;; They have a certain notion of "fit" and "transform",
+;; that determines the way their behavior changse between these
+;; two modes.
 ;;
 ;; They are therefore called "transformer" and are listed in the 
 ;; "Transformer reference" 
