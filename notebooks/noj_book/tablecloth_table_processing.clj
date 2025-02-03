@@ -1,8 +1,8 @@
 ;; # Table processing with Tablecloth
 
-;; author: Daniel Slutsky
+;; author: Cvetomir Dimov and Daniel Slutsky
 
-;; last change: 2025-01-17
+;; last change: 2025-02-02
 
 ;; [Tablecloth](https://scicloj.github.io/tablecloth/)
 ;; is a table processing library
@@ -259,7 +259,7 @@ some-trips
 
 ;; You will probably not need this detail most times, but it is worth knowing
 ;; that the data actually held by the Column can be accessed as the `.data` field,
-;; and it can be of varying data structures.
+;; and it can be of varying data structures (see [list of all datatypes](https://scicloj.github.io/tablecloth/#datatypes)).
 
 ;; For example:
 
@@ -293,6 +293,42 @@ some-trips
 ;; Here we rely on the "lazy and noncaching"
 ;; semantics of the undelying [dtype-next](https://github.com/cnuernber/dtype-next) library,
 ;; which is a topic worth its own tutorial.
+
+;; ## Operations on columns
+;; In the examples with columns above, we used `tcc/*` to multiply the values of a column by a scalar. The result was another column. This operation can be applied to multiple two (or more) columns as well, or a mixture of columns and scalars.
+
+(tcc/* (:start-lat some-trips)
+       (:end-lng some-trips)
+       3
+       4)
+
+;; A [long list](https://cljdoc.org/d/scicloj/tablecloth/7.029.2/api/tablecloth.api) of other operations have been implemented, among which arithmetic operations, trigonometric functions, and various predicates. Note that the `tcc/min` and `tcc/max` functions output a column as well.
+
+(tcc/min (:start-lat some-trips)
+         (:end-lat some-trips))
+
+;; They also work with scalar inputs.
+
+(tcc/min (:start-lat some-trips)
+         100)
+
+(tcc/min (:start-lat some-trips)
+         -100)
+
+;; Other operations produce a scalar as an output. These include various measures of central tendency.
+(-> some-trips
+    :start-lat
+    tcc/mean)
+
+(-> some-trips
+    :end-lat
+    tcc/median)
+
+;; Important operations in this category are functions that reduce over the columns, such as `reduce-*`, `reduce-+`, `reduce-min`,  and `reduce-max`. For example, the following can be used to find the maximum value in a column:
+
+(-> some-trips
+    :start-lng
+    tcc/reduce-max)
 
 ;; ## Summarizing datasets
 
@@ -429,17 +465,21 @@ trips
     (tc/select-columns [:rideable-type :started-at :ended-at])
     (print/print-range 5))
 
-
 ;; ## Adding columns
 
-;; Here we will demonstrate some of the ways to extend a dataset with new columns.
+;; Here we will demonstrate some of the ways to extend a dataset with new columns. For clarity, let us focus on a dataset with just a few of the columns:
+(-> trips
+    (tc/select-columns [:start-lat :end-lat])
+    (print/print-range 5))
 
-;; Let us compute how the bike trips are.
-;; For clarity, let us focus on a dataset with just a few of the columns:
+;; One can create new columns by applying the dataset equivalents to the column operations discussed above. These operations have the same names, but now take a dataset and the name of the new column as additional inputs. For example, the `min` function, when taken from the `tablecloth.api`, can be used as follows:
 
 (-> trips
-    (tc/select-columns [:rideable-type :started-at :ended-at])
+    (tc/select-columns [:start-lat :end-lat])
+    (tc/min :min-lat [:start-lat :end-lat])
     (print/print-range 5))
+
+;; When no built-in operations exist, we can use the functions `tc/map-columns` and `tc/add-columns`.
 
 ;; The `tc/map-columns` function is useful when one needs to apply a function
 ;; to the values in one or more of the existings columns, for every row.
@@ -516,6 +556,28 @@ trips
 preprocessed-trips
 
 ;; ## Grouping and summarizing
+;; For how long is a bike used typically? We can answer this question by using one of the built-in summarizing operations. These are equivalent to the column operations that output a scalar value, but require the name of the column that we use as input.
+
+(-> preprocessed-trips
+    (tc/median :duration-in-minutes))
+
+;; This gives us a summary measure over the entire dataset. Alternatively, we can group by the values in one of the columns. 
+
+(-> preprocessed-trips
+    (tc/group-by [:rideable-type])
+    (print/print-range 5))
+
+;; The resulting dataset is a dataset of a special kind, a grouped dataset.
+;; Its `:data` column contains whole datasets, which are the groups.
+;; In our case, these are the groups of bike trips starting in a given hour,
+;; for every hour throughout the day.
+
+;; We can then apply an operation conditional on the groups.
+(-> preprocessed-trips
+    (tc/group-by [:rideable-type])
+    (tc/mean :duration-in-minutes))
+
+;; More generally, we can use `tc/aggregate` to apply an arbitrary summary function.
 
 ;; How does bike usage change througout the day?
 
@@ -526,11 +588,6 @@ preprocessed-trips
 (-> preprocessed-trips
     (tc/group-by [:hour])
     (print/print-range 5))
-
-;; The resulting dataset is a dataset of a special kind, a grouped dataset.
-;; Its `:data` column contains whole datasets, which are the groups.
-;; In our case, these are the groups of bike trips starting in a given hour,
-;; for every hour throughout the day.
 
 ;; Now, we can aggregate over the groups to recieve a summary.
 ;; The resulting summary dataset will no longer be a grouped dataset.
@@ -547,3 +604,5 @@ preprocessed-trips
 ;; We can see a peak of usage between 17:00 to 18:00
 ;; and a possibly slight tendendcy for longer trips (in time)
 ;; around the afternoon hours.
+
+;; For further examples of summarizing, see the [Tablecloth aggregate documentation](https://scicloj.github.io/tablecloth/#aggregate).
