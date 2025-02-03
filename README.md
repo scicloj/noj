@@ -13,7 +13,11 @@ Noj is a library that does not add any API of its own.
 It includes the [underlying libraries](https://scicloj.github.io/noj/noj_book.underlying_libraries.html)
 as dependencies, and adds documentation and integration tests (which are mostly derived from the documentation, thus verifying its correctness).
 
-The included libraries either use [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset) directly for tabular data structures or provide high interoperability with it.
+The included libraries 
+* use [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset) directly for tabular data structures or provide high interoperability with it
+* support [kindly](https://github.com/scicloj/kindly) for visualisations of data
+
+
 
 |||
 |-|-|
