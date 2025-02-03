@@ -8,7 +8,7 @@
         aerial.hanami/aerial.hanami               {:mvn/version "0.20.1"}
         org.scicloj/tableplot                     {:mvn/version "1-beta9.1"}
         org.scicloj/metamorph.ml                  {:git/url "https://github.com/scicloj/metamorph.ml"
-                                                   :git/sha "6813b48ef0c090d41131da8fc4fd548f5f3973b0"}
+                                                   :git/sha "79a3d1aeb88b8758e7e2701419ced54fc6d35b0d"}
         ;{:mvn/version "0.12"}
         org.scicloj/sklearn-clj                   {:git/url "https://github.com/scicloj/sklearn-clj"
                                                    :git/sha "5188433c72710485fe2816be2f45fd1001bad6d7"}
