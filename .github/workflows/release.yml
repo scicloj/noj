@@ -28,16 +28,16 @@ jobs:
            distribution: 'zulu'
            java-version: '17'
 
-        - name: Install clojure tools
-          uses: DeLaGuardo/setup-clojure@13.1
-          with:
+       - name: Install clojure tools
+         uses: DeLaGuardo/setup-clojure@13.1
+         with:
             cli: 1.12.0.1495
 
-        - name: create clojupyter kernel
-          run: clojure -T:build create-clojupyter-kernel
+       - name: create clojupyter kernel
+         run: clojure -T:build create-clojupyter-kernel
 
              
-        - name: Release
-        uses: softprops/action-gh-release@v2
-        with:
+       - name: Release
+         uses: softprops/action-gh-release@v2
+         with:
           files: target/*.jar    
