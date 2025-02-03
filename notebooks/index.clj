@@ -50,9 +50,19 @@ directly for tabular data structures or provide high interoperability with it.
 |Dev chat|[#noj-dev](https://clojurians.zulipchat.com/#narrow/stream/321125-noj-dev) at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)|
 |User chat|[#data-science](https://clojurians.zulipchat.com/#narrow/stream/151924-data-science) at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)|
 
-## Getting started
-🎥📖 a revised version is coming soon🌟
+## Video tutorials
+
 ")
+
+
+;; ### From raw data to a blog post, 2025-01-24
+;; * 📖 [notebook](https://scicloj.github.io/noj-v2-getting-started/)
+;; * 📁 [repo](https://github.com/scicloj/noj-v2-getting-started)
+;; * 💾 [data source - the Clojure Events Calendar Feed](https://clojureverse.org/t/the-clojure-events-calendar-feed-turns-2/)
+;; * 💡 main topics: Tablcloth (processing), Tableplot (datavis), Clay (notebooking), Emacs, CIDER
+^:kindly/hide-code
+(kind/video
+ {:youtube-id "vnvcKtHHMVQ"})
 
 ;; ## Chapters of this book
 

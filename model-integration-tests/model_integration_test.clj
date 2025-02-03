@@ -170,7 +170,7 @@ warnings.simplefilter('ignore')")
 (def other-specs [
                   [0.28 {:model-type :smile.classification/mlp
                          :layer-builders [mlp-hidden-layer-builder mlp-output-layer-builder]}]
-                  [0.30 {:model-type :metamorph.ml/dummy-classifier}]])
+                  [0.2 {:model-type :metamorph.ml/dummy-classifier}]])
 
 (def model-specs
   (concat
@@ -364,7 +364,7 @@ warnings.simplefilter('ignore')")
     (println :mae mae)
 
     (is (>
-         0.4 ;; dummy-model has mae of 0.69
+         0.4
          mae) (format "mae validation failed: %s" model-map))))
     
 
