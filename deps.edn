@@ -88,10 +88,12 @@
              :main-opts ["-m" "antq.core"]}
   :clojupyter {:extra-deps {clojupyter/clojupyter
 
-                            ;{:git/url "https://github.com/clojupyter/clojupyter"
-                             ;:git/sha "3fb4f11c735e9f1bf4e6c8ed99e9ff47808eca18"}
-                            {:git/url "https://github.com/behrica/clojupyter"
-                             :git/sha "15807a1842a34762d4dd683e9694f01f3fc2192f"}}
+                            {:git/url "https://github.com/clojupyter/clojupyter"
+                             :git/sha "0f8ad0ca08a52eca32824035b9b6da28a724dd74"}
+                            ;{:git/url "https://github.com/behrica/clojupyter"
+                            ;:git/sha "15807a1842a34762d4dd683e9694f01f3fc2192f"}
+               
+               }
                
                
                             ;{:mvn/version "0.4.332"}
