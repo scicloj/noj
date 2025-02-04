@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file. This change
 
 ## unreleased
 - updated ML related libs and tests for methamorph.ml 1.0
+- updated deps: Tableplot and Clay
 
 ## [2-beta5.1] - 2025-01-16
 - updated deps (Tableplot)
