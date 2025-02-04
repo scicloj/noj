@@ -135,9 +135,9 @@ datasets/iris
 ;; Box plots are useful for comparing distributions across categories.
 
 (-> datasets/iris
-(plotly/layer-boxplot
- {:=y :sepal-length
-  :=x :species}))
+    (plotly/layer-boxplot
+     {:=y :sepal-length
+      :=x :species}))
 
 ;; This box plot shows the distribution of `sepal-length` for each species.
 
@@ -146,23 +146,23 @@ datasets/iris
 ;; Violin plots provide a richer representation of the distribution.
 
 (-> datasets/iris
-(plotly/layer-violin
- {:=y :sepal-length
-  :=x :species
-  :=box-visible true
-  :=meanline-visible true}))
+    (plotly/layer-violin
+     {:=y :sepal-length
+      :=x :species
+      :=box-visible true
+      :=meanline-visible true}))
 
 ;; ## Scatter Plot with Trend Lines
 
 ;; We can add a smoothing layer to show trend lines in the data.
 
 (-> datasets/iris
-(plotly/base
- {:=x :sepal-length
-  :=y :sepal-width
-  :=color :species})
-plotly/layer-point
-plotly/layer-smooth)
+    (plotly/base
+     {:=x :sepal-length
+      :=y :sepal-width
+      :=color :species})
+    plotly/layer-point
+    plotly/layer-smooth)
 
 ;; This plot shows a scatter plot of sepal measurements with trend lines added for each species.
 
@@ -173,44 +173,44 @@ plotly/layer-smooth)
 ;; ### Changing Marker Sizes
 
 (-> datasets/iris
-(plotly/layer-point
- {:=x :sepal-length
-  :=y :sepal-width
-  :=color :species
-  :=symbol :species
-  :=mark-size 15}))
+    (plotly/layer-point
+     {:=x :sepal-length
+      :=y :sepal-width
+      :=color :species
+      :=symbol :species
+      :=mark-size 15}))
 
 ;; ### Changing Marker Color (for all marks)
 
 (-> datasets/iris
-(plotly/layer-point
- {:=x :sepal-length
-  :=y :sepal-width
-  :=symbol :species
-  :=mark-size 15
-  :=mark-color :darkblue}))
+    (plotly/layer-point
+     {:=x :sepal-length
+      :=y :sepal-width
+      :=symbol :species
+      :=mark-size 15
+      :=mark-color :darkblue}))
 
 ;; ### Adjusting Opacity
 
 (-> datasets/iris
-(plotly/layer-point
- {:=x :sepal-length
-  :=y :sepal-width
-  :=color :species
-  :=mark-size 15
-  :=mark-opacity 0.6}))
+    (plotly/layer-point
+     {:=x :sepal-length
+      :=y :sepal-width
+      :=color :species
+      :=mark-size 15
+      :=mark-opacity 0.6}))
 
 ;; ### Changing axis titles
 ;; If you desire different axis titles than the variable names, those can be changed as well: 
 (-> datasets/iris
-(plotly/layer-point
- {:=x :sepal-length
-  :=y :sepal-width
-  :=color :species
-  :=mark-size 15
-  :=mark-opacity 0.6
-  :=x-title "Sepal length"
-  :=y-title "Sepal width"}))
+    (plotly/layer-point
+     {:=x :sepal-length
+      :=y :sepal-width
+      :=color :species
+      :=mark-size 15
+      :=mark-opacity 0.6
+      :=x-title "Sepal length"
+      :=y-title "Sepal width"}))
 
 ;; ## 3d Scatter Plot
 
@@ -284,12 +284,12 @@ plotly/layer-smooth)
 ;; sharing parameters defined in  `base`.
 
 (comment
-(-> dataset
-    (plotly/base
-     {:=x :x-variable
-      :=y :y-variable})
-    (plotly/layer-point {... ...})
-    (plotly/layer-smooth {... ...})))
+  (-> dataset
+      (plotly/base
+       {:=x :x-variable
+        :=y :y-variable})
+      (plotly/layer-point {... ...})
+      (plotly/layer-smooth {... ...})))
 
 ;; ## References
 
