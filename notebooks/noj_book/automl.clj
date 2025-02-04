@@ -17,7 +17,8 @@
             [scicloj.metamorph.ml.loss :as loss]
             [scicloj.metamorph.core :as mm]
             [scicloj.metamorph.ml.gridsearch :as gs]
-            [tech.v3.dataset.modelling :as ds-mod]))
+            [tech.v3.dataset.modelling :as ds-mod]
+            [scicloj.ml.tribuo]))
 
 ;; ## The metamorph pipeline abstraction
 ;; When using automl, it is very useful to be able to manage all

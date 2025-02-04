@@ -10,6 +10,7 @@
    [scicloj.metamorph.ml.toydata :as datasets]
    [scicloj.ml.smile.classification]
    [scicloj.ml.smile.regression]
+   [scicloj.ml.tribuo]
    [tablecloth.api :as tc]
    [tech.v3.dataset :as ds]
    [tech.v3.dataset.metamorph :as ds-mm]

@@ -56,7 +56,7 @@
                   {:seed 112723})
    loss/rmse
    :loss
-   {:other-metrices [{:name :r2
+   {:other-metrics [{:name :r2
                       :metric-fn fmstats/r2-determination}]}))
 
 ;; and print the resulting model:
@@ -73,7 +73,7 @@
 
 ;; $R^2$:
 
-(-> evaluations flatten first :test-transform :other-metrices first :metric)
+(-> evaluations flatten first :test-transform :other-metrics first :metric)
 (kindly/check = 0.9094193687523886)
 ;; ## Interaction effects
 
@@ -92,7 +92,7 @@
                   {:seed 112723})
    loss/rmse
    :loss
-   {:other-metrices [{:name :r2
+   {:other-metrics [{:name :r2
                       :metric-fn fmstats/r2-determination}]}))
 
 
@@ -109,7 +109,7 @@
 (kindly/check = 0.933077510748531)
 ;; $R^2$
 
-(-> evaluations flatten first :test-transform :other-metrices first :metric)
+(-> evaluations flatten first :test-transform :other-metrics first :metric)
 (kindly/check = 0.9747551116991899)
 
 ;;$RMSE$ and $R^2$ of the intercation model are sligtly better.
@@ -162,7 +162,7 @@ dm
                   {:seed 112723})
    loss/rmse
    :loss
-   {:other-metrices [{:name :r2
+   {:other-metrics [{:name :r2
                       :metric-fn fmstats/r2-determination}]}))
 
 ;; we get the same metrics as before, (as it is the same model specification):
@@ -172,6 +172,6 @@ dm
 (kindly/check = 0.933077510748531)
 
 (md "$R^2$")
-(-> evaluations-dm flatten first :test-transform :other-metrices first :metric)
+(-> evaluations-dm flatten first :test-transform :other-metrics first :metric)
 (kindly/check = 0.9747551116991899)
 
