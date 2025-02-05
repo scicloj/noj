@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [2-beta6.1] - 2025-02-05
+- updated dep: Tableplot
+
 ## [2-beta6] - 2025-02-05
 - updated ML related libs and tests for methamorph.ml 1.0
 - updated deps: Tableplot and Clay
