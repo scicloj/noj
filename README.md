@@ -9,7 +9,7 @@ Noj gets you started with Clojure for data and science.
 * .. and documentation that shows you how to use the different libraries together
 * (and if you want: a 'devcontainer' setup which is known to work with the native parts of the libraries)
 
-Noj is a library that does not add any API of its own.
+Noj is a Clojure library that is also released as a Jupyter kernel (see below).
 It includes the [underlying libraries](https://scicloj.github.io/noj/noj_book.underlying_libraries.html)
 as dependencies, and adds documentation and integration tests (which are mostly derived from the documentation, thus verifying its correctness).
 
@@ -40,6 +40,55 @@ The included libraries
 * 🎥 video: 
 
 [![Noj v2 video tutorial](https://img.youtube.com/vi/vnvcKtHHMVQ/0.jpg)](https://www.youtube.com/watch?v=vnvcKtHHMVQ)
+
+## Noj notebooks for Jupyter
+Noj provides a kernel for [Jupyter](https://jupyter.org) as downloadable Java `.jar` file.
+
+### Run a 'Hello world'
+
+From [noj/releases](https://github.com/scicloj/noj/releases), download  `noj-<version>-clojupyter.jar` into a local directory of your choice (replacing `<version>` with e.g. `2-beta6.1`).
+
+In your terminal, switch to that directory and run the following command:
+```
+java -cp noj-2-beta6.1-clojupyter.jar clojupyter.cmdline eval '(str "Hello " "Jupyter!")'
+```
+
+A nice message should appear on your screen. In this way, without having to install the Clojure CLI, you can already run Clojure programs, e.g. some `hello.clj`
+
+```
+java -cp noj-2-beta6.1-clojupyter.jar clojupyter.cmdline eval '(load-file "hello.clj")'
+```
+
+Within such a program-file, you have access to all Noj libraries. Thus you are ready to run the [index.clj](https://raw.githubusercontent.com/scicloj/noj-v2-getting-started/refs/heads/main/notebooks/index.clj) 📖 notebook. However, for a readable output,
+
+### Install Jupyter
+A minimal installation of Jupyter in a local Python environment:
+
+```
+python3 -m venv python_venv
+source python_venv/bin/activate
+python3 -m pip install jupyterlab
+```
+
+### Run Jupyter
+
+Install the kernel
+
+```
+java -cp noj-2-beta6.1-clojupyter.jar clojupyter.cmdline install --jarfile noj-2-beta6.1-clojupyter.jar --ident noj-2-beta6.1
+```
+
+Verify
+
+```
+java -cp noj-2-beta6.1-clojupyter.jar clojupyter.cmdline list-installs
+```
+
+Run Jupyter
+
+```
+jupyter lab
+```
 
 ## License
 
