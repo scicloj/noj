@@ -43,7 +43,7 @@ The included libraries
 
 ## Noj notebooks for Jupyter
 
-Noj provides a kernel for [Jupyter](https://jupyter.org) as downloadable Java `.jar` file. Note that another option is to use the [Noj setup for Colab](https://github.com/qubit55/clojupyter_colab_setup), the hosted Jupyter service. However, to start locally, you
+Noj provides a kernel for [Jupyter](https://jupyter.org) as downloadable Java `.jar` file. We also would like to mention the ongoing efforts to support [Colab](https://github.com/qubit55/clojupyter_colab_setup), the hosted Jupyter service. However, to start with the mature local version, you
 
 ### Run a 'Hello world'
 
