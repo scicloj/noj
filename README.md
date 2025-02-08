@@ -42,7 +42,8 @@ The included libraries
 [![Noj v2 video tutorial](https://img.youtube.com/vi/vnvcKtHHMVQ/0.jpg)](https://www.youtube.com/watch?v=vnvcKtHHMVQ)
 
 ## Noj notebooks for Jupyter
-Noj provides a kernel for [Jupyter](https://jupyter.org) as downloadable Java `.jar` file.
+
+Noj provides a kernel for [Jupyter](https://jupyter.org) as downloadable Java `.jar` file. Note that another option is to use the [Noj setup for Colab](https://github.com/qubit55/clojupyter_colab_setup), the hosted Jupyter service. However, to start locally, you
 
 ### Run a 'Hello world'
 
@@ -53,38 +54,38 @@ In your terminal, switch to that directory and run the following command:
 java -cp noj-2-beta6.1-clojupyter.jar clojupyter.cmdline eval '(str "Hello " "Jupyter!")'
 ```
 
-A nice message should appear on your screen. In this way, without having to install the Clojure CLI, you can already run Clojure programs, e.g. some `hello.clj`
+A nice message should appear on your screen. In this way, without having to install the Clojure CLI, you can run a Clojure program, e.g. some `hello.clj`
 
 ```
 java -cp noj-2-beta6.1-clojupyter.jar clojupyter.cmdline eval '(load-file "hello.clj")'
 ```
 
-Within such a program-file, you have access to all Noj libraries. Thus you are ready to run the [index.clj](https://raw.githubusercontent.com/scicloj/noj-v2-getting-started/refs/heads/main/notebooks/index.clj) 📖 notebook. However, for a readable output,
+that already has access to all Noj libraries. However, for a more readable output of your Clojure program files,
 
 ### Install Jupyter
-A minimal installation of Jupyter in a local Python environment:
+
+using a local Python environment:
 
 ```
 python3 -m venv python_venv
 source python_venv/bin/activate
 python3 -m pip install jupyterlab
 ```
+Then, install the
 
-### Run Jupyter
-
-Install the kernel
+### Noj Jupyter Kernel
 
 ```
 java -cp noj-2-beta6.1-clojupyter.jar clojupyter.cmdline install --jarfile noj-2-beta6.1-clojupyter.jar --ident noj-2-beta6.1
 ```
 
-Verify
+Verify,
 
 ```
 java -cp noj-2-beta6.1-clojupyter.jar clojupyter.cmdline list-installs
 ```
 
-Run Jupyter
+and run Jupyter
 
 ```
 jupyter lab
