@@ -60,26 +60,26 @@
 
 ;; ## Setup
 
-;; We create a namespace and require the Tablecloth API namespaces:
-;; The main Dataset API [`tablecloth.api`](https://scicloj.github.io/tablecloth/#dataset-api)
-;; and the Column API [`tablecloth.column.api`](https://scicloj.github.io/tablecloth/#column-api) that we'll see below.
-;; We will also use [`tech.v3.dataset.print`](https://techascent.github.io/tech.ml.dataset/tech.v3.dataset.print.html) to control printing,
-;; `clojure.string` for some string processing,
-;; [Kindly](https://scicloj.github.io/kindly-noted/) to control
-;; the way certain things are displayed,
-;; [Clojure.Java-Time](https://github.com/dm3/clojure.java-time)
-;; for some time calculations, and the [`datetime`](https://cnuernber.github.io/dtype-next/tech.v3.datatype.datetime.html)
-;; namespace of dtype-next. 
+;; We create a namespace and require the following namespaces:
+
+;; * [`tablecloth.api`](https://scicloj.github.io/tablecloth/#dataset-api) - the main Tablecloth Dataset API 
+;; * [`tablecloth.column.api`](https://scicloj.github.io/tablecloth/#column-api) - the Tablecloth Column API 
+;; * [`tech.v3.dataset.print`](https://techascent.github.io/tech.ml.dataset/tech.v3.dataset.print.html) to control printing (from tech.ml.dataset)
+;; * `clojure.string` for string processing
+;; * `clojure.java.io` for file input/output
+;; * `scicloj.kindly.v4.kind` of the [Kindly](https://scicloj.github.io/kindly-noted/) standard to control the way certain values are displayed
+;; * `java-time.api` of [Clojure.Java-Time](https://github.com/dm3/clojure.java-time) for some time calculations
+;; * [`tech.v3.datatype.datetime`](https://cnuernber.github.io/dtype-next/tech.v3.datatype.datetime.html) of date and time operations (from dtype-next) 
 
 (ns noj-book.tablecloth-table-processing
   (:require [tablecloth.api :as tc]
             [tablecloth.column.api :as tcc]
             [tech.v3.dataset.print :as print]
             [clojure.string :as str]
+            [clojure.java.io :as io]
             [scicloj.kindly.v4.kind :as kind]
             [java-time.api :as java-time]
-            [tech.v3.datatype.datetime :as datetime]
-            [clojure.java.io :as io]))
+            [tech.v3.datatype.datetime :as datetime]))
 
 ;; ## Creating a dataset
 
