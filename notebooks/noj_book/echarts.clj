@@ -8,7 +8,6 @@
 
 (ns noj-book.echarts
   (:require [tablecloth.api :as tc]
-            [noj-book.datasets]
             [fastmath.core :as fm]
             [fastmath.stats]
             [scicloj.kindly.v4.kind :as kind]))
@@ -288,12 +287,20 @@ data-for-waterfall
 ;; #### Dataset Preparation
 ;; Before we plot any line charts, it's helpful to prepare the dataset first.
 
+;; We will use the stocks dataset from the 
+;; [TMD's repo](https://github.com/techascent/tech.ml.dataset/tree/master/test/data).
+
+(defonce stocks
+  (tc/dataset
+   "https://raw.githubusercontent.com/techascent/tech.ml.dataset/master/test/data/stocks.csv"
+   {:key-fn keyword}))
+
 ;; This dataset originally contains three columns:
-(tc/head noj-book.datasets/stocks)
+(tc/head stocks)
 
 ;; To make it better serve this tutorial, let's widen it:
 (def reshaped-stocks
-  (-> noj-book.datasets/stocks
+  (-> stocks
       (tc/pivot->wider [:symbol] [:price] {:drop-missing? false})
       (tc/rename-columns keyword)))
 
