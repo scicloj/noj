@@ -91,6 +91,8 @@ and run Jupyter
 jupyter lab
 ```
 
+(Technical note: every notebook starts its own `NREPL` server. For details, ask on [Zulipchat](https://scicloj.github.io/docs/community/chat/))
+
 ## License
 
 Copyright © 2025 Scicloj
