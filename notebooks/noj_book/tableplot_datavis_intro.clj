@@ -8,7 +8,7 @@
   (:require [scicloj.tableplot.v1.plotly :as plotly]
             [tablecloth.api :as tc]
             [tablecloth.column.api :as tcc]
-            [noj-book.datasets :as datasets]))
+            [scicloj.metamorph.ml.rdatasets :as rdatasets]))
 
 ;; ## Introduction
 
@@ -26,7 +26,7 @@
 ;; First, let's look into the Iris dataset we have read
 ;; [in the datasets chapter](./noj_book.datasets).
 
-datasets/iris
+(rdatasets/datasets-iris)
 
 ;; The Iris dataset contains measurements for 150 iris flowers from three species (`setosa`, `versicolor`, `virginica`). The variables are:
 
@@ -40,7 +40,7 @@ datasets/iris
 
 ;; Let's start by creating a simple scatter plot to visualize the relationship between `sepal-length` and `sepal-width`.
 
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/layer-point
      {:=x :sepal-length
       :=y :sepal-width}))
@@ -51,7 +51,7 @@ datasets/iris
 
 ;; To distinguish between the different species, we can add color encoding based on the `species` column.
 
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/layer-point
      {:=x :sepal-length
       :=y :sepal-width
@@ -63,7 +63,7 @@ datasets/iris
 
 ;; Next, let's explore how petal measurements vary across species.
 
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/layer-point
      {:=x :petal-length
       :=y :petal-width
@@ -73,7 +73,7 @@ datasets/iris
 
 ;; ### Text plots
 ;; In certain cases, it might be useful to label the datapoints
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (tc/map-columns :species-short [:species] #(subs % 0 2))
     (plotly/layer-text
      {:=x :petal-length
@@ -84,7 +84,7 @@ datasets/iris
 
 ;; We can create a scatter plot matrix (SPLOM) to visualize the relationships between all pairs of variables.
 
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/splom
      {:=colnames [:sepal-length :sepal-width :petal-length :petal-width]
       :=color :species
@@ -97,7 +97,7 @@ datasets/iris
 
 ;; Let's create histograms to explore the distribution of `sepal-length`.
 
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/layer-histogram
      {:=x :sepal-length
       :=histnorm "count"
@@ -107,7 +107,7 @@ datasets/iris
 
 ;; To see how the distribution of `sepal-length` varies by species, we can add color encoding.
 
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/layer-histogram
      {:=x :sepal-length
       :=color :species
@@ -117,13 +117,13 @@ datasets/iris
 
 ;; ## Density Plots
 ;; Another way to visualize the distribution of a variable is with a density plot. These can also be colored by species.
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/layer-density
      {:=x :sepal-length
       :=color :species}))
 
 ;; ## Bar Charts
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (tc/group-by [:species])
     (tc/aggregate {:mean-width #(tcc/mean (:sepal-width %))})
     (plotly/layer-bar
@@ -134,7 +134,7 @@ datasets/iris
 
 ;; Box plots are useful for comparing distributions across categories.
 
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/layer-boxplot
      {:=y :sepal-length
       :=x :species}))
@@ -145,7 +145,7 @@ datasets/iris
 
 ;; Violin plots provide a richer representation of the distribution.
 
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/layer-violin
      {:=y :sepal-length
       :=x :species
@@ -156,7 +156,7 @@ datasets/iris
 
 ;; We can add a smoothing layer to show trend lines in the data.
 
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/base
      {:=x :sepal-length
       :=y :sepal-width
@@ -172,7 +172,7 @@ datasets/iris
 
 ;; ### Changing Marker Sizes
 
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/layer-point
      {:=x :sepal-length
       :=y :sepal-width
@@ -182,7 +182,7 @@ datasets/iris
 
 ;; ### Changing Marker Color (for all marks)
 
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/layer-point
      {:=x :sepal-length
       :=y :sepal-width
@@ -192,7 +192,7 @@ datasets/iris
 
 ;; ### Adjusting Opacity
 
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/layer-point
      {:=x :sepal-length
       :=y :sepal-width
@@ -202,7 +202,7 @@ datasets/iris
 
 ;; ### Changing axis titles
 ;; If you desire different axis titles than the variable names, those can be changed as well: 
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/layer-point
      {:=x :sepal-length
       :=y :sepal-width
@@ -216,7 +216,7 @@ datasets/iris
 
 ;; We can create a 3d scatter plot to visualize relationships in three dimensions.
 
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/layer-point
      {:=x :sepal-length
       :=y :sepal-width
