@@ -23,8 +23,8 @@
 
 ;; ## Looking into the Iris Dataset
 
-;; First, let's look into the Iris dataset we have read
-;; [in the datasets chapter](./noj_book.datasets).
+;; First, let's look into the Iris dataset using the `scicloj.metamorph.ml.rdatasets` namespace,
+;; that allows us to fetch data from the [Rdatasets](https://vincentarelbundock.github.io/Rdatasets/articles/data.html) collection.
 
 (rdatasets/datasets-iris)
 
