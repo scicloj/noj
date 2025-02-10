@@ -10,7 +10,8 @@
   (:require [tablecloth.api :as tc]
             [fastmath.core :as fm]
             [fastmath.stats]
-            [scicloj.kindly.v4.kind :as kind]))
+            [scicloj.kindly.v4.kind :as kind]
+            [scicloj.metamorph.ml.rdatasets :as rdatasets]))
 
 ;; ## Getting started
 
@@ -490,12 +491,12 @@ reshaped-stocks
 
 ;; Now, let's use a dataset to render more data onto the chart:
 
-(tc/row-count noj-book.datasets/scatter)
+(tc/row-count (rdatasets/openintro-simulated_scatter))
 
 (kind/echarts {:xAxis {}
                :yAxis {}
                :series [{:type :scatter
-                         :data (-> noj-book.datasets/scatter
+                         :data (-> (rdatasets/openintro-simulated_scatter)
                                    (tc/select-columns [:x :y])
                                    (tc/rows :as-vecs))}]})
 
@@ -594,14 +595,14 @@ reshaped-stocks
          tc/dataset)))
 
 ;; For example:
-(-> noj-book.datasets/iris
+(-> (rdatasets/datasets-iris)
     (correlations-dataset [:sepal-length :sepal-width :petal-length :petal-width]))
 
 ;; Visualizing a corrleation matrix as a heatmap:
 
 (let [columns-for-correlations [:sepal-length :sepal-width
                                 :petal-length :petal-width]
-      correlations (-> noj-book.datasets/iris
+      correlations (-> (rdatasets/datasets-iris)
                        (correlations-dataset columns-for-correlations)
                        (tc/select-columns [:coli :colj :corr-round])
                        tc/rows)]
