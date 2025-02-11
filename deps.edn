@@ -7,8 +7,7 @@
         generateme/fastmath                       {:mvn/version "3.0.0-alpha3"}
         aerial.hanami/aerial.hanami               {:mvn/version "0.20.1"}
         org.scicloj/tableplot                     {:mvn/version "1-beta10.1"}
-        org.scicloj/metamorph.ml                  {:git/url "https://github.com/scicloj/metamorph.ml.git"
-                                                   :sha "57ebb355eb3df5d020cd7d162c1fccd110394c2c"}
+        org.scicloj/metamorph.ml                  {:mvn/version "1.1.1"}
         org.scicloj/sklearn-clj                   {:mvn/version "0.5"}
         org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.3.0"}
         
