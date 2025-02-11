@@ -7,7 +7,7 @@
         generateme/fastmath                       {:mvn/version "3.0.0-alpha3"}
         aerial.hanami/aerial.hanami               {:mvn/version "0.20.1"}
         org.scicloj/tableplot                     {:mvn/version "1-beta10.1"}
-        org.scicloj/metamorph.ml                  {:mvn/version "1.0"}
+        org.scicloj/metamorph.ml                  {:mvn/version "1.1.1"}
         org.scicloj/sklearn-clj                   {:mvn/version "0.5"}
         org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.3.0"}
         
@@ -90,11 +90,11 @@
 
                             {:git/url "https://github.com/clojupyter/clojupyter"
                              :git/sha "0f8ad0ca08a52eca32824035b9b6da28a724dd74"}
-                            ;{:git/url "https://github.com/behrica/clojupyter"
-                            ;:git/sha "15807a1842a34762d4dd683e9694f01f3fc2192f"}
+                                        ;{:git/url "https://github.com/behrica/clojupyter"
+                                        ;:git/sha "15807a1842a34762d4dd683e9694f01f3fc2192f"}
+                            
+                            }
                
-               }
                
-               
-                            ;{:mvn/version "0.4.332"}
+                                        ;{:mvn/version "0.4.332"}
                }}}
