@@ -1,4 +1,5 @@
-{:remote-repo {:git-url "https://github.com/scicloj/noj"
+{:favicon     "notebooks/favicon.ico"
+ :remote-repo {:git-url "https://github.com/scicloj/noj"
                :branch "main"}
  :page-layout :full
  :quarto {:format {:html
@@ -10,7 +11,7 @@
                      {:sidebar-width "500px"
                       :body-width "2500px"
                       :margin-width "500px"}
-                    
+
                     }}
           :fontsize "0.9em"
           :code-block-background true
