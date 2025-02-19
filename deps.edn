@@ -1,12 +1,12 @@
 {:paths ["src" "resources"]
  :deps {clojure.java-time/clojure.java-time       {:mvn/version "1.4.3"}
-        scicloj/tablecloth                        {:mvn/version "7.029.2"}
+        scicloj/tablecloth                        {:mvn/version "7.042"}
         org.scicloj/tcutils                       {:mvn/version "0.1.0-alpha2"}
         com.techascent/tmd-parquet                {:mvn/version "1.001"}
-        org.scicloj/kindly                        {:mvn/version "4-beta14"}
+        org.scicloj/kindly                        {:mvn/version "4-beta15"}
         generateme/fastmath                       {:mvn/version "3.0.0-alpha3"}
         aerial.hanami/aerial.hanami               {:mvn/version "0.20.1"}
-        org.scicloj/tableplot                     {:mvn/version "1-beta10.1"}
+        org.scicloj/tableplot                     {:mvn/version "1-beta11"}
         org.scicloj/metamorph.ml                  {:mvn/version "1.1.1"}
         org.scicloj/sklearn-clj                   {:mvn/version "0.5"}
         org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.3.0"}
@@ -31,12 +31,12 @@
         org.scicloj/kind-pyplot                   {:mvn/version "1-beta2.1"}
         scicloj/clojisr                           {:mvn/version "1.0.0"}
 
-        same/ish                                  {:mvn/version "0.1.6"}
+        same/ish                                  {:mvn/version "0.1.7"}
 
         org.babashka/sci                          {:mvn/version "0.9.44"}
         org.mentat/emmy-viewers                   {:mvn/version "0.3.2"}
         
-        org.scicloj/clay                          {:mvn/version "2-beta28"}}
+        org.scicloj/clay                          {:mvn/version "2-beta29"}}
  :aliases
  {:gen-tests {:extra-paths ["build"]}
 
