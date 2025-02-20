@@ -7,7 +7,13 @@
         generateme/fastmath                       {:mvn/version "3.0.0-alpha3"}
         aerial.hanami/aerial.hanami               {:mvn/version "0.20.1"}
         org.scicloj/tableplot                     {:mvn/version "1-beta11"}
-        org.scicloj/metamorph.ml                  {:mvn/version "1.1.1"}
+        org.scicloj/metamorph.ml                  {:mvn/version "1.2"}
+        ;;{:git/url "https://github.com/scicloj/metamorph.ml"
+        ;; :git/sha "d8dbb33ee10e34a23fc072c30e1b4567c1bbfcd8"}
+        
+        
+        
+
         org.scicloj/sklearn-clj                   {:mvn/version "0.5"}
         org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.3.0"}
         
@@ -45,10 +51,15 @@
           :ns-default build}
   :test {:extra-paths ["test" "notebooks"]
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
-                      io.github.cognitect-labs/test-runner {:git/tag "v0.5.1" :git/sha "dfb30dd"}
+                      lambdaisland/kaocha {:mvn/version "1.91.1392"}
                       org.slf4j/slf4j-nop {:mvn/version "2.0.16"}
                       clj-http/clj-http {:mvn/version "3.13.0"}
-                      org.scicloj/scicloj.ml.smile       {:mvn/version "7.5.0"}   }}
+                      org.scicloj/scicloj.ml.smile
+                      {:git/url "https://github.com/scicloj/scicloj.ml.smile"
+                       :git/sha "2dba86745ac9b50470bde0ac3c7754832f32f90f"}
+
+                      ;{:mvn/version "7.5.0"}   
+                      }}
   
   :model-integration-tests
   {:extra-paths ["model-integration-tests" "notebooks"]
@@ -64,8 +75,8 @@
 
                 org.slf4j/slf4j-nop {:mvn/version "2.0.16"}
                 org.slf4j/jul-to-slf4j {:mvn/version "2.0.16"}
-                io.github.cognitect-labs/test-runner
-                {:git/tag "v0.5.1" :git/sha "dfb30dd"}}}
+                lambdaisland/kaocha {:mvn/version "1.91.1392"}
+                }}
 
 
   :dev {:extra-paths ["notebooks"]
@@ -77,7 +88,10 @@
                      org.bytedeco/javacpp {:mvn/version "1.5.4"}
                      com.oracle.labs.olcut/olcut-config-edn    {:mvn/version "5.1.4"}
                      com.oracle.labs.olcut/olcut-config-json    {:mvn/version "5.1.4"}
-                     org.scicloj/scicloj.ml.smile   {:mvn/version "7.5.0"}
+                     org.scicloj/scicloj.ml.smile   
+                     {:git/url "https://github.com/scicloj/scicloj.ml.smile"
+                      :git/sha "2dba86745ac9b50470bde0ac3c7754832f32f90f"}
+                     ;{:mvn/version "7.5.0"}
                      }}
   
   :outdated {;; Note that it is `:deps`, not `:extra-deps`

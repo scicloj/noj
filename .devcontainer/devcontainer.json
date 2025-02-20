@@ -34,7 +34,8 @@
 			[
 				"betterthantomorrow.calva",
 				"streetsidesoftware.code-spell-checker",
-				"zhaouv.vscode-markdown-everywhere"
+				"zhaouv.vscode-markdown-everywhere",
+				"eamodio.gitlens"
 			]
 		}
 	},
@@ -43,6 +44,6 @@
 	"updateContentCommand": {"install python packages": "mkdir -p .venv && poetry install --sync" ,
 	"add link to python executable": "sudo ln -s /usr/bin/python3 /usr/local/bin/python"
 },
-"onCreateCommand": "clojure -Sthreads 1 -A:model-integration-tests:test:dev  -P"		
+"onCreateCommand": "clojure -X:deps prep :aliases [\"model-integration-tests\",\"test\",\"dev\"] && clojure -Sthreads 1 -A:model-integration-tests:test:dev  -P"		
 
 }

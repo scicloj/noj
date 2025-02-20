@@ -1,13 +1,19 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## unreleasesd
+- updated for methamorph.ml 1.2
+- use kaocha for running tests
+
+
 ## [2-beta8] - 2025-02-25
 - update deps (Clay)
 - added Clay's main CLI to the uberjar build
 
+
 ## [2-beta7] - 2025-02-20
 - updated deps (tablecloth, kindly, tableplot, same/ish, clay)
-
+  
 ## [2-beta6.1] - 2025-02-05
 - updated dep: Tableplot
 
