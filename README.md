@@ -41,48 +41,56 @@ The included libraries
 
 [![Noj v2 video tutorial](https://img.youtube.com/vi/vnvcKtHHMVQ/0.jpg)](https://www.youtube.com/watch?v=vnvcKtHHMVQ)
 
-## Noj notebooks for Jupyter
+## Clojure namespaces are Noj notebooks
 
-Noj provides a kernel for [Jupyter](https://jupyter.org) as downloadable Java `.jar` file. The kernel supports most but not all data visualization kinds. We also would like to mention the ongoing efforts to support [Colab](https://github.com/qubit55/clojupyter_colab_setup), the hosted Jupyter service. However, to start with the mature local version, you
+Noj has [Clay](https://github.com/scicloj/clay) included, which takes a Clojure namespace and turns it into a notebook. To get started,
 
 ### Run a 'Hello world'
 
-From [noj/releases](https://github.com/scicloj/noj/releases), download  `noj-<version>-clojupyter.jar` into a local directory of your choice (replacing `<version>` with e.g. `2-beta6.1`).
+From [noj/releases](https://github.com/scicloj/noj/releases), download  `noj-<version>-clojupyter.jar` into a local directory of your choice (replacing `<version>` with e.g. `2-beta8`).
 
 In your terminal, switch to that directory and run the following command:
 ```
-java -cp noj-2-beta6.1-clojupyter.jar clojupyter.cmdline eval '(str "Hello " "Jupyter!")'
+java -cp noj-2-beta8-clojupyter.jar clojupyter.cmdline eval '(str "Hello " "Noj!")'
 ```
 
 A nice message should appear on your screen. In this way, without having to install the Clojure CLI, you can run a Clojure program, e.g. some `hello.clj`
 
 ```
-java -cp noj-2-beta6.1-clojupyter.jar clojupyter.cmdline eval '(load-file "hello.clj")'
+java -cp noj-2-beta8-clojupyter.jar clojupyter.cmdline eval '(load-file "hello.clj")'
 ```
 
 that already has access to all Noj libraries. However, for a more readable output of your Clojure program files,
 
+### Use Clay
+
+Clay renders Clojure files as notebooks in the browser. It live-reloads and watches whole directories. To get started with Clay, type
+
+```
+java -cp noj-2-beta8-clojupyter.jar scicloj.clay.v2.main --help
+```
+
+Clay has no editing environment, folks can keep using the editors they know and love. However, if you look for an editor, maybe it's best to
+
 ### Install Jupyter
 
-using a local Python environment:
+Noj also provides a kernel for [Jupyter](https://jupyter.org). Compared to Clay, the kernel supports most but not all data visualization kinds. We also would like to mention the ongoing efforts to support [Colab](https://github.com/qubit55/clojupyter_colab_setup), the hosted Jupyter service. However, to start with the more mature local version, you best start using a Python environment:
 
 ```
 python3 -m venv python_venv
 source python_venv/bin/activate
 python3 -m pip install jupyterlab
 ```
-Then, install the
-
-### Noj Jupyter Kernel
+Then, install the Noj Jupyter Kernel
 
 ```
-java -cp noj-2-beta6.1-clojupyter.jar clojupyter.cmdline install --jarfile noj-2-beta6.1-clojupyter.jar --ident noj-2-beta6.1
+java -cp noj-2-beta8-clojupyter.jar clojupyter.cmdline install --jarfile noj-2-beta8-clojupyter.jar --ident noj-2-beta8
 ```
 
 Verify,
 
 ```
-java -cp noj-2-beta6.1-clojupyter.jar clojupyter.cmdline list-installs
+java -cp noj-2-beta8-clojupyter.jar clojupyter.cmdline list-installs
 ```
 
 and run Jupyter
