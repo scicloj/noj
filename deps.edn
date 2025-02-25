@@ -7,7 +7,7 @@
         generateme/fastmath                       {:mvn/version "3.0.0-alpha3"}
         aerial.hanami/aerial.hanami               {:mvn/version "0.20.1"}
         org.scicloj/tableplot                     {:mvn/version "1-beta11"}
-        org.scicloj/metamorph.ml                  {:mvn/version "1.1.1"}
+        org.scicloj/metamorph.ml                  {:mvn/version "1.2"}
         org.scicloj/sklearn-clj                   {:mvn/version "0.5"}
         org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.3.0"}
         
@@ -22,8 +22,7 @@
 
         org.tribuo/tribuo-classification-liblinear {:mvn/version "4.3.1"}
         org.tribuo/tribuo-classification-libsvm    {:mvn/version "4.3.1"}
-        org.tribuo/tribuo-classification-sgd       {:mvn/version "4.3.1"}
-        org.tribuo/tribuo-classification-tree      {:mvn/version "4.3.1"}
+        
         org.tribuo/tribuo-classification-xgboost   {:mvn/version "4.3.1"}
 
 
@@ -36,7 +35,7 @@
         org.babashka/sci                          {:mvn/version "0.9.44"}
         org.mentat/emmy-viewers                   {:mvn/version "0.3.2"}
         
-        org.scicloj/clay                          {:mvn/version "2-beta29"}}
+        org.scicloj/clay                          {:mvn/version "2-beta30"}}
  :aliases
  {:gen-tests {:extra-paths ["build"]}
 
