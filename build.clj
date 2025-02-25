@@ -17,7 +17,7 @@
 
 
 (def lib 'org.scicloj/noj)
-(def version "2-beta7")
+(def version "2-beta8")
 (def snapshot (str version "-SNAPSHOT"))
 (def class-dir "target/classes")
 
@@ -98,20 +98,22 @@
   opts)
 
 
-
-  
 (def clojupyter-kernel-file (format "target/%s-%s-clojupyter.jar" (name lib) version))
 
 (defn create-clojupyter-kernel "Create clojupyter kernel with noj" [opts]
   (let [basis (b/create-basis {:aliases [:clojupyter]})]
+    (println "\nCompiling ...")
     (b/compile-clj {:basis basis
-                    :ns-compile ['clojupyter.kernel.core 'clojupyter.cmdline]
+                    :ns-compile '[clojupyter.kernel.core
+                                  clojupyter.cmdline
+                                  scicloj.clay.v2.main]
                     :class-dir class-dir})
-    
+    (println "\nBuilding" clojupyter-kernel-file "...")    
     (b/uber {:uber-file clojupyter-kernel-file
              :class-dir "target/classes"
-             ;:conflict-handlers {:default  :warn }
-             :basis basis})))
+             ;;:conflict-handlers {:default  :warn }
+             :basis basis
+             :main 'scicloj.clay.v2.main})))
 
 
 (defn install-clojupyter-kernel "Install  clojupyter kernel in local Jupyter" [opts]
