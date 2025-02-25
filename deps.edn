@@ -48,7 +48,6 @@
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
                       io.github.cognitect-labs/test-runner {:git/tag "v0.5.1" :git/sha "dfb30dd"}
                       org.slf4j/slf4j-nop {:mvn/version "2.0.16"}
-                      org.scicloj/clay {:mvn/version "2-beta25"}
                       clj-http/clj-http {:mvn/version "3.13.0"}
                       org.scicloj/scicloj.ml.smile       {:mvn/version "7.5.0"}   }}
   
