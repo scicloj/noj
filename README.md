@@ -67,10 +67,10 @@ that already has access to all Noj libraries. However, for a more readable outpu
 Clay renders Clojure files as notebooks in the browser. It live-reloads and watches whole directories. To get started with Clay, type
 
 ```
-java -cp noj-2-beta8-clojupyter.jar scicloj.clay.v2.main --help
+java -jar noj-2-beta8-clojupyter.jar hello.clj -r
 ```
 
-Clay has no editing environment, folks can keep using the editors they know and love. However, if you look for an editor, maybe it's best to
+Clay has no editing environment, folks can keep using the editors they know and love. However, if you look for an editor, one option is to
 
 ### Install Jupyter
 
