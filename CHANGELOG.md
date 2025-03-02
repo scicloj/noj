@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. This change
 ## unreleasesd
 - updated for methamorph.ml 1.2
 - use kaocha for running tests
+- column-names of all datasets under 
+     scicloj.metamorph.ml.toydata
+     scicloj.metamorph.ml.toydata.ggplot
+  are now kebab-cased (ev. breaking change)
 
 
 ## [2-beta8] - 2025-02-25
