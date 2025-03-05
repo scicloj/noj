@@ -27,7 +27,9 @@
         cmds     (b/java-command
                   {:basis     basis
                    :main      'clojure.main
-                   :main-args ["-m" "cognitect.test-runner"]})
+                   :main-args ["-m" "kaocha.runner"
+                               ":tests"]}                  
+                  )
         {:keys [exit]} (b/process cmds)]
     (when-not (zero? exit) (throw (ex-info "Tests failed" {}))))
   opts)
@@ -70,8 +72,8 @@
         cmds     (b/java-command
                   {:basis     basis
                    :main      'clojure.main
-                   :main-args ["-m" "cognitect.test-runner"
-                               "-d" "model-integration-tests"]})
+                   :main-args ["-m" "kaocha.runner"
+                               ":integration-tests" ]})
         {:keys [exit]} (b/process cmds)]
     (when-not (zero? exit) (throw (ex-info "Integration tests failed" {}))))
   opts)
@@ -90,6 +92,7 @@
     (println "\nBuilding" (:jar-file opts) "...")
     (b/jar opts))
   opts)
+
 
 (defn deploy "Deploy the JAR to Clojars." [opts]
   (let [{:keys [jar-file] :as opts} (jar-opts opts)]
