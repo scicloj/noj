@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [2-beta9] - unreleased
+- updated deps (Clay)
+
 ## [2-beta8] - 2025-02-25
 - update deps (Clay)
 - added Clay's main CLI to the uberjar build
