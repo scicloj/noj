@@ -340,7 +340,7 @@ warnings.simplefilter('ignore')")
   (->
    (data/iris-ds)
    (tc/drop-columns [:species])
-   (ds-mod/set-inference-target :sepal_length)))
+   (ds-mod/set-inference-target :sepal-length)))
 
 
 (def split
@@ -361,8 +361,8 @@ warnings.simplefilter('ignore')")
 (defn assert-mae [model model-map]
   (let [mae
         (loss/mae
-         (-> iris-ds-regression--test :sepal_length)
-         (-> (ml/predict iris-ds-regression--test model) :sepal_length))]
+         (-> iris-ds-regression--test :sepal-length)
+         (-> (ml/predict iris-ds-regression--test model) :sepal-length))]
     (println :mae mae)
 
     (is (>

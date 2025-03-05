@@ -26,8 +26,7 @@
                                      :output_format (name format)}}))
 
 (def iris-test
-  (tc/dataset
-   "https://raw.githubusercontent.com/scicloj/metamorph.ml/main/test/data/iris.csv" {:key-fn keyword}))
+  (datasets/iris-ds))
 
 
 
@@ -36,7 +35,7 @@
 (def iris-std
   (mm/pipe-it
    iris-test
-   (preprocessing/std-scale [:sepal_length :sepal_width :petal_length :petal_width] {})))
+   (preprocessing/std-scale [:sepal-length :sepal-width :petal-length :petal-width] {})))
 
 
 
@@ -291,19 +290,19 @@ body mass index (bmi) and a diabetes indicator.")
     ^:kindly/hide-code
     (def iris (datasets/iris-ds))
 
-    (kind/vega-lite (surface-plot iris [:sepal_length :sepal_width] rf-pipe :smile.classification/random-forest))
+    (kind/vega-lite (surface-plot iris [:sepal-length :sepal-width] rf-pipe :smile.classification/random-forest))
 
     (kind/vega-lite
-     (surface-plot iris-std [:sepal_length :petal_length] rf-pipe :smile.classification/random-forest))
+     (surface-plot iris-std [:sepal-length :petal-length] rf-pipe :smile.classification/random-forest))
 
     (kind/vega-lite
-     (surface-plot iris-std [:sepal_length :petal_width] rf-pipe :smile.classification/random-forest))
+     (surface-plot iris-std [:sepal-length :petal-width] rf-pipe :smile.classification/random-forest))
     (kind/vega-lite
-     (surface-plot iris-std [:sepal_width :petal_length] rf-pipe :smile.classification/random-forest))
+     (surface-plot iris-std [:sepal-width :petal-length] rf-pipe :smile.classification/random-forest))
     (kind/vega-lite
-     (surface-plot iris-std [:sepal_width :petal_width] rf-pipe :smile.classification/random-forest))
+     (surface-plot iris-std [:sepal-width :petal-width] rf-pipe :smile.classification/random-forest))
     (kind/vega-lite
-     (surface-plot iris-std [:petal_length :petal_width] rf-pipe :smile.classification/random-forest)))
+     (surface-plot iris-std [:petal-length :petal-width] rf-pipe :smile.classification/random-forest)))
    :smile.classification/knn
    (->eval-code
     ^:kindly/hide-code

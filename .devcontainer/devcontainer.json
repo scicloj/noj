@@ -34,7 +34,8 @@
 			[
 				"betterthantomorrow.calva",
 				"streetsidesoftware.code-spell-checker",
-				"zhaouv.vscode-markdown-everywhere"
+				"zhaouv.vscode-markdown-everywhere",
+				"eamodio.gitlens"
 			]
 		}
 	},
