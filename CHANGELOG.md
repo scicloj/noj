@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file. This change
 
 ## [2-beta9] - unreleased
 - updated deps (Clay, methamorph.ml)
+- added dependency: slf4j-simple
 
 ## [2-beta8] - 2025-02-25
 - update deps (Clay)
