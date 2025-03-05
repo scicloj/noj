@@ -1,14 +1,15 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## unreleasesd
+## [2-beta9] - 2025-03-05
+- updated deps (Clay 2-beta31.1, methamorph.ml 1.2)
+- added dependency: slf4j-simple
 - updated for methamorph.ml 1.2
 - use kaocha for running tests
 - column-names of all datasets under 
      scicloj.metamorph.ml.toydata
      scicloj.metamorph.ml.toydata.ggplot
   are now kebab-cased (ev. breaking change)
-
 
 ## [2-beta8] - 2025-02-25
 - update deps (Clay)
