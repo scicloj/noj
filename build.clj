@@ -101,7 +101,7 @@
   opts)
 
 
-(def clojupyter-kernel-file (format "target/%s-%s-clojupyter.jar" (name lib) version))
+(def uber-file (format "target/%s-%s-uber.jar" (name lib) version))
 
 (defn create-clojupyter-kernel "Create clojupyter kernel with noj" [opts]
   (let [basis (b/create-basis {:aliases [:clojupyter]})]
@@ -111,8 +111,8 @@
                                   clojupyter.cmdline
                                   scicloj.clay.v2.main]
                     :class-dir class-dir})
-    (println "\nBuilding" clojupyter-kernel-file "...")    
-    (b/uber {:uber-file clojupyter-kernel-file
+    (println "\nBuilding" uber-file "...")    
+    (b/uber {:uber-file uber-file
              :class-dir "target/classes"
              ;;:conflict-handlers {:default  :warn }
              :basis basis
@@ -128,7 +128,7 @@
                    :main-args ["-m" "clojupyter.cmdline"
                                "install"
                                "--ident" (str "noj-jupyter-" version)
-                               "--jarfile" clojupyter-kernel-file]})
+                               "--jarfile" uber-file]})
         {:keys [exit]} (b/process cmds)]
     (when-not (zero? exit) (throw (ex-info "Install clojupyter kernel failed" {})))))
   
