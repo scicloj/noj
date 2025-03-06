@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [2-beta9.1] - 2025-03-06
+- a new version following an update of the CI process
+
 ## [2-beta9] - 2025-03-05
 - updated deps (Clay 2-beta31.1, methamorph.ml 1.2)
 - added dependency: slf4j-simple
