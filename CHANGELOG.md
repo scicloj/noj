@@ -2,8 +2,9 @@
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
 ## unreleased
-- fixes https://github.com/scicloj/noj/issues/144
+- fixed #144 - tableplot support in clojupyter
 - changed the name of the deployed uberjar
+- removed slf4j-simple from the main deps, but added it to the uberjar
 
 ## [2-beta9.1] - 2025-03-06
 - a new version following an update of the CI process
