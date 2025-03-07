@@ -10,9 +10,9 @@
         org.scicloj/metamorph.ml                  {:mvn/version "1.2"}
         org.scicloj/sklearn-clj                   {:mvn/version "0.5"}
         org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.3.0"}
-        
+
         org.scicloj/scicloj.ml.tribuo              {:mvn/version "0.2"}
-        
+
         org.tribuo/tribuo-regression-liblinear    {:mvn/version "4.3.1"}
         org.tribuo/tribuo-regression-libsvm       {:mvn/version "4.3.1"}
         org.tribuo/tribuo-regression-sgd          {:mvn/version "4.3.1"}
@@ -30,10 +30,10 @@
         scicloj/clojisr                           {:mvn/version "1.0.0"}
 
         same/ish                                  {:mvn/version "0.1.7"}
-        
+
         org.babashka/sci                          {:mvn/version "0.9.44"}
         org.mentat/emmy-viewers                   {:mvn/version "0.3.2"}
-        
+
         org.scicloj/clay                          {:mvn/version "2-beta31.1"}
 
         org.clojars.kjw/slf4j-simple {:mvn/version "1.5.5"}}
@@ -50,9 +50,8 @@
                       lambdaisland/kaocha {:mvn/version "1.91.1392"}
                       org.slf4j/slf4j-nop {:mvn/version "2.0.16"}
                       clj-http/clj-http {:mvn/version "3.13.0"}
-                      org.scicloj/scicloj.ml.smile {:mvn/version "7.5.2"}   
-                      }}
-  
+                      org.scicloj/scicloj.ml.smile {:mvn/version "7.5.2"}}}
+
   :model-integration-tests
   {:extra-paths ["model-integration-tests" "notebooks"]
    :extra-deps {;; are needed by certain smile models
@@ -62,13 +61,12 @@
                 org.bytedeco/openblas {:mvn/version "0.3.10-1.5.4"}
                 org.bytedeco/javacpp {:mvn/version "1.5.4"}
                 org.scicloj/scicloj.ml.smile {:mvn/version "7.5.2"}
-                
+
                 com.taoensso/nippy {:mvn/version "3.4.2"}
 
                 org.slf4j/slf4j-nop {:mvn/version "2.0.16"}
                 org.slf4j/jul-to-slf4j {:mvn/version "2.0.16"}
-                lambdaisland/kaocha {:mvn/version "1.91.1392"}
-                }}
+                lambdaisland/kaocha {:mvn/version "1.91.1392"}}}
 
 
   :dev {:extra-paths ["notebooks"]
@@ -80,21 +78,17 @@
                      org.bytedeco/javacpp {:mvn/version "1.5.4"}
                      com.oracle.labs.olcut/olcut-config-edn    {:mvn/version "5.1.4"}
                      com.oracle.labs.olcut/olcut-config-json    {:mvn/version "5.1.4"}
-                     org.scicloj/scicloj.ml.smile  {:mvn/version "7.5.2"}
-                     }}
-  
+                     org.scicloj/scicloj.ml.smile  {:mvn/version "7.5.2"}}}
+
   :outdated {;; Note that it is `:deps`, not `:extra-deps`
              :deps {com.github.liquidz/antq {:mvn/version "RELEASE"}}
              :main-opts ["-m" "antq.core"]}
   :clojupyter {:extra-deps {clojupyter/clojupyter
 
-                            {:git/url "https://github.com/clojupyter/clojupyter"
-                             :git/sha "0f8ad0ca08a52eca32824035b9b6da28a724dd74"}
-                                        ;{:git/url "https://github.com/behrica/clojupyter"
-                                        ;:git/sha "15807a1842a34762d4dd683e9694f01f3fc2192f"}
-                            
-                            }
-               
-               
+                            ;{:git/url "https://github.com/clojupyter/clojupyter"
+                             ;:git/sha "0f8ad0ca08a52eca32824035b9b6da28a724dd74"}
+                             {:git/url "https://github.com/behrica/clojupyter"
+                              :git/sha "5a75f897243714a0a7d91e30ab28eac9982f260c"}}
+
                                         ;{:mvn/version "0.4.332"}
                }}}
