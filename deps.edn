@@ -36,7 +36,7 @@
 
         org.scicloj/clay                          {:mvn/version "2-beta31.1"}
 
-        org.clojars.kjw/slf4j-simple {:mvn/version "1.5.5"}}
+        }
  :aliases
  {:gen-tests {:extra-paths ["build"]}
 
@@ -78,17 +78,25 @@
                      org.bytedeco/javacpp {:mvn/version "1.5.4"}
                      com.oracle.labs.olcut/olcut-config-edn    {:mvn/version "5.1.4"}
                      com.oracle.labs.olcut/olcut-config-json    {:mvn/version "5.1.4"}
-                     org.scicloj/scicloj.ml.smile  {:mvn/version "7.5.2"}}}
+                     org.scicloj/scicloj.ml.smile  {:mvn/version "7.5.2"}
+                     org.clojars.kjw/slf4j-simple {:mvn/version "1.5.5"}
+                     }}
 
   :outdated {;; Note that it is `:deps`, not `:extra-deps`
              :deps {com.github.liquidz/antq {:mvn/version "RELEASE"}}
              :main-opts ["-m" "antq.core"]}
+  :uber {
+         :extra-deps {org.clojars.kjw/slf4j-simple {:mvn/version "1.5.5"}}
+
+         }
   :clojupyter {:extra-deps {clojupyter/clojupyter
 
-                            ;{:git/url "https://github.com/clojupyter/clojupyter"
-                             ;:git/sha "0f8ad0ca08a52eca32824035b9b6da28a724dd74"}
-                             {:git/url "https://github.com/behrica/clojupyter"
-                              :git/sha "5a75f897243714a0a7d91e30ab28eac9982f260c"}}
+                            {:git/url "https://github.com/clojupyter/clojupyter"
+                             :git/sha "2514de7bcf78af6d62459ee93eec6684e8fdb3b8"}
+                            ;{:git/url "https://github.com/behrica/clojupyter"
+                            ; :git/sha "5a75f897243714a0a7d91e30ab28eac9982f260c"}
+                            
+                            }
 
                                         ;{:mvn/version "0.4.332"}
                }}}
