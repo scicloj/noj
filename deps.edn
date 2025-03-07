@@ -36,7 +36,7 @@
 
         org.scicloj/clay                          {:mvn/version "2-beta31.1"}
 
-        org.clojars.kjw/slf4j-simple {:mvn/version "1.5.5"}}
+        }
  :aliases
  {:gen-tests {:extra-paths ["build"]}
 
@@ -78,7 +78,9 @@
                      org.bytedeco/javacpp {:mvn/version "1.5.4"}
                      com.oracle.labs.olcut/olcut-config-edn    {:mvn/version "5.1.4"}
                      com.oracle.labs.olcut/olcut-config-json    {:mvn/version "5.1.4"}
-                     org.scicloj/scicloj.ml.smile  {:mvn/version "7.5.2"}}}
+                     org.scicloj/scicloj.ml.smile  {:mvn/version "7.5.2"}
+                     org.clojars.kjw/slf4j-simple {:mvn/version "1.5.5"}
+                     }}
 
   :outdated {;; Note that it is `:deps`, not `:extra-deps`
              :deps {com.github.liquidz/antq {:mvn/version "RELEASE"}}

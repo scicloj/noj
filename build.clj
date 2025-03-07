@@ -103,8 +103,8 @@
 
 (def uber-file (format "target/%s-%s-uber.jar" (name lib) version))
 
-(defn create-clojupyter-kernel "Create clojupyter kernel with noj" [opts]
-  (let [basis (b/create-basis {:aliases [:clojupyter]})]
+(defn create-uber "Create uber with clojupyter + noj" [opts]
+  (let [basis (b/create-basis {:aliases [:clojupyter :uber]})]
     (println "\nCompiling ...")
     (b/compile-clj {:basis basis
                     :ns-compile '[clojupyter.kernel.core
