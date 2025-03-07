@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## unreleased
+- fixes https://github.com/scicloj/noj/issues/144
+
 ## [2-beta9.1] - 2025-03-06
 - a new version following an update of the CI process
 
