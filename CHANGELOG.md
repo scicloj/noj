@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file. This change
 - fixed #144 - tableplot support in clojupyter
 - changed the name of the deployed uberjar
 - removed slf4j-simple from the main deps, but added it to the uberjar
+- updated deps (Clay, SCI) 
+  - the Clay update updates the CLI behaviour
 
 ## [2-beta9.1] - 2025-03-06
 - a new version following an update of the CI process
