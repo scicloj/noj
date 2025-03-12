@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## unreleased
+## [2-beta10] - 2025-03-12
 - fixed #144 - tableplot support in clojupyter
 - changed the name of the deployed uberjar
 - removed slf4j-simple from the main deps, but added it to the uberjar
