@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [2-beta10.1] - 2025-03-12
+- redeployed after version fix
+
 ## [2-beta10] - 2025-03-12
 - fixed #144 - tableplot support in clojupyter
 - changed the name of the deployed uberjar
