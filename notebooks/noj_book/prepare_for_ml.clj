@@ -70,7 +70,7 @@ categorical-ds
 ;; a column name as input.
 ;;
 ;; We use them to calculate a mapping from string/keyword to a
-;; numerical space (0 ... x) like this
+;; numerical space (0 ... x) like this:
 
 (ds-cat/fit-categorical-map categorical-ds :x)
 
@@ -296,7 +296,7 @@ one-hot-ds
 ;; we need to mark explicitly which columns are `features` and which are
 ;; `targets` in order to be able to use the dataset later for
 ;; machine learning in `metamorph.ml`
-;;
+
 ;; As normally only one or a few columns are inference targets,
 ;; we can simply mark those and the other columns are regarded as features.
 
@@ -306,10 +306,8 @@ one-hot-ds
       (ds-mod/set-inference-target :y)))
 ;; (works as well with a seq)
 
-
 ;; This is marked as well in the column metadata.
 (-> modelled-ds :y meta)
-
 
 ;; There are several functions to get information on features and
 ;; inference targets:
@@ -357,7 +355,7 @@ ds-ready-for-train
 ;;
 ;; Side remark:
 ;; If needed, data could as well be easily transformed into a tensor.
-;; Most models do this internally anyway (often to primitive arrays)
+;; Most models do this internally anyway (often to primitive arrays).
 (require 'tech.v3.dataset.tensor)
 
 (def ds-tensor
@@ -365,5 +363,5 @@ ds-ready-for-train
 ds-tensor
 
 ;;  or we can do so, if needed, but this looses the notation of features /
-;;  inference target
+;;  inference target.
 (tech.v3.tensor/->jvm ds-tensor)

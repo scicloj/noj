@@ -33,7 +33,7 @@ jobs:
       uses: devcontainers/ci@v0.3
       with:
                push: never             
-               runCmd: clj -Sthreads 1 -T:build ci
+               runCmd: clj -X:deps prep :aliases [:model-integration-tests,:dev,:test] && clj -Sthreads 1 -T:build ci
 
   make-doc:
 

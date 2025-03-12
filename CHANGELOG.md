@@ -1,6 +1,51 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [2-beta10.1] - 2025-03-12
+- redeployed after version fix
+
+## [2-beta10] - 2025-03-12
+- fixed #144 - tableplot support in clojupyter
+- changed the name of the deployed uberjar
+- removed slf4j-simple from the main deps, but added it to the uberjar
+- updated deps (Clay, SCI) 
+  - the Clay update updates the CLI behaviour
+
+## [2-beta9.1] - 2025-03-06
+- a new version following an update of the CI process
+
+## [2-beta9] - 2025-03-05
+- updated deps (Clay 2-beta31.1, methamorph.ml 1.2)
+- added dependency: slf4j-simple
+- updated for methamorph.ml 1.2
+- use kaocha for running tests
+- column-names of all datasets under 
+     scicloj.metamorph.ml.toydata
+     scicloj.metamorph.ml.toydata.ggplot
+  are now kebab-cased (ev. breaking change)
+
+## [2-beta8] - 2025-02-25
+- update deps (Clay)
+- added Clay's main CLI to the uberjar build
+
+
+## [2-beta7] - 2025-02-20
+- updated deps (tablecloth, kindly, tableplot, same/ish, clay)
+  
+## [2-beta6.1] - 2025-02-05
+- updated dep: Tableplot
+
+## [2-beta6] - 2025-02-05
+- updated ML related libs and tests for methamorph.ml 1.0
+- updated deps: Tableplot and Clay
+- this is the first version which is also released as a Clojupyter Kernel
+
+## [2-beta5.1] - 2025-01-16
+- updated deps (Tableplot)
+
+## [2-beta5] - 2025-01-16
+- updated deps (Metamorph.ml, Tableplot)
+
 ## [2-beta4] - 2025-01-01
 - removed the Scicloj.ml.smile from the direct Noj dependencies (though it is still recommended to use with Noj)
 - updated deps (Metamorph.ml. Scicloj.ml.tribuo, Clay, Tableplot)

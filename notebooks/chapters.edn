@@ -11,8 +11,8 @@
              "distribution_fitting"
              "linear_regression_intro"]}
  {:part "Machine Learning"
-  :chapters ["metamorph"
-             "ml_basic"
+  :chapters ["ml_basic"
+             "metamorph"
              "prepare_for_ml"
              "automl"
              "interactions_ols"]}
