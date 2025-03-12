@@ -8,6 +8,7 @@
              "tablecloth_advanced_data_processing"]}
  {:part "Statistics"
   :chapters ["statistics_intro"
+             "distribution_fitting"
              "linear_regression_intro"]}
  {:part "Machine Learning"
   :chapters ["metamorph"

@@ -35,7 +35,8 @@
         org.babashka/sci                          {:mvn/version "0.9.44"}
         org.mentat/emmy-viewers                   {:mvn/version "0.3.2"}
         
-        org.scicloj/clay                          {:mvn/version "2-beta27"}}
+        org.scicloj/clay                          {:mvn/version "2-beta27"}
+        generateme/fitdistr                       {:mvn/version "1.1.0-alpha1"}}
  :aliases
  {:gen-tests {:extra-paths ["build"]}
 
