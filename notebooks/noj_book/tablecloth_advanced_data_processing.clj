@@ -1,4 +1,4 @@
-;; # Advanced Table Processing with Tablecloth - draft 🛠
+;; # Advanced Table Processing with Tablecloth
 
 ;; authors: Cvetomir Dimov and Daniel Slutsky
 
