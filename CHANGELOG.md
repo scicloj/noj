@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [2-beta11.1] - 2025-03-15
+- reverted Clojupyter verion
+
 ## [2-beta11] - 2025-03-15
 - added [fitdistr](https://github.com/generateme/fitdistr) dependency
 - updated deps (Clojupyter, Clay)
