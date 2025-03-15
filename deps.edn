@@ -5,6 +5,7 @@
         com.techascent/tmd-parquet                {:mvn/version "1.001"}
         org.scicloj/kindly                        {:mvn/version "4-beta15"}
         generateme/fastmath                       {:mvn/version "3.0.0-alpha3"}
+        generateme/fitdistr                       {:mvn/version "1.1.0-alpha1"}
         aerial.hanami/aerial.hanami               {:mvn/version "0.20.1"}
         org.scicloj/tableplot                     {:mvn/version "1-beta11"}
         org.scicloj/metamorph.ml                  {:mvn/version "1.2"}
