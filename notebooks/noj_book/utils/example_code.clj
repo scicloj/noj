@@ -10,6 +10,7 @@
    [scicloj.metamorph.ml.toydata :as datasets]
    [scicloj.ml.smile.classification]
    [scicloj.ml.smile.regression]
+   [scicloj.ml.tribuo]
    [tablecloth.api :as tc]
    [tech.v3.dataset :as ds]
    [tech.v3.dataset.metamorph :as ds-mm]
@@ -25,8 +26,7 @@
                                      :output_format (name format)}}))
 
 (def iris-test
-  (tc/dataset
-   "https://raw.githubusercontent.com/scicloj/metamorph.ml/main/test/data/iris.csv" {:key-fn keyword}))
+  (datasets/iris-ds))
 
 
 
@@ -35,7 +35,7 @@
 (def iris-std
   (mm/pipe-it
    iris-test
-   (preprocessing/std-scale [:sepal_length :sepal_width :petal_length :petal_width] {})))
+   (preprocessing/std-scale [:sepal-length :sepal-width :petal-length :petal-width] {})))
 
 
 
@@ -92,7 +92,7 @@ body mass index (bmi) and a diabetes indicator.")
        {:metamorph/id :model} (ml/model {:model-type :smile.regression/ordinary-least-square})))
 
     ^:kindly/hide-code
-    (kind/md "We can then fit the model, by running the pipeline in mode :fit")
+    (kind/md "We can then fit the model, by running the pipeline in mode `:fit`.")
 
 
 
@@ -100,7 +100,7 @@ body mass index (bmi) and a diabetes indicator.")
       (mm/fit diabetes-train ols-pipe-fn))
 
     ^:kindly/hide-code
-    (kind/md "Next we run the pipe-fn in :transform and extract the prediction
+    (kind/md "Next we run the pipe-fn in `:transform` and extract the prediction
           for the disease progression:")
 
     (def diabetes-test-prediction
@@ -122,21 +122,21 @@ body mass index (bmi) and a diabetes indicator.")
 
 
     ^:kindly/hide-code
-    (kind/md "The smile Java object of the LinearModel is in the pipeline as well:")
+    (kind/md "The smile Java object of the `LinearModel` is in the pipeline as well:")
 
     (def model-instance
       (-> fitted :model  (ml/thaw-model)))
 
     ^:kindly/hide-code
     (kind/md "This object contains all information regarding the model fit
-              such as coefficients and formul")
+              such as coefficients and formula.")
 
     (-> model-instance .coefficients seq)
     (-> model-instance .formula str)
 
     ^:kindly/hide-code
-    (kind/md "Smile generates as well a String with the result of the linear
-              regression as part of the toString() method of class LinearModel:")
+    (kind/md "Smile also generates a String with the result of the linear
+              regression as part of the `toString()` method of class `LinearModel`:")
 
 
     (kind/code
@@ -146,7 +146,7 @@ body mass index (bmi) and a diabetes indicator.")
     ^:kindly/hide-code
     (kind/md "This tells us that there is a statistically significant
           (positive) correlation between the bmi and the diabetes
-          disease progression in this data")
+          disease progression in this data.")
 
 
     ^:kindly/hide-code
@@ -182,11 +182,13 @@ body mass index (bmi) and a diabetes indicator.")
     ^:kindly/hide-code
     (kind/md "")
     ^:kindly/hide-code
-    (kind/md "We use the diabetes dataset and will show how Lasso regression
-          regulates the different variables dependent of lambda.")
+    (kind/md "We use the diabetes dataset and will show how
+              [Lasso](https://en.wikipedia.org/wiki/Lasso_(statistics)) regression
+              regulates the different variables, and the regulation depends
+              on the `lambda` parameter.")
 
     ^:kindly/hide-code
-    (kind/md "First we make a function to create pipelines with different lambdas")
+    (kind/md "First we make a function to create pipelines with different `lambda`s.")
 
     (defn make-pipe-fn [lambda]
       (mm/pipeline
@@ -197,7 +199,7 @@ body mass index (bmi) and a diabetes indicator.")
                                          :lambda (double lambda)})))
 
     :kindly/hide-code
-    (kind/md "Now we go over a sequence of lambdas and fit a pipeline for all off them
+    (kind/md "Now we go over a sequence of `lambda`s, fit a pipeline for all of them,
           and store the coefficients for each predictor variable:")
     (def diabetes (datasets/diabetes-ds))
     (ds/column-names diabetes)
@@ -232,7 +234,7 @@ body mass index (bmi) and a diabetes indicator.")
         (range 1 100000 100))))
 
     ^:kindly/hide-code
-    (kind/md "Then we plot the coefficients over the log of lambda.")
+    (kind/md "Then we plot the coefficients over the log of `lambda`.")
 
 
     (kind/vega-lite
@@ -246,9 +248,9 @@ body mass index (bmi) and a diabetes indicator.")
                  :color {:field :predictor}}})
 
     ^:kindly/hide-code
-    (kind/md "This shows that an increasing lambda regulates more and more variables
+    (kind/md "This shows that an increasing `lambda` regulates more and more variables
           to zero. This plot can be used as well to find important variables,
-          namely the ones which stay > 0 even with large lambda"))
+          namely the ones which stay > 0 even with large `lambda`."))
 
 
    :smile.classification/random-forest
@@ -266,8 +268,8 @@ body mass index (bmi) and a diabetes indicator.")
 
 
     ^:kindly/hide-code
-    (kind/md "The next function creates a vega specification for the random forest
-              decision surface for a given pair of column names.")
+    (kind/md "The next function creates a [Vega-Lite](https://vega.github.io/vega-lite/)
+              specification for the random forest decision surface for a given pair of column names.")
 
 
     ^:kindly/hide-code
@@ -288,24 +290,24 @@ body mass index (bmi) and a diabetes indicator.")
     ^:kindly/hide-code
     (def iris (datasets/iris-ds))
 
-    (kind/vega-lite (surface-plot iris [:sepal_length :sepal_width] rf-pipe :smile.classification/random-forest))
+    (kind/vega-lite (surface-plot iris [:sepal-length :sepal-width] rf-pipe :smile.classification/random-forest))
 
     (kind/vega-lite
-     (surface-plot iris-std [:sepal_length :petal_length] rf-pipe :smile.classification/random-forest))
+     (surface-plot iris-std [:sepal-length :petal-length] rf-pipe :smile.classification/random-forest))
 
     (kind/vega-lite
-     (surface-plot iris-std [:sepal_length :petal_width] rf-pipe :smile.classification/random-forest))
+     (surface-plot iris-std [:sepal-length :petal-width] rf-pipe :smile.classification/random-forest))
     (kind/vega-lite
-     (surface-plot iris-std [:sepal_width :petal_length] rf-pipe :smile.classification/random-forest))
+     (surface-plot iris-std [:sepal-width :petal-length] rf-pipe :smile.classification/random-forest))
     (kind/vega-lite
-     (surface-plot iris-std [:sepal_width :petal_width] rf-pipe :smile.classification/random-forest))
+     (surface-plot iris-std [:sepal-width :petal-width] rf-pipe :smile.classification/random-forest))
     (kind/vega-lite
-     (surface-plot iris-std [:petal_length :petal_width] rf-pipe :smile.classification/random-forest)))
+     (surface-plot iris-std [:petal-length :petal-width] rf-pipe :smile.classification/random-forest)))
    :smile.classification/knn
    (->eval-code
     ^:kindly/hide-code
-    (kind/md "In this example we use a knn model to classify some dummy data.
-              The training data is this:")
+    (kind/md "In this example we use a [k-NN](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm)
+              model to classify some dummy data.  The training data is this:")
 
 
     (def df-knn
@@ -315,7 +317,7 @@ body mass index (bmi) and a diabetes indicator.")
     df-knn
 
     ^:kindly/hide-code
-    (kind/md "Then we construct a pipeline with the knn model,
+    (kind/md "Then we construct a pipeline with the k-NN model,
               using 3 neighbors for decision.")
 
 
@@ -328,7 +330,7 @@ body mass index (bmi) and a diabetes indicator.")
          :k 3})))
 
     ^:kindly/hide-code
-    (kind/md "We run the pipeline in mode fit:")
+    (kind/md "We run the pipeline in mode `:fit`:")
 
 
 
@@ -337,8 +339,8 @@ body mass index (bmi) and a diabetes indicator.")
                     :metamorph/mode :fit}))
 
     ^:kindly/hide-code
-    (kind/md "Then we run the pipeline in mode :transform with some test data
-              and take the prediction and convert it from numeric into categorical:")
+    (kind/md "Then we run the pipeline in mode `:transform` with some test data,
+              take the prediction, and convert it from numeric into categorical:")
 
     (->
      trained-ctx-knn
@@ -356,8 +358,7 @@ body mass index (bmi) and a diabetes indicator.")
    (->eval-code
     ^:kindly/hide-code
     (kind/md "A decision tree learns a set of rules from the data in the form
-              of a tree, which we will plot in this example.
-              We use the iris dataset:")
+              of a tree, that we will plot in this example. We use the iris dataset:")
 
 
 
@@ -365,7 +366,8 @@ body mass index (bmi) and a diabetes indicator.")
     iris
 
     ^:kindly/hide-code
-    (kind/md "We make a pipe only containing the model, as the dataset is ready to be used by `scicloj.ml`")
+    (kind/md "We make a pipe only containing the model, 
+              as the dataset is ready to be used by `metamorph.ml`.")
 
     (def trained-pipe-tree
       (mm/fit-pipe
@@ -379,13 +381,12 @@ body mass index (bmi) and a diabetes indicator.")
     (kind/md "We extract the Java object of the trained model.")
 
 
-
     (def tree-model
       (-> trained-pipe-tree :model ml/thaw-model))
     tree-model
     ^:kindly/hide-code
-    (kind/md "The model has a .dot function, which returns a GraphViz textual
-              representation of the decision tree, which we render to svg using the
+    (kind/md "The model has a `.dot` function, which returns a [GraphViz](https://graphviz.org/) textual
+              representation of the decision tree. We render to svg using the
               [kroki](https://kroki.io/) service.")
 
 
@@ -394,10 +395,10 @@ body mass index (bmi) and a diabetes indicator.")
    :smile.classification/ada-boost
    (->eval-code
     ^:kindly/hide-code
-    (kind/md "In this example we will use the capability of the Ada boost classifier
+    (kind/md "In this example we will use the capability of the AdaBoost classifier
                               to give us the importance of variables.")
     ^:kindly/hide-code
-    (kind/md "As data we take here the Wiscon Breast Cancer dataset, which has 30 variables.")
+    (kind/md "As data we take here the Wisconsin Breast Cancer dataset, which has 30 variables.")
     (def df
       (->
        (datasets/breast-cancer-ds)))
@@ -408,7 +409,7 @@ body mass index (bmi) and a diabetes indicator.")
     (-> df tc/info)
 
     ^:kindly/hide-code
-    (kind/md "Then we create a metamorph  pipeline with the ada boost model:")
+    (kind/md "Then we create a metamorph pipeline with the AdaBoost model:")
 
 
     (def ada-pipe-fn
@@ -419,7 +420,7 @@ body mass index (bmi) and a diabetes indicator.")
         {:model-type :smile.classification/ada-boost})))
 
     ^:kindly/hide-code
-    (kind/md "We run the pipeline in :fit. As we just explore the data,not train.test split is needed.")
+    (kind/md "We run the pipeline in `:fit`. As we just explore the data, no train/test split is needed.")
 
 
 

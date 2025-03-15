@@ -8,7 +8,7 @@
   (:require [scicloj.tableplot.v1.plotly :as plotly]
             [tablecloth.api :as tc]
             [tablecloth.column.api :as tcc]
-            [noj-book.datasets :as datasets]))
+            [scicloj.metamorph.ml.rdatasets :as rdatasets]))
 
 ;; ## Introduction
 
@@ -23,10 +23,10 @@
 
 ;; ## Looking into the Iris Dataset
 
-;; First, let's look into the Iris dataset we have read
-;; [in the datasets chapter](./noj_book.datasets).
+;; First, let's look into the Iris dataset using the `scicloj.metamorph.ml.rdatasets` namespace,
+;; that allows us to fetch data from the [Rdatasets](https://vincentarelbundock.github.io/Rdatasets/articles/data.html) collection.
 
-datasets/iris
+(rdatasets/datasets-iris)
 
 ;; The Iris dataset contains measurements for 150 iris flowers from three species (`setosa`, `versicolor`, `virginica`). The variables are:
 
@@ -40,7 +40,7 @@ datasets/iris
 
 ;; Let's start by creating a simple scatter plot to visualize the relationship between `sepal-length` and `sepal-width`.
 
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/layer-point
      {:=x :sepal-length
       :=y :sepal-width}))
@@ -51,7 +51,7 @@ datasets/iris
 
 ;; To distinguish between the different species, we can add color encoding based on the `species` column.
 
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/layer-point
      {:=x :sepal-length
       :=y :sepal-width
@@ -63,7 +63,7 @@ datasets/iris
 
 ;; Next, let's explore how petal measurements vary across species.
 
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/layer-point
      {:=x :petal-length
       :=y :petal-width
@@ -73,7 +73,7 @@ datasets/iris
 
 ;; ### Text plots
 ;; In certain cases, it might be useful to label the datapoints
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (tc/map-columns :species-short [:species] #(subs % 0 2))
     (plotly/layer-text
      {:=x :petal-length
@@ -84,7 +84,7 @@ datasets/iris
 
 ;; We can create a scatter plot matrix (SPLOM) to visualize the relationships between all pairs of variables.
 
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/splom
      {:=colnames [:sepal-length :sepal-width :petal-length :petal-width]
       :=color :species
@@ -97,7 +97,7 @@ datasets/iris
 
 ;; Let's create histograms to explore the distribution of `sepal-length`.
 
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/layer-histogram
      {:=x :sepal-length
       :=histnorm "count"
@@ -107,7 +107,7 @@ datasets/iris
 
 ;; To see how the distribution of `sepal-length` varies by species, we can add color encoding.
 
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/layer-histogram
      {:=x :sepal-length
       :=color :species
@@ -117,13 +117,13 @@ datasets/iris
 
 ;; ## Density Plots
 ;; Another way to visualize the distribution of a variable is with a density plot. These can also be colored by species.
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/layer-density
      {:=x :sepal-length
       :=color :species}))
 
 ;; ## Bar Charts
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (tc/group-by [:species])
     (tc/aggregate {:mean-width #(tcc/mean (:sepal-width %))})
     (plotly/layer-bar
@@ -134,10 +134,10 @@ datasets/iris
 
 ;; Box plots are useful for comparing distributions across categories.
 
-(-> datasets/iris
-(plotly/layer-boxplot
- {:=y :sepal-length
-  :=x :species}))
+(-> (rdatasets/datasets-iris)
+    (plotly/layer-boxplot
+     {:=y :sepal-length
+      :=x :species}))
 
 ;; This box plot shows the distribution of `sepal-length` for each species.
 
@@ -145,24 +145,24 @@ datasets/iris
 
 ;; Violin plots provide a richer representation of the distribution.
 
-(-> datasets/iris
-(plotly/layer-violin
- {:=y :sepal-length
-  :=x :species
-  :=box-visible true
-  :=meanline-visible true}))
+(-> (rdatasets/datasets-iris)
+    (plotly/layer-violin
+     {:=y :sepal-length
+      :=x :species
+      :=box-visible true
+      :=meanline-visible true}))
 
 ;; ## Scatter Plot with Trend Lines
 
 ;; We can add a smoothing layer to show trend lines in the data.
 
-(-> datasets/iris
-(plotly/base
- {:=x :sepal-length
-  :=y :sepal-width
-  :=color :species})
-plotly/layer-point
-plotly/layer-smooth)
+(-> (rdatasets/datasets-iris)
+    (plotly/base
+     {:=x :sepal-length
+      :=y :sepal-width
+      :=color :species})
+    plotly/layer-point
+    plotly/layer-smooth)
 
 ;; This plot shows a scatter plot of sepal measurements with trend lines added for each species.
 
@@ -172,51 +172,51 @@ plotly/layer-smooth)
 
 ;; ### Changing Marker Sizes
 
-(-> datasets/iris
-(plotly/layer-point
- {:=x :sepal-length
-  :=y :sepal-width
-  :=color :species
-  :=symbol :species
-  :=mark-size 15}))
+(-> (rdatasets/datasets-iris)
+    (plotly/layer-point
+     {:=x :sepal-length
+      :=y :sepal-width
+      :=color :species
+      :=symbol :species
+      :=mark-size 15}))
 
 ;; ### Changing Marker Color (for all marks)
 
-(-> datasets/iris
-(plotly/layer-point
- {:=x :sepal-length
-  :=y :sepal-width
-  :=symbol :species
-  :=mark-size 15
-  :=mark-color :darkblue}))
+(-> (rdatasets/datasets-iris)
+    (plotly/layer-point
+     {:=x :sepal-length
+      :=y :sepal-width
+      :=symbol :species
+      :=mark-size 15
+      :=mark-color :darkblue}))
 
 ;; ### Adjusting Opacity
 
-(-> datasets/iris
-(plotly/layer-point
- {:=x :sepal-length
-  :=y :sepal-width
-  :=color :species
-  :=mark-size 15
-  :=mark-opacity 0.6}))
+(-> (rdatasets/datasets-iris)
+    (plotly/layer-point
+     {:=x :sepal-length
+      :=y :sepal-width
+      :=color :species
+      :=mark-size 15
+      :=mark-opacity 0.6}))
 
 ;; ### Changing axis titles
 ;; If you desire different axis titles than the variable names, those can be changed as well: 
-(-> datasets/iris
-(plotly/layer-point
- {:=x :sepal-length
-  :=y :sepal-width
-  :=color :species
-  :=mark-size 15
-  :=mark-opacity 0.6
-  :=x-title "Sepal length"
-  :=y-title "Sepal width"}))
+(-> (rdatasets/datasets-iris)
+    (plotly/layer-point
+     {:=x :sepal-length
+      :=y :sepal-width
+      :=color :species
+      :=mark-size 15
+      :=mark-opacity 0.6
+      :=x-title "Sepal length"
+      :=y-title "Sepal width"}))
 
 ;; ## 3d Scatter Plot
 
 ;; We can create a 3d scatter plot to visualize relationships in three dimensions.
 
-(-> datasets/iris
+(-> (rdatasets/datasets-iris)
     (plotly/layer-point
      {:=x :sepal-length
       :=y :sepal-width
@@ -284,12 +284,12 @@ plotly/layer-smooth)
 ;; sharing parameters defined in  `base`.
 
 (comment
-(-> dataset
-    (plotly/base
-     {:=x :x-variable
-      :=y :y-variable})
-    (plotly/layer-point {... ...})
-    (plotly/layer-smooth {... ...})))
+  (-> dataset
+      (plotly/base
+       {:=x :x-variable
+        :=y :y-variable})
+      (plotly/layer-point {... ...})
+      (plotly/layer-smooth {... ...})))
 
 ;; ## References
 

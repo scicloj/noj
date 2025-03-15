@@ -14,7 +14,7 @@
 ;; * [scicloj.ml.smile](https://github.com/scicloj/scicloj.ml.smile) - [Smile](https://haifengl.github.io/) (v 2.6) machine learning models
 ;; * [fastmath-clustering](https://generateme.github.io/fastmath-clustering/) - a wrapper for [Smile](https://haifengl.github.io/) 2.6 clustering algorithms
 ;; * [clj-djl](https://github.com/scicloj/clj-djl) - bindings for [Deep Java Library](https://djl.ai/)
-;; * [scicloj.ml.clj-djl](https://github.com/scicloj/scicloj.ml.clj-djl) - clj-djl models for [metamorph.ml](https://github.com/scicloj/metamorph.ml)
+;; * [scicloj.ml.fasttext](https://github.com/scicloj/scicloj.ml.fasttext) fasttext text classification model for [metamorph.ml](https://github.com/scicloj/metamorph.ml)
 ;; * [Neanderthal](https://neanderthal.uncomplicate.org/) - high-performance numerical computing
 ;; * [matlib](https://github.com/atisharma/matlib) - optimisation and control theory with Neanderthal
 ;; * [deep-diamond](https://github.com/uncomplicate/deep-diamond) - tensors & deep learning
