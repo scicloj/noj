@@ -24,6 +24,7 @@
 
 ;; ## Math and statistics
 ;; * [Fastmath](https://github.com/generateme/fastmath) - math & stats - alpha stage of version 3 [(reference)](https://generateme.github.io/fastmath/clay/)
+;; * [Fitdistr](https://github.com/generateme/fitdistr)
 ;; * [same-ish](https://github.com/microsoft/same-ish) - approximate comparisons - useful for notebook testability
 
 ;; ## Machine learning
