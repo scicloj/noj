@@ -1,7 +1,7 @@
 ![ci workflow](https://github.com/scicloj/noj/actions/workflows/ci.yml/badge.svg)
 [![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/noj.svg)](https://clojars.org/org.scicloj/noj)
 
-# Noj
+# Noj - a data science toolkit
 ![Noj logo](notebooks/Noj.svg)
 
 Noj gets you started with Clojure for data and science.
