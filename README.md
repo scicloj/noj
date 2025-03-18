@@ -47,17 +47,17 @@ Noj has [Clay](https://github.com/scicloj/clay) included, which takes a Clojure 
 
 ### Run a 'Hello world'
 
-From [noj/releases](https://github.com/scicloj/noj/releases), download  `noj-<version>-clojupyter.jar` into a local directory of your choice (replacing `<version>` with e.g. `2-beta8`).
+    From [noj/releases](https://github.com/scicloj/noj/releases), download  `noj-<version>-uber.jar` into a local directory of your choice (replacing `<version>` with e.g. `2-beta11.1`).
 
 In your terminal, switch to that directory and run the following command:
 ```
-java -cp noj-2-beta8-clojupyter.jar clojupyter.cmdline eval '(str "Hello " "Noj!")'
+java -cp noj-2-beta11.1-uber.jar clojupyter.cmdline eval '(str "Hello " "Noj!")'
 ```
 
 A nice message should appear on your screen. In this way, without having to install the Clojure CLI, you can run a Clojure program, e.g. some `hello.clj`
 
 ```
-java -cp noj-2-beta8-clojupyter.jar clojupyter.cmdline eval '(load-file "hello.clj")'
+java -cp noj-2-beta11.1-uber.jar clojupyter.cmdline eval '(load-file "hello.clj")'
 ```
 
 that already has access to all Noj libraries. However, for a more readable output of your Clojure program files,
@@ -67,7 +67,7 @@ that already has access to all Noj libraries. However, for a more readable outpu
 Clay renders Clojure files as notebooks in the browser. It live-reloads and watches whole directories. To get started with Clay, type
 
 ```
-java -jar noj-2-beta8-clojupyter.jar hello.clj -r
+java -jar noj-2-beta11.1-uber.jar hello.clj
 ```
 
 Clay has no editing environment, folks can keep using the editors they know and love. However, if you look for an editor, one option is to
@@ -84,13 +84,13 @@ python3 -m pip install jupyterlab
 Then, install the Noj Jupyter Kernel
 
 ```
-java -cp noj-2-beta8-clojupyter.jar clojupyter.cmdline install --jarfile noj-2-beta8-clojupyter.jar --ident noj-2-beta8
+java -cp noj-2-beta11.1-uber.jar clojupyter.cmdline install --jarfile noj-2-beta11.1-uber.jar --ident noj-2-beta11.1
 ```
 
 Verify,
 
 ```
-java -cp noj-2-beta8-clojupyter.jar clojupyter.cmdline list-installs
+java -cp noj-2-beta11.1-uber.jar clojupyter.cmdline list-installs
 ```
 
 and run Jupyter
