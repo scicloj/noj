@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## [2-beta12] - unreleased
+## [2-beta12] - 2025-03-19
 - updated deps (Clojupyter, Clay)
 
 ## [2-beta11.1] - 2025-03-15
