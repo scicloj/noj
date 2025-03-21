@@ -17,7 +17,7 @@
 
 
 (def lib 'org.scicloj/noj)
-(def version "2-beta12")
+(def version "2-beta13")
 (def snapshot (str version "-SNAPSHOT"))
 (def class-dir "target/classes")
 
