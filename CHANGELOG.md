@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [2-beta13] - 2025-03-21
+- updated Clay version (IDE webview support)
+
 ## [2-beta12] - 2025-03-19
 - updated deps (Clojupyter, Clay)
 
