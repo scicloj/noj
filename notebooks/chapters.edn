@@ -18,7 +18,7 @@
  {:part "Data Visualization"
   :chapters ["tableplot_datavis_intro"
              "echarts"]}
- {:part "Linear Algebra"
+ #_{:part "Linear Algebra"
   :chapters ["linear_algebra_intro"
              #_"fastmath_vector_geom2d3d" ; temporarily commented out due to the dependence on unstable unpkg CDN
              "fastmath_vector_word_embeddings"
