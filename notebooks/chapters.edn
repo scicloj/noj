@@ -6,9 +6,9 @@
   :chapters ["tablecloth_table_processing"
              "datasets"
              "tablecloth_advanced_data_processing"]}
- #_{:part "Statistics"
-    :chapters ["statistics_intro"
-               "linear_regression_intro"]}
+ {:part "Statistics"
+  :chapters ["statistics_intro"
+             "linear_regression_intro"]}
  #_{:part "Machine Learning"
     :chapters ["ml_basic"
                "metamorph"
