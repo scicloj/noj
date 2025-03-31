@@ -26,12 +26,12 @@
  {:part "Use Cases"
   :chapters ["chicago_bike_times"]}
  
- {:part "Model references"
-  :chapters ["smile_classification"
-             "smile_regression"
-             "smile_others"
-             "xgboost"
-             "sklearn_reference"
-             "tribuo_reference"
-             "transformer_references"]}
+ #_{:part "Model references"
+    :chapters ["smile_classification"
+               "smile_regression"
+               "smile_others"
+               "xgboost"
+               "sklearn_reference"
+               "tribuo_reference"
+               "transformer_references"]}
  ]
