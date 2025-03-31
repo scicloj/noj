@@ -13,7 +13,9 @@
    [taoensso.nippy :as nippy]
    [tech.v3.dataset :as ds]
    [tech.v3.dataset.categorical :as ds-cat]
-   [tech.v3.dataset.modelling :as ds-mod])
+   [tech.v3.dataset.modelling :as ds-mod]
+   [scicloj.ml.tribuo]
+   )
   (:import
    [org.tribuo.classification.libsvm SVMClassificationType$SVMMode]
    [org.slf4j.bridge SLF4JBridgeHandler]
@@ -170,7 +172,7 @@ warnings.simplefilter('ignore')")
 (def other-specs [
                   [0.28 {:model-type :smile.classification/mlp
                          :layer-builders [mlp-hidden-layer-builder mlp-output-layer-builder]}]
-                  [0.30 {:model-type :metamorph.ml/dummy-classifier}]])
+                  [0.2 {:model-type :metamorph.ml/dummy-classifier}]])
 
 (def model-specs
   (concat
@@ -338,7 +340,7 @@ warnings.simplefilter('ignore')")
   (->
    (data/iris-ds)
    (tc/drop-columns [:species])
-   (ds-mod/set-inference-target :sepal_length)))
+   (ds-mod/set-inference-target :sepal-length)))
 
 
 (def split
@@ -359,12 +361,12 @@ warnings.simplefilter('ignore')")
 (defn assert-mae [model model-map]
   (let [mae
         (loss/mae
-         (-> iris-ds-regression--test :sepal_length)
-         (-> (ml/predict iris-ds-regression--test model) :sepal_length))]
+         (-> iris-ds-regression--test :sepal-length)
+         (-> (ml/predict iris-ds-regression--test model) :sepal-length))]
     (println :mae mae)
 
     (is (>
-         0.4 ;; dummy-model has mae of 0.69
+         0.4
          mae) (format "mae validation failed: %s" model-map))))
     
 

@@ -36,7 +36,7 @@
 ;; You may learn more about the [Cyclistic Bike Share 2023](https://www.kaggle.com/datasets/godofoutcasts/cyclistic-bike-share-2023) dataset in our [Chicago bike trips](https://scicloj.github.io/clojure-data-scrapbook/projects/geography/chicago-bikes/index.html) tutorial.
 
 (defonce raw-trips
-  (-> "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
+  (-> "https://divvy-tripdata.s3.amazonaws.com/202304-divvy-tripdata.zip"
       (tc/dataset {:key-fn keyword
                    :parser-fn {"started_at"
                                [:local-date-time

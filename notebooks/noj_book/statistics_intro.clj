@@ -49,8 +49,7 @@
       (tc/select-rows (fn [{:keys [duration-in-minutes]}]
                         (<= 0
                             duration-in-minutes
-                            40
-                            #_(* 2 60))))))
+                            40)))))
 
 ;; ## Visually exploring the distribution of variables
 ;; The distribution of start hour:

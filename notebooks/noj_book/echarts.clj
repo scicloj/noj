@@ -8,10 +8,10 @@
 
 (ns noj-book.echarts
   (:require [tablecloth.api :as tc]
-            [noj-book.datasets]
             [fastmath.core :as fm]
             [fastmath.stats]
-            [scicloj.kindly.v4.kind :as kind]))
+            [scicloj.kindly.v4.kind :as kind]
+            [scicloj.metamorph.ml.rdatasets :as rdatasets]))
 
 ;; ## Getting started
 
@@ -230,12 +230,6 @@ data-for-multi-series
               :data values-b
               :stack "x"}]}))
 
-;; #### Bar Racing Chart
-
-;; Bar race is a chart that shows changes in the ranking of data over time.
-
-;; TODO
-
 ;; #### Waterfall Chart
 
 ;; There is no waterfall series in Apache ECharts, but we can simulate the
@@ -294,12 +288,20 @@ data-for-waterfall
 ;; #### Dataset Preparation
 ;; Before we plot any line charts, it's helpful to prepare the dataset first.
 
+;; We will use the stocks dataset from the 
+;; [TMD's repo](https://github.com/techascent/tech.ml.dataset/tree/master/test/data).
+
+(defonce stocks
+  (tc/dataset
+   "https://raw.githubusercontent.com/techascent/tech.ml.dataset/master/test/data/stocks.csv"
+   {:key-fn keyword}))
+
 ;; This dataset originally contains three columns:
-(tc/head noj-book.datasets/stocks)
+(tc/head stocks)
 
 ;; To make it better serve this tutorial, let's widen it:
 (def reshaped-stocks
-  (-> noj-book.datasets/stocks
+  (-> stocks
       (tc/pivot->wider [:symbol] [:price] {:drop-missing? false})
       (tc/rename-columns keyword)))
 
@@ -489,12 +491,12 @@ reshaped-stocks
 
 ;; Now, let's use a dataset to render more data onto the chart:
 
-(tc/row-count noj-book.datasets/scatter)
+(tc/row-count (rdatasets/openintro-simulated_scatter))
 
 (kind/echarts {:xAxis {}
                :yAxis {}
                :series [{:type :scatter
-                         :data (-> noj-book.datasets/scatter
+                         :data (-> (rdatasets/openintro-simulated_scatter)
                                    (tc/select-columns [:x :y])
                                    (tc/rows :as-vecs))}]})
 
@@ -593,14 +595,14 @@ reshaped-stocks
          tc/dataset)))
 
 ;; For example:
-(-> noj-book.datasets/iris
+(-> (rdatasets/datasets-iris)
     (correlations-dataset [:sepal-length :sepal-width :petal-length :petal-width]))
 
 ;; Visualizing a corrleation matrix as a heatmap:
 
 (let [columns-for-correlations [:sepal-length :sepal-width
                                 :petal-length :petal-width]
-      correlations (-> noj-book.datasets/iris
+      correlations (-> (rdatasets/datasets-iris)
                        (correlations-dataset columns-for-correlations)
                        (tc/select-columns [:coli :colj :corr-round])
                        tc/rows)]

@@ -17,7 +17,7 @@
 
 
 (def lib 'org.scicloj/noj)
-(def version "2-beta4")
+(def version "2-beta13")
 (def snapshot (str version "-SNAPSHOT"))
 (def class-dir "target/classes")
 
@@ -27,7 +27,9 @@
         cmds     (b/java-command
                   {:basis     basis
                    :main      'clojure.main
-                   :main-args ["-m" "cognitect.test-runner"]})
+                   :main-args ["-m" "kaocha.runner"
+                               ":tests"]}                  
+                  )
         {:keys [exit]} (b/process cmds)]
     (when-not (zero? exit) (throw (ex-info "Tests failed" {}))))
   opts)
@@ -70,8 +72,8 @@
         cmds     (b/java-command
                   {:basis     basis
                    :main      'clojure.main
-                   :main-args ["-m" "cognitect.test-runner"
-                               "-d" "model-integration-tests"]})
+                   :main-args ["-m" "kaocha.runner"
+                               ":integration-tests" ]})
         {:keys [exit]} (b/process cmds)]
     (when-not (zero? exit) (throw (ex-info "Integration tests failed" {}))))
   opts)
@@ -91,8 +93,60 @@
     (b/jar opts))
   opts)
 
+
 (defn deploy "Deploy the JAR to Clojars." [opts]
   (let [{:keys [jar-file] :as opts} (jar-opts opts)]
     (dd/deploy {:installer :remote :artifact (b/resolve-path jar-file)
                 :pom-file (b/pom-path (select-keys opts [:lib :class-dir]))}))
   opts)
+
+
+(def uber-file (format "target/%s-%s-uber.jar" (name lib) version))
+
+(defn create-uber "Create uber with clojupyter + noj" [opts]
+  (let [basis (b/create-basis {:aliases [:clojupyter :uber]})]
+    (println "\nCompiling ...")
+    (b/compile-clj {:basis basis
+                    :ns-compile '[clojupyter.kernel.core
+                                  clojupyter.cmdline
+                                  scicloj.clay.v2.main]
+                    :class-dir class-dir})
+    (println "\nBuilding" uber-file "...")    
+    (b/uber {:uber-file uber-file
+             :class-dir "target/classes"
+             ;;:conflict-handlers {:default  :warn }
+             :basis basis
+             :main 'scicloj.clay.v2.main})))
+
+
+(defn install-clojupyter-kernel "Install  clojupyter kernel in local Jupyter" [opts]
+  
+  (let [basis    (b/create-basis {:aliases [:clojupyter]})
+        cmds     (b/java-command
+                  {:basis     basis
+                   :main      'clojure.main
+                   :main-args ["-m" "clojupyter.cmdline"
+                               "install"
+                               "--ident" (str "noj-jupyter-" version)
+                               "--jarfile" uber-file]})
+        {:keys [exit]} (b/process cmds)]
+    (when-not (zero? exit) (throw (ex-info "Install clojupyter kernel failed" {})))))
+  
+  
+(defn remove-clojupyter-kernel "Install  clojupyter kernel in local Jupyter" [opts]
+  (let [basis    (b/create-basis {:aliases [:clojupyter]})
+        cmds     (b/java-command
+                  {:basis     basis
+                   :main      'clojure.main
+                   :main-args ["-m" "clojupyter.cmdline"
+                               "remove-install"
+                               (str "noj-jupyter-" version)
+                               ]})
+        {:keys [exit]} (b/process cmds)]
+    (when-not (zero? exit) (throw (ex-info "Remove clojupyter kernel failed" {})))))
+  
+
+(defn replace-clojupyter-kernel "Replaces local clojupyter kernel in local Jupyter" [opts]
+     (remove-clojupyter-kernel nil)
+      (install-clojupyter-kernel nil))
+  

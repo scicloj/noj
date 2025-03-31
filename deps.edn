@@ -1,18 +1,19 @@
 {:paths ["src" "resources"]
  :deps {clojure.java-time/clojure.java-time       {:mvn/version "1.4.3"}
-        scicloj/tablecloth                        {:mvn/version "7.029.2"}
+        scicloj/tablecloth                        {:mvn/version "7.042"}
         org.scicloj/tcutils                       {:mvn/version "0.1.0-alpha2"}
         com.techascent/tmd-parquet                {:mvn/version "1.001"}
-        org.scicloj/kindly                        {:mvn/version "4-beta14"}
+        org.scicloj/kindly                        {:mvn/version "4-beta15"}
         generateme/fastmath                       {:mvn/version "3.0.0-alpha3"}
+        generateme/fitdistr                       {:mvn/version "1.1.0-alpha1"}
         aerial.hanami/aerial.hanami               {:mvn/version "0.20.1"}
-        org.scicloj/tableplot                     {:mvn/version "1-beta6"}
-        org.scicloj/metamorph.ml                  {:mvn/version "0.11.1"}
-        org.scicloj/sklearn-clj                   {:mvn/version "0.4.1"}
-        org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.2.0"}
+        org.scicloj/tableplot                     {:mvn/version "1-beta11"}
+        org.scicloj/metamorph.ml                  {:mvn/version "1.2"}
+        org.scicloj/sklearn-clj                   {:mvn/version "0.5"}
+        org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.3.0"}
 
-        org.scicloj/scicloj.ml.tribuo             {:mvn/version "0.1.6"}
-        
+        org.scicloj/scicloj.ml.tribuo              {:mvn/version "0.2"}
+
         org.tribuo/tribuo-regression-liblinear    {:mvn/version "4.3.1"}
         org.tribuo/tribuo-regression-libsvm       {:mvn/version "4.3.1"}
         org.tribuo/tribuo-regression-sgd          {:mvn/version "4.3.1"}
@@ -24,19 +25,19 @@
         org.tribuo/tribuo-classification-sgd       {:mvn/version "4.3.1"}
         org.tribuo/tribuo-classification-tree      {:mvn/version "4.3.1"}
         org.tribuo/tribuo-classification-xgboost   {:mvn/version "4.3.1"}
-        
 
         clj-python/libpython-clj                  {:mvn/version "2.026"}
         org.scicloj/kind-pyplot                   {:mvn/version "1-beta2.1"}
         scicloj/clojisr                           {:mvn/version "1.0.0"}
 
-        same/ish                                  {:mvn/version "0.1.6"}
+        same/ish                                  {:mvn/version "0.1.7"}
 
-        org.babashka/sci                          {:mvn/version "0.9.44"}
+        org.babashka/sci                          {:mvn/version "0.9.45"}
         org.mentat/emmy-viewers                   {:mvn/version "0.3.2"}
         
-        org.scicloj/clay                          {:mvn/version "2-beta27"}
+        org.scicloj/clay                          {:mvn/version "2-beta36"}
         generateme/fitdistr                       {:mvn/version "1.1.0-alpha1"}}
+
  :aliases
  {:gen-tests {:extra-paths ["build"]}
 
@@ -47,11 +48,10 @@
           :ns-default build}
   :test {:extra-paths ["test" "notebooks"]
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
-                      io.github.cognitect-labs/test-runner {:git/tag "v0.5.1" :git/sha "dfb30dd"}
+                      lambdaisland/kaocha {:mvn/version "1.91.1392"}
                       org.slf4j/slf4j-nop {:mvn/version "2.0.16"}
-                      org.scicloj/clay {:mvn/version "2-beta25"}
                       clj-http/clj-http {:mvn/version "3.13.0"}
-                      org.scicloj/scicloj.ml.smile              {:mvn/version "7.4.4"}}}
+                      org.scicloj/scicloj.ml.smile {:mvn/version "7.5.2"}}}
 
   :model-integration-tests
   {:extra-paths ["model-integration-tests" "notebooks"]
@@ -61,14 +61,13 @@
                 org.bytedeco/arpack-ng-platform {:mvn/version "3.7.0-1.5.4"}
                 org.bytedeco/openblas {:mvn/version "0.3.10-1.5.4"}
                 org.bytedeco/javacpp {:mvn/version "1.5.4"}
-                org.scicloj/scicloj.ml.smile              {:mvn/version "7.4.4"}
+                org.scicloj/scicloj.ml.smile {:mvn/version "7.5.2"}
 
                 com.taoensso/nippy {:mvn/version "3.4.2"}
 
                 org.slf4j/slf4j-nop {:mvn/version "2.0.16"}
                 org.slf4j/jul-to-slf4j {:mvn/version "2.0.16"}
-                io.github.cognitect-labs/test-runner
-                {:git/tag "v0.5.1" :git/sha "dfb30dd"}}}
+                lambdaisland/kaocha {:mvn/version "1.91.1392"}}}
 
 
   :dev {:extra-paths ["notebooks"]
@@ -80,9 +79,23 @@
                      org.bytedeco/javacpp {:mvn/version "1.5.4"}
                      com.oracle.labs.olcut/olcut-config-edn    {:mvn/version "5.1.4"}
                      com.oracle.labs.olcut/olcut-config-json    {:mvn/version "5.1.4"}
-                     org.scicloj/scicloj.ml.smile              {:mvn/version "7.4.4"}}}
-  
+                     org.scicloj/scicloj.ml.smile  {:mvn/version "7.5.2"}
+                     org.clojars.kjw/slf4j-simple {:mvn/version "1.5.5"}
+                     }}
+
   :outdated {;; Note that it is `:deps`, not `:extra-deps`
              :deps {com.github.liquidz/antq {:mvn/version "RELEASE"}}
              :main-opts ["-m" "antq.core"]}
-  }}
+  :uber {:extra-deps {org.clojars.kjw/slf4j-simple {:mvn/version "1.5.5"}}}
+  :clojupyter {:extra-deps {clojupyter/clojupyter
+                            {:git/url "https://github.com/clojupyter/clojupyter"
+                             :git/sha "797261501b6c0f11a600f6030d720fa9157005d8"}
+                            ;; {:git/url "https://github.com/clojupyter/clojupyter"
+                            ;;  :git/sha "e26596081ebe2ffcb3af82a1bcce22359fbba06e"}
+                            ;; {:git/url "https://github.com/clojupyter/clojupyter"
+                            ;;  :git/sha "2514de7bcf78af6d62459ee93eec6684e8fdb3b8"}
+                            ;;{:git/url "https://github.com/behrica/clojupyter"
+                            ;; :git/sha "5a75f897243714a0a7d91e30ab28eac9982f260c"}
+                            }
+               ;;{:mvn/version "0.4.332"}
+               }}}

@@ -1,4 +1,13 @@
-;; # Smile classification models reference - DRAFT 🛠
+;; # Smile classification models reference
+
+;; As discussed in the [Machine Learning](../noj_book.ml_basic.html) chapter,
+;; this book contains reference chapters for machine learning models
+;; that can be registered in [metamorph.ml](https://github.com/scicloj/metamorph.ml).
+
+;; This specific chapter focuses on classification models of
+;; [Smile](https://haifengl.github.io/) version 2.6,
+;; which are wrapped by
+;; [scicloj.ml.smile](https://github.com/scicloj/scicloj.ml.smile).
 
 ;; Note that this chapter reqiures `scicloj.ml.smile` as an additional
 ;; dependency to Noj.
@@ -20,8 +29,8 @@
 
 
 ;; ## Smile classification models reference
-;; In the following we have a list of all model keys of Smile classification models
-;; including parameters.
+;; In the following we have a list of all model keys of
+;; [Smile](https://haifengl.github.io/) classification models, including parameters.
 ;; They can be used like this:
 
 (comment
@@ -30,15 +39,14 @@
              :param-1 0
              :param-2 1}))
 
-
-
+^:kindly/hide-code
 (render-key-info :smile.classification)
 
 ;; # Compare decision surfaces of different classification models
 
 
 ;; In the following we see the decision surfaces of some models on the
-;; same data from the Iris dataset using 2 columns `:sepal_width` and `:sepal_length`:
+;; same data from the Iris dataset using 2 columns `:sepal-width` and `:sepal-length`:
 
 ^:kindly/hide-code
 (defn make-iris-pipeline [model-options]
@@ -48,7 +56,7 @@
    (ml/model model-options)))
 
 ^:kindly/hide-code
-(mapv #(kind/vega-lite (surface-plot iris-std [:sepal_length :sepal_width] (make-iris-pipeline %) (:model-type %)))
+(mapv #(kind/vega-lite (surface-plot iris-std [:sepal-length :sepal-width] (make-iris-pipeline %) (:model-type %)))
       [{:model-type :smile.classification/ada-boost}
        {:model-type :smile.classification/decision-tree}
        {:model-type :smile.classification/gradient-tree-boost}

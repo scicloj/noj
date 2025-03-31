@@ -2,36 +2,48 @@
 	"name": "noj",
 	"build": {
 		"dockerfile": "Dockerfile"
-
-		},
-
-
-    "features": {
-	   	"ghcr.io/devcontainers-contrib/features/clojure-asdf:2": {},
+		
+	},
+	
+	
+	"features": {
+		"ghcr.io/devcontainers-contrib/features/clojure-asdf:2": {},
 		"ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {},
 		"ghcr.io/devcontainers-contrib/features/bash-command:1": 
-		    {"command": "apt-get update && apt-get install -y rlwrap && apt-get install -y libxtst-dev"},
+		{"command": "apt-get update && apt-get install -y rlwrap && apt-get install -y libxtst-dev"},
 		"ghcr.io/devcontainers-contrib/features/poetry:2" : {},
 		"ghcr.io/rocker-org/devcontainer-features/r-apt:0": {}
-
-
-},
+		
+		
+	},
 	"customizations": {
 		"vscode": {
 			"settings": { 
-			},
+			"markdown-everywhere.customized-rules": [
+				"defaultRules",
+				{
+					"name": "double semicolon",
+					"whileRegExp": ";;",
+					"example": ";; *hello",
+					"languages": [
+						{ "name": "clojure", "source": "source.clj" }
+					]
+				}
+			]},
 			"extensions": 
 			[
 				"betterthantomorrow.calva",
-				"streetsidesoftware.code-spell-checker"
+				"streetsidesoftware.code-spell-checker",
+				"zhaouv.vscode-markdown-everywhere",
+				"eamodio.gitlens"
 			]
 		}
 	},
-
+	
 	"remoteUser": "vscode",
 	"updateContentCommand": {"install python packages": "mkdir -p .venv && poetry install --sync" ,
-	                     "add link to python executable": "sudo ln -s /usr/bin/python3 /usr/local/bin/python"
-                         },
-   "onCreateCommand": "clojure -Sthreads 1 -A:model-integration-tests:test:dev  -P"		
-   				 
+	"add link to python executable": "sudo ln -s /usr/bin/python3 /usr/local/bin/python"
+},
+"onCreateCommand": "clojure -Sthreads 1 -A:model-integration-tests:test:dev  -P"		
+
 }

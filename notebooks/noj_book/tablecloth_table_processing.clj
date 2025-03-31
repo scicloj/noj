@@ -4,7 +4,6 @@
 
 ;; last change: 2025-02-02
 
-
 ;; [Tablecloth](https://scicloj.github.io/tablecloth/)
 ;; is a table processing library
 ;; inspired by the dataframe ergonomics typicall to the [R](https://www.r-project.org/)
@@ -42,7 +41,7 @@
 
 ;; ## About this tutorial
 
-;; In this tutorial, we will demonstrate the ergonomics of so-called dataset
+;; In this tutorial, we will demonstrate the ergonomics of so-called *dataset*
 ;; data strucures provided by Tablecloth. Datasets are table-like data structures,
 ;; often called data-frames in other data science platforms.
 
@@ -61,22 +60,23 @@
 
 ;; ## Setup
 
-;; We create a namespace and require the Tablecloth API namespaces:
-;; The main Dataset API [`tablecloth.api`](https://scicloj.github.io/tablecloth/#dataset-api)
-;; and the Column API [`tablecloth.column.api`](https://scicloj.github.io/tablecloth/#column-api) that we'll see below.
-;; We will also use [`tech.v3.dataset.print`](https://techascent.github.io/tech.ml.dataset/tech.v3.dataset.print.html) to control printing,
-;; `clojure.string` for some string processing,
-;; [Kindly](https://scicloj.github.io/kindly-noted/) to control
-;; the way certain things are displayed,
-;; [Clojure.Java-Time](https://github.com/dm3/clojure.java-time)
-;; for some time calculations, and the [`datetime`](https://cnuernber.github.io/dtype-next/tech.v3.datatype.datetime.html)
-;; namespace of dtype-next. 
+;; We create a namespace and require the following namespaces:
+
+;; * [`tablecloth.api`](https://scicloj.github.io/tablecloth/#dataset-api) - the main Tablecloth Dataset API 
+;; * [`tablecloth.column.api`](https://scicloj.github.io/tablecloth/#column-api) - the Tablecloth Column API 
+;; * [`tech.v3.dataset.print`](https://techascent.github.io/tech.ml.dataset/tech.v3.dataset.print.html) to control printing (from tech.ml.dataset)
+;; * `clojure.string` for string processing
+;; * `clojure.java.io` for file input/output
+;; * `scicloj.kindly.v4.kind` of the [Kindly](https://scicloj.github.io/kindly-noted/) standard to control the way certain values are displayed
+;; * `java-time.api` of [Clojure.Java-Time](https://github.com/dm3/clojure.java-time) for some time calculations
+;; * [`tech.v3.datatype.datetime`](https://cnuernber.github.io/dtype-next/tech.v3.datatype.datetime.html) of date and time operations (from dtype-next) 
 
 (ns noj-book.tablecloth-table-processing
   (:require [tablecloth.api :as tc]
             [tablecloth.column.api :as tcc]
             [tech.v3.dataset.print :as print]
             [clojure.string :as str]
+            [clojure.java.io :as io]
             [scicloj.kindly.v4.kind :as kind]
             [java-time.api :as java-time]
             [tech.v3.datatype.datetime :as datetime]))
@@ -173,16 +173,6 @@ some-trips
                 :overflow-y :auto
                 :background "floralwhite"}}
   some-trips])
-
-;; For use in this tutorial, let us define our own customized view:
-
-(defn compact-view [dataset]
-  (kind/hiccup
-   [:div {:style {:max-width "100%"
-                  :max-height "400px"
-                  :overflow-x :auto
-                  :overflow-y :auto}}
-    dataset]))
 
 ;; ## What is a dataset?
 
@@ -345,41 +335,58 @@ some-trips
 
 ;; We can use the `tc/info` function to summarize a dataset:
 
-(-> some-trips
-    tc/info
-    compact-view)
+(tc/info some-trips)
 
 ;; ## Reading datasets
 
 ;; Datasets are often read from files.
 
-;; Let us read a file from the
+;; Let us read a file from the [Divvy Data](https://divvybikes.com/system-data), where the history of bike
+;; sharing trips in Chicago is shared publicly.
 ;; [Chicago bike trips](https://www.kaggle.com/datasets/godofoutcasts/cyclistic-bike-share-2023) dataset.
+
+;; Let us first download the data of one month.
+
+(def bike-trips-filename
+  "202304-divvy-tripdata.zip")
+
+(if (.exists (io/as-file bike-trips-filename))
+  [:already-downloaded bike-trips-filename]
+  (with-open [in (io/input-stream "https://divvy-tripdata.s3.amazonaws.com/202304-divvy-tripdata.zip")
+              out (io/output-stream bike-trips-filename)]
+    (io/copy in out)
+    [:just-downloaded bike-trips-filename]))
+
 ;; In this case, it is a [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) file
-;; compressed by [gzip](https://en.wikipedia.org/wiki/Gzip), but other formats are supported as well.
+;; held inside a compressed [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) file,
+;; but other formats are supported as well.
 
 ;; First, let us read just a few rows:
 
-(->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
-     (tc/dataset {:num-rows 3})
-     compact-view)
+(-> bike-trips-filename 
+    tc/dataset
+    time)
+
+
+(->  bike-trips-filename
+     (tc/dataset {:num-rows 3}))
 
 ;; So reading a dataset is easy, but sometimes we may wish to pass a few options
 ;; to handle it a bit better.
 
 ;; For example, you see that by default, the column names are strings:
-(->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
+(->  bike-trips-filename
      (tc/dataset {:num-rows 9})
      tc/column-names)
 
 ;; We can apply the `keyword` function to all of them, to conveniently have keywords instead.
-(->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
+(->  bike-trips-filename
      (tc/dataset {:num-rows 9
                   :key-fn keyword})
      tc/column-names)
 
 ;; Even better, we may process the names to replace underscores with dashes.
-(->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
+(->  bike-trips-filename
      (tc/dataset {:num-rows 9
                   :key-fn (fn [s]
                             (-> s
@@ -388,7 +395,7 @@ some-trips
      tc/column-names)
 
 ;; Also, the date-time columns are parsed as strings.
-(->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
+(->  bike-trips-filename
      (tc/dataset {:num-rows 9
                   :key-fn (fn [s]
                             (-> s
@@ -402,7 +409,7 @@ some-trips
 (def datetime-parser [:local-date-time
                       "yyyy-MM-dd HH:mm:ss"])
 
-(->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
+(->  bike-trips-filename
      (tc/dataset {:num-rows 9
                   :key-fn (fn [s]
                             (-> s
@@ -422,19 +429,16 @@ some-trips
 ;; This practice is handy when reading big files.
 
 (defonce trips
-  (->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
+  (->  bike-trips-filename
        (tc/dataset {:key-fn    (fn [s]
                                  (-> s
                                      (str/replace #"_" "-")
                                      keyword))
                     :parser-fn {"started_at" datetime-parser
                                 "ended_at"   datetime-parser}})))
-(compact-view
- trips)
+trips
 
-(-> trips
-    tc/info
-    compact-view)
+(tc/info trips)
 
 ;; It is a whole month of bike trips!
 
@@ -467,9 +471,7 @@ some-trips
 
 ;; The first few trips:
 
-(-> trips
-    tc/head
-    compact-view)
+(tc/head trips)
 
 ;; Just a few columns:
 (-> trips

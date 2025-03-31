@@ -30,6 +30,6 @@
 ;; This can be used for reference or as a starting point to use Noj, if one desires.
 ;; ### scicloj.ml.smile
 ;; Noj is often used together with `scicloj.ml.smile`, and
-;; some of the Smile based models require native dependencies. This is documented in [Smile](https://github.com/haifengl/smile)
+;; some of the Smile based models require native dependencies. This is documented in [Smile](https://github.com/haifengl/smile).
 
 

@@ -4,8 +4,6 @@
    [scicloj.clay.v2.api :as clay]))
 
 
-
-
 (defn base-config [clj-files]
   {:show false
    :format [:quarto :html]
@@ -15,8 +13,8 @@
    :book {:title "Noj"}
    :clean-up-target-dir true
    :quarto {:include-in-header {:text "<meta property=\"og:image\" content=\"https://scicloj.github.io/sci-cloj-logo-transparent.png\"/>
-<meta property=\"og:title\" content=\"Scinojure Documentation\"/>
-<meta property=\"og:description\" content=\"Clojure libraries for data and science\"/>
+<meta property=\"og:title\" content=\"The Noj book\"/>
+<meta property=\"og:description\" content=\"A Clojure toolkit for data science\"/>
 <link rel = \"icon\" href = \"data:,\" />"}}})
 
 

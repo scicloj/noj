@@ -1,9 +1,16 @@
-;; # Transformer reference  - DRAFT 🛠
+;; # Transformer reference
+
+;; As discussed in the [AutoML](../noj_book.automl.html) chapter,
+;; [metamorph.ml](https://github.com/scicloj/metamorph.ml) can have
+;; certain pipeline operations whose behavior changes
+;; between the `:fit` and `:transform` modes.
+;; These operations are called *transformers*.
+
+;; This chapter provides a reference for the currently existing transformers.
 
 ;; Note that this chapter reqiures `scicloj.ml.smile` as an additional
 ;; dependency to Noj.
 ;; [![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/scicloj.ml.smile.svg)](https://clojars.org/org.scicloj/scicloj.ml.smile)
-
 
 (ns noj-book.transformer-references
   (:require
@@ -40,7 +47,7 @@
 
 (docu-fn (var nlp/count-vectorize))
 
-;;In the following we transform the text given in a dataset into a
+;; In the following we transform the text given in a dataset into a
 ;; map of token counts applying some default text normalization.
 (def data (ds/->dataset {:text ["Hello Clojure world, hello ML word !"
                               "ML with Clojure is fun"]}))
@@ -66,8 +73,8 @@ data
 bow-ds
 
 
-;;A custom tokenizer can be specified by either passing options to
-;;`scicloj.ml.smile.nlp/default-tokenize` 
+;; A custom tokenizer can be specified by either passing options to
+;; `scicloj.ml.smile.nlp/default-tokenize`:
 
 
 (def fitted-ctx
@@ -80,7 +87,7 @@ bow-ds
 
 
 (:metamorph/data fitted-ctx)
-;;or passing in a implementation of a tokenizer function
+;; or passing in an implementation of a tokenizer function:
 
 (def fitted-ctx
   (mm/fit
@@ -94,8 +101,9 @@ bow-ds
 
 
 (docu-fn (var smile-mm/bow->SparseArray))
-;Now we convert the bag-of-words map to a sparse array of class
-; `smile.util.SparseArray`
+;; Now we convert the
+;; [bag-of-words](https://en.wikipedia.org/wiki/Bag-of-words_model)
+;; map to a sparse array of class `smile.util.SparseArray`:
 
 (def ctx-sparse
   (mm/fit
@@ -108,15 +116,15 @@ ctx-sparse
 ^kind/dataset
 (:metamorph/data ctx-sparse)
 
-;;The SparseArray instances look like this:
+;; The `SparseArray` instances look like this:
 (zipmap
  (:text bow-ds)
  (map seq
       (-> ctx-sparse :metamorph/data :sparse)))
 
 (docu-fn (var smile-mm/bow->sparse-array))
-;;Now we convert the bag-of-words map to a sparse array of class
-;; `java primitive int array`
+;; Now we convert the bag-of-words map to a sparse array of class
+;; `java primitive int array`:
 
 (def ctx-sparse
   (mm/fit
@@ -125,20 +133,17 @@ ctx-sparse
 
 ctx-sparse
 
-;;We see as well the sparse representation as indices against the vocabulary
-;;of the non-zero counts.
+;; We also see the sparse representation as indices against the vocabulary
+;; of the non-zero counts.
 
 (zipmap
  (:text bow-ds)
  (map seq
       (-> ctx-sparse :metamorph/data :sparse)))
 
-
-
-
-;;In both ->sparse function we can control the vocabulary via
-;;the option to pass in a different / custom functions which creates
-;;the vocabulary from the bow maps.
+;; In both `->sparse` functions we can control the vocabulary via
+;; the option to pass in a different / custom function which creates
+;; the vocabulary from the bow (bag-of-words) maps.
 
 (def ctx-sparse
   (mm/fit
@@ -165,7 +170,8 @@ ctx-sparse
 
 
 (docu-fn (var smile-mm/bow->tfidf))
-;"Here we calculate the tf-idf score from the bag of words:"
+;; Here we calculate the [tf-idf](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
+;; score from the bag-of-words:
 
 ^kind/dataset
 (mm/pipe-it
@@ -175,15 +181,17 @@ ctx-sparse
 
 
 (docu-fn (var ml/model))
-;;The `model` transformer allows to execute all machine learning models.clj
-;;which register themself inside the `metamorph.ml` system via the function
-;;`scicloj.metamorph.ml/define-model!`.
-;;The build in models are listed here:
-;;https://scicloj.github.io/scicloj.ml/userguide-models.html
+;; The `model` transformer allows to execute all machine learning models
+;; which register themself inside the `metamorph.ml` system via the function
+;; `scicloj.metamorph.ml/define-model!`.
+;; Models can be added at runing by require relevant namespaces
+;; as documented in the various "model reference" chapters of the Noj book.
+;; The currently defined models can be looked up via
+;; `(ml/model-definition-names)`.
 
 
 
-;;We use the Iris data for this example:
+;; We use the Iris data for this example:
 
 (def iris
   (->
@@ -199,8 +207,8 @@ iris
 (def train-test
   (ds-mod/train-test-split iris))
 
-;; The pipeline consists in specifying the inference target,
-;;  transform target to categorical and the model function
+;; The pipeline specifies the inference target,
+;; transforms the target to categorical, and applies the model function.
 (def pipe-fn
   (mm/pipeline
    (mm/lift ds-mod/set-inference-target :species)
@@ -208,7 +216,7 @@ iris
    {:metamorph/id :model}
    (ml/model {:model-type :smile.classification/logistic-regression})))
 
-;First we run the training 
+;; First we run the training:
 (def fitted-ctx
   (mm/fit
    (:train-ds train-test)
@@ -225,7 +233,7 @@ iris
 
 (dissoc-in  fitted-ctx [:model :model-data])
 
-;and then prediction on test
+;; and then prediction on the test set:
 
 (def transformed-ctx
   (mm/transform-pipe (:test-ds train-test) pipe-fn fitted-ctx))
@@ -234,8 +242,7 @@ iris
     (dissoc-in [:model :model-data])
     (update-in [:metamorph/data] #(tech.v3.dataset.print/print-range % 5)))
 
-
-;and we get the predictions: 
+;; and we get the predictions: 
 ^kind/dataset
 (-> transformed-ctx
     :metamorph/data
@@ -245,8 +252,8 @@ iris
 
 
 (docu-fn (var preprocessing/std-scale))
-;We can use the std-scale transformer to center and scale data.
-;Lets take some example data:
+;; We can use the `std-scale` transformer to center and scale data.
+;; Lets take some example data:
 (def data
   (tc/dataset
    [[100 0.001]
@@ -259,8 +266,8 @@ iris
 ^kind/dataset
 data
 
-;;Now we can center each column arround 0 and scale
-;;it by the standard deviation  of the column
+;; Now we can center each column arround 0 and scale
+;; it by the standard deviation  of the column
 
 ^kind/dataset
 (mm/pipe-it
@@ -270,8 +277,8 @@ data
 
 (docu-fn (var preprocessing/min-max-scale))
 
-;;The min-max scaler scales columns in a specified interval,
-;;by default from -0.5 to 0.5
+;; The `min-max` scaler scales columns in a specified interval,
+;; by default from -0.5 to 0.5
 
 ^kind/dataset
 (mm/pipe-it
@@ -282,14 +289,14 @@ data
 
 ;;### PCA example
 
-;;In this example we run PCA on some data.
+;; In this example we run [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis) on some data.
 
 (require '[scicloj.metamorph.ml.toydata :as toydata])
 
-;;"We use the sonar dataset which has 60 columns of quantitative data,
-;;which are certain measurements from a sonar device.
-;;The original purpose of the dataset is to learn to detect rock vs metal
-;; from the measurements
+;; We use the Sonar dataset. It has 60 columns of quantitative data,
+;; which are certain measurements from a sonar device.
+;; The original purpose of the dataset is to learn to detect rock vs metal
+;; from the measurements.
 
 (def sonar
   (toydata/sonar-ds))
@@ -302,9 +309,9 @@ data
 (def col-names (map #(keyword (str "x" %))
                     (range 60)))
 
-;; First we create and run  a pipeline which does the PCA.
+;; First we create and run a pipeline that computes the PCA.
 ;; In this pipeline we do not fix the number of columns, as we want to
-;; plot the result for all numbers of components (up to 60) 
+;; plot the result for all numbers of components (up to 60).
 
 (def fitted-ctx
   (mm/fit
@@ -315,7 +322,7 @@ data
 
 
 ;; The next function transforms the result from the fitted pipeline
-;; into vega lite compatible format for plotting
+;; into [vega-lite](https://vega.github.io/vega-lite/)-compatible format for plotting.
 ;; It accesses the underlying Smile Java object to get the data on
 ;; the cumulative variance for each PCA component.
 (defn create-plot-data [ctx]
@@ -325,7 +332,7 @@ data
    (range)
    (-> ctx vals (nth 2) :fit-result :model bean :cumulativeVarianceProportion)))
 
-;;Next we plot the cumulative variance over the component index:
+;; Next we plot the cumulative variance over the component index:
 ^kind/vega-lite
 {:$schema "https://vega.github.io/schema/vega-lite/v5.json"
  :width 850
@@ -336,22 +343,22 @@ data
  {:x {:field :principal-component, :type "nominal"},
   :y {:field :cumulative-variance, :type "quantitative"}}}
 
-;;From the plot we see, that transforming the data via PCA and reducing
-;;it from 60 dimensions to about 25 would still preserve the full variance.
-;;Looking at this plot, we could now make a decision, how many dimensions
-;;to keep.
-;;We could for example decide, that keeping 60 % of the variance
-;;is enough, which would result in keeping the first 2 dimensions.
+;; From the plot we see that transforming the data via PCA and reducing
+;; it from 60 dimensions to about 25 would still preserve the full variance.
+;; Looking at this plot, we could now make a decision, how many dimensions
+;; to keep.
+;; We could, for example, decide that keeping 60 % of the variance
+;; is enough, which would result in keeping the first 2 dimensions.
 
-;;So our pipeline becomes:
+;; So our pipeline becomes:
 
 
 (def fitted-ctx
   (mm/fit
    sonar
    (projections/reduce-dimensions :pca-cov 2
-                         col-names
-                         {})
+                                  col-names
+                                  {})
 
    (ds-mm/select-columns  [:material "pca-cov-0" "pca-cov-1"])
    (ds-mm/shuffle)))
@@ -359,7 +366,7 @@ data
 ^kind/dataset
 (:metamorph/data fitted-ctx)
 
-;;As the data is now 2-dimensional, it is easy to plot:
+;; As the data is now 2-dimensional, it is easy to plot:
 
 (def scatter-plot-data
   (-> fitted-ctx
@@ -382,9 +389,9 @@ data
 
 ;; The plot shows that the reduction to 2 dimensions does not create
 ;; linear separable areas of `M` and `R`. So a linear model will not be
-;;  able to predict well the material from the 2 PCA components.
+;; able to predict well the material from the 2 PCA components.
 
-;; It even seems, that the reduction to 2 dimensions removes
+;; It even seems that the reduction to 2 dimensions removes
 ;; too much information for predicting of the material for any type of model.
 
 

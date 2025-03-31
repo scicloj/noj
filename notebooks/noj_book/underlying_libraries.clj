@@ -24,6 +24,7 @@
 
 ;; ## Math and statistics
 ;; * [Fastmath](https://github.com/generateme/fastmath) - math & stats - alpha stage of version 3 [(reference)](https://generateme.github.io/fastmath/clay/)
+;; * [Fitdistr](https://github.com/generateme/fitdistr)
 ;; * [same-ish](https://github.com/microsoft/same-ish) - approximate comparisons - useful for notebook testability
 
 ;; ## Machine learning
@@ -43,7 +44,7 @@
 ;; * [ClojisR](https://github.com/scicloj/clojisr) - R bindings [(reference)](https://clj-python.github.io/libpython-clj/)
 
 ;; ## Notebooks
-;; * [Clay](https://github.com/scicloj/clay) - easy layered graphics [(reference)](https://scicloj.github.io/clay/)
+;; * [Clay](https://github.com/scicloj/clay) - REPL-friendly notebooks and datavis [(reference)](https://scicloj.github.io/clay/)
 
 ^:kindly/hide-code
 (def direct-deps

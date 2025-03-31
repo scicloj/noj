@@ -12,8 +12,8 @@
              "distribution_fitting"
              "linear_regression_intro"]}
  {:part "Machine Learning"
-  :chapters ["metamorph"
-             "ml_basic"
+  :chapters ["ml_basic"
+             "metamorph"
              "prepare_for_ml"
              "automl"
              "interactions_ols"]}
@@ -22,7 +22,7 @@
              "echarts"]}
  {:part "Linear Algebra"
   :chapters ["linear_algebra_intro"
-             "fastmath_vector_geom2d3d"
+             #_"fastmath_vector_geom2d3d" ; temporarily commented out due to the dependence on unstable unpkg CDN
              "fastmath_vector_word_embeddings"
              "fastmath_matrix_intro"]}
  {:part "Use Cases"

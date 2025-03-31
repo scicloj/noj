@@ -21,10 +21,18 @@
        [code
         eval-result]))))
 
-
 (defmacro ->eval-code [& forms]
   (mapv
    (fn [exp]
      `(eval-code '~exp))
+   forms))
+
+
+(defmacro ->eval-code--debug [& forms]
+  (mapv
+   (fn [exp]
+     `(do 
+        (println :exp '~exp)
+        ( eval-code '~exp)))
    forms))
 
