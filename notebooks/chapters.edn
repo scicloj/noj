@@ -2,10 +2,11 @@
   :chapters ["underlying_libraries"
              "recommended_libraries"
              "known_issues"]}
- #_{:part "Datasets"
-    :chapters ["tablecloth_table_processing"
-               "datasets"
-               "tablecloth_advanced_data_processing"]}
+ {:part "Datasets"
+  :chapters ["tablecloth_table_processing"
+             ;; "datasets"
+             ;; "tablecloth_advanced_data_processing"
+             ]}
  #_{:part "Statistics"
     :chapters ["statistics_intro"
                "linear_regression_intro"]}
