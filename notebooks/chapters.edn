@@ -15,16 +15,16 @@
                "prepare_for_ml"
                "automl"
                "interactions_ols"]}
- {:part "Data Visualization"
-  :chapters ["tableplot_datavis_intro"
-             "echarts"]}
+ #_{:part "Data Visualization"
+    :chapters ["tableplot_datavis_intro"
+               "echarts"]}
  {:part "Linear Algebra"
   :chapters ["linear_algebra_intro"
              #_"fastmath_vector_geom2d3d" ; temporarily commented out due to the dependence on unstable unpkg CDN
              "fastmath_vector_word_embeddings"
              "fastmath_matrix_intro"]}
- {:part "Use Cases"
-  :chapters ["chicago_bike_times"]}
+ #_{:part "Use Cases"
+    :chapters ["chicago_bike_times"]}
  #_{:part "Model references"
     :chapters ["smile_classification"
                "smile_regression"
