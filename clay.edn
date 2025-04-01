@@ -2,7 +2,7 @@
  :remote-repo {:git-url "https://github.com/scicloj/noj"
                :branch "main"}
  :page-layout :full
- :quarto {:format {:html
+ :quarto {:format {:html {}
                    ;; {:toc true
                    ;;  :toc-depth 4
                    ;;  ;; :theme [:cosmo "notebooks/custom.scss"]
