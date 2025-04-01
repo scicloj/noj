@@ -53,12 +53,12 @@ the point where our line would cross the $y$ axis.
                              b
                              (rand/grandom rng)))))))
 
-simple-linear-data
+;; simple-linear-data
 
-;; Let's plot these points using Tableplot's Plotly API.
+;; ;; Let's plot these points using Tableplot's Plotly API.
 
-(-> simple-linear-data
-    plotly/layer-point)
+;; (-> simple-linear-data
+;;     plotly/layer-point)
 
 ;; ;; ### Regression using Fastmath
 
