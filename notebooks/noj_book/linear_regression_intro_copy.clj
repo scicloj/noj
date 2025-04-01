@@ -53,43 +53,43 @@
                              b
                              (rand/grandom rng)))))))
 
-;; simple-linear-data
+simple-linear-data
 
-;; ;; Let's plot these points using Tableplot's Plotly API.
+;; Let's plot these points using Tableplot's Plotly API.
 
-;; (-> simple-linear-data
-;;     plotly/layer-point)
+(-> simple-linear-data
+    plotly/layer-point)
 
-;; ;; ### Regression using Fastmath
+;; ### Regression using Fastmath
 
-;; ;; We can now fit a linear model to the data using the Fastmath library.
+;; We can now fit a linear model to the data using the Fastmath library.
 
-;; (def simple-linear-data-model
-;;   (reg/lm
-;;    ;; ys - a "column" sequence of `y` values:
-;;    (simple-linear-data :y)
-;;    ;; xss - a sequence of "rows", each containing `x` values:
-;;    ;; (one `x` per row, in our case):
-;;    (-> simple-linear-data
-;;        (tc/select-columns [:x])
-;;        tc/rows)
-;;    ;; options
-;;    {:names ["x"]}))
+(def simple-linear-data-model
+  (reg/lm
+   ;; ys - a "column" sequence of `y` values:
+   (simple-linear-data :y)
+   ;; xss - a sequence of "rows", each containing `x` values:
+   ;; (one `x` per row, in our case):
+   (-> simple-linear-data
+       (tc/select-columns [:x])
+       tc/rows)
+   ;; options
+   {:names ["x"]}))
 
-;; (type simple-linear-data-model)
+(type simple-linear-data-model)
 
-;; simple-linear-data-model
+simple-linear-data-model
 
-;; ;; Printing the model gives a tabular summary:
-;; ;; We'll capture the printed output and display it via Kindly for cleaner formatting.
+;; Printing the model gives a tabular summary:
+;; We'll capture the printed output and display it via Kindly for cleaner formatting.
 
-;; (kind/code
-;;  (with-out-str
-;;    (println
-;;     simple-linear-data-model)))
+(kind/code
+ (with-out-str
+   (println
+    simple-linear-data-model)))
 
-;; ;; As you can see, the estimated coefficients match our intercept $b$
-;; ;; and slope $a$ (the coefficient of $x$).
+;; As you can see, the estimated coefficients match our intercept $b$
+;; and slope $a$ (the coefficient of $x$).
 
 ;; ;; ### Dataset ergonomics
 
