@@ -60,23 +60,23 @@ simple-linear-data
 (-> simple-linear-data
     plotly/layer-point)
 
-;; ;; ### Regression using Fastmath
+;; ### Regression using Fastmath
 
-;; ;; We can now fit a linear model to the data using the Fastmath library.
+;; We can now fit a linear model to the data using the Fastmath library.
 
-;; (def simple-linear-data-model
-;;   (reg/lm
-;;    ;; ys - a "column" sequence of `y` values:
-;;    (simple-linear-data :y)
-;;    ;; xss - a sequence of "rows", each containing `x` values:
-;;    ;; (one `x` per row, in our case):
-;;    (-> simple-linear-data
-;;        (tc/select-columns [:x])
-;;        tc/rows)
-;;    ;; options
-;;    {:names ["x"]}))
+(def simple-linear-data-model
+  (reg/lm
+   ;; ys - a "column" sequence of `y` values:
+   (simple-linear-data :y)
+   ;; xss - a sequence of "rows", each containing `x` values:
+   ;; (one `x` per row, in our case):
+   (-> simple-linear-data
+       (tc/select-columns [:x])
+       tc/rows)
+   ;; options
+   {:names ["x"]}))
 
-;; (type simple-linear-data-model)
+(type simple-linear-data-model)
 
 ;; simple-linear-data-model
 
