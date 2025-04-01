@@ -78,10 +78,10 @@ simple-linear-data
 
 (type simple-linear-data-model)
 
-simple-linear-data-model
+;; simple-linear-data-model
 
-;; Printing the model gives a tabular summary:
-;; We'll capture the printed output and display it via Kindly for cleaner formatting.
+;; ;; Printing the model gives a tabular summary:
+;; ;; We'll capture the printed output and display it via Kindly for cleaner formatting.
 
 ;; (kind/code
 ;;  (with-out-str
