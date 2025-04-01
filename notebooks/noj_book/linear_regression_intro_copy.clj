@@ -91,53 +91,53 @@ simple-linear-data-model
 ;; As you can see, the estimated coefficients match our intercept $b$
 ;; and slope $a$ (the coefficient of $x$).
 
-;; ### Dataset ergonomics
+;; ;; ### Dataset ergonomics
 
-;; Below are a couple of helper functions that simplify how we use regression with datasets
-;; and display model summaries. We have similar ideas under development in the
-;; [Tablemath](https://scicloj.github.io/tablemath) library, but it is still in
-;; an experimental stage and not part of Noj yet.
+;; ;; Below are a couple of helper functions that simplify how we use regression with datasets
+;; ;; and display model summaries. We have similar ideas under development in the
+;; ;; [Tablemath](https://scicloj.github.io/tablemath) library, but it is still in
+;; ;; an experimental stage and not part of Noj yet.
 
-(defn lm
-  "Compute a linear regression model for `dataset`.
-  The first column marked as target is the target.
-  All the columns unmarked as target are the features.
-  The resulting model is of type `fastmath.ml.regression.LMData`,
-  created via [Fastmath](https://github.com/generateme/fastmath).
+;; (defn lm
+;;   "Compute a linear regression model for `dataset`.
+;;   The first column marked as target is the target.
+;;   All the columns unmarked as target are the features.
+;;   The resulting model is of type `fastmath.ml.regression.LMData`,
+;;   created via [Fastmath](https://github.com/generateme/fastmath).
 
-  See [fastmath.ml.regression.lm](https://generateme.github.io/fastmath/clay/ml.html#lm)
-  for `options`."
-  ([dataset]
-   (lm dataset nil))
-  ([dataset options]
-   (let [inference-column-name (-> dataset
-                                   ds-mod/inference-target-column-names
-                                   first)
-         ds-without-target (-> dataset
-                               (tc/drop-columns [inference-column-name]))]
-     (reg/lm
-      ;; ys
-      (get dataset inference-column-name)
-      ;; xss
-      (tc/rows ds-without-target)
-      ;; options
-      (merge {:names (-> ds-without-target
-                         tc/column-names
-                         vec)}
-             options)))))
+;;   See [fastmath.ml.regression.lm](https://generateme.github.io/fastmath/clay/ml.html#lm)
+;;   for `options`."
+;;   ([dataset]
+;;    (lm dataset nil))
+;;   ([dataset options]
+;;    (let [inference-column-name (-> dataset
+;;                                    ds-mod/inference-target-column-names
+;;                                    first)
+;;          ds-without-target (-> dataset
+;;                                (tc/drop-columns [inference-column-name]))]
+;;      (reg/lm
+;;       ;; ys
+;;       (get dataset inference-column-name)
+;;       ;; xss
+;;       (tc/rows ds-without-target)
+;;       ;; options
+;;       (merge {:names (-> ds-without-target
+;;                          tc/column-names
+;;                          vec)}
+;;              options)))))
 
-(defn summary
-  "Generate a summary of a linear model."
-  [lmdata]
-  (kind/code
-   (with-out-str
-     (println
-      lmdata))))
+;; (defn summary
+;;   "Generate a summary of a linear model."
+;;   [lmdata]
+;;   (kind/code
+;;    (with-out-str
+;;      (println
+;;       lmdata))))
 
-(-> simple-linear-data
-    (ds-mod/set-inference-target :y)
-    lm
-    summary)
+;; (-> simple-linear-data
+;;     (ds-mod/set-inference-target :y)
+;;     lm
+;;     summary)
 
 ;; ;; ### Prediction
 
