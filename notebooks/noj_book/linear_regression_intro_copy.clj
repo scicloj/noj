@@ -23,13 +23,13 @@
    [fastmath.random :as rand]
    [scicloj.tableplot.v1.plotly :as plotly]))
 
-## Simple Linear Regression
+;; ## Simple Linear Regression
 
-We begin with the classic straight-line model: for data points $(x, y)$,
-we assume there is a linear relationship allowing us to predict $y$ as
-$$y = ax + b.$$
-In this formulation, $a$ is the slope and $b$ is the intercept,
-the point where our line would cross the $y$ axis.
+;; We begin with the classic straight-line model: for data points $(x, y)$,
+;; we assume there is a linear relationship allowing us to predict $y$ as
+;; $$y = ax + b.$$
+;; In this formulation, $a$ is the slope and $b$ is the intercept,
+;; the point where our line would cross the $y$ axis.
 
 ;; To illustrate, we'll use Fastmath and Tablecloth to create synthetic data
 ;; in which the relationship is known to hold with $a=2$ and $b=-5$.
