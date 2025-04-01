@@ -21,7 +21,7 @@
  {:part "Linear Algebra"
   :chapters ["linear_algebra_intro"
              #_"fastmath_vector_geom2d3d" ; temporarily commented out due to the dependence on unstable unpkg CDN
-             "fastmath_vector_word_embeddings"
+             #_"fastmath_vector_word_embeddings"
              "fastmath_matrix_intro"]}
  #_{:part "Use Cases"
     :chapters ["chicago_bike_times"]}
