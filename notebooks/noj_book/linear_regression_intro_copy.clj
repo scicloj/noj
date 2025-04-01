@@ -23,121 +23,121 @@
    [fastmath.random :as rand]
    [scicloj.tableplot.v1.plotly :as plotly]))
 
-;; ## Simple Linear Regression
+## Simple Linear Regression
 
-;; We begin with the classic straight-line model: for data points $(x, y)$,
-;; we assume there is a linear relationship allowing us to predict $y$ as
-;; $$y = ax + b.$$
-;; In this formulation, $a$ is the slope and $b$ is the intercept,
-;; the point where our line would cross the $y$ axis.
+We begin with the classic straight-line model: for data points $(x, y)$,
+we assume there is a linear relationship allowing us to predict $y$ as
+$$y = ax + b.$$
+In this formulation, $a$ is the slope and $b$ is the intercept,
+the point where our line would cross the $y$ axis.
 
-;; ;; To illustrate, we'll use Fastmath and Tablecloth to create synthetic data
-;; ;; in which the relationship is known to hold with $a=2$ and $b=-5$.
+;; To illustrate, we'll use Fastmath and Tablecloth to create synthetic data
+;; in which the relationship is known to hold with $a=2$ and $b=-5$.
 
-;; ;; For each row in the dataset below, we draw $x$ uniformly from 0 to 10
-;; ;; and compute $y = ax + b$ plus an extra random noise term
-;; ;; (drawn from a standard Gaussian distribution).
-;; ;; This noise is added independently for every row.
+;; For each row in the dataset below, we draw $x$ uniformly from 0 to 10
+;; and compute $y = ax + b$ plus an extra random noise term
+;; (drawn from a standard Gaussian distribution).
+;; This noise is added independently for every row.
 
-;; (def simple-linear-data
-;;   (let [rng (rand/rng 1234)
-;;         n 50
-;;         a 2
-;;         b -5]
-;;     (-> {:x (repeatedly n #(rand/frandom rng 0 10))}
-;;         tc/dataset
-;;         (tc/map-columns :y
-;;                         [:x]
-;;                         (fn [x]
-;;                           (+ (* a x)
-;;                              b
-;;                              (rand/grandom rng)))))))
+(def simple-linear-data
+  (let [rng (rand/rng 1234)
+        n 50
+        a 2
+        b -5]
+    (-> {:x (repeatedly n #(rand/frandom rng 0 10))}
+        tc/dataset
+        (tc/map-columns :y
+                        [:x]
+                        (fn [x]
+                          (+ (* a x)
+                             b
+                             (rand/grandom rng)))))))
 
-;; simple-linear-data
+simple-linear-data
 
-;; ;; Let's plot these points using Tableplot's Plotly API.
+;; Let's plot these points using Tableplot's Plotly API.
 
-;; (-> simple-linear-data
-;;     plotly/layer-point)
+(-> simple-linear-data
+    plotly/layer-point)
 
-;; ;; ### Regression using Fastmath
+;; ### Regression using Fastmath
 
-;; ;; We can now fit a linear model to the data using the Fastmath library.
+;; We can now fit a linear model to the data using the Fastmath library.
 
-;; (def simple-linear-data-model
-;;   (reg/lm
-;;    ;; ys - a "column" sequence of `y` values:
-;;    (simple-linear-data :y)
-;;    ;; xss - a sequence of "rows", each containing `x` values:
-;;    ;; (one `x` per row, in our case):
-;;    (-> simple-linear-data
-;;        (tc/select-columns [:x])
-;;        tc/rows)
-;;    ;; options
-;;    {:names ["x"]}))
+(def simple-linear-data-model
+  (reg/lm
+   ;; ys - a "column" sequence of `y` values:
+   (simple-linear-data :y)
+   ;; xss - a sequence of "rows", each containing `x` values:
+   ;; (one `x` per row, in our case):
+   (-> simple-linear-data
+       (tc/select-columns [:x])
+       tc/rows)
+   ;; options
+   {:names ["x"]}))
 
-;; (type simple-linear-data-model)
+(type simple-linear-data-model)
 
-;; simple-linear-data-model
+simple-linear-data-model
 
-;; ;; Printing the model gives a tabular summary:
-;; ;; We'll capture the printed output and display it via Kindly for cleaner formatting.
+;; Printing the model gives a tabular summary:
+;; We'll capture the printed output and display it via Kindly for cleaner formatting.
 
-;; (kind/code
-;;  (with-out-str
-;;    (println
-;;     simple-linear-data-model)))
+(kind/code
+ (with-out-str
+   (println
+    simple-linear-data-model)))
 
-;; ;; As you can see, the estimated coefficients match our intercept $b$
-;; ;; and slope $a$ (the coefficient of $x$).
+;; As you can see, the estimated coefficients match our intercept $b$
+;; and slope $a$ (the coefficient of $x$).
 
-;; ;; ### Dataset ergonomics
+;; ### Dataset ergonomics
 
-;; ;; Below are a couple of helper functions that simplify how we use regression with datasets
-;; ;; and display model summaries. We have similar ideas under development in the
-;; ;; [Tablemath](https://scicloj.github.io/tablemath) library, but it is still in
-;; ;; an experimental stage and not part of Noj yet.
+;; Below are a couple of helper functions that simplify how we use regression with datasets
+;; and display model summaries. We have similar ideas under development in the
+;; [Tablemath](https://scicloj.github.io/tablemath) library, but it is still in
+;; an experimental stage and not part of Noj yet.
 
-;; (defn lm
-;;   "Compute a linear regression model for `dataset`.
-;;   The first column marked as target is the target.
-;;   All the columns unmarked as target are the features.
-;;   The resulting model is of type `fastmath.ml.regression.LMData`,
-;;   created via [Fastmath](https://github.com/generateme/fastmath).
+(defn lm
+  "Compute a linear regression model for `dataset`.
+  The first column marked as target is the target.
+  All the columns unmarked as target are the features.
+  The resulting model is of type `fastmath.ml.regression.LMData`,
+  created via [Fastmath](https://github.com/generateme/fastmath).
 
-;;   See [fastmath.ml.regression.lm](https://generateme.github.io/fastmath/clay/ml.html#lm)
-;;   for `options`."
-;;   ([dataset]
-;;    (lm dataset nil))
-;;   ([dataset options]
-;;    (let [inference-column-name (-> dataset
-;;                                    ds-mod/inference-target-column-names
-;;                                    first)
-;;          ds-without-target (-> dataset
-;;                                (tc/drop-columns [inference-column-name]))]
-;;      (reg/lm
-;;       ;; ys
-;;       (get dataset inference-column-name)
-;;       ;; xss
-;;       (tc/rows ds-without-target)
-;;       ;; options
-;;       (merge {:names (-> ds-without-target
-;;                          tc/column-names
-;;                          vec)}
-;;              options)))))
+  See [fastmath.ml.regression.lm](https://generateme.github.io/fastmath/clay/ml.html#lm)
+  for `options`."
+  ([dataset]
+   (lm dataset nil))
+  ([dataset options]
+   (let [inference-column-name (-> dataset
+                                   ds-mod/inference-target-column-names
+                                   first)
+         ds-without-target (-> dataset
+                               (tc/drop-columns [inference-column-name]))]
+     (reg/lm
+      ;; ys
+      (get dataset inference-column-name)
+      ;; xss
+      (tc/rows ds-without-target)
+      ;; options
+      (merge {:names (-> ds-without-target
+                         tc/column-names
+                         vec)}
+             options)))))
 
-;; (defn summary
-;;   "Generate a summary of a linear model."
-;;   [lmdata]
-;;   (kind/code
-;;    (with-out-str
-;;      (println
-;;       lmdata))))
+(defn summary
+  "Generate a summary of a linear model."
+  [lmdata]
+  (kind/code
+   (with-out-str
+     (println
+      lmdata))))
 
-;; (-> simple-linear-data
-;;     (ds-mod/set-inference-target :y)
-;;     lm
-;;     summary)
+(-> simple-linear-data
+    (ds-mod/set-inference-target :y)
+    lm
+    summary)
 
 ;; ;; ### Prediction
 
