@@ -78,15 +78,15 @@ simple-linear-data
 
 (type simple-linear-data-model)
 
-;; simple-linear-data-model
+simple-linear-data-model
 
-;; ;; Printing the model gives a tabular summary:
-;; ;; We'll capture the printed output and display it via Kindly for cleaner formatting.
+;; Printing the model gives a tabular summary:
+;; We'll capture the printed output and display it via Kindly for cleaner formatting.
 
-;; (kind/code
-;;  (with-out-str
-;;    (println
-;;     simple-linear-data-model)))
+(kind/code
+ (with-out-str
+   (println
+    simple-linear-data-model)))
 
 ;; ;; As you can see, the estimated coefficients match our intercept $b$
 ;; ;; and slope $a$ (the coefficient of $x$).
