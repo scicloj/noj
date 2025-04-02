@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [2-beta14] - 2025-04-02
+- updated deps (Clay, Tableplot)
+
 ## [2-beta13] - 2025-03-21
 - updated Clay version (IDE webview support)
 
