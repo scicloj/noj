@@ -5,8 +5,9 @@
         com.techascent/tmd-parquet                {:mvn/version "1.001"}
         org.scicloj/kindly                        {:mvn/version "4-beta15"}
         generateme/fastmath                       {:mvn/version "3.0.0-alpha3"}
+        generateme/fitdistr                       {:mvn/version "1.1.0-alpha1"}
         aerial.hanami/aerial.hanami               {:mvn/version "0.20.1"}
-        org.scicloj/tableplot                     {:mvn/version "1-beta11"}
+        org.scicloj/tableplot                     {:mvn/version "1-beta12"}
         org.scicloj/metamorph.ml                  {:mvn/version "1.2"}
         org.scicloj/sklearn-clj                   {:mvn/version "0.5"}
         org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.3.0"}
@@ -34,8 +35,8 @@
         org.babashka/sci                          {:mvn/version "0.9.45"}
         org.mentat/emmy-viewers                   {:mvn/version "0.3.2"}
 
-        generateme/fitdistr                       {:mvn/version "1.1.0-alpha1"}
-        org.scicloj/clay                          {:mvn/version "2-beta32"}}
+        org.scicloj/clay                          {:mvn/version "2-beta38"}}
+ 
  :aliases
  {:gen-tests {:extra-paths ["build"]}
 
@@ -84,18 +85,16 @@
   :outdated {;; Note that it is `:deps`, not `:extra-deps`
              :deps {com.github.liquidz/antq {:mvn/version "RELEASE"}}
              :main-opts ["-m" "antq.core"]}
-  :uber {
-         :extra-deps {org.clojars.kjw/slf4j-simple {:mvn/version "1.5.5"}}
-
-         }
+  :uber {:extra-deps {org.clojars.kjw/slf4j-simple {:mvn/version "1.5.5"}}}
   :clojupyter {:extra-deps {clojupyter/clojupyter
-
                             {:git/url "https://github.com/clojupyter/clojupyter"
-                             :git/sha "2514de7bcf78af6d62459ee93eec6684e8fdb3b8"}
+                             :git/sha "797261501b6c0f11a600f6030d720fa9157005d8"}
+                            ;; {:git/url "https://github.com/clojupyter/clojupyter"
+                            ;;  :git/sha "e26596081ebe2ffcb3af82a1bcce22359fbba06e"}
+                            ;; {:git/url "https://github.com/clojupyter/clojupyter"
+                            ;;  :git/sha "2514de7bcf78af6d62459ee93eec6684e8fdb3b8"}
                             ;;{:git/url "https://github.com/behrica/clojupyter"
                             ;; :git/sha "5a75f897243714a0a7d91e30ab28eac9982f260c"}
-                            
                             }
-
-                                        ;{:mvn/version "0.4.332"}
+               ;;{:mvn/version "0.4.332"}
                }}}

@@ -1,8 +1,21 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## [unreleased]
-- added fitdistr dependency
+## [2-beta14] - 2025-04-02
+- updated deps (Clay, Tableplot)
+
+## [2-beta13] - 2025-03-21
+- updated Clay version (IDE webview support)
+
+## [2-beta12] - 2025-03-19
+- updated deps (Clojupyter, Clay)
+
+## [2-beta11.1] - 2025-03-15
+- reverted Clojupyter verion
+
+## [2-beta11] - 2025-03-15
+- added [fitdistr](https://github.com/generateme/fitdistr) dependency
+- updated deps (Clojupyter, Clay)
 
 ## [2-beta10.1] - 2025-03-12
 - redeployed after version fix
