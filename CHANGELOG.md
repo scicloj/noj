@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## [2-beta15]
+## [2-beta15 - 2025-04-09]
 - updated Clay version
 
 ## [2-beta14] - 2025-04-02
