@@ -47,17 +47,17 @@ Noj has [Clay](https://github.com/scicloj/clay) included, which takes a Clojure 
 
 ### Run a 'Hello world'
 
-From [noj/releases](https://github.com/scicloj/noj/releases), download  `noj-<version>-uber.jar` into a local directory of your choice (replacing `<version>` with e.g. `2-beta14`).
+From [noj/releases](https://github.com/scicloj/noj/releases), download  `noj-<version>-uber.jar` into a local directory of your choice (replacing `<version>` with e.g. `2-beta15`).
 
 In your terminal, switch to that directory and run the following command:
 ```
-java -cp noj-2-beta14-uber.jar clojupyter.cmdline eval '(str "Hello " "Noj!")'
+java -cp noj-2-beta15-uber.jar clojupyter.cmdline eval '(str "Hello " "Noj!")'
 ```
 
 A nice message should appear on your screen. In this way, without having to install the Clojure CLI, you can run a Clojure program, e.g. some `hello.clj`
 
 ```
-java -cp noj-2-beta14-uber.jar clojupyter.cmdline eval '(load-file "hello.clj")'
+java -cp noj-2-beta15-uber.jar clojupyter.cmdline eval '(load-file "hello.clj")'
 ```
 
 that already has access to all Noj libraries. However, for a more readable output of your Clojure program files,
@@ -67,7 +67,7 @@ that already has access to all Noj libraries. However, for a more readable outpu
 Clay renders Clojure files as notebooks in the browser. One way to use Clay is by typing
 
 ```
-java -jar noj-2-beta14-uber.jar hello.clj
+java -jar noj-2-beta15-uber.jar hello.clj
 ```
 
 Then, you can edit the file with any editor you they know and love and see the updating browser view. See the recent 🎥 [Noj in a JAR](https://www.youtube.com/watch?v=gHwFCOkBb_o) video.
@@ -88,13 +88,13 @@ python3 -m pip install jupyterlab
 Then, install the Noj Jupyter Kernel using the JAR file downloaded from the [noj/releases](https://github.com/scicloj/noj/releases):
 
 ```
-java -cp noj-2-beta14-uber.jar clojupyter.cmdline install --jarfile noj-2-beta14-uber.jar --ident noj-2-beta14
+java -cp noj-2-beta15-uber.jar clojupyter.cmdline install --jarfile noj-2-beta15-uber.jar --ident noj-2-beta15
 ```
 
 Verify,
 
 ```
-java -cp noj-2-beta14-uber.jar clojupyter.cmdline list-installs
+java -cp noj-2-beta15-uber.jar clojupyter.cmdline list-installs
 ```
 
 and run Jupyter
