@@ -62,15 +62,19 @@ java -cp noj-2-beta14-uber.jar clojupyter.cmdline eval '(load-file "hello.clj")'
 
 that already has access to all Noj libraries. However, for a more readable output of your Clojure program files,
 
-### Use Clay
+### Use Clay with live-reload
 
-Clay renders Clojure files as notebooks in the browser. It live-reloads and watches whole directories. To get started with Clay, type
+Clay renders Clojure files as notebooks in the browser. One way to use Clay is by typing
 
 ```
 java -jar noj-2-beta14-uber.jar hello.clj
 ```
 
-Clay has no editing environment, folks can keep using the editors they know and love. However, if you look for an editor, one option is to
+Then, you can edit the file with any editor you they know and love and see the updating browser view. See the recent 🎥 [Noj in a JAR](https://www.youtube.com/watch?v=gHwFCOkBb_o) video.
+
+Clay can also be used in other modes, with mode detailed integration into the use of Clojure editors and REPLs -- see the [Clay documentation](https://scicloj.github.io/clay/) and [a video overview](https://www.youtube.com/watch?v=WiOUiHsq_dc).
+
+If you look for in-browser editing, one option is to
 
 ### Install Jupyter
 
@@ -99,7 +103,7 @@ and run Jupyter
 jupyter lab
 ```
 
-(Technical note: every notebook starts its own `NREPL` server. For details, ask on [Zulipchat](https://scicloj.github.io/docs/community/chat/))
+(Technical note: every notebook starts its own `nREPL` server. For details, ask on [Zulipchat](https://scicloj.github.io/docs/community/chat/))
 
 ## License
 
