@@ -85,7 +85,7 @@ python3 -m venv python_venv
 source python_venv/bin/activate
 python3 -m pip install jupyterlab
 ```
-Then, install the Noj Jupyter Kernel
+Then, install the Noj Jupyter Kernel using the JAR file downloaded from the [noj/releases](https://github.com/scicloj/noj/releases):
 
 ```
 java -cp noj-2-beta14-uber.jar clojupyter.cmdline install --jarfile noj-2-beta14-uber.jar --ident noj-2-beta14
