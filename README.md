@@ -47,7 +47,7 @@ Noj has [Clay](https://github.com/scicloj/clay) included, which takes a Clojure 
 
 ### Run a 'Hello world'
 
-    From [noj/releases](https://github.com/scicloj/noj/releases), download  `noj-<version>-uber.jar` into a local directory of your choice (replacing `<version>` with e.g. `2-beta11.1`).
+From [noj/releases](https://github.com/scicloj/noj/releases), download  `noj-<version>-uber.jar` into a local directory of your choice (replacing `<version>` with e.g. `2-beta11.1`).
 
 In your terminal, switch to that directory and run the following command:
 ```
