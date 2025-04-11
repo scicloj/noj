@@ -26,15 +26,6 @@
 ;; Note that `probability` outputs the pdf for continuous and probability for discrete distributions. For a continuous distribution like the normal, the output is the same as `pdf`.
 (fd/probability a-normal-distribution 4)
 
-;; sample - random value from distribution
-;; log-likelihood - log-likelihood of data
-;; likelihood - likelihood of data
-;; mean and variance of the distribution
-;; lower-bound and upper-bounds - distribution support
-;; drandom, lrandom, irandom - double/long/integer random sample from the distribution
-;; ->seq - generate sequence of samples
-;; set-seed! - set distribution seed
-
 ;; Distributions can be sampled with the `->seq` function, which takes a distribution and sample size as inputs, and returns a sequence of random values.
 
 (fd/->seq a-normal-distribution 4)
