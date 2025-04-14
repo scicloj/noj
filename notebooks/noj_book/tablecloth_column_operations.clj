@@ -6,13 +6,12 @@
 
 ;; ## Setup
 
-;; For this tutorial, we will require the main Dataset API [`tablecloth.api`](https://scicloj.github.io/tablecloth/#dataset-api), and the Column API [`tablecloth.column.api`](https://scicloj.github.io/tablecloth/#column-api).
+;; * [`tablecloth.api`](https://scicloj.github.io/tablecloth/#dataset-api) - the main Tablecloth Dataset API 
+;; * [`tablecloth.column.api`](https://scicloj.github.io/tablecloth/#column-api) - the Tablecloth Column
 
 (ns noj-book.tablecloth-column-operations
   (:require [tablecloth.api :as tc]
             [tablecloth.column.api :as tcc]))
-
-;; In addition, we will load the dataset `some-trips` that we used in the previous tutorial. 
 
 (def some-trips
   (tc/dataset {:rideable-type ["classic_bike" "electric_bike" "classic_bike"]

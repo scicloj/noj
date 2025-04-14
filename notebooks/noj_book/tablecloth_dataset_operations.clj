@@ -6,16 +6,12 @@
 
 ;; ## Setup
 
-;; We create a namespace and require the Tablecloth API namespaces:
-;; The main Dataset API [`tablecloth.api`](https://scicloj.github.io/tablecloth/#dataset-api)
-;; and the Column API [`tablecloth.column.api`](https://scicloj.github.io/tablecloth/#column-api) that we'll see below.
-;; We will also use [`tech.v3.dataset.print`](https://techascent.github.io/tech.ml.dataset/tech.v3.dataset.print.html) to control printing,
-;; `clojure.string` for some string processing,
-;; [Kindly](https://scicloj.github.io/kindly-noted/) to control
-;; the way certain things are displayed,
-;; [Clojure.Java-Time](https://github.com/dm3/clojure.java-time)
-;; for some time calculations, and the [`datetime`](https://cnuernber.github.io/dtype-next/tech.v3.datatype.datetime.html)
-;; namespace of dtype-next. 
+;; * [`tablecloth.api`](https://scicloj.github.io/tablecloth/#dataset-api) - the main Tablecloth Dataset API 
+;; * [`tablecloth.column.api`](https://scicloj.github.io/tablecloth/#column-api) - the Tablecloth Column API 
+;; * [`tech.v3.dataset.print`](https://techascent.github.io/tech.ml.dataset/tech.v3.dataset.print.html) to control printing (from tech.ml.dataset)
+;; * `clojure.string` for string processing
+;; * `scicloj.kindly.v4.kind` of the [Kindly](https://scicloj.github.io/kindly-noted/) standard to control the way certain values are displayed
+;; * [`tech.v3.datatype.datetime`](https://cnuernber.github.io/dtype-next/tech.v3.datatype.datetime.html) of date and time operations (from dtype-next) 
 
 (ns noj-book.tablecloth-dataset-operations
   (:require [tablecloth.api :as tc]
@@ -26,7 +22,6 @@
             [java-time.api :as java-time]
             [tech.v3.datatype.datetime :as datetime]))
 
-;; In addition, we will load dataset `some-trips` that we used in the previous two tutorials.
 (def some-trips
   (tc/dataset {:rideable-type ["classic_bike" "electric_bike" "classic_bike"]
                :start-lat     [41.906866 41.869312286 41.95600355078549]
@@ -34,31 +29,20 @@
                :end-lat       [41.92393131136619 41.8895 41.886875]
                :end-lng       [-87.63582453131676 -87.688257 -87.62603]}))
 
-;; We will also load the dataset `trips` that we had demonstrated earlier as well. 
 (def datetime-parser [:local-date-time
                       "yyyy-MM-dd HH:mm:ss"])
 
-(->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
-     (tc/dataset {:num-rows 9
-                  :key-fn (fn [s]
-                            (-> s
-                                (str/replace #"_" "-")
-                                keyword))
-                  ;; Note we use the original column names
-                  ;; when defining the parser:
-                  :parser-fn {"started_at" datetime-parser
-                              "ended_at" datetime-parser}})
-     :started-at
-     tcc/typeof)
+(def bike-trips-filename
+  "202304-divvy-tripdata.zip")
 
 (defonce trips
-  (->  "data/chicago-bikes/202304_divvy_tripdata.csv.gz"
-       (tc/dataset {:key-fn    (fn [s]
-                                 (-> s
-                                     (str/replace #"_" "-")
-                                     keyword))
-                    :parser-fn {"started_at" datetime-parser
-                                "ended_at"   datetime-parser}})))
+  (-> bike-trips-filename
+      (tc/dataset {:key-fn    (fn [s]
+                                (-> s
+                                    (str/replace #"_" "-")
+                                    keyword))
+                   :parser-fn {"started_at" datetime-parser
+                               "ended_at"   datetime-parser}})))
 
 ;; ## Summarizing datasets
 
@@ -96,9 +80,7 @@
 
 ;; The first few trips:
 
-(-> trips
-    tc/head
-    compact-view)
+(tc/head trips)
 
 ;; Just a few columns:
 (-> trips
