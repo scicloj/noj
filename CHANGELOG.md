@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## unreleased
+## [2-beta17 - 2025-04-30]
 - updated deps (Kindly, Clay, Kindly-advice)
 
 ## [2-beta16 - 2025-04-18]
