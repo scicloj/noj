@@ -17,8 +17,8 @@
              "automl"
              "interactions_ols"]}
  {:part "Data Visualization"
-  :chapters ["plotly_tutorial"
-             "tableplot_datavis_intro"
+  :chapters ["tableplot_datavis_intro"
+             "plotly_tutorial"
              "echarts"]}
  #_{:part "Linear Algebra"
   :chapters ["linear_algebra_intro"
