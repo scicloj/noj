@@ -3,8 +3,9 @@
              "recommended_libraries"
              "known_issues"]}
  {:part "Datasets"
-  :chapters ["tablecloth_table_processing"
-             "datasets"
+  :chapters ["tablecloth_loading_saving"
+             "tablecloth_column_operations"
+             "tablecloth_dataset_operations"
              "tablecloth_advanced_data_processing"]}
  {:part "Statistics"
   :chapters ["statistics_intro"
