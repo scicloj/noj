@@ -29,20 +29,20 @@
 (def trace11
   {:x [1, 2, 3, 4]
    :y [10, 15, 13, 17]
-   :mode 'markers'
-   :type 'scatter'})
+   :mode "markers"
+   :type "scatter"})
 
 (def trace12
   {:x [2, 3, 4, 5]
    :y [16, 5, 11, 9]
-   :mode 'lines'
-   :type 'scatter'})
+   :mode "lines"
+   :type "scatter"})
 
 (def trace13
   {:x [1, 2, 3, 4]
    :y [12, 9, 15, 12]
-   :mode 'lines+markers'
-   :type 'scatter'})
+   :mode "lines+markers"
+   :type "scatter"})
 
 ;; Just as in the JS example, the points need to be put in a vector, after which we can visualize it by specifying the kind.
 
@@ -54,8 +54,9 @@
 
 (def trace21
   {:values [19, 26, 55]
-   :labels ['Residential', 'Non-Residential', 'Utility']
-   :type 'pie'})
+   :labels ["Residential", "Non-Residential", "Utility"]
+   :type "pie"
+   })
 
 ;; You might have noticed that the previous plot was rather wide. We can specify the plot size in its layout. Here we can use the default values from the example, which makes for a proportional plot. 
 
