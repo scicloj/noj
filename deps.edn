@@ -3,11 +3,12 @@
         scicloj/tablecloth                        {:mvn/version "7.042"}
         org.scicloj/tcutils                       {:mvn/version "0.1.0-alpha2"}
         com.techascent/tmd-parquet                {:mvn/version "1.001"}
-        org.scicloj/kindly                        {:mvn/version "4-beta15"}
+        org.scicloj/kindly                        {:mvn/version "4-beta16"}
+
         generateme/fastmath                       {:mvn/version "3.0.0-alpha3"}
         generateme/fitdistr                       {:mvn/version "1.1.0-alpha1"}
         aerial.hanami/aerial.hanami               {:mvn/version "0.20.1"}
-        org.scicloj/tableplot                     {:mvn/version "1-beta12"}
+        org.scicloj/tableplot                     {:mvn/version "1-beta13"}
         org.scicloj/metamorph.ml                  {:mvn/version "1.2"}
         org.scicloj/sklearn-clj                   {:mvn/version "0.5"}
         org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.3.0"}
@@ -34,8 +35,7 @@
 
         org.babashka/sci                          {:mvn/version "0.9.45"}
         org.mentat/emmy-viewers                   {:mvn/version "0.3.2"}
-
-        org.scicloj/clay                          {:mvn/version "2-beta39"}}
+        org.scicloj/clay                          {:mvn/version "2-beta44"}}
 
  :aliases
  {:gen-tests {:extra-paths ["build"]}

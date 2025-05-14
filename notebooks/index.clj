@@ -54,6 +54,12 @@ directly for tabular data structures or provide high interoperability with it.
 
 ")
 
+;; ### Clojure for data analysis - getting started with Noj v2, VSCode, Calva, and Clay, 2025-05-02
+;; * 📁 [repo](https://github.com/scicloj/noj-v2-getting-started)
+;; * 💡 main topics: Tooling and workflow, datavis, Clay, VSCode, Calva
+^:kindly/hide-code
+(kind/video
+ {:youtube-id "B1yPkpyiEEs"})
 
 ;; ### From raw data to a blog post, 2025-01-24
 ;; * 📖 [notebook](https://scicloj.github.io/noj-v2-getting-started/)
