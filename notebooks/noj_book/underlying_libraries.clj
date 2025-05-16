@@ -15,6 +15,7 @@
 ;; ## High-performance computing
 ;; * [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset) (TMD) - high-perfrormance table processing [(reference)](https://techascent.github.io/tech.ml.dataset/)
 ;; * [dtype-next](https://github.com/cnuernber/dtype-next) - high-performance array-programming [(reference)](https://cnuernber.github.io/dtype-next/)
+;; * [ham-fisted](https://github.com/cnuernber/ham-fisted) - high-performace data structures and operations [(reference)](https://cnuernber.github.io/ham-fisted/)
 
 ;; ## Data processing
 ;; * [Tablecloth](https://github.com/scicloj/tablecloth) - dataset processing on top of TMD [(reference)](https://scicloj.github.io/tablecloth/)
