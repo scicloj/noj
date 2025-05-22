@@ -17,7 +17,7 @@
 
 ;; Let us look into the example from the Echarts
 ;; [getting started](https://echarts.apache.org/handbook/en/get-started/)
-;; tutorial.
+;; tutorial. 
 
 ;; ### Specifying a plot
 
