@@ -21,7 +21,7 @@
 
 ;; ## How to specify a Plotly plot in Clojure?
 
-;; All that is needed to specify a Plotly plot in Clojure is to translate traces and layout to Clojure maps. These then need to be set as the values of another map with keys :data (for the traces) and :layout (for the layout). The kind of this map needs to be specified as "plotly". That is all. Here we will provide three examples from the [Plotly JS website](https://plotly.com/javascript/) to showcase this procedure. 
+;; All that is needed to specify a Plotly plot in Clojure is to translate traces and layout to Clojure maps. These then need to be set as the values of another map with keys `:data` (for the traces) and `:layout` (for the layout). The kind of this map needs to be specified as "plotly". That is all. Here we will provide three examples from the [Plotly JS website](https://plotly.com/javascript/) to showcase this procedure. 
 
 ;; ## Example 1: Three scatterplots
 ;; Let us start with a [scatterplot](https://plotly.com/javascript/line-and-scatter/). In this case, the plot consists of three traces. The first plots only points, the second only lines, and the third both points and lines. Translating each trace to a Clojure map is as simple removing the colon after the key and changing the key to a keyword.
@@ -55,8 +55,7 @@
 (def trace21
   {:values [19, 26, 55]
    :labels ["Residential", "Non-Residential", "Utility"]
-   :type "pie"
-   })
+   :type "pie"})
 
 ;; You might have noticed that the previous plot was rather wide. We can specify the plot size in its layout. Here we can use the default values from the example, which makes for a proportional plot. 
 
