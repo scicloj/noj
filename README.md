@@ -4,33 +4,57 @@
 # Noj - a data science toolkit
 ![Noj logo](notebooks/Noj.svg)
 
-Noj gets you started with Clojure for data and science.
-* You get a collection of good libraries out of the box which are tested and known-to-work-together
-* .. and documentation that shows you how to use the different libraries together
-* (and if you want: a 'devcontainer' setup which is known to work with the native parts of the libraries)
+Noj is an out-of-the-box Clojure library designed to streamline data science workflows
+for both newcomers and experienced users. Noj provides a tested and integrated collection 
+of tools that are known to work seamlessly together from day one, rather than 
+requiring users to find, configure, and integrate multiple libraries separately.
 
-Noj is a Clojure library that is also released as a Jupyter kernel (see below).
-It includes the [underlying libraries](https://scicloj.github.io/noj/noj_book.underlying_libraries.html)
-as dependencies, and adds documentation and integration tests (which are mostly derived from the documentation, thus verifying its correctness).
+Traditional data science setups involve piecing together various libraries for different tasks,
+which can be time-consuming and error-prone. Noj solves this problem by providing a
+curated collection of libraries that covers the entire data science pipeline[^1]:
 
-The included libraries 
-* use [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset) directly for tabular data structures or provide high interoperability with it
-* support [kindly](https://github.com/scicloj/kindly) for visualisations of data
+* **Bridges & Interop**: Connect and interact with other language systems and libraries
+* **Data Processing**: Efficiently transform and prepare data for analysis
+* **High-Performance Computing**: Access optimized tools to tackle complex computations
+* **Mathematics & Statistics**: Perform comprehensive mathematical and statistical operations
+* **Machine Learning**: Access powerful machine learning tools and models
+* **Data Visualization**: Generate clear and compelling data visualizations
 
+All included libraries are designed with consistent data handling as a unified architecture - 
+they use <a href="https://github.com/techascent/tech.ml.dataset" target="_blank">tech.ml.dataset</a>
+directly for tabular data structures or provide high interoperability with it, 
+and support <a href="https://github.com/scicloj/kindly" target="_blank">kindly</a> framework 
+for data visualization across different output formats.
 
+## Benefits and Foundation
 
-|||
-|-|-|
-|Website | [https://scicloj.github.io/noj/](https://scicloj.github.io/noj/)
-|Source |[![(GitHub repo)](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/scicloj/noj)|
-|Deps |[![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/noj.svg)](https://clojars.org/org.scicloj/noj)|
-|Tests |![ci workflow](https://github.com/scicloj/noj/actions/workflows/ci.yml/badge.svg)|
-|License |[EPLv1.0](https://github.com/scicloj/noj/blob/main/LICENSE)|
-|Status |Beta stage.|
-|Dev chat|[#noj-dev](https://clojurians.zulipchat.com/#narrow/stream/321125-noj-dev) at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)|
-|User chat|[#data-science](https://clojurians.zulipchat.com/#narrow/stream/151924-data-science) at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)|
+Noj goes above and beyond as a comprehensive bundling solution:
 
-## Video tutorials
+* **Pre-integrated and Tested Libraries**: Users receives a collection of carefully 
+curated libraries that are guaranteed to work together, eliminating compatibility issues
+and reducing setup time.
+* **Comprehensive Documentation**: Noj provides extensive documentation and tutorials[^2] that 
+demonstrate how to use different libraries in combination, with practical examples and useful resources.
+* **Development-Ready Environment**: For hassle-free setup, Noj includes a **devcontainer**[^2] that
+handles complex native dependencies automatically.
+
+[^1]: <a href="https://scicloj.github.io/noj/noj_book.underlying_libraries.html" target="_blank">Underlying libraries</a> <br />
+[^2]: <a href="https://github.com/scicloj/noj/tree/main/.devcontainer" target="_blank">devcontainer setup</a>
+
+## General Info
+
+| Resource               | Link                                                                                                                                                       |
+|:-----------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Website**            | [https://scicloj.github.io/noj/](https://scicloj.github.io/noj/)                                                                                           |
+| **Source Code**        | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/scicloj/noj)             |
+| **Dependencies**       | [![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/noj.svg)](https://clojars.org/org.scicloj/noj)                                            |
+| **Build Status**       | ![CI Workflow](https://github.com/scicloj/noj/actions/workflows/ci.yml/badge.svg)                                                                          |
+| **License**            | [EPL v1.0](https://github.com/scicloj/noj/blob/main/LICENSE)                                                                                               |
+| **Development Status** | Beta stage                                                                                                                                                 |
+| **Developer Chat**     | [#noj-dev](https://clojurians.zulipchat.com/#narrow/stream/321125-noj-dev) on [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)           |
+| **User Support**       | [#data-science](https://clojurians.zulipchat.com/#narrow/stream/151924-data-science) on [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/) |
+
+## Tutorial Resources
 
 ### From raw data to a blog post, 2025-01-24
 * 📖 [notebook](https://scicloj.github.io/noj-v2-getting-started/)
