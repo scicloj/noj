@@ -38,9 +38,6 @@ demonstrate how to use different libraries in combination, with practical exampl
 * **Development-Ready Environment**: For hassle-free setup, Noj includes a **devcontainer**[^2] that
 handles complex native dependencies automatically.
 
-[^1]: <a href="https://scicloj.github.io/noj/noj_book.underlying_libraries.html" target="_blank">Underlying libraries</a> <br />
-[^2]: <a href="https://github.com/scicloj/noj/tree/main/.devcontainer" target="_blank">devcontainer setup</a>
-
 ## General Info
 
 | Resource               | Link                                                                                                                                                       |
@@ -54,80 +51,94 @@ handles complex native dependencies automatically.
 | **Developer Chat**     | [#noj-dev](https://clojurians.zulipchat.com/#narrow/stream/321125-noj-dev) on [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)           |
 | **User Support**       | [#data-science](https://clojurians.zulipchat.com/#narrow/stream/151924-data-science) on [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/) |
 
-## Tutorial Resources
+## Getting Started with Noj
 
-### From raw data to a blog post, 2025-01-24
-* 📖 [notebook](https://scicloj.github.io/noj-v2-getting-started/)
-* 📁 [repo](https://github.com/scicloj/noj-v2-getting-started)
-* 💾 [data source - the Clojure Events Calendar Feed](https://clojureverse.org/t/the-clojure-events-calendar-feed-turns-2/)
-* 💡 main topics: Tablcloth (processing), Tableplot (datavis), Clay (notebooking), Emacs, CIDER
-* 🎥 video: 
+### Run a 'Hello World' Example
 
-[![Noj v2 video tutorial](https://img.youtube.com/vi/vnvcKtHHMVQ/0.jpg)](https://www.youtube.com/watch?v=vnvcKtHHMVQ)
+The instructions below demonstrate running Clojure code without installing 
+<a href="https://clojure.org/guides/install_clojure" target="_blank">Clojure CLI</a>:
 
-## Clojure namespaces are Noj notebooks
+1. Download `noj-<version>-uber.jar` from <a href="https://github.com/scicloj/noj/releases" target="_blank">Releases</a>
+   into a local directory of your choice (replace `<version>` with e.g. `2-beta15`).
+2. Navigate to the JAR-downloaded directory in a terminal.
+3. Execute the following command to run "Hello Noj":
 
-Noj has [Clay](https://github.com/scicloj/clay) included, which takes a Clojure namespace and turns it into a notebook. To get started,
+    a. This command will display a "Hello Noj!" message, confirming that Noj is working correctly:
+        `java -cp noj-2-beta15-uber.jar clojupyter.cmdline eval '(str "Hello " "Noj!")'`
 
-### Run a 'Hello world'
+    b. This command will provide immediate access to all libraries in Noj `hello.clj` within an external Clojure file:
+        `java -cp noj-2-beta15-uber.jar clojupyter.cmdline eval '(load-file "hello.clj")'`
 
-From [noj/releases](https://github.com/scicloj/noj/releases), download  `noj-<version>-uber.jar` into a local directory of your choice (replacing `<version>` with e.g. `2-beta15`).
+### Live-Reload with Clay
 
-In your terminal, switch to that directory and run the following command:
-```
-java -cp noj-2-beta15-uber.jar clojupyter.cmdline eval '(str "Hello " "Noj!")'
-```
+Noj includes <a href="https://github.com/scicloj/clay" target="_blank">Clay</a>, which transforms
+Clojure namespaces into interactive notebooks. 
+This allows users to write and execute Clojure code within a notebook-like environment. 
+For a more interactive experience, Clay can render Clojure files as live notebooks in your browser.
 
-A nice message should appear on your screen. In this way, without having to install the Clojure CLI, you can run a Clojure program, e.g. some `hello.clj`
+Launch Clay with live-reload functionality:
 
-```
-java -cp noj-2-beta15-uber.jar clojupyter.cmdline eval '(load-file "hello.clj")'
-```
-
-that already has access to all Noj libraries. However, for a more readable output of your Clojure program files,
-
-### Use Clay with live-reload
-
-Clay renders Clojure files as notebooks in the browser. One way to use Clay is by typing
-
-```
+```bash 
 java -jar noj-2-beta15-uber.jar hello.clj
 ```
 
-Then, you can edit the file with any editor you they know and love and see the updating browser view. See the recent 🎥 [Noj in a JAR](https://www.youtube.com/watch?v=gHwFCOkBb_o) video.
+This command opens an interactive notebook in the browser. Users can make changes 
+to the file using any text editor, and changes will update in the browser automatically.
 
-Clay can also be used in other modes, with mode detailed integration into the use of Clojure editors and REPLs -- see the [Clay documentation](https://scicloj.github.io/clay/) and [a video overview](https://www.youtube.com/watch?v=WiOUiHsq_dc).
+Clay offers extensive integration with detailed REPL integration and editor support. 
 
-If you look for in-browser editing, one option is to
+### Jupyter Integration
 
-### Install Jupyter
+Noj provides a dedicated kernel for <a href="https://jupyter.org" target="_blank">Jupyter</a>, 
+enabling notebook-style development with most Noj visualization capabilities.
+The Jupyter kernel provides familiar notebook interface for users comfortable 
+with the Jupyter environment.  
 
-Noj also provides a kernel for [Jupyter](https://jupyter.org). Compared to Clay, the kernel supports most but not all data visualization kinds. We also would like to mention the ongoing efforts to support [Colab](https://github.com/qubit55/clojupyter_colab_setup), the hosted Jupyter service. However, to start with the more mature local version, you best start using a Python environment:
+**Note**: There's also an ongoing effort to support <a href="https://github.com/qubit55/clojupyter_colab_setup" target="_blank">Google Colab</a>
+for cloud-based notebook usage.
 
-```
-python3 -m venv python_venv
-source python_venv/bin/activate
-python3 -m pip install jupyterlab
-```
-Then, install the Noj Jupyter Kernel using the JAR file downloaded from the [noj/releases](https://github.com/scicloj/noj/releases):
+#### Environment Setup Process
 
-```
-java -cp noj-2-beta15-uber.jar clojupyter.cmdline install --jarfile noj-2-beta15-uber.jar --ident noj-2-beta15
-```
+1. To use the Jupyter kernel, users need to set up a Python environment:
+    ```bash
+    python3 -m venv python_venv
+    source python_venv/bin/activate
+    python3 -m pip install jupyterlab
+    ```
+2. Download `noj-<version>-uber.jar` from <a href="https://github.com/scicloj/noj/releases" target="_blank">Releases</a>
+   into a local directory of your choice (replace `<version>` with e.g. `2-beta15`).
+3. Navigate to the JAR-downloaded directory in a terminal.
+4. Execute the following command to install the Noj Jupyter kernel:
 
-Verify,
+    `java -cp noj-2-beta15-uber.jar clojupyter.cmdline install --jarfile noj-2-beta15-uber.jar --ident noj-2-beta15`
 
-```
-java -cp noj-2-beta15-uber.jar clojupyter.cmdline list-installs
-```
+    a. Confirm the installation:
+        `java -cp noj-2-beta15-uber.jar clojupyter.cmdline list-installs`
+5. Launch Jupyter Lab:
+    `jupyter lab`
 
-and run Jupyter
+**Technical Note**: Each notebook instance starts with its own nREPL[^3] server.
+For technical support and detailed configuration questions, visit our 
+<a href="https://scicloj.github.io/docs/community/chat/" target="_blank">Zulip community chat</a>.
 
-```
-jupyter lab
-```
+## Learning Resources
 
-(Technical note: every notebook starts its own `nREPL` server. For details, ask on [Zulipchat](https://scicloj.github.io/docs/community/chat/))
+The following list of resources provides comprehensive guidance for learning Noj, 
+from interactive notebooks and video tutorials to documentation and real-world data examples.
+
+| Resource Type             | Link                                                                                                                                |
+|:--------------------------|:------------------------------------------------------------------------------------------------------------------------------------|
+| 📖 Notebook/Documentation | <a href="https://scicloj.github.io/noj-v2-getting-started/" target="_blank">Noj Getting Started Notebook</a>                        |
+| 🐙 Repo                   | <a href="https://github.com/scicloj/noj-v2-getting-started" target="_blank">Noj Getting Started Repo</a>                            |
+| 🎥 Video                  | <a href="https://www.youtube.com/watch?v=vnvcKtHHMVQ" target="_blank">Noj Getting Started</a>                                       |
+| 💾 Data Source            | <a href="https://clojureverse.org/t/the-clojure-events-calendar-feed-turns-2/" target="_blank">the Clojure Events Calendar Feed</a> |
+| 🎥 Video                  | <a href="https://www.youtube.com/watch?v=gHwFCOkBb_o" target="_blank">Noj in a JAR Intro</a>                                        |
+| 📖 Notebook/Documentation | <a href="https://scicloj.github.io/clay" target="_blank">Clay Documentation</a>                                                     |
+| 🎥 Video                  | <a href="https://www.youtube.com/watch?v=WiOUiHsq_dc" target="_blank">Clay Overview Demo</a>                                        |
+
+[^1]: <a href="https://scicloj.github.io/noj/noj_book.underlying_libraries.html" target="_blank">📖Underlying libraries</a>
+[^2]: <a href="https://github.com/scicloj/noj/tree/main/.devcontainer" target="_blank">🐙 devcontainer setup code</a>
+[^3]: <a href="https://github.com/nrepl/nrepl" target="_blank">🐙 nREPL Repo</a>
 
 ## License
 
@@ -139,4 +150,3 @@ _Feel free to remove or change the `LICENSE` file and remove or update this_
 _section of the `README.md` file!_
 
 Distributed under the Eclipse Public License version 1.0.
-
