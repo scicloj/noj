@@ -1,9 +1,3 @@
-^{:kindly/hide-code true
-  :kindly/kind :kind/html}
-(slurp "notebooks/Noj.svg")
-
-;; # Preface
-
 ^:kindly/hide-code
 (ns index
   (:require [scicloj.kindly.v4.api :as kindly]
@@ -15,60 +9,30 @@
             [scicloj.metamorph.ml :as ml]
             [scicloj.metamorph.ml.design-matrix :as dm]
             [scicloj.metamorph.ml.toydata :as toydata]
-            [scicloj.tableplot.v1.plotly :as plotly]))
-
+            [scicloj.tableplot.v1.plotly :as plotly])
+  (:import (java.util.regex Pattern)))
 
 ^:kindly/hide-code
 (def md
   (comp kindly/hide-code kind/md))
 
-(md "
-Noj gets you started with Clojure for data and science.
-
-* You get a collection of good libraries out of the box
-* .. and documentation that shows you how to use the different libraries together
-* (and if you want: a 'devcontainer' setup which is known to work with the native parts of the libraries)
-
-Noj is a library that does not add any API of its own.
-It includes the [underlying libraries](https://scicloj.github.io/noj/noj_book.underlying_libraries.html)
-as dependencies, and adds documentation and integration tests.
-The included libraries either use [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset) 
-directly for tabular data structures or provide high interoperability with it.
-
-")
-
-(md "
-## General info
-|||
-|-|-|
-|Website | [https://scicloj.github.io/noj/](https://scicloj.github.io/noj/)
-|Source |[![(GitHub repo)](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/scicloj/noj)|
-|Deps |[![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/noj.svg)](https://clojars.org/org.scicloj/noj)|
-|Tests |![ci workflow](https://github.com/scicloj/noj/actions/workflows/ci.yml/badge.svg)|
-|License |[EPLv1.0](https://github.com/scicloj/noj/blob/main/LICENSE)|
-|Status |Beta stage.|
-|Dev chat|[#noj-dev](https://clojurians.zulipchat.com/#narrow/stream/321125-noj-dev) at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)|
-|User chat|[#data-science](https://clojurians.zulipchat.com/#narrow/stream/151924-data-science) at [Clojurians Zulip](https://scicloj.github.io/docs/community/chat/)|
-
-## Video tutorials
-
-")
-
-;; ### Clojure for data analysis - getting started with Noj v2, VSCode, Calva, and Clay, 2025-05-02
-;; * 📁 [repo](https://github.com/scicloj/noj-v2-getting-started)
-;; * 💡 main topics: Tooling and workflow, datavis, Clay, VSCode, Calva
 ^:kindly/hide-code
-(kind/video
- {:youtube-id "B1yPkpyiEEs"})
+(defn content->remove-from-marker-str
+  ([content-str marker-str]
+   (content->remove-from-marker-str content-str marker-str nil))
+  ([content-str start-marker-str end-marker-str]
+   (let [pattern (re-pattern (str "(?s)"
+                                  (Pattern/quote start-marker-str)
+                                  (cond-> ".*" end-marker-str (str "?"))
+                                  (when end-marker-str
+                                    (str "(?=" (Pattern/quote end-marker-str) ")"))))]
+     (str/replace content-str pattern ""))))
 
-;; ### From raw data to a blog post, 2025-01-24
-;; * 📖 [notebook](https://scicloj.github.io/noj-v2-getting-started/)
-;; * 📁 [repo](https://github.com/scicloj/noj-v2-getting-started)
-;; * 💾 [data source - the Clojure Events Calendar Feed](https://clojureverse.org/t/the-clojure-events-calendar-feed-turns-2/)
-;; * 💡 main topics: Tablecloth (processing), Tableplot (datavis), Clay (notebooking), Emacs, CIDER
 ^:kindly/hide-code
-(kind/video
- {:youtube-id "vnvcKtHHMVQ"})
+(-> (slurp "README.md")
+    (content->remove-from-marker-str "## Getting Started with Noj" "## Learning Resources")
+    (content->remove-from-marker-str "## License")
+    (md))
 
 ;; ## Chapters of this book
 
