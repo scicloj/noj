@@ -1,0 +1,112 @@
+{:categories
+ {:orders [:hpc :dp :mas :ml :vis :br :nb]
+  :keys   {:br  "Bridges/Interop"
+           :dp  "Data Processing"
+           :hpc "High Performance Computing"
+           :mas "Math and Statistics"
+           :ml  "Machine Learning"
+           :nb  "Notebooks"
+           :vis "Visualization"}}
+ :dependencies
+ {aerial.hanami/aerial.hanami         {:category    :vis
+                                       :lib-name    "Hanami"
+                                       :description "Interactive data visualization framework"
+                                       :links       {:github-link "https://github.com/jsa-aerial/hanami"}}
+  clj-python/libpython-clj            {:category    :br
+                                       :lib-name    "libpython-clj"
+                                       :description "Python bindings and interoperability"
+                                       :links       {:github-link "https://github.com/clj-python/libpython-clj"
+                                                     :ref-link    "https://clj-python.github.io/libpython-clj/"}}
+  cnuernber/dtype-next                {:category    :hpc
+                                       :lib-name    "dtype-next"
+                                       :description "High-performance numeric array programming"
+                                       :links       {:github-link "https://github.com/cnuernber/dtype-next"
+                                                     :ref-link    "https://cnuernber.github.io/dtype-next/"}}
+  clojure.java-time/clojure.java-time {:category    :dp
+                                       :lib-name    "clojure.java-time"
+                                       :description "Java 8 Date-Time API wrapper for Clojure"
+                                       :links       {:github-link "https://github.com/dm3/clojure.java-time"
+                                                     :ref-link    "https://dm3.github.io/clojure.java-time/"}}
+  com.cnuernber/ham-fisted            {:category    :hpc
+                                       :lib-name    "ham-fisted"
+                                       :description "High performance data structures and operations"
+                                       :links       {:github-link "https://github.com/cnuernber/ham-fisted"
+                                                     :ref-link    "https://cnuernber.github.io/ham-fisted/"}}
+  com.techascent/tmd-parquet          {:category    :dp
+                                       :lib-name    "tmd-parquet"
+                                       :description "Parquet file format bindings bindings for tech.ml.dataset"
+                                       :links       {:github-link "https://github.com/techascent/tech.parquet"
+                                                     :ref-link    "https://parquet.apache.org/"}}
+  generateme/fastmath                 {:category    :mas
+                                       :lib-name    "Fastmath"
+                                       :description "Comprehensive math and statistics library (version 3)"
+                                       :links       {:github-link "https://github.com/generateme/fastmath"
+                                                     :ref-link    "https://generateme.github.io/fastmath/clay/"}}
+  generateme/fitdistr                 {:category    :mas
+                                       :lib-name    "Fitdistr"
+                                       :description "Distribution fitting and statistical modeling"
+                                       :links       {:github-link "https://github.com/generateme/fitdistr"}}
+  org.mentat/emmy-viewers             {:category    :vis
+                                       :lib-name    "Emmy-viewers"
+                                       :description "Mathmatical visualization symbolic computation viewers"
+                                       :links       {:github-link "https://github.com/mentat-collective/emmy-viewers"
+                                                     :ref-link    "https://cljdoc.org/d/org.mentat/emmy-viewers"}}
+  org.scicloj/clay                    {:category    :nb
+                                       :lib-name    "Clay"
+                                       :description "REPL-friendly notebooks and data visualization toolkit"
+                                       :links       {:github-link "https://github.com/scicloj/clay"
+                                                     :ref-link    "https://scicloj.github.io/clay/"}}
+  org.scicloj/kind-pyplot             {:category    :br
+                                       :lib-name    "Kind-pyplot"
+                                       :description "Python matplotlib plotting integration"
+                                       :links       {:github-link "https://github.com/scicloj/kind-pyplot"
+                                                     :ref-link    "https://scicloj.github.io/kind-pyplot/"}}
+  org.scicloj/kindly                  {:category    :vis
+                                       :lib-name    "Kindly"
+                                       :description "Data visualization specification and rendering standard"
+                                       :links       {:github-link "https://github.com/scicloj/kindly-noted"
+                                                     :ref-link    "https://scicloj.github.io/kindly-noted/kindly"}}
+  org.scicloj/metamorph.ml            {:category    :ml
+                                       :lib-name    "metamorph.ml"
+                                       :description "Unified machine learning pipeline platform"
+                                       :links       {:github-link "https://github.com/scicloj/metamorph.ml"
+                                                     :ref-link    "https://cljdoc.org/d/scicloj/metamorph.ml"}}
+  org.scicloj/scicloj.ml.tribuo       {:category    :ml
+                                       :lib-name    "scicloj.ml.tribuo"
+                                       :description "[Oracle Tribuo](https://tribuo.org/) machine learning library integration"
+                                       :links       {:github-link "https://github.com/scicloj/scicloj.ml.tribuo"
+                                                     :ref-link    "https://tribuo.org/"}}
+  org.scicloj/sklearn-clj             {:category    :ml
+                                       :lib-name    "sklearn-clj"
+                                       :description "[Scikit-learn](https://scikit-learn.org/) integration plugin for metamorph.ml"
+                                       :links       {:github-link "https://github.com/scicloj/sklearn-clj"
+                                                     :ref-link    "https://scikit-learn.org/"}}
+  org.scicloj/tableplot               {:category    :vis
+                                       :lib-name    "Tableplot"
+                                       :description "Grammar of graphics for layered data visualization"
+                                       :links       {:github-link "https://github.com/scicloj/tableplot"
+                                                     :ref-link    "https://scicloj.github.io/tableplot/"}}
+  org.scicloj/tcutils                 {:category    :dp
+                                       :lib-name    "tcutils"
+                                       :description "Utility functions for Tablecloth datasets (early stage)"
+                                       :links       {:github-link "https://github.com/scicloj/tcutils"
+                                                     :ref-link    "https://scicloj.github.io/tcutils/"}}
+  same/ish                            {:category    :mas
+                                       :lib-name    "same-ish"
+                                       :description "Approximate numerical comparisons for notebook testing"
+                                       :links       {:github-link "https://github.com/microsoft/same-ish"}}
+  scicloj/clojisr                     {:category    :br
+                                       :lib-name    "ClojisR"
+                                       :description "R language interoperability and bindings"
+                                       :links       {:github-link "https://github.com/scicloj/clojisr"
+                                                     :ref-link    "https://clj-python.github.io/libpython-clj/"}}
+  scicloj/tablecloth                  {:category    :dp
+                                       :lib-name    "Tablecloth"
+                                       :description "Dataset processing and manipulation on tech.ml.dataset"
+                                       :links       {:github-link "https://github.com/scicloj/tablecloth"
+                                                     :ref-link    "https://scicloj.github.io/tablecloth/"}}
+  techascent/tech.ml.dataset          {:category    :hpc
+                                       :lib-name    "tech.ml.dataset"
+                                       :description "High-performance dataset processing"
+                                       :links       {:github-link "https://github.com/techascent/tech.ml.dataset"
+                                                     :ref-link    "https://techascent.github.io/tech.ml.dataset"}}}}
