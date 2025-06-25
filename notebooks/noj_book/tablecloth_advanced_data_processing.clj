@@ -1,4 +1,4 @@
-;; # Advanced Table Processing with Tablecloth
+;; # Advanced Dataset Operations
 
 ;; authors: Cvetomir Dimov and Daniel Slutsky
 
