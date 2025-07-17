@@ -20,6 +20,7 @@
 .socket-repl-port
 .sw*
 .vscode
+.idea
 *.class
 *.jar
 *.swp
