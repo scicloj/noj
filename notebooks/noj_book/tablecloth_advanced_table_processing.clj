@@ -17,11 +17,11 @@
 
 ;; ## Pivoting
 
-;; The following is inpired by [R4DS](https://r4ds.had.co.nz) [Tidy data / Pivoting](https://r4ds.had.co.nz/tidy-data.html#pivoting>).
+;; The following is inspired by [R4DS](https://r4ds.had.co.nz) [Tidy data / Pivoting](https://r4ds.had.co.nz/tidy-data.html#pivoting>).
 
-;; Pivoting datasets means changing their shape - either splitting a culumn into several or putting the data from two or more columns into one. The two functions that perform these transformations are `pivot->longer` and `pivot->wider`. Here we will demonstrate how they work.
+;; Pivoting datasets means changing their shape - either splitting a column into several or putting the data from two or more columns into one. The two functions that perform these transformations are `pivot->longer` and `pivot->wider`. Here we will demonstrate how they work.
 
-;; We will use the dataset `cases-data` for this demontration, which corresponds to table4a in the aforementioned chapter of R4DS.
+;; We will use the dataset `cases-data` for this demonstration, which corresponds to table4a in the aforementioned chapter of R4DS.
 
 (def cases-data
   (tc/dataset
