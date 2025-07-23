@@ -113,9 +113,9 @@
     kind/table)
 
 
-;; ## Intermeidate conclusion
+;; ## Intermediate conclusion
 
-;; The pictutres show that weekends are different from
+;; The pictures show that weekends are different from
 ;; weekdays in terms of the hours in which people tend to use
 ;; their bikes.
 

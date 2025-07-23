@@ -2,14 +2,7 @@
 (ns index
   (:require [scicloj.kindly.v4.api :as kindly]
             [scicloj.kindly.v4.kind :as kind]
-            [clojure.string :as str]
-            [scicloj.clay.v2.api :as clay]
-            [tablecloth.api :as tc]
-            [tablecloth.column.api :as tcc]
-            [scicloj.metamorph.ml :as ml]
-            [scicloj.metamorph.ml.design-matrix :as dm]
-            [scicloj.metamorph.ml.toydata :as toydata]
-            [scicloj.tableplot.v1.plotly :as plotly])
+            [clojure.string :as str])
   (:import (java.util.regex Pattern)))
 
 ^:kindly/hide-code

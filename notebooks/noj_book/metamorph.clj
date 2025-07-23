@@ -106,7 +106,7 @@
 ;; It takes functions as input and composes them in order (unlike `comp`, which composes them in reverse order).
 ;; Note that it is not a macro, so it cannot take expressions such as `(str/upper-case)` directly.
 
-(require '[scicloj.metamorph.core :as mm] )
+(require '[scicloj.metamorph.core :as mm])
 (def metamorph-pipeline-1
   (mm/pipeline
    str/upper-case

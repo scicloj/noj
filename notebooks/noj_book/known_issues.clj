@@ -20,9 +20,9 @@
 
 ;; ## Native Dependencies
 ;; Several of the machine learning models included in Noj are known to have native, operating system level,
-;; dependencies. For most OS these get "autoinstalled" via depedencies to jars.
+;; dependencies. For most OS these get "auto-installed" via dependencies to jars.
 ;; 
-;; For some OS this is not working or needs manual instalations or configuration.
+;; For some OS this is not working or needs manual installations or configuration.
 ;;
 ;; We maintain a complete integration test suite, which exercises all models, and we have a known-to-work
 ;; [devcontainer setup](https://github.com/scicloj/noj/tree/main/.devcontainer) in which all models do work.

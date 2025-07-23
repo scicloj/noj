@@ -37,7 +37,7 @@
 ;; is `require`d (and the model keys get printed on screen when getting registered).
 ;; So we cannot provide cljdoc for the models, as they do no have corresponding functions.
 ;;
-;; Instead, we provide in the the last chapters of the Noj book a complete list
+;; Instead, we provide in the last chapters of the Noj book a complete list
 ;; of all models (and their keys) incl. the parameters they take with a description.
 ;; For some models this reference documentation contains as well code examples.
 ;; This can be used to browse or search for models and their parameters.
@@ -47,7 +47,7 @@
 ;; namely `:scicloj.ml.tribuo/classification` and `:scicloj.ml.tribuo/regression`.
 ;; The model as such is encoded in the same way as the Triuo Java libraries does this,
 ;; namely as a map of all Tribuo components in place, of which one is the model, 
-;; the so called "Trainer", is always needed and has a certain `:type`, the model class.
+;; the so-called "Trainer", is always needed and has a certain `:type`, the model class.
 ;;
 ;; The reference documentation therefore lists all "Trainer"s and their name incl. parameters.
 ;; It lists as well all other "Configurable"s which could be referred to in a component map.
@@ -135,7 +135,7 @@
 
 ;;## Convert categorical features to numeric
 ;;
-;; As we need to convert the non numerical feature columns to categorical,
+;; As we need to convert the non-numerical feature columns to categorical,
 ;; we will first look at their unique values:
 (map
  #(hash-map
@@ -235,7 +235,7 @@ split
 ;;  the numerical data back to original (important!).
 ;;  We should never compare mapped columns directly.
 
-;; We get an accuray of: 
+;; We get an accuracy of:
 (loss/classification-accuracy
  (:survived (ds-cat/reverse-map-categorical-xforms (:test split)))
  (:survived (ds-cat/reverse-map-categorical-xforms dummy-prediction)))
@@ -309,7 +309,7 @@ split
 ;; We could now go further and try to improve the features / the model type
 ;; in order to find the best performing model for the data we have.
 ;; All models types have a range of configurations,
-;; so-called hyper-parameters. They can have as well influence on the
+;; so-called hyperparameters. They can have as well influence on the
 ;; model accuracy.
 ;;
 ;; So far we used a single split into 'train' and 'test' data, so we only get

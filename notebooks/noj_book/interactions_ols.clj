@@ -100,7 +100,7 @@
 ;; and print it and the performance metrics:
 (-> evaluations flatten first :fit-ctx :model ml/tidy)
 
-;; As the multiplcation of `youtube*facebook` is as well statistically relevant, it
+;; As the multiplication of `youtube*facebook` is as well statistically relevant, it
 ;;suggests that there is indeed an interaction between these 2 predictor variables youtube and facebook.
 
 ;; $RMSE$
@@ -112,14 +112,14 @@
 (-> evaluations flatten first :test-transform :other-metrics first :metric)
 (kindly/check = 0.9747551116991899)
 
-;;$RMSE$ and $R^2$ of the intercation model are sligtly better.
+;;$RMSE$ and $R^2$ of the interaction model are slightly better.
 
 ;;These results suggest that the model with the interaction term is better than the model that contains only main effects.
 ;;So, for this specific data, we should go for the model with the interaction model.
 
 
 ;; ## use design matrix
-;; Since `metamorph.ml 0.9.0` we have a simpler way to express the same inteactions as before.
+;; Since `metamorph.ml 0.9.0` we have a simpler way to express the same interactions as before.
 ;;
 ;; We can express the same formula 
 ;; $$sales = b0 + b1 * youtube + b2 * facebook + b3 * (youtube * facebook)$$
