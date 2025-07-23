@@ -17,13 +17,13 @@
 
 ;; ## How is a Plotly JS plot specified?
 
-;; At the heart of a Plotly plot is the *trace*. It is a JSON data structure that contains data (e.g., values on the x- and y-axes) and a plot type (e.g., a sclatterplot or a histogram) together with additional plot parameters that specify how the data should be visualized. Multiple traces can be fed to Plotly as a vector so that they are jointly visualized. By default, they are visualized at the same location, that is, they are overlayed. One can optionally specify how the traces should be layed out and fix other plot properties (e.g., the plot title or the axes ranges) in another JSON data stucture called the plot *layout*.
+;; At the heart of a Plotly plot is the *trace*. It is a JSON data structure that contains data (e.g., values on the x- and y-axes) and a plot type (e.g., a scatter plot or a histogram) together with additional plot parameters that specify how the data should be visualized. Multiple traces can be fed to Plotly as a vector so that they are jointly visualized. By default, they are visualized at the same location, that is, they are overlayed. One can optionally specify how the traces should be laid out and fix other plot properties (e.g., the plot title or the axes ranges) in another JSON data structure called the plot *layout*.
 
 ;; ## How to specify a Plotly plot in Clojure?
 
 ;; All that is needed to specify a Plotly plot in Clojure is to translate traces and layout to Clojure maps. These then need to be set as the values of another map with keys `:data` (for the traces) and `:layout` (for the layout). The kind of this map needs to be specified as "plotly". That is all. Here we will provide three examples from the [Plotly JS website](https://plotly.com/javascript/) to showcase this procedure. 
 
-;; ## Example 1: Three scatterplots
+;; ## Example 1: Three scatter plots
 ;; Let us start with a [scatterplot](https://plotly.com/javascript/line-and-scatter/). In this case, the plot consists of three traces. The first plots only points, the second only lines, and the third both points and lines. Translating each trace to a Clojure map is as simple removing the colon after the key and changing the key to a keyword.
 
 (def trace11
@@ -66,7 +66,7 @@
 (kind/plotly {:data [trace21] :layout layout2})
 
 ;; ## Example 3: 2D histogram contour plot
-;; Finally, we will develop a more complex example to show how the Noj stack interplays with this approach and, also, to define a morex complex layout. We will reproduce a [2D histogram contour plot with histogram subplots](https://plotly.com/javascript/2d-density-plots/) from the Plotly JS examples. This plot visualizes the bivariate distribution of two randomly generated variables. In addition, histogram subplots visualize the univariate distribution of each variable. Generating the plot consists of generating the random data, specifying all traces and layout, and then calling `kind/plotly`.
+;; Finally, we will develop a more complex example to show how the Noj stack interplays with this approach and, also, to define a more complex layout. We will reproduce a [2D histogram contour plot with histogram subplots](https://plotly.com/javascript/2d-density-plots/) from the Plotly JS examples. This plot visualizes the bivariate distribution of two randomly generated variables. In addition, histogram subplots visualize the uni-variate distribution of each variable. Generating the plot consists of generating the random data, specifying all traces and layout, and then calling `kind/plotly`.
 
 ;; ### Random number generation
 

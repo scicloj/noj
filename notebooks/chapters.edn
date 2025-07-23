@@ -5,7 +5,7 @@
  {:part "Datasets"
   :chapters ["tablecloth_table_processing"
              "datasets"
-             "tablecloth_advanced_data_processing"]}
+             "tablecloth_advanced_table_processing"]}
  {:part "Statistics"
   :chapters ["statistics_intro"
              "distribution_fitting"

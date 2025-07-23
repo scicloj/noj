@@ -6,7 +6,7 @@
 
 ;; [Tablecloth](https://scicloj.github.io/tablecloth/)
 ;; is a table processing library
-;; inspired by the dataframe ergonomics typicall to the [R](https://www.r-project.org/)
+;; inspired by the dataframe ergonomics typical to the [R](https://www.r-project.org/)
 ;; ecosystem, specifically the [Tidyverse](https://www.tidyverse.org/),
 ;; but offers certain advantages on top of that.
 
@@ -42,13 +42,13 @@
 ;; ## About this tutorial
 
 ;; In this tutorial, we will demonstrate the ergonomics of so-called *dataset*
-;; data strucures provided by Tablecloth. Datasets are table-like data structures,
+;; data structures provided by Tablecloth. Datasets are table-like data structures,
 ;; often called data-frames in other data science platforms.
 
 ;; We will assume basic familiarity with Clojure.
 
 ;; A lot of what we demonstrate here can also be implemented with the
-;; usual Clojure data strucures such as vectors and maps.
+;; usual Clojure data structures such as vectors and maps.
 ;; However, datasets offer not only performance
 ;; advantages in space and time, but also certain usability features,
 ;; which are arguably expressive and powerful.
@@ -108,7 +108,7 @@
               :start-lat     41.869312286
               :start-lng     -87.673897266
               :end-lat       41.8895
-              :end-lng       -87.688257 }
+              :end-lng       -87.688257}
              {:rideable-type "classic_bike"
               :start-lat     41.95600355078549
               :start-lng     -87.68016144633293
@@ -155,7 +155,7 @@ some-trips
 ;; This does not matter much for now, but it can be handy when certain
 ;; inner values should be visualized in a certain way.
 
-;; It is possible to use [datatables](https://datatables.net/) to reneder `kind/table`
+;; It is possible to use [datatables](https://datatables.net/) to render `kind/table`
 ;; and specify [datatables options](https://datatables.net/manual/options)
 ;; (see [the full list](https://datatables.net/reference/option/)).
 
@@ -291,8 +291,8 @@ some-trips
     (tcc/* 1000)
     (nth 10000))
 
-;; Here we rely on the "lazy and noncaching"
-;; semantics of the undelying [dtype-next](https://github.com/cnuernber/dtype-next) library,
+;; Here we rely on the "lazy and non-caching"
+;; semantics of the underlying [dtype-next](https://github.com/cnuernber/dtype-next) library,
 ;; which is a topic worth its own tutorial.
 
 ;; ## Operations on columns
@@ -452,7 +452,7 @@ trips
 ;; The `tc/rows` function provides the rows of a dataset,
 ;; either as vectors or as maps.
 ;; Note, however, that it does not copy the data. Rather,
-;; it provides a rowwise *view* of the columnwise dataset.
+;; it provides a row-wise *view* of the column-wise dataset.
 
 (take 2 (tc/rows trips))
 
@@ -503,7 +503,7 @@ trips
 ;; When no built-in operations exist, we can use the functions `tc/map-columns` and `tc/add-columns`.
 
 ;; The `tc/map-columns` function is useful when one needs to apply a function
-;; to the values in one or more of the existings columns, for every row.
+;; to the values in one or more of the existing columns, for every row.
 
 (-> trips
     (tc/select-columns [:rideable-type :started-at :ended-at])
@@ -541,8 +541,8 @@ trips
                          :duration-in-seconds
                          (tcc/* 1/60)))))
 
-;; Let us also add a column of the hour where each
-;; trip started -- an integer between 0 to 23.
+;; Let us also add a column of the hour when each
+;; trip started -- an integer from 0 to 23.
 
 ;; To do that, we will first add the hour as a column.
 ;; Earlier, we did some time processing using the `java-time` API.
@@ -600,7 +600,7 @@ preprocessed-trips
 
 ;; More generally, we can use `tc/aggregate` to apply an arbitrary summary function.
 
-;; How does bike usage change througout the day?
+;; How does bike usage change throughout the day?
 
 ;; Let us see how the number of trips and their median length change by the hour.
 
@@ -610,7 +610,7 @@ preprocessed-trips
     (tc/group-by [:hour])
     (print/print-range 5))
 
-;; Now, we can aggregate over the groups to recieve a summary.
+;; Now, we can aggregate over the groups to receive a summary.
 ;; The resulting summary dataset will no longer be a grouped dataset.
 ;; We will order the summary by the hour.   
 
@@ -623,7 +623,7 @@ preprocessed-trips
     (print/print-range :all))
 
 ;; We can see a peak of usage between 17:00 to 18:00
-;; and a possibly slight tendendcy for longer trips (in time)
+;; and a possibly slight tendency for longer trips (in time)
 ;; around the afternoon hours.
 
 ;; For further examples of summarizing, see the [Tablecloth aggregate documentation](https://scicloj.github.io/tablecloth/#aggregate).

@@ -136,7 +136,7 @@
     stats/trim
     stats/stats-map)
 
-;; A similar approach is winsorizing the data, which involves removing the extremes of the distribution and replacing their values with the most extreme remaining values. 
+;; A similar approach is winsorizing the data, which involves removing the extremes of the distribution and replacing their values with the most extreme remaining values.
 (-> preprocessed-trips
     :duration-in-minutes
     stats/winsor
@@ -145,7 +145,7 @@
 ;; Note that summary statistics such median, quartiles, and MAD are robust to outliers as well. 
 
 ;; ## Significance testing
-;; We can test whether bike trip durations are significantly different from a value with a one sample Studend t-test. By default, the significance level is `:alpha = 0.05` and the value is `:mu = 0`. 
+;; We can test whether bike trip durations are significantly different from a value with a one sample Student's t-test. By default, the significance level is `:alpha = 0.05` and the value is `:mu = 0`.
 (-> clean-trips
     :duration-in-minutes
     (stats/t-test-one-sample))

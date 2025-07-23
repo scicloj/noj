@@ -2,7 +2,7 @@
 
 ;; Author: Cvetomir Dimov
 
-;; We often have to fit diftributions to describe variable values in our data. In Clojure, the workhorse for this kind of work is the [fitdistr](https://github.com/generateme/fitdistr) package, which is based on the similarly named R package, but built on top of the Clojure [fastmath](https://github.com/generateme/fastmath). In this chapter, we will present how to fit distributions with `fitdistr`.
+;; We often have to fit distributions to describe variable values in our data. In Clojure, the workhorse for this kind of work is the [fitdistr](https://github.com/generateme/fitdistr) package, which is based on the similarly named R package, but built on top of the Clojure [fastmath](https://github.com/generateme/fastmath). In this chapter, we will present how to fit distributions with `fitdistr`.
 
 ;; First, let us load all necessary libraries.
 
@@ -44,7 +44,7 @@
 
 ;; ## Fitting distributions
 
-;; The function `fit` can be used for fitting distributions to data as follows `(fit method distribution data params)`. Multipe methods are supported, which include `:mle` (maximum log-likelihood estimation), `:mme` (method of moments), `:ad` (Anderson-Darling), and so on (see [fit's reference](https://cljdoc.org/d/generateme/fitdistr/1.1.0-alpha1/api/fitdistr.core#fit) for a full list). Let us fit a normal distribution to a sample from the similarly shaped logistic distribution:
+;; The function `fit` can be used for fitting distributions to data as follows `(fit method distribution data params)`. Multiple methods are supported, which include `:mle` (maximum log-likelihood estimation), `:mme` (method of moments), `:ad` (Anderson-Darling), and so on (see [fit's reference](https://cljdoc.org/d/generateme/fitdistr/1.1.0-alpha1/api/fitdistr.core#fit) for a full list). Let us fit a normal distribution to a sample from the similarly shaped logistic distribution:
 
 (def fitted-distribution
   (fd/fit :mle :normal (fd/->seq (fd/distribution :logistic {:mu 3 :s 4}) 1000)))

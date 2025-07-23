@@ -1,22 +1,25 @@
 (ns model-integration-test
+  "This ns has integration tests that covers:
+
+  1. Performance assurance by validating models meet minimum accuracy thresholds
+  2. Regression validation to ensure preventing models' performance degradation
+  "
   (:require
-   [clojure.java.io :as io]
-   [clojure.set :as set]
    [clojure.string :as str]
    [clojure.test :refer [deftest is]]
    [libpython-clj2.python :as py]
    [scicloj.metamorph.core :as mm]
    [scicloj.metamorph.ml :as ml]
    [scicloj.metamorph.ml.loss :as loss]
-   [scicloj.metamorph.ml.toydata :as data]
+   [scicloj.metamorph.ml.rdatasets :as rdata]
    [tablecloth.api :as tc]
    [taoensso.nippy :as nippy]
    [tech.v3.dataset :as ds]
    [tech.v3.dataset.categorical :as ds-cat]
    [tech.v3.dataset.modelling :as ds-mod]
-   [scicloj.ml.tribuo]
-   )
+   [scicloj.ml.tribuo])
   (:import
+   (java.io File)
    [org.tribuo.classification.libsvm SVMClassificationType$SVMMode]
    [org.slf4j.bridge SLF4JBridgeHandler]
    (smile.base.mlp
@@ -26,13 +29,15 @@
     OutputFunction
     OutputLayerBuilder)))
 
+;; Initialize Python
 (py/initialize!)
 (py/run-simple-string "
 import warnings
 warnings.simplefilter('ignore')")
+
+;; Setup a Logger
 (SLF4JBridgeHandler/removeHandlersForRootLogger) 
 (SLF4JBridgeHandler/install)
-
 
 (def mlp-hidden-layer-builder
   (HiddenLayerBuilder. 1 (ActivationFunction/linear)))
@@ -40,9 +45,11 @@ warnings.simplefilter('ignore')")
 (def mlp-output-layer-builder
   (OutputLayerBuilder. 3  OutputFunction/LINEAR  Cost/MEAN_SQUARED_ERROR))
 
-
+;; Register models to test
 (require '[scicloj.metamorph.ml.classification]
          '[scicloj.metamorph.ml.regression]
+
+         ;;note: `macosx-arm64` not supported for current smile models
          '[scicloj.ml.smile.classification]
          '[scicloj.ml.smile.regression]
          
@@ -50,15 +57,12 @@ warnings.simplefilter('ignore')")
          '[scicloj.sklearn-clj.ml]
          '[scicloj.ml.xgboost])
 
+;; Sets of excluding models that are not testable
 (def not-writable--or-readable-with-nippy
-  
   #{:smile.classification/mlp  ;;https://github.com/scicloj/scicloj.ml.smile/issues/18
     :scicloj.ml.tribuo/classification ;;https://github.com/scicloj/scicloj.ml.tribuo/issues/5
     :metamorph.ml/ols
-    :fastmath/ols
-
-
-    })
+    :fastmath/ols})
 
 (def not-working-with-iris-data-or-default-params-or-no-probab
   #{:smile.classification/sparse-svm
@@ -82,7 +86,8 @@ warnings.simplefilter('ignore')")
     :sklearn.classification/svc
     :sklearn.classification/nu-svc})
 
-(def min-accuracies
+;; Minimum accuracies for models to validate in tests
+(def min-accuracies-by-model
   {:smile.classification/linear-discriminant-analysis 0.82
    :smile.classification/gradient-tree-boost 0.92
 
@@ -93,29 +98,24 @@ warnings.simplefilter('ignore')")
 
    :metamorph.ml/dummy-classifier 0.2})
 
+;; Specify model specs
 (def smile-model-specs
   (map
-   #(vector (get min-accuracies % 0.93)
+   #(vector (get min-accuracies-by-model % 0.93)
             {:model-type %})
    (->> (ml/model-definition-names)
-        (filter #(str/starts-with? (namespace %) "smile.classification"))
-        set
-        ((fn [x] (set/difference
-                  x
-                  not-working-with-iris-data-or-default-params-or-no-probab))))))
-
-
+        (filter #(and (str/starts-with? (namespace %) "smile.classification")
+                      (not (not-working-with-iris-data-or-default-params-or-no-probab %))))
+        set)))
 
 (def sklearn-model-specs
   (map
-   #(vector (get min-accuracies % 0.90)
+   #(vector (get min-accuracies-by-model % 0.90)
             {:model-type %})
    (->> (ml/model-definition-names)
-        (filter #(str/starts-with? (namespace %) "sklearn.classification"))
-        set
-        ((fn [x] (set/difference
-                  x
-                  not-working-with-iris-data-or-default-params-or-no-probab))))))
+        (filter #(and (str/starts-with? (namespace %) "sklearn.classification")
+                      (not (not-working-with-iris-data-or-default-params-or-no-probab %))))
+        set)))
 
 (def tribuo-model-specs [
                          [0.95 {:model-type :scicloj.ml.tribuo/classification
@@ -128,8 +128,8 @@ warnings.simplefilter('ignore')")
                                                      :type "org.tribuo.classification.ensemble.AdaBoostTrainer"
                                                      :properties {:innerTrainer "logistic"
                                                                   :numMembers "5"
-                                                                  :seed "1234"
-                                                                  }}]
+                                                                  :seed "1234"}}]
+
                                 :tribuo-trainer-name "ada"}]
                          
                          [0.93 {:model-type :scicloj.ml.tribuo/classification
@@ -174,83 +174,86 @@ warnings.simplefilter('ignore')")
                          :layer-builders [mlp-hidden-layer-builder mlp-output-layer-builder]}]
                   [0.2 {:model-type :metamorph.ml/dummy-classifier}]])
 
+;; Consolidate all the specs into a collection to be used in tests
 (def model-specs
   (concat
    xgboost-specs
    other-specs
    tribuo-model-specs
    smile-model-specs
-   sklearn-model-specs)
-   )
+   sklearn-model-specs))
 
+;; Test utils for accuracy checks
+(defn- get-classification-accuracy
+  "Calculate classification accuracy:
 
-
-
-
-(defn my-classification-accuracy [lhs rhs]
+  accuracy = correct-prediction-count / total-prediction-count"
+  [lhs rhs]
   (loss/classification-accuracy lhs rhs))
 
-(defn- validate-nippy-round-trip [model-spec result val-ds]
-  (let [tmp-file (java.io.File/createTempFile
-                  (format "model-%s-" (:model-type model-spec))
-                  ".nippy")
+(defn- assert-nippy-round-trip
+  "Assert a model's serialization/deserialization preserves prediction accuracy"
+  [{:keys [model-type] :as model-spec} result dataset]
+  (let [;; create a temp file to put model in
+        tmp-file     (File/createTempFile
+                       (format "model-%s-" model-type)
+                       ".nippy")
 
-        _ (nippy/freeze-to-file
-           tmp-file
-           (->> result first first :fit-ctx :model))
-        new-model (nippy/thaw-from-file tmp-file)
+        ;; serialize the model file
+        _            (nippy/freeze-to-file
+                       tmp-file
+                       (->> result ffirst :fit-ctx :model))
+
+        ;; deserialize the model file
+        new-model    (nippy/thaw-from-file tmp-file)
 
         new-prediction
-        (-> val-ds
-         (ml/predict new-model)
-         (ds-cat/reverse-map-categorical-xforms)
-         :species)
-        new-trueth
-        (-> val-ds
-         ds-cat/reverse-map-categorical-xforms
-         :species)
+        (-> dataset
+            (ml/predict new-model)
+            (ds-cat/reverse-map-categorical-xforms)
+            :species)
 
-        new-accurcay
+        new-truth
+        (-> dataset
+            ds-cat/reverse-map-categorical-xforms
+            :species)
+
+        new-accuracy
         (loss/classification-accuracy
-         new-prediction
-         new-trueth)
-        min-accurcay (get min-accuracies (:model-type model-spec) 0.7)
-        ]
-    (is (< min-accurcay
-         
-         new-accurcay)
-        (format "min accurcay (%s) validation failed for: %s"
-                min-accurcay
-                model-spec)
-        )))
+          new-prediction
+          new-truth)
 
-(defn classify [model-spec ds]
-  (println :verify (:model-type model-spec))
+        min-accuracy (get min-accuracies-by-model model-type 0.7)]
+    (is (< min-accuracy new-accuracy)
+        (format "min accuracy (%s) validation failed for: %s"
+                min-accuracy
+                model-spec))))
+
+(defn- train-and-validate-model
+  "Train a model and validate its performance using k-fold cross-validation"
+  [{:keys [model-type] :as model-spec} dataset]
+  (println :verify-accuracy model-type)
   (let [train-test-split
-        (tc/split->seq ds :kfold {:seed 1234 :k 10})
+        (tc/split->seq dataset :kfold {:seed 1234 :k 10})
 
         pipe
         (mm/pipeline
-         {:metamorph/id :model}
-         (ml/model model-spec))
+          {:metamorph/id :model}
+          (ml/model model-spec))
 
         result
         (ml/evaluate-pipelines
-         [pipe]
-         train-test-split
-         my-classification-accuracy
-         :accuracy)
-        _
-        (when (not (contains? not-writable--or-readable-with-nippy
-                              (:model-type model-spec)))
-          (validate-nippy-round-trip model-spec result ds))
+          [pipe]
+          train-test-split
+          get-classification-accuracy
+          :accuracy)]
 
+    ;; validate a model's accuracy after serial/deserialization
+    (when-not (contains? not-writable--or-readable-with-nippy model-type)
+      (assert-nippy-round-trip model-spec result dataset))
 
-
-        accuracy (-> result first first :test-transform :mean)]
-
-
-    accuracy))
+    ;; get accuracy of the model
+    (-> result ffirst :test-transform :mean)))
 
 (defn- remove-model-type [model-specs type]
   (remove
@@ -258,134 +261,146 @@ warnings.simplefilter('ignore')")
        (-> % second :model-type))
    model-specs))
 
-(defn- verify-fn [[expected-acc spec] iris]
+(defn- assert-accuracy
+  "Check whether a model's accuracy surpasses minimum expectations"
+  [[expected-accuracy {:keys [model-type] :as model-spec}] dataset]
   (try
-    (let [acc (classify spec iris)]
-      (println :acc acc)
+    (let [accuracy (train-and-validate-model model-spec dataset)]
+      (println :min-accuracy expected-accuracy :accuracy accuracy)
       (is
-       (>= acc
-           expected-acc)
+       (>= accuracy
+         expected-accuracy)
 
-       (format "%s: expect at least: %s, found : %s"
-               (:model-type spec)
-               expected-acc acc)))
+       (format "model type %s expects accuracy at least of %s, but found %s"
+         model-type
+         expected-accuracy accuracy)))
 
-    (catch Exception e  (is false e))))
+    (catch Exception e
+      (is false
+          (format "Exception: %s" (.toString e))))))
 
+;; Define our test dataset
+(def iris-dataset (-> (rdata/datasets-iris)
+                      (tc/drop-columns :rownames)
+                      (ds-mod/set-inference-target :species)
+                      (ds/categorical->number [:species] {} :int16)))
+
+;; ==========================
+;; TEST1: Accuracy Validation
+;; ==========================
 
 (deftest verify-classification-iris-int-catmap
-  (let [iris  (data/iris-ds)]
-    (run!
-     #(verify-fn % iris)
-     model-specs)))
+  (run!
+    #(assert-accuracy % iris-dataset)
+    model-specs))
 
 (deftest verify-classification-iris-float-catmap
   (let [iris
         (->
-         (data/iris-ds)
+         iris-dataset
          ds-cat/reverse-map-categorical-xforms
          (ds/categorical->number [:species] {} :float64))]
     (run!
-     #(verify-fn % iris)
+     #(assert-accuracy % iris)
      model-specs)))
 
- (deftest verify-classification-iris-no-catmap
+(deftest verify-classification-iris-no-catmap
   (let [iris
-        (->
-         (data/iris-ds)
-         ds-cat/reverse-map-categorical-xforms 
-         )]
+        (ds-cat/reverse-map-categorical-xforms
+         iris-dataset)]
     (run!
-     #(verify-fn % iris)
+     #(assert-accuracy % iris)
      ;; only tribuo can deal with "string" target column
      ;;https://github.com/scicloj/noj/issues/36
      (concat
       ;other-specs
       ;xgboost-specs
-      tribuo-model-specs
+      tribuo-model-specs))))
       ;smile-model-specs
       ;sklearn-model-specs
-      ))
-    ))
 
 (deftest verify-classification-iris-nil-catmap-int
   (let [iris
-        (->
-         (data/iris-ds)
-         (ds/assoc-metadata [:species] :categorical-map nil))]
+        (ds/assoc-metadata iris-dataset [:species] :categorical-map nil)]
     (run!
-     #(verify-fn % iris)
+     #(assert-accuracy % iris)
 
      (-> model-specs
          ;;https://github.com/scicloj/scicloj.ml.smile/issues/19
-         (remove-model-type  :smile.classification/mlp)
-         ))))
+         (remove-model-type  :smile.classification/mlp)))))
 
 (deftest verify-classification-iris-nil-catmap-float
   (let [iris
         (->
-         (data/iris-ds)
+         iris-dataset
          (ds-cat/reverse-map-categorical-xforms)
          (ds/categorical->number [:species] {} :float64)
          (ds/assoc-metadata [:species] :categorical-map nil))]
     (run!
-
-     #(verify-fn % iris)
+     #(assert-accuracy % iris)
      (-> model-specs
          ;;https://github.com/scicloj/scicloj.ml.smile/issues/19
-         (remove-model-type  :smile.classification/mlp)
-         ))))
+         (remove-model-type  :smile.classification/mlp)))))
 
-(def iris-ds-regression
+(comment
+  (verify-classification-iris-int-catmap)
+  (verify-classification-iris-float-catmap)
+  (verify-classification-iris-no-catmap)
+  (verify-classification-iris-nil-catmap-int)
+  (verify-classification-iris-nil-catmap-float))
+
+;; Test utils for regression checks
+(def iris-dataset-regression
   (->
-   (data/iris-ds)
+   iris-dataset
    (tc/drop-columns [:species])
    (ds-mod/set-inference-target :sepal-length)))
 
-
-(def split
+(def first-split-iris-dataset-regression
   (first
    (tc/split->seq 
-    iris-ds-regression
+    iris-dataset-regression
     :holdout
-    {:seed 12345}
-    )))
+    {:seed 12345})))
 
 (def iris-ds-regression--train
-  (:train split))
+  (:train first-split-iris-dataset-regression))
 
 (def iris-ds-regression--test
-  (:test split))
+  (:test first-split-iris-dataset-regression))
 
-
-(defn assert-mae [model model-map]
-  (let [mae
+(defn- assert-mae
+  "Check whether a model's mean absolute error(MAE) falls below maximum expectation"
+  [model model-map]
+  (let [max-mae 0.4
+        mae
         (loss/mae
          (-> iris-ds-regression--test :sepal-length)
          (-> (ml/predict iris-ds-regression--test model) :sepal-length))]
-    (println :mae mae)
+    (println :max-mean-absolute-error max-mae :mean-absolute-error mae)
 
-    (is (>
-         0.4
-         mae) (format "mae validation failed: %s" model-map))))
-    
+    (is (> max-mae mae)
+        (format "mae validation failed: %s" model-map))))
 
-
-
-(defn validate-regression [model-map]
-  ;(println :model-type (:model-type model-map))
+(defn- validate-regression
+  "Re-train a model and validate its mean absolute error thresholds"
+  [{:keys [model-type] :as model-map}]
+  (println :validate-regression :model-type model-type)
   (let [model
         (ml/train
          iris-ds-regression--train
          model-map)]
     
-    (when (not (contains? not-writable--or-readable-with-nippy 
-                          (:model-type model-map)))
+    (when-not (contains? not-writable--or-readable-with-nippy model-type)
       (let [frozen (nippy/freeze-to-string model)
             unfrozen-model (nippy/thaw-from-string frozen)]
         (assert-mae unfrozen-model model-map)))
 
     (assert-mae model model-map)))
+
+;; ============================
+;; TEST2: Regression Validation
+;; ============================
 
 (deftest regression-works
   (run! 
@@ -402,10 +417,7 @@ warnings.simplefilter('ignore')")
     :xgboost/regression
     :sklearn.regression/linear-regression
     :sklearn.regression/decision-tree-regressor
-    :sklearn.regression/random-forest-regressor
-    
-
-    ]))
+    :sklearn.regression/random-forest-regressor]))
 
 (deftest tribuo-regression-works
   (run!
@@ -434,4 +446,6 @@ warnings.simplefilter('ignore')")
       :type "org.tribuo.regression.libsvm.LibSVMRegressionTrainer"
       :properties {:svmType "nu"}}]]))
 
-
+(comment
+  (regression-works)
+  (tribuo-regression-works))

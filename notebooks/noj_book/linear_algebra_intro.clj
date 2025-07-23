@@ -13,7 +13,7 @@
 
 ;; Linear transformations are transformations which are simple, in a certain sense which can be made precise. They are often useful when mixed and composed with nonlinear transformations, and of course, the Fastmath API offers both kinds, as we will see below.
 
-;; Implementation-wise, vectors can be represented in many ways. Clojure's persistent vectors are one way (assuming they contain only numbers). It is a bit heavy in time and space, since all numbers are [boxed](https://en.wikipedia.org/wiki/Boxing_(computer_programming)) in objects. Java arrays are a more lightweight representatin.
+;; Implementation-wise, vectors can be represented in many ways. Clojure's persistent vectors are one way (assuming they contain only numbers). It is a bit heavy in time and space, since all numbers are [boxed](https://en.wikipedia.org/wiki/Boxing_(computer_programming)) in objects. Java arrays are a more lightweight representation.
 
 ;; ## Recommended reading
 

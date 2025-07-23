@@ -1,11 +1,11 @@
 ;; # AutoML using metamorph pipelines
 
 ;;  In this tutorial we see how to use `metamorph.ml` to perform automatic machine learning.
-;;  With AutoML we mean to try lots of different models and hyper parameters and rely on automatic
+;;  With AutoML we mean to try lots of different models and hyperparameters and rely on automatic
 ;;  validation to pick the best performing model automatically.
 ;;
 
-;; Note that this chapter reqiures `scicloj.ml.smile` as an additional
+;; Note that this chapter requires `scicloj.ml.smile` as an additional
 ;; dependency to Noj.
 ;; [![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/scicloj.ml.smile.svg)](https://clojars.org/org.scicloj/scicloj.ml.smile)
 
@@ -35,13 +35,13 @@
 ;;
 ;; While in the basic tutorial we saw how to use the pair of `train` 
 ;; and `predict` to
-;; perform machine learning, AutoML requires us to use an other
+;; perform machine learning, AutoML requires us to use another
 ;; abstraction, in order to encapsulate both train and predict in a
 ;; single function.(or other any operation)
 ;;
 ;;  We will use the concept of a "metamorph pipeline", which is a
 ;;  sequence of specific functions,
-;;  and each function can behaves differently, depending on the "mode"
+;;  and each function can behave differently, depending on the "mode"
 ;;  in which the pipelines get run.
 ;;  It can run either in mode `:fit` or in mode `:transform`, and the
 ;;  functions of the pipeline can (but don't need to) do
@@ -55,7 +55,7 @@
 ;; The names `:fit` and `:transform` come from the fact that the functions
 ;; could do other things then  `train` and `predict`, 
 ;; so `:fit` and `:transform` represent a
-;; more general concept then train/predict.
+;; more general concept than train/predict.
 
 (require '[scicloj.metamorph.ml :as ml]
          '[scicloj.metamorph.core :as mm]
@@ -77,8 +77,8 @@
 
 ;; In its foundation a metamorph pipeline is a sequential composition of
 ;; functions,
-;; which **all** take a map as only parameter, the so called context,
-;; and they return an other context, changed by the functions.
+;; which **all** take a map as only parameter, the so-called context,
+;; and they return another context, changed by the functions.
 ;; The composed function , hence the pipeline overall, has this same property.
 ;; Any other function parameters are closed over on function creation.
 ;; The following creates such a composed function out of other metamorph compliant operations.
@@ -96,7 +96,7 @@ my-pipeline
 ;; This function is metamorph compliant, so it takes a map
 ;; (my-pipeline {}) and returns a map.
 ;;
-;; But this map cannot be "arbitrary", it need to adhere to the `metamorph` conventions.
+;; But this map cannot be "arbitrary", it needs to adhere to the `metamorph` conventions.
 ;;
 ;; ### run pipeline = train model
 ;;
@@ -111,7 +111,7 @@ ctx-after-train
 
 ;; The ctx contains lots of information, so I only show its top level keys
 (keys ctx-after-train)
-;; This context map has the "data", the "mode" and an UUID for each operation
+;; This context map has the "data", the "mode" and a UUID for each operation
 ;; (we had only one in this pipeline)
 ;;
 (vals ctx-after-train)
@@ -224,7 +224,7 @@ ctx-after-train
 
 ;; All three can be called as function taking a dataset wrapped in a ctx map.
 
-;; Pipeline as data is as well supported:
+;; Pipeline as data is as well-supported:
 (def op-spec [[ml/model {:model-type :metamorph.ml/dummy-classifier}]])
 ;;
 (mm/->pipeline op-spec)
@@ -269,7 +269,7 @@ ctx-after-train
 ;; While most metamorph compliant operations behave the same in  
 ;; `:fit` and `:transform`, there are some which do behave differently.
 ;; They have a certain notion of "fit" and "transform",
-;; that determines the way their behavior changse between these
+;; that determines the way their behavior changes between these
 ;; two modes.
 ;;
 ;; They are therefore called "transformer" and are listed in the 
@@ -335,8 +335,8 @@ ctx-after-train
 
 (-> titanic-k-fold count)
 
-;; We add as well 10 hyper-parameter variants for logistic regression
-;; obtained via Sobol search over the hyper parameter space of the model.
+;; We add as well 10 hyperparameter variants for logistic regression
+;; obtained via Sobol search over the hyperparameter space of the model.
 (def hyper-params 
   (->>
    (ml/hyperparameters :smile.classification/logistic-regression)
@@ -421,7 +421,7 @@ logistic-regression-specs
 (make-results-ds evaluation-results)
 
 ;; The key observation is here, that the `metamorph` pipelines
-;; allow to not only grid-search over the model hyper-parameters,
+;; allow to not only grid-search over the model hyperparameters,
 ;; but as well over arbitrary `pipeline variations`,
 ;; like which features to include.
 ;; Both get handled in the same way.
@@ -505,8 +505,8 @@ logistic-regression-specs
 ;;    of the pipeline. It should be faster to do data transformations only once, 
 ;;    before the metamorph pipeline starts.
 ;; 
-;; Nevertheless in some scenarios it is very useful to create a full 
+;; Nevertheless, in some scenarios it is very useful to create a full
 ;; transformation pipeline as a metamorph pipeline. 
 ;; This would for example allow to perform very different transformation steps per 
 ;; model and still only have a single seq of pipeline functions to manage,
-;; therefore having fully self contained pipelines.
+;; therefore having fully self-contained pipelines.

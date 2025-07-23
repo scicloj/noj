@@ -176,7 +176,7 @@ sales
 ;; To try charts work as expected with `kind/echarts`, you may also find it helpful to first try out each chart
 ;; by clicking into the ones interesting to you on
 ;; [Echarts' Examples Page](https://echarts.apache.org/examples/en/index.html),
-;; where it lists all of the charts, so that you can get a sense of how it works using JSON.
+;; where it lists all the charts, so that you can get a sense of how it works using JSON.
 
 ;; ### Bar
 
@@ -598,7 +598,7 @@ reshaped-stocks
 (-> (rdatasets/datasets-iris)
     (correlations-dataset [:sepal-length :sepal-width :petal-length :petal-width]))
 
-;; Visualizing a corrleation matrix as a heatmap:
+;; Visualizing a correlation matrix as a heatmap:
 
 (let [columns-for-correlations [:sepal-length :sepal-width
                                 :petal-length :petal-width]

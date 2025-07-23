@@ -154,7 +154,7 @@ ds-with-float-and-int-mappings
 ;;
 ;;The existence of categorical maps on a column,
 ;;change the semantic value of the data. When categorical maps
-;;are different for two columns (for whatever reasons), it is not given
+;;are different for two columns (for whatever reason), it is not given
 ;;that the column cell value like `0` means the same in both columns.
 ;;Columns which have categorical maps should never be compared via
 ;;`clojure.core/=` as this will ignore the categorical maps.
@@ -345,7 +345,7 @@ ds-ready-for-train
 ;;  only contains numerical variables which have the categorical maps
 ;;  in place for easy converting back, if needed.
 ;;  The inference target is marked as well,
-;;  as we can see in the meta data:
+;;  as we can see in the metadata:
 ;;
 (map meta (vals ds-ready-for-train))
 ;;
