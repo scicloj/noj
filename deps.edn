@@ -11,7 +11,7 @@
         org.scicloj/tableplot                     {:mvn/version "1-beta13"}
         org.scicloj/metamorph.ml                  {:mvn/version "1.2.1"}
         org.scicloj/sklearn-clj                   {:mvn/version "0.5"}
-        org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.4.0"}
+        org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.3.0"}
 
         org.scicloj/scicloj.ml.tribuo              {:mvn/version "0.2"}
 
