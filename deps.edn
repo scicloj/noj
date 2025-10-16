@@ -3,15 +3,15 @@
         scicloj/tablecloth                        {:mvn/version "7.042"}
         org.scicloj/tcutils                       {:mvn/version "0.1.0-alpha2"}
         com.techascent/tmd-parquet                {:mvn/version "1.001"}
-        org.scicloj/kindly                        {:mvn/version "4-beta16"}
+        org.scicloj/kindly                        {:mvn/version "4-beta20"}
 
         generateme/fastmath                       {:mvn/version "3.0.0-alpha3"}
         generateme/fitdistr                       {:mvn/version "1.1.0-alpha1"}
-        aerial.hanami/aerial.hanami               {:mvn/version "0.20.1"}
+        aerial.hanami/aerial.hanami               {:mvn/version "0.20.2"}
         org.scicloj/tableplot                     {:mvn/version "1-beta13"}
-        org.scicloj/metamorph.ml                  {:mvn/version "1.2"}
+        org.scicloj/metamorph.ml                  {:mvn/version "1.2.1"}
         org.scicloj/sklearn-clj                   {:mvn/version "0.5"}
-        org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.3.0"}
+        org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.4.0"}
 
         org.scicloj/scicloj.ml.tribuo              {:mvn/version "0.2"}
 
@@ -35,7 +35,7 @@
 
         org.babashka/sci                          {:mvn/version "0.9.45"}
         org.mentat/emmy-viewers                   {:mvn/version "0.3.2"}
-        org.scicloj/clay                          {:mvn/version "2-beta44"}}
+        org.scicloj/clay                          {:mvn/version "2.0.0"}}
  :aliases
  {:gen-tests {:extra-paths ["build"]}
 
@@ -49,7 +49,7 @@
                       lambdaisland/kaocha {:mvn/version "1.91.1392"}
                       org.slf4j/slf4j-nop {:mvn/version "2.0.16"}
                       clj-http/clj-http {:mvn/version "3.13.0"}
-                      org.scicloj/scicloj.ml.smile {:mvn/version "7.5.2"}}}
+                      org.scicloj/scicloj.ml.smile {:mvn/version "7.5.3"}}}
 
   :model-integration-tests
   {:extra-paths ["model-integration-tests" "notebooks"]
@@ -59,7 +59,7 @@
                 org.bytedeco/arpack-ng-platform {:mvn/version "3.7.0-1.5.4"}
                 org.bytedeco/openblas {:mvn/version "0.3.10-1.5.4"}
                 org.bytedeco/javacpp {:mvn/version "1.5.4"}
-                org.scicloj/scicloj.ml.smile {:mvn/version "7.5.2"}
+                org.scicloj/scicloj.ml.smile {:mvn/version "7.5.3"}
 
                 com.taoensso/nippy {:mvn/version "3.4.2"}
 
@@ -77,7 +77,7 @@
                      org.bytedeco/javacpp {:mvn/version "1.5.4"}
                      com.oracle.labs.olcut/olcut-config-edn    {:mvn/version "5.1.4"}
                      com.oracle.labs.olcut/olcut-config-json    {:mvn/version "5.1.4"}
-                     org.scicloj/scicloj.ml.smile  {:mvn/version "7.5.2"}
+                     org.scicloj/scicloj.ml.smile  {:mvn/version "7.5.3"}
                      org.clojars.kjw/slf4j-simple {:mvn/version "1.5.5"}
                      }}
 

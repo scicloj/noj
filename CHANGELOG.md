@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [unreleased]
+- deps update
+
 ## [2-beta18 - 2025-05-08]
 - updated deps (Tableplot, Clay)
 
