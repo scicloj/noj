@@ -8,9 +8,13 @@
   (->>
    (file-seq (io/file "notebooks/noj_book"))
    (filter #(str/ends-with? (.toPath %) ".clj"))
+   ((fn [paths]
+      (prn [:gen-test-paths paths])
+      paths))
    (run!
     #(let [p (.getAbsolutePath %)]
        (println :generate-tests p)
        (clay/make! {:source-path p
-                    :show false})))))
+                    :show false}))))
+  (prn [:gen-tests-done]))
 
