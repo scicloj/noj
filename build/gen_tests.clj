@@ -8,8 +8,8 @@
   (->>
    (file-seq (io/file "notebooks/noj_book"))
    (filter #(str/ends-with? (.toPath %) ".clj"))
-   (filter #(#{"notebooks/noj_book/echarts.clj"}
-            (str %)))
+   (filter #((complement #{"notebooks/noj_book/ml_basic.clj"})
+             (str %)))
    ((fn [paths]
       (prn [:gen-test-paths paths])
       paths))
