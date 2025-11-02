@@ -1,0 +1,100 @@
+Datum,"Objednávka č.","N. Příjmy (formátované)",Stav,Zákazník,"Typ zákazníka","Produkt (produkty)","Prodané produkty",Kupón(y),"Net Sales",Atribuce
+"2025-06-20 07:43:07",1396692,238 Kč,completed,"Vladimir Kovarik",returning,"1× Malé experimenty",1,,238,Neznámý
+"2025-06-20 06:44:45",1396513,509 Kč,completed,"Marek Hasák",new,"1× Nexus",1,,509,Neznámý
+"2025-06-20 00:29:16",1396200,339 Kč,completed,"Běla Beránková",new,"1× Nexus",1,,339,Neznámý
+"2025-06-19 23:47:43",1396127,574 Kč,awaiting,"Renata Zikmundova",new,"1× Sapiens",1,,509,Neznámý
+"2025-06-19 23:20:31",1396055,1051 Kč,completed,"Ladislav Šolc",returning,"1× Malé experimenty, 1× Nexus, 1× Superkomunikátoři, 1× Paměť",4,,1051,Neznámý
+"2025-06-19 22:48:16",1395947,343 Kč,completed,"Martin Semjon",new,"1× Superkomunikátoři",1,NX6D4H,343,Neznámý
+"2025-06-19 22:00:13",1395792,574 Kč,awaiting,"Vladimír Löffler",new,"1× Nexus",1,,509,Neznámý
+"2025-06-19 20:58:47",1395599,491 Kč,completed,"Martin Babinec",new,"1× 5 principů rodičovství, 1× Superkomunikátoři",2,,491,Neznámý
+"2025-06-19 19:56:30",1395315,696 Kč,completed,"Veronika Fojtíková",new,"1× Superkomunikátoři, 1× Navždy plynule (audio)",2,,696,Neznámý
+"2025-06-19 19:25:51",1395220,509 Kč,completed,"Petr Ševčík",returning,"1× Nexus",1,,509,Neznámý
+"2025-06-19 19:12:44",1395182,447 Kč,awaiting,"Jiří Urban",returning,"1× 5 principů rodičovství",1,,382,Neznámý
+"2025-06-19 18:43:39",1395104,699 Kč,completed,"Přemysl Krejčiřík",returning,"1× Nexus, 1× Nexus, 1× Nexus",3,,699,Neznámý
+"2025-06-19 17:39:50",1394953,1086 Kč,awaiting,"Miroslav Pirunčík",returning,"1× 5 principů rodičovství, 1× Superkomunikátoři, 1× Malé experimenty",3,,1086,Neznámý
+"2025-06-19 15:52:47",1394659,685 Kč,completed,"Michal Novák",returning,"1× Myšlení, rychlé a pomalé (E+A), 1× Myšlení, rychlé a pomalé (e-kniha), 1× Myšlení, rychlé a pomalé (audio)",3,,685,Neznámý
+"2025-06-19 15:39:31",1394615,574 Kč,awaiting,"Dušan Gajdoštík",new,"1× Nexus",1,,509,Neznámý
+"2025-06-19 15:25:02",1394529,447 Kč,awaiting,"Radka Fürstová",new,"1× 5 principů rodičovství",1,,382,Neznámý
+"2025-06-19 14:57:25",1394364,0 Kč,awaiting,"Gabriela Prucková",returning,"1× 5 principů rodičovství",1,,0,Neznámý
+"2025-06-19 14:51:13",1394291,0 Kč,awaiting,"Gabriela Prucková",returning,"2× 5 principů rodičovství",2,,0,Neznámý
+"2025-06-19 14:29:06",1394094,404 Kč,awaiting,"Veronika Slavíková",new,"1× Malé experimenty",1,,339,Neznámý
+"2025-06-19 14:14:03",1393947,0 Kč,awaiting,"Gabriela Prucková",returning,"2× 5 principů rodičovství",2,,0,Neznámý
+"2025-06-19 14:11:11",1393909,0 Kč,awaiting,"Jaroslav Vlček",returning,"1× 5 principů rodičovství",1,,0,Neznámý
+"2025-06-19 13:55:04",1393847,254 Kč,completed,"Petra Vašková",returning,"1× 5 principů rodičovství",1,,254,Neznámý
+"2025-06-19 13:36:03",1393708,503 Kč,completed,"Lýdie Hemalová",returning,"1× Jak na sítě (E+A), 1× Jak na sítě (e-kniha), 1× Jak na sítě (audio)",3,,503,Neznámý
+"2025-06-19 12:50:04",1393572,195 Kč,completed,"Nikola Mičková",new,"1× Jak si dělat chytré poznámky",1,,195,Neznámý
+"2025-06-19 12:25:11",1393366,416 Kč,completed,"Tereza Válková",returning,"1× Geniální potraviny",1,,416,Neznámý
+"2025-06-19 12:23:39",1393336,0 Kč,awaiting,"Gabriela Prucková",returning,"1× Stvořeni k pohybu",1,,0,Neznámý
+"2025-06-19 12:11:38",1393215,2181 Kč,awaiting,"Lukáš Vašíček",returning,"1× Nexus, 1× Sapiens, 1× 5 principů rodičovství, 1× Nexus, 1× Nexus, 1× Nexus, 1× Sapiens, 1× Sapiens, 1× 5 principů rodičovství, 1× 5 principů rodičovství",10,,2181,Neznámý
+"2025-06-19 12:09:01",1393166,0 Kč,awaiting,"Gabriela Prucková",returning,"5× 5 principů rodičovství",5,,0,Neznámý
+"2025-06-19 11:56:19",1393018,0 Kč,awaiting,"Gabriela Prucková",returning,"1× 5 principů rodičovství",1,,0,Neznámý
+"2025-06-19 11:51:17",1392983,254 Kč,completed,"Otto Kočí",returning,"1× 5 principů rodičovství",1,,254,Neznámý
+"2025-06-19 11:41:41",1392862,0 Kč,awaiting,"Gabriela Prucková",returning,"1× 5 principů rodičovství",1,,0,Neznámý
+"2025-06-19 11:06:25",1392594,254 Kč,completed,"Robin Pešek",returning,"1× 5 principů rodičovství",1,,254,Neznámý
+"2025-06-19 10:49:15",1392393,888 Kč,completed,"Tereza Beníšková",returning,"1× Malé experimenty, 1× Tělo sčítá rány",2,,823,Neznámý
+"2025-06-19 10:45:50",1392356,3972 Kč,completed,"Ondřej Vysoký",returning,"1× Proč sníme, 1× Paměť, 1× 5 principů rodičovství, 1× Superkomunikátoři, 1× Jak na ADHD, 1× Váš kapesní terapeut, 1× Proč sníme, 1× Proč sníme, 1× Proč sníme, 1× Paměť, 1× Paměť, 1× Paměť, 1× 5 principů rodičovství, 1× 5 principů rodičovství, 1× Superkomunikátoři, 1× Superkomunikátoři, 1× Superkomunikátoři, 1× Jak na ADHD, 1× Jak na ADHD, 1× Jak na ADHD, 1× Váš kapesní terapeut, 1× Váš kapesní terapeut, 1× Váš kapesní terapeut",23,,3972,Neznámý
+"2025-06-19 10:27:53",1392141,786 Kč,completed,"Marcela Bužgová",new,"1× Malé experimenty, 1× Skrytý potenciál",2,,721,Neznámý
+"2025-06-19 10:07:32",1391911,1112 Kč,completed,"Lenka Brumarová",new,"1× 5 principů rodičovství, 1× Superkomunikátoři, 1× Paměť",3,,1112,Neznámý
+"2025-06-19 10:00:25",1391709,0 Kč,processing,"Jaroslav Vlček",returning,"1× Konec stárnutí, 1× Manifest menopauzy, 1× Stvořeni k pohybu, 1× Sport je bolest",4,,0,Neznámý
+"2025-06-19 09:52:42",1391588,0 Kč,completed,"Jiří Kutal",returning,"1× 5 principů rodičovství",1,dekujeme2025,0,Neznámý
+"2025-06-19 09:40:33",1391414,763 Kč,completed,"Jaroslav Biolek",returning,"1× Nexus, 1× 5 principů rodičovství",2,,763,Neznámý
+"2025-06-19 09:39:07",1391393,466 Kč,completed,"Jan Sirový",returning,"1× 5 principů rodičovství, 1× Pomalá produktivita",2,,466,Neznámý
+"2025-06-19 08:53:43",1391158,773 Kč,processing,"Pavla Dékány",returning,"2× Malé experimenty",2,,678,Neznámý
+"2025-06-19 08:33:22",1391047,447 Kč,completed,"Filip Losert",returning,"1× 5 principů rodičovství",1,,382,Neznámý
+"2025-06-19 08:28:27",1391006,447 Kč,completed,"Alzbeta Kalnova",returning,"1× 5 principů rodičovství",1,,382,Neznámý
+"2025-06-19 08:16:05",1390963,747 Kč,completed,"Lenka Zeitlerová",returning,"1× Malé experimenty, 1× Nexus",2,,747,Neznámý
+"2025-06-19 08:06:51",1390874,699 Kč,completed,"Martina Seidlová",returning,"1× Nexus, 1× Nexus, 1× Nexus",3,,699,Neznámý
+"2025-06-19 08:02:20",1390846,536 Kč,completed,"Jiří Matyáš",returning,"1× 5 principů rodičovství, 1× Tělo sčítá rány (e-kniha)",2,HLAVNEKLID,536,Neznámý
+"2025-06-19 07:31:51",1390698,619 Kč,completed,"Tomáš Nechvátal",returning,"1× 5 principů rodičovství, 1× 5 principů rodičovství, 1× 5 principů rodičovství",3,,524,Neznámý
+"2025-06-19 06:53:26",1390577,447 Kč,completed,"Vilém Vilikus",returning,"1× 5 principů rodičovství",1,,382,Neznámý
+"2025-06-19 06:51:12",1390570,447 Kč,completed,"Veronika Kadeřábková",returning,"1× 5 principů rodičovství",1,,382,Neznámý
+"2025-06-19 00:22:54",1390295,1452 Kč,processing,"Zuzana Tučková",new,"1× Nexus, 1× Jak na ADHD, 1× Bulbem záchranáře, 1× Ultrazpracovaní lidé",4,czechitas25,1452,Neznámý
+"2025-06-19 00:12:45",1390283,339 Kč,completed,"Tom Plihal",returning,"1× Zamilujte se do angličtiny",1,,339,Neznámý
+"2025-06-19 00:02:46",1390242,589 Kč,completed,"Oto Procházka",returning,"1× 5 principů rodičovství, 1× 5 principů rodičovství, 1× 5 principů rodičovství",3,,524,Neznámý
+"2025-06-18 22:52:03",1390068,491 Kč,completed,"Lucie Diblik",returning,"1× Superprognózy (papír + e-kniha), 1× Superprognózy (e-kniha), 1× Superprognózy",3,,426,Neznámý
+"2025-06-18 22:36:14",1390006,1249 Kč,processing,"Martina Záhlavová",new,"1× Zamilujte se do angličtiny, 1× Let your English September, 1× 365 anglických cool frází a výrazů, 1× Zhluboka se nadechni",4,brona30,1249,Neznámý
+"2025-06-18 22:32:55",1389989,407 Kč,completed,"Peter Petrovic",new,"1× HOT (e-kniha+audio), 1× HOT (e-kniha), 1× HOT (audio)",3,,407,Neznámý
+"2025-06-18 22:30:55",1389982,237 Kč,completed,"Jan Kudelasek",new,"1× Superkomunikátoři",1,,237,Neznámý
+"2025-06-18 21:55:11",1389850,780 Kč,pickup,"Eva Šupej Kostolanská",new,"1× 5 principů rodičovství, 1× Malé experimenty, 1× 5 principů rodičovství, 1× 5 principů rodičovství",4,,762,Neznámý
+"2025-06-18 21:40:53",1389793,509 Kč,completed,"Jaroslav Huynh",new,"1× Nexus",1,,509,Neznámý
+"2025-06-18 21:30:01",1389748,1086 Kč,completed,"Miroslav Návrat",returning,"1× 5 principů rodičovství, 1× Malé experimenty, 1× Superkomunikátoři",3,,1086,Neznámý
+"2025-06-18 21:27:51",1389736,447 Kč,completed,"Monika Dušková",returning,"1× 5 principů rodičovství",1,,382,Neznámý
+"2025-06-18 21:19:21",1389667,447 Kč,completed,"Jan Galuszka",returning,"1× 5 principů rodičovství",1,,382,Neznámý
+"2025-06-18 21:10:38",1389586,0 Kč,completed,"Vit Pokorný",returning,"1× Nexus",1,,0,Neznámý
+"2025-06-18 20:54:27",1389460,404 Kč,completed,"Jan Pešta",returning,"1× Malé experimenty",1,,339,Neznámý
+"2025-06-18 20:44:31",1389368,339 Kč,completed,"Tomáš Frýza",new,"1× Nastavení mysli (audio)",1,,339,Neznámý
+"2025-06-18 20:44:04",1389365,1595 Kč,processing,"Michaela Castkova",returning,"1× 5 principů rodičovství, 1× Malé experimenty, 1× Superkomunikátoři, 1× Sapiens",4,,1595,Neznámý
+"2025-06-18 20:36:24",1389316,956 Kč,completed,"Jiří Krátký",returning,"1× 5 principů rodičovství, 1× Sapiens",2,,891,Neznámý
+"2025-06-18 20:32:01",1389266,339 Kč,completed,"Andrea Kocová",returning,"1× Už žádné drama",1,,339,Neznámý
+"2025-06-18 20:12:58",1389142,254 Kč,completed,"Lenka Novotná",returning,"1× 5 principů rodičovství",1,,254,Neznámý
+"2025-06-18 19:47:22",1389000,1120 Kč,processing,"Karel Pulgret",returning,"1× 5 principů rodičovství, 1× Jak na ADHD, 1× Nikdy nedělej kompromis",3,,1120,Neznámý
+"2025-06-18 19:42:04",1388965,589 Kč,completed,"Alexandr Kadavy Megabooks Cz",returning,"1× 5 principů rodičovství, 1× 5 principů rodičovství, 1× 5 principů rodičovství",3,,524,Neznámý
+"2025-06-18 19:39:54",1388944,447 Kč,completed,"David Novotný",new,"1× 5 principů rodičovství",1,,382,Neznámý
+"2025-06-18 19:37:04",1388921,447 Kč,completed,"Pavel Šefl",returning,"1× 5 principů rodičovství",1,,382,Neznámý
+"2025-06-18 19:35:12",1388888,224 Kč,completed,"Gabriela Flusková",new,"1× Malé experimenty",1,NX6D4H,224,Neznámý
+"2025-06-18 19:24:59",1388811,589 Kč,completed,"Martin Jedlička",new,"1× 5 principů rodičovství, 1× 5 principů rodičovství, 1× 5 principů rodičovství",3,,524,Neznámý
+"2025-06-18 16:15:53",1388221,238 Kč,completed,"Květoslava Brudnová",returning,"1× Malé experimenty",1,,238,Neznámý
+"2025-06-18 16:00:50",1388126,1400 Kč,processing,"Radovan Lukášek",new,"1× Nexus, 1× Rozvrat, 1× Svět, který skončil včera",3,,1400,Neznámý
+"2025-06-18 15:04:01",1387906,365 Kč,completed,"Tom Su",new,"1× Superkomunikátoři",1,,365,Neznámý
+"2025-06-18 14:57:03",1387749,404 Kč,completed,"Bára Slouková",returning,"1× Malé experimenty",1,,339,Neznámý
+"2025-06-18 14:28:09",1387160,0 Kč,completed,"Nikolas Šilhák",new,"1× Designérem vlastního života (e-kniha)",1,muzespodnikatdesig,0,Neznámý
+"2025-06-18 13:58:01",1386945,237 Kč,completed,"Roman Krajíček",new,"1× Jak na sítě (e-kniha)",1,,237,Neznámý
+"2025-06-18 13:57:58",1386942,956 Kč,completed,"Tomáš Šebek",new,"1× 5 principů rodičovství, 1× Nexus",2,,891,Neznámý
+"2025-06-18 13:47:51",1386884,574 Kč,completed,"Alena Šturmová",returning,"1× Nexus",1,,509,Neznámý
+"2025-06-18 13:24:23",1386687,365 Kč,completed,"David Dvořák",returning,"1× Superkomunikátoři",1,,365,Neznámý
+"2025-06-18 13:11:59",1386564,254 Kč,completed,"Jaroslav Bezouška",returning,"1× 5 principů rodičovství",1,,254,Neznámý
+"2025-06-18 12:56:12",1386469,1204 Kč,completed,"Radim Vanecek",returning,"1× Malé experimenty, 1× Balíček Yuvala Noaha Harariho, 1× Nexus, 1× Sapiens",4,,1204,Neznámý
+"2025-06-18 12:53:59",1386460,339 Kč,completed,"Michal Turek",new,"1× Šťastnější",1,,339,Neznámý
+"2025-06-18 12:24:08",1386361,246 Kč,completed,"Michaela Bartoňková",new,"1× Neštěkej na svého psa",1,,246,Neznámý
+"2025-06-18 12:23:18",1386343,0 Kč,processing,"Sabina Kelnerová",returning,"1× Kdy, 3× 5 principů rodičovství, 2× Jak na ADHD, 2× Paměť, 2× Superkomunikátoři, 2× Atomové návyky, 5× Hluboká práce",17,,0,Neznámý
+"2025-06-18 12:10:13",1386302,365 Kč,completed,"Lukáš Griač",new,"1× Superkomunikátoři",1,,365,Neznámý
+"2025-06-18 11:55:12",1386238,365 Kč,completed,"Martin Businský",new,"1× Superkomunikátoři",1,,365,Neznámý
+"2025-06-18 11:54:06",1386236,254 Kč,completed,"Jan Kaše",returning,"1× 5 principů rodičovství",1,,254,Neznámý
+"2025-06-18 11:31:31",1386039,559 Kč,completed,"Ondřej Schröpfer",returning,"1× Superkomunikátoři, 1× Nové zbraně vlivu",2,,559,Neznámý
+"2025-06-18 11:11:25",1385930,447 Kč,completed,"Dana Konvičková",new,"1× 5 principů rodičovství",1,,382,Neznámý
+"2025-06-18 11:10:45",1385926,238 Kč,completed,"Iva Klementová",returning,"1× Malé experimenty",1,,238,Neznámý
+"2025-06-18 09:57:53",1385439,580 Kč,completed,"Michal Rok",returning,"1× Geniální potraviny, 1× Geniální potraviny, 1× Geniální potraviny",3,,479,Neznámý
+"2025-06-18 09:52:28",1385417,238 Kč,completed,"Zuzana Mrňová",new,"1× Šťastnější",1,,238,Neznámý
+"2025-06-18 09:20:17",1385249,699 Kč,completed,"Michala Lenderová",new,"1× Nexus, 1× Nexus, 1× Nexus",3,,699,Neznámý
+"2025-06-18 08:59:49",1385165,1069 Kč,completed,"Filip Tkáč",new,"1× Radikální otevřenost, 1× Nastavení mysli (aktualizované vydání), 1× Čtyři tisíce týdnů",3,,1069,Neznámý
+"2025-06-18 08:53:47",1385134,1086 Kč,completed,"Zuzana Slukova",returning,"1× 5 principů rodičovství, 1× Malé experimenty, 1× Superkomunikátoři",3,,1086,Neznámý

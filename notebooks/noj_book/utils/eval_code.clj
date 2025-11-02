@@ -33,6 +33,6 @@
    (fn [exp]
      `(do 
         (println :exp '~exp)
-        ( eval-code '~exp)))
+        (eval-code '~exp)))
    forms))
 
