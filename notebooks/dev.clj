@@ -41,10 +41,16 @@
 ;; can be called by
 ;; clj -A:dev -X dev/render-notebook :notebook '"noj_book/ml_basic.clj"'
 (defn render-notebook [opts]
-  (clay/make! (base-config [(:notebook opts)]))
+  (try 
+    (clay/make! (base-config [(:notebook opts)]))
+    (catch  Exception e (.printStackTrace e)) 
+    )
   (System/exit 0))
 
 (defn render-all-notebooks [_opts]
-  (clay/make! (base-config clj-files))
+  (try 
+    (clay/make! (base-config clj-files))
+    (catch  Exception e (.printStackTrace e)) 
+    )
   (System/exit 0))
 
