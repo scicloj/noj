@@ -1,3 +1,4 @@
+(load-file "notebooks/noj_book/utils/eval_code.clj") ; for some reason, this does not load correctly when evaluated through Clay
 (ns noj-book.utils.example-code
   (:require
    [clj-http.client :as client]
