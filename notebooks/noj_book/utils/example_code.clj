@@ -1,4 +1,4 @@
-(load "notebooks/noj_book/utils/eval_code.clj")
+(load-file "notebooks/noj_book/utils/eval_code.clj")
 
 (ns noj-book.utils.example-code
   (:require
