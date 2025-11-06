@@ -391,7 +391,20 @@ body mass index (bmi) and a diabetes indicator.")
 
 
     (kind/html
-     (String. (:body (kroki (.dot tree-model) :graphviz :svg)) "UTF-8")))
+     (try 
+       (String. (:body (kroki (.dot tree-model) :graphviz :svg)) "UTF-8")
+       (catch Exception e 
+         (do (println "kroki failed")
+             (.printStackTrace e)
+             (println (.st))
+             "Kroki not available")
+         )
+       )
+     
+     )
+    
+    
+    )
    :smile.classification/ada-boost
    (->eval-code
     ^:kindly/hide-code
