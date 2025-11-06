@@ -1,3 +1,5 @@
+(load "notebooks/noj_book/utils/eval_code.clj")
+
 (ns noj-book.utils.example-code
   (:require
    [clj-http.client :as client]
