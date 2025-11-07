@@ -96,16 +96,18 @@
     ]
    
    ( kind/fragment
-    (concat
-     (->> @ml/model-definitions*
-          (sort-by first)
-          (filter #(str/starts-with? (first %) (str prefix)))
-          (mapcat 
-           (fn [[key definition]]
-             (concat
-              (render-info-block key definition remove-s level docu-doc-string-fn)
-              (get example-code key)))))
-     )))
+    []
+    ;; (concat
+    ;;  (->> @ml/model-definitions*
+    ;;       (sort-by first)
+    ;;       (filter #(str/starts-with? (first %) (str prefix)))
+    ;;       (mapcat 
+    ;;        (fn [[key definition]]
+    ;;          (concat
+    ;;           (render-info-block key definition remove-s level docu-doc-string-fn)
+    ;;           (get example-code key)))))
+    ;;  )
+    ))
   
   ( [prefix] (render-key-info prefix {:level "##"
                                       :remove-s ""})))
