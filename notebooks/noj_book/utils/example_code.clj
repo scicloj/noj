@@ -19,25 +19,25 @@
    [tech.v3.dataset.modelling :as ds-mod]
    [tech.v3.datatype.functional :as dtf]))
 
-;; (defn kroki [s type format]
-;;   (client/post "https://kroki.io/" {:content-type :json
-;;                                     :as :byte-array
-;;                                     :form-params
-;;                                     {:diagram_source s
-;;                                      :diagram_type (name type)
-;;                                      :output_format (name format)}}))
+(defn kroki [s type format]
+  #_(client/post "https://kroki.io/" {:content-type :json
+                                      :as :byte-array
+                                      :form-params
+                                      {:diagram_source s
+                                       :diagram_type (name type)
+                                       :output_format (name format)}}))
 
-;; (def iris-test
-;;   (datasets/iris-ds))
-
-
+(def iris-test
+  (datasets/iris-ds))
 
 
-;; ;; Standarise the data:
-;; (def iris-std
-;;   (mm/pipe-it
-;;    iris-test
-;;    (preprocessing/std-scale [:sepal-length :sepal-width :petal-length :petal-width] {})))
+
+
+;; Standarise the data:
+(def iris-std
+  (mm/pipe-it
+   iris-test
+   (preprocessing/std-scale [:sepal-length :sepal-width :petal-length :petal-width] {})))
 
 
 
