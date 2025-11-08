@@ -20,7 +20,7 @@
    [tech.v3.datatype.functional :as dtf]))
 
 (defn kroki [s type format]
-  #_(client/post "https://kroki.io/" {:content-type :json
+  (client/post "https://kroki.io/" {:content-type :json
                                       :as :byte-array
                                       :form-params
                                       {:diagram_source s
@@ -358,7 +358,7 @@
      (ds-mod/column-values->categorical :y)
      seq))
 
-   #_#_ :smile.classification/decision-tree
+   :smile.classification/decision-tree
    (->eval-code
     ^:kindly/hide-code
     (kind/md "A decision tree learns a set of rules from the data in the form
@@ -400,10 +400,9 @@
        (catch Exception e 
          (do (println "kroki failed")
              (.printStackTrace e)
-             (println (.st))
              "Kroki not available")))))
 
-   #_#_ :smile.classification/ada-boost
+   :smile.classification/ada-boost
    (->eval-code
     ^:kindly/hide-code
     (kind/md "In this example we will use the capability of the AdaBoost classifier
