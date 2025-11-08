@@ -86,32 +86,23 @@
 
 (defn render-key-info 
   ([prefix {:keys [level remove-s 
-                   docu-doc-string-fn
-                   
-                   ]
+                   docu-doc-string-fn]
             :or {level "##"
-                 remove-s ""}
-            }
-    
-    ]
+                 remove-s ""}}]
    
-   ( kind/fragment
-    []
-    ;; (concat
-    ;;  (->> @ml/model-definitions*
-    ;;       (sort-by first)
-    ;;       (filter #(str/starts-with? (first %) (str prefix)))
-    ;;       (mapcat 
-    ;;        (fn [[key definition]]
-    ;;          (concat
-    ;;           (render-info-block key definition remove-s level docu-doc-string-fn)
-    ;;           (get example-code key)))))
-    ;;  )
-    ))
+   (kind/fragment
+    (concat
+     (->> @ml/model-definitions*
+          (sort-by first)
+          (filter #(str/starts-with? (first %) (str prefix)))
+          (mapcat 
+           (fn [[key definition]]
+             (concat
+              (render-info-block key definition remove-s level docu-doc-string-fn)
+              (get example-code key))))))))
   
-  ( [prefix] (render-key-info prefix {:level "##"
-                                      :remove-s ""})))
-
+  ([prefix] (render-key-info prefix {:level "##"
+                                     :remove-s ""})))
 
 
 
