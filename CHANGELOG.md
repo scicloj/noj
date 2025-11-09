@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## [unreleased]
+## [2-beta19 - 2025-11-09]
 - version updates: Kindly, Clay, Fastmath, Hanami, Tableplot, Metamorph.ml, scicloj.ml.xgboost
 
 ## [2-beta18 - 2025-05-08]
