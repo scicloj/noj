@@ -47,7 +47,7 @@
                (cons (format "- %s" part)
                      (->> chapters
                           (map (fn [chapter]
-                                 (prn [chapter (chapter->title chapter)])
+                                 #_(prn [chapter (chapter->title chapter)])
                                  (format "\n  - [%s](noj_book.%s.html)\n"
                                          (chapter->title chapter)
                                          chapter)))))))
