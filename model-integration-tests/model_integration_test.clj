@@ -60,7 +60,6 @@ warnings.simplefilter('ignore')")
 ;; Sets of excluding models that are not testable
 (def not-writable--or-readable-with-nippy
   #{:smile.classification/mlp  ;;https://github.com/scicloj/scicloj.ml.smile/issues/18
-    ;:scicloj.ml.tribuo/classification ;;https://github.com/scicloj/scicloj.ml.tribuo/issues/5
     :metamorph.ml/ols
     :fastmath/ols})
 
