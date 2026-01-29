@@ -46,3 +46,5 @@ docs/
 
 .ipynb_checkpoints/
 202304-divvy-tripdata.zip
+.calva/repl.calva-repl
+poetry.lock

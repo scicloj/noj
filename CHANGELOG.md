@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## unreleased
+- use scikit-learn = "1.8.0" in integration tests
+- document better "disabled tests"
+
 ## [2-beta19.1 - 2025-11-09]
 - version updates: Kindly, Clay, Fastmath, Hanami, Tableplot, Metamorph.ml, scicloj.ml.xgboost
 
