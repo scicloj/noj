@@ -1,8 +1,13 @@
 {:paths ["src" "resources"]
  :deps {clojure.java-time/clojure.java-time       {:mvn/version "1.4.3"}
-        scicloj/tablecloth                        {:mvn/version "7.042"}
+        scicloj/tablecloth                        {:git/url "https://github.com/behrica/tablecloth"
+                                                   :git/sha "8a86e23220a943f5de202c2903b1fdb6b8fc002b"
+                                                   
+                                                   }
+        ;:mvn/version "7.042"
+
         org.scicloj/tcutils                       {:mvn/version "0.1.0-alpha2"}
-        com.techascent/tmd-parquet                {:mvn/version "1.001"}
+        org.scicloj/dataset-io                    {:mvn/version "1.0.0"}
         org.scicloj/kindly                        {:mvn/version "4-beta21"}
 
         generateme/fastmath                       {:mvn/version "3.0.0-alpha4"}

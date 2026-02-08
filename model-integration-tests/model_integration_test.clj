@@ -17,7 +17,8 @@
    [tech.v3.dataset :as ds]
    [tech.v3.dataset.categorical :as ds-cat]
    [tech.v3.dataset.modelling :as ds-mod]
-   [scicloj.ml.tribuo])
+   [scicloj.ml.tribuo]
+   [clojure.java.io :as io])
   (:import
    (java.io File)
    [org.tribuo.classification.libsvm SVMClassificationType$SVMMode]
@@ -449,6 +450,16 @@ warnings.simplefilter('ignore')")
      {:name "reg"
       :type "org.tribuo.regression.libsvm.LibSVMRegressionTrainer"
       :properties {:svmType "nu"}}]]))
+
+(deftest test-dataset-io-enabled []
+  (is (=
+       (->
+        (tc/dataset
+         "data/alldtypes.arrow-feather" {:file-type :arrow})
+        (tc/shape))
+       [1000 15])))
+
+
 
 (comment
   (regression-works)
