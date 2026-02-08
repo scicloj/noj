@@ -79,8 +79,7 @@
                      com.oracle.labs.olcut/olcut-config-edn    {:mvn/version "5.1.4"}
                      com.oracle.labs.olcut/olcut-config-json    {:mvn/version "5.1.4"}
                      org.scicloj/scicloj.ml.smile  {:mvn/version "7.5.3"}
-                     org.clojars.kjw/slf4j-simple {:mvn/version "1.5.5"}
-                     }}
+                     org.clojars.kjw/slf4j-simple {:mvn/version "1.5.5"}}}
 
   :outdated {;; Note that it is `:deps`, not `:extra-deps`
              :deps {com.github.liquidz/antq {:mvn/version "RELEASE"}}
