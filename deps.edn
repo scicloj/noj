@@ -93,12 +93,6 @@
   :clojupyter {:extra-deps {clojupyter/clojupyter
                             {:git/url "https://github.com/clojupyter/clojupyter"
                              :git/sha "797261501b6c0f11a600f6030d720fa9157005d8"}
-                            ;; {:git/url "https://github.com/clojupyter/clojupyter"
-                            ;;  :git/sha "e26596081ebe2ffcb3af82a1bcce22359fbba06e"}
-                            ;; {:git/url "https://github.com/clojupyter/clojupyter"
-                            ;;  :git/sha "2514de7bcf78af6d62459ee93eec6684e8fdb3b8"}
-                            ;;{:git/url "https://github.com/behrica/clojupyter"
-                            ;; :git/sha "5a75f897243714a0a7d91e30ab28eac9982f260c"}
                             }
                ;;{:mvn/version "0.4.332"}
                }}}
