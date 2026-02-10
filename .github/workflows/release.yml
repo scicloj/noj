@@ -32,7 +32,11 @@ jobs:
             cli: 1.12.0.1495
 
        - name: create clojupyter kernel
-         run: clojure -T:build create-uber
+         run: clj -T:build create-uber-clojupyter
+
+       - name: create clay kernel kernel
+         run: clj -T:build create-uber-clay
+  
 
              
        - name: Release
