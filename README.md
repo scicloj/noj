@@ -6,7 +6,7 @@
 
 Noj is an out-of-the-box Clojure library designed to streamline data science workflows
 for both newcomers and experienced users. Noj provides a tested and integrated collection 
-of tools that are known to work seamlessly together from day one, rather than 
+of libraries that are known to work seamlessly together from day one, rather than 
 requiring users to find, configure, and integrate multiple libraries separately.
 
 Traditional data science setups involve piecing together various libraries for different tasks,
