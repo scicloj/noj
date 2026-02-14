@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. This change
 ## unreleased
 - use scikit-learn = "1.8.0" in integration tests
 - document better "disabled tests"
+- support Arrow, Excel, Parquet files out of-the-box with tablecloth
 
 ## [2-beta19.1 - 2025-11-09]
 - version updates: Kindly, Clay, Fastmath, Hanami, Tableplot, Metamorph.ml, scicloj.ml.xgboost
