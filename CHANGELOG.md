@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file. This change
 - use scikit-learn = "1.8.0" in integration tests
 - document better "disabled tests"
 - upgraded clojure version in uberjar to 1.12.4
+- support Arrow, Excel, Parquet files out of-the-box with tablecloth
 
 ## [2-beta19.1 - 2025-11-09]
 - version updates: Kindly, Clay, Fastmath, Hanami, Tableplot, Metamorph.ml, scicloj.ml.xgboost
