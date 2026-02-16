@@ -101,18 +101,33 @@
   opts)
 
 
-(def uber-file (format "target/%s-%s-uber.jar" (name lib) version))
 
-(defn create-uber "Create uber with clojupyter + noj" [opts]
+(def uber-file-clojupyter (format "target/%s-%s-clojupyter.jar" (name lib) version))
+(def uber-file-clay (format "target/%s-%s-clay.jar" (name lib) version))
+
+(defn create-uber-clojupyter "Create uber with clojupyter + noj" [opts]
   (let [basis (b/create-basis {:aliases [:clojupyter :uber]})]
     (println "\nCompiling ...")
     (b/compile-clj {:basis basis
                     :ns-compile '[clojupyter.kernel.core
-                                  clojupyter.cmdline
-                                  scicloj.clay.v2.main]
+                                  clojupyter.cmdline]
                     :class-dir class-dir})
-    (println "\nBuilding" uber-file "...")    
-    (b/uber {:uber-file uber-file
+    (println "\nBuilding" uber-file-clojupyter "...")    
+    (b/uber {:uber-file uber-file-clojupyter
+             :class-dir "target/classes"
+             ;;:conflict-handlers {:default  :warn }
+             :basis basis
+             :main 'clojupyter.cmdline
+             :exclude ["org.scicloj/clay"]})))
+
+(defn create-uber-clay "Create uber with noj incl clay" [opts]
+  (let [basis (b/create-basis {:aliases [:uber]})]
+    (println "\nCompiling ...")
+    (b/compile-clj {:basis basis
+                    :ns-compile '[scicloj.clay.v2.main]
+                    :class-dir class-dir})
+    (println "\nBuilding" uber-file-clay "...")
+    (b/uber {:uber-file uber-file-clay
              :class-dir "target/classes"
              ;;:conflict-handlers {:default  :warn }
              :basis basis
@@ -128,12 +143,12 @@
                    :main-args ["-m" "clojupyter.cmdline"
                                "install"
                                "--ident" (str "noj-jupyter-" version)
-                               "--jarfile" uber-file]})
+                               "--jarfile" uber-file-clojupyter]})
         {:keys [exit]} (b/process cmds)]
     (when-not (zero? exit) (throw (ex-info "Install clojupyter kernel failed" {})))))
   
   
-(defn remove-clojupyter-kernel "Install  clojupyter kernel in local Jupyter" [opts]
+(defn remove-clojupyter-kernel "Remove clojupyter kernel from local Jupyter" [opts]
   (let [basis    (b/create-basis {:aliases [:clojupyter]})
         cmds     (b/java-command
                   {:basis     basis
