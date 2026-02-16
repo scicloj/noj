@@ -6,7 +6,7 @@
 
 Noj is an out-of-the-box Clojure library designed to streamline data science workflows
 for both newcomers and experienced users. Noj provides a tested and integrated collection 
-of tools that are known to work seamlessly together from day one, rather than 
+of libraries that are known to work seamlessly together from day one, rather than 
 requiring users to find, configure, and integrate multiple libraries separately.
 
 Traditional data science setups involve piecing together various libraries for different tasks,
@@ -52,33 +52,36 @@ handles complex native dependencies automatically.
 
 ## Getting Started with Noj
 
-### Run a 'Hello World' Example
+Noj is released in 3 different forms, namely
 
-The instructions below demonstrate running Clojure code without installing 
-[Clojure CLI](https://clojure.org/guides/install_clojure):
+* A Clojure library
+* An uberjar using Clay to enable 'live-reload' workflows
+* An uberjar to be used as Jupyter kernel (based on [clojupyter](https://github.com/clojupyter/clojupyter))
 
-1. Download `noj-<version>-uber.jar` from [Releases](https://github.com/scicloj/noj/releases)
-   into a local directory of your choice (replace `<version>` with e.g. `2-beta15`).
-2. Navigate to the JAR-downloaded directory in a terminal.
-3. Execute the following command to run "Hello Noj":
+### Noj as Clojure library
+Add this to your deps.edn:
 
-    a. This command will display a "Hello Noj!" message, confirming that Noj is working correctly:
-        `java -cp noj-2-beta15-uber.jar clojupyter.cmdline eval '(str "Hello " "Noj!")'`
+```clojure
+org.scicloj/noj {:mvn/version "2-beta19.1"}
+```
 
-    b. This command will provide immediate access to all libraries in Noj `hello.clj` within an external Clojure file:
-        `java -cp noj-2-beta15-uber.jar clojupyter.cmdline eval '(load-file "hello.clj")'`
+to get noj as a Clojure library. It comes with a curated list of various data-science libraries, see documentation.
 
-### Live-Reload with Clay
+
+### Noj as Live-Reload app
 
 Noj includes [Clay](https://github.com/scicloj/clay), which transforms
 Clojure namespaces into interactive notebooks. 
 This allows users to write and execute Clojure code within a notebook-like environment. 
 For a more interactive experience, Clay can render Clojure files as live notebooks in your browser.
 
+Download `noj-<version>-clay.jar` from [Releases](https://github.com/scicloj/noj/releases)
+   into a local directory of your choice (replace `<version>` with e.g. `2-beta15`).
+
 Launch Clay with live-reload functionality:
 
 ```bash 
-java -jar noj-2-beta15-uber.jar hello.clj
+java -jar noj-<version>-clay.jar hello.clj
 ```
 
 This command opens an interactive notebook in the browser. Users can make changes 
@@ -86,7 +89,7 @@ to the file using any text editor, and changes will update in the browser automa
 
 Clay offers extensive integration with detailed REPL integration and editor support. 
 
-### Jupyter Integration
+### Noj as Jupyter Kernel
 
 Noj provides a dedicated kernel for [Jupyter](https://jupyter.org), enabling notebook-style development 
 with most Noj visualization capabilities.
@@ -103,15 +106,15 @@ for cloud-based notebook usage.
     source python_venv/bin/activate
     python3 -m pip install jupyterlab
     ```
-2. Download `noj-<version>-uber.jar` from [Releases](https://github.com/scicloj/noj/releases)
+2. Download `noj-<version>-clojupyter.jar` from [Releases](https://github.com/scicloj/noj/releases)
    into a local directory of your choice (replace `<version>` with e.g. `2-beta15`).
 3. Navigate to the JAR-downloaded directory in a terminal.
 4. Execute the following command to install the Noj Jupyter kernel:
 
-    `java -cp noj-2-beta15-uber.jar clojupyter.cmdline install --jarfile noj-2-beta15-uber.jar --ident noj-2-beta15`
+    `java -cp noj-2-beta15-clojupyter.jar clojupyter.cmdline install --jarfile noj-2-beta15-clojupyter.jar --ident noj-2-beta15`
 
     a. Confirm the installation:
-        `java -cp noj-2-beta15-uber.jar clojupyter.cmdline list-installs`
+        `java -cp noj-2-beta15-clojupyter.jar clojupyter.cmdline list-installs`
 5. Launch Jupyter Lab:
     `jupyter lab`
 
