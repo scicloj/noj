@@ -104,9 +104,10 @@
 
 (def uber-file-clojupyter (format "target/%s-%s-clojupyter.jar" (name lib) version))
 (def uber-file-clay (format "target/%s-%s-clay.jar" (name lib) version))
+(def clojupyter-indent (str "noj-clojupyter-" version))
 
 (defn create-uber-clojupyter "Create uber with clojupyter + noj" [opts]
-  (let [basis (b/create-basis {:aliases [:clojupyter :uber]})]
+  (let [basis (b/create-basis {:aliases [:clojupyter]})]
     (println "\nCompiling ...")
     (b/compile-clj {:basis basis
                     :ns-compile '[clojupyter.kernel.core
@@ -118,10 +119,10 @@
              ;;:conflict-handlers {:default  :warn }
              :basis basis
              :main 'clojupyter.cmdline
-             :exclude ["org.scicloj/clay"]})))
+             :exclusion ["org.scicloj/clay"]})))
 
 (defn create-uber-clay "Create uber with noj incl clay" [opts]
-  (let [basis (b/create-basis {:aliases [:uber]})]
+  (let [basis (b/create-basis {:aliases [:uber-clay]})]
     (println "\nCompiling ...")
     (b/compile-clj {:basis basis
                     :ns-compile '[scicloj.clay.v2.main]
@@ -133,32 +134,30 @@
              :basis basis
              :main 'scicloj.clay.v2.main})))
 
-
-(defn install-clojupyter-kernel "Install  clojupyter kernel in local Jupyter" [opts]
-  
+(defn- clojupyter-command [main-args command]
   (let [basis    (b/create-basis {:aliases [:clojupyter]})
         cmds     (b/java-command
                   {:basis     basis
                    :main      'clojure.main
-                   :main-args ["-m" "clojupyter.cmdline"
-                               "install"
-                               "--ident" (str "noj-jupyter-" version)
-                               "--jarfile" uber-file-clojupyter]})
+                   :main-args main-args})
         {:keys [exit]} (b/process cmds)]
-    (when-not (zero? exit) (throw (ex-info "Install clojupyter kernel failed" {})))))
+    (when-not (zero? exit) (throw (ex-info (format "%s clojupyter kernel failed" command) {}))))
+  )
+
+(defn install-clojupyter-kernel "Install  clojupyter kernel in local Jupyter" [opts]
+  (clojupyter-command ["-m" "clojupyter.cmdline"
+                       "install"
+                       "--ident" (str "noj-jupyter-" version)
+                       "--jarfile" uber-file-clojupyter]
+                      "install")
+  )
   
   
 (defn remove-clojupyter-kernel "Remove clojupyter kernel from local Jupyter" [opts]
-  (let [basis    (b/create-basis {:aliases [:clojupyter]})
-        cmds     (b/java-command
-                  {:basis     basis
-                   :main      'clojure.main
-                   :main-args ["-m" "clojupyter.cmdline"
-                               "remove-install"
-                               (str "noj-jupyter-" version)
-                               ]})
-        {:keys [exit]} (b/process cmds)]
-    (when-not (zero? exit) (throw (ex-info "Remove clojupyter kernel failed" {})))))
+  (clojupyter-command ["-m" "clojupyter.cmdline"
+                       "remove-install"
+                       (str "noj-jupyter-" version)]
+                      "remove"))
   
 
 (defn replace-clojupyter-kernel "Replaces local clojupyter kernel in local Jupyter" [opts]

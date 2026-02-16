@@ -88,7 +88,7 @@
   :outdated {;; Note that it is `:deps`, not `:extra-deps`
              :deps {com.github.liquidz/antq {:mvn/version "RELEASE"}}
              :main-opts ["-m" "antq.core"]}
-  :uber {:extra-deps {org.clojars.kjw/slf4j-simple {:mvn/version "1.5.5"}}}
+  :uber-clay {:extra-deps {org.slf4j/slf4j-simple {:mvn/version "1.7.36"}}}
   :clojupyter {:extra-deps {clojupyter/clojupyter
                             {:git/url "https://github.com/clojupyter/clojupyter"
                              :git/sha "797261501b6c0f11a600f6030d720fa9157005d8"}
