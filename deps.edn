@@ -1,5 +1,6 @@
 {:paths ["src" "resources"]
- :deps {clojure.java-time/clojure.java-time       {:mvn/version "1.4.3"}
+ :deps {org.clojure/clojure                       {:mvn/version "1.12.4"}
+        clojure.java-time/clojure.java-time       {:mvn/version "1.4.3"}
         scicloj/tablecloth                        {:mvn/version "7.042"}
         org.scicloj/tcutils                       {:mvn/version "0.1.0-alpha2"}
         com.techascent/tmd-parquet                {:mvn/version "1.001"}
