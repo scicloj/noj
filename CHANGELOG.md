@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## unreleased
+## [2-beta20 - 2026-02-17]
 - use scikit-learn = "1.8.0" in integration tests
 - document better "disabled tests"
 - upgraded clojure version in uberjar to 1.12.4
