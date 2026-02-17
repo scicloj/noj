@@ -1,18 +1,15 @@
 {:paths ["src" "resources"]
  :deps {org.clojure/clojure                       {:mvn/version "1.12.4"}
         clojure.java-time/clojure.java-time       {:mvn/version "1.4.3"}
-        scicloj/tablecloth                        {:git/url "https://github.com/behrica/tablecloth"
-                                                   :git/sha "8a86e23220a943f5de202c2903b1fdb6b8fc002b"}
-                                                   ;:mvn/version "7.042"
+        scicloj/tablecloth                        {:mvn/version "7.067"}
         
         org.scicloj/tcutils                       {:mvn/version "0.1.0-alpha2"}
         org.scicloj/dataset-io                    {:mvn/version "1.0.0"}
-        org.scicloj/kindly                        {:mvn/version "4-beta21"}
+        org.scicloj/kindly                        {:mvn/version "4-beta23"}
 
         generateme/fastmath                       {:mvn/version "3.0.0-alpha4"}
         generateme/fitdistr                       {:mvn/version "1.1.0-alpha1"}
-        aerial.hanami/aerial.hanami               {:mvn/version "0.20.2"}
-        org.scicloj/tableplot                     {:mvn/version "1-beta14"}
+        org.scicloj/tableplot                     {:mvn/version "1-beta16"}
         org.scicloj/metamorph.ml                  {:mvn/version "1.2.1"}
         org.scicloj/sklearn-clj                   {:mvn/version "0.5"}
         org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.4.0"}
@@ -37,9 +34,8 @@
 
         same/ish                                  {:mvn/version "0.1.7"}
 
-        org.babashka/sci                          {:mvn/version "0.10.49"}
-        org.mentat/emmy-viewers                   {:mvn/version "0.3.2"}
-        org.scicloj/clay                          {:mvn/version "2.0.2"}}
+        org.babashka/sci                          {:mvn/version "0.12.51"}
+        org.scicloj/clay                          {:mvn/version "2.0.11"}}
 
  :aliases
  {:gen-tests {:extra-paths ["build"]}

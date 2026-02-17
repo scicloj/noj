@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file. This change
 - document better "disabled tests"
 - upgraded clojure version in uberjar to 1.12.4
 - support Arrow, Excel, Parquet files out of-the-box with tablecloth
+- updated versions: Tablecloth, Kindly, Tableplot, SCI, Clay
+- removed dependency: Hanami (included transitively with exclusions through Metamorph.ml)
+- removed dependency: Emmy-viewers (was never fully supported anyway)
 
 ## [2-beta19.1 - 2025-11-09]
 - version updates: Kindly, Clay, Fastmath, Hanami, Tableplot, Metamorph.ml, scicloj.ml.xgboost

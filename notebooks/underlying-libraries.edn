@@ -46,11 +46,6 @@
                                        :lib-name    "Fitdistr"
                                        :description "Distribution fitting and statistical modeling"
                                        :links       {:github-link "https://github.com/generateme/fitdistr"}}
-  org.mentat/emmy-viewers             {:category    :vis
-                                       :lib-name    "Emmy-viewers"
-                                       :description "Mathmatical visualization symbolic computation viewers"
-                                       :links       {:github-link "https://github.com/mentat-collective/emmy-viewers"
-                                                     :ref-link    "https://cljdoc.org/d/org.mentat/emmy-viewers"}}
   org.scicloj/clay                    {:category    :nb
                                        :lib-name    "Clay"
                                        :description "REPL-friendly notebooks and data visualization toolkit"
