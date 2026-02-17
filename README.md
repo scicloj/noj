@@ -62,7 +62,7 @@ Noj is released in 3 different forms, namely
 Add this to your deps.edn:
 
 ```clojure
-org.scicloj/noj {:mvn/version "2-beta19.1"}
+org.scicloj/noj {:mvn/version "2-beta21"}
 ```
 
 to get noj as a Clojure library. It comes with a curated list of various data-science libraries, see documentation.
@@ -76,7 +76,7 @@ This allows users to write and execute Clojure code within a notebook-like envir
 For a more interactive experience, Clay can render Clojure files as live notebooks in your browser.
 
 Download `noj-<version>-clay.jar` from [Releases](https://github.com/scicloj/noj/releases)
-   into a local directory of your choice (replace `<version>` with e.g. `2-beta15`).
+   into a local directory of your choice (replace `<version>` with e.g. `2-beta21`).
 
 Launch Clay with live-reload functionality:
 
@@ -107,14 +107,14 @@ for cloud-based notebook usage.
     python3 -m pip install jupyterlab
     ```
 2. Download `noj-<version>-clojupyter.jar` from [Releases](https://github.com/scicloj/noj/releases)
-   into a local directory of your choice (replace `<version>` with e.g. `2-beta15`).
+   into a local directory of your choice (replace `<version>` with e.g. `2-beta21`).
 3. Navigate to the JAR-downloaded directory in a terminal.
 4. Execute the following command to install the Noj Jupyter kernel:
 
-    `java -cp noj-2-beta15-clojupyter.jar clojupyter.cmdline install --jarfile noj-2-beta15-clojupyter.jar --ident noj-2-beta15`
+    `java -cp noj-2-beta21-clojupyter.jar clojupyter.cmdline install --jarfile noj-2-beta21-clojupyter.jar --ident noj-2-beta21`
 
     a. Confirm the installation:
-        `java -cp noj-2-beta15-clojupyter.jar clojupyter.cmdline list-installs`
+        `java -cp noj-2-beta21-clojupyter.jar clojupyter.cmdline list-installs`
 5. Launch Jupyter Lab:
     `jupyter lab`
 
