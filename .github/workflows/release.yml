@@ -35,10 +35,8 @@ jobs:
          run: clojure -T:build create-uber-clojupyter
 
        - name: create clay kernel kernel
-         run: cljojure -T:build create-uber-clay
-  
-
-             
+         run: clojure -T:build create-uber-clay
+               
        - name: Release
          uses: softprops/action-gh-release@v2
          with:
