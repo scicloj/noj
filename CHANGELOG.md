@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## [2-beta22 - 2026-03-11]
+- updated Clay version, fixing rendering problem in IDEs (flares)
+
 ## [2-beta21 - 2026-02-17]
 - split the uberjar into separate uberjars: for `clojupyter` and for `clay` 
 - use scikit-learn = "1.8.0" in integration tests
