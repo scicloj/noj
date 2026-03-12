@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6.0.2
 
       - uses: jlesquembre/clojars-publish-action@0.4
         env:
@@ -18,18 +18,18 @@ jobs:
   jupyter-kernel:
     runs-on: ubuntu-latest
     steps:
-       - uses: actions/checkout@v4
+       - uses: actions/checkout@6.0.2
 
        - name: Prepare java
-         uses: actions/setup-java@v4.6.0
+         uses: actions/setup-java@v5.2.0 
          with:
            distribution: 'zulu'
            java-version: '17'
 
        - name: Install clojure tools
-         uses: DeLaGuardo/setup-clojure@13.1
+         uses: DeLaGuardo/setup-clojure@13.5.3
          with:
-            cli: 1.12.0.1495
+            cli: 1.12.4.1618
 
        - name: create clojupyter kernel
          run: clojure -T:build create-uber-clojupyter

@@ -16,17 +16,17 @@
 
         org.scicloj/scicloj.ml.tribuo              {:mvn/version "0.2"}
 
-        org.tribuo/tribuo-regression-liblinear    {:mvn/version "4.3.1"}
-        org.tribuo/tribuo-regression-libsvm       {:mvn/version "4.3.1"}
-        org.tribuo/tribuo-regression-sgd          {:mvn/version "4.3.1"}
-        org.tribuo/tribuo-regression-tree         {:mvn/version "4.3.1"}
-        org.tribuo/tribuo-regression-xgboost      {:mvn/version "4.3.1"}
+        org.tribuo/tribuo-regression-liblinear    {:mvn/version "4.3.2"}
+        org.tribuo/tribuo-regression-libsvm       {:mvn/version "4.3.2"}
+        org.tribuo/tribuo-regression-sgd          {:mvn/version "4.3.2"}
+        org.tribuo/tribuo-regression-tree         {:mvn/version "4.3.2"}
+        org.tribuo/tribuo-regression-xgboost      {:mvn/version "4.3.2"}
 
-        org.tribuo/tribuo-classification-liblinear {:mvn/version "4.3.1"}
-        org.tribuo/tribuo-classification-libsvm    {:mvn/version "4.3.1"}
-        org.tribuo/tribuo-classification-sgd       {:mvn/version "4.3.1"}
-        org.tribuo/tribuo-classification-tree      {:mvn/version "4.3.1"}
-        org.tribuo/tribuo-classification-xgboost   {:mvn/version "4.3.1"}
+        org.tribuo/tribuo-classification-liblinear {:mvn/version "4.3.2"}
+        org.tribuo/tribuo-classification-libsvm    {:mvn/version "4.3.2"}
+        org.tribuo/tribuo-classification-sgd       {:mvn/version "4.3.2"}
+        org.tribuo/tribuo-classification-tree      {:mvn/version "4.3.2"}
+        org.tribuo/tribuo-classification-xgboost   {:mvn/version "4.3.2"}
 
         clj-python/libpython-clj                  {:mvn/version "2.026"}
         org.scicloj/kind-pyplot                   {:mvn/version "1-beta2.1"}
@@ -40,16 +40,16 @@
  :aliases
  {:gen-tests {:extra-paths ["build"]}
 
-  :build {:deps {io.github.clojure/tools.build {:mvn/version "0.9.6"}
-                 slipset/deps-deploy           {:mvn/version "0.2.1"}}
+  :build {:deps {io.github.clojure/tools.build {:mvn/version "0.10.12"}
+                 slipset/deps-deploy           {:mvn/version "0.2.2"}}
 
 
           :ns-default build}
   :test {:extra-paths ["test" "notebooks"]
-         :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
+         :extra-deps {org.clojure/test.check {:mvn/version "1.1.3"}
                       lambdaisland/kaocha {:mvn/version "1.91.1392"}
-                      org.slf4j/slf4j-nop {:mvn/version "2.0.16"}
-                      clj-http/clj-http {:mvn/version "3.13.0"}
+                      org.slf4j/slf4j-nop {:mvn/version "2.0.17"}
+                      clj-http/clj-http {:mvn/version "3.13.1"}
                       org.scicloj/scicloj.ml.smile {:mvn/version "7.5.3"}}}
 
   :model-integration-tests
@@ -62,22 +62,22 @@
                 org.bytedeco/javacpp {:mvn/version "1.5.4"}
                 org.scicloj/scicloj.ml.smile {:mvn/version "7.5.3"}
 
-                com.taoensso/nippy {:mvn/version "3.4.2"}
+                com.taoensso/nippy {:mvn/version "3.6.0"}
 
-                org.slf4j/slf4j-nop {:mvn/version "2.0.16"}
-                org.slf4j/jul-to-slf4j {:mvn/version "2.0.16"}
+                org.slf4j/slf4j-nop {:mvn/version "2.0.17"}
+                org.slf4j/jul-to-slf4j {:mvn/version "2.0.17"}
                 lambdaisland/kaocha {:mvn/version "1.91.1392"}}}
 
 
   :dev {:extra-paths ["notebooks"]
-        :extra-deps {clj-http/clj-http {:mvn/version "3.13.0"}
+        :extra-deps {clj-http/clj-http {:mvn/version "3.13.1"}
                      org.bytedeco/arpack-ng {:mvn/version "3.7.0-1.5.4"}
                      org.bytedeco/openblas-platform {:mvn/version "0.3.10-1.5.4"}
                      org.bytedeco/arpack-ng-platform {:mvn/version "3.7.0-1.5.4"}
                      org.bytedeco/openblas {:mvn/version "0.3.10-1.5.4"}
                      org.bytedeco/javacpp {:mvn/version "1.5.4"}
-                     com.oracle.labs.olcut/olcut-config-edn    {:mvn/version "5.1.4"}
-                     com.oracle.labs.olcut/olcut-config-json    {:mvn/version "5.1.4"}
+                     com.oracle.labs.olcut/olcut-config-edn    {:mvn/version "5.3.1"}
+                     com.oracle.labs.olcut/olcut-config-json    {:mvn/version "5.3.1"}
                      org.scicloj/scicloj.ml.smile  {:mvn/version "7.5.3"}
                      org.clojars.kjw/slf4j-simple {:mvn/version "1.5.5"}}}
 
