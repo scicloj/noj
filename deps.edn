@@ -60,7 +60,7 @@
                 org.bytedeco/arpack-ng-platform {:mvn/version "3.7.0-1.5.4"}
                 org.bytedeco/openblas {:mvn/version "0.3.10-1.5.4"}
                 org.bytedeco/javacpp {:mvn/version "1.5.4"}
-                org.scicloj/scicloj.ml.smile {:mvn/version "7.5.3"}
+                org.scicloj/scicloj.ml.smile {:mvn/version "7.6.0"}
 
                 com.taoensso/nippy {:mvn/version "3.6.0"}
 
@@ -78,7 +78,7 @@
                      org.bytedeco/javacpp {:mvn/version "1.5.4"}
                      com.oracle.labs.olcut/olcut-config-edn    {:mvn/version "5.3.1"}
                      com.oracle.labs.olcut/olcut-config-json    {:mvn/version "5.3.1"}
-                     org.scicloj/scicloj.ml.smile  {:mvn/version "7.5.3"}
+                     org.scicloj/scicloj.ml.smile  {:mvn/version "7.6.0"}
                      org.clojars.kjw/slf4j-simple {:mvn/version "1.5.5"}}}
 
   :outdated {;; Note that it is `:deps`, not `:extra-deps`
