@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
 ## unreleased
-- updated metamorph.ml,sklearn-clj,scicloj.ml.xgboost,scicloj.ml.tribuo
+- updated metamorph.ml,sklearn-clj,scicloj.ml.xgboost,scicloj.ml.tribuo,clay
 - minor updates of several non-scicloj dependencies
 
 
