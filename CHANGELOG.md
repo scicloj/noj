@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## [2-beta23 - 2026-03-17]
+## [2-beta24 - 2026-03-17]
 - updated metamorph.ml,sklearn-clj,scicloj.ml.xgboost,scicloj.ml.tribuo,clay
 - minor updates of several non-scicloj dependencies
 
