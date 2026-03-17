@@ -72,21 +72,13 @@ warnings.simplefilter('ignore')")
     :smile.classification/sparse-logistic-regression
     :smile.classification/discrete-naive-bayes
 
-
-    ;;https://github.com/scicloj/sklearn-clj/issues/13
-    :sklearn.classification/ridge-classifier-cv
-    :sklearn.classification/linear-svc
-    :sklearn.classification/passive-aggressive-classifier
-    :sklearn.classification/nearest-centroid
-    :sklearn.classification/ridge-classifier
-    :sklearn.classification/bernoulli-nb
-    :sklearn.classification/perceptron
-    :sklearn.classification/sgd-classifier
-    :sklearn.classification/svc
-    :sklearn.classification/nu-svc
     :sklearn.classification/self-training-classifier
     :sklearn.classification/logistic-regression-cv})
 
+(comment
+  (assert-accuracy
+   [0.95 {:model-type :smile.classification/sparse-logistic-regression}]
+   iris-dataset))
 
 
 ;; Minimum accuracies for models to validate in tests
@@ -98,6 +90,12 @@ warnings.simplefilter('ignore')")
    :sklearn.classification/ridge-classifier 0.30
    :sklearn.classification/extra-tree-classifier 0.88
    :sklearn.classification/dummy-classifier 0.2
+   :sklearn.classification/ridge-classifier-cv 0.80
+   :sklearn.classification/linear-svc 0.93
+   :sklearn.classification/passive-aggressive-classifier 0.78
+   :sklearn.classification/bernoulli-nb 0.20
+   :sklearn.classification/perceptron 0.80
+   :sklearn.classification/sgd-classifier 0.70
 
    :metamorph.ml/dummy-classifier 0.2})
 
@@ -464,4 +462,15 @@ warnings.simplefilter('ignore')")
 (comment
   (regression-works)
   (tribuo-regression-works))
+
+
+
+
+
+
+
+
+
+
+
 

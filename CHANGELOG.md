@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## unreleased
+- updated metamorph.ml,sklearn-clj,scicloj.ml.xgboost,scicloj.ml.tribuo
+- minor updates of several non-scicloj dependencies
+
+
 ## [2-beta22 - 2026-03-11]
 - updated Clay version, fixing rendering problem in IDEs (flares)
 
