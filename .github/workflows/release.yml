@@ -18,7 +18,7 @@ jobs:
   jupyter-kernel:
     runs-on: ubuntu-latest
     steps:
-       - uses: actions/checkout@6.0.2
+       - uses: actions/checkout@v6.0.2
 
        - name: Prepare java
          uses: actions/setup-java@v5.2.0 
