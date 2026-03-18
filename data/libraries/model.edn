@@ -1,0 +1,1034 @@
+{;; originally copied from scicloj/scicloj.github.io
+ 
+ ;; plan: represent data in libs.md
+ ;;
+ ;; process: do it incrementally, move one section at a time.
+ :tags
+ [{:tag/id "array", :tag/description "array programming"}
+  {:tag/id "tensor", :tag/description "tensor programming"}
+  {:tag/id "linalg", :tag/description "linear algebra"}
+  {:tag/id "native", :tag/description "interop with native-optimized libraries"}
+  {:tag/id "gpu", :tag/description "gpu support"}
+  {:tag/id "vis", :tag/description "data visualization and visual art"}
+  {:tag/id "vega", :tag/description "visualization using [Vega](https://vega.github.io/vega/)/[Vega-lite](https://vega.github.io/vega-lite/) specifications"}
+  {:tag/id "lit", :tag/description "literate programming"}
+  {:tag/id "ui", :tag/description "building UIs for data exploration"}
+  {:tag/id "geo", :tag/description "geographical and geometrical data processing"}
+  {:tag/id "df", :tag/description "dataframe-like data structures and abstractions"}
+  {:tag/id "data", :tag/description "general data processing"}
+  {:tag/id "csv", :tag/description "csv import/export"}
+  {:tag/id "xl", :tag/description "Excel spreadsheets interaction"}
+  {:tag/id "json", :tag/description "json import/export"}
+  {:tag/id "xform", :tag/description "transducers support"}
+  {:tag/id "math", :tag/description "diverse math functions"}
+  {:tag/id "stat", :tag/description "statistics"}
+  {:tag/id "ts", :tag/description "time series analysis"}
+  {:tag/id "rand", :tag/description "simulation and random sampling"}
+  {:tag/id "prob", :tag/description "Bayesian computing and probabilistic programming"}
+  {:tag/id "ml", :tag/description "machine learning"}
+  {:tag/id "dnn", :tag/description "deep learning"}
+  {:tag/id "opt", :tag/description "optimization"}
+  {:tag/id "graph", :tag/description "graph algorithms and network analysis"}
+  {:tag/id "interop", :tag/description "general libraries for interop"}
+  {:tag/id "cljs", :tag/description "supports not only Clojure but also Clojurescript"}
+  {:tag/id "nlp", :tag/description "natural language processing"}
+  {:tag/id "llm", :tag/description "large language models and related services"}]
+ :libs
+ [;; # Diverse toolsets
+  ({:lib/name "noj",
+    :lib/url "https://github.com/scicloj/noj",
+    :lib/category :div-tools,
+    :tags #{:act},
+    :star :star,
+    :description
+    "an toolkit with the main relevant Scicloj libraries"}
+   {:lib/name "fastmath",
+    :lib/url "https://github.com/generateme/fastmath",
+    :lib/category :div-tools,
+    :tags #{:stat :rand :act :ml :math},
+    :star :star,
+    :description
+    "a collection of functions for mathematical and statistical computing, machine learning, etc., wrapping several JVM libraries"}
+   {:lib/name "spork",
+    :lib/url "https://github.com/joinr/spork",
+    :lib/category :div-tools,
+    :tags #{:rand :vis :df :ui :graph :opt :act},
+    :description "a toolbox for data-science and operation research"}
+   {:lib/name "Incanter",
+    :lib/url "https://github.com/incanter/incanter",
+    :lib/category :div-tools,
+    :tags #{:csv :stat :rand :vis :df},
+    :description
+    "an R-like data-science platform built on top of the core.matrix abstractions"}
+   {:lib/name "huri",
+    :lib/url "https://github.com/sbelak/huri",
+    :lib/category :div-tools,
+    :tags #{:stat :vis :df},
+    :description
+    "a toolbox for data-science using plain sequences of maps"})
+
+  ;; Optimization
+  ({:lib/name "matlib",
+    :lib/url "https://github.com/atisharma/matlib",
+    :lib/category :optimization,
+    :tags #{:act :opt},
+    :star :star,
+    :description
+    "optimisation and control theory tools and convenience functions based on Neanderthal."})
+
+  ;; Visual tools: literate programming and data visualization
+  ({:lib/name "Saite",
+    :lib/url "https://github.com/jsa-aerial/saite",
+    :lib/category :visual-tools,
+    :tags #{:vis :lit :act :hiccup :ui :vega :cljs},
+    :star :star,
+    :description
+    "data exploration, dashboards, and interactive documents"}
+   {:lib/name "Oz",
+    :lib/url "https://github.com/metasoarous/oz",
+    :lib/category :visual-tools,
+    :tags #{:vis :lit :act :vega},
+    :star :star,
+    :description
+    "data visuzliation using Vega/Vega-Lite and Hiccup, and a live-reload platform for literate-programming"}
+   {:lib/name "Clerk",
+    :lib/url "https://github.com/nextjournal/clerk",
+    :lib/category :visual-tools,
+    :tags #{:vis :lit :act :vega :cljs},
+    :star :star,
+    :description "local-first notebooks for Clojure"}
+   {:lib/name "Clay",
+    :lib/url "https://github.com/scicloj/clay",
+    :lib/category :visual-tools,
+    :tags #{:vis :lit :act :vega :cljs},
+    :star :star,
+    :description
+    "a small tool for data visualization and literate programming"}
+   {:lib/name "rmarkdown-clojure",
+    :lib/url "https://github.com/genmeblog/rmarkdown-clojure",
+    :lib/category :visual-tools,
+    :tags #{:vis :lit},
+    :star :star,
+    :description
+    "rendering Clojure code in various format using [Rmarkdown](https://rmarkdown.rstudio.com/)"}
+   {:lib/name "Pink-Gorilla/Goldly",
+    :lib/url "https://github.com/pink-gorilla/goldly",
+    :lib/category :visual-tools,
+    :tags #{:vis :exp :lit :act :ui :cljs},
+    :star :star,
+    :description
+    "a port of the Gorilla REPL project using a Clojurescript (Reagent) frontend"}
+   {:lib/name "Org-babel-clojure",
+    :lib/url
+    "https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-clojure.html",
+    :lib/category :visual-tools,
+    :tags #{:lt},
+    :star :star,
+    :description "executing Clojure inside Emacs Org-mode documents"}
+   {:lib/name "Devcards",
+    :lib/url "https://github.com/bhauman/devcards",
+    :lib/category :visual-tools,
+    :tags #{:lit :cljs},
+    :star :star,
+    :description "visual repl exprience for Clojurescript"}
+   {:lib/name "Notespace",
+    :lib/url "https://github.com/scicloj/notespace",
+    :lib/category :visual-tools,
+    :tags #{:lit},
+    :description
+    "notebook experience with Clojure namespaces edited at any editor"}
+   {:lib/name "Reveal",
+    :lib/url "https://vlaaad.github.io/reveal/",
+    :lib/category :visual-tools,
+    :tags #{:act},
+    :star :star,
+    :description "browser-based data navigation GUI"}
+   {:lib/name "Portal",
+    :lib/url "https://github.com/djblue/portal",
+    :lib/category :visual-tools,
+    :tags #{:act},
+    :star :star,
+    :description "desktop data navigation GUI"}
+   {:lib/name "Gorilla-REPL",
+    :lib/url "http://gorilla-repl.org/",
+    :lib/category :visual-tools,
+    :tags #{:lit},
+    :star nil,
+    :description
+    "a notebook application written in Clojure and Javascript"}
+   {:lib/name "proto-repl-charts",
+    :lib/url "https://github.com/jasongilman/proto-repl-charts",
+    :lib/category :visual-tools,
+    :tags #{:vis},
+    :star nil,
+    :description "an Atom plugin for displaying tables and graphs"}
+   {:lib/name "Maria",
+    :lib/url "https://github.com/mhuebert/maria",
+    :lib/category :visual-tools,
+    :tags #{:act :vis :lit :cljs},
+    :star nil,
+    :description "a Clojurescript coding environment for beginners"}
+   {:lib/name "emmy-viewers",
+    :lib/url "https://github.com/mentat-collective/emmy-viewers",
+    :lib/category :visual-tools,
+    :tags #{:act :vis :cljs},
+    :star :star,
+    :description "High-performance symbolic, 2D and 3D visual extensions to the Emmy computer algebra system"})
+
+  ;; ## Vega rendering
+  ({:lib/name "darkstar",
+    :lib/url "https://github.com/appliedsciencestudio/darkstar",
+    :lib/category :vega-rendering,
+    :tags #{:vis :vega},
+    :star :star,
+    :description
+    "a minimal wrapper over Vega/Vega-lite as a single JVM-only Clojure library, using the GraalJS javascript runtime, which [does not require GraalVM runtime](https://github.com/graalvm/graaljs/blob/master/docs/user/RunOnJDK.md) to run."}
+   {:lib/name "xvsy",
+    :lib/url "https://github.com/dvdt/xvsy",
+    :lib/category :vega-rendering,
+    :tags #{:vis :vega :cljs},
+    :star nil,
+    :description "grammer of graphics over Vega"}
+   {:lib/name "Vegan",
+    :lib/url "https://github.com/cnuernber/Vegan/",
+    :lib/category :vega-rendering,
+    :tags #{:vis :act :vega},
+    :star nil,
+    :description "a nodejs clojurescript library designed to validate and render Vega and Vega-lite files, supports docker-based setup"}
+   {:lib/name "Vega-clj",
+    :lib/url "https://github.com/behrica/vg-cli",
+    :lib/category :vega-rendering,
+    :tags #{:vis :act :vega},
+    :star nil,
+    :description
+    "a clojure wrapper for the (node-based) Vega-cli and Vega-lite standalone scrips"}
+   {:lib/name "Optikon",
+    :lib/url "https://github.com/stathissideris/optikon",
+    :lib/category :vega-rendering,
+    :tags #{:vis :vega},
+    :star nil,
+    :description "a command line tool that wraps Vega and Vega-lite, using GraalVM polyglot programming"}
+   {:lib/name "Vegafx",
+    :lib/url "https://github.com/joinr/Vegafx",
+    :lib/category :vega-rendering,
+    :tags #{:vis :vega},
+    :star nil,
+    :description
+    "a static-site viewer using javafx that renders Vega specs"}
+   {:lib/name "VL example gallery as EDN",
+    :lib/url "https://behrica.github.io/vl-galery/convert",
+    :lib/category :vega-rendering,
+    :tags #{},
+    :star nil,
+    :description
+    "The vega lite example in EDN format, ready to be copy/pasted into Clojure code"})
+
+  ;; ## Data visualization libraries
+  ({:lib/name "Tableplot",
+    :lib/url "https://scicloj.github.io/tableplot/"
+    :lib/category :data-visualization-libraries,
+    :tags #{:vis :exp :act},
+    :star :star,
+    :description
+    "easy layered graphics with Hanami & Tablecloth"}
+   {:lib/name "cljplot",
+    :lib/url "https://github.com/generateme/cljplot",
+    :lib/category :data-visualization-libraries,
+    :tags #{:vis :exp :act},
+    :star :star,
+    :description
+    "a data visualization platform written in Clojure and inspired by R's ggplot2 and lattice libraries"}
+   {:lib/name "Hanami",
+    :lib/url "https://github.com/jsa-aerial/hanami",
+    :lib/category :data-visualization-libraries,
+    :tags #{:vis :act :hiccup :ui :vega :cljs},
+    :star :star,
+    :description
+    "a template system for creating interactive data visualizations using Vega/Vega-lite, Reagent and Re-Com"}
+   {:lib/name "Hanamicloth",
+    :lib/url "https://github.com/scicloj/hanamicloth",
+    :lib/category :data-visualization-libraries,
+    :tags #{:vis :act :vega :exp},
+    :star :star,
+    :description "a data visualization grammar composing Hanami templates and Tablecloth datasets"}
+   {:lib/name "darkstar",
+    :lib/url "https://github.com/appliedsciencestudio/darkstar",
+    :lib/category :data-visualization-libraries,
+    :tags #{:vis :act :vega :cljs},
+    :star :star,
+    :description
+    "simple data visualization for Clojure/Clojurescript that using vega and [darkstar](https://github.com/appliedsciencestudio/darkstar) for rendering"}
+   {:lib/name nil,
+    :lib/url "https://github.com/scicloj/viz.clj",
+    :lib/category :data-visualization-libraries,
+    :tags #{:vis :exp :vega},
+    :description "a data visualization library for beginners (WIP)"}
+   {:lib/name "Clojure2D",
+    :lib/url "https://github.com/Clojure2D/clojure2d",
+    :lib/category :data-visualization-libraries,
+    :tags #{:vis :act},
+    :star :star,
+    :description
+    "Java2D wrapper + creative coding supporting functions (based on Processing and openFrameworks)"}
+   {:lib/name "Quil",
+    :lib/url "https://github.com/quil/quil",
+    :lib/category :data-visualization-libraries,
+    :tags #{:vis},
+    :star :star,
+    :description "a clojure/clojuresctit wrapper for Processing"}
+   {:lib/name "thi-ng/geom",
+    :lib/url "https://github.com/thi-ng/geom",
+    :lib/category :data-visualization-libraries,
+    :tags #{:vis :cljs},
+    :star :star,
+    :description "2d/3d geometry toolkit"}
+   {:lib/name "Gorilla-plot",
+    :lib/url "https://github.com/JonyEpsilon/gorilla-plot",
+    :lib/category :data-visualization-libraries,
+    :tags #{:vis :vega},
+    :star :star,
+    :description "plotting functions using Vega for Gorilla-REPL"}
+   {:lib/name "gg4clj",
+    :lib/url "https://github.com/JonyEpsilon/gg4clj",
+    :lib/category :data-visualization-libraries,
+    :tags #{:r :vis},
+    :star nil,
+    :description "a clojure DSL for creating ggplot2 plots using R"}
+   {:lib/name "gg4clj port",
+    :lib/url "https://github.com/pink-gorilla/gg4clj",
+    :lib/category :data-visualization-libraries,
+    :tags #{},
+    :star nil,
+    :description
+    "by the [Pink Gorilla](https://pink-gorilla.github.io) project"}
+   {:lib/name "Analemma",
+    :lib/url "https://liebke.github.io/analemma/",
+    :lib/category :data-visualization-libraries,
+    :tags #{:vis :exp :cljs},
+    :star nil,
+    :description
+    "generating charts and SVG with a syntax similar to Incanter's and a visual theme similar to ggplot2."}
+   {:lib/name "emacs-Vega-view",
+    :lib/url "https://github.com/appliedsciencestudio/emacs-Vega-view",
+    :lib/category :data-visualization-libraries,
+    :tags #{:vis :act :vega},
+    :star nil,
+    :description
+    "an emacs mode to facilitate interactive data visualization using Vega from within emacs. Supports elisp, json and clojure notations"})
+
+  ;; ## Data processing
+  ({:lib/name "ham-fisted"
+    :lib/url "https://github.com/cnuernber/ham-fisted"
+    :lib/category :data-processing
+    :tags #{:act :data}
+    :star :star
+    :description "data structures, functions, and macros for efficient functional programming in the JVM"}
+   {:lib/name "Specter",
+    :lib/url "https://github.com/redplanetlabs/specter",
+    :lib/category :data-processing,
+    :tags #{:act :cljs :data},
+    :star :star,
+    :description
+    "declarative navigation of nested data structures for selection and transformation in Clojure and Clojurescript"}
+   {:lib/name "Meander",
+    :lib/url "https://github.com/noprompt/meander",
+    :lib/category :data-processing,
+    :tags #{:act :cljs :data},
+    :star :star,
+    :description
+    "transforming neseted data structures by declaratively declaring the shape of source and target datastructures"}
+   {:lib/name "xforms",
+    :lib/url "https://github.com/cgrand/xforms",
+    :lib/category :data-processing,
+    :tags #{:xform :cljs :data},
+    :star :star,
+    :description "a collection of transduces and reducing functions"}
+   {:lib/name "Odin",
+    :lib/url "https://github.com/halgari/odin",
+    :lib/category :data-processing,
+    :tags #{:data},
+    :star nil,
+    :description
+    "processing nested data structures by extensible logic programming"}
+   {:lib/name "Charred",
+    :lib/url "https://github.com/cnuernber/charred",
+    :lib/category :data-processing,
+    :tags #{:csv :act :json},
+    :star :star,
+    :description
+    "zero dependency efficient read/write of json and csv data."}
+   {:lib/name "Semantic Csv",
+    :lib/url "https://github.com/metasoarous/semantic-csv",
+    :lib/category :data-processing,
+    :tags #{:csv :cljs},
+    :star nil,
+    :description "higher level csv parsing/processing"})
+
+  ;; ## Geospatial processing
+  ({:lib/name "geo",
+    :lib/url "https://github.com/Factual/geo",
+    :lib/category :geospatial-processing,
+    :tags #{:geo},
+    :star :star,
+    :description
+    "unifying several JVM libraries for geoprocessing with a Clojure API"}
+   {:lib/name "ovid",
+    :lib/url "https://github.com/willcohen/ovid",
+    :lib/category :geospatial-processing,
+    :tags #{:geo :exp},
+    :star :star,
+    :description "protocols for geospatial concepts"}
+   {:lib/name "aurelius",
+    :lib/url "https://github.com/willcohen/aurelius",
+    :lib/category :geospatial-processing,
+    :tags #{:xform :geo :exp},
+    :star :star,
+    :description "transducible analysis of geospatial features"}
+   {:lib/name "geo-clj",
+    :lib/url "https://github.com/r0man/geo-clj",
+    :lib/category :geospatial-processing,
+    :tags #{:geo :cljs},
+    :star :star,
+    :description "encoding/decoding of geographic datatypes"})
+
+  ;; ## Dataframe-like structures
+  ({:lib/name "tech.ml.dataset",
+    :lib/url "https://github.com/techascent/tech.ml.dataset",
+    :lib/category :dataframe-like-structures,
+    :tags #{:csv :stat :vis :df :act},
+    :star :star,
+    :description
+    "abstractions for dataframe-like structures in clojure, based on dtype-next infrastructure"}
+   {:lib/name "tablecloth",
+    :lib/url "https://github.com/scicloj/tablecloth",
+    :lib/category :dataframe-like-structures,
+    :tags #{:csv :df :act},
+    :star :star,
+    :description
+    "a dataframe grammar wrapping tech.ml.dataset, inspired by serveral R libraries"}
+   {:lib/name "clojask",
+    :lib/url "https://clojure-finance.github.io/clojask-website/",
+    :lib/category :dataframe-like-structures,
+    :tags #{:df :act},
+    :star :star,
+    :description
+    "a library for parallel computing of larger-than-memory datasets."}
+   {:lib/name "datajure"
+    :lib/url "https://clojure-finance.github.io/datajure-website/"
+    :lib/category :dataframe-like-structures
+    :tags #{:df :act}
+    :star nil
+    :description "a domain-specific language for data processing wrapping libraries such as tech.ml.dataset, tablecloth, clojask, and geni"}
+   {:lib/name "Panthera",
+    :lib/url "https://github.com/alanmarazzi/panthera",
+    :lib/category :dataframe-like-structures,
+    :tags #{:df :py},
+    :star nil,
+    :description "a Clojure API wrapping Python's Pandas library"}
+   {:lib/name "koala",
+    :lib/url "https://github.com/aria42/koala",
+    :lib/category :dataframe-like-structures,
+    :tags #{:csv :exp :df},
+    :star nil,
+    :description
+    "Pandas-like data-processing for clojure with some I/O functionality (experimental)"}
+   {:lib/name "dataframe",
+    :lib/url "https://github.com/ghl3/dataframe",
+    :lib/category :dataframe-like-structures,
+    :tags #{:df},
+    :star nil,
+    :description "Pandas-like data processing for clojure"}
+   {:lib/name "danzig",
+    :lib/url "https://github.com/ribelo/wombat",
+    :lib/category :dataframe-like-structures,
+    :tags #{:xform :exp :df :act},
+    :star nil,
+    :description
+    "Pandas-like data processing using transducers (danzig was formerly named wombat)"}
+   {:lib/name "bamboo",
+    :lib/url "https://github.com/kjothen/bamboo",
+    :lib/category :dataframe-like-structures,
+    :tags #{:df},
+    :star nil,
+    :description
+    "a minimal data processing library for Clojure, with some of the capabilities of pandas and numpy"})
+
+  ;; Spreadsheets
+  ({:lib/name "Docjure",
+    :lib/url "https://github.com/mjul/docjure",
+    :lib/category :spreadsheets,
+    :tags #{:act :xl},
+    :star :star,
+    :description
+    "making it easy to read and write Excel spreadsheets as Clojure data"}
+   {:lib/name "kixi.large",
+    :lib/url "https://github.com/MastodonC/kixi.large",
+    :lib/category :spreadsheets,
+    :tags #{:exp :act :xl},
+    :star :star,
+    :description
+    "a tech.ml.dataset-friendly fork of Docjure, providing clear entry point at the workbook and sheet level and a way to insert images"}
+   {:lib/name "Excel-clj",
+    :lib/url "https://github.com/matthewdowney/excel-clj",
+    :lib/category :spreadsheets,
+    :tags #{:act :xl},
+    :star :star,
+    :description
+    "building Excel spreadsheets from Clojure data in various forms such as trees, tables, and more"}
+   {:lib/name "fxl",
+    :lib/url "https://github.com/zero-one-group/fxl",
+    :lib/category :spreadsheets,
+    :tags #{:act :xl},
+    :star :star,
+    :description
+    "manipulating spreadsheets with a versatile API for handling various spreadsheet constructs"}
+   {:lib/name "Excel-templates",
+    :lib/url "https://github.com/tomfaulhaber/excel-templates",
+    :lib/category :spreadsheets,
+    :tags #{:exp :xl},
+    :star nil,
+    :description
+    "building Excel spreadsheets from Clojure data combined with an Excel sheet serving as a template"}
+   {:lib/name "xl-parse-clj",
+    :lib/url "https://github.com/heykieran/xl-parse-clj",
+    :lib/category :spreadsheets,
+    :tags #{:exp :xl},
+    :star nil,
+    :description
+    "converting an Excel workbook to Clojure code"})
+
+  ;; ## Arrays and linear algebra
+  ({:lib/name "dtype-next",
+    :lib/url "https://github.com/cnuernber/dtype-next",
+    :lib/category :arrays-and-linalg,
+    :tags #{:stat :tensor :act :array :native},
+    :star :star,
+    :description
+    "abstractions and foundations for working with array-like structures and sequential structures"}
+   {:lib/name "Neanderthal",
+    :lib/url "https://neanderthal.uncomplicate.org/",
+    :lib/category :arrays-and-linalg,
+    :tags #{:gpu :act :array :native :linalg},
+    :star :star,
+    :description "matrix and linear algebra in Clojure"}
+   {:lib/name "tvm-clj",
+    :lib/url "https://github.com/techascent/tvm-clj",
+    :lib/category :arrays-and-linalg,
+    :tags #{:gpu :exp :act :array :native :linalg},
+    :star nil,
+    :description
+    "bindings to [tvm](https://github.com/apache/incubator-tvm)"}
+   {:lib/name "Geometric Algebra",
+    :lib/url "https://gitlab.com/jordibc/geometric-algebra",
+    :lib/category :arrays-and-linalg,
+    :tags #{:act :linalg :math},
+    :star nil,
+    :description "A library to do geometric algebra"}
+   {:lib/name "jutsu.matrix",
+    :lib/url "https://github.com/hswick/jutsu.matrix",
+    :lib/category :arrays-and-linalg,
+    :tags #{:gpu :array :native :linalg},
+    :star nil,
+    :description
+    "bindigs to [ND4J](https://deeplearning4j.org/docs/latest/nd4j-overview)"}
+   {:lib/name "core.matrix",
+    :lib/url "https://github.com/mikera/core.matrix",
+    :lib/category :arrays-and-linalg,
+    :tags #{:array :native :linalg :cljs},
+    :star nil,
+    :description "matrix abstractions, supporting diffent backends"}
+   {:lib/name "denisovan",
+    :lib/url "https://github.com/cailuno/denisovan",
+    :lib/category :arrays-and-linalg,
+    :tags #{:gpu :array :native :linalg},
+    :star nil,
+    :description "Neanderthal backend for core.matrix"})
+
+  ;; ### Deep learning
+  ({:lib/name "Deep Diamond",
+    :lib/url "https://github.com/uncomplicate/deep-diamond",
+    :lib/category :deep-learning,
+    :tags #{:gpu :tensor :act :native :dnn},
+    :star :star,
+    :description
+    "infrastructure for tensor computation and deep learning"}
+   {:lib/name "clj-djl",
+    :lib/url "https://github.com/scicloj/clj-djl",
+    :lib/category :deep-learning,
+    :tags #{:gpu :tensor :act :native :dnn},
+    :star :star,
+    :description "a wrapper for the Deep Java Library"}
+   {:lib/name "MXNet",
+    :lib/url
+    "https://mxnet.apache.org/api/clojure",
+    :lib/category :deep-learning,
+    :tags #{:dnn},
+    :star nil,
+    :description "bindings to Apache MXNet, a part of the MXNet project"}
+   {:lib/name "jutsu.ai",
+    :lib/url "https://github.com/hswick/jutsu.ai",
+    :lib/category :deep-learning,
+    :tags #{:dnn},
+    :star nil,
+    :description "a wrapper for deeplearning4j"}
+   {:lib/name "Cortex",
+    :lib/url "https://github.com/originrose/cortex",
+    :lib/category :deep-learning,
+    :tags #{:dnn},
+    :star nil,
+    :description "a deep learning library written in Clojure"}
+   {:lib/name "Flare",
+    :lib/url "https://github.com/aria42/flare",
+    :lib/category :deep-learning,
+    :tags #{:dnn},
+    :star nil,
+    :description "dynamic neural networks in Clojure"})
+
+  ;; Statistics
+  ({:lib/name "kixi.stats",
+    :lib/url "https://github.com/MastodonC/kixi.stats",
+    :lib/category :statistics,
+    :tags #{:xform :stat :rand :act},
+    :star :star,
+    :description "statistics and random sampling using transducers"}
+   {:lib/name "fitdistr",
+    :lib/url "https://github.com/generateme/fitdistr",
+    :lib/category :statistics,
+    :tags #{:stat :act},
+    :star :star,
+    :description "fitting distributions"})
+
+  ;; Time series analysis
+  ({:lib/name "tide",
+    :lib/url "https://github.com/sbelak/tide",
+    :lib/category :time-series-analysis,
+    :tags #{:ts},
+    :star nil,
+    :description "STL and FastDTW algorithms"})
+
+  ;; Bayesian computing & probabilistic programming
+  ({:lib/name "inferme",
+    :lib/url "https://github.com/generateme/inferme",
+    :lib/category :bayesian-computing-probabilistic-programming,
+    :tags #{:rand :vis :act :prob},
+    :star :star,
+    :description
+    "extensible probabilistic programming in Clojure itself (rather than a language variation), with support for visualizations"}
+   {:lib/name "Gen.clj",
+    :lib/url "https://github.com/InferenceQL/gen.clj",
+    :lib/category :bayesian-computing-probabilistic-programming,
+    :tags #{:rand :prob :act},
+    :star :star,
+    :description "A stack for generative modeling and probabilistic inference."}
+
+   {:lib/name "cmdstan-clj",
+    :lib/url "https://github.com/scicloj/cmdstan-clj",
+    :lib/category :bayesian-computing-probabilistic-programming,
+    :tags #{:exp :act},
+    :star :star,
+    :description "Using the Stan statistical modelling language from Clojure using the CmdStan CLI"}
+   {:lib/name "clj-stan",
+    :lib/url "https://github.com/thomasathorne/clj-stan",
+    :lib/category :bayesian-computing-probabilistic-programming,
+    :tags #{},
+    :star nil,
+    :description "A library for calling the Stan language from Clojure (by shelling out to cmdstan)."}
+   {:lib/name "bayadera",
+    :lib/url "https://github.com/uncomplicate/bayadera",
+    :lib/category :bayesian-computing-probabilistic-programming,
+    :tags #{:stat :rand :gpu :prob},
+    :star nil,
+    :description "Bayesian computing using the GPU"}
+   {:lib/name "sampling",
+    :lib/url "https://github.com/bigmlcom/sampling",
+    :lib/category :bayesian-computing-probabilistic-programming,
+    :tags #{:rand},
+    :star nil,
+    :description "support srandom sampling of different kinds"}
+   {:lib/name "distributions",
+    :lib/url "https://github.com/michaellindon/distributions",
+    :lib/category :bayesian-computing-probabilistic-programming,
+    :tags #{:rand :prob},
+    :star nil,
+    :description
+    "random sampling and some basic Bayesian computing for certain families of distributions"}
+   {:lib/name "metaprob",
+    :lib/url "https://github.com/probcomp/metaprob",
+    :lib/category :bayesian-computing-probabilistic-programming,
+    :tags #{:rand :exp :prob :cljs},
+    :star nil,
+    :description
+    "an embedded languages for probabilistic programming and metaprogramming"}
+   {:lib/name "daphne",
+    :lib/url "https://github.com/plai-group/daphne",
+    :lib/category :bayesian-computing-probabilistic-programming,
+    :tags #{:exp :prob},
+    :star nil,
+    :description
+    "a probabilisic programming compiler from Clojure syntax to Pytorch"}
+   {:lib/name "anglican",
+    :lib/url "http://probprog.ml/anglican/index.html",
+    :lib/category :bayesian-computing-probabilistic-programming,
+    :tags #{:rand :prob :cljs},
+    :star nil,
+    :description
+    "a probabilistic programming language written in clojure, that supports a subset of clojure"})
+
+  ;; Random sampling and distributions
+  ({:lib/name "masonclj",
+    :lib/url "https://github.com/mars0i/masonclj",
+    :lib/category :random-sampling-and-simulations,
+    :tags #{:rand :act},
+    :star :star,
+    :description
+    "a Clojure wrapper of [MASON](https://cs.gmu.edu/~eclab/projects/mason/), which is a Java library for discrete-event multiagent simulation and agent-based modeling."}
+   {:lib/name "dsim.cljc",
+    :lib/url "https://github.com/dvlopt/dsim.cljc",
+    :lib/category :random-sampling-and-simulations,
+    :tags #{:rand :act :cljs},
+    :star :star,
+    :description
+    "an event-driven engine for Clojure(script) heavily borrowing ideas from discrete-event simulation and hybrid dynamical systems"}
+   {:lib/name "date-gen",
+    :lib/url "https://github.com/conjunctive/date-gen",
+    :lib/category :random-sampling-and-simulations,
+    :tags #{:rand :act},
+    :star nil,
+    :description "randomized date generation supporting CSV output"}
+   {:lib/name "drand",
+    :lib/url "https://github.com/jimpil/drand-clj",
+    :lib/category :random-sampling-and-simulations,
+    :tags #{:rand},
+    :star nil,
+    :description
+    "a client to the [Drand](https://drand.love) randomness service"})
+
+  ;; ## Science
+  ({:lib/name "emmy",
+    :lib/url "https://github.com/mentat-collective/emmy",
+    :lib/category :science,
+    :tags #{:act},
+    :star :star,
+    :description
+    "(was SICMUtils) a library for algebra, calculus, differential geometry and physics based on the [SICM](mitpress.mit.edu/books/structure-and-interpretation-classical-mechanics) book by Sussman & Wisdom"}
+   {:lib/name "cljbox2d",
+    :lib/url "https://github.com/lambdaisland/cljbox2d",
+    :lib/category :science,
+    :tags #{:act :cljs},
+    :star :star,
+    :description
+    "a Clojure/Clojurescript wrapper of the Box2D physics engine API"})
+
+
+  ;; ## Machine learning
+  ({:lib/name "scicloj.ml",
+    :lib/url "https://github.com/scicloj/scicloj.ml",
+    :lib/category :machine-learning,
+    :tags #{:act :ml},
+    :star :star,
+    :description
+    "A machine learning platform supporting a large collection of algorithms and pipeline ergonomics"}
+   {:lib/name "clj-ml",
+    :lib/url "https://github.com/joshuaeckroth/clj-ml/",
+    :lib/category :machine-learning,
+    :tags #{:ml},
+    :star nil,
+    :description
+    "machine learning based on wrapping libraries such as the Weka Java library"}
+   {:lib/name "clj-boost",
+    :lib/url "https://gitlab.com/alanmarazzi/clj-boost",
+    :lib/category :machine-learning,
+    :tags #{:ml},
+    :star nil,
+    :description "a wrapper for XGBoost"}
+   {:lib/name "propaganda",
+    :lib/url "https://github.com/tgk/propaganda",
+    :lib/category :machine-learning,
+    :tags #{:ml},
+    :star nil,
+    :description
+    "an implementation of the propagator computational model"}
+   {:lib/name "dvc",
+    :lib/url "https://dvc.org/",
+    :lib/category :machine-learning,
+    :tags #{:ml},
+    :star nil,
+    :description
+    "A programming language independent tool for ML experiment tracking,  Clojure fully supported"})
+
+  ;; ### Genetic programming
+  ({:lib/name "Propeller",
+    :lib/url "https://github.com/lspector/propeller",
+    :lib/category :genetic-programming,
+    :tags #{:act :ml},
+    :star :star,
+    :description
+    "\"Yet another Push-based genetic programming system in Clojure\""}
+   {:lib/name "Clojush",
+    :lib/url "https://github.com/lspector/Clojush",
+    :lib/category :genetic-programming,
+    :tags #{:act :ml},
+    :star nil,
+    :description
+    "an implementation of the Push programming language for genetic programming"})
+
+  ;; Natural language processing
+  ({:lib/name "DataLinguist",
+    :lib/url "https://github.com/simongray/datalinguist",
+    :lib/category :natural-language-processing,
+    :tags #{:act :nlp},
+    :star :star,
+    :description "a Clojure wrapper for Stanford CoreNLP"})
+
+  ;; Large language models and related services
+  ({:lib/name "Bosquet",
+    :lib/url "https://github.com/zmedelis/bosquet",
+    :lib/category :large-language-models,
+    :tags #{:act :llm},
+    :star :star,
+    :description "LLMOps for Large Language Model based applications"}
+   {:lib/name "llama.clj",
+    :lib/url "https://github.com/phronmophobic/llama.clj",
+    :lib/category :large-language-models,
+    :tags #{:act :llm},
+    :star :star,
+    :description "A wrapper of [llama.cpp](https://github.com/ggerganov/llama.cpp)"}
+   {:lib/name "clip.clj",
+    :lib/url "https://github.com/phronmophobic/clip.clj",
+    :lib/category :large-language-models,
+    :tags #{:act :llm},
+    :star :star,
+    :description "A wrapper for [clip.cpp](https://github.com/monatis/clip.cpp) for embeddins of images and text"}
+   {:lib/name "Ragcats",
+    :lib/url "https://github.com/constacts/ragtacts"
+    :lib/category :large-language-models,
+    :tags #{:act :llm},
+    :star :star,
+    :description "A set of functions for building LLM applications including RAGs."}
+   {:lib/name "cohere-clojure",
+    :lib/url "https://github.com/danielsz/cohere-clojure",
+    :lib/category :large-language-models,
+    :tags #{:act :llm},
+    :star :star,
+    :description "An Unofficial port of the [Cohere](https://docs.cohere.com/docs) SDK"}
+   {:lib/name "openai-clojure",
+    :lib/url "https://github.com/wkok/openai-clojure",
+    :lib/category :large-language-models,
+    :tags #{:act :llm},
+    :star :star,
+    :description "A wrapper of the [OpenAI API](https://platform.openai.com/docs/introduction) and [Azure OpenAI API](https://learn.microsoft.com/en-us/azure/ai-services/openai/reference)"}
+   {:lib/name "openai-api",
+    :lib/url "https://github.com/pmatiello/openai-api",
+    :lib/category :large-language-models,
+    :tags #{:act :llm},
+    :star :star,
+    :description "A wrapper of the [OpenAI API](https://platform.openai.com/docs/introduction)"}
+   {:lib/name "multi-gpt",
+    :lib/url "https://github.com/cjbarre/multi-gpt",
+    :lib/category :large-language-models,
+    :tags #{:act :llm},
+    :star :star,
+    :description "A wrapper of the Open AI GPT Chat API with conversational memory and WIP agents support"}
+   {:lib/name "vald-client-clj",
+    :lib/url "https://github.com/vdaas/vald-client-clj",
+    :lib/category :large-language-models,
+    :tags #{:act :llm},
+    :star :star,
+    :description "A gRPC client library for the [Vald](https://github.com/vdaas/vald) distributed vector database"}
+   {:lib/name "simix",
+    :lib/url "https://github.com/tsers/simix"
+    :lib/category :large-language-models,
+    :tags #{:llm},
+    :star :star,
+    :description "Similarity search for Cloure, build on top of hnsw"}
+   {:lib/name "clojurellm-data",
+    :lib/url "https://github.com/ruped/clojurellm-data",
+    :lib/category :large-language-models,
+    :tags #{:act :llm},
+    :star :star,
+    :description "Dataset curation for fine tuning an LLM for Clojure"}
+   {:lib/name "instructor-clj"
+    :lib/url "https://github.com/kapilreddy/instructor-clj"
+    :lib/category :large-language-models
+    :tags #{:act :llm}
+    :description "A library inspired by [instructor](https://github.com/jxnl/instructor), making it easy to have structured output from LLMs (using [Malli](https://github.com/metosin/malli) for defining schemas)"})
+
+  ;; Interop
+  ({:lib/name "clj-polyglot-app",
+    :lib/url "https://github.com/behrica/clj-polyglot-app",
+    :lib/category :interop,
+    :tags #{:act :interop},
+    :star :star,
+    :description "A deps-new template to create a polyglot app in Clojure (Clojure, R, & Python)"}
+   {:lib/name "Libpython-clj",
+    :lib/url "https://github.com/clj-python/libpython-clj",
+    :lib/category :interop,
+    :tags #{:act :interop},
+    :star :star,
+    :description "interop with Python"}
+   {:lib/name "clj-python-trampoline",
+    :lib/url "https://github.com/tristanstraub/clj-python-trampoline",
+    :lib/category :interop,
+    :tags #{:interop},
+    :description
+    "using libpython-clj from an already running python process, without needing any special python builds"}
+   {:lib/name "Libjulia-clj",
+    :lib/url "https://github.com/cnuernber/libjulia-clj",
+    :lib/category :interop,
+    :tags #{:act :interop},
+    :star :star,
+    :description "Julia bindings for Clojure"}
+   {:lib/name "Wolframite",
+    :lib/url "https://scicloj.github.io/wolframite/",
+    :lib/category :interop,
+    :tags #{:act :interop},
+    :star :star,
+    :description "interop with Wolfram language"}
+   {:lib/name "ClojisR",
+    :lib/url "https://scicloj.github.io/clojisr/",
+    :lib/category :interop,
+    :tags #{:act :interop},
+    :star :star,
+    :description "interop with R and Renjin (R on the JVM)"}
+   {:lib/name "graalvm-interop",
+    :lib/url "https://github.com/davidpham87/graalvm-rinterop",
+    :lib/category :interop,
+    :tags #{:interop},
+    :star nil,
+    :description "interop with FastR (GraalVM's R)"}
+   {:lib/name "rdata",
+    :lib/url "https://github.com/appliedsciencestudio/rdata/",
+    :lib/category :interop,
+    :tags #{},
+    :star nil,
+    :description
+    "A Renjin (pure-JVM R) wrapper to allow Clojure programs to easily read R's RData file format"}
+   {:lib/name "from-scala",
+    :lib/url "https://github.com/t6/from-scala",
+    :lib/category :interop,
+    :tags #{:interop},
+    :star nil,
+    :description "interop with Scala"}
+   {:lib/name "Interop template project",
+    :lib/url "https://github.com/behrica/clj-py-r-template",
+    :lib/category :interop,
+    :tags #{:interop},
+    :star nil,
+    :description
+    "A project template which configure several interop libraries automaticaly using Docker"})
+
+  ;; Parallel computing
+  ({:lib/name "claypoole",
+    :lib/url "https://github.com/TheClimateCorporation/claypoole",
+    :lib/category :parallel-computing,
+    :tags #{:pmap :future :act :for},
+    :star :star,
+    :description
+    "threadpool-based parallel versions of Clojure functions such as `pmap`, `future`, and `for`"}
+   {:lib/name "parallel",
+    :lib/url "https://github.com/reborg/parallel",
+    :lib/category :parallel-computing,
+    :tags #{},
+    :star :star,
+    :description
+    "parallel-enabled functions, addditional transducers and supporting utilities"}
+   {:lib/name "tesser",
+    :lib/url "https://github.com/aphyr/tesser",
+    :lib/category :parallel-computing,
+    :tags #{},
+    :star :star,
+    :description
+    "a library for concurrent & commutative folds, including some statistical tasks and Hadoop support"}
+   {:lib/name "tech.parallel",
+    :lib/url "https://github.com/techascent/tech.parallel",
+    :lib/category :parallel-computing,
+    :tags #{:act},
+    :star :star,
+    :description "parallelization and threading primitives"})
+
+  ;; Distributed computing
+  ({:lib/name "titanoboa",
+    :lib/url "https://www.titanoboa.io",
+    :lib/category :distributed-computing,
+    :tags #{:act},
+    :star :star,
+    :description
+    "a fully distributed, highly scalable and fault tolerant workflow orchestration platform"}
+   {:lib/name "onyx",
+    :lib/url "https://github.com/onyx-platform",
+    :lib/category :distributed-computing,
+    :tags #{},
+    :star :star,
+    :description "a library for distributed computation in the cloud"}
+   {:lib/name "overseer",
+    :lib/url "https://github.com/framed-data/overseer",
+    :lib/category :distributed-computing,
+    :tags #{},
+    :star nil,
+    :description "a library for building and running data pipelines"})
+
+  ;; Hadoop
+  ({:lib/name "Parkour",
+    :lib/url "https://github.com/damballa/parkour",
+    :lib/category :hadoop,
+    :tags #{},
+    :star nil,
+    :description "Hadoop MapReduce in idiomatic Clojure"})
+
+  ;; Spark
+  ({:lib/name "geni",
+    :lib/url "https://github.com/zero-one-group/geni",
+    :lib/category :spark,
+    :tags #{:df :act},
+    :star :star,
+    :description "a Spark wrapper"}
+   {:lib/name "sparkling",
+    :lib/url "https://github.com/gorillalabs/sparkling",
+    :lib/category :spark,
+    :tags #{},
+    :star nil,
+    :description "a Spark wrapper"}
+   {:lib/name "flambo",
+    :lib/url "https://github.com/sorenmacbeth/flambo",
+    :lib/category :spark,
+    :tags #{},
+    :star nil,
+    :description "a Spark wrapper"})
+
+
+  ;; Kafka
+  ({:lib/name "jackdaw",
+    :lib/url "https://github.com/FundingCircle/jackdaw",
+    :lib/category :kafka,
+    :tags #{:act},
+    :star :star,
+    :description "a wrapper for Kafka and Kafka Streams"}
+   {:lib/name "kafka.clj",
+    :lib/url "https://github.com/dvlopt/kafka.clj",
+    :lib/category :kafka,
+    :tags #{:act},
+    :star :star,
+    :description "a wrapper for Kafka and Kafka Streams"}
+   {:lib/name "ksml",
+    :lib/url "https://github.com/cddr/ksml",
+    :lib/category :kafka,
+    :tags #{:act},
+    :star :star,
+    :description "representing kafka streams topologies as data"}
+   {:lib/name "rp-jackdaw-clj",
+    :lib/url "https://github.com/rentpath/rp-jackdaw-clj",
+    :lib/category :kafka,
+    :tags #{},
+    :star nil,
+    :description
+    "various components for interacting with Kafka using Jackdaw"})
+  ;; Datasets
+  ({:lib/name "hdfs-clj"
+    :lib/url "https://github.com/zmedelis/hfds-clj"
+    :lib/category :datasets
+    :tags #{:act}
+    :star :star
+    :description "Access to HuggingFace datasets via Clojure"})]
+ :python-libraries [[{:lib/name "numpy"
+                      :lib/url "https://numpy.org/"
+                      :tags #{:array :math}}]]}
