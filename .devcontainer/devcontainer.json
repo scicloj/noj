@@ -44,7 +44,6 @@
 	"remoteUser": "vscode",
 	"updateContentCommand": {"install python packages": "mkdir -p .venv && poetry lock && poetry sync" ,
 	"add link to python executable": "sudo ln -s /usr/bin/python3 /usr/local/bin/python"
-},
-"onCreateCommand": "clojure -Sthreads 1 -A:model-integration-tests:test:dev  -P"		
+}
 
 }
