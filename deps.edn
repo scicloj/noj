@@ -1,8 +1,11 @@
 {:paths ["src" "resources"]
  :deps {org.clojure/clojure                       {:mvn/version "1.12.4"}
         clojure.java-time/clojure.java-time       {:mvn/version "1.4.3"}
-        scicloj/tablecloth                        {:mvn/version "7.067"}
-        
+        ;scicloj/tablecloth                        {:mvn/version "7.067"}
+        scicloj/tablecloth             {:git/url "https://github.com/scicloj/tablecloth"
+                                        :git/sha "236fd0023b151692f98931169c88469a86f95bfc"}
+
+
         org.scicloj/tcutils                       {:mvn/version "0.1.0-alpha2"}
         org.scicloj/dataset-io                    {:mvn/version "1.0.0"}
         org.scicloj/kindly                        {:mvn/version "4-beta23"}
@@ -50,7 +53,11 @@
                       lambdaisland/kaocha {:mvn/version "1.91.1392"}
                       org.slf4j/slf4j-nop {:mvn/version "2.0.17"}
                       clj-http/clj-http {:mvn/version "3.13.1"}
-                      org.scicloj/scicloj.ml.smile {:mvn/version "7.5.3"}}}
+                      org.scicloj/scicloj.ml.smile 
+                      {:git/url "https://github.com/scicloj/scicloj.ml.smile"
+                       :git/sha "85f2509c4f2a90b618e3dbe5ce75623ef35c858e"}
+                      ;{:mvn/version "7.5.3"}
+                      }}
 
   :model-integration-tests
   {:extra-paths ["model-integration-tests" "notebooks"]
@@ -60,7 +67,10 @@
                 org.bytedeco/arpack-ng-platform {:mvn/version "3.7.0-1.5.4"}
                 org.bytedeco/openblas {:mvn/version "0.3.10-1.5.4"}
                 org.bytedeco/javacpp {:mvn/version "1.5.4"}
-                org.scicloj/scicloj.ml.smile {:mvn/version "7.6.0"}
+                org.scicloj/scicloj.ml.smile 
+                ;{:mvn/version "7.5.3"}
+                      {:git/url "https://github.com/scicloj/scicloj.ml.smile"
+ :git/sha "85f2509c4f2a90b618e3dbe5ce75623ef35c858e"}
 
                 com.taoensso/nippy {:mvn/version "3.6.0"}
 
@@ -78,7 +88,11 @@
                      org.bytedeco/javacpp {:mvn/version "1.5.4"}
                      com.oracle.labs.olcut/olcut-config-edn    {:mvn/version "5.3.1"}
                      com.oracle.labs.olcut/olcut-config-json    {:mvn/version "5.3.1"}
-                     org.scicloj/scicloj.ml.smile  {:mvn/version "7.6.0"}
+                     org.scicloj/scicloj.ml.smile
+                     ;{:mvn/version "7.5.3"}
+                     {:git/url "https://github.com/scicloj/scicloj.ml.smile"
+                      :git/sha "85f2509c4f2a90b618e3dbe5ce75623ef35c858e"}
+
                      org.clojars.kjw/slf4j-simple {:mvn/version "1.5.5"}}}
 
   :outdated {;; Note that it is `:deps`, not `:extra-deps`
@@ -87,7 +101,6 @@
   :uber-clay {:extra-deps {org.slf4j/slf4j-simple {:mvn/version "1.7.36"}}}
   :clojupyter {:extra-deps {clojupyter/clojupyter
                             {:git/url "https://github.com/clojupyter/clojupyter"
-                             :git/sha "797261501b6c0f11a600f6030d720fa9157005d8"}
-                            }
+                             :git/sha "797261501b6c0f11a600f6030d720fa9157005d8"}}
                ;;{:mvn/version "0.4.332"}
                }}}
