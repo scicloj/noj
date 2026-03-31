@@ -54,7 +54,7 @@ jobs:
       with: 
           
           push: never
-          runCmd: clj -X:deps prep :aliases [:model-integration-tests,:dev,:test] && clj -Sthreads 1 -A:dev -X dev/render-all-notebooks 
+          runCmd: clj -Sthreads 1 -X:deps prep :aliases [:model-integration-tests,:dev,:test] && clj -Sthreads 1 -A:dev -X dev/render-all-notebooks 
            
     - name: fix permisions
       run:  sudo chmod o+w docs/

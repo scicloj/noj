@@ -17,6 +17,7 @@
    [tech.v3.dataset :as ds]
    [tech.v3.dataset.categorical :as ds-cat]
    [tech.v3.dataset.modelling :as ds-mod]
+   [tech.v3.dataset.io.nippy]
    [scicloj.ml.tribuo]
    [clojure.java.io :as io])
   (:import
