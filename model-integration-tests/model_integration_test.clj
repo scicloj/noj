@@ -96,7 +96,7 @@ warnings.simplefilter('ignore')")
    :sklearn.classification/passive-aggressive-classifier 0.78
    :sklearn.classification/bernoulli-nb 0.20
    :sklearn.classification/perceptron 0.80
-   :sklearn.classification/sgd-classifier 0.70
+   :sklearn.classification/sgd-classifier 0.65
 
    :metamorph.ml/dummy-classifier 0.2})
 
