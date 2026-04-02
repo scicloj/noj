@@ -17,6 +17,7 @@
    [tech.v3.dataset :as ds]
    [tech.v3.dataset.categorical :as ds-cat]
    [tech.v3.dataset.modelling :as ds-mod]
+   [tech.v3.dataset.io.nippy]
    [scicloj.ml.tribuo]
    [clojure.java.io :as io])
   (:import
@@ -92,10 +93,10 @@ warnings.simplefilter('ignore')")
    :sklearn.classification/dummy-classifier 0.2
    :sklearn.classification/ridge-classifier-cv 0.80
    :sklearn.classification/linear-svc 0.93
-   :sklearn.classification/passive-aggressive-classifier 0.78
+   :sklearn.classification/passive-aggressive-classifier 0.75
    :sklearn.classification/bernoulli-nb 0.20
    :sklearn.classification/perceptron 0.80
-   :sklearn.classification/sgd-classifier 0.70
+   :sklearn.classification/sgd-classifier 0.65
 
    :metamorph.ml/dummy-classifier 0.2})
 

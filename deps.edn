@@ -1,8 +1,8 @@
 {:paths ["src" "resources"]
  :deps {org.clojure/clojure                       {:mvn/version "1.12.4"}
         clojure.java-time/clojure.java-time       {:mvn/version "1.4.3"}
-        scicloj/tablecloth                        {:mvn/version "7.067"}
-        
+
+
         org.scicloj/tcutils                       {:mvn/version "0.1.0-alpha2"}
         org.scicloj/dataset-io                    {:mvn/version "1.0.0"}
         org.scicloj/kindly                        {:mvn/version "4-beta23"}
@@ -10,11 +10,11 @@
         generateme/fastmath                       {:mvn/version "3.0.0-alpha4"}
         generateme/fitdistr                       {:mvn/version "1.1.0-alpha1"}
         org.scicloj/tableplot                     {:mvn/version "1-beta16"}
-        org.scicloj/metamorph.ml                  {:mvn/version "1.3.0"}
-        org.scicloj/sklearn-clj                   {:mvn/version "0.6"}
-        org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.5.0"}
+        org.scicloj/metamorph.ml                  {:mvn/version "1.3.2"}
+        org.scicloj/sklearn-clj                   {:mvn/version "0.6.1"}
+        org.scicloj/scicloj.ml.xgboost            {:mvn/version "6.5.1"}
 
-        org.scicloj/scicloj.ml.tribuo              {:mvn/version "0.3"}
+        org.scicloj/scicloj.ml.tribuo              {:mvn/version "0.3.1"}
 
         org.tribuo/tribuo-regression-liblinear    {:mvn/version "4.3.2"}
         org.tribuo/tribuo-regression-libsvm       {:mvn/version "4.3.2"}
@@ -50,7 +50,8 @@
                       lambdaisland/kaocha {:mvn/version "1.91.1392"}
                       org.slf4j/slf4j-nop {:mvn/version "2.0.17"}
                       clj-http/clj-http {:mvn/version "3.13.1"}
-                      org.scicloj/scicloj.ml.smile {:mvn/version "7.5.3"}}}
+
+                      org.scicloj/scicloj.ml.smile {:mvn/version "7.6.2"}}}
 
   :model-integration-tests
   {:extra-paths ["model-integration-tests" "notebooks"]
@@ -60,7 +61,7 @@
                 org.bytedeco/arpack-ng-platform {:mvn/version "3.7.0-1.5.4"}
                 org.bytedeco/openblas {:mvn/version "0.3.10-1.5.4"}
                 org.bytedeco/javacpp {:mvn/version "1.5.4"}
-                org.scicloj/scicloj.ml.smile {:mvn/version "7.6.0"}
+                org.scicloj/scicloj.ml.smile {:mvn/version "7.6.2"}
 
                 com.taoensso/nippy {:mvn/version "3.6.0"}
 
@@ -78,7 +79,8 @@
                      org.bytedeco/javacpp {:mvn/version "1.5.4"}
                      com.oracle.labs.olcut/olcut-config-edn    {:mvn/version "5.3.1"}
                      com.oracle.labs.olcut/olcut-config-json    {:mvn/version "5.3.1"}
-                     org.scicloj/scicloj.ml.smile  {:mvn/version "7.6.0"}
+                     org.scicloj/scicloj.ml.smile {:mvn/version "7.6.2"}
+
                      org.clojars.kjw/slf4j-simple {:mvn/version "1.5.5"}}}
 
   :outdated {;; Note that it is `:deps`, not `:extra-deps`
@@ -87,7 +89,6 @@
   :uber-clay {:extra-deps {org.slf4j/slf4j-simple {:mvn/version "1.7.36"}}}
   :clojupyter {:extra-deps {clojupyter/clojupyter
                             {:git/url "https://github.com/clojupyter/clojupyter"
-                             :git/sha "797261501b6c0f11a600f6030d720fa9157005d8"}
-                            }
+                             :git/sha "797261501b6c0f11a600f6030d720fa9157005d8"}}
                ;;{:mvn/version "0.4.332"}
                }}}
