@@ -41,6 +41,8 @@ warnings.simplefilter('ignore')")
 (SLF4JBridgeHandler/removeHandlersForRootLogger)
 (SLF4JBridgeHandler/install)
 
+(reset! ml/enable-strict-prediction-validations true)
+
 (def mlp-hidden-layer-builder
   (HiddenLayerBuilder. 1 (ActivationFunction/linear)))
 
@@ -332,6 +334,7 @@ warnings.simplefilter('ignore')")
      (-> model-specs
          ;;https://github.com/scicloj/scicloj.ml.smile/issues/19
          (remove-model-type  :smile.classification/mlp)))))
+
 
 (deftest verify-classification-iris-nil-catmap-float
   (let [iris
