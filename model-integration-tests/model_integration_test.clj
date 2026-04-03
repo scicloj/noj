@@ -41,7 +41,7 @@ warnings.simplefilter('ignore')")
 (SLF4JBridgeHandler/removeHandlersForRootLogger)
 (SLF4JBridgeHandler/install)
 
-(reset! ml/enable-strict-prediction-validations false)
+(reset! ml/enable-strict-prediction-validations true)
 
 (def mlp-hidden-layer-builder
   (HiddenLayerBuilder. 1 (ActivationFunction/linear)))
