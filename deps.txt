@@ -1,0 +1,880 @@
+org.clojure/clojure 1.12.4
+  . org.clojure/spec.alpha 0.5.238
+  . org.clojure/core.specs.alpha 0.4.74
+scicloj/clojisr 1.1.0
+  X com.google.errorprone/error_prone_annotations 2.10.0 :superseded
+  . org.clojure/tools.logging 1.3.1
+  . org.clojure/core.specs.alpha 0.4.74
+  . org.tukaani/xz 1.10
+  . insn/insn 0.5.2
+    X org.ow2.asm/asm 9.0 :older-version
+  . techascent/tech.config 0.3.13
+    . org.clojure/java.classpath 0.3.0
+  . org.clojure/spec.alpha 0.5.238
+  X com.cnuernber/ham-fisted 3.020 :superseded
+    . it.unimi.dsi/fastutil-core 8.5.14
+    . com.github.ben-manes.caffeine/caffeine 2.9.3
+    . net.openhft/zero-allocation-hashing 0.27ea0
+  . org.scicloj/clojisr-rengine 0.1.2
+  . com.taoensso/encore 3.148.0
+    X org.clojure/tools.reader 1.5.2 :older-version
+    . com.taoensso/truss 2.1.1
+  . scicloj/tablecloth 8.016
+    . com.google.errorprone/error_prone_annotations 2.10.0
+    X org.clojure/tools.logging 1.3.0 :older-version
+    . org.clojure/core.specs.alpha 0.4.74
+    . org.tukaani/xz 1.10
+    . insn/insn 0.5.2
+    . techascent/tech.config 0.3.13
+    . org.clojure/spec.alpha 0.5.238
+    . com.cnuernber/ham-fisted 3.020
+    . com.taoensso/encore 3.148.0
+    . techascent/tech.resource 5.09
+    . org.apache.commons/commons-math3 3.6.1
+    X techascent/tech.ml.dataset 8.016 :older-version
+    . cnuernber/dtype-next 11.016
+    . org.ow2.asm/asm 9.2
+    . org.xerial.larray/larray-buffer 0.4.1
+    . org.xerial.larray/larray-mmap 0.4.1
+    . io.airlift/aircompressor 2.0.2
+    . pl.edu.icm/JLargeArrays 1.5
+    . techascent/tech.io 4.33
+    . com.taoensso/truss 2.1.1
+    . org.roaringbitmap/shims 0.9.0
+    . org.clojure/java.classpath 0.3.0
+    . org.clj-commons/primitive-math 1.0.0
+    . com.github.wendykierp/JTransforms 3.1
+    . org.apache.datasketches/datasketches-java 4.2.0
+    . org.apache.datasketches/datasketches-memory 2.2.0
+    . org.checkerframework/checker-qual 3.19.0
+    X org.clojure/tools.reader 1.5.2 :older-version
+    X com.taoensso/nippy 3.6.0 :use-top
+    . net.openhft/zero-allocation-hashing 0.27ea0
+    . babashka/fs 0.5.30
+    . com.cnuernber/charred 1.038
+    . camel-snake-kebab/camel-snake-kebab 0.4.2
+    . com.github.ben-manes.caffeine/caffeine 2.9.3
+    . org.roaringbitmap/RoaringBitmap 0.9.0
+    . it.unimi.dsi/fastutil-core 8.5.14
+  . techascent/tech.resource 5.09
+    X org.clojure/tools.logging 1.3.0 :older-version
+  . org.apache.commons/commons-math3 3.6.1
+  X techascent/tech.ml.dataset 8.016 :superseded
+    X cnuernber/dtype-next 11.016 :parent-omitted
+    X techascent/tech.io 4.33 :parent-omitted
+    X org.apache.datasketches/datasketches-java 4.2.0 :parent-omitted
+  X org.scicloj/kindly 4-beta23 :use-top
+  X cnuernber/dtype-next 11.016 :superseded
+    . insn/insn 0.5.2
+    . com.cnuernber/ham-fisted 3.020
+    . techascent/tech.resource 5.09
+    . org.apache.commons/commons-math3 3.6.1
+    . org.ow2.asm/asm 9.2
+    . org.xerial.larray/larray-mmap 0.4.1
+    . org.clj-commons/primitive-math 1.0.0
+    . com.github.wendykierp/JTransforms 3.1
+    . camel-snake-kebab/camel-snake-kebab 0.4.2
+    . org.roaringbitmap/RoaringBitmap 0.9.0
+  . org.ow2.asm/asm 9.2
+  . org.xerial.larray/larray-buffer 0.4.1
+  . org.xerial.larray/larray-mmap 0.4.1
+    . org.xerial.larray/larray-buffer 0.4.1
+  . io.airlift/aircompressor 2.0.2
+  . pl.edu.icm/JLargeArrays 1.5
+    X org.apache.commons/commons-math3 3.5 :older-version
+  . techascent/tech.io 4.33
+    . techascent/tech.config 0.3.13
+    . techascent/tech.resource 5.09
+    X com.taoensso/nippy 3.6.0 :use-top
+    . babashka/fs 0.5.30
+    . com.cnuernber/charred 1.038
+  . com.taoensso/truss 2.1.1
+  . hiccup/hiccup 2.0.0
+  . org.roaringbitmap/shims 0.9.0
+  X org.clojure/java.classpath 0.3.0 :superseded
+  . org.clj-commons/primitive-math 1.0.0
+  . com.github.wendykierp/JTransforms 3.1
+    X org.apache.commons/commons-math3 3.5 :older-version
+    . pl.edu.icm/JLargeArrays 1.5
+  . org.apache.datasketches/datasketches-java 4.2.0
+    . org.apache.datasketches/datasketches-memory 2.2.0
+  . org.apache.datasketches/datasketches-memory 2.2.0
+  . org.checkerframework/checker-qual 3.19.0
+  X org.clojure/tools.reader 1.5.2 :superseded
+  X com.taoensso/nippy 3.6.0 :use-top
+  . net.openhft/zero-allocation-hashing 0.27ea0
+  . babashka/fs 0.5.30
+  . com.cnuernber/charred 1.038
+  . camel-snake-kebab/camel-snake-kebab 0.4.2
+  . com.github.ben-manes.caffeine/caffeine 2.9.3
+    . org.checkerframework/checker-qual 3.19.0
+    . com.google.errorprone/error_prone_annotations 2.10.0
+  . org.roaringbitmap/RoaringBitmap 0.9.0
+    . org.roaringbitmap/shims 0.9.0
+  . it.unimi.dsi/fastutil-core 8.5.14
+org.scicloj/dataset-io 1.0.0
+  . org.lz4/lz4-java 1.8.0
+  . com.github.luben/zstd-jni 1.5.4-1
+  . com.cnuernber/jarrow 1.000
+  . org.apache.hadoop/hadoop-mapreduce-client-core 3.3.0
+    X com.fasterxml.jackson.core/jackson-databind 2.10.3 :older-version
+    X com.google.protobuf/protobuf-java 2.5.0 :superseded
+    X org.slf4j/slf4j-api 1.7.25 :older-version
+  . org.dhatim/fastexcel-reader 0.16.4
+    . com.fasterxml/aalto-xml 1.3.2
+      . org.codehaus.woodstox/stax2-api 4.2 :newer-version
+    . org.apache.commons/commons-compress 1.25.0
+  . org.apache.poi/poi-ooxml 5.2.3
+    . org.apache.poi/poi 5.2.3
+      X commons-codec/commons-codec 1.15 :excluded
+      . org.apache.commons/commons-collections4 4.4
+      . org.apache.commons/commons-math3 3.6.1
+      X commons-io/commons-io 2.11.0 :older-version
+      . com.zaxxer/SparseBitSet 1.2
+      . org.apache.logging.log4j/log4j-api 2.18.0
+    . org.apache.poi/poi-ooxml-lite 5.2.3
+      . org.apache.xmlbeans/xmlbeans 5.1.1
+    . org.apache.xmlbeans/xmlbeans 5.1.1
+      . org.apache.logging.log4j/log4j-api 2.18.0
+    X org.apache.commons/commons-compress 1.21 :older-version
+    X commons-io/commons-io 2.11.0 :older-version
+    . com.github.virtuald/curvesapi 1.07
+    . org.apache.logging.log4j/log4j-api 2.18.0
+    . org.apache.commons/commons-collections4 4.4
+  . org.apache.arrow/arrow-vector 18.2.0
+    . org.apache.arrow/arrow-format 18.2.0
+      . com.google.flatbuffers/flatbuffers-java 24.3.25
+    . org.apache.arrow/arrow-memory-core 18.2.0
+      X org.slf4j/slf4j-api 2.0.16 :excluded
+    . com.fasterxml.jackson.datatype/jackson-datatype-jsr310 2.18.2
+      X com.fasterxml.jackson.core/jackson-annotations 2.18.2 :excluded
+      X com.fasterxml.jackson.core/jackson-core 2.18.2 :excluded
+      X com.fasterxml.jackson.core/jackson-databind 2.18.2 :excluded
+    . com.google.flatbuffers/flatbuffers-java 24.3.25
+  . org.apache.hadoop/hadoop-common 3.3.0
+    . org.apache.hadoop/hadoop-annotations 3.3.0
+    X com.google.guava/guava 27.0-jre :older-version
+    X org.apache.commons/commons-math3 3.1.1 :older-version
+    X org.apache.httpcomponents/httpclient 4.5.6 :older-version
+    X commons-codec/commons-codec 1.11 :older-version
+    X commons-io/commons-io 2.5 :older-version
+    . commons-collections/commons-collections 3.2.2
+    X commons-logging/commons-logging 1.1.3 :superseded
+    . commons-beanutils/commons-beanutils 1.9.4
+      X commons-logging/commons-logging 1.2 :older-version
+      . commons-collections/commons-collections 3.2.2
+    X org.slf4j/slf4j-api 1.7.25 :older-version
+    . org.apache.avro/avro 1.7.7
+      . org.codehaus.jackson/jackson-core-asl 1.9.13
+      . org.codehaus.jackson/jackson-mapper-asl 1.9.13
+        . org.codehaus.jackson/jackson-core-asl 1.9.13
+      . com.thoughtworks.paranamer/paranamer 2.3
+      X org.xerial.snappy/snappy-java 1.0.5 :older-version
+      X org.apache.commons/commons-compress 1.4.1 :older-version
+      X org.slf4j/slf4j-api 1.6.4 :older-version
+    . com.google.protobuf/protobuf-java 2.5.0
+    X com.google.code.gson/gson 2.2.4 :superseded
+    X org.apache.commons/commons-compress 1.19 :older-version
+    X com.fasterxml.jackson.core/jackson-databind 2.10.3 :older-version
+    X org.codehaus.woodstox/stax2-api 3.1.4 :superseded
+    . com.fasterxml.woodstox/woodstox-core 5.0.3
+      X org.codehaus.woodstox/stax2-api 3.1.4 :older-version
+  . com.cognitect/transit-clj 1.0.333
+    . com.cognitect/transit-java 1.0.371
+      X com.fasterxml.jackson.core/jackson-core 2.14.2 :older-version
+      . org.msgpack/msgpack 0.6.12
+        . com.googlecode.json-simple/json-simple 1.1.1
+        . org.javassist/javassist 3.18.1-GA
+      . javax.xml.bind/jaxb-api 2.4.0-b180830.0359
+        . javax.activation/javax.activation-api 1.2.0
+  . org.apache.parquet/parquet-hadoop 1.12.0
+    . org.apache.parquet/parquet-column 1.12.0
+      . org.apache.parquet/parquet-common 1.12.0
+        . org.apache.parquet/parquet-format-structures 1.12.0
+        X org.slf4j/slf4j-api 1.7.22 :older-version
+        . org.apache.yetus/audience-annotations 0.12.0
+      . org.apache.parquet/parquet-encoding 1.12.0
+        . org.apache.parquet/parquet-common 1.12.0
+    . org.apache.parquet/parquet-format-structures 1.12.0
+      X org.slf4j/slf4j-api 1.7.22 :older-version
+      . javax.annotation/javax.annotation-api 1.3.2
+    . org.apache.parquet/parquet-jackson 1.12.0
+    . org.xerial.snappy/snappy-java 1.1.8
+    . commons-pool/commons-pool 1.6
+    X com.github.luben/zstd-jni 1.4.9-1 :older-version
+  . com.univocity/univocity-parsers 2.9.0
+lambdaisland/kaocha 1.91.1392
+  . lambdaisland/deep-diff2 2.11.216
+    X fipp/fipp 0.6.26 :superseded
+      X org.clojure/core.rrb-vector 0.1.2 :parent-omitted
+    . org.clojure/core.rrb-vector 0.1.2
+    . lambdaisland/clj-diff 1.4.78
+    . mvxcvi/arrangement 2.1.0
+  . expound/expound 0.9.0
+  . org.clojure/tools.cli 1.1.230
+  . slingshot/slingshot 0.12.2
+  . com.nextjournal/beholder 1.0.2
+    . io.methvin/directory-watcher 0.17.3
+      . net.java.dev.jna/jna 5.12.1
+      X org.slf4j/slf4j-api 1.7.36 :older-version
+  . aero/aero 1.1.6
+  . lambdaisland/tools.namespace 0.3.256
+    X org.clojure/java.classpath 1.0.0 :superseded
+    X org.clojure/tools.reader 1.3.6 :older-version
+  . progrock/progrock 0.1.2
+  . org.tcrawley/dynapath 1.1.0
+  . hawk/hawk 0.2.11
+    . net.incongru.watchservice/barbary-watchservice 1.0
+      X net.java.dev.jna/jna 3.2.2 :older-version
+  . meta-merge/meta-merge 1.0.0
+generateme/fastmath 3.0.0-alpha4
+  . net.jafama/jafama 2.3.2
+  . org.apache.commons/commons-math3 3.6.1
+  . de.sciss/jwave 1.0.3
+  . com.github.wendykierp/JTransforms 3.1
+  . ca.umontreal.iro.simul/ssj 3.3.2
+    . colt/colt 1.2.0
+      . concurrent/concurrent 1.3.4
+    . com.github.rwl/optimization 1.3
+    . org.apache.commons/commons-math3 3.6.1
+    X com.google.code.gson/gson 2.8.6 :superseded
+  . org.clojure/data.int-map 1.3.0
+  . org.clojure/math.combinatorics 0.3.0
+org.clojars.kjw/slf4j-simple 1.5.5
+  . org.clojars.kjw/slf4j 1.5.5
+org.scicloj/tableplot 1-beta17
+  X generateme/fastmath 3.0.0-alpha4 :use-top
+  X org.scicloj/metamorph.ml 1.3.2 :use-top
+  . techascent/tech.ml.dataset 8.017 :newer-version
+    . cnuernber/dtype-next 11.017 :newer-version
+      . insn/insn 0.5.2
+      . com.cnuernber/ham-fisted 3.022 :newer-version
+        . it.unimi.dsi/fastutil-core 8.5.14
+        . com.github.ben-manes.caffeine/caffeine 2.9.3
+        . net.openhft/zero-allocation-hashing 0.27ea0
+      . techascent/tech.resource 5.09
+      . org.apache.commons/commons-math3 3.6.1
+      . org.ow2.asm/asm 9.2
+      . org.xerial.larray/larray-mmap 0.4.1
+      . org.clj-commons/primitive-math 1.0.0
+      . com.github.wendykierp/JTransforms 3.1
+      . camel-snake-kebab/camel-snake-kebab 0.4.2
+      . org.roaringbitmap/RoaringBitmap 0.9.0
+    . techascent/tech.io 4.33
+    . org.apache.datasketches/datasketches-java 4.2.0
+  . xyz.zcaudate/std.lang 4.1.2
+    . xyz.zcaudate/std.lib 4.1.2
+    . xyz.zcaudate/code.project 4.1.2
+      . xyz.zcaudate/std.lib 4.1.2
+      . xyz.zcaudate/std.fs 4.1.2
+    . xyz.zcaudate/std.make 4.1.2
+      . xyz.zcaudate/std.lib 4.1.2
+      . xyz.zcaudate/std.fs 4.1.2
+    . xyz.zcaudate/std.html 4.1.2
+      . org.jsoup/jsoup 1.17.2 :newer-version
+      . xyz.zcaudate/std.lib 4.1.2
+    . xyz.zcaudate/std.fs 4.1.2
+      . xyz.zcaudate/std.lib 4.1.2
+    . xyz.zcaudate/std.json 4.1.2
+      X com.fasterxml.jackson.core/jackson-databind 2.16.1 :older-version
+      X com.fasterxml.jackson.datatype/jackson-datatype-jsr310 2.16.1 :older-version
+      . xyz.zcaudate/std.lib 4.1.2
+  X org.scicloj/kindly 4-beta23 :use-top
+  . org.scicloj/tempfiles 1-beta1
+    X babashka/fs 0.0.1 :older-version
+org.scicloj/scicloj.ml.smile 7.6.2
+  X generateme/fastmath 3.0.0-alpha4 :use-top
+  X org.scicloj/metamorph.ml 1.3.2 :use-top
+  . org.clojars.generateme/fastmath-clustering 1.0.0
+    . com.github.haifengl/smile-core 2.6.0
+      . com.github.haifengl/smile-data 2.6.0
+        . com.github.haifengl/smile-math 2.6.0
+      . com.github.haifengl/smile-math 2.6.0
+        X org.slf4j/slf4j-api 1.7.30 :older-version
+      . com.github.haifengl/smile-graph 2.6.0
+        . com.github.haifengl/smile-math 2.6.0
+    . com.github.haifengl/smile-mkl 2.6.0
+      . com.github.haifengl/smile-math 2.6.0
+      . org.bytedeco/mkl-platform 2020.3-1.5.4
+        . org.bytedeco/javacpp-platform 1.5.4
+        . org.bytedeco/mkl 2020.3-1.5.4
+          X org.bytedeco/javacpp 1.5.4 :use-top
+        . org.bytedeco/mkl$linux-x86 2020.3-1.5.4
+          X org.bytedeco/javacpp 1.5.4 :use-top
+        . org.bytedeco/mkl$linux-x86_64 2020.3-1.5.4
+          X org.bytedeco/javacpp 1.5.4 :use-top
+        . org.bytedeco/mkl$macosx-x86_64 2020.3-1.5.4
+          X org.bytedeco/javacpp 1.5.4 :use-top
+        . org.bytedeco/mkl$windows-x86 2020.3-1.5.4
+          X org.bytedeco/javacpp 1.5.4 :use-top
+        . org.bytedeco/mkl$windows-x86_64 2020.3-1.5.4
+          X org.bytedeco/javacpp 1.5.4 :use-top
+      . org.bytedeco/mkl-platform-redist 2020.3-1.5.4
+        . org.bytedeco/mkl-platform 2020.3-1.5.4
+        . org.bytedeco/mkl$linux-x86-redist 2020.3-1.5.4
+          X org.bytedeco/javacpp 1.5.4 :use-top
+        . org.bytedeco/mkl$linux-x86_64-redist 2020.3-1.5.4
+          X org.bytedeco/javacpp 1.5.4 :use-top
+        . org.bytedeco/mkl$macosx-x86_64-redist 2020.3-1.5.4
+          X org.bytedeco/javacpp 1.5.4 :use-top
+        . org.bytedeco/mkl$windows-x86-redist 2020.3-1.5.4
+          X org.bytedeco/javacpp 1.5.4 :use-top
+        . org.bytedeco/mkl$windows-x86_64-redist 2020.3-1.5.4
+          X org.bytedeco/javacpp 1.5.4 :use-top
+    X org.bytedeco/arpack-ng 3.7.0-1.5.4 :use-top
+    X org.bytedeco/arpack-ng-platform 3.7.0-1.5.4 :use-top
+    X org.bytedeco/openblas 0.3.10-1.5.4 :use-top
+    X org.bytedeco/openblas-platform 0.3.10-1.5.4 :use-top
+    X org.bytedeco/javacpp 1.5.4 :use-top
+  . com.github.haifengl/smile-nlp 2.6.0
+    . com.github.haifengl/smile-core 2.6.0
+  . metosin/malli 0.20.1
+    . fipp/fipp 0.6.29 :newer-version
+      . org.clojure/core.rrb-vector 0.1.2
+    . mvxcvi/arrangement 2.1.0
+    . borkdude/dynaload 0.3.5
+    . borkdude/edamame 1.5.37
+    . org.clojure/test.check 1.1.3
+  . org.clojars.haifengl/smile 2.6.0
+    . com.github.haifengl/smile-core 2.6.0
+    . com.github.haifengl/smile-io 2.6.0
+      . com.github.haifengl/smile-data 2.6.0
+      . com.epam/parso 2.0.12
+        X org.slf4j/slf4j-api 1.7.5 :older-version
+      . org.apache.commons/commons-csv 1.8
+  . dev.weavejester/medley 1.9.0
+  . com.github.haifengl/smile-plot 2.6.0
+    . com.github.haifengl/smile-core 2.6.0
+    . org.swinglabs/swingx 1.6.1
+      . com.jhlabs/filters 2.0.235
+      . org.swinglabs/swing-worker 1.1
+org.scicloj/metamorph.ml 1.3.2
+  X org.clojure/data.json 0.2.6 :superseded
+  X generateme/fastmath 3.0.0-alpha4 :use-top
+  . aerial.hanami/aerial.hanami 0.20.2
+    . org.clojure/data.csv 1.0.0
+    . com.rpl/specter 1.1.3
+      . riddley/riddley 0.1.12
+  . scicloj/tablecloth 8.016
+  . it.unimi.dsi/fastutil 8.5.18
+  . pppmap/pppmap 1.0.0
+  . scicloj/metamorph 0.2.4
+  X metosin/malli 0.20.0 :older-version
+  . com.vladsch.flexmark/flexmark-html2md-converter 0.64.8
+    . com.vladsch.flexmark/flexmark-util 0.64.8
+      . com.vladsch.flexmark/flexmark-util-ast 0.64.8
+        . com.vladsch.flexmark/flexmark-util-collection 0.64.8
+        . com.vladsch.flexmark/flexmark-util-misc 0.64.8
+        . com.vladsch.flexmark/flexmark-util-data 0.64.8
+        . com.vladsch.flexmark/flexmark-util-sequence 0.64.8
+        . com.vladsch.flexmark/flexmark-util-visitor 0.64.8
+        . org.jetbrains/annotations 24.0.1
+      . com.vladsch.flexmark/flexmark-util-builder 0.64.8
+        . com.vladsch.flexmark/flexmark-util-misc 0.64.8
+        . com.vladsch.flexmark/flexmark-util-data 0.64.8
+        . org.jetbrains/annotations 24.0.1
+      . com.vladsch.flexmark/flexmark-util-collection 0.64.8
+        . com.vladsch.flexmark/flexmark-util-misc 0.64.8
+        . org.jetbrains/annotations 24.0.1
+      . com.vladsch.flexmark/flexmark-util-data 0.64.8
+        . com.vladsch.flexmark/flexmark-util-misc 0.64.8
+        . org.jetbrains/annotations 24.0.1
+      . com.vladsch.flexmark/flexmark-util-dependency 0.64.8
+        . com.vladsch.flexmark/flexmark-util-collection 0.64.8
+        . com.vladsch.flexmark/flexmark-util-misc 0.64.8
+        . com.vladsch.flexmark/flexmark-util-data 0.64.8
+        . org.jetbrains/annotations 24.0.1
+      . com.vladsch.flexmark/flexmark-util-format 0.64.8
+        . com.vladsch.flexmark/flexmark-util-ast 0.64.8
+        . com.vladsch.flexmark/flexmark-util-collection 0.64.8
+        . com.vladsch.flexmark/flexmark-util-data 0.64.8
+        . com.vladsch.flexmark/flexmark-util-html 0.64.8
+        . com.vladsch.flexmark/flexmark-util-misc 0.64.8
+        . com.vladsch.flexmark/flexmark-util-sequence 0.64.8
+        . org.jetbrains/annotations 24.0.1
+      . com.vladsch.flexmark/flexmark-util-html 0.64.8
+        . com.vladsch.flexmark/flexmark-util-misc 0.64.8
+        . com.vladsch.flexmark/flexmark-util-sequence 0.64.8
+        . org.jetbrains/annotations 24.0.1
+      . com.vladsch.flexmark/flexmark-util-misc 0.64.8
+        . org.jetbrains/annotations 24.0.1
+      . com.vladsch.flexmark/flexmark-util-options 0.64.8
+        . com.vladsch.flexmark/flexmark-util-misc 0.64.8
+        . com.vladsch.flexmark/flexmark-util-sequence 0.64.8
+        . org.jetbrains/annotations 24.0.1
+      . com.vladsch.flexmark/flexmark-util-sequence 0.64.8
+        . com.vladsch.flexmark/flexmark-util-collection 0.64.8
+        . com.vladsch.flexmark/flexmark-util-data 0.64.8
+        . com.vladsch.flexmark/flexmark-util-misc 0.64.8
+        . org.jetbrains/annotations 24.0.1
+      . com.vladsch.flexmark/flexmark-util-visitor 0.64.8
+        . org.jetbrains/annotations 24.0.1
+      . org.jetbrains/annotations 24.0.1
+    . com.vladsch.flexmark/flexmark 0.64.8
+      . com.vladsch.flexmark/flexmark-util-ast 0.64.8
+      . com.vladsch.flexmark/flexmark-util-builder 0.64.8
+      . com.vladsch.flexmark/flexmark-util-collection 0.64.8
+      . com.vladsch.flexmark/flexmark-util-data 0.64.8
+      . com.vladsch.flexmark/flexmark-util-dependency 0.64.8
+      . com.vladsch.flexmark/flexmark-util-format 0.64.8
+      . com.vladsch.flexmark/flexmark-util-html 0.64.8
+      . com.vladsch.flexmark/flexmark-util-misc 0.64.8
+      . com.vladsch.flexmark/flexmark-util-sequence 0.64.8
+      . com.vladsch.flexmark/flexmark-util-visitor 0.64.8
+    . com.vladsch.flexmark/flexmark-ext-emoji 0.64.8
+      . com.vladsch.flexmark/flexmark-util 0.64.8
+      . com.vladsch.flexmark/flexmark 0.64.8
+      . com.vladsch.flexmark/flexmark-jira-converter 0.64.8
+        . com.vladsch.flexmark/flexmark-util 0.64.8
+        . com.vladsch.flexmark/flexmark-ext-gfm-strikethrough 0.64.8
+          . com.vladsch.flexmark/flexmark-util 0.64.8
+          . com.vladsch.flexmark/flexmark 0.64.8
+        . com.vladsch.flexmark/flexmark-ext-tables 0.64.8
+          . com.vladsch.flexmark/flexmark-util 0.64.8
+          . com.vladsch.flexmark/flexmark 0.64.8
+        . com.vladsch.flexmark/flexmark-ext-wikilink 0.64.8
+          . com.vladsch.flexmark/flexmark-util 0.64.8
+          . com.vladsch.flexmark/flexmark 0.64.8
+        . com.vladsch.flexmark/flexmark-ext-ins 0.64.8
+          . com.vladsch.flexmark/flexmark-util 0.64.8
+          . com.vladsch.flexmark/flexmark 0.64.8
+        . com.vladsch.flexmark/flexmark-ext-superscript 0.64.8
+          . com.vladsch.flexmark/flexmark-util 0.64.8
+          . com.vladsch.flexmark/flexmark 0.64.8
+        . com.vladsch.flexmark/flexmark 0.64.8
+    X org.jsoup/jsoup 1.15.4 :superseded
+  X com.taoensso/nippy 3.6.0 :use-top
+org.bytedeco/openblas 0.3.10-1.5.4
+  X org.bytedeco/javacpp 1.5.4 :use-top
+same/ish 0.1.7
+org.tribuo/tribuo-classification-xgboost 4.3.2
+  . org.tribuo/tribuo-classification-core 4.3.2
+    . org.tribuo/tribuo-core 4.3.2
+      . com.oracle.labs.olcut/olcut-core 5.3.1
+      . org.tribuo/tribuo-util-onnx 4.3.2
+        . com.google.protobuf/protobuf-java 3.25.6
+      . com.oracle.labs.olcut/olcut-config-protobuf 5.3.1
+        . com.oracle.labs.olcut/olcut-core 5.3.1
+      . com.google.protobuf/protobuf-java 3.25.6 :newer-version
+    . org.tribuo/tribuo-common-tree 4.3.2
+    . com.oracle.labs.olcut/olcut-core 5.3.1
+  . org.tribuo/tribuo-data 4.3.2
+    . org.tribuo/tribuo-core 4.3.2
+    . com.oracle.labs.olcut/olcut-core 5.3.1
+    . org.tribuo/tribuo-util-tokenization 4.3.2
+      . com.oracle.labs.olcut/olcut-core 5.3.1
+    . com.opencsv/opencsv 5.9
+      . org.apache.commons/commons-text 1.11.0
+        X org.apache.commons/commons-lang3 3.13.0 :excluded
+      . commons-beanutils/commons-beanutils 1.9.4
+      . org.apache.commons/commons-collections4 4.4
+    . org.apache.commons/commons-lang3 3.12.0
+  . org.tribuo/tribuo-common-xgboost 4.3.2
+    . org.tribuo/tribuo-core 4.3.2
+    . org.tribuo/tribuo-data 4.3.2
+    . org.tribuo/tribuo-math 4.3.2
+    . org.tribuo/tribuo-interop-core 4.3.2
+      . org.tribuo/tribuo-core 4.3.2
+      . org.tribuo/tribuo-math 4.3.2
+    X ml.dmlc/xgboost4j_2.12 1.6.2 :older-version
+    X commons-logging/commons-logging 1.2 :superseded
+org.scicloj/tcutils 0.1.0-alpha2
+  X scicloj/tablecloth 7.029.2 :older-version
+org.scicloj/kindly 4-beta23
+org.tribuo/tribuo-regression-sgd 4.3.2
+  . org.tribuo/tribuo-regression-core 4.3.2
+    . org.tribuo/tribuo-core 4.3.2
+    . org.tribuo/tribuo-math 4.3.2
+    . com.oracle.labs.olcut/olcut-core 5.3.1
+  . org.tribuo/tribuo-data 4.3.2
+  . org.tribuo/tribuo-math 4.3.2
+    . org.tribuo/tribuo-core 4.3.2
+  . org.tribuo/tribuo-common-sgd 4.3.2
+    . org.tribuo/tribuo-core 4.3.2
+    . org.tribuo/tribuo-data 4.3.2
+    . org.tribuo/tribuo-math 4.3.2
+org.tribuo/tribuo-regression-liblinear 4.3.2
+  . org.tribuo/tribuo-regression-core 4.3.2
+  . org.tribuo/tribuo-common-liblinear 4.3.2
+    . org.tribuo/tribuo-core 4.3.2
+    . de.bwaldvogel/liblinear 2.44
+  . org.tribuo/tribuo-data 4.3.2
+org.scicloj/scicloj.ml.tribuo 0.3.1
+  . org.tribuo/tribuo-regression-core 4.3.2
+  X org.scicloj/metamorph.ml 1.3.2 :use-top
+  X com.oracle.labs.olcut/olcut-config-json 5.3.1 :use-top
+  . org.tribuo/tribuo-classification-core 4.3.2
+  . cheshire/cheshire 6.1.0
+    . com.fasterxml.jackson.core/jackson-core 2.20.0 :newer-version
+    . com.fasterxml.jackson.dataformat/jackson-dataformat-smile 2.20.0
+      . com.fasterxml.jackson.core/jackson-core 2.20.0
+    . com.fasterxml.jackson.dataformat/jackson-dataformat-cbor 2.20.0
+      . com.fasterxml.jackson.core/jackson-core 2.20.0
+    . tigris/tigris 0.1.2
+  . com.oracle.labs.olcut/olcut-core 5.3.1
+    . org.jline/jline-terminal 3.27.1
+      . org.jline/jline-native 3.27.1
+    . org.jline/jline-reader 3.27.1
+      . org.jline/jline-terminal 3.27.1
+    . org.jline/jline-builtins 3.27.1
+      . org.jline/jline-reader 3.27.1
+      . org.jline/jline-style 3.27.1
+        . org.jline/jline-terminal 3.27.1
+    . org.jline/jline-terminal-jansi 3.27.1
+      . org.fusesource.jansi/jansi 2.4.1
+      . org.jline/jline-terminal 3.27.1
+org.tribuo/tribuo-classification-liblinear 4.3.2
+  . org.tribuo/tribuo-classification-core 4.3.2
+  . org.tribuo/tribuo-common-liblinear 4.3.2
+com.oracle.labs.olcut/olcut-config-json 5.3.1
+  . com.oracle.labs.olcut/olcut-core 5.3.1
+  X com.fasterxml.jackson.core/jackson-core 2.18.0 :superseded
+  X com.fasterxml.jackson.core/jackson-databind 2.18.0 :superseded
+    . com.fasterxml.jackson.core/jackson-annotations 2.18.0
+    X com.fasterxml.jackson.core/jackson-core 2.18.0 :older-version
+clj-http/clj-http 3.13.1
+  . org.apache.httpcomponents/httpcore 4.4.16
+  . org.apache.httpcomponents/httpclient 4.5.14
+    . org.apache.httpcomponents/httpcore 4.4.16
+    . commons-logging/commons-logging 1.2
+    X commons-codec/commons-codec 1.11 :older-version
+  . org.apache.httpcomponents/httpclient-cache 4.5.14
+    . org.apache.httpcomponents/httpclient 4.5.14
+    . commons-logging/commons-logging 1.2
+  . org.apache.httpcomponents/httpasyncclient 4.1.5
+    X org.apache.httpcomponents/httpcore 4.4.15 :older-version
+    . org.apache.httpcomponents/httpcore-nio 4.4.15
+      X org.apache.httpcomponents/httpcore 4.4.15 :older-version
+    X org.apache.httpcomponents/httpclient 4.5.13 :older-version
+    . commons-logging/commons-logging 1.2
+  . org.apache.httpcomponents/httpmime 4.5.14
+    . org.apache.httpcomponents/httpclient 4.5.14
+  . commons-codec/commons-codec 1.16.1
+  X commons-io/commons-io 2.16.1 :superseded
+  . slingshot/slingshot 0.12.2
+  . potemkin/potemkin 0.4.7
+    . riddley/riddley 0.1.12
+org.slf4j/jul-to-slf4j 2.0.17
+  . org.slf4j/slf4j-api 2.0.17
+org.bytedeco/openblas-platform 0.3.10-1.5.4
+  . org.bytedeco/javacpp-platform 1.5.4
+    X org.bytedeco/javacpp 1.5.4 :use-top
+    . org.bytedeco/javacpp$android-arm 1.5.4
+    . org.bytedeco/javacpp$android-arm64 1.5.4
+    . org.bytedeco/javacpp$android-x86 1.5.4
+    . org.bytedeco/javacpp$android-x86_64 1.5.4
+    . org.bytedeco/javacpp$ios-arm64 1.5.4
+    . org.bytedeco/javacpp$ios-x86_64 1.5.4
+    . org.bytedeco/javacpp$linux-armhf 1.5.4
+    . org.bytedeco/javacpp$linux-arm64 1.5.4
+    . org.bytedeco/javacpp$linux-ppc64le 1.5.4
+    . org.bytedeco/javacpp$linux-x86 1.5.4
+    . org.bytedeco/javacpp$linux-x86_64 1.5.4
+    . org.bytedeco/javacpp$macosx-x86_64 1.5.4
+    . org.bytedeco/javacpp$windows-x86 1.5.4
+    . org.bytedeco/javacpp$windows-x86_64 1.5.4
+  X org.bytedeco/openblas 0.3.10-1.5.4 :use-top
+  . org.bytedeco/openblas$android-arm 0.3.10-1.5.4
+    X org.bytedeco/javacpp 1.5.4 :use-top
+  . org.bytedeco/openblas$android-arm64 0.3.10-1.5.4
+    X org.bytedeco/javacpp 1.5.4 :use-top
+  . org.bytedeco/openblas$android-x86 0.3.10-1.5.4
+    X org.bytedeco/javacpp 1.5.4 :use-top
+  . org.bytedeco/openblas$android-x86_64 0.3.10-1.5.4
+    X org.bytedeco/javacpp 1.5.4 :use-top
+  . org.bytedeco/openblas$ios-arm64 0.3.10-1.5.4
+    X org.bytedeco/javacpp 1.5.4 :use-top
+  . org.bytedeco/openblas$ios-x86_64 0.3.10-1.5.4
+    X org.bytedeco/javacpp 1.5.4 :use-top
+  . org.bytedeco/openblas$linux-x86 0.3.10-1.5.4
+    X org.bytedeco/javacpp 1.5.4 :use-top
+  . org.bytedeco/openblas$linux-x86_64 0.3.10-1.5.4
+    X org.bytedeco/javacpp 1.5.4 :use-top
+  . org.bytedeco/openblas$linux-armhf 0.3.10-1.5.4
+    X org.bytedeco/javacpp 1.5.4 :use-top
+  . org.bytedeco/openblas$linux-arm64 0.3.10-1.5.4
+    X org.bytedeco/javacpp 1.5.4 :use-top
+  . org.bytedeco/openblas$linux-ppc64le 0.3.10-1.5.4
+    X org.bytedeco/javacpp 1.5.4 :use-top
+  . org.bytedeco/openblas$macosx-x86_64 0.3.10-1.5.4
+    X org.bytedeco/javacpp 1.5.4 :use-top
+  . org.bytedeco/openblas$windows-x86 0.3.10-1.5.4
+    X org.bytedeco/javacpp 1.5.4 :use-top
+  . org.bytedeco/openblas$windows-x86_64 0.3.10-1.5.4
+    X org.bytedeco/javacpp 1.5.4 :use-top
+org.bytedeco/arpack-ng 3.7.0-1.5.4
+  X org.bytedeco/openblas 0.3.10-1.5.4 :use-top
+  X org.bytedeco/javacpp 1.5.4 :use-top
+generateme/fitdistr 1.1.0-alpha1
+  X generateme/fastmath 3.0.0-alpha2 :use-top
+org.tribuo/tribuo-classification-tree 4.3.2
+  . org.tribuo/tribuo-classification-core 4.3.2
+  . org.tribuo/tribuo-data 4.3.2
+  . org.tribuo/tribuo-math 4.3.2
+  . org.tribuo/tribuo-common-tree 4.3.2
+    . org.tribuo/tribuo-core 4.3.2
+    . org.tribuo/tribuo-data 4.3.2
+    . org.tribuo/tribuo-math 4.3.2
+org.tribuo/tribuo-regression-libsvm 4.3.2
+  . org.tribuo/tribuo-regression-core 4.3.2
+  . org.tribuo/tribuo-data 4.3.2
+  . org.tribuo/tribuo-common-libsvm 4.3.2
+    . org.tribuo/tribuo-core 4.3.2
+    . tw.edu.ntu.csie/libsvm 3.25
+com.oracle.labs.olcut/olcut-config-edn 5.3.1
+  . com.oracle.labs.olcut/olcut-core 5.3.1
+  . us.bpsm/edn-java 0.7.1
+org.bytedeco/javacpp 1.5.4
+clj-python/libpython-clj 2.026
+  X org.clojure/data.json 1.0.0 :superseded
+  X cnuernber/dtype-next 10.124 :older-version
+  . com.google.guava/guava 31.1-jre
+    . com.google.guava/failureaccess 1.0.1
+    . com.google.guava/listenablefuture 9999.0-empty-to-avoid-conflict-with-guava
+    . com.google.code.findbugs/jsr305 3.0.2
+    X org.checkerframework/checker-qual 3.12.0 :older-version
+    . com.google.errorprone/error_prone_annotations 2.11.0 :newer-version
+    . com.google.j2objc/j2objc-annotations 1.3
+  . net.java.dev.jna/jna 5.12.1
+clojure.java-time/clojure.java-time 1.4.3
+org.slf4j/slf4j-nop 2.0.17
+  . org.slf4j/slf4j-api 2.0.17
+org.scicloj/scicloj.ml.xgboost 6.5.1
+  . ml.dmlc/xgboost4j_2.12 3.2.0
+    . org.scala-lang/scala-compiler 2.12.18
+      . org.scala-lang/scala-library 2.12.18
+      . org.scala-lang/scala-reflect 2.12.18
+        . org.scala-lang/scala-library 2.12.18
+      . org.scala-lang.modules/scala-xml_2.12 2.1.0
+        X org.scala-lang/scala-library 2.12.15 :older-version
+    . org.scala-lang/scala-library 2.12.18
+    . org.scala-lang.modules/scala-collection-compat_2.12 2.12.0
+      X org.scala-lang/scala-library 2.12.17 :older-version
+    . com.esotericsoftware/kryo 5.6.2
+      . com.esotericsoftware/reflectasm 1.11.9
+      . org.objenesis/objenesis 3.4
+      . com.esotericsoftware/minlog 1.3.1
+    . commons-logging/commons-logging 1.3.4 :newer-version
+  X org.scicloj/metamorph.ml 1.3.2 :use-top
+  . pppmap/pppmap 1.0.0
+  . org.apache.hadoop/hadoop-common 3.3.0
+  . com.github.haifengl/smile-nlp 2.6.0
+org.tribuo/tribuo-regression-tree 4.3.2
+  . org.tribuo/tribuo-regression-core 4.3.2
+  . org.tribuo/tribuo-data 4.3.2
+  . org.tribuo/tribuo-math 4.3.2
+  . org.tribuo/tribuo-common-tree 4.3.2
+org.scicloj/sklearn-clj 0.6.1
+  X org.scicloj/metamorph.ml 1.3.2 :use-top
+  X clj-python/libpython-clj 2.026 :use-top
+org.bytedeco/arpack-ng-platform 3.7.0-1.5.4
+  X org.bytedeco/openblas-platform 0.3.10-1.5.4 :use-top
+  X org.bytedeco/arpack-ng 3.7.0-1.5.4 :use-top
+  . org.bytedeco/arpack-ng$linux-x86 3.7.0-1.5.4
+    X org.bytedeco/openblas 0.3.10-1.5.4 :use-top
+    X org.bytedeco/javacpp 1.5.4 :use-top
+  . org.bytedeco/arpack-ng$linux-x86_64 3.7.0-1.5.4
+    X org.bytedeco/openblas 0.3.10-1.5.4 :use-top
+    X org.bytedeco/javacpp 1.5.4 :use-top
+  . org.bytedeco/arpack-ng$linux-armhf 3.7.0-1.5.4
+    X org.bytedeco/openblas 0.3.10-1.5.4 :use-top
+    X org.bytedeco/javacpp 1.5.4 :use-top
+  . org.bytedeco/arpack-ng$linux-arm64 3.7.0-1.5.4
+    X org.bytedeco/openblas 0.3.10-1.5.4 :use-top
+    X org.bytedeco/javacpp 1.5.4 :use-top
+  . org.bytedeco/arpack-ng$linux-ppc64le 3.7.0-1.5.4
+    X org.bytedeco/openblas 0.3.10-1.5.4 :use-top
+    X org.bytedeco/javacpp 1.5.4 :use-top
+  . org.bytedeco/arpack-ng$macosx-x86_64 3.7.0-1.5.4
+    X org.bytedeco/openblas 0.3.10-1.5.4 :use-top
+    X org.bytedeco/javacpp 1.5.4 :use-top
+  . org.bytedeco/arpack-ng$windows-x86 3.7.0-1.5.4
+    X org.bytedeco/openblas 0.3.10-1.5.4 :use-top
+    X org.bytedeco/javacpp 1.5.4 :use-top
+  . org.bytedeco/arpack-ng$windows-x86_64 3.7.0-1.5.4
+    X org.bytedeco/openblas 0.3.10-1.5.4 :use-top
+    X org.bytedeco/javacpp 1.5.4 :use-top
+org.babashka/sci 0.12.51
+  . borkdude/edamame 1.5.37
+    X org.clojure/tools.reader 1.5.2 :older-version
+  . org.babashka/sci.impl.types 0.0.2
+  . borkdude/graal.locking 0.0.2
+org.tribuo/tribuo-classification-libsvm 4.3.2
+  . org.tribuo/tribuo-classification-core 4.3.2
+  . org.tribuo/tribuo-common-libsvm 4.3.2
+com.taoensso/nippy 3.6.0
+  . org.clojure/tools.reader 1.5.2
+  . com.taoensso/encore 3.148.0
+  . org.tukaani/xz 1.10
+  . io.airlift/aircompressor 2.0.2
+org.tribuo/tribuo-classification-sgd 4.3.2
+  . org.tribuo/tribuo-classification-core 4.3.2
+  . org.tribuo/tribuo-data 4.3.2
+  . org.tribuo/tribuo-math 4.3.2
+  . org.tribuo/tribuo-common-sgd 4.3.2
+org.tribuo/tribuo-regression-xgboost 4.3.2
+  . org.tribuo/tribuo-regression-core 4.3.2
+  . org.tribuo/tribuo-data 4.3.2
+  . org.tribuo/tribuo-common-xgboost 4.3.2
+org.scicloj/kind-pyplot 1-beta2.1
+  X org.scicloj/kindly 4-beta13 :use-top
+  X clj-python/libpython-clj 2.025 :use-top
+org.scicloj/clay 2.0.15
+  . metosin/muuntaja 0.6.11
+    . metosin/jsonista 0.3.13
+      X com.fasterxml.jackson.core/jackson-core 2.18.2 :older-version
+      . com.fasterxml.jackson.core/jackson-databind 2.18.2 :newer-version
+        . com.fasterxml.jackson.core/jackson-annotations 2.18.2
+        X com.fasterxml.jackson.core/jackson-core 2.18.2 :older-version
+      . com.fasterxml.jackson.datatype/jackson-datatype-jsr310 2.18.2
+    . com.cognitect/transit-clj 1.0.333
+  . org.antlr/antlr4-runtime 4.7.1
+  . org.scicloj/kindly-advice 1-beta14
+    X org.scicloj/kindly 4-beta16 :use-top
+  . org.clojure/tools.cli 1.1.230
+  . ring/ring-defaults 0.6.0
+    X ring/ring-core 1.13.0 :superseded
+      X org.ring-clojure/ring-core-protocols 1.13.0 :parent-omitted
+      X org.ring-clojure/ring-websocket-protocols 1.13.0 :parent-omitted
+      X ring/ring-codec 1.2.0 :parent-omitted
+      X commons-io/commons-io 2.17.0 :parent-omitted
+      X org.apache.commons/commons-fileupload2-core 2.0.0-M1 :parent-omitted
+      X crypto-random/crypto-random 1.2.1 :parent-omitted
+      X crypto-equality/crypto-equality 1.0.1 :parent-omitted
+    . ring/ring-ssl 0.4.0
+      X ring/ring-core 1.12.1 :older-version
+    . ring/ring-headers 0.4.0
+      X ring/ring-core 1.12.1 :older-version
+    . ring/ring-anti-forgery 1.4.0
+      . crypto-equality/crypto-equality 1.0.1
+    . org.ring-clojure/ring-websocket-middleware 0.2.1
+      X ring/ring-core 1.13.0 :older-version
+  X org.scicloj/kindly 4-beta23 :use-top
+  . io.github.nextjournal/markdown 0.6.157
+    . org.commonmark/commonmark-ext-footnotes 0.23.0
+      . org.commonmark/commonmark 0.23.0
+    . org.commonmark/commonmark-ext-gfm-strikethrough 0.23.0
+      . org.commonmark/commonmark 0.23.0
+    . org.commonmark/commonmark 0.23.0
+    . org.commonmark/commonmark-ext-task-list-items 0.23.0
+      . org.commonmark/commonmark 0.23.0
+    . org.commonmark/commonmark-ext-gfm-tables 0.23.0
+      . org.commonmark/commonmark 0.23.0
+    . applied-science/js-interop 0.3.3
+      . appliedscience/js-interop 0.2.6-MOVED
+    . org.commonmark/commonmark-ext-autolink 0.23.0
+      . org.commonmark/commonmark 0.23.0
+      . org.nibor.autolink/autolink 0.11.0
+  . com.nextjournal/beholder 1.0.2
+  . org.scicloj/kind-portal 1-beta3
+    X org.scicloj/kindly-advice 1-beta12 :older-version
+    . djblue/portal 0.58.2
+      X org.clojure/data.json 2.4.0 :older-version
+      . com.cognitect/transit-cljs 0.8.280
+        . com.cognitect/transit-js 0.8.874
+      . com.cognitect/transit-clj 1.0.333
+      . com.google.code.gson/gson 2.10.1 :newer-version
+      X http-kit/http-kit 2.7.0 :older-version
+  X hiccup/hiccup 2.0.0-RC5 :older-version
+  . clj-commons/clj-yaml 1.0.29
+    . org.yaml/snakeyaml 2.3
+    . org.flatland/ordered 1.15.12
+  . org.clojure/tools.reader 1.6.0 :newer-version
+  . nrepl/nrepl 1.3.1
+  X babashka/fs 0.5.27 :older-version
+  X com.cnuernber/charred 1.037 :older-version
+  . ring/ring 1.14.1
+    . ring/ring-core 1.14.1 :newer-version
+      . org.ring-clojure/ring-core-protocols 1.14.1
+      . org.ring-clojure/ring-websocket-protocols 1.14.1
+      . ring/ring-codec 1.3.0
+      . commons-io/commons-io 2.18.0 :newer-version
+      . org.apache.commons/commons-fileupload2-core 2.0.0-M2
+        X commons-io/commons-io 2.15.1 :older-version
+      . crypto-random/crypto-random 1.2.1
+        X commons-codec/commons-codec 1.15 :older-version
+      . crypto-equality/crypto-equality 1.0.1
+    . ring/ring-devel 1.14.1
+      . ring/ring-core 1.14.1
+      X hiccup/hiccup 1.0.5 :older-version
+      . clj-stacktrace/clj-stacktrace 0.2.8
+      . ns-tracker/ns-tracker 1.0.0
+        . org.clojure/tools.namespace 1.5.0
+          . org.clojure/java.classpath 1.1.0
+          X org.clojure/tools.reader 1.4.0 :older-version
+        . org.clojure/java.classpath 1.1.0 :newer-version
+    . ring/ring-jetty-adapter 1.14.1
+      . ring/ring-core 1.14.1
+      . org.ring-clojure/ring-jakarta-servlet 1.14.1
+      . org.eclipse.jetty/jetty-server 12.0.18
+        . org.eclipse.jetty/jetty-http 12.0.18
+          . org.eclipse.jetty/jetty-io 12.0.18
+          . org.eclipse.jetty/jetty-util 12.0.18
+            X org.slf4j/slf4j-api 2.0.16 :older-version
+          X org.slf4j/slf4j-api 2.0.16 :older-version
+        . org.eclipse.jetty/jetty-io 12.0.18
+          . org.eclipse.jetty/jetty-util 12.0.18
+          X org.slf4j/slf4j-api 2.0.16 :older-version
+        X org.slf4j/slf4j-api 2.0.16 :older-version
+      . org.eclipse.jetty/jetty-unixdomain-server 12.0.18
+        . org.eclipse.jetty/jetty-server 12.0.18
+        X org.slf4j/slf4j-api 2.0.16 :older-version
+      . org.eclipse.jetty.ee9/jetty-ee9-servlet 12.0.18
+        . org.eclipse.jetty.ee9/jetty-ee9-nested 12.0.18
+          . org.eclipse.jetty/jetty-http 12.0.18
+          . org.eclipse.jetty/jetty-security 12.0.18
+            . org.eclipse.jetty/jetty-server 12.0.18
+            X org.slf4j/slf4j-api 2.0.16 :older-version
+          . org.eclipse.jetty/jetty-server 12.0.18
+          . org.eclipse.jetty/jetty-session 12.0.18
+            . org.eclipse.jetty/jetty-server 12.0.18
+            X org.slf4j/slf4j-api 2.0.16 :older-version
+          . org.eclipse.jetty.toolchain/jetty-jakarta-servlet-api 5.0.2
+          X org.slf4j/slf4j-api 2.0.16 :older-version
+        . org.eclipse.jetty.ee9/jetty-ee9-security 12.0.18
+          . org.eclipse.jetty/jetty-security 12.0.18
+          . org.eclipse.jetty.ee9/jetty-ee9-nested 12.0.18
+          X org.slf4j/slf4j-api 2.0.16 :older-version
+        X org.slf4j/slf4j-api 2.0.16 :older-version
+      . org.eclipse.jetty.ee9.websocket/jetty-ee9-websocket-jetty-server 12.0.18
+        . org.eclipse.jetty.ee9/jetty-ee9-servlet 12.0.18
+        . org.eclipse.jetty.ee9/jetty-ee9-webapp 12.0.18
+          . org.eclipse.jetty/jetty-ee 12.0.18
+            . org.eclipse.jetty/jetty-server 12.0.18
+            X org.slf4j/slf4j-api 2.0.16 :older-version
+          . org.eclipse.jetty/jetty-xml 12.0.18
+            . org.eclipse.jetty/jetty-util 12.0.18
+            X org.slf4j/slf4j-api 2.0.16 :older-version
+          . org.eclipse.jetty.ee9/jetty-ee9-servlet 12.0.18
+          X org.slf4j/slf4j-api 2.0.16 :older-version
+        . org.eclipse.jetty.ee9.websocket/jetty-ee9-websocket-jetty-api 12.0.18
+        . org.eclipse.jetty.ee9.websocket/jetty-ee9-websocket-jetty-common 12.0.18
+          . org.eclipse.jetty.ee9.websocket/jetty-ee9-websocket-jetty-api 12.0.18
+          . org.eclipse.jetty.websocket/jetty-websocket-core-common 12.0.18
+            . org.eclipse.jetty/jetty-http 12.0.18
+            . org.eclipse.jetty/jetty-io 12.0.18
+            X org.slf4j/slf4j-api 2.0.16 :older-version
+        . org.eclipse.jetty.ee9.websocket/jetty-ee9-websocket-servlet 12.0.18
+          . org.eclipse.jetty.ee9/jetty-ee9-servlet 12.0.18
+          . org.eclipse.jetty.websocket/jetty-websocket-core-server 12.0.18
+            . org.eclipse.jetty/jetty-server 12.0.18
+            . org.eclipse.jetty.websocket/jetty-websocket-core-common 12.0.18
+          X org.slf4j/slf4j-api 2.0.16 :older-version
+        . org.eclipse.jetty.toolchain/jetty-jakarta-servlet-api 5.0.2
+        X org.slf4j/slf4j-api 2.0.16 :older-version
+    . org.ring-clojure/ring-jakarta-servlet 1.14.1
+      . ring/ring-core 1.14.1
+  . org.scicloj/tempfiles 1-beta1
+  . org.scicloj/kindly-render 0.1.5-alpha
+    . org.clojure/data.json 2.5.1 :newer-version
+    X org.scicloj/kindly-advice 1-beta9 :older-version
+    . io.github.nextjournal/markdown 0.6.157
+    . org.scicloj/kind-portal 1-beta3
+    X hiccup/hiccup 2.0.0-RC3 :older-version
+    X metosin/malli 0.17.0 :older-version
+    X com.cnuernber/charred 1.036 :older-version
+    . org.clojure/data.codec 0.1.1
+  . io.github.tonsky/clojure-plus 1.4.0
+  . carocad/parcera 0.11.6
+  . org.clj-commons/pretty 3.5.0
+  . http-kit/http-kit 2.8.0
