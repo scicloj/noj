@@ -20,3 +20,4 @@
 ;; * [deep-diamond](https://github.com/uncomplicate/deep-diamond) - tensors & deep learning
 ;; * [llama.clj](https://github.com/phronmophobic/llama.clj) - running LLMs locally
 ;; * [Bosquet](https://github.com/zmedelis/bosquet) - tooling for LLM applications
+;; * [scicloj.ml.clust](https://github.com/scicloj/scicloj.ml.clust) - wrapper for [Clust4j](https://github.com/tgsmith61591/clust4j) clustering algorithms
