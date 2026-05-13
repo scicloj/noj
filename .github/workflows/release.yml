@@ -27,9 +27,9 @@ jobs:
            java-version: '17'
 
        - name: Install clojure tools
-         uses: DeLaGuardo/setup-clojure@13.5.3
+         uses: DeLaGuardo/setup-clojure@13.6.0
          with:
-            cli: 1.12.4.1618
+            cli: 1.12.5.1638
 
        - name: create clojupyter kernel
          run: clojure -T:build create-uber-clojupyter
@@ -38,6 +38,6 @@ jobs:
          run: clojure -T:build create-uber-clay
                
        - name: Release
-         uses: softprops/action-gh-release@v2
+         uses: softprops/action-gh-release@v3
          with:
           files: target/*.jar    
