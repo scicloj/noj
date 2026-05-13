@@ -54,11 +54,11 @@
   :model-integration-tests
   {:extra-paths ["model-integration-tests" "notebooks"]
    :extra-deps {;; are needed by certain smile models
-                org.bytedeco/arpack-ng {:mvn/version "3.7.0-1.5.4"}
-                org.bytedeco/openblas-platform {:mvn/version "0.3.10-1.5.4"}
-                org.bytedeco/arpack-ng-platform {:mvn/version "3.7.0-1.5.4"}
-                org.bytedeco/openblas {:mvn/version "0.3.10-1.5.4"}
-                org.bytedeco/javacpp {:mvn/version "1.5.4"}
+                org.bytedeco/arpack-ng {:mvn/version "3.9.1-1.5.13"}
+                org.bytedeco/openblas-platform {:mvn/version "0.3.31-1.5.13"}
+                org.bytedeco/arpack-ng-platform {:mvn/version "3.9.1-1.5.13"}
+                org.bytedeco/openblas {:mvn/version "0.3.31-1.5.13"}
+                org.bytedeco/javacpp {:mvn/version "1.5.13"}
                 org.scicloj/scicloj.ml.smile {:mvn/version "7.6.2"}
 
                 com.taoensso/nippy {:mvn/version "3.6.2"}
@@ -70,11 +70,11 @@
 
   :dev {:extra-paths ["notebooks"]
         :extra-deps {clj-http/clj-http {:mvn/version "3.13.1"}
-                     org.bytedeco/arpack-ng {:mvn/version "3.7.0-1.5.4"}
-                     org.bytedeco/openblas-platform {:mvn/version "0.3.10-1.5.4"}
-                     org.bytedeco/arpack-ng-platform {:mvn/version "3.7.0-1.5.4"}
-                     org.bytedeco/openblas {:mvn/version "0.3.10-1.5.4"}
-                     org.bytedeco/javacpp {:mvn/version "1.5.4"}
+                     org.bytedeco/arpack-ng {:mvn/version "3.9.1-1.5.13"}
+                     org.bytedeco/openblas-platform {:mvn/version "0.3.31-1.5.13"}
+                     org.bytedeco/arpack-ng-platform {:mvn/version "3.9.1-1.5.13"}
+                     org.bytedeco/openblas {:mvn/version "0.3.31-1.5.13"}
+                     org.bytedeco/javacpp {:mvn/version "1.5.13"}
                      com.oracle.labs.olcut/olcut-config-edn    {:mvn/version "5.3.1"}
                      com.oracle.labs.olcut/olcut-config-json    {:mvn/version "5.3.1"}
                      org.scicloj/scicloj.ml.smile {:mvn/version "7.6.2"}
