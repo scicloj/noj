@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## unreleased
+- upgraded all noj dependencies to use TMD 8
+
 ## [2-beta24 - 2026-03-17]
 - updated metamorph.ml,sklearn-clj,scicloj.ml.xgboost,scicloj.ml.tribuo,clay
 - minor updates of several non-scicloj dependencies
