@@ -3,7 +3,8 @@ All notable changes to this project will be documented in this file. This change
 
 ## unreleased
 - upgraded all noj dependencies to use TMD 8
-- Breaking: removed tcutils, all fns are now in latest tablecloth
+- minor deps upgrades
+- Breaking: removed tcutils, all fns of it are now in latest tablecloth
 
 ## [2-beta24 - 2026-03-17]
 - updated metamorph.ml,sklearn-clj,scicloj.ml.xgboost,scicloj.ml.tribuo,clay
