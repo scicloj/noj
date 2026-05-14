@@ -21,8 +21,8 @@
             [tablecloth.api :as tc]
             [tech.v3.dataset.modelling :as ds-mod]))
 
-(io/make-parents "/tmp/ml-cache/dummy")
-(cache/enable-disk-cache! "/tmp/ml-cache")
+;(io/make-parents "/tmp/ml-cache/dummy")
+;(cache/enable-disk-cache! "/tmp/ml-cache")
 
 ;; ## The metamorph pipeline abstraction
 ;; When using automl, it is very useful to be able to manage all
