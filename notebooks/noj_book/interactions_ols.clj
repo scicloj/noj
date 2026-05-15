@@ -8,14 +8,15 @@
             [scicloj.kindly.v4.kind :as kind]
             [scicloj.metamorph.core :as mm]
             [scicloj.metamorph.ml :as ml]
+            [scicloj.metamorph.ml.design-matrix :as dm]
             [scicloj.metamorph.ml.loss :as loss]
+            [scicloj.metamorph.ml.r-model-matrix :as r-model-matrix]
             [scicloj.metamorph.ml.regression]
+            [scicloj.ml.tribuo]
             [tablecloth.api :as tc]
             [tablecloth.column.api :as tcc]
             [tablecloth.pipeline :as tcpipe]
-            [tech.v3.dataset.modelling :as modelling]
-            [scicloj.ml.tribuo]
-            [scicloj.metamorph.ml.design-matrix :as dm]))
+            [tech.v3.dataset.modelling :as modelling]))
 
 ^:kindly/hide-code
 (def md
@@ -133,8 +134,8 @@
    preprocessed-data
    [:sales]                                         ;; predictor
    [
-    [:youtube '(identity :youtube)]                  ;; youtube stays as-is
-    [:facebook '(identity :facebook)]                ;; facebook stays as-is
+    :youtube                  ;; youtube stays as-is
+    :facebook                ;; facebook stays as-is
     [:youtube*facebook '(* :youtube :facebook)]       ;; new term is created
     ]))
 
@@ -174,4 +175,47 @@ dm
 (md "$R^2$")
 (-> evaluations-dm flatten first :test-transform :other-metrics first :metric)
 (kindly/check = 0.9747551116991899)
+
+;; ## use `r-model-matrix
+;; Since `metamorph.ml 1.6.2` we can express the same interactions as before using the syntax used in R (formula)
+;;
+;; We can express the same formula 
+;; $$sales = b0 + b1 * youtube + b2 * facebook + b3 * (youtube * facebook)$$
+;;
+;; by specifying a string '"sales ~ youtube * facebook".
+
+
+;(def _ (r-model-matrix/add-renjin-deps nil))
+
+(def dm-formula
+  (->
+   (r-model-matrix/r-model-matrix
+    preprocessed-data
+    "sales ~ youtube * facebook"
+    :renjin)
+   :model-matrix-dataset
+   (tc/drop-columns ["X.Intercept."])))
+
+
+(def evaluations-dm-formula
+  (ml/evaluate-pipelines
+   [pipe-mode-only]
+   (tc/split->seq dm-formula
+                  :holdout
+                  {:seed 112723})
+   loss/rmse
+   :loss
+   {:other-metrics [{:name :r2
+                     :metric-fn fmstats/r2-determination}]}))
+
+;; we get the same metrics as before, (as it is the same model specification):
+
+(md "$RMSE$")
+(-> evaluations-dm-formula flatten first :test-transform :metric)
+(kindly/check = 0.933077510748531)
+
+(md "$R^2$")
+(-> evaluations-dm-formula flatten first :test-transform :other-metrics first :metric)
+(kindly/check = 0.9747551116991899)
+
 

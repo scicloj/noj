@@ -10,15 +10,19 @@
 ;; [![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/scicloj.ml.smile.svg)](https://clojars.org/org.scicloj/scicloj.ml.smile)
 
 (ns noj-book.automl
-  (:require [noj-book.ml-basic :as ml-basic]
+  (:require [clojure.java.io :as io]
+            [noj-book.ml-basic :as ml-basic]
             [scicloj.kindly.v4.kind :as kind]
-            [scicloj.metamorph.ml :as ml]
-            [tablecloth.api :as tc]
-            [scicloj.metamorph.ml.loss :as loss]
             [scicloj.metamorph.core :as mm]
+            [scicloj.metamorph.ml :as ml]
+            [scicloj.metamorph.ml.cache :as cache]
             [scicloj.metamorph.ml.gridsearch :as gs]
-            [tech.v3.dataset.modelling :as ds-mod]
-            [scicloj.ml.tribuo]))
+            [scicloj.ml.tribuo]
+            [tablecloth.api :as tc]
+            [tech.v3.dataset.modelling :as ds-mod]))
+
+;(io/make-parents "/tmp/ml-cache/dummy")
+;(cache/enable-disk-cache! "/tmp/ml-cache")
 
 ;; ## The metamorph pipeline abstraction
 ;; When using automl, it is very useful to be able to manage all
@@ -59,7 +63,8 @@
 
 (require '[scicloj.metamorph.ml :as ml]
          '[scicloj.metamorph.core :as mm]
-         '[tablecloth.api :as tc])
+         '[tablecloth.api :as tc]
+         )
 
 ;;  We will use the ready-for-modeling data from basic-ml tutorial,
 ;;
@@ -372,6 +377,7 @@ logistic-regression-specs
                                               :numMembers "500"}}]
             :tribuo-trainer-name "random-forest"}
            
+           {:model-type :metamorph.ml/random-forest}
            {:model-type :xgboost/classification :round 10}
            {:model-type :sklearn.classification/decision-tree-classifier}
            {:model-type :sklearn.classification/logistic-regression}
@@ -397,7 +403,7 @@ logistic-regression-specs
    [:sex :embarked]
    [:sex :pclass]])
 
-;; generate 102 pipeline functions:
+;; generate 107 pipeline functions:
 (def pipe-fns
   (for [model-spec models-specs
         feature-combination feature-combinations]
@@ -409,11 +415,12 @@ logistic-regression-specs
 
 (add-tap println)
 (def evaluation-results
-  (ml/evaluate-pipelines
+  (ml/optimize-hyperparameter
    pipe-fns
    titanic-k-fold
-   loss/classification-accuracy
-   :accuracy))
+   {:metric :accuracy
+    :loss-or-accuracy :accuracy
+    :metric-type :classification}))
 
 
 
@@ -429,18 +436,19 @@ logistic-regression-specs
 
 ;;  We can get all results as well:
 (def evaluation-results-all
-  (ml/evaluate-pipelines
+  (ml/optimize-hyperparameter
    pipe-fns
    titanic-k-fold
-   loss/classification-accuracy
-   :accuracy
+   {:metric :accuracy
+    :loss-or-accuracy :accuracy
+    :metric-type :classification}
    {:map-fn :map
     :return-best-crossvalidation-only false
     :return-best-pipeline-only false}))
 
 
 ;; In total it creates and evaluates
-;; 17 models (incl. hyper parameters variations) * 6 feature configurations * 5 CV = 510 models
+;; 18 models (incl. hyper parameters variations) * 6 feature configurations * 5 CV = 540 models
 (->  evaluation-results-all flatten count)
 
 ;;  We can find the best as well by hand, it's the first from the list,

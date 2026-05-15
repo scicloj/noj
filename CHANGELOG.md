@@ -4,8 +4,15 @@ All notable changes to this project will be documented in this file. This change
 ## unreleased
 - upgraded all noj dependencies to use TMD 8
 - minor deps upgrades
+- upgraded to new major version 1.6.2 of metamorph.ml:
+     - added `ml/optimize-hyperparameter`
+     - deprecated `ml/evaluate-pipelines`
+     - deprecated ns `scicloj.metamorph.ml.metrics`,`scicloj.metamorph.ml.loss`, replaced by `scicloj.metamorph.ml.column-metric`
+     - added support for `:run!`,`prun!`, `:pprun!` in evaluate-pipelines and optimize-hyperparameter
+     - added random-forest implementation as model-type `:metamorph.ml/random-forest`
+     - added support in ns `r-model-matrix` for model matrix creation using "R-formula syntax" backed up by R itself, with 3   implementations using opencpu,rejine,clojisr
+
 - Breaking: removed tcutils, all fns of it are now in latest tablecloth
-- Breaking: removed tcutils, all fns are now in latest tablecloth
 
 
 ## [2-beta24 - 2026-03-17]
