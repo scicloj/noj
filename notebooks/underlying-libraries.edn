@@ -65,7 +65,7 @@
                                        :lib-name    "metamorph.ml"
                                        :description "Unified machine learning pipeline platform"
                                        :links       {:github-link "https://github.com/scicloj/metamorph.ml"
-                                                     :ref-link    "https://cljdoc.org/d/scicloj/metamorph.ml"}}
+                                                     :ref-link    "https://scicloj.github.io/metamorph.ml/codox/"}}
   org.scicloj/scicloj.ml.tribuo       {:category    :ml
                                        :lib-name    "scicloj.ml.tribuo"
                                        :description "[Oracle Tribuo](https://tribuo.org/) machine learning library integration"
