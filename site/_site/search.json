@@ -1,0 +1,110 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Noj - a simple data analysis stack in Clojure",
+    "section": "",
+    "text": "Noj is an out-of-the-box Clojure library designed to streamline data science workflows for both newcomers and experienced users. Noj provides a tested and integrated collection of libraries that are known to work seamlessly together from day one, rather than requiring users to find, configure, and integrate multiple libraries separately."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "some_other_page.html",
+    "href": "some_other_page.html",
+    "title": "Some other page",
+    "section": "",
+    "text": "Just to test if I can link from the OG page."
+  },
+  {
+    "objectID": "quick_tour.html",
+    "href": "quick_tour.html",
+    "title": "Quick start guide",
+    "section": "",
+    "text": "A quick tour of Noj."
+  },
+  {
+    "objectID": "learn_data_science.html",
+    "href": "learn_data_science.html",
+    "title": "Learn data science",
+    "section": "",
+    "text": "A book about learning data science with Noj."
+  },
+  {
+    "objectID": "community.html",
+    "href": "community.html",
+    "title": "Community",
+    "section": "",
+    "text": "The community page."
+  },
+  {
+    "objectID": "case_studies.html",
+    "href": "case_studies.html",
+    "title": "Case studies",
+    "section": "",
+    "text": "Real-world examples."
+  },
+  {
+    "objectID": "reference.html",
+    "href": "reference.html",
+    "title": "Reference",
+    "section": "",
+    "text": "A detailed reference for all libraries."
+  },
+  {
+    "objectID": "learn/index.html",
+    "href": "learn/index.html",
+    "title": "What is Data Science?",
+    "section": "",
+    "text": "A book about learning data science with Noj.",
+    "crumbs": [
+      "Learn data science",
+      "What is Data Science?"
+    ]
+  },
+  {
+    "objectID": "learn/dataset.html",
+    "href": "learn/dataset.html",
+    "title": "Datsets",
+    "section": "",
+    "text": "Learning datasets.",
+    "crumbs": [
+      "Home",
+      "Learn data science",
+      "Datsets"
+    ]
+  },
+  {
+    "objectID": "quick_start_guide.html",
+    "href": "quick_start_guide.html",
+    "title": "Quick start guide",
+    "section": "",
+    "text": "A quick tour of Noj."
+  },
+  {
+    "objectID": "ref/index.html",
+    "href": "ref/index.html",
+    "title": "Plots",
+    "section": "",
+    "text": "Here we provide an exhaustive list of plots that plotje can create.",
+    "crumbs": [
+      "Reference",
+      "Plots"
+    ]
+  },
+  {
+    "objectID": "case_studies/index.html",
+    "href": "case_studies/index.html",
+    "title": "Case study 1",
+    "section": "",
+    "text": "In this case study, we will do X, Y and Z.",
+    "crumbs": [
+      "Case studies",
+      "Case study 1"
+    ]
+  }
+]
