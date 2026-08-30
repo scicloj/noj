@@ -1,19 +1,31 @@
 {:favicon     "notebooks/favicon.ico"
+ :base-target-path   "temp"
+ :base-source-path   "pages"
+ :quarto-target-path "site"
+ :quarto             ^:replace {}
+ :keep-sync-root     false
+ :flatten-targets    false
  :remote-repo {:git-url "https://github.com/scicloj/noj"
                :branch "main"}
- :page-layout :full
+ :hide-ui-header     true
+ ;; :use-kindly-render true
  :quarto {:format {:html
                    {:toc true
                     :toc-depth 4
                     :theme [:cosmo "notebooks/custom.scss"]
-                    ;:page-layout :full
-                     :grid
-                     {:sidebar-width "500px"
-                      :body-width "2500px"
-                      :margin-width "500px"}
+                                        ;:page-layout :full
+                    :grid
+                    {:sidebar-width "500px"
+                     :body-width "2500px"
+                     :margin-width "500px"}
 
                     }}
           :fontsize "0.9em"
           :code-block-background true
           :include-in-header {:text "<link rel = \"icon\" href = \"data:,\" />"}}
- :base-target-path "temp"}
+ ;; aliases
+ :markdown
+ {:render           true
+  :base-target-path "site"
+  :format           [:quarto :html]
+  :run-quarto       false}}
