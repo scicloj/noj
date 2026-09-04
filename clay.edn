@@ -12,11 +12,6 @@
                    {:toc false
                     :toc-depth 4
                     :theme [:zephyr "notebooks/custom.scss"]
-                    ;; :page-layout :custom
-                    :grid
-                    {:sidebar-width "500px"
-                     :body-width "2500px"
-                     :margin-width "500px"}
                     }}
           :fontsize "0.9em"
           :code-block-background true
