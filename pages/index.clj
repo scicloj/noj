@@ -19,28 +19,66 @@
   [:h1 [:i "The reliable data analysis stack in Clojure"]]])
 
 ^:kindly/hide-code
-(def card-data
-  [{:heading "Simple"
-    :text "Think clearly about the problem by disentangling concerns, Clojure-style."
-    :image "Simple.jpeg"}
-   {:heading "Robust"
-    :text "Rely on performant and battle-tested Java libraries."
-    :image "Java.png"}
-   {:heading "Versatile"
-    :text "Seamlessly transition from development to deployment."
-    :image "Versatile.jpeg"}])
+(def card-data-row1
+  [{:heading "Publishing"
+    :text "Clay is a literate programming library. It uses Quarto to target different formats, from HTML to PDFs. It can be used for data exploration, "
+    :image "Clay.png"}
+   {:heading "Visualization"
+    :text "Plotje is a flexible data visualization library inspired by the Grammar of Graphics and the Algebra of Graphics."
+    :image "Plotje.png"}
+   {:heading "Datasets"
+    :text "Tablecloth is a fast a mature dataset library. It matches the feature set of R's tibbles with tidyr and dplyr, at a blazing fast speed."
+    :image "Tablecloth.png"}])
+
+^:kindly/hide-code
+(def card-data-row2
+  [{:heading "Math"
+    :text "Fastmath includes basic functions (e.g., trigonometric or power), linear algebra, random number generators, distributions, and statistical functions, among others."
+    :image "Fastmath.png"}
+   {:heading "ML"
+    :text "With metamorph, you can build machine learning pipelines. Use the rich collection of functions in metamorph.ml, backed up by Java's Tribuo."
+    :image "Metamorph.png"}
+   {:heading "Interoperability"
+    :text "With libpython-clj and ClojisR, you can access the vast collection of libraries in the Python and R ecosystems. Zero-overhead access to the rich Java ecosystem."
+    :image "Libpython_clj.png"}])
 
 ^:kindly/hide-code
 (defn feature-card [{:keys [heading text image]}]
   [:div {:class ["flex-fill" "w-100" "border" "rounded" "overflow-hidden" "p-2"]}
-     [:h3 heading]
-     [:p text]
-     [:img {:src image
-            :style {:width "100%" :height "auto" :display "block"}}]])
+   [:div {:style {:display "flex" :align-items "center" :gap "12px"}}
+    [:img {:src image
+            :style {:width "2.5em" :height "auto"}}]
+    [:h3 heading]]
+    [:p text]])
         
 ^:kindly/hide-code
 (kind/hiccup
  (into [:div {:class ["d-flex" "flex-column" "flex-md-row" "gap-3"]}]
-       (map feature-card card-data)))
- 
-;; Noj is an out-of-the-box Clojure library designed to streamline data science workflows for both newcomers and experienced users. Noj provides a tested and integrated collection of libraries that are known to work seamlessly together from day one, rather than requiring users to find, configure, and integrate multiple libraries separately. 
+       (map feature-card card-data-row1)))
+
+^:kindly/hide-code
+(kind/hiccup [:br])
+
+^:kindly/hide-code
+(kind/hiccup
+ (into [:div {:class ["d-flex" "flex-column" "flex-md-row" "gap-3"]}]
+       (map feature-card card-data-row2)))
+
+^:kindly/hide-code
+(kind/hiccup [:br])
+
+;; ## Why Noj?
+;; 
+;; ### Simplicity
+;; This and that 
+;; 
+;; ### Zero deployment overhead
+;; 
+;; ### Speed
+;;
+;; ### Maintainability
+;;
+;; ### REPL
+;;
+;; ### Syntax uniformity
+
