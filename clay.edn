@@ -1,4 +1,4 @@
-{:favicon     "notebooks/favicon.ico"
+{:favicon     "pages/favicon.ico"
  :base-target-path   "temp"
  :base-source-path   "pages"
  :quarto-target-path "site"
@@ -7,15 +7,8 @@
  :remote-repo {:git-url "https://github.com/scicloj/noj"
                :branch "main"}
  :hide-ui-header     true
+ :hide-info-line     true
  ;; :use-kindly-render true
- :quarto {:format {:html
-                   {:toc false
-                    :toc-depth 4
-                    :theme [:zephyr "notebooks/custom.scss"]
-                    }}
-          :fontsize "0.9em"
-          :code-block-background true
-          :include-in-header {:text "<link rel = \"icon\" href = \"data:,\" />"}}
  ;; aliases
  :markdown
  {:render           true

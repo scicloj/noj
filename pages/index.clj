@@ -1,4 +1,5 @@
-^:kindly/hide-code
+^{:clay {:quarto {:format {:html {:toc false}}}}
+  :kindly/hide-code true}
 (ns index
   (:require
    [scicloj.kindly.v4.api :as kindly]
@@ -10,13 +11,13 @@
   {:class ["text-center"]}
   [:h1
    {:class ["display-4" "fw-bold" "align-items-center" "gap-3" "text-center"]}
-   [:span "Noj"]
+   [:span {:class "home-hero__title"} "Noj"]
    [:sup
     [:img {:src "Noj.png"
            :style {:height "1.2em"
                    :width "auto"
                    :margin-left "0.15em"}}]]]
-  [:h1 [:i "The reliable data analysis stack in Clojure"]]])
+  [:h1 [:i "Data analysis in Clojure"]]])
 
 ^:kindly/hide-code
 (def card-data-row1
@@ -32,10 +33,10 @@
 
 ^:kindly/hide-code
 (def card-data-row2
-  [{:heading "Math"
+  [{:heading "Math and Statistics"
     :text "Fastmath includes basic functions (e.g., trigonometric or power), linear algebra, random number generators, distributions, and statistical functions, among others."
     :image "Fastmath.png"}
-   {:heading "ML"
+   {:heading "Machine Learning"
     :text "With metamorph, you can build machine learning pipelines. Use the rich collection of functions in metamorph.ml, backed up by Java's Tribuo."
     :image "Metamorph.png"}
    {:heading "Interoperability"
