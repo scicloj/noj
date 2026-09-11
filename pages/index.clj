@@ -1,5 +1,4 @@
-^{:clay {:quarto {:format {:html {:toc false}}}}
-  :kindly/hide-code true}
+^:kindly/hide-code
 (ns index
   (:require
    [scicloj.kindly.v4.api :as kindly]
@@ -17,7 +16,7 @@
            :style {:height "1.2em"
                    :width "auto"
                    :margin-left "0.15em"}}]]]
-  [:h1 [:i "Data analysis in Clojure"]]])
+  [:h1 [:i "A Clojure data analysis stack"]]])
 
 ^:kindly/hide-code
 (def card-data-row1
@@ -27,9 +26,9 @@
    {:heading "Visualization"
     :text "Plotje is a flexible data visualization library inspired by the Grammar of Graphics and the Algebra of Graphics."
     :image "Plotje.png"}
-   {:heading "Datasets"
+   {:heading "Data Processing and HPC"
     :text "Tablecloth is a fast a mature dataset library. It matches the feature set of R's tibbles with tidyr and dplyr, at a blazing fast speed."
-    :image "Tablecloth.png"}])
+    :image "TMD.png"}])
 
 ^:kindly/hide-code
 (def card-data-row2
@@ -38,8 +37,8 @@
     :image "Fastmath.png"}
    {:heading "Machine Learning"
     :text "With metamorph, you can build machine learning pipelines. Use the rich collection of functions in metamorph.ml, backed up by Java's Tribuo."
-    :image "Metamorph.png"}
-   {:heading "Interoperability"
+    :image "Metamorph.ml.png"}
+   {:heading "Bridges/Interop"
     :text "With libpython-clj and ClojisR, you can access the vast collection of libraries in the Python and R ecosystems. Zero-overhead access to the rich Java ecosystem."
     :image "Libpython_clj.png"}])
 
@@ -68,18 +67,25 @@
 ^:kindly/hide-code
 (kind/hiccup [:br])
 
-;; ## Why Noj?
-;; 
-;; ### Simplicity
-;; This and that 
-;; 
-;; ### Zero deployment overhead
-;; 
-;; ### Speed
-;;
-;; ### Maintainability
-;;
-;; ### REPL
-;;
-;; ### Syntax uniformity
+^:kindly/hide-code
+(kind/hiccup
+ [:section
+  [:div
+   {:class "text-center"}
+   [:h1 "Why Noj?"]
+   [:hr]]
+  [:h2 "Simplicity"]
+  [:h2 "Zero deployment overhead"]
+  [:h2 "Speed"]
+  [:h2 "Maintainability"]
+  [:h2 "REPL"]
+  [:h2 "Syntax uniformity"]])
 
+^:kindly/hide-code
+(kind/hiccup
+ [:section
+  [:div
+   {:class "text-center"}
+   [:h1 "Libraries"]
+   [:hr]]]
+)
