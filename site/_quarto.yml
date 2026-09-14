@@ -3,23 +3,26 @@ project:
 
 website:
   title: "Noj"
+  favicon: "Noj.svg"
   navbar:
-    background: light
+    background: white
     logo: "Noj.svg"
     logo-alt: "Noj"
-    logo-href: "/"   
-    right:
-      - quick_start_guide.qmd
+    logo-href: "/"
+    left:
+      - href: quick_start_guide.qmd
+        text: "Quick start"
       - href: learn/index.qmd
         text: "Learn data science"
       - href: ref/index.qmd
         text: "Reference"
-      - href: case_studies/index.qmd
-        text: "Case studies"
-      - community.qmd
-      - about.qmd
+#      - href: case_studies/index.qmd
+#        text: "Case studies"
+#      - community.qmd
+#      - about.qmd
+    right:
       - icon: github
-        href: "https://github.com/noj"
+        href: "https://github.com/scicloj/noj"
         aria-label: "Noj on GitHub"
       
   sidebar:
@@ -41,12 +44,10 @@ website:
       - case_studies/index.qmd
   page-footer:
     center:
-      Noj — a data analysis stack for Clojure
+      Noj — A Clojure data science toolkit
 format:
   html:
     theme: [ cosmo, custom.scss]
     toc: false
-    grid:
-      body-width: 1200px    # Maximum width of the main article/content
       
 

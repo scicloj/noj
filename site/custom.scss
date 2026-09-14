@@ -1,14 +1,20 @@
 /*-- scss:defaults --*/
 
-@media (min-width: 992px) {
-    .navbar-collapse {
-        justify-content: center;
-    }
+// @media (min-width: 992px) {
+//     // .navbar-collapse {
+//     //     justify-content: center;
+//     // }
 
-    .navbar-nav {
-        margin-left: auto;
-        margin-right: auto;
-    }
+//     // .navbar-nav {
+//     //     margin-left: auto;
+//     //     margin-right: auto;
+//     // }
+// }
+
+.navbar > .container-fluid {
+    max-width: var(--quarto-page-layout-max-width, 1100px);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+    padding-right: var(--bs-gutter-x, 0.75rem);
 }
 
 // Scicloj palette, from https://scicloj.github.io/graphic-design/docs/scicloj_project_icons.html
@@ -61,21 +67,45 @@ $default-border-radius: 5PC;
 
 // A thin gradient rule across the very top of every page.
 body::before {
-  content: "";
-  display: block;
-  height: 4px;
-  width: 100%;
-  @include gradient-h;
+    content: "";
+    display: block;
+    height: 1px;
+    width: 100%;
+    background: $light-gray;
+    // @include gradient-h;
 }
 
 .navbar-brand img {
-  max-height: 46px;
+    max-height: 45px;
+}
+
+.navbar-brand .navbar-title {
+    font-size: 1.85rem;
+    font-weight: 700;
+    @include gradient-h;
+    margin: 0;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 
 hr {
     border: 0;
     height: 3px;
     background-image: $noj-gradient-horizontal;
+}
+
+.full-width-bg {
+    background-color:  rgba($midnight-blue, 0.05);
+   
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+    
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 // Body links get the sliding gradient underline used on the macroexpand site.
