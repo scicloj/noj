@@ -11,13 +11,71 @@ website:
     logo-href: "/"
     left:
       - href: quick_start_guide.qmd
-        text: "Quick start"
-      - href: learn/index.qmd
-        text: "Learn data science"
-      - href: ref/index.qmd
-        text: "Reference"
+        text: "Quick Start"
+      - text: "Learn Data Science"
+        menu:
+          - text: "What is data science?"
+            href: learn/index.qmd
+          - text: "Ingest"
+            href: learn/ingest.qmd
+          - text: "Inspect"
+            href: learn/inspect.qmd
+          - text: "Clean"
+            href: learn/clean.qmd
+          - text: "Feature"
+            href: learn/feature.qmd
+          - text: "Model"
+            href: learn/model.qmd
+          - text: "Evaluate"
+            href: learn/evaluate.qmd
+          - text: "Communicate"
+            href: learn/communicate.qmd
+      - text: "Reference"
+        menu:
+          - text: "Clay"
+            href: ref/clay.qmd
+          - text: "Kindly"
+            href: ref/kindly.qmd
+          - text: "Plotje"
+            href: ref/plotje.qmd
+          - text: "Dtype Next"
+            href: ref/dtype_next.qmd
+          - text: "Clojure Java-Time"
+            href: ref/clojure_java_time.qmd
+          - text: "Tech ML Dataset"
+            href: ref/tech_ml_dataset.qmd
+          - text: "Ham Fisted"
+            href: ref/ham_fisted.qmd
+          - text: "TMD Parquet"
+            href: ref/tmd_parquet.qmd
+          - text: "Tablecloth"
+            href: ref/tablecloth.qmd
+          - text: "Fastmath"
+            href: ref/fastmath.qmd
+          - text: "Fitdistr"
+            href: ref/fitdistr.qmd
+          - text: "Metamorph"
+            href: ref/metamorph.qmd
+          - text: "Metamorph.ML"
+            href: ref/metamorph_ml.qmd
+          - text: "Ish"
+            href: ref/ish.qmd
+          - text: "ClojisR"
+            href: ref/clojisr.qmd
+          - text: "libpython-clj"
+            href: ref/libpython_clj.qmd
+      - text: "Additional Libraries"
+        menu:
+          - text: "Other libraries"
+            href: additional_libs/other_libraries.qmd
+          - text: "Tableplot"
+            href: additional_libs/tableplot.qmd
+          - text: "Plotly"
+            href: additional_libs/plotly.qmd
+          - text: "Hanami"
+            href: additional_libs/hanami.qmd
 #      - href: case_studies/index.qmd
-#        text: "Case studies"
+#        text: "Case Studies"
 #      - community.qmd
 #      - about.qmd
     right:
@@ -30,18 +88,75 @@ website:
       style: "docked"
       search: true
       contents:
-      - learn/index.qmd
-      - learn/dataset.qmd
+      - text: "What is data science?"
+        href: learn/index.qmd
+      - text: "Ingest"
+        href: learn/ingest.qmd
+      - text: "Inspect"
+        href: learn/inspect.qmd
+      - text: "Clean"
+        href: learn/clean.qmd
+      - text: "Feature"
+        href: learn/feature.qmd
+      - text: "Model"
+        href: learn/model.qmd
+      - text: "Evaluate"
+        href: learn/evaluate.qmd
+      - text: "Communicate"
+        href: learn/communicate.qmd
     - id: ref
       style: "docked"
       search: true
       contents:
-      - ref/index.qmd
-    - id: case-studies
+      - text: "Clay"
+        href: ref/clay.qmd
+      - text: "Kindly"
+        href: ref/kindly.qmd
+      - text: "Plotje"
+        href: ref/plotje.qmd
+      - text: "Dtype Next"
+        href: ref/dtype_next.qmd
+      - text: "Clojure Java-Time"
+        href: ref/clojure_java_time.qmd
+      - text: "Tech ML Dataset"
+        href: ref/tech_ml_dataset.qmd
+      - text: "Ham Fisted"
+        href: ref/ham_fisted.qmd
+      - text: "TMD Parquet"
+        href: ref/tmd_parquet.qmd
+      - text: "Tablecloth"
+        href: ref/tablecloth.qmd
+      - text: "Fastmath"
+        href: ref/fastmath.qmd
+      - text: "Fitdistr"
+        href: ref/fitdistr.qmd
+      - text: "Metamorph"
+        href: ref/metamorph.qmd
+      - text: "Metamorph.ML"
+        href: ref/metamorph_ml.qmd
+      - text: "Ish"
+        href: ref/ish.qmd
+      - text: "ClojisR"
+        href: ref/clojisr.qmd
+      - text: "libpython-clj"
+        href: ref/libpython_clj.qmd
+    - id: other-libs
       style: "docked"
       search: true
       contents:
-      - case_studies/index.qmd
+      - text: "Other libraries"
+        href: additional_libs/other_libraries.qmd
+      - text: "Tableplot"
+        href: additional_libs/tableplot.qmd
+      - text: "Plotly"
+        href: additional_libs/plotly.qmd
+      - text: "Hanami"
+        href: additional_libs/hanami.qmd
+    # - id: case-studies
+    #   style: "docked"
+    #   search: true
+    #   contents:
+    #   - case_studies/index.qmd
   page-footer:
     center:
       Noj — A Clojure data science toolkit
