@@ -9,19 +9,10 @@
 (kind/hiccup
  [:div
   {:class ["text-center"]}
-  #_[:h1
-   {:class ["display-4" "fw-bold" "align-items-center" "gap-3"]}
-   [:span {:class "home-hero__title"} "Noj"]
-   [:small " is..."]
-   #_[:sup
-    [:img {:src "Noj.png"
-           :style {:height "1.2em"
-                   :width "auto"
-                   :margin-left "0.15em"}}]]]
   [:h1 {:class ["text-center"]} "A Clojure data science toolkit"]
   [:p "A tested and integrated collection of libraries that are known to work seamlessly together from day one."]
-  [:button {:type "button" :class ["btn" "btn-primary"]} "Get started"]
-  [:button {:type "button" :class ["btn" "btn-primary"]} "Learn Noj"]])
+  [:button {:type "button" :class ["btn" "btn-primary me-2"]} "Get started"]
+  [:button {:type "button" :class ["btn" "btn-primary me-2" ]} "Learn Noj"]])
 
 ^:kindly/hide-code
 (defn feature-card [{:keys [heading text image]}]
@@ -56,7 +47,7 @@
  [:div {:class "full-width-bg"}
   [:div
    {:class "text-center"}
-   [:h1 "Why Noj?"]]
+   [:h1 "Why " [:span {:class "home-hero__title"} "Noj"] "?"]]
   (into [:div {:class ["d-flex" "flex-column" "flex-md-row" "gap-3"]}]
         (map feature-card features-data-row1))
   [:br]
@@ -65,63 +56,77 @@
 
 ^:kindly/hide-code
 (def library-data
-  [{:heading "Exploring and Publishing"
+  [{:logo "Clay.png"
     :short-heading "Publish"
-    :text "Publish data analysis notebooks in multiple formats."
+    :link "publishing"
     :image "Clay.png"
-    :link "publishing"}
-   {:heading "Data Visualization"
+    :heading "Exploring and Publishing"
+    :content [:p "Clay turns a namespace into a document. Whether a website, a pdf or other Quarto-supported documents, something."]}
+   {:logo "Plotje.png"
     :short-heading "Visualize"
-    :text "Generate clear and compelling data visualizations."
+    :link "visualization"
     :image "Plotje.png"
-    :link "visualization"}
-   {:heading "High Performance Computing "
+    :heading "Data Visualization"
+    :content [:p "Generate clear and compelling data visualizations."]}
+   {:logo "TMD.png"
     :short-heading "HPC"
-    :text "Efficiently transform and prepare data for analysis."
+    :link "hpc"
     :image "TMD.png"
-    :link "hpc"}
-   {:heading "Data Processing"
+    :heading "High Performance Computing "
+    :content [:p "Efficiently transform and prepare data for analysis."]}
+   {:logo "TMD.png"
     :short-heading "Process"
-    :text "Efficiently transform and prepare data for analysis."
-    :image "TMD.png"
-    :link "datasets"}
-   {:heading "Mathematics and Statistics"
+    :link "datasets"
+    :heading "Data Processing"
+    :content [:p "Efficiently transform and prepare data for analysis."]}
+   {:logo "Fastmath.png"
     :short-heading "Stats"
-    :text "Perform comprehensive mathematical and statistical operations."
+    :link "math"
     :image "Fastmath.png"
-    :link "math"}
-   {:heading "Machine Learning"
+    :heading "Mathematics and Statistics"
+    :content [:p "Perform comprehensive mathematical and statistical operations."]}
+   {:logo "Metamorph.ml.png"
     :short-heading "ML"
-    :text "Access powerful machine learning tools and models."
-    :image "Metamorph.ml.png"
-    :link "ml"}
-   {:heading "Bridges and Interop"
+    :link "ml"
+    :image "Matemorph.ml.png"
+    :heading "Machine Learning"
+    :content [:p "Access powerful machine learning tools and models."]}
+   {:logo "Libpython_clj.png"
     :short-heading "Interop"
-    :text "Connect and interact with other language systems and libraries"
+    :link "interop"
     :image "Libpython_clj.png"
-    :link "interop"}])
+    :heading "Bridges and Interop"
+    :content [:p "Connect and interact with other language systems and libraries"]}])
 
 ^:kindly/hide-code
-(defn library-active-tab [{:keys [short-heading image link]}]
+(defn library-active-tab [{:keys [short-heading logo link]}]
   [:li {:class "nav-item" :role "presentation"}
-   [:a {:class "nav-link active" :data-bs-toggle "tab" :href (str "#" link) :aria-selected "true" :role "tab"} [:img {:src image :style {:width "1em" :height "auto"}}] " " [:b short-heading]]])
+   [:a {:class "nav-link active" :data-bs-toggle "tab" :href (str "#" link) :aria-selected "true" :role "tab"} [:img {:src logo :style {:width "1em" :height "auto"}}] " " [:b short-heading]]])
 
 ^:kindly/hide-code
-(defn library-tab [{:keys [short-heading image link]}]
+(defn library-tab [{:keys [short-heading logo link]}]
   [:li {:class "nav-item" :role "presentation"}
-   [:a {:class "nav-link" :data-bs-toggle "tab" :href (str "#" link) :aria-selected "true" :role "tab"} [:img {:src image :style {:width "1em" :height "auto"}}] " " [:b short-heading]]])
+   [:a {:class "nav-link" :data-bs-toggle "tab" :href (str "#" link) :aria-selected "true" :role "tab"} [:img {:src logo :style {:width "1em" :height "auto"}}] " " [:b short-heading]]])
 
 ^:kindly/hide-code
-(defn library-tab-active-content [{:keys [heading text link]}]
-  [:div {:class "tab-pane fade active show" :id link :role "tabpanel"}
-   [:h4 heading]
-   [:p text]])
+(defn library-tab-active-content [{:keys [heading content link image]}]
+  [:div {:class "tab-pane fade show active" :id link :role "tabpanel"}
+   [:div {:class "row d-flex flex-wrap"}
+    [:div {:class "col-6 w-50"}
+     [:h4 heading]
+     content]
+    [:div {:class "col-6 w-50"}
+     [:img {:src image}]]]])
 
 ^:kindly/hide-code
-(defn library-tab-content [{:keys [heading text link]}]
+(defn library-tab-content [{:keys [heading content link image]}]
   [:div {:class "tab-pane fade" :id link :role "tabpanel"}
-   [:h4 heading]
-   [:p text]])
+   [:div {:class "row d-flex flex-wrap"}
+    [:div {:class "col-6 w-50"}
+     [:h4 heading]
+     content]
+    [:div {:class "col-6 w-50"}
+     [:img {:src image}]]]])
 
 ^:kindly/hide-code
 (kind/hiccup
@@ -135,11 +140,24 @@
   (into
    [:div {:id "myTabContent" :class "tab-content"}]
    (cons (library-tab-active-content (first library-data))
-         (map library-tab-content (rest library-data))))])
+         (map library-tab-content (rest library-data))))
+  [:h4 {:class "text-center"} "Also check out the other " [:a "recommended libraries"] "."]
+  [:br]
+  ])
 
 ^:kindly/hide-code
 (kind/hiccup
  [:div {:class "full-width-bg"}
   [:div
    {:class "text-center"}
-   [:h1 "Community"]]])
+   [:h1 "Community"]]
+  [:div {:class "row d-flex gap-2"}
+   [:div {:class "col-3 w-25"}
+    [:p  [:img {:src "SciCloj.png" :style {:width "1.2em" :height "auto"}}] " Noj was compiled and developed by the " [:a {:href "https://scicloj.github.io/"} "SciCloj"] " community. Join us!"]]
+   [:div {:class "col-3 w-25"}
+    [:p "Check our " [:a  {:href "https://clojurians.zulipchat.com/#narrow/stream/321125-noj-dev"} "developer chat"] " on Zulip."]]
+   [:div {:class "col-3 w-25"}
+    [:p "For any support, write us on " [:a {:href "https://clojurians.zulipchat.com/#narrow/stream/151924-data-science"} " the dedicated Zulip channel"] "."]]
+   [:div {:class "col-3 w-25"}
+    [:p "Check out the " [:a {:href "https://github.com/scicloj/noj"} "source code"] "."]]
+   ]])

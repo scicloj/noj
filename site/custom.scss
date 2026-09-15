@@ -17,6 +17,7 @@
     padding-right: var(--bs-gutter-x, 0.75rem);
 }
 
+
 // Scicloj palette, from https://scicloj.github.io/graphic-design/docs/scicloj_project_icons.html
 $white-background:    #FFFFFF;
 $clojure-green:       #62B132;
@@ -31,7 +32,7 @@ $medium-gray:         #808080;
 $midnight-blue:       #2F4179;
 
 $primary:       $clojure-light-blue;
-$link-color:    $clojure-light-blue;
+$link-color:    $clojure-green;
 $tertiary:      $medium-gray;
 
 $font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -97,7 +98,7 @@ hr {
 
 .full-width-bg {
     background-color:  rgba($midnight-blue, 0.05);
-   
+    
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
     
@@ -110,7 +111,7 @@ hr {
 
 // Body links get the sliding gradient underline used on the macroexpand site.
 .quarto-container a:not([class]) {
-    color: $clojure-light-blue;
+    color: $clojure-blue;
     position: relative;
     font-weight: 600;
     text-decoration: none;
@@ -199,7 +200,7 @@ hr {
     }
 
     &__title {
-        font-size: 3rem;
+        font-size: 2rem;
         line-height: 1.2;
         font-weight: 700;
         @include gradient-h;
@@ -343,3 +344,32 @@ hr {
     }
 }
 
+
+.nav-tabs .nav-link {
+    color: #000000;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Hover State (Inactive) */
+.nav-tabs .nav-link:hover {
+    color: #0d6efd;
+    border-color: #e9ecef #e9ecef #dee2e6;
+}
+
+/* Active Tab */
+.nav-tabs .nav-link.active {
+    // color: gradient-h;
+    background: $noj-gradient-horizontal;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* Fallback */
+    // @include: $noj-gradient-horizontal; // #ffffff;
+    // background-color: #0d6efd;
+    // border-color: #0d6efd #0d6efd transparent;
+    // font-weight: 600;
+}
