@@ -79,6 +79,8 @@ website:
 #      - community.qmd
 #      - about.qmd
     right:
+      - text: "<img src='https://img.shields.io/clojars/v/org.scicloj/noj.svg' style='height: 1.2em; vertical-align: middle;' alt='clojars' />"
+        href: https://clojars.org/org.scicloj/noj
       - icon: github
         href: "https://github.com/scicloj/noj"
         aria-label: "Noj on GitHub"
