@@ -16,6 +16,8 @@ website:
         menu:
           - text: "What is data science?"
             href: learn/index.qmd
+          - text: "Introduction to Clojure"
+            href: learn/intro.qmd
           - text: "Ingest"
             href: learn/ingest.qmd
           - text: "Inspect"
@@ -24,8 +26,10 @@ website:
             href: learn/clean.qmd
           - text: "Feature"
             href: learn/feature.qmd
-          - text: "Model"
-            href: learn/model.qmd
+          - part: "Statistical Modeling"
+            href: learn/stat_modeling.qmd
+          - text: "Machine Learning"
+            href: learn/machine_learning.qmd
           - text: "Evaluate"
             href: learn/evaluate.qmd
           - text: "Communicate"
@@ -58,7 +62,7 @@ website:
             href: ref/metamorph.qmd
           - text: "Metamorph.ML"
             href: ref/metamorph_ml.qmd
-          - text: "Ish"
+          - text: "Same-ish"
             href: ref/ish.qmd
           - text: "ClojisR"
             href: ref/clojisr.qmd
@@ -74,6 +78,8 @@ website:
             href: additional_libs/plotly.qmd
           - text: "Hanami"
             href: additional_libs/hanami.qmd
+          - text: "Echarts"
+            href: additional_libs/echarts.qmd
 #      - href: case_studies/index.qmd
 #        text: "Case Studies"
 #      - community.qmd
@@ -92,6 +98,8 @@ website:
       contents:
       - text: "What is data science?"
         href: learn/index.qmd
+      - text: "Introduction to Clojure"
+        href: learn/intro.qmd
       - text: "Ingest"
         href: learn/ingest.qmd
       - text: "Inspect"
@@ -100,8 +108,12 @@ website:
         href: learn/clean.qmd
       - text: "Feature"
         href: learn/feature.qmd
-      - text: "Model"
-        href: learn/model.qmd
+      - part: learn/stat_modeling.qmd
+        chapters:
+          - text: "Single variable distribution"
+            href: learn/single_variable_distribution.qmd
+      - text: "Machine Learning"
+        href: learn/machine_learning.qmd
       - text: "Evaluate"
         href: learn/evaluate.qmd
       - text: "Communicate"
@@ -136,7 +148,7 @@ website:
         href: ref/metamorph.qmd
       - text: "Metamorph.ML"
         href: ref/metamorph_ml.qmd
-      - text: "Ish"
+      - text: "Same-ish"
         href: ref/ish.qmd
       - text: "ClojisR"
         href: ref/clojisr.qmd
@@ -154,11 +166,8 @@ website:
         href: additional_libs/plotly.qmd
       - text: "Hanami"
         href: additional_libs/hanami.qmd
-    # - id: case-studies
-    #   style: "docked"
-    #   search: true
-    #   contents:
-    #   - case_studies/index.qmd
+      - text: "Echarts"
+        href: additional_libs/echarts.qmd
   page-footer:
     center:
       Noj — A Clojure data science toolkit
