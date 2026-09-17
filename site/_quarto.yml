@@ -26,7 +26,7 @@ website:
             href: learn/clean.qmd
           - text: "Feature"
             href: learn/feature.qmd
-          - part: "Statistical Modeling"
+          - text: "Statistical Modeling"
             href: learn/stat_modeling.qmd
           - text: "Machine Learning"
             href: learn/machine_learning.qmd
