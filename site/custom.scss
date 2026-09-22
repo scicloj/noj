@@ -359,3 +359,43 @@ body::before {
     -webkit-text-fill-color: transparent;
     color: transparent; 
 }
+
+.responsive-nav-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    position: relative;
+    z-index: 2; /* Keeps active tab on top of content border */
+}
+
+.responsive-nav-tabs::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+/* 2. Stretch tabs across the full width while maintaining scrollability */
+.responsive-nav-tabs .nav-item {
+    flex: 1 0 auto; /* Grow to fill space, don't shrink smaller than text */
+    text-align: center;
+}
+
+.responsive-nav-tabs .nav-link {
+    width: 100%;
+}
+
+.custom-tab-content {
+    border: 1px solid var(--bs-border-color, #dee2e6);
+    border-top: none;
+    border-bottom-left-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+    background-color: var(--bs-body-bg, #fff);
+    position: relative;
+    z-index: 1;
+}
+
+.responsive-nav-tabs .nav-link.active {
+    margin-bottom: -1px;
+}

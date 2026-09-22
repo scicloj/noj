@@ -29,7 +29,7 @@
   [{:heading "Fast"
     :text "The speed of Java paired with fast dataset processing and low-overhead parallelism."}
    {:heading "Maintainable"
-    :text "No breaking changes, but accretion. A mature stable ecosystem."}
+    :text "A philosophy of no breaking changes, but accretion."}
    {:heading "Simple"
     :text "Reason easily about code by separating tangled concepts."}])
 
@@ -217,17 +217,18 @@
  [:div
   [:h1 {:class "text-center"} "Libraries"]
   [:br]
-  (into 
-   [:ul {:class "nav nav-tabs" :role "tablist"}]
-   (cons (analysis-step-tab (first library-category-data) true)
-         (map analysis-step-tab (rest library-category-data) (repeat false))))
-  (into
-   [:div {:id "myTabContent" :class "tab-content"}]
-   (cons (analysis-step-tab-content (first library-category-data) library-data true)
-         (map analysis-step-tab-content
-              (rest library-category-data)
-              (repeat library-data)
-              (repeat false))))
+  [:div {:class "custom-tab-wrapper"}
+   (into
+    [:ul {:class "nav nav-tabs responsive-nav-tabs" :role "tablist"}]
+    (cons (analysis-step-tab (first library-category-data) true)
+          (map analysis-step-tab (rest library-category-data) (repeat false))))
+   (into
+    [:div {:id "myTabContent" :class "tab-content"}]
+    (cons (analysis-step-tab-content (first library-category-data) library-data true)
+          (map analysis-step-tab-content
+               (rest library-category-data)
+               (repeat library-data)
+               (repeat false))))]
   [:p {:class "text-center"} "Also check out the other " [:a "recommended libraries"] "."]
   [:br]])
 
