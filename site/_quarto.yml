@@ -10,110 +10,122 @@ website:
     logo-alt: "Noj"
     logo-href: "/"
     left:
-      - href: quick_start_guide.qmd
-        text: "Quick Start"
+      - text: "Quick Start"
+        menu:
+          - text: "Learning resources"
+            href: quick_start/learning_resources.qmd
       - text: "Learn Data Science"
         menu:
           - text: "What is data science?"
             href: learn/index.qmd
-          - text: "Introduction to Clojure"
-            href: learn/intro.qmd
-          - text: "Ingest"
-            href: learn/ingest.qmd
-          - text: "Inspect"
-            href: learn/inspect.qmd
-          - text: "Clean"
-            href: learn/clean.qmd
-          - text: "Feature"
-            href: learn/feature.qmd
+          - text: "Import"
+            href: learn/import.qmd
+          - text: "Wrangle"
+            href: learn/wrangle/wrangle.qmd
+          - text: "Visualize"
+            href: learn/visualize.qmd
           - text: "Statistical Modeling"
-            href: learn/stat_modeling.qmd
+            href: learn/stat/stat_index.qmd
           - text: "Machine Learning"
-            href: learn/machine_learning.qmd
+            href: learn/ml/machine_index.qmd
           - text: "Evaluate"
             href: learn/evaluate.qmd
           - text: "Communicate"
             href: learn/communicate.qmd
       - text: "Reference"
         menu:
-          - text: "Clay"
+          - text: "clay"
             href: ref/clay.qmd
-          - text: "Kindly"
+          - text: "kindly"
             href: ref/kindly.qmd
-          - text: "Plotje"
+          - text: "plotje"
             href: ref/plotje.qmd
-          - text: "Dtype Next"
-            href: ref/dtype_next.qmd
-          - text: "Clojure Java-Time"
-            href: ref/clojure_java_time.qmd
-          - text: "Tech ML Dataset"
+          - text: "tech.ml.dataset"
             href: ref/tech_ml_dataset.qmd
-          - text: "Ham Fisted"
+          - text: "ham-fisted"
             href: ref/ham_fisted.qmd
-          - text: "TMD Parquet"
-            href: ref/tmd_parquet.qmd
-          - text: "Tablecloth"
+          - text: "dtype-next"
+            href: ref/dtype_next.qmd
+          - text: "tablecloth"
             href: ref/tablecloth.qmd
-          - text: "Fastmath"
+          - text: "tech.parquet"
+            href: ref/tech_parquet.qmd
+          - text: "clojure.java-time"
+            href: ref/clojure_java_time.qmd
+          - text: "fastmath"
             href: ref/fastmath.qmd
-          - text: "Fitdistr"
+          - text: "fitdistr"
             href: ref/fitdistr.qmd
-          - text: "Metamorph"
-            href: ref/metamorph.qmd
-          - text: "Metamorph.ML"
+          - text: "same-ish"
+            href: ref/same_ish.qmd
+          - text: "metamorph.ml"
             href: ref/metamorph_ml.qmd
-          - text: "Same-ish"
-            href: ref/ish.qmd
-          - text: "ClojisR"
+          - text: "scicloj.ml.tribuo"
+            href: ref/scicloj_ml_tribuo.qmd
+          - text: "sklearn-clj"
+            href: ref/sklearn_clj.qmd
+          - text: "clojisr"
             href: ref/clojisr.qmd
           - text: "libpython-clj"
             href: ref/libpython_clj.qmd
-      - text: "Additional Libraries"
+          - text: "kind-pyplot"
+            href: ref/kind_pyplot.qmd
+      - text: "Other Materials"
         menu:
-          - text: "Other libraries"
-            href: additional_libs/other_libraries.qmd
-          - text: "Tableplot"
-            href: additional_libs/tableplot.qmd
-          - text: "Plotly"
-            href: additional_libs/plotly.qmd
-          - text: "Hanami"
-            href: additional_libs/hanami.qmd
-          - text: "Echarts"
-            href: additional_libs/echarts.qmd
-#      - href: case_studies/index.qmd
-#        text: "Case Studies"
-#      - community.qmd
-#      - about.qmd
+          - text: "Other recommended libraries"
+            href: other_materials/other_libraries.qmd
+          - text: "Chicago bike times"
+            href: other_materials/chicago_bike_times.qmd
+          - text: "tableplot"
+            href: other_materials/tableplot.qmd
+          - text: "plotly"
+            href: other_materials/plotly.qmd
+          - text: "hanami"
+            href: other_materials/hanami.qmd
+          - text: "echarts"
+            href: other_materials/echarts.qmd
     right:
-      - text: "<img src='https://img.shields.io/clojars/v/org.scicloj/noj.svg' style='height: 1.2em; vertical-align: middle;' alt='clojars' />"
-        href: https://clojars.org/org.scicloj/noj
-      - icon: github
-        href: "https://github.com/scicloj/noj"
-        aria-label: "Noj on GitHub"
+       - icon: github
+         href: "https://github.com/scicloj/noj"
+         aria-label: "Noj on GitHub"
       
   sidebar:
+    - id: qs
+      style: "docked"
+      search: true
+      contents:
+      - text: "Learning resources"
+        href: quick_start/learning_resources.qmd
     - id: learn 
       style: "docked"
       search: true
       contents:
       - text: "What is data science?"
         href: learn/index.qmd
-      - text: "Introduction to Clojure"
-        href: learn/intro.qmd
-      - text: "Ingest"
-        href: learn/ingest.qmd
-      - text: "Inspect"
-        href: learn/inspect.qmd
-      - text: "Clean"
-        href: learn/clean.qmd
-      - text: "Feature"
-        href: learn/feature.qmd
-      - part: learn/stat_modeling.qmd
+      - text: "Import"
+        href: learn/import.qmd
+      - part: learn/wrangle/wrangle.qmd
+        chapters:
+          - text: "Table processing"
+            href: learn/wrangle/table_processing.qmd
+          - text: "Advanced table processing"
+            href: learn/wrangle/advanced_table_processing.qmd
+      - text: "Visualize"
+        href: learn/visualize.qmd
+      - part: learn/stat/stat_index.qmd
         chapters:
           - text: "Single variable distribution"
-            href: learn/single_variable_distribution.qmd
-      - text: "Machine Learning"
-        href: learn/machine_learning.qmd
+            href: learn/stat/single_variable_distribution.qmd
+      - part: learn/ml/ml_basic.qmd
+        chapters:
+          - text: "Machine learning pipelines"
+            href: learn/ml/ml_pipelines.qmd
+          - text: "Preprocessing of categorical variables"
+            href: learn/ml/prepare_for_ml.qmd
+          - text: "AutoML using metamorph pipelines"
+            href: learn/ml/automl.qmd
+          - text: "Ordinary least squares with interactions"
+            href: learn/ml/interactions_ols.qmd
       - text: "Evaluate"
         href: learn/evaluate.qmd
       - text: "Communicate"
@@ -122,53 +134,71 @@ website:
       style: "docked"
       search: true
       contents:
-      - text: "Clay"
+      - text: "clay"
         href: ref/clay.qmd
-      - text: "Kindly"
+      - text: "kindly"
         href: ref/kindly.qmd
-      - text: "Plotje"
+      - text: "plotje"
         href: ref/plotje.qmd
-      - text: "Dtype Next"
-        href: ref/dtype_next.qmd
-      - text: "Clojure Java-Time"
-        href: ref/clojure_java_time.qmd
-      - text: "Tech ML Dataset"
+      - text: "tech.ml.dataset"
         href: ref/tech_ml_dataset.qmd
-      - text: "Ham Fisted"
+      - text: "ham-fisted"
         href: ref/ham_fisted.qmd
-      - text: "TMD Parquet"
-        href: ref/tmd_parquet.qmd
-      - text: "Tablecloth"
+      - text: "dtype-next"
+        href: ref/dtype_next.qmd
+      - text: "tablecloth"
         href: ref/tablecloth.qmd
-      - text: "Fastmath"
+      - text: "tech.parquet"
+        href: ref/tech_parquet.qmd
+      - text: "clojure.java-time"
+        href: ref/clojure_java_time.qmd
+      - text: "fastmath"
         href: ref/fastmath.qmd
-      - text: "Fitdistr"
+      - text: "fitdistr"
         href: ref/fitdistr.qmd
-      - text: "Metamorph"
-        href: ref/metamorph.qmd
-      - text: "Metamorph.ML"
-        href: ref/metamorph_ml.qmd
-      - text: "Same-ish"
-        href: ref/ish.qmd
-      - text: "ClojisR"
+      - text: "same-ish"
+        href: ref/same_ish.qmd
+      - part: metamorph_ml.qmd
+        chapters:
+          - text: "Smile classification models reference"
+            href: ref/metamorph/smile_classification.qmd
+          - text: "Smile regression models reference"
+            href: ref/metamorph/smile_regression.qmd
+          - text: "Smile other models reference"
+            href: ref/metamorph/smile_others.qmd
+          - text: "Xgboost model reference"
+            href: ref/metamorph/xgboost.qmd
+          - text: "Transformer reference"
+            href: ref/metamorph/transformer.qmd           
+      - text: "scicloj.ml.tribuo"
+        href: ref/scicloj_ml_tribuo.qmd
+      - text: "sklearn-clj"
+        href: ref/sklearn_clj.qmd
+      - text: "clojisr"
         href: ref/clojisr.qmd
       - text: "libpython-clj"
         href: ref/libpython_clj.qmd
+      - text: "kind-pyplot"
+        href: ref/kind_pyplot.qmd
     - id: other-libs
       style: "docked"
       search: true
       contents:
       - text: "Other libraries"
-        href: additional_libs/other_libraries.qmd
-      - text: "Tableplot"
-        href: additional_libs/tableplot.qmd
-      - text: "Plotly"
-        href: additional_libs/plotly.qmd
-      - text: "Hanami"
-        href: additional_libs/hanami.qmd
-      - text: "Echarts"
-        href: additional_libs/echarts.qmd
+        href: other_materials/other_libraries.qmd
+      - text: "Chicago Bike Times"
+        href: other_materials/chicago_bike_times.qmd
+      - text: "tableplot"
+        href: other_materials/tableplot.qmd
+      - text: "plotly"
+        href: other_materials/plotly.qmd
+      - text: "hanami"
+        href: other_materials/hanami.qmd
+      - text: "echarts"
+        href: other_materials/echarts.qmd      
   page-footer:
+    right:
+      Built with Clay and Quarto
     center:
       Noj — A Clojure data science toolkit
 format:
