@@ -12,11 +12,24 @@
 // }
 
 .navbar > .container-fluid {
-    max-width: var(--quarto-page-layout-max-width, 1200px);
+    max-width: var(--quarto-page-layout-max-width, 1100px);
     padding-left: var(--bs-gutter-x, 0.75rem);
     padding-right: var(--bs-gutter-x, 0.75rem);
 }
 
+.footer {
+    width: 100%;
+    border-top: 1px solid #dee2e6 !important; /* Adjust thickness, style, and color here */
+}
+
+/* Constrain the inner content to 1200px and remove its default border */
+.footer .nav-footer {
+    max-width: 1100px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+    border-top: none !important; /* Prevents a 1200px double-line from rendering */
+}
 
 // Scicloj palette, from https://scicloj.github.io/graphic-design/docs/scicloj_project_icons.html
 $white-background:    #FFFFFF;
@@ -52,22 +65,7 @@ $noj-gradient-vertical: linear-gradient(180deg, $clojure-green, $midnight-blue, 
 $default-box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 10px;
 $default-border-radius: 5PC;
 
-// .section-midnight-blue {
-//     background-color: rgba($midnight-blue, 0.15);
-//     padding: 2rem;
-// }
-
-// .section-green {
-//     background-color: rgba($clojure-green, 0.15);
-//     padding: 2rem;
-// }
-
-// .section-light-blue {
-//     background-color: rgba($clojure-light-blue, 0.15);
-//     padding: 2rem;
-// }
-
-// A thin gradient rule across the very top of every page.
+// A thin gray line across the very top of every page.
 body::before {
     content: "";
     display: block;
@@ -105,7 +103,7 @@ body::before {
 
 // Body links get the sliding gradient underline used on the macroexpand site.
 .quarto-container a:not([class]) {
-    color: $midnight-blue;
+    color: $clojure-blue;
     position: relative;
     font-weight: 600;
     text-decoration: none;

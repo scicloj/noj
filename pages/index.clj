@@ -10,8 +10,12 @@
   {:class ["text-center"]}
   [:h1 {:class ["text-center"]} "A Clojure Data Science Toolkit"]
   [:p "A tested and integrated collection of libraries that are known to work seamlessly together from day one."] 
-  [:button {:type "button" :class ["btn" "btn-primary me-2"] :onclick "window.location.href=quick_start_guide"} "Get started"] ;; TODO: fix underlying
-  [:button {:type "button" :class ["btn" "btn-primary me-2"] :onclick "window.location.href=learn/"} "Learn Noj"]])
+  [:button {:type "button" :class ["btn" "btn-primary me-2"] :onclick "window.location.href=quick_start_guide"} "Quick Start"]
+  [:button {:type "button" :class ["btn" "btn-primary me-2"] :onclick "window.location.href=learn/"} "Learn Data Science"]
+  [:br]
+  [:br]
+  [:img {:src "https://github.com/scicloj/noj/actions/workflows/ci.yml/badge.svg" :style {:height "1.2em" :vertical-align "middle"} :class "me-3" :alt "CI workflow"}]
+  [:a {:href "https://clojars.org/org.scicloj/noj"} [:img {:src "https://img.shields.io/clojars/v/org.scicloj/noj.svg" :style {:height "1.2em" :vertical-align "middle"} :class "me-3" :alt "clojars"}]]])
 
 ^:kindly/hide-code
 (defn feature-card [{:keys [heading text image]}]
@@ -52,112 +56,160 @@
   [:br]
   (into [:div {:class ["d-flex" "flex-column" "flex-md-row" "gap-3"]}]
        (map feature-card features-data-row2))])
-
 ^:kindly/hide-code
-(def library-data
-  [{:logo "Clay.png"
-    :short-heading "Publish"
+(def library-category-data
+  [{:category :publish
+    :short-heading "Publishing"
     :link "publishing"
-    :image "Clay.png"
-    :heading "Exploring and Publishing"
-    :content [:div
-              [:h4 [:a {:href "ref/clay"} "Clay"]]
-              [:p " publishes a namespace, whether as a website, a pdf or any other Quarto-supported document. It provides the notebook-oriented workflow familiar from Jupyter."]
-              [:h4 [:a {:href "ref/kindly"} "Kindly"]]
-              [:p " supports Clay by specifying how forms are presented in the document. With over 30 different supported kinds, it is ready to populate your website with dynamic content."]]}
-   {:logo "Plotje.png"
-    :short-heading "Visualize"
+    :image ""
+    :heading "Exploring and Publishing"}
+   {:category :visualize
+    :short-heading "Visualization"
     :link "visualization"
-    :image "Plotje.png"
-    :heading "Data Visualization"
-    :content [:div
-              [:h4 [:a {:href "ref/plotje"} "Plotje"]] 
-              [:p " generates clear and compelling data visualizations. Inspired by the " [:a {:href "https://en.wikipedia.org/wiki/Wilkinson%27s_Grammar_of_Graphics"} "Grammer of Graphics"] " and Julia's " [:a {:href "aog.makie.org"} "Algebra of Graphics"] ", it enables the easy specification of complex plots in just a few lines of code."]]}
-   {:logo "TMD.png"
+    :image ""
+    :heading "Data Visualization"}
+   {:category :hpc
     :short-heading "HPC"
     :link "hpc"
-    :image "TMD.png"
-    :heading "High Performance Computing "
-    :content [:div
-              [:h4 [:a {:href "ref/tech_ml_dataset"} "Tech.ml.dataset"]]
-              [:p " is a high-performance dataset processing library providing a fast, Clojure-native alternative to R and Python's data frames."]
-              [:h4 [:a {:href "ref/ham_fisted"} "Ham-fisted"]] 
-              [:p " provides high-performance data structures and operations for Clojure."]
-              [:h4 [:a {:href "ref/dtype_next"} "Dtype-next"]]
-              [:p " is a high-performance numeric array programming library. It provides a unified pathway for dealing with contiguous containers of primitive datatypes such as ints and floats on the JVM."]]}
-   {:logo "TMD.png"
-    :short-heading "Process Data"
+    :image ""
+    :heading "High Performance Computing "}
+   {:category :data-processing
+    :short-heading "Data Processing"
     :link "datasets"
-    :heading "Data Processing"
-    :content [:div
-              [:h4 [:a {:href "ref/tablecloth"} "tablecloth"]]
-              [:p "With , you can manipulate datasets with the ergonomics of R's dplyr and the speed of " [:a {:href "ref/tech_ml_dataset"} "tech.ml.dataset"] ". "]
-              [:h4 [:a {:href "ref/tmd_parquet"} "TMD Parquet"]] 
-              [:p " provides parquet file format bindings bindings for tech.ml.dataset."]
-              [:h4 [:a {:href "ref/clojure_java_time"} "clojure.java-time"]]
-              [:p " is a Java 8 Date-Time API wrapper for Clojure."]]}
-   {:logo "Fastmath.png"
-    :short-heading "Stats"
+    :image ""
+    :heading "Data Processing"}
+   {:category :math-stats
+    :short-heading "Math & Stats"
     :link "math"
-    :image "Fastmath.png"
-    :heading "Mathematics and Statistics"
-    :content [:div
-              [:h4 [:a {:href "ref/fastmath"} "Fastmath"]]
-              [:p " is a comprehensive math and statistics library, which includes trigonometric and power functions, vector and matrix operations, procedures for integration and differentiation, distributions, statistical functions, and many more."]
-              [:h4 [:a {:href "ref/fitdistr"} "Fitdistr"]]
-              [:p  " provides an intuitive interface for fitting distributions, inspired by the famous R package."]
-              [:h4 [:a {:href "ref/ish"} "Same-ish"]] 
-              [:p " provides approximate numerical comparisons, which are useful for testing notebooks."]]}
-   {:logo "Metamorph.ml.png"
+    :image ""
+    :heading "Mathematics and Statistics"}
+   {:category :ml
     :short-heading "ML"
     :link "ml"
-    :image "Metamorph.ml.png"
-    :heading "Machine Learning"
-    :content [:div
-              [:h4 [:a {:href "ref/metamorph_ml"} "Metamorph.ml"]]
-              [:p " is a platform for unified machine learning pipelines. It unifies hyperparameter tuning and data preprosessing in a single approach."]
-              [:h4 [:a {:href "ref/scicloj_ml_tribuo"} "Scicloj.ml.tribuo"]] 
-              [:p  " is an integration of the established Java ML library " [:a {:href "https://tribuo.org/"} "Tribuo"] " into the metamorph framework."]
-              [:h4 [:a {:href "ref/sklearn_clj"} "Sklearn-clj"]] 
-              [:p " provides easy access to all models and estimators from " [:a {:href "https://scikit-learn.org/"} "scikit-learn"] " in Clojure."]]}
-   {:logo "Libpython_clj.png"
+    :image ""
+    :heading "Machine Learning"}
+   {:category :interop
     :short-heading "Interop"
     :link "interop"
-    :image "Libpython_clj.png"
-    :heading "Bridges and Interop"
-    :content [:div
-              [:h4 {:class "green-heading"} [:a {:href "ref/clojisr"} "ClojisR"]] 
-              [:p " is a Clojure bridge to R. With it, you can execute any R code within Clojure."]
-              [:h4 [:a {:href "ref/libpython_clj"} "Libpython_clj"]] 
-              [:p " is a deep integration between Python and Clojure. Python and Java objects are bridged and handled by the JVM GC."]
-              [:h4 [:a {:href "ref/kind_pyplot"} "Kind-pyplot"]]
-              [:p " is a small Clojure library for displaying Python plots."]]}])
+    :image ""
+    :heading "Bridges and Interop"}])
 
 ^:kindly/hide-code
-(defn library-active-tab [{:keys [short-heading logo link]}]
-  [:li {:class "nav-item" :role "presentation"}
-   [:a {:class "nav-link active" :data-bs-toggle "tab" :href (str "#" link) :aria-selected "true" :role "tab"} [:img {:src logo :style {:width "1.1em" :height "auto"}}] " " [:b short-heading]]])
+(def library-data 
+  [{:library "Clay"
+    :category :publish
+    :href "ref/clay"
+    :logo "clay.png"
+    :description "Clay publishes a namespace, whether as a website, a pdf or any other Quarto-supported document. It provides the notebook-oriented workflow familiar from Jupyter."}
+   {:library "Kindly"
+    :category :publish
+    :href "ref/kindly"
+    :logo "kindly.png"
+    :description "Kindly supports Clay by specifying how forms are presented in the document. With over 30 different supported kinds, it is ready to populate your website with dynamic content."}
+   {:library "Plotje"
+    :category :visualize
+    :href "ref/plotje"
+    :logo "plotje.png"
+    :description "plotje generates clear and compelling data visualizations. Inspired by the Grammer of Graphics and Julia's Algebra of Graphics, it enables the easy specification of complex plots in just a few lines of code."}
+   {:library "Tech.ml.dataset"
+    :category :hpc
+    :href "ref/tech_ml_dataset"
+    :logo "tech_ml_dataset.png"
+    :description "tech.ml.dataset is a high-performance dataset processing library providing a fast, Clojure-native alternative to R and Python's data frames."}
+   {:library "Ham-fisted"
+    :category :hpc
+    :href "ref/ham_fisted"
+    :logo "SciCloj.png"
+    :description "ham-fisted provides high-performance data structures and operations for Clojure."}
+   {:library "Dtype-next"
+    :category :hpc
+    :href "ref/dtype_next"
+    :logo "SciCloj.png"
+    :description "dtype-next is a high-performance numeric array programming library. It provides a unified pathway for dealing with contiguous containers of primitive datatypes such as ints and floats on the JVM."}
+   {:library "Tablecloth"
+    :category :data-processing
+    :href "ref/tabecloth"
+    :logo "tablecloth.png"
+    :description "With tablecloth, you can manipulate datasets with the ergonomics of R's dplyr and the speed of tech.ml.dataset"}
+   {:library "Tech.parquet"
+    :category :data-processing
+    :href "ref/tech_parquet"
+    :logo "tech.parquet.png"
+    :description "tech.parquet provides parquet file format bindings bindings for tech.ml.dataset."}
+   {:library "Clojure.java-time"
+    :category :data-processing
+    :href "ref/clojure_java_time"
+    :logo "SciCloj.png"
+    :description "clojure.java-time is a Java 8 Date-Time API wrapper for Clojure."}
+   {:library "Fastmath"
+    :category :math-stats
+    :href "ref/fastmath"
+    :logo "fastmath.png"
+    :description "fastmath is a comprehensive math and statistics library, which includes trigonometric and power functions, vector and matrix operations, procedures for integration and differentiation, distributions, statistical functions, and many more."}
+   {:library "Fitdistr"
+    :category :math-stats
+    :href "ref/fitdistr"
+    :logo "fastmath.png"
+    :description "fitdistr provides an intuitive interface for fitting distributions, inspired by the fitdistrplus R package."}
+   {:library "Same-ish"
+    :category :math-stats
+    :href "ref/same_ish"
+    :logo "same_ish.png"
+    :description "same-ish provides approximate numerical comparisons, which are useful for testing notebooks."}
+   {:library "Metamorph.ml"
+    :category :ml
+    :href "ref/metamorph_ml"
+    :logo "metamorph_ml.png"
+    :description "metamorph.ml is a platform for unified machine learning pipelines. It unifies hyperparameter tuning and data preprosessing in a single approach."}
+   {:library "Scicloj.ml.tribuo"
+    :category :ml
+    :href "ref/scicloj_ml_tribuo"
+    :logo "metamorph_ml.png"
+    :description "metamorph.ml is an integration of the established Java ML library Tribuo into the metamorph framework."}
+   {:library "Sklearn-clj"
+    :category :ml
+    :href "ref/sklearn_clj"
+    :logo "metamorph_ml.png"
+    :description "sklearn-clj provides easy access to all models and estimators from scikit-learn in Clojure."}
+   {:library "Clojisr"
+    :category :interop
+    :href "ref/clojisr_clj"
+    :logo "clojisr.png"
+    :description "Clojisr is a Clojure bridge to R. With it, you can execute any R code within Clojure."}
+   {:library "Libpython-clj"
+    :category :interop
+    :href "ref/kind_pyplot"
+    :logo "libpython_clj.png"
+    :description "libpython-clj is a deep integration between Python and Clojure. Python and Java objects are bridged and handled by the JVM GC."}
+   {:library "Kind-pyplot"
+    :category :interop
+    :href "ref/kind_pyplot"
+    :logo "kind_pyplot.png"
+    :description "kind-pyplot is a small Clojure library for displaying Python plots."}])
 
 ^:kindly/hide-code
-(defn library-tab [{:keys [short-heading logo link]}]
-  [:li {:class "nav-item" :role "presentation"}
-   [:a {:class "nav-link" :data-bs-toggle "tab" :href (str "#" link) :aria-selected "true" :role "tab"} [:img {:src logo :style {:width "1.1em" :height "auto"}}] " " [:b short-heading]]])
+(defn analysis-step-tab [{:keys [short-heading link]} active?]
+  (let [class (if active? "nav-link active" "nav-link")]
+    [:li {:class "nav-item" :role "presentation"}
+     [:a {:class class :data-bs-toggle "tab" :href (str "#" link) :aria-selected "true" :role "tab"}
+      [:b short-heading]]]))
 
 ^:kindly/hide-code
-(defn library-tab-active-content [{:keys [heading content link image]}]
-  [:div {:class "tab-pane fade show active" :id link :role "tabpanel"}
+(defn library-description [{:keys [library logo description]}]
+  [:div
+   [:h3 [:img {:src logo :style {:width "1.1em" :height "auto"}}] " " library]
+   [:p description]])
+
+^:kindly/hide-code
+(defn analysis-step-tab-content [{:keys [category heading link image]} lib-data active?]
+  (let [class (str "tab-pane fade" (if active? " show active" ""))
+        content (into [:div]
+                      (map library-description (filter #(= (:category %) category) lib-data)))]
+  [:div {:class class :id link :role "tabpanel"}
    [:h3 {:class "text-center"} heading]
    [:div {:class "row d-flex flex-wrap"}
     [:div {:class "col-6 w-50"} content]
-    #_[:div {:class "col-6 w-50"} [:img {:src image}]]]])
-
-^:kindly/hide-code
-(defn library-tab-content [{:keys [heading content link image]}]
-  [:div {:class "tab-pane fade" :id link :role "tabpanel"}
-   [:h3 {:class "text-center"} heading]
-   [:div {:class "row d-flex flex-wrap"}
-    [:div {:class "col-6 w-50"} content]
-    #_[:div {:class "col-6 w-50"} [:img {:src image}]]]])
+    #_[:div {:class "col-6 w-50"} [:img {:src image}]]]]))
 
 ^:kindly/hide-code
 (kind/hiccup
@@ -166,15 +218,17 @@
   [:br]
   (into 
    [:ul {:class "nav nav-tabs" :role "tablist"}]
-   (cons (library-active-tab (first library-data))
-         (map library-tab (rest library-data))))
+   (cons (analysis-step-tab (first library-category-data) true)
+         (map analysis-step-tab (rest library-category-data) (repeat false))))
   (into
    [:div {:id "myTabContent" :class "tab-content"}]
-   (cons (library-tab-active-content (first library-data))
-         (map library-tab-content (rest library-data))))
+   (cons (analysis-step-tab-content (first library-category-data) library-data true)
+         (map analysis-step-tab-content
+              (rest library-category-data)
+              (repeat library-data)
+              (repeat false))))
   [:p {:class "text-center"} "Also check out the other " [:a "recommended libraries"] "."]
-  [:br]
-  ])
+  [:br]])
 
 ^:kindly/hide-code
 (kind/hiccup
