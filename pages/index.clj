@@ -8,7 +8,7 @@
 (kind/hiccup
  [:div
   {:class ["text-center"]}
-  [:h1 {:class ["text-center"]} "A Clojure Data Science Toolkit"]
+  [:h1 {:class ["text-center"]} "A Curated Clojure Data Science Toolkit"]
   [:p "A tested and integrated collection of libraries that are known to work seamlessly together from day one."] 
   [:button {:type "button" :class ["btn" "btn-primary me-2"] :onclick "window.location.href=quick_start_guide"} "Quick Start"]
   [:button {:type "button" :class ["btn" "btn-primary me-2"] :onclick "window.location.href=learn/"} "Learn Data Science"]
@@ -27,20 +27,20 @@
 ^:kindly/hide-code
 (def features-data-row1
   [{:heading "Fast"
-    :text "The speed of Java matched with fast dataset processing and low-overhead parallelism."}
+    :text "The speed of Java paired with fast dataset processing and low-overhead parallelism."}
    {:heading "Maintainable"
-    :text "No breaking changes, but accretion."}
+    :text "No breaking changes, but accretion. A mature stable ecosystem."}
    {:heading "Simple"
     :text "Reason easily about code by separating tangled concepts."}])
 
 ^:kindly/hide-code
 (def features-data-row2
   [{:heading "Rich Ecosystem"
-    :text "A complete data analysis ecosystem and direct access to mature Java libraries."}
+    :text "A complete data analysis ecosystem and direct access to mature libraries."}
    {:heading "Easy Deployment"
-    :text "Use the same workflow in research and transition seamlessly to production."}
-   {:heading "REPL"
-    :text "A seamless feedback loop and runtime data manipulation."}])
+    :text "Transition workflow seamlessly from research to production."}
+   {:heading "The REPL"
+    :text "An instant feedback loop and easy runtime data manipulation."}])
 
 ^:kindly/hide-code
 (kind/hiccup [:br])
@@ -55,7 +55,8 @@
         (map feature-card features-data-row1))
   [:br]
   (into [:div {:class ["d-flex" "flex-column" "flex-md-row" "gap-3"]}]
-       (map feature-card features-data-row2))])
+        (map feature-card features-data-row2))])
+
 ^:kindly/hide-code
 (def library-category-data
   [{:category :publish
@@ -77,7 +78,7 @@
     :short-heading "Data Processing"
     :link "datasets"
     :image ""
-    :heading "Data Processing"}
+    :heading "Data Import and Processing"}
    {:category :math-stats
     :short-heading "Math & Stats"
     :link "math"
