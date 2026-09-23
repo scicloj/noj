@@ -10,19 +10,34 @@
   {:class ["text-center"]}
   [:h1 {:class ["text-center"]} "A Curated Clojure Data Science Toolkit"]
   [:p "A tested and integrated collection of libraries that are known to work seamlessly together from day one."] 
-  [:button {:type "button" :class ["btn" "btn-primary me-2"] :onclick "window.location.href=quick_start_guide"} "Quick Start"]
-  [:button {:type "button" :class ["btn" "btn-primary me-2"] :onclick "window.location.href=learn/"} "Learn Data Science"]
+  [:button
+   {:type "button"
+    :class ["btn" "btn-primary me-2"]
+    :onclick "window.location.href=quick_start_guide"}
+   "Quick Start"]
+  [:button
+   {:type "button"
+    :class ["btn" "btn-primary me-2"]
+    :onclick "window.location.href=learn/"}
+   "Learn Data Science"]
   [:br]
   [:br]
-  [:img {:src "https://github.com/scicloj/noj/actions/workflows/ci.yml/badge.svg" :style {:height "1.2em" :vertical-align "middle"} :class "me-3" :alt "CI workflow"}]
-  [:a {:href "https://clojars.org/org.scicloj/noj"} [:img {:src "https://img.shields.io/clojars/v/org.scicloj/noj.svg" :style {:height "1.2em" :vertical-align "middle"} :class "me-3" :alt "clojars"}]]])
+  [:img {:src "https://github.com/scicloj/noj/actions/workflows/ci.yml/badge.svg"
+         :style {:height "1.2em" :vertical-align "middle"}
+         :class "me-3" :alt "CI workflow"}]
+  [:a {:href "https://clojars.org/org.scicloj/noj"}
+   [:img {:src "https://img.shields.io/clojars/v/org.scicloj/noj.svg"
+          :style {:height "1.2em" :vertical-align "middle"}
+          :class "me-3" :alt "clojars"}]]
+  [:br]
+  [:br]])
 
 ^:kindly/hide-code
 (defn feature-card [{:keys [heading text image]}]
   [:div {:class ["flex-fill" "w-100" "overflow-hidden" "p-2"]}
    [:div {:style {:display "flex" :align-items "center" :gap "12px"}}
     [:h3 heading]]
-    [:p text]]) ;; try making the font more visible 
+    [:p text]])
 
 ^:kindly/hide-code
 (def features-data-row1
@@ -43,9 +58,6 @@
     :text "An instant feedback loop and easy runtime data manipulation."}])
 
 ^:kindly/hide-code
-(kind/hiccup [:br])
-
-^:kindly/hide-code
 (kind/hiccup
  [:div {:class "full-width-bg"}
   [:div
@@ -62,37 +74,37 @@
   [{:category :publish
     :short-heading "Publishing"
     :link "publishing"
-    :image ""
+    :image "publish.gif"
     :heading "Exploring and Publishing"}
    {:category :visualize
     :short-heading "Visualization"
     :link "visualization"
-    :image ""
+    :image "visualize.gif"
     :heading "Data Visualization"}
    {:category :hpc
     :short-heading "HPC"
     :link "hpc"
-    :image ""
+    :image "hpc.png"
     :heading "High Performance Computing "}
    {:category :data-processing
     :short-heading "Data Processing"
     :link "datasets"
-    :image ""
+    :image "process.png"
     :heading "Data Import and Processing"}
    {:category :math-stats
     :short-heading "Math & Stats"
     :link "math"
-    :image ""
+    :image "stats.png"
     :heading "Mathematics and Statistics"}
    {:category :ml
     :short-heading "ML"
     :link "ml"
-    :image ""
+    :image "ml.png"
     :heading "Machine Learning"}
    {:category :interop
     :short-heading "Interop"
     :link "interop"
-    :image ""
+    :image "interop.png"
     :heading "Bridges and Interop"}])
 
 ^:kindly/hide-code
@@ -209,8 +221,13 @@
   [:div {:class class :id link :role "tabpanel"}
    [:h3 {:class "text-center"} heading]
    [:div {:class "row d-flex flex-wrap"}
-    [:div {:class "col-6 w-50"} content]
-    #_[:div {:class "col-6 w-50"} [:img {:src image}]]]]))
+    [:div {:class "col-6 w-50"}
+     [:div {:class "p-2"}
+      [:br]
+      [:img {:src image}]]]
+    [:div {:class "col-6 w-50"}
+     [:div {:class "p-2"}
+      content]]]]))
 
 ^:kindly/hide-code
 (kind/hiccup
@@ -221,7 +238,9 @@
    (into
     [:ul {:class "nav nav-tabs responsive-nav-tabs" :role "tablist"}]
     (cons (analysis-step-tab (first library-category-data) true)
-          (map analysis-step-tab (rest library-category-data) (repeat false))))
+          (map analysis-step-tab
+               (rest library-category-data)
+               (repeat false))))
    (into
     [:div {:id "myTabContent" :class "tab-content"}]
     (cons (analysis-step-tab-content (first library-category-data) library-data true)
@@ -240,7 +259,7 @@
    [:h1 "Community"]]
   [:div {:class "row d-flex gap-2"}
    [:div {:class "col-3 w-25"}
-    [:p  [:img {:src "SciCloj.png" :style {:width "1.2em" :height "auto"}}] " Noj was developed by the " [:a {:href "https://scicloj.github.io/"} "SciCloj"] " community. " [:a {:href "https://scicloj.github.io/docs/community/getting_involved/"} "Join us!"]]]
+    [:p [:img {:src "SciCloj.png" :style {:width "1.2em" :height "auto"}}] " Noj was developed by the " [:a {:href "https://scicloj.github.io/"} "SciCloj"] " community. " [:a {:href "https://scicloj.github.io/docs/community/getting_involved/"} "Join us!"]]]
    [:div {:class "col-3 w-25"}
     [:p [:img {:src "zulip.png" :style {:width "1.5em" :height "auto"}}] " Check our " [:a  {:href "https://clojurians.zulipchat.com/#narrow/stream/321125-noj-dev"} "developer chat"] "."]]
    [:div {:class "col-3 w-25"}

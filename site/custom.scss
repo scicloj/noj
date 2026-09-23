@@ -310,7 +310,6 @@ body::before {
 }
 
 // ------------------------------------------------------------------ dark mode
-
 .quarto-dark {
     .home-cards .home-card {
         border-color: #333a41;
@@ -326,7 +325,6 @@ body::before {
         color: #aab3bc;
     }
 
-    // Lift link contrast against the dark background.
     .quarto-container a:not([class]) {
         color: #7ab8f5;
     }
@@ -338,20 +336,13 @@ body::before {
 
 .nav-tabs .nav-link {
     color: #000000;
-    background-color: transparent;
-    border: 1px solid transparent;
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
     transition: all 0.2s ease-in-out;
 }
 
-/* Hover State (Inactive) */
 .nav-tabs .nav-link:hover {
-    color: $midnight-blue; // #0d6efd;
-    border-color: #e9ecef #e9ecef #dee2e6;
+    color: $midnight-blue; /* #0d6efd */
 }
 
-/* Active Tab */
 .nav-tabs .nav-link.active {
     background: $noj-gradient-horizontal;
     -webkit-background-clip: text;
@@ -367,35 +358,32 @@ body::before {
     overflow-y: hidden;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Firefox */
-    position: relative;
-    z-index: 2; /* Keeps active tab on top of content border */
+    scrollbar-width: none;
+    border-bottom: none !important;
 }
 
 .responsive-nav-tabs::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Edge */
+    display: none; 
 }
 
-/* 2. Stretch tabs across the full width while maintaining scrollability */
 .responsive-nav-tabs .nav-item {
-    flex: 1 0 auto; /* Grow to fill space, don't shrink smaller than text */
+    flex: 1 0 auto;
     text-align: center;
 }
 
 .responsive-nav-tabs .nav-link {
-    width: 100%;
+    border-bottom: 1px solid var(--bs-border-color, #dee2e6);
+}
+
+.responsive-nav-tabs .nav-link.active {
+    border-bottom-color: transparent !important;
+    margin-bottom: 0; 
 }
 
 .custom-tab-content {
     border: 1px solid var(--bs-border-color, #dee2e6);
-    border-top: none;
+    border-top: none !important; 
     border-bottom-left-radius: 0.375rem;
     border-bottom-right-radius: 0.375rem;
     background-color: var(--bs-body-bg, #fff);
-    position: relative;
-    z-index: 1;
-}
-
-.responsive-nav-tabs .nav-link.active {
-    margin-bottom: -1px;
 }
