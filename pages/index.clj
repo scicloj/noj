@@ -112,37 +112,37 @@
   [{:library "Clay"
     :category :publish
     :href "ref/clay"
-    :logo "clay.png"
+    :logo "Clay.png"
     :description "Clay publishes a namespace, whether as a website, a pdf or any other Quarto-supported document. It provides the notebook-oriented workflow familiar from Jupyter."}
    {:library "Kindly"
     :category :publish
     :href "ref/kindly"
-    :logo "kindly.png"
+    :logo "Kindly.png"
     :description "Kindly supports Clay by specifying how forms are presented in the document. With over 30 different supported kinds, it is ready to populate your website with dynamic content."}
    {:library "Plotje"
     :category :visualize
     :href "ref/plotje"
-    :logo "plotje.png"
+    :logo "Plotje.png"
     :description "plotje generates clear and compelling data visualizations. Inspired by the Grammer of Graphics and Julia's Algebra of Graphics, it enables the easy specification of complex plots in just a few lines of code."}
    {:library "Tech.ml.dataset"
     :category :hpc
     :href "ref/tech_ml_dataset"
-    :logo "tech_ml_dataset.png"
+    :logo "TMD.png"
     :description "tech.ml.dataset is a high-performance dataset processing library providing a fast, Clojure-native alternative to R and Python's data frames."}
    {:library "Ham-fisted"
     :category :hpc
     :href "ref/ham_fisted"
-    :logo "SciCloj.png"
+    :logo "Scicloj.png"
     :description "ham-fisted provides high-performance data structures and operations for Clojure."}
    {:library "Dtype-next"
     :category :hpc
     :href "ref/dtype_next"
-    :logo "SciCloj.png"
+    :logo "Scicloj.png"
     :description "dtype-next is a high-performance numeric array programming library. It provides a unified pathway for dealing with contiguous containers of primitive datatypes such as ints and floats on the JVM."}
    {:library "Tablecloth"
     :category :data-processing
     :href "ref/tabecloth"
-    :logo "tablecloth.png"
+    :logo "Scicloj.png"
     :description "With tablecloth, you can manipulate datasets with the ergonomics of R's dplyr and the speed of tech.ml.dataset"}
    {:library "Tech.parquet"
     :category :data-processing
@@ -152,7 +152,7 @@
    {:library "Clojure.java-time"
     :category :data-processing
     :href "ref/clojure_java_time"
-    :logo "SciCloj.png"
+    :logo "Scicloj.png"
     :description "clojure.java-time is a Java 8 Date-Time API wrapper for Clojure."}
    {:library "Fastmath"
     :category :math-stats
@@ -172,17 +172,17 @@
    {:library "Metamorph.ml"
     :category :ml
     :href "ref/metamorph_ml"
-    :logo "metamorph_ml.png"
+    :logo "scicloj.ml.png"
     :description "metamorph.ml is a platform for unified machine learning pipelines. It unifies hyperparameter tuning and data preprosessing in a single approach."}
    {:library "Scicloj.ml.tribuo"
     :category :ml
     :href "ref/scicloj_ml_tribuo"
-    :logo "metamorph_ml.png"
+    :logo "scicloj.ml.png"
     :description "metamorph.ml is an integration of the established Java ML library Tribuo into the metamorph framework."}
    {:library "Sklearn-clj"
     :category :ml
     :href "ref/sklearn_clj"
-    :logo "metamorph_ml.png"
+    :logo "scicloj.ml.png"
     :description "sklearn-clj provides easy access to all models and estimators from scikit-learn in Clojure."}
    {:library "Clojisr"
     :category :interop
@@ -259,7 +259,7 @@
    [:h1 "Community"]]
   [:div {:class "row d-flex gap-2"}
    [:div {:class "col-3 w-25"}
-    [:p [:img {:src "SciCloj.png" :style {:width "1.2em" :height "auto"}}] " Noj was developed by the " [:a {:href "https://scicloj.github.io/"} "SciCloj"] " community. " [:a {:href "https://scicloj.github.io/docs/community/getting_involved/"} "Join us!"]]]
+    [:p [:img {:src "Scicloj.png" :style {:width "1.2em" :height "auto"}}] " Noj was developed by the " [:a {:href "https://scicloj.github.io/"} "SciCloj"] " community. " [:a {:href "https://scicloj.github.io/docs/community/getting_involved/"} "Join us!"]]]
    [:div {:class "col-3 w-25"}
     [:p [:img {:src "zulip.png" :style {:width "1.5em" :height "auto"}}] " Check our " [:a  {:href "https://clojurians.zulipchat.com/#narrow/stream/321125-noj-dev"} "developer chat"] "."]]
    [:div {:class "col-3 w-25"}
