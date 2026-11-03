@@ -1,0 +1,39 @@
+[{:part "Overview"
+  :chapters ["underlying_libraries"
+             "recommended_libraries"
+             "known_issues"]}
+ {:part "Datasets"
+  :chapters ["tablecloth_table_processing"
+             "datasets"
+             "tablecloth_advanced_table_processing"]}
+ {:part "Statistics"
+  :chapters ["statistics_intro"
+             "distribution_fitting"
+             "linear_regression_intro"]}
+ {:part "Machine Learning"
+  :chapters ["ml_basic"
+             "metamorph"
+             "prepare_for_ml"
+             "automl"
+             "interactions_ols"]}
+ {:part "Data Visualization"
+  :chapters ["tableplot_datavis_intro"
+             "plotly_tutorial"
+             "echarts"]}
+ #_{:part "Linear Algebra"
+  :chapters ["linear_algebra_intro"
+             #_"fastmath_vector_geom2d3d" ; temporarily commented out due to the dependence on unstable unpkg CDN
+             "fastmath_vector_word_embeddings"
+             "fastmath_matrix_intro"]}
+ {:part "Use Cases"
+  :chapters ["chicago_bike_times"]}
+ 
+ {:part "Model references"
+  :chapters ["smile_classification"
+             "smile_regression"
+             "smile_others"
+             "xgboost"
+             "sklearn_reference"
+             "tribuo_reference"
+             "transformer_references"]}
+ ]
